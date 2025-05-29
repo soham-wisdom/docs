@@ -29,15 +29,26 @@ To follow this tutorial, you should:
 
 ## Fine-tune your Context and Responses
 
-To improve how the AI understands and answers user queries, you can fine-tune your domain’s context and logic directly from the **Domain** tab. This area offers multiple tools to refine data interpretation, align responses with business definitions, and improve overall accuracy.
+To improve how the AI understands and answers user queries, you can fine-tune your domain’s context and logic directly from the **Domain** tab. This section offers multiple tools to refine data interpretation, align responses with business definitions, and improve overall accuracy.
+
+### Access Domain Configuration
 
 1. Navigate to the **Domain** tab in the left sidebar and open it.
-2. Select the Domain you would like to fine-tune. In the window that opens, you will find the following tabs:
-   - **OVERVIEW**: Find here a summary of key information and activity related to the dataset.
-   - **DATA SOURCES**: This tab is where data administrators manage and model the raw data structure to make it queryable and insightful within the platform.
-   - **KNOWLEDGE**: Define here domain-specific logic and terminology in natural language. In this section, you can fine-tune how the system interprets data by setting contextual rules, custom metrics, and named entities, ensuring responses align with your business's definitions and expectations.
-   - **ADVANCED**: Configure here domain-level settings that affect AI behavior, display preferences, chat customization, and fiscal logic, among others.
-   - **EVALUATION**: Test and validate here how the system interprets natural language queries by creating evaluation sets. This ensures your domain returns accurate, expected results by letting you input prompts (with or without the corresponding SQL) and assess how the AI responds.
+2. Select the Domain you would like to fine-tune. A panel with multiple configuration tabs will open.
+
+### Domain Tabs
+
+- **OVERVIEW**: Find here a summary of key information and activity related to the dataset.
+- **DATA SOURCES**: This tab is where data administrators manage and model the raw data structure to make it queryable and insightful within the platform.
+- **KNOWLEDGE**: Here is where you define how the system should interpret your data. By adding natural language Context and Reviewed Queries, you help the AI generate more accurate and business-aligned responses that meet your business's definitions and expectations.
+
+  To start fine-tuning your data, you can:
+  - **Add Context**: Provide domain-specific knowledge, rules, or naming conventions in natural language to guide the AI’s understanding.
+  - **Add Reviewed Queries**: Pair natural language questions with their ideal SQL responses to train the system on how key questions should be answered. 
+- **SUGGESTIONS**:
+- **ADVANCED**: Configure here domain-level settings that affect AI behavior, display preferences, chat customization, and fiscal logic, among others.
+- **EVALUATION**: Test and validate here how the system interprets natural language queries by creating evaluation sets. This ensures your domain returns accurate, expected results by letting you input prompts (with or without the corresponding SQL) and assess how the AI responds.
+- **PROMPT GALLERY**
 
 To start fine-tuning your data, you can:
 
