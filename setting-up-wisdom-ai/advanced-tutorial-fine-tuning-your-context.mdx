@@ -6,7 +6,7 @@ description: "This advanced tutorial will guide you through the process of fine-
 This tutorial is intended for:
 
 - Admin users, who are in charge of configuring data sources and setting up the chatbot.
-- Data Administrators, responsibles for configuring particular Domains.
+- Data Administrators, responsible for configuring particular Domains.
 
 ## Learning Objectives
 
@@ -27,7 +27,7 @@ To follow this tutorial, you should:
 - Have read the <u>Basic Tutorial: Connect and Experiment</u> tutorial to learn how to **Connect to your Data Sources** and how to **create Domains**.
 - Have already created at least one Domain.
 
-## Fine-tune your Data
+## Fine-tune your Context and Responses
 
 1. Navigate to the **Domain** tab in the left sidebar and open it.
 2. Select the Domain you would like to fine-tune. In the window that opens, you will find the following tabs:
@@ -40,15 +40,13 @@ To follow this tutorial, you should:
 To start fine-tuning your data, you can:
 
 - Add Context,
-- Add Reviewed Queries,
-- Add Metrics, and
-- Add Entities to your data.
+- Add Reviewed Queries.
 
-All these actions can be done from the Knowledge tab.
+These actions can be done from the Knowledge tab.
 
 ## Add Context
 
-In the contect section, share domain-specific knowledge or information in natural language sentences. This helps the system understand your business context and formulate precise queries. For example, you can provide information like: 'Regions are same as Territories' or 'My sales stages are: Prospect, Negotiation, Closed'.
+In the contect section, share domain-specific knowledge or information in natural language sentences. This helps the system understand your business context and formulate precise queries. For example, you can provide information like: '_Regions are the same as Territories_' or _'My sales stages are: Prospect, Negotiation, Closed_'.
 
 [Example images w responses before and after adding Context]
 
@@ -69,7 +67,7 @@ Reviewed queries are created as part of the chat experience. Each chat response 
 
 ### Example: Validated Query Definition
 
-\*\*Natural Language Query: \*\*"_What is the monthly revenue by region?"_
+**Natural Language Query:** "_What is the monthly revenue by region?"_
 
 ```
 SELECT 
@@ -86,42 +84,12 @@ ORDER BY 1, 2
 
 [Image of a chat with a thumbs up and the query window that opens]
 
-## Add Metrics
+## Continuous Learning
 
-Metrics are numeric, quantitative values that can be measured to assess and track business performance. In some analytics contexts, metrics might also be called _measures_.
+WisdomAI continuously improves its understanding through feedback loops with users including:
 
-### Types of Metrics
+- **Direct Corrections:** Users can mark responses as incorrect and provide the right answer.
+- **Query Refinements:** System learns from how users modify and refine their questions.
+- **Usage Patterns:** Identify common queries and optimize for them.
 
-- **Simple Metrics:** Direct aggregations of attributes (Sum of Revenue)
-- **Calculated Metrics:** Formulas combining other metrics (Profit = Revenue - Cost)
-- **Ratios:** Division of metrics (Conversion Rate = Orders / Visits)
-- **Time-based Metrics:** Year-over-year growth, rolling averages
-
-### Create a Metric
-
-1. Navigate to the **Metrics** tab, located within the Knowledge section.
-2. Click the **Add Metric** button.
-3. Configure the metric:
-   - Name and description
-   - Base table (what the metric measures)
-   - Formula or field reference
-   - Format (currency, percentage, etc.)
-   - Aggregation method
-
-[image of the steps in ui]
-
-### Example: Sales Metrics
-
-| Metric Name         | Description                                | SQL Expression                                              | Format                           |
-| ------------------- | ------------------------------------------ | ----------------------------------------------------------- | -------------------------------- |
-| Revenue             | Total revenue before discounts and returns | `SUM(total_amount)`                                         | Currency (USD, 2 decimal places) |
-| Average Order Value | Average amount spent per order             | `AVG(total_amount)`                                         | Currency (USD, 2 decimal places) |
-| Profit Margin       | Percentage of revenue that is profit       | `(SUM(total_amount) - SUM(cost)) / SUM(total_amount) * 100` | Percentage (1 decimal place)     |
-| Items Per Order     | Average number of items in each order      | `SUM(item_count) / COUNT(DISTINCT order_id)`                | Number (1 decimal place)         |
-| Days to Ship        | Average time between order and shipment    | `AVG(EXTRACT(DAY FROM ship_date - order_date))`             | Number (1 decimal place)         |
-
-<Info>
-  **SQL Implementation:** When creating metrics in WisdomAI, you will define the SQL expression that determines how the metric is calculated from the underlying data.
-</Info>
-
-[image of this section with the list of metrics]
+To know more about Feedback, refer to [TODO-ADDhowto]
