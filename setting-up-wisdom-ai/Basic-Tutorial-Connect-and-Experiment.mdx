@@ -1,0 +1,90 @@
+---
+title: "Basic Tutorial: Connect & Experiment"
+description: "This tutorial will guide you through the essential steps to connect your data source to the Wisdom AI platform and begin testing your advanced data analytics chatbot."
+---
+
+This tutorial is intended for Admin users, responsible for configuring data sources and setting up the chatbot. ~~Admins will play a key role in shaping how the chatbot begins to understand, respond, and evolve through feedback.~~
+
+## Learning Objectives
+
+By the end of this tutorial, you will be able to:
+
+- Connect to your Database.
+- Start experimenting with your Wisdom AI chatbot to test it.
+- Provide feedback so the system can create context by itself.
+
+Once you have completed this tutorial, you will have a working chatbot connected to your data and ready to improve through real-time interaction and feedback.
+
+## Before you Begin
+
+To follow this tutorial, you should:
+
+- Have Admin access to your Wisdom AI account. Read the [How to Request an Environment] [TODO-Add-Link] guide to know more about it.
+- Know the credentials to access your data source.
+
+## Connect to Data Sources
+
+To get started, you first need to connect your existing data source to Wisdom AI so the system can access and prepare your data for use and create reports:
+
+1. Go to the left sidebar and click on **Connections**. A new page will open and click on the **Add Connection** button to start.
+
+   <Note>
+     This action lets you link your existing data tools to Wisdom AI. Doing so enables the system to scan metadata. For data warehouse connections, it also allows Wisdom AI to fetch data when users ask questions in natural language.
+   </Note>
+2. Add a **Connection name**. Make it representative so it is easy to identify among other connections.
+3. Select the **Data Source** type. 
+
+   <Info>
+     Access <u>Supported Data Sources</u> to see the complete list of supported datasources by Wisdom AI.
+   </Info>
+4. Once selected, add your data source credentials, including:
+   - **Account**
+   - **Warehouse**
+   - **User**
+   - **Role**
+   - **Private Key**
+   - **Database Filters**
+5. After you have added your credentials, click on the **Save and Sync metadata** button.
+
+## Select the Data
+
+After you have added your data source, you will need to select what data you want to use in your project. For this, you will need to create a Domain.
+
+1. Go to **Domains**, in the left side bar.
+
+   <Note>
+     A Domain represents a logical business area or function, such as Sales, Marketing, or Finance. Creating well-defined domains makes data more accessible and relevant to business users.
+   </Note>
+2. Click on the **Add Domain** button. A new window will open.
+3. Enter the **Domain name** and a **Description** for it.
+4. **Select the database** from the dropdown menu. Once selected, the list of tables will be displayed.
+5. Choose the **tables** that you would like to use and drag and drop them to the working area. 
+
+   <Note>
+     To learn how to fine-tune your data, read the related guide [Advanced Tutorial: Fine Tuning Your Context] [TODO-Add-Link].
+   </Note>
+6. Click on **Save and continue**. Now you are ready to start testing Wisdom AI chatbot to retrieve information and generate reports about your business.
+
+## Start Experimenting
+
+Once your data is set up and selected, you can begin experimenting with your Wisdom AI chatbot to see it in action and test its data analysis capabilities.
+
+1. Navigate to the **Chat** tab in the left sidebar.
+2. Ask **questions** such as:
+   1. _"What was our revenue by region last quarter?"_
+   2. _"Show me customer retention by month"_
+   3. _"Which products had the highest growth rate compared to last year?"_
+3. Provide **feedback** using the **thumbs up/down** icons. To learn more about how Feedback works, read the related guide [Provide Feedback to the System] [TODO-Add-Link].
+
+## Summary
+
+In this tutorial, you learned how to connect your existing data sources to Wisdom AI, enabling the system to access and analyze your data. You selected the relevant data for your project and organized it into domains for better management. Finally, you began experimenting with your Wisdom AI chatbot to test its responses and evaluate its data analysis capabilities.
+
+By completing these steps, you have set up a functional Wisdom AI chatbot connected to your data, ready to improve through your feedback and continued use.
+
+## Next steps
+
+- How to Request an Environment
+- Supported Data Sources
+- Advanced Tutorial: Fine Tuning Your Context
+- Provide Feedback to the System
