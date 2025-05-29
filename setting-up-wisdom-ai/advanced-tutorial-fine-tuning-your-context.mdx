@@ -140,22 +140,19 @@ Reviewed queries are created as part of the chat experience. Each chat response 
 
 ### Example: Validated Query Definition
 
-**Natural Language Query:** "_What is the monthly revenue by region?"_
+**Natural Language Query:** "Calculate the win rate for sales_"_
 
 ```
 SELECT 
-  DATE_TRUNC('month', o.order_date) AS month,
-  r.region_name,
-  SUM(o.total_amount) AS revenue
-FROM orders o
-JOIN customers c ON o.customer_id = c.id
-JOIN regions r ON c.region_id = r.id
-WHERE o.order_date >= CURRENT_DATE - INTERVAL '12 months'
-GROUP BY 1, 2
-ORDER BY 1, 2
+  SAFE_DIVIDE(
+    SUM(CASE WHEN `stage_label` = 'Closed Won' THEN `acv` ELSE 0 END), 
+    SUM(`acv`)
+  ) AS `win_rate`
+FROM `wisdom-staging-406623`.`b2bsaleshomebrew`.`Opportunity`
+WHERE `stage_label` IN ('Evaluation', 'Negotiation', 'Closed Loss', 'Closed Won');
 ```
 
-[Image of a chat with a thumbs up and the query window that opens]
+![Thumb Up Query Save Pn](/images/thumb-up-query-save.png)
 
 ## Suggestions
 
