@@ -46,12 +46,29 @@ To start fine-tuning your data, you can:
 
 All these actions can be done from the Knowledge tab.
 
-### Add Context 
+## Add Context 
 
 In the contect section, share domain-specific knowledge or information in natural language sentences. This helps the system understand your business context and formulate precise queries. For example, you can provide information like: 'Regions are same as Territories' or 'My sales stages are: Prospect, Negotiation, Closed'.
 
 [Example images w responses before and after adding Context]
 
-### Reviewed Queries
+## Reviewed Queries
 
 By reviewing queries, you can help users get a higher degree of confidence in the answers they receive. In this library of pre-validated queries, there are a tuple of a natural language query and its ideal SQL response. This is the most critical aspect of context for the language model to understand your data, since it is directly tied to SQL.
+
+### Benefits of Reviewed Queries
+
+- **Accuracy:** Pre-vetted queries ensure consistent and correct results
+- **Performance:** Optimized query execution paths for common questions
+- **Reusability:** Common business questions can be stored once and reused
+- **Canonicalization:** Standardize the way metrics are calculated and combined
+
+#### **Creating Reviewed Queries**
+
+Reviewed queries are created as part of the chat experience. Each chat response comes with a thumbs up/thumbs down button. The thumbs up leads to queries being validated. These queries show up in the "Knowledge \> Reviewed Queries" tab once validated. Please see the documentation for the chat section for more information.
+
+#### **Example: Validated Query Definition**
+
+**Natural Language Query:**
+
+"What is the monthly revenue by region?"
