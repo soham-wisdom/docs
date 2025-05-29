@@ -24,7 +24,7 @@ Once you have completed this tutorial, you will have fine-tuned your data so the
 To follow this tutorial, you should:
 
 - Have Admin/Data Admin access to your Wisdom AI account. Read the <u>How to Request an Environment</u> guide to know more about it.
-- Have read the <u>Basic Tutorial: Connect and Experiment</u> tutorial to learn how to **Connect to your Data Sources** and how to **create Domains**.
+- Have read the [Basic Tutorial: Connect and Experiment](https://wisdomai.mintlify.app/setting-up-wisdom-ai/Basic-Tutorial-Connect-and-Experiment) article to learn how to **Connect to your Data Sources** and how to **create Domains**.
 - Have already created at least one Domain.
 
 ## Fine-tune your Context and Responses
@@ -36,21 +36,49 @@ To improve how the AI understands and answers user queries, you can fine-tune yo
 1. Navigate to the **Domain** tab in the left sidebar and open it.
 2. Select the Domain you would like to fine-tune. A panel with multiple configuration tabs will open.
 
+![Domain Tab Pn](/images/domain-tab.png)
+
 ### Domain Tabs Useful for Context Configuration
 
 These are the key tabs within the Domain section that help you define and refine contextual information for accurate AI responses.
 
-- **DATA SOURCES**: This tab is where data administrators manage and model the raw data structure to make it queryable and insightful within the platform. What you can do here to enhance Context is:
-  - **Document your tables**: Write clear natural language descriptions for tables and columns to help the AI interpret schema elements accurately.
+- **DATA SOURCES**: This tab is where data administrators manage and model the raw data structure to make it queryable and insightful within the platform. To enhance Context from the Data Sources tab, you can:
+  - **Document Tables and Columns**: Write clear natural language descriptions for tables and columns to help the AI interpret schema elements accurately.
   - **Define Metrics with SQL**: Use SQL formulas to define key metrics and calculations, ensuring consistency and precision in responses.
-
-
 - **KNOWLEDGE**: Here is where you define how the system should interpret your data. By adding natural language Context and Reviewed Queries, you help the AI generate more accurate and business-aligned responses that meet your business's definitions and expectations.
 
   To start fine-tuning your data, you can:
   - **Add Context**: Provide domain-specific knowledge, rules, or naming conventions in natural language to guide the AI’s understanding.
   - **Add Reviewed Queries**: Pair natural language questions with their ideal SQL responses to train the system on how key questions should be answered.
 - **SUGGESTIONS**: System-generated recommendations that help improve context by identifying ambiguities, missing relationships, or areas where clarification is needed.
+
+![Domain Alltabs Pn](/images/domain-alltabs.png)
+
+## Document Tables and Columns
+
+Proper documentation of tables and columns is essential for data governance, user understanding, and effective analytics.
+
+#### **Document Tables**
+
+For each table in your data model, there is a single required documentation field:
+
+- **Description:** Explanation of what the table represents, which _must_ include a clear statement of what each row's granularity represents in plain English (e.g., "Each row represents a single sales transaction from a point-of-sale system")
+
+Always specify the granularity of each row in your table description. This helps analysts understand the level of detail in the data and prevents misinterpretation during analysis.
+
+#### **Document Columns**
+
+For columns, WisdomAI supports these documentation fields:
+
+- **Display Name:** User-friendly name shown in the interface (especially useful if the actual column name is technical or abbreviated)
+- **Description:** Clear explanation of what the column represents in business terms
+- **Display Type:** How the data should be formatted and displayed to users
+
+<Info>
+  To learn more about Documenting Tables and Columns and Defining Metrics with SQL, refer to [ADD Articles?]
+</Info>
+
+To Document tables and Colums, go to **Domains** \> **Data Source** \> **Tables**.
 
 ## Context
 
@@ -122,9 +150,11 @@ ORDER BY 1, 2
 
 Suggestions serve as proactive helpers to improve context completeness and data quality.
 
+[image from the video recording]
+
 ## Continuous Learning
 
-WisdomAI continuously improves its understanding through feedback loops with users including:
+WisdomAI continuously improves its understanding through **feedback** loops with users including:
 
 - **Direct Corrections:** Users can mark responses as incorrect and provide the right answer.
 - **Query Refinements:** System learns from how users modify and refine their questions.
