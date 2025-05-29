@@ -69,7 +69,7 @@ Reviewed queries are created as part of the chat experience. Each chat response 
 
 ### Example: Validated Query Definition
 
-**Natural Language Query: **"_What is the monthly revenue by region?"_
+\*\*Natural Language Query: \*\*"_What is the monthly revenue by region?"_
 
 ```
 SELECT 
@@ -108,4 +108,16 @@ Metrics are numeric, quantitative values that can be measured to assess and trac
    - Format (currency, percentage, etc.)
    - Aggregation method
 
-#### **Example: Sales Metrics**
+### Example: Sales Metrics
+
+| Metric Name         | Description                                | SQL Expression                                              | Format                           |
+| ------------------- | ------------------------------------------ | ----------------------------------------------------------- | -------------------------------- |
+| Revenue             | Total revenue before discounts and returns | `SUM(total_amount)`                                         | Currency (USD, 2 decimal places) |
+| Average Order Value | Average amount spent per order             | `AVG(total_amount)`                                         | Currency (USD, 2 decimal places) |
+| Profit Margin       | Percentage of revenue that is profit       | `(SUM(total_amount) - SUM(cost)) / SUM(total_amount) * 100` | Percentage (1 decimal place)     |
+| Items Per Order     | Average number of items in each order      | `SUM(item_count) / COUNT(DISTINCT order_id)`                | Number (1 decimal place)         |
+| Days to Ship        | Average time between order and shipment    | `AVG(EXTRACT(DAY FROM ship_date - order_date))`             | Number (1 decimal place)         |
+
+<Info>
+  **SQL Implementation:** When creating metrics in WisdomAI, you will define the SQL expression that determines how the metric is calculated from the underlying data.
+</Info>
