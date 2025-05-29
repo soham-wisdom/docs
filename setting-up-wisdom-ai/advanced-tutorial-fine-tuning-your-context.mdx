@@ -83,3 +83,29 @@ WHERE o.order_date >= CURRENT_DATE - INTERVAL '12 months'
 GROUP BY 1, 2
 ORDER BY 1, 2
 ```
+
+[Image of a chat with a thumbs up and the query window that opens]
+
+## Add Metrics
+
+Metrics are numeric, quantitative values that can be measured to assess and track business performance. In some analytics contexts, metrics might also be called _measures_.
+
+### Types of Metrics
+
+- **Simple Metrics:** Direct aggregations of attributes (Sum of Revenue)
+- **Calculated Metrics:** Formulas combining other metrics (Profit = Revenue - Cost)
+- **Ratios:** Division of metrics (Conversion Rate = Orders / Visits)
+- **Time-based Metrics:** Year-over-year growth, rolling averages
+
+### Create a Metric
+
+1. Navigate to the **Metrics** tab, located within the Knowledge section.
+2. Click the **Add Metric** button.
+3. Configure the metric:
+   - Name and description
+   - Base table (what the metric measures)
+   - Formula or field reference
+   - Format (currency, percentage, etc.)
+   - Aggregation method
+
+#### **Example: Sales Metrics**
