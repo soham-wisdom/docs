@@ -1,6 +1,6 @@
 ---
 title: "Advanced Tutorial: Fine Tuning Your Context"
-description: "This advanced tutorial will guide you through the process of fine-tuning your Wisdom AI data to improve chatbot performance for data analysis. You will learn how to make detailed adjustments to context and data sources, including matching columns and fields to ensure accurate and relevant responses."
+description: "This advanced tutorial will guide you through the process of fine-tuning your Wisdom AI data to improve chatbot performance for data analysis. You will learn how to make detailed adjustments to context and data sources to ensure accurate and relevant responses."
 ---
 
 This tutorial is intended for:
@@ -12,9 +12,8 @@ This tutorial is intended for:
 
 By the end of this tutorial, you will be able to:
 
-- Adjust and enrich the context used by Wisdom AI to better understand queries.
+- Adjust and enrich the Context used by Wisdom AI to better understand queries.
 - Manage and fine-tune data source connections at a detailed level.
-- Match and map columns and fields across multiple data sources for consistency.
 - Test and validate your adjustments to ensure the chatbot responds correctly.
 
 Once you have completed this tutorial, you will have fine-tuned your data so the Wisdom AI chatbot can deliver more accurate and context-aware responses, improving its ability to analyze and interact with your data effectively.
@@ -24,8 +23,8 @@ Once you have completed this tutorial, you will have fine-tuned your data so the
 To follow this tutorial, you should:
 
 - Have Admin/Data Admin access to your Wisdom AI account.
-- Have read the [Basic Tutorial: Connect and Experiment](https://wisdomai.mintlify.app/setting-up-wisdom-ai/Basic-Tutorial-Connect-and-Experiment) article to learn how to **Connect to your Data Sources** and how to **create Domains**.
-- Have already created at least one Domain.
+- Have read the [Basic Tutorial: Connect and Experiment](https://wisdomai.mintlify.app/setting-up-wisdom-ai/Basic-Tutorial-Connect-and-Experiment) article to learn how to Connect to your Data Sources and how to create Domains.
+- Have already created at least one Domain and added data to it.
 
 ## Fine-tune your Context and Responses
 
@@ -34,7 +33,7 @@ To improve how the AI understands and answers user queries, you can fine-tune yo
 ### Access Domain Configuration
 
 1. Navigate to the **Domain** tab in the left sidebar and open it.
-2. Select the Domain you would like to fine-tune. A panel with multiple configuration tabs will open.
+2. Select the Domain you would like to fine-tune. A panel with multiple tabs will open.
 
 ![Domain Tab Pn](/images/domain-tab.png)
 
@@ -50,7 +49,7 @@ These are the key tabs within the Domain section that help you define and refine
   To start fine-tuning your data, you can:
   - **Add Context**: Provide domain-specific knowledge, rules, or naming conventions in natural language to guide the AI’s understanding.
   - **Add Reviewed Queries**: Pair natural language questions with their ideal SQL responses to train the system on how key questions should be answered.
-- **SUGGESTIONS**: System-generated recommendations that help improve context by identifying ambiguities, missing relationships, or areas where clarification is needed.
+- **SUGGESTIONS**: These are system-generated recommendations that help improve context by identifying ambiguities, missing relationships, or areas where clarification is needed.
 
 ![Domain Alltabs Pn](/images/domain-alltabs.png)
 
@@ -62,9 +61,11 @@ Proper documentation of tables and columns is essential for data governance, use
 
 For each table in your data model, there is a single required documentation field:
 
-- **Description:** In this field, provide a clear explanation of what the table represents, focusing on a concise, plain-English description of each row’s purpose and content.
+- **Description:** In this field, you should provide a clear explanation of what the table represents, focusing on a concise, plain-English description of each row’s purpose and content.
 
-  Always specify the granularity of each row in your table description. This helps analysts understand the level of detail in the data and prevents misinterpretation during analysis.
+  <Tip>
+    Always specify the granularity of each row in your table description. This helps analysts understand the level of detail in the data and prevents misinterpretation during analysis.
+  </Tip>
   - **Example**: "_This table stores detailed records of business accounts that have monthly revenue exceeding \$10,000. Each row represents a single account and includes fields such as account ID, account name, industry classification, account creation date, current status (active, inactive, suspended), monthly revenue amount, and primary contact information_."
 
 To Document tables, go to **Domains** \> **Select a Domain** \> **Data Sources** \> **Tables**.
@@ -121,7 +122,7 @@ The example on these images below illustrates how adding domain-specific context
 
 ![Calculation With Context Pn](/images/calculation-with-context.png)
 
-As you saw with the win rate example, without context the AI gave a simple ratio based on deal counts; basically “closed won divided by total closed deals.” But with the added details, it understood to use revenue values (ACV) and only include deals that reached the evaluation phase, which is much closer to how sales teams really measure success. This shows how important it is to provide clear business logic and data definitions so the AI can give answers that actually make sense in your specific workflow.
+As you saw with the win rate example, without context the AI gave a simple ratio based on deal counts; basically “closed won divided by total closed deals.” But with the added details, it understood to use revenue values (ACV) and only include deals that reached the evaluation phase, which is much closer to how sales teams really measure success. This shows how important it is to provide clear business logic and data definitions through adding Context so the AI can give answers that actually make sense in your specific workflow.
 
 ## Add Reviewed Queries
 
@@ -140,7 +141,7 @@ Reviewed queries are created as part of the chat experience. Each chat response 
 
 ### Example: Validated Query Definition
 
-**Natural Language Query:** "Calculate the win rate for sales_"_
+**Natural Language Query:** "Calculate the win rate for sales"
 
 ```
 SELECT 
@@ -165,8 +166,6 @@ WHERE `stage_label` IN ('Evaluation', 'Negotiation', 'Closed Loss', 'Closed Won'
 
 Suggestions serve as proactive helpers to improve context completeness and data quality.
 
-[image from the video recording]
-
 ## Continuous Learning
 
 WisdomAI continuously improves its understanding through **feedback** loops with users including:
@@ -175,4 +174,4 @@ WisdomAI continuously improves its understanding through **feedback** loops with
 - **Query Refinements:** System learns from how users modify and refine their questions.
 - **Usage Patterns:** Identify common queries and optimize for them.
 
-To know more about Feedback, refer to [TODO-ADDhowto]
+To know more about Feedback, refer to the Provide Feedback to the System article. [TODO-ADDhowto]
