@@ -3,9 +3,9 @@
   "theme": "mint",
   "name": "Wisdom AI",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#5b52ff",
+    "light": "#5b52ff",
+    "dark": "#5b52ff"
   },
   "favicon": "/favicon.webp",
   "navigation": {
@@ -14,42 +14,44 @@
         "tab": "Guides",
         "groups": [
           {
-            "group": "Get Started",
+            "group": "Getting Started ",
             "pages": [
-              "index",
-              "quickstart",
-              "development"
+              "getting-started/overview",
+              "getting-started/how-wisdom-ai-works",
+              "getting-started/supported-data-sources",
+              "getting-started/glossary"
             ]
           },
           {
-            "group": "Essentials",
+            "group": "Setting Up Wisdom AI",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/settings",
-              "essentials/navigation",
-              "essentials/reusable-snippets"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "API Reference",
-        "groups": [
-          {
-            "group": "API Documentation",
-            "pages": [
-              "api-reference/introduction"
+              "setting-up-wisdom-ai/basic-tutorial-connect-and-test",
+              "setting-up-wisdom-ai/advanced-tutorial-fine-tuning-your-context",
+              "setting-up-wisdom-ai/best-practices-testing-and-experimentation",
+              "setting-up-wisdom-ai/provide-feedback-to-the-system"
             ]
           },
           {
-            "group": "Endpoint Examples",
+            "group": "Improve Wisdom AI Responses",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "improve-wisdom-ai-responses/curate-knowledge-workflow",
+              "improve-wisdom-ai-responses/refine-prompts-and-query-patterns",
+              "improve-wisdom-ai-responses/validate-and-test-answers",
+              "improve-wisdom-ai-responses/configure-domains",
+              "improve-wisdom-ai-responses/how-to-use-metrics",
+              "improve-wisdom-ai-responses/use-files-to-improve-responses",
+              "improve-wisdom-ai-responses/use-evaluations-sets-and-runs",
+              "improve-wisdom-ai-responses/build-dashboards"
+            ]
+          },
+          {
+            "group": "Using Wisdom AI Everyday",
+            "pages": [
+              "using-wisdom-ai-everyday/ask-better-questions",
+              "using-wisdom-ai-everyday/turn-answers-into-stories",
+              "using-wisdom-ai-everyday/share-stories-and-set-access",
+              "using-wisdom-ai-everyday/schedule-story-notifications",
+              "using-wisdom-ai-everyday/capture-knowledge-feedback"
             ]
           }
         ]
@@ -58,26 +60,16 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Community",
-          "href": "https://mintlify.com/community",
-          "icon": "slack"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
+          "anchor": "Wisdom AI",
+          "href": "https://www.askwisdom.ai/",
+          "icon": "/favicon.webp"
         }
       ]
     }
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "/logo/logo.svg",
+    "dark": "/logo/logo.svg"
   },
   "navbar": {
     "links": [
