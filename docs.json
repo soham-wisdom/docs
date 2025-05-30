@@ -53,6 +53,34 @@
               "using-wisdom-ai-everyday/schedule-story-notifications",
               "using-wisdom-ai-everyday/capture-knowledge-feedback"
             ]
+          },
+          {
+            "group": "Access Management",
+            "pages": [
+              {
+                "group": "Access Management",
+                "pages": [
+                  "manage-account/access-management/access-management",
+                  "manage-account/access-management/row-level-access-control",
+                  "manage-account/access-management/role-capability-matrix"
+                ]
+              },
+              "manage-account/monitor-performance-and-usage",
+              "manage-account/compliance-and-best-practices"
+            ]
+          },
+          {
+            "group": "Advanced Features",
+            "pages": [
+              "advanced-features/embed-or-export-dashboards",
+              "advanced-features/visualization-types-and-properties"
+            ]
+          },
+          {
+            "group": "Reference Library",
+            "pages": [
+              "reference-library/limits-and-quotas"
+            ]
           }
         ]
       }
@@ -62,7 +90,7 @@
         {
           "anchor": "Wisdom AI",
           "href": "https://www.askwisdom.ai/",
-          "icon": "/favicon.webp"
+          "icon": "/favicon.png"
         }
       ]
     }
