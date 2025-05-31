@@ -31,6 +31,7 @@ To get started, you first need to connect your existing data source to Wisdom AI
    <Note>
      This action lets you link your existing data sources to Wisdom AI. Doing so enables the system to scan metadata. For data warehouse connections, it also allows Wisdom AI to fetch data when users ask questions in natural language.
    </Note>
+   ![Add Connection](/images/add-connection.png)
 2. Add a **Connection name**. Make it representative so it is easy to identify among other connections.
 3. Select the **Data Source** type.
 
@@ -46,6 +47,8 @@ To get started, you first need to connect your existing data source to Wisdom AI
    - **Database Filters**
 5. After you have added your credentials, click on the **Save and Sync metadata** button.
 
+![Add Connection](/images/add-connection-2-5.png)
+
 ## Select the Data
 
 After you have added your data source, you will need to select what data you want to use in your project. For this, you will need to create a Domain.
@@ -56,6 +59,9 @@ After you have added your data source, you will need to select what data you wan
      A Domain represents a logical business area or function, such as Sales, Marketing, or Finance. Creating well-defined Domains makes data more accessible and relevant to business users.
    </Note>
 2. Click on the **Add Domain** button. A new window will open.
+
+![Create Domain](/images/create-domain.png)
+
 3. Enter the **Domain name** and a **Description** for it.
 4. **Select the database** from the dropdown menu. Once selected, the list of tables will be displayed.
 5. Choose the **tables** that you would like to use and drag and drop them to the working area.
@@ -64,6 +70,8 @@ After you have added your data source, you will need to select what data you wan
      To learn how to fine-tune your data, read the related guide [Advanced Tutorial: Fine Tuning Your Context](setting-up-wisdom-ai/advanced-tutorial-fine-tuning-your-context).
    </Note>
 6. Click on **Save and continue**. Now you are ready to start testing Wisdom AI chatbot to retrieve information and generate reports about your business.
+
+![Create Domain](/images/create-domain6.png)
 
 ## Start Testing
 
@@ -80,16 +88,19 @@ While experimenting with your chatbot, you can **train** it by providing **feedb
 - By **Fine-tuning** the **Context**.
 
 <Info>
-  Think about the following scenario: you are telling the system that the Report it has created is not correct so you provide the correct data within the chat. If this additional context has not been added through the database tables, the system will detect it and ask you if you would like to keep it. Here, you can just save these changes. This is another way Wisdom AI has to add information to the database.
+  Think about the following scenario: you are telling the system that the Report it has created is not correct so you provide the correct data within the chat. If this additional context has not been added through the database tables, you will be able to add it directly through the chat.
 </Info>
 
-In all these cases, the system will use the provided data to adjust the context of your database, modelling it further, and making it possible to provide better answers in the future.
+In all these cases, the system will use the provided data to adjust the context of your database, modelling it further, and making it possible to provide better answers in a future search, as shown in the example images below.
+
+![Thumb Downv2 Pn](/images/thumb-downv2.png)
+
+![Revenue By Region Pn](/images/revenue-by-region.png)
 
 To learn more about how Feedback works, read the related guide [Provide Feedback to the System](https://wisdomai.mintlify.app/setting-up-wisdom-ai/provide-feedback-to-the-system).
 
 ## Next steps
 
-- How to Request an Environment
-- Supported Data Sources
-- Advanced Tutorial: Fine Tuning Your Context
-- Provide Feedback to the System
+- [Supported Data Sources](/getting-started/supported-data-sources)
+- [Advanced Tutorial: Fine Tuning Your Context](/setting-up-wisdom-ai/advanced-tutorial-fine-tuning-your-context)
+- [Provide Feedback to the System](/setting-up-wisdom-ai/provide-feedback-to-the-system)
