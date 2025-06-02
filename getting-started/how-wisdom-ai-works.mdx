@@ -1,11 +1,11 @@
 ---
-title: "How Wisdom AI Works"
+title: "How WisdomAI Works"
 description: "Gain a deeper understanding of how WisdomAI works under the hood, from data ingestion to delivering contextual answers and stories. This page explores the architecture of the platform, highlighting the components that power its natural language intelligence, reporting capabilities, and collaborative workflows."
 ---
 
 ## What Does WisdomAI Do?
 
-WisdomAI transforms enterprise data into clear, actionable insights using advanced Natural Language Processing (NLP), contextual modeling, and automated storytelling. Designed to support data-driven decision-making at every level, it enables both technical teams and business users to explore and communicate insights—without needing to write code or build dashboards manually.
+WisdomAI transforms enterprise data into clear, actionable insights using advanced Natural Language Processing (NLP), contextual modeling, and automated storytelling. Designed to support data-driven decision-making at every level, it enables both technical teams and business users to explore and communicate insights, without needing to write code or build dashboards manually.
 
 ## Who Is This For?
 
@@ -14,7 +14,7 @@ WisdomAI is designed with two core user roles in mind:
 - **Admins**: who connect data sources, manage access controls, and define semantic models.
 - **Explorers**: who use the platform to ask questions, discover insights, and share dynamic stories.
 
-This documentation is segmented accordingly, so you can focus on what matters most to your role.
+This documentation is segmented accordingly, so you can focus on what matters most to your role. For more information on each role, visit the [Overview](/getting-started/overview) page.
 
 ## WisdomAI vs Generic RAG Systems
 
@@ -30,9 +30,43 @@ Unlike generic Retrieval-Augmented Generation (RAG) solutions that rely purely o
 
 WisdomAI is purpose-built for enterprise analytics, not just document Q&A.
 
-## Platform Architecture
+## Data Flow & Architecture Overview
 
-Below is a simplified architecture diagram followed by a narrative walkthrough of each layer.
+WisdomAI transforms your business data into actionable insights using a multi-layered pipeline. The following components work together to deliver accurate, contextualized answers and auto-updating data stories.
+
+1. 
+
+   <Steps>
+     <Step title="Connected Data Sources" stepNumber={1} titleSize="h3">
+       WisdomAI integrates with your data platforms (like Snowflake, BigQuery, or Redshift), acting as the entry point of all information flowing through the system.
+     </Step>
+     
+2. <Step title="Connected Data Sources" stepNumber={1} titleSize="h3">**Semantic Modeling Layer**
+   Admins and data owners enrich the data by documenting tables, columns, and domains. They also define relationships (e.g., one-to-many, many-to-many) to create a business-friendly context for natural language understanding.
+
+   </Step>
+4. <Step title="Connected Data Sources" stepNumber={1} titleSize="h3">**Natural Language Query (NLQ) Engine**\
+   Business users (Explorers) ask questions in plain language. The NLQ engine parses these questions and translates them into SQL queries using the underlying semantic model.
+
+   </Step>
+6. <Step title="Connected Data Sources" stepNumber={1} titleSize="h3">**Answer Generation & Story Builder**\
+   Responses are generated and formatted into interactive “Stories”, data-driven narratives that combine visualizations, text, and insights. These can be scheduled and shared.
+
+   </Step>
+8. <Step title="Connected Data Sources" stepNumber={1} titleSize="h3">**Delivery & Reporting Layer**\
+   Stories and answers can be delivered via email or embedded within dashboards, helping teams stay informed with minimal effort.
+
+   </Step>
+10. <Step title="Connected Data Sources" stepNumber={1} titleSize="h3">**User Feedback & Corrections**\
+   Users can give feedback on story accuracy, suggest corrections, or add clarifying context to improve future results.
+
+</Step>
+12. <Step title="Connected Data Sources" stepNumber={1} titleSize="h3">**Context Updates & Review Loop**\
+   Admins and Editors review user feedback and update the semantic layer accordingly — closing the loop and continuously improving answer quality and domain understanding.
+  </Step>
+   </Steps>
+   \
+   
 
 ### Data Flow Diagram
 
