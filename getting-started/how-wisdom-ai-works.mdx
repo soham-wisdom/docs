@@ -62,7 +62,9 @@ WisdomAI transforms your business data into actionable insights using a multi-la
 
 ```mermaid
 %%{ init: { 'themeVariables': { 'fontSize': '20px' } } }%%
-graph LR
+flowchart LR
+  subgraph Data_Pipeline [ ]
+    direction TB
     A[Connected Data Sources] --> B[Semantic Modeling Layer]
     B --> C[Natural Language Query Engine]
     C --> D[Answer Generation & Story Builder]
@@ -70,6 +72,9 @@ graph LR
     E --> F[User Feedback & Corrections]
     F --> G[Context Updates & Review]
     G --> B
+  end
+
+  UserInput([User Input]) --> A
 ```
 
 ## Next steps
