@@ -34,39 +34,29 @@ WisdomAI is purpose-built for enterprise analytics, not just document Q&A.
 
 WisdomAI transforms your business data into actionable insights using a multi-layered pipeline. The following components work together to deliver accurate, contextualized answers and auto-updating data stories.
 
-1. 
-
-   <Steps>
-     <Step title="Connected Data Sources" stepNumber={1} titleSize="h3">
-       WisdomAI integrates with your data platforms (like Snowflake, BigQuery, or Redshift), acting as the entry point of all information flowing through the system.
-     </Step>
-     
-2. <Step title="Connected Data Sources" stepNumber={1} titleSize="h3">**Semantic Modeling Layer**
-   Admins and data owners enrich the data by documenting tables, columns, and domains. They also define relationships (e.g., one-to-many, many-to-many) to create a business-friendly context for natural language understanding.
-
-   </Step>
-4. <Step title="Connected Data Sources" stepNumber={1} titleSize="h3">**Natural Language Query (NLQ) Engine**\
-   Business users (Explorers) ask questions in plain language. The NLQ engine parses these questions and translates them into SQL queries using the underlying semantic model.
-
-   </Step>
-6. <Step title="Connected Data Sources" stepNumber={1} titleSize="h3">**Answer Generation & Story Builder**\
-   Responses are generated and formatted into interactive “Stories”, data-driven narratives that combine visualizations, text, and insights. These can be scheduled and shared.
-
-   </Step>
-8. <Step title="Connected Data Sources" stepNumber={1} titleSize="h3">**Delivery & Reporting Layer**\
-   Stories and answers can be delivered via email or embedded within dashboards, helping teams stay informed with minimal effort.
-
-   </Step>
-10. <Step title="Connected Data Sources" stepNumber={1} titleSize="h3">**User Feedback & Corrections**\
-   Users can give feedback on story accuracy, suggest corrections, or add clarifying context to improve future results.
-
-</Step>
-12. <Step title="Connected Data Sources" stepNumber={1} titleSize="h3">**Context Updates & Review Loop**\
-   Admins and Editors review user feedback and update the semantic layer accordingly — closing the loop and continuously improving answer quality and domain understanding.
+<Steps>
+  <Step title="Connected Data Sources" icon="check" titleSize="h3">
+    WisdomAI integrates with your data platforms (like Snowflake, BigQuery, or Redshift), acting as the entry point of all information flowing through the system.
   </Step>
-   </Steps>
-   \
-   
+  <Step title="Semantic Modeling" icon="check" titleSize="h3">
+    Admins and data owners enrich the data by documenting tables, columns, and domains. They also define relationships (e.g., one-to-many, many-to-many) to create a business-friendly context for natural language understanding.
+  </Step>
+  <Step title="Natural Language Query (NLQ) Engine" icon="check" titleSize="h3">
+    Business users (Explorers) ask questions in plain language. The NLQ engine parses these questions and translates them into SQL queries using the underlying semantic model.
+  </Step>
+  <Step title="Answer Generation and Story Builder" icon="check" titleSize="h3">
+    Responses are generated and formatted into interactive "Stories", data-driven narratives that combine visualizations, text, and insights. These can be scheduled and shared.
+  </Step>
+  <Step title="Delivery and Reporting Layer" icon="check" titleSize="h3">
+    Stories and answers can be delivered via email or embedded within dashboards, helping teams stay informed with minimal effort.
+  </Step>
+  <Step title="User Feedback and Corrections" icon="check" titleSize="h3">
+    Users can give feedback on story accuracy, suggest corrections, or add clarifying context to improve future results.
+  </Step>
+  <Step title="Context Updates and Review Loop" icon="check" titleSize="h3">
+    Admins and Editors review user feedback and update the semantic layer accordingly, closing the loop and continuously improving answer quality and domain understanding.
+  </Step>
+</Steps>
 
 ### Data Flow Diagram
 
