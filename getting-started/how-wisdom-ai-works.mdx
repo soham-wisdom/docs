@@ -9,7 +9,7 @@ WisdomAI transforms enterprise data into clear, actionable insights using advanc
 
 ## Who Is This For?
 
-WisdomAI is a versatile AI platform designed to serve a broad spectrum of business enterprises, ranging from startups to large corporations. Its offerings cater to various industries and organizational functions. 
+WisdomAI is a versatile AI platform designed to serve a broad spectrum of business enterprises, ranging from startups to large corporations. Its offerings cater to various industries and organizational functions.
 
 WisdomAI is designed with two core user roles in mind:
 
@@ -37,25 +37,25 @@ WisdomAI is purpose-built for enterprise analytics, not just document Q&A.
 WisdomAI transforms your business data into actionable insights using a multi-layered pipeline. The following components work together to deliver accurate, contextualized answers and auto-updating data stories.
 
 <Steps>
-  <Step title="Connected Data Sources" icon="check" titleSize="h3">
+  <Step title="Connected Data Sources" stepNumber={1} titleSize="h3">
     WisdomAI integrates with your data platforms (like Snowflake, BigQuery, or Redshift), acting as the entry point of all information flowing through the system.
   </Step>
-  <Step title="Semantic Modeling" icon="check" titleSize="h3">
+  <Step title="Semantic Modeling" stepNumber={2} titleSize="h3">
     Admins and data owners enrich the data by documenting tables, columns, and domains. They also define relationships (e.g., one-to-many, many-to-many) to create a business-friendly context for natural language understanding.
   </Step>
-  <Step title="Natural Language Query (NLQ) Engine" icon="check" titleSize="h3">
-    Business users (Explorers) ask questions in plain language. The NLQ engine parses these questions and translates them into SQL queries using the underlying semantic model.
+  <Step title="Natural Language Query (NLQ) Engine" stepNumber={3} titleSize="h3">
+    Users ask questions in plain language. The NLQ engine parses these questions and translates them into SQL queries using the underlying semantic model.
   </Step>
-  <Step title="Answer Generation and Story Builder" icon="check" titleSize="h3">
+  <Step title="Answer Generation and Story Builder" stepNumber={4} titleSize="h3">
     Responses are generated and formatted into interactive "Stories", data-driven narratives that combine visualizations, text, and insights. These can be scheduled and shared.
   </Step>
-  <Step title="Delivery and Reporting Layer" icon="check" titleSize="h3">
+  <Step title="Delivery and Reporting Layer" stepNumber={5} titleSize="h3">
     Stories and answers can be delivered via email or embedded within dashboards, helping teams stay informed with minimal effort.
   </Step>
-  <Step title="User Feedback and Corrections" icon="check" titleSize="h3">
+  <Step title="User Feedback and Corrections" stepNumber={6} titleSize="h3">
     Users can give feedback on story accuracy, suggest corrections, or add clarifying context to improve future results.
   </Step>
-  <Step title="Context Updates and Review Loop" icon="check" titleSize="h3">
+  <Step title="Context Updates and Review Loop" stepNumber={7} titleSize="h3">
     Admins and Editors review user feedback and update the semantic layer accordingly, closing the loop and continuously improving answer quality and domain understanding.
   </Step>
 </Steps>
