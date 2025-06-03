@@ -1,11 +1,26 @@
 ---
-title: 'Validate and Test Answers'
+title: "Validate and Test Answers"
 ---
 
 <Tip>
   Page Under Construction
-This page is currently being developed. We're actively working to provide you with helpful and accurate documentation for Wisdom AI.
+  This page is currently being developed. We're actively working to provide you with helpful and accurate documentation for Wisdom AI.
 
-Please check back soon, new content is on the way!
+  Please check back soon, new content is on the way\!
 </Tip>
 
+When working with data-driven systems, it is not enough to simply receive an answer. You need to ensure that the information is accurate, relevant, and reliable. For this reason, you can test and validate both natural language responses and SQL query results directly within the chat interface as well as review the generated output, provide feedback using thumbs up or thumbs down, and edit or vet the SQL query when necessary. <u>WisdomAI also provides tools to compare result sets and view accuracy metrics in a scoring dashboard. [WHICH ONE?] </u>These features help you iterate efficiently and build confidence in the outputs you receive.
+
+## Validate Answers
+
+While using the chatbot, you can train it by providing feedback to validate or flag incorrect answers and provide feedback to trigger a revision. There are three main ways to do so:
+
+- **Using the thumbs up/down icons**: If your feedback was thumbs down, a new window opens to let you adjust the query accordingly . The more thumbs up/down you provide, the more you will be training the tool to get a high quality correct answer.
+- **By changing the SQL Code**: you can directly edit the SQL query that the chatbot generated. This action allows you to correct any inaccuracies in the SQL and ensure it accurately answers the intended question. After making changes, you can either type a new question that the modified SQL answers or use the retry option to update the existing question based on your SQL edits.
+- **By Fine-tuning the Context**: Within the Domains \> B2B Sales \> Knowledge \> Context section, you can add or modify domain-specific knowledge and information in natural language sentences. This helps the system understand your business context and formulate more precise queries. For example, you can define terms like "Regions are same as Territories" or clarify "My sales stages are: Prospect, Negotiation, Closed." This direct manipulation of the context allows you to guide the chatbot's understanding and improve its ability to generate relevant SQL queries.
+
+In all these cases, the system will use the provided data to adjust the context of your database, modelling it further, and making it possible to provide better answers in a future search.
+
+## Test Answers
+
+After validating a chat response, the system may offer the option to retry the answer while incorporating your adjustments or you can send a new input. These adjustments will also remain valid and may be applied to future queries to improve accuracy and consistency.
