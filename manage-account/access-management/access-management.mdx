@@ -34,41 +34,43 @@ They can:
 
 The **Data Administrator** manages and prepares data assets within specific domains. They do not have global system permissions but can:
 
-- Connect and configure data sources for assigned domains.
-- Create and maintain business context models (like metrics, entities, and relationships).
-- Create and manage Stories, Playbooks, and data assets.
-- Define data validation rules and row-level/column-level policies within their domain.
-- Collaborate with Explorers to ensure data accessibility and relevance.
+- **Connect domain-level data**: Set up and configure data sources for their assigned domains.
+- **Model business context**: Define metrics, entities, and relationships relevant to their domain.
+- **Manage content**: Create and maintain Stories, Playbooks, and domain-specific assets.
+- **Apply data policies**: Set row-level and column-level access rules and validation policies.
+- **Collaborate with Explorers**: Ensure data is usable, discoverable, and tailored to user needs.
+
+<Info>
+  Data Administrators cannot manage users and roles.
+</Info>
 
 ### Explorer
 
 **Explorers** are data consumers. They use WisdomAI to explore, analyze, and interact with data through stories and chat. They can:
 
-- Ask questions using natural language chat.
-- View and interact with published stories and dashboards.
-- Run and reuse playbooks.
-- Export and share insights.
-- Save personal bookmarks and visualizations.
+- **Ask questions**: Use natural language chat to query data.
+- **Explore stories**: View and interact with published stories and dashboards.
+- **Use playbooks**: Run and reuse automated data workflows.
+- **Share insights**: Export and share results with others.
+- **Save views**: Bookmark visualizations or findings for later use.
 
-> Explorers cannot manage data sources, users, or settings.
-
----
+<Info>
+  Explorers cannot manage data sources, users, or settings.
+</Info>
 
 ## Role Comparison Table
 
-| Capability                          | Administrator | Data Administrator | Explorer |
-| ----------------------------------- | ------------- | ------------------ | -------- |
-| User and role management            | ✅             | ❌                  | ❌        |
-| Global settings and security config | ✅             | ❌                  | ❌        |
-| Domain-specific data modeling       | ✅             | ✅                  | ❌        |
-| Connect data sources                | ✅             | ✅ (in domain)      | ❌        |
-| Build stories and playbooks         | ✅             | ✅                  | ❌        |
-| Use stories and ask questions       | ✅             | ✅                  | ✅        |
-| Audit logs and usage metrics        | ✅             | ❌                  | ❌        |
-| Row/column-level data governance    | ✅             | ✅ (in domain)      | ❌        |
+| Capability                       | Administrator | Data Administrator | Explorer |
+| -------------------------------- | ------------- | ------------------ | -------- |
+| User and role management         | ✅             | ❌                  | ❌        |
+| Domain-specific data modeling    | ✅             | ✅                  | ❌        |
+| Connect data sources             | ✅             | ✅                  | ❌        |
+| Build stories                    | ✅             | ✅                  | ✅        |
+| Use stories and ask questions    | ✅             | ✅                  | ✅        |
+| Audit logs and usage metrics     | ✅             | ❌                  | ❌        |
+| Row/column-level data governance | ✅             | ✅                  | ❌        |
 
----
+## Next Steps
 
-## Summary
-
-WisdomAI’s RBAC framework ensures that everyone — from platform admins to business users — gets access to the right capabilities. This structure enhances security, governance, and collaboration by separating responsibilities cleanly across three key roles.
+- [Role Capability Matrix](/manage-account/access-management/role-capability-matrix)
+- [Row Level Access Control](/manage-account/access-management/row-level-access-control)
