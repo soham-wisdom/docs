@@ -1,31 +1,34 @@
 ---
-title: Access Management
-description: "Learn about the Administrator, Data Administrator, and Explorer roles in WisdomAI.""
+description: "Learn about the Administrator, Data Administrator, and Explorer roles in WisdomAI."
+title: "Access Management"
 ---
 
 ## Access Management in WisdomAI
 
 WisdomAI uses **role-based access control (RBAC)** to ensure users have the right permissions for their job. In an RBAC model, each user is assigned one or more roles, and each role bundles a set of capabilities. This ensures that team members access only the information they need to do their job.
 
-WisdomAI implements **granular access controls** (including row- and column-level security) to protect data and enforce policy. Every operation in WisdomAI, from viewing dashboards to managing data sources, is controlled by these role-based permissions.
+WisdomAI implements **granular access controls** (including row- and column-level security) to protect data and enforce policy. Every operation in WisdomAI, from viewing dashboards to managing data sources, is controlled by these role-based permissions:
+
+- [Administrator](#administrator)
+- [Data Administrator](#data-administrator)
+- [Explorer](#explorer)
 
 ## Core Roles in WisdomAI
 
 ### Administrator
 
-The **Administrator** is the superuser of the WisdomAI platform with full system-wide privileges. Administrators can:
+The **Administrator** is the superuser of the WisdomAI platform with full system-wide privileges. Administrators are responsible for the foundational setup and governance of the workspace. 
 
-- **Manage users and roles:** Invite/remove users, assign/change roles, manage teams/groups.
-- **Configure security and settings:** Define global security rules, SSO/SCIM, and policies.
-- **Manage data sources and schemas:** Connect data sources, define schemas and metadata.
-- **Oversee content and assets:** Publish/unpublish dashboards, stories, models.
-- **Monitor and audit activity:** Access system-wide logs, metrics, and health checks.
+They can:
 
-> 📝 Note: Every WisdomAI instance must have at least one Administrator.
+- **Manage users and roles**: Invite or remove users, assign or modify roles, and oversee access permissions.
+- **Connect and organize data**: Link external data sources, manage **schemas** (i.e., the structure of tables and relationships), and maintain core metadata.
+- **Oversee workspace content**: Review, publish, or unpublish key assets like stories and models to control visibility and access.
+- **Monitor and audit activity**: Track system usage, access logs, and platform health metrics to ensure smooth operation.
 
----
+Note: Every WisdomAI instance must have at least one Administrator.
 
-### 📊 Data Administrator
+### Data Administrator
 
 The **Data Administrator** manages and prepares data assets within specific domains. They do not have global system permissions but can:
 
@@ -53,20 +56,19 @@ The **Data Administrator** manages and prepares data assets within specific doma
 
 ## Role Comparison Table
 
-| Capability                            | Administrator | Data Administrator | Explorer |
-|--------------------------------------|---------------|---------------------|----------|
-| User and role management             | ✅            | ❌                  | ❌       |
-| Global settings and security config  | ✅            | ❌                  | ❌       |
-| Domain-specific data modeling        | ✅            | ✅                  | ❌       |
-| Connect data sources                 | ✅            | ✅ (in domain)       | ❌       |
-| Build stories and playbooks          | ✅            | ✅                  | ❌       |
-| Use stories and ask questions        | ✅            | ✅                  | ✅       |
-| Audit logs and usage metrics         | ✅            | ❌                  | ❌       |
-| Row/column-level data governance     | ✅            | ✅ (in domain)       | ❌       |
+| Capability                          | Administrator | Data Administrator | Explorer |
+| ----------------------------------- | ------------- | ------------------ | -------- |
+| User and role management            | ✅             | ❌                  | ❌        |
+| Global settings and security config | ✅             | ❌                  | ❌        |
+| Domain-specific data modeling       | ✅             | ✅                  | ❌        |
+| Connect data sources                | ✅             | ✅ (in domain)      | ❌        |
+| Build stories and playbooks         | ✅             | ✅                  | ❌        |
+| Use stories and ask questions       | ✅             | ✅                  | ✅        |
+| Audit logs and usage metrics        | ✅             | ❌                  | ❌        |
+| Row/column-level data governance    | ✅             | ✅ (in domain)      | ❌        |
 
 ---
 
 ## Summary
 
 WisdomAI’s RBAC framework ensures that everyone — from platform admins to business users — gets access to the right capabilities. This structure enhances security, governance, and collaboration by separating responsibilities cleanly across three key roles.
-
