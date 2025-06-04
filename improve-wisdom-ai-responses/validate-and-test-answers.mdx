@@ -9,21 +9,21 @@ When working with data-driven systems, it is not enough to simply receive an ans
 
 While using the chatbot, you can train it by validating or disproving answers and provide feedback to trigger a revision. There are three main ways to do so:
 
-- **[Using the thumbs up/down icons](#use-the-thumbs-updown-icons)**
-- **[By editing the response](#edit-the-response)**
-- **[By fine-tuning the Context](#fine-tune-the-context)**
+- [**Using the thumbs up/down icons**](#use-the-thumbs-updown-icons)
+- [**By editing the response**](#edit-the-response)
+- [**By fine-tuning the Context**](#fine-tune-the-context)
 
 ### Use the thumbs up/down icons
 
 If your feedback was thumbs down, a new window opens to let you adjust the query accordingly . The more thumbs up/down you provide, the more you will be training the tool to get a high quality correct answer.
 
-![Thumb Down for negative flagging](/images/thumb-downv2.png)
+![Thumb down for negative flagging](/images/thumb-downv2.png)
 
 ### Edit the Response
 
 1. Click on the **Edit** button available for Admins in the chat interface to modify the SQL query that the chatbot generated and make other adjustments such as editing the columns and the general table format. Using this Editor allows you to correct any inaccuracies in the SQL and ensure it accurately answers the intended question.
 
-![Chat Workstream Edit button](/images/chat-workstream-edit.png)
+![Chat workstream showing the edit button](/images/chat-workstream-edit.png)
 
 In the window that opens, you will find the Editor and the SQL tabs.
 
@@ -46,17 +46,17 @@ Users can directly define and manipulate the underlying data for visualizations 
 - **Workflow Management:**
   - **Execution & Refresh:** Click the **Update response** button to execute the current SQL query and refresh the associated data visualization with the newly retrieved results.
 
-  ![Update Response Option](/images/update-response.png)
+  ![Update response option](/images/update-response.png)
 - **Review & Validation:**
   1. Select **Mark as reviewed** to confirms that the SQL code has been validated or checked, streamlining collaborative workflows.
   2. After selecting this option, the **Review Question** window opens where you can add the title of your question.
   3. Once ready, click on Confirm.
 
-![Review Question Option](/images/review-question-v02-em.png)
+![Review question option](/images/review-question-v02-em.png)
 
 This Reviewed Query (a tuple of an SQL code and the question it answers to) will become available within the Domains section. To access it, go to **Domains** \> **Access the corresponding Domain** \> **Knowledge** \> **Reviewed Queries**.
 
-![Reviewed Queries Aa Pn](/images/reviewed-queries-aa.png)
+![Reviewed queries are displayed](/images/reviewed-queries-aa.png)
 
 ### Fine-tune the Context
 
@@ -66,13 +66,51 @@ This Reviewed Query (a tuple of an SQL code and the question it answers to) will
 2. In the text box that appears, add the Context specification.
 3. Click on **SAVE** to keep your added content.
 
-![Add And Save Context Pn](/images/add-and-save-context.png)
+![Add and save context workflow](/images/add-and-save-context.png)
 
 In all these cases, the system will use the provided data to adjust the context of your database, modelling it further, and making it possible to provide better answers in a future search.
 
 ## Test Answers
 
-After validating a chat response, the system may offer the option to retry the answer while incorporating your adjustments or you can send a new input. These adjustments will also remain valid and may be applied to future queries to improve accuracy and consistency.
+Once you have validated or edited a chatbot response, it is important to test the outcome to ensure the changes improve accuracy and maintain the integrity of the original question. Testing not only verifies that the answer is correct, it also helps train the system to generate more reliable responses in the future.
+
+There are several ways you can actively test and refine your interactions:
+
+<Steps>
+  <Step title="Retry with Adjustments" icon="check">
+    After submitting feedback (e.g., via thumbs down), the chat interface offers a **Retry** option. This allows the system to regenerate the response while incorporating your adjustments or corrections, whether it is a refined SQL query or updated natural language prompt. This is especially helpful for:
+
+    - Verifying whether your edit resolved the issue.
+    - Comparing original vs. improved outputs.
+    - Seeing how changes affect the data visualization.
+  </Step>
+  <Step title="Use the Updated SQL to Re-Query the Dataset" icon="check">
+    If you edited the SQL, click [**Update response**](improve-wisdom-ai-responses/validate-and-test-answers#sql-code-tab) to run the revised query. This re-executes the logic and updates the answer and/or chart accordingly. This step is essential for:
+
+    - Confirming that syntax and logic errors have been fixed.
+    - Testing if the new query returns accurate and expected data.
+    - Visualizing how different filters or joins affect the results.
+
+    You can also validate results by cross-referencing with known values or external reports.
+  </Step>
+  <Step title="Mark as Reviewed for Future Accuracy" icon="check">
+    After confirming that the answer and query are correct, select [**Mark as reviewed**](improve-wisdom-ai-responses/validate-and-test-answers#sql-code-tab). This promotes the question–answer pair (with its SQL) into the **Reviewed Queries** repository. Reviewed queries serve as a trustworthy reference for similar future questions and strengthen the chatbot’s knowledge within that Domain.
+
+    This workflow is especially useful for:
+
+    - Teams collaborating on analytics.
+    - Ensuring consistent outputs over time.
+    - Building a library of validated queries for business-critical topics.
+  </Step>
+  <Step title="Test for Generalizability" icon="check">
+    Once an answer is working, try rephrasing your original question to see if the chatbot still returns accurate results. For example:
+
+    - Original: _“Show me revenue by region for last quarter.”_
+    - Variation: _“How much did each territory earn last Q?”_
+
+    If the system handles both well, it means it understands your business context. If not, consider refining the [**Context**](improve-wisdom-ai-responses/validate-and-test-answers#fine-tune-the-context) in the Knowledge section to improve generalization.
+  </Step>
+</Steps>
 
 ## Next steps
 
