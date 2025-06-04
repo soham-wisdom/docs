@@ -9,21 +9,21 @@ When working with data-driven systems, it is not enough to simply receive an ans
 
 While using the chatbot, you can train it by validating or disproving answers and provide feedback to trigger a revision. There are three main ways to do so:
 
-- **Using the thumbs up/down icons**
-- **By editing the response**
-- **By fine-tuning the Context**
+- **[Using the thumbs up/down icons](#use-the-thumbs-updown-icons)**
+- **[By editing the response](#edit-the-response)**
+- **[By fine-tuning the Context](#fine-tune-the-context)**
 
-### Use the thumbs up/down icons to provide feedback
+### Use the thumbs up/down icons
 
 If your feedback was thumbs down, a new window opens to let you adjust the query accordingly . The more thumbs up/down you provide, the more you will be training the tool to get a high quality correct answer.
 
-![Thumb Downv2 Pn](/images/thumb-downv2.png)
+![Thumb Down for negative flagging](/images/thumb-downv2.png)
 
 ### Edit the Response
 
 1. Click on the **Edit** button available for Admins in the chat interface to modify the SQL query that the chatbot generated and make other adjustments such as editing the columns and the general table format. Using this Editor allows you to correct any inaccuracies in the SQL and ensure it accurately answers the intended question.
 
-![Chat Workstream Edit Pn](/images/chat-workstream-edit.png)
+![Chat Workstream Edit button](/images/chat-workstream-edit.png)
 
 In the window that opens, you will find the Editor and the SQL tabs.
 
@@ -36,7 +36,7 @@ This Editor tab offers detailed data visualization configuration:
 - **Data Filtering:** Apply specific criteria (e.g., "Stage Label: Closed Won") for precise data segmentation.
 - **Changes Management:**  The Apply changes button commits configurations, while the Reset one reverts them.
 
-![Editor Apply Changesv2 Pn](/images/editor-apply-changesv2.png)
+![Editor is shown](/images/editor-apply-changesv2.png)
 
 #### SQL Code Tab
 
@@ -45,25 +45,36 @@ Users can directly define and manipulate the underlying data for visualizations 
 - **SQL Editor:** Craft and modify SQL statements to precisely define your dataset. This includes selecting columns, applying aggregations (e.g., SUM, AVG), joining multiple tables, filtering data with `WHERE` clauses, and ordering results.
 - **Workflow Management:**
   - **Execution & Refresh:** Click the **Update response** button to execute the current SQL query and refresh the associated data visualization with the newly retrieved results.
-  - 
-- 
 
-  ![Update Response Pn](/images/update-response.png)
+  ![Update Response Option](/images/update-response.png)
 - **Review & Validation:**
   1. Select **Mark as reviewed** to confirms that the SQL code has been validated or checked, streamlining collaborative workflows.
   2. After selecting this option, the **Review Question** window opens where you can add the title of your question.
   3. Once ready, click on Confirm.
 
-![Review Question V02 Em Pn](/images/review-question-v02-em.png)
+![Review Question Option](/images/review-question-v02-em.png)
 
-This Reviewed Query will become available within the Domain section.
+This Reviewed Query (a tuple of an SQL code and the question it answers to) will become available within the Domains section. To access it, go to **Domains** \> **Access the corresponding Domain** \> **Knowledge** \> **Reviewed Queries**.
+
+![Reviewed Queries Aa Pn](/images/reviewed-queries-aa.png)
 
 ### Fine-tune the Context
 
-Within the Domains \> B2B Sales \> Knowledge \> Context section, you can add or modify domain-specific knowledge and information in natural language sentences. This helps the system understand your business context and formulate more precise queries. For example, you can define terms like "Regions are same as Territories" or clarify "My sales stages are: Prospect, Negotiation, Closed." This direct manipulation of the context allows you to guide the chatbot's understanding and improve its ability to generate relevant SQL queries.
+1. Go to **Domains** \> (Access the Specific Domain) \> **Knowledge** \> **Context** section to add or modify domain-specific knowledge and information in natural language sentences and click on **Add Context**.
+
+   Note: This helps the system understand your business context and formulate more precise queries. For example, you can define terms like "Regions are same as Territories" or clarify "My sales stages are: Prospect, Negotiation, Closed." This direct manipulation of the context allows you to guide the chatbot's understanding and improve its ability to generate relevant SQL queries.
+2. In the text box that appears, add the Context specification.
+3. Click on **SAVE** to keep your added content.
+
+![Add And Save Context Pn](/images/add-and-save-context.png)
 
 In all these cases, the system will use the provided data to adjust the context of your database, modelling it further, and making it possible to provide better answers in a future search.
 
 ## Test Answers
 
 After validating a chat response, the system may offer the option to retry the answer while incorporating your adjustments or you can send a new input. These adjustments will also remain valid and may be applied to future queries to improve accuracy and consistency.
+
+## Next steps
+
+- [Curate Knowledge Workflow](/improve-wisdom-ai-responses/curate-knowledge-workflow)
+- [Advanced Tutorial: Fine Tuning Your Context](/setting-up-wisdom-ai/advanced-tutorial-fine-tuning-your-context)
