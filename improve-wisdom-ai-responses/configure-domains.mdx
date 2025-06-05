@@ -1,6 +1,6 @@
 ---
 title: "Configure Domains"
-description: "/"
+description: "Configure your WisdomAI Domains for optimal chatbot performance. Achieve accurate, context-aware AI responses and powerful data analysis with this setup guide."
 ---
 
 Configuring your domains in WisdomAI is essential for tailoring the chatbot's performance to your specific data and business needs. By meticulously setting up each aspect of your domain, you empower the AI to deliver accurate, relevant, and context-aware responses, significantly improving your data analysis capabilities. This guide will walk you through each section of domain configuration, from structuring your data to fine-tuning the AI's understanding.
@@ -119,20 +119,26 @@ This article will discuss the following key points:
     - **Fiscal Year Configuration:** Settings to define your fiscal year start month and end calendar year.
     - **Display Preferences:** Toggles for compact number display and automatic data panel opening.
     - **AI Thinking:** A dropdown to select the AI's processing effort level.
-    - **Chat Customization:** A text area for providing system instructions to the AI.
+    - **Chat Customization:** A text area for providing system instructions to the AI, for example, "_Always reply in English and Spanish_".
+
+    ![Advanced Tab Pn](/images/advanced-tab.png)
   </Accordion>
   <Accordion title="The Evaluation Tab">
     The Evaluation tab is dedicated to rigorously testing and validating the performance of your domain's AI. This helps you confirm that the AI consistently generates accurate and relevant responses.
 
-    Within this section, you create specific sets of prompts to simulate user interactions. Crucially, you can provide expected SQL outputs alongside these prompts to directly measure the AI's accuracy in translating natural language into correct database queries. After running evaluations, you can review the results to identify areas for improvement.
+    Within this section, you create specific sets of prompts to simulate user interactions. Crucially, **you can provide expected SQL outputs** alongside these prompts to directly measure the AI's accuracy in translating natural language into correct database queries. **After running evaluations, you can review the results to identify areas for improvement**.
 
     The Evaluation tab includes two sub-tabs:
 
     - **Evaluation Sets Sub-tab:**
-      - **Add Evaluation:** A button to create a new evaluation set.
-      - **Add Evaluation Form:** Includes fields for the set name and a JSON input for prompts, optionally including expected SQL.
+      - **Add Evaluation:** A button to create a new evaluation set. After clicking on it, the **Add Evaluation Form** will open. It includes fields for the set name and a JSON input for prompts, optionally including expected SQL.
       - **Evaluation Sets List:** Displays existing evaluation sets.
+
+    ![Eva Sets Pn](/images/eva-sets.png)
+
     - **Evaluation Runs Sub-tab:**
       - **Evaluation Runs List:** Displays a list of completed evaluation runs and their results.
+
+    ![Eva Runs Pn](/images/eva-runs.png)
   </Accordion>
 </AccordionGroup>
