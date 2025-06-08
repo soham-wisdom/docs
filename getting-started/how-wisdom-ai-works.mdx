@@ -1,26 +1,60 @@
 ---
 title: "How WisdomAI Works"
-description: "Gain a deeper understanding of how WisdomAI works under the hood, from data ingestion to delivering contextual answers and stories. This page explores the architecture of the platform, highlighting the components that power its natural language intelligence, reporting capabilities, and collaborative workflows."
 ---
+
+WisdomAI is a powerful platform that helps businesses understand their data better and make smarter decisions. Think of it as a smart assistant that can take all your company's data and turn it into clear, easy-to-understand answers and visual stories. It's designed so that anyone in your business, whether they're a data expert or not, can ask questions in plain English and get immediate, helpful insights without needing to write complex code or build dashboards manually.
 
 ## What Does WisdomAI Do?
 
-WisdomAI transforms enterprise data into clear, actionable insights using advanced Natural Language Processing (NLP), contextual modeling, and automated storytelling. Designed to support data-driven decision-making at every level, it enables both technical teams and business users to explore and communicate insights, without needing to write code or build dashboards manually.
+WisdomAI transforms your company's raw data into actionable insights through several key capabilities:
 
-## Who Is This For?
+<Columns cols={2}>
+  <Card title="Understands Your Questions" icon="comments">
+    You can ask questions in everyday language, like "What was our revenue last quarter?" or "Which products are selling best?" WisdomAI uses advanced Natural Language Processing (NLP) to understand what you're asking.
+  </Card>
+  <Card title="Connects to Your Data" icon="database">
+    It seamlessly connects to various data sources your business uses, such as databases like PostgreSQL and SQL Server, or data warehouses like Snowflake and Google BigQuery.
+  </Card>
+</Columns>
+<Columns cols={2}>
+  <Card title="Organizes Your Business Data" icon="sitemap">
+    WisdomAI helps you organize your data into domains that represent different parts of your business, like Sales or Marketing. This makes your data more relevant and easier for everyone to use.
+  </Card>
+  <Card title="Turns Answers into Stories" icon="chart-simple">
+    Instead of just giving you numbers, WisdomAI can create interactive **Stories** and dashboards with charts and text. These stories update automatically as your data changes, making it easy to share insights across your team.
+  </Card>
+</Columns>
+<Columns cols={2}>
+  <Card title="Automates Workflows" icon="robot">
+    You can set up Playbooks to automate common analytical tasks and standardize how your team analyzes specific business questions.
+  </Card>
+  <Card title="Learns and Improves" icon="lightbulb">
+    WisdomAI continuously gets smarter based on user feedback. When you provide corrections or refine questions, the system learns to give even better answers in the future.
+  </Card>
+</Columns>
 
-WisdomAI is a versatile AI platform designed to serve a broad spectrum of business enterprises, ranging from startups to large corporations. Its offerings cater to various industries and organizational functions.
+This means WisdomAI helps you quickly get the information you need from your data, making data-driven decisions simpler and faster for everyone.
 
-WisdomAI is designed with two core user roles in mind:
+## Who Uses WisdomAI?
 
-- **Admins**: who connect data sources, manage access controls, and define semantic models.
-- **Explorers**: who use the platform to ask questions, discover insights, and share dynamic stories.
+WisdomAI is built for all kinds of businesses, from small startups to large corporations, across various industries. It's designed to be useful for different roles within your organization:
 
-This documentation is segmented accordingly, so you can focus on what matters most to your role. For more information on each role, visit the [Overview](/getting-started/overview) page.
+<Columns cols={2}>
+  <Card title="Adminis" icon="screwdriver-wrench">
+    These are typically IT or BI directors who set up WisdomAI, connect it to your data sources, manage user access, and define the overall structure of your data in the platform.
+  </Card>
+  <Card title="Explorers" icon="users">
+    This group includes business users, executives, and other stakeholders who use WisdomAI to ask questions, view reports, run stories, execute playbooks, and export insights for their daily work.
+  </Card>
+</Columns>
+
+<Tip>
+  This documentation is devided in a way you can focus on what matters most to your role. For more information on each role, visit the [Where to Start](/getting-started/overview#where-to-start%3F) section.
+</Tip>
 
 ## WisdomAI vs Generic RAG Systems
 
-Unlike generic Retrieval-Augmented Generation (RAG) solutions that rely purely on embedding search over documents, **WisdomAI builds a structured understanding of your data** through **semantic modeling**, **curated context**, and **validated logic**.
+Unlike generic Retrieval-Augmented Generation (RAG) solutions that rely purely on embedding search over documents, WisdomAI builds a structured understanding of your data through semantic modeling, curated context, and validated logic.
 
 | **Feature**                       | **WisdomAI** | **Generic RAG** |
 | --------------------------------- | ------------ | --------------- |
@@ -30,11 +64,31 @@ Unlike generic Retrieval-Augmented Generation (RAG) solutions that rely purely o
 | Dynamic, auto-updating dashboards | ✅            | ❌               |
 | Tailored for business data        | ✅            | ❌               |
 
-WisdomAI is purpose-built for enterprise analytics, not just document Q&A.
+<Tip>
+  WisdomAI is purpose-built for enterprise analytics, not just document Q&A.
+</Tip>
 
 ## Data Flow & Architecture Overview
 
 WisdomAI transforms your business data into actionable insights using a multi-layered pipeline. The following components work together to deliver accurate, contextualized answers and auto-updating data stories.
+
+
+```mermaid
+%%{ init: { 'themeVariables': { 'fontSize': '14px' } } }%%
+flowchart TD
+  subgraph Data_Pipeline [ ]
+    direction TB
+    A[Connected Data Sources] --> B[Semantic Modeling Layer]
+    B --> C[Natural Language Query Engine]
+    C --> D[Answer Generation & Story Builder]
+    D --> E[Delivery & Reporting Layer]
+    E --> F[User Feedback & Corrections]
+    F --> G[Context Updates & Review]
+    G --> B
+  end
+
+  UserInput([User Input]) --> A
+```
 
 <Steps>
   <Step title="Connected Data Sources" stepNumber={1} titleSize="h3">
@@ -60,28 +114,10 @@ WisdomAI transforms your business data into actionable insights using a multi-la
   </Step>
 </Steps>
 
-### Data Flow Diagram
 
-```mermaid
-%%{ init: { 'themeVariables': { 'fontSize': '14px' } } }%%
-flowchart TD
-  subgraph Data_Pipeline [ ]
-    direction TB
-    A[Connected Data Sources] --> B[Semantic Modeling Layer]
-    B --> C[Natural Language Query Engine]
-    C --> D[Answer Generation & Story Builder]
-    D --> E[Delivery & Reporting Layer]
-    E --> F[User Feedback & Corrections]
-    F --> G[Context Updates & Review]
-    G --> B
-  end
-
-  UserInput([User Input]) --> A
-```
 
 ## Next steps
 
-- [Overview](/getting-started/overview)
 - [Supported Data Sources](/getting-started/supported-data-sources)
 - [Basic Tutorial Connect and Test](/setting-up-wisdom-ai/basic-tutorial-connect-and-test)
 - [Advanced Tutorial: Fine Tuning Your Context](/setting-up-wisdom-ai/advanced-tutorial-fine-tuning-your-context)
