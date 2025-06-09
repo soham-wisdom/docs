@@ -1,10 +1,77 @@
 ---
-title: 'Ask Better Questions'
+title: "Ask Better Questions"
+description: "Learn how to ask effective questions in WisdomAI to get precise data answers. This guide covers NLQ syntax, filters, follow-ups, and leveraging business terms for smarter decisions."
 ---
 
-<Tip>
-  Page Under Construction
-This page is currently being developed. We're actively working to provide you with helpful and accurate documentation for Wisdom AI.
+Getting useful answers from data starts with asking clear questions. **WisdomAI** lets you talk to your data simply. This guide explains how to build your questions to get the best possible information and make smart decisions using **WisdomAI**.
 
-Please check back soon, new content is on the way!
-</Tip>
+Here are four key steps to help you ask better questions:
+
+### 1. Speak Clearly with Natural Language Queries (NLQ)
+
+**WisdomAI** understands everyday language, but being clear helps it understand you better.
+
+- **Be Specific:** Instead of "Show sales," ask "Show total sales for the last quarter."
+- **Use Exact Words:** Say "Count of customers who bought in the last 30 days," not "Customers buying stuff."
+- **Ask for Summaries:** If you want totals or averages, say so. For example, "Sum of sales by product" or "Average sales per product."
+- **State Time:** Always include dates or periods like "Last month" or "Between January and March 2024."
+- **Hint at Connections:** Use words like "by," "who bought," or "per" to show relationships. For example, "Sales _by_ region."
+- **Try Different Ways:** If a question doesn't work, try phrasing it differently.
+
+---
+
+### 2. Focus Your Questions with Filters
+
+Filters help you narrow down your data to exactly what you need.
+
+- **Set Conditions:** Don't just ask for "customers"; ask for "customers _in the US_" or "customers _who spent over \$500_."
+- **Use Comparisons:**
+  - **Equal:** `where Region is 'North'`
+  - **More/Less:** `where Sales > 1000`
+  - **Range:** `where Date between '2024-01-01' and '2024-03-31'`
+  - **Contains:** `where Product Name contains 'Pro'`
+- **Combine Filters:** Use "and," "or," and "not" for more detailed questions. For example, "Sales _where Product Category is 'Apparel' AND Region is 'West'_."
+- **Exclude Things:** Sometimes it's easier to say what you _don't_ want. For example, "All customers _except those in California_."
+
+---
+
+### 3. Plan for Follow-Up Questions
+
+One question rarely gives the full picture. Think about what you'll ask next to dig deeper.
+
+- **Start Broad, Then Detail:** Begin with a general question, then ask for more specifics.
+  - _First:_ "What were our total sales last quarter?"
+  - _Next:_ "Which products sold the most?"
+  - _Then:_ "How did our top product sell over the last year?"
+- **Explore Surprises:** If something looks odd, ask why.
+  - _Problem:_ "Sales in one area dropped last month."
+  - _Ask:_ "What marketing happened there?" or "Were there many returns?"
+- **Compare Things:** Look for differences and similarities.
+  - _Question:_ "How do costs in Q1 compare to Q2?"
+  - _Ask:_ "What caused that difference?"
+- **Look at Different Angles:** If you're looking at sales by area, next look at sales by product or by customer.
+
+---
+
+### 4. Use Business Terms Set by Admins
+
+Your organization has a shared language for its data. Using these official terms is key.
+
+- **What are Business Terms?**
+  - They are the **official words** your company uses.
+  - They define what "Customer," "Revenue," or "Active User" **really mean** for your business.
+  - **Admins** usually create and manage them, often in a **business glossary**.
+- **Why Are They Important?**
+  - **Everyone Understands:** Ensures everyone means the same thing by "Sales."
+  - **Correct Answers:** Prevents mistakes and helps you query the right data.
+  - **Save Time:** Less time spent explaining terms.
+  - **Trust Your Data:** When terms are clear, data is more reliable.
+  - **Better Questions:** Helps you use the exact words **WisdomAI** understands.
+- **How to Use Them:**
+  - **Check Your Company's Glossary:** Always look up terms there first.
+  - **Use Exact Words:** If "Sales" is officially "Total Recognized Sales (USD)," use that.
+  - **Understand What's Behind It:** Even if you don't use database names, knowing how a term like "Active Customer" is defined (e.g., active in the last 90 days) helps you ask better questions.
+  - **Ask if Unsure:** If a term is unclear, ask your data team. This helps everyone.
+  - **Help Others:** Encourage colleagues to use the standard terms too.
+
+By following these steps, you'll ask stronger questions and get more meaningful insights from your data using **WisdomAI**.
