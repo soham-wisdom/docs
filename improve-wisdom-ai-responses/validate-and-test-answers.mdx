@@ -21,7 +21,7 @@ If your feedback was thumbs down, a new window opens to let you adjust the query
 
 ### Edit the Response
 
-1. Click on the **Edit** button available for Admins in the chat interface to modify the SQL query that the chatbot generated and make other adjustments such as editing the columns and the general table format. Using this Editor allows you to correct any inaccuracies in the SQL and ensure it accurately answers the intended question.
+Click on the **Edit** button available for Admins in the chat interface to modify the SQL query that the chatbot generated and make other adjustments such as editing the columns and the general table format. Using this Editor allows you to correct any inaccuracies in the SQL and ensure it accurately answers the intended question.
 
 ![Chat workstream showing the edit button](/images/chat-workstream-edit.png)
 
@@ -29,7 +29,7 @@ In the window that opens, you will find the Editor and the SQL tabs.
 
 #### Editor Tab
 
-This Editor tab offers detailed data visualization configuration:
+The Editor tab offers detailed data visualization configuration:
 
 - **Chart Type Selection:** Use the dropdown menu to choose the desired visual representation. (e.g., "Line chart")
 - **Chart/Table Configuration:** Drag-and-drop data columns to include in the chart, in this example, a Line Chart with X and Y Axes (e.g., "Region" for categorization, "Total Revenue SUM" for aggregation).
@@ -62,7 +62,8 @@ This Reviewed Query (a tuple of an SQL code and the question it answers to) will
 
 1. Go to **Domains** \> (Access the Specific Domain) \> **Knowledge** \> **Context** section to add or modify domain-specific knowledge and information in natural language sentences and click on **Add Context**.
 
-   Note: This helps the system understand your business context and formulate more precise queries. For example, you can define terms like "Regions are same as Territories" or clarify "My sales stages are: Prospect, Negotiation, Closed." This direct manipulation of the context allows you to guide the chatbot's understanding and improve its ability to generate relevant SQL queries.
+   <Info> This helps the system understand your business context and formulate more precise queries. For example, you can define terms like "Regions are same as Territories" or clarify "My sales stages are: Prospect, Negotiation, Closed." This direct manipulation of the context allows you to guide the chatbot's understanding and improve its ability to generate relevant SQL queries. </Info>
+
 2. In the text box that appears, add the Context specification.
 3. Click on **SAVE** to keep your added content.
 
@@ -85,7 +86,7 @@ There are several ways you can actively test and refine your interactions:
     - Seeing how changes affect the data visualization.
   </Step>
   <Step title="Use the Updated SQL to Re-Query the Dataset" icon="check">
-    If you edited the SQL, click [**Update response**](improve-wisdom-ai-responses/validate-and-test-answers#sql-code-tab) to run the revised query. This re-executes the logic and updates the answer and/or chart accordingly. This step is essential for:
+    If you edited the SQL, click [**Update response**](/improve-wisdom-ai-responses/validate-and-test-answers#sql-code-tab) to run the revised query. This re-executes the logic and updates the answer and/or chart accordingly. This step is essential for:
 
     - Confirming that syntax and logic errors have been fixed.
     - Testing if the new query returns accurate and expected data.
@@ -94,7 +95,7 @@ There are several ways you can actively test and refine your interactions:
     You can also validate results by cross-referencing with known values or external reports.
   </Step>
   <Step title="Mark as Reviewed for Future Accuracy" icon="check">
-    After confirming that the answer and query are correct, select [**Mark as reviewed**](improve-wisdom-ai-responses/validate-and-test-answers#sql-code-tab). This promotes the question–answer pair (with its SQL) into the **Reviewed Queries** repository. Reviewed queries serve as a trustworthy reference for similar future questions and strengthen the chatbot’s knowledge within that Domain.
+    After confirming that the answer and query are correct, select [**Mark as reviewed**](/improve-wisdom-ai-responses/validate-and-test-answers#sql-code-tab). This promotes the question–answer pair (with its SQL) into the **Reviewed Queries** repository. Reviewed queries serve as a trustworthy reference for similar future questions and strengthen the chatbot’s knowledge within that Domain.
 
     This workflow is especially useful for:
 
@@ -108,7 +109,7 @@ There are several ways you can actively test and refine your interactions:
     - Original: _“Show me revenue by region for last quarter.”_
     - Variation: _“How much did each territory earn last Q?”_
 
-    If the system handles both well, it means it understands your business context. If not, consider refining the [**Context**](improve-wisdom-ai-responses/validate-and-test-answers#fine-tune-the-context) in the Knowledge section to improve generalization.
+    If the system handles both well, it means it understands your business context. If not, consider refining the [**Context**](/improve-wisdom-ai-responses/validate-and-test-answers#fine-tune-the-context) in the Knowledge section to improve generalization.
   </Step>
 </Steps>
 
