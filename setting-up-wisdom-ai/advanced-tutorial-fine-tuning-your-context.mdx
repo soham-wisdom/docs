@@ -128,7 +128,7 @@ As you saw with the win rate example, without context the AI gave a simple ratio
 
 ## Reviewed Queries
 
-By reviewing queries, you can help users get a higher degree of confidence in the answers they receive. In this library of pre-validated queries, there are a tuple of a natural language query and its ideal SQL response. This is the most critical aspect of context for the language model to understand your data, since it is directly tied to SQL.
+Reviewed Queries are a tuple of **a natural language question** and **its ideal SQL response**. By reviewing queries, you can help users get a higher degree of confidence in the answers they receive. This is the most critical aspect of context for the language model to understand your data, since it is directly tied to SQL.
 
 When you add Reviewed Queries, you have the following benefits:
 
@@ -139,9 +139,9 @@ When you add Reviewed Queries, you have the following benefits:
 
 ### Create Reviewed Queries
 
-Reviewed queries are created as part of the chat experience. Each chat response comes with a thumbs up/thumbs down button to provide feedback. The thumbs up leads to queries being validated. These queries show up in the **Knowledge** \> **Reviewed Queries** tab once validated.
+Reviewed queries are created from the chat experience. Each chat response comes with a thumb up/thumb down button to provide feedback. When you click the **thumb up** icon, a modal to Review the Question opens. Here, you need to add the question that the SQL code answers to. After confirmation, these queries will be listed in the **Knowledge** \> **Reviewed Queries** tab.
 
-The following code block shows an example of a query to calculate the win rate for sales that was validated by clicking the thumbs up button.
+The following code block shows an example of a query to calculate the win rate for sales that was validated by clicking the thumb up button.
 
 ```
 SELECT 
@@ -153,7 +153,7 @@ FROM `wisdom-staging-406623`.`b2bsaleshomebrew`.`Opportunity`
 WHERE `stage_label` IN ('Evaluation', 'Negotiation', 'Closed Loss', 'Closed Won');
 ```
 
-![Review Question](/images/review-question.png)
+![Image showing the Review a Question modal](/images/review-question-v02-em.png)
 
 ## Suggestions
 

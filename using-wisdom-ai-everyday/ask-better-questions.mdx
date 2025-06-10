@@ -14,7 +14,7 @@ Follow these four key actions to help you obtain precise responses:
   <Card title="Use Filters for Better Focus" icon="filter" href="#use-filters-for-better-focus">
     
   </Card>
-  <Card title="Plan for Follow-Up Questions" icon="plus" href="#plan-for-follow-up-questions">
+  <Card title="Plan for Follow-up Questions" icon="plus" href="#plan-for-follow-up-questions">
     
   </Card>
   <Card title="Use Business Terms Set by Admins" icon="check" href="#use-business-terms-set-by-admins">
@@ -33,13 +33,17 @@ WisdomAI understands everyday language, but being clear helps it understand you 
 - **Hint at Connections:** Use words like "by," "who bought," or "per" to show relationships. For example, "Sales _by_ region."
 - **Try Different Ways:** If a question doesn't work, try phrasing it differently.
 
+<Tip>
+  Providing context is crucial when interacting with WisdomAI. The more relevant information you give, the better and more accurate your answers will be. For more insights on how to leverage context effectively, be sure to read the related article [Advanced Tutorial: Fine Tuning Your Context](/setting-up-wisdom-ai/advanced-tutorial-fine-tuning-your-context).
+</Tip>
+
 ### Ask a Question
 
 1. Navigate to the **Search** window, in the left sidebar. The Chat page will open.
-2. **Send a question** on the chat.
+2. **Send a question** to the chat.
 3. The chat will start preparing the answer. You will be able to see its **Workstream**:
-   - The tool (data source) selected,
-   - The step by step process,
+   - The tool (tabular data or textual) selected,
+   - The step-by-step process,
    - Any join constrain validation,
    - The final query.
 
@@ -51,14 +55,14 @@ Once its ready, it will send you the **answer**, typically, in chart format.
 
 Filters help you narrow down your data to exactly what you need.
 
-- **Set Conditions:** Don't just ask for "customers"; ask for "customers _in the US_" or "customers _who spent over \$500_."
+- **Set Conditions:** Don't just ask for "customers"; ask for "customers in the US" or "customers who spent over \$500."
 - **Use Comparisons:**
   - **Equal:** `where Region is 'North'`
   - **More/Less:** `where Sales > 1000`
   - **Range:** `where Date between '2024-01-01' and '2024-03-31'`
   - **Contains:** `where Product Name contains 'Pro'`
-- **Combine Filters:** Use "and," "or," and "not" for more detailed questions. For example, "Sales _where Product Category is 'Apparel' AND Region is 'West'_."
-- **Exclude Things:** Sometimes it's easier to say what you _don't_ want. For example, "All customers _except those in California_."
+- **Combine Filters:** Use "and," "or," and "not" for more detailed questions. For example, "Sales where Product Category is 'Apparel' AND Region is 'West'."
+- **Exclude Things:** Sometimes it is easier to say what you don't want. For example, "All customers except those in California."
 
 ### Add or Adjust Filters
 
@@ -67,9 +71,9 @@ After WisdomAI provides you with the answer, you will be able to:
 1. See the **aplied filters**, according to your question, e.g.: Stage Label, Dates, etc.
 2. **Add one or more filters**, such as Lead Source. Here, You also have the option to **Clear all filters**.
 
-![Add Filters Pn](/images/add-filters.png)
+![Image showing the Add Filters option](/images/add-filters.png)
 
-## Plan for Follow-Up Questions
+## Plan for Follow-up Questions
 
 One question rarely gives the full picture. Think about what you'll ask next to dig deeper.
 
@@ -83,7 +87,9 @@ One question rarely gives the full picture. Think about what you'll ask next to 
 - **Compare Things:** Look for differences and similarities.
   - _Question:_ "How do costs in Q1 compare to Q2?"
   - _Ask:_ "What caused that difference?"
-- **Look at Different Angles:** If you're looking at sales by area, next look at sales by product or by customer.
+- **Look at Different Angles:** If you are looking at sales by area, next look at sales by product or by customer.
+
+![Follow Up Question Pn](/images/follow-up-question.png)
 
 ## Use Business Terms Set by Admins
 
@@ -98,7 +104,7 @@ Your organization has a shared language for its data. Using these official terms
   - **Correct Answers:** Prevents mistakes and helps you query the right data.
   - **Save Time:** Less time spent explaining terms.
   - **Trust Your Data:** When terms are clear, data is more reliable.
-  - **Better Questions:** Helps you use the exact words **WisdomAI** understands.
+  - **Better Questions:** Helps you use the exact words WisdomAI understands.
 - **How to Use Them:**
   - **Check Your Company's Glossary:** Always look up terms there first.
   - **Use Exact Words:** If "Sales" is officially "Total Recognized Sales (USD)," use that.
@@ -106,4 +112,11 @@ Your organization has a shared language for its data. Using these official terms
   - **Ask if Unsure:** If a term is unclear, ask your data team. This helps everyone.
   - **Help Others:** Encourage colleagues to use the standard terms too.
 
-By following these steps, you'll ask stronger questions and get more meaningful insights from your data using **WisdomAI**.
+By following these steps, you will ask stronger questions and get more meaningful insights from your data.
+
+## Next steps
+
+- [Advanced Tutorial: Fine Tuning Your Context](/setting-up-wisdom-ai/advanced-tutorial-fine-tuning-your-context)
+- [Validate and Test Answers](/improve-wisdom-ai-responses/validate-and-test-answers)
+- [Provide Feedback to the System](/setting-up-wisdom-ai/provide-feedback-to-the-system)
+- [Turn Answers into Stories](/using-wisdom-ai-everyday/turn-answers-into-stories)
