@@ -5,22 +5,18 @@ description: "Learn how to ask effective questions in WisdomAI to get precise da
 
 Getting useful answers from data starts with asking clear questions. WisdomAI lets you talk to your data simply. This guide explains how to build your questions to get the best possible information and make smart, data-based decisions.
 
-Here are four key actions to help you ask precise questions:
+Follow these four key actions to help you obtain precise responses:
 
-<CardGroup cols={2}>
-  <Card title="Make Clear, Natural Language Questions" icon="question">
-    
+<Columns cols={2}>
+  <Card title="Make Clear, Natural Language Questions" icon="question">    
   </Card>
   <Card title="Use Filters for Better Focus" icon="filter">
-    
   </Card>
   <Card title="Plan for Follow-Up Questions" icon="plus">
-    
   </Card>
   <Card title="Use Business Terms Set by Admins" icon="check">
-    
   </Card>
-</CardGroup>
+</Columns>
 
 ## Make Clear, Natural Language Questions
 
@@ -33,10 +29,19 @@ WisdomAI understands everyday language, but being clear helps it understand you 
 - **Hint at Connections:** Use words like "by," "who bought," or "per" to show relationships. For example, "Sales _by_ region."
 - **Try Different Ways:** If a question doesn't work, try phrasing it differently.
 
-To start asking questions:
+### Ask a Question
 
-1. Navigate to the **Search** window, in the left sidebar and **send a question** on the chat.
-2. The chat will start preparing the answer. You will be able to see its Workstream: The tool selected, the step by step process, any join constrain validation and then, the final query. Onc its ready, it will send you the **answer**.
+1. Navigate to the **Search** window, in the left sidebar. The Chat page will open.
+2. **Send a question** on the chat.
+3. The chat will start preparing the answer. You will be able to see its **Workstream**:
+   - The tool (data source) selected,
+   - The step by step process,
+   - Any join constrain validation,
+   - The final query.
+
+Once its ready, it will send you the **answer**, typically, in chart format.
+
+![Image showing the chat](/images/ask-question.png)
 
 ## Use Filters for Better Focus
 
@@ -50,6 +55,15 @@ Filters help you narrow down your data to exactly what you need.
   - **Contains:** `where Product Name contains 'Pro'`
 - **Combine Filters:** Use "and," "or," and "not" for more detailed questions. For example, "Sales _where Product Category is 'Apparel' AND Region is 'West'_."
 - **Exclude Things:** Sometimes it's easier to say what you _don't_ want. For example, "All customers _except those in California_."
+
+### Add or Adjust Filters
+
+After WisdomAI provides you with the answer, you will be able to:
+
+1. See the **aplied filters**, according to your question, e.g.: Stage Label, Dates, etc.
+2. **Add one or more filters**, such as Lead Source. Here, You also have the option to **Clear all filters**.
+
+![Add Filters Pn](/images/add-filters.png)
 
 ## Plan for Follow-Up Questions
 
