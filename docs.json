@@ -63,7 +63,7 @@
                   "manage-account/access-management/access-management",
                   "manage-account/access-management/row-level-access-control",
                   "manage-account/access-management/role-capability-matrix",
-                  "manage-account/access-management/user-management"
+                  "manage-account/access-management/users-management"
                 ]
               },
               "manage-account/monitor-performance-and-usage",
