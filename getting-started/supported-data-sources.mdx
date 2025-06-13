@@ -17,7 +17,6 @@ To add data sources connections, read the [Basic Tutorial: Connect and Test](/se
 This section outlines common prerequisites for connecting to data sources. Specific requirements are detailed under each data source.
 
 - **Network Access:** Ensure WisdomAI has network access to your database or data warehouse host. This may involve configuring firewall rules or security groups.
-- **Database User Permissions:** For databases and data warehouses, a user with read-only access to the relevant tables and schemas is highly recommended for security.
 - **Authentication Details:** You will need the correct credentials (username, password, keys, etc.) for your chosen data source.
 - **SSL/TLS Configuration:** For secure connections, ensure your database/data warehouse is configured to accept SSL/TLS connections, and configure WisdomAI accordingly (e.g., `SSL Mode: require` for PostgreSQL).
 - **Service Accounts (Google BigQuery):** For BigQuery, a Google Cloud service account with appropriate BigQuery permissions is required.
@@ -187,7 +186,7 @@ This section outlines common prerequisites for connecting to data sources. Speci
 - UTF-8 encoding recommended
 - Headers should be in the first row
 
-### SaaS Applications
+## Integrations
 
 #### ETL Integration for SaaS Applications
 
@@ -195,7 +194,7 @@ WisdomAI works with leading ETL partners to provide data integration from variou
 
 WisdomAI leverages **Fivetran** or **Airbyte** to ETL data from SaaS applications into a customer-owned data warehouse, alternatively into a WisdomAI managed **BigQuery** based analytics environment.
 
-#### Supported SaaS Data Sources
+### Supported SaaS Data Sources
 
 A non-exhaustive list of SaaS Sources include:
 
@@ -204,30 +203,37 @@ A non-exhaustive list of SaaS Sources include:
 - Ticketing systems (Jira, Zendesk)
 - Marketing platforms (Google Analytics, Facebook Ads)
 
-#### Setting Up SaaS Integration
+### Setting Up SaaS Integration
 
 To integrate data from SaaS applications, please contact WisdomAI support. Our team will work with you to set up the appropriate ETL pipelines using our partner technologies.
 
-<warning>
-  Contact Support for SaaS Integration
-</warning>
+<Check>
+  Contact Support at `support@askwisdom.ai` for SaaS Integration.
+</Check>
 
 ## Limits
 
 This section details any known limitations or restrictions when connecting to data sources.
 
 - **CSV File Size:** Maximum CSV file size for direct upload is 100MB. For larger CSV datasets, consider uploading them to a data warehouse (e.g., S3, Google Cloud Storage) and connecting WisdomAI to the warehouse.
-- **Throughput/Query Limits:** Be aware of any rate limits or query concurrency limits imposed by your database or data warehouse provider. WisdomAI's queries will contribute to these limits.
-- **Data Type Support:** While WisdomAI strives to support a wide range of data types, some highly specialized or proprietary data types might require specific handling or may not be fully supported.
+- **Query Limits:** Be aware of any rate limits or query concurrency limits imposed by your database or data warehouse provider. WisdomAI's queries will contribute to these limits.
+- **Data Type Support:** While WisdomAI strives to support a wide range of data types, some highly specialized or proprietary data types might require specific handling or may not be fully supported. Contact [Support](support@askwisdom.ai) if you request any assistance.
 
 ## Troubleshooting
 
 ### Common Connection Issues
 
-| Issue                 | Possible Causes                                                 | Resolution                                                                             |
+| **Issue**             | **Possible Causes**                                             | **Resolution**                                                                         |
 | :-------------------- | :-------------------------------------------------------------- | :------------------------------------------------------------------------------------- |
 | Connection Timeout    | Network latency, Firewall blocking, Server overload             | Check network connectivity, Verify firewall rules, Increase connection timeout setting |
 | Authentication Failed | Incorrect credentials, Expired API keys/tokens, Account lockout | Verify username/password, Regenerate API keys, Check account status                    |
 | Permission Denied     | Insufficient privileges, IP restriction, Resource access limits | Update user permissions, Whitelist IP addresses, Check resource quotas                 |
 
 For persistent connection issues, contact WisdomAI support at `support@askwisdom.ai` with the connection ID and error logs for assistance.
+
+## Next Steps
+
+- [Basic Tutorial Connect and Test](/setting-up-wisdom-ai/basic-tutorial-connect-and-test)
+- [Advanced Tutorial: Fine Tuning Your Context](/setting-up-wisdom-ai/advanced-tutorial-fine-tuning-your-context)
+- [Provide Feedback to the System](/setting-up-wisdom-ai/provide-feedback-to-the-system)
+- [Turn Answers into Stories](/using-wisdom-ai-everyday/turn-answers-into-stories)
