@@ -1,6 +1,8 @@
 ---
 title: "Provide Feedback to the System"
+description: "Understand the importance of provide¿ing feedback to the system according to your user role, and learn how to do it."
 ---
+
 ## Your Feedback Matters
 
 WisdomAI is designed to continuously evolve and improve, and your feedback is the cornerstone of this process. By actively participating in the feedback loop, you contribute directly to a smarter, more accurate, and more helpful AI experience for all users. Your input helps WisdomAI learn through:
@@ -33,11 +35,11 @@ Another valuable way to provide feedback for all users is by modifying and refin
 
 ## Advanced Feedback Mechanisms for Administrators
 
-Administrators have elevated capabilities to provide more granular feedback and directly influence WisdomAI's underlying knowledge base.
+As an Administrator, you have elevated capabilities to provide more granular feedback and directly influence WisdomAI's underlying knowledge base.
 
 ### SQL Editing
 
-For administrators, each answer provided in the chat interface comes with an **Edit** button. This powerful feature allows you to directly modify the underlying SQL (Structured Query Language) query that WisdomAI generated to retrieve the answer.
+For Administrators, each answer provided in the chat interface comes with an **Edit** button. This powerful feature allows you to directly modify the underlying SQL (Structured Query Language) query that WisdomAI generated to retrieve the answer.
 
 - **How it helps:** This direct access enables you to fix calculation issues, add necessary joins, or modify filters to ensure the query precisely extracts the desired data.
 - **Knowledge Base Integration:** Edited queries are not just one-time fixes; they become a permanent part of the system's knowledge base. This means WisdomAI learns from your corrections and will apply the improved logic to similar questions in the future.
@@ -48,7 +50,19 @@ For administrators, each answer provided in the chat interface comes with an **E
 Administrators are responsible for reviewing and acting upon the negative feedback provided by all users. WisdomAI provides a structured process for this:
 
 - **Accessing Feedback:** Administrators can view all negative feedback by navigating to the **Chat Log** tab within the WisdomAI interface.
-- **Visual Indicators:** You can filter by chats that have received negative feedback, making them easy to identify and prioritize for review.
+- **Visual Indicators:** Admins can filter by chats that have received negative feedback, making them easy to identify and prioritize for review.
 - **Email Notifications:** The system automatically channels negative feedback to administrators via email, ensuring prompt attention to issues that require intervention.
 - **Prioritization for Improvement:** Questions marked with negative feedback are automatically prioritized for knowledge base improvement, guiding administrators to the most critical areas needing attention.
 - **Dedicated Administration:** For Domains with high usage or complex data, it is highly recommended to assign a dedicated administrator to regularly review feedback and make necessary updates to the knowledge base, ensuring continuous optimal performance.
+
+## Add Sample Q&A for Starters
+
+Adding sample Question & Answer (Q&A) pairs is a proactive method for administrators to enrich WisdomAI's knowledge base and improve its response accuracy for anticipated queries.  This might involve providing a common question and then supplying the precise SQL query that should generate the correct answer, or simply a direct textual answer for factual queries.
+
+A key feature within this process is setting up **Starter Questions**. When "Enabled," these example questions appear to help new users quickly understand the domain's capabilities and get started with WisdomAI. By creating these pre-defined question-answer pairs, you effectively showcase what WisdomAI can do and guide users on how to phrase their queries. 
+
+You can **Edit the default question-answer pairs** to clearly demonstrate the Domain's functionalities. To do so, go to Domains \> Open a Domain \> Advanced Tab \> Starter Questions.
+
+<Note>
+  Note that **deleting all the starter questions will automatically disable this feature**.
+</Note>
