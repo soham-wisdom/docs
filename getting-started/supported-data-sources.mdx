@@ -1,5 +1,6 @@
 ---
 title: "Supported Data Sources"
+description: "Connect your databases, data warehouses, CSVs, and SaaS apps to WisdomAI. Unify your data for powerful analytics, with full details on connection requirements, limits, and troubleshooting."
 ---
 
 Bringing all your data together helps you understand it better. When you connect your databases, data warehouses, and CSV files to WisdomAI, you will have all your information from different places in one spot. This unified view means you can easily analyze everything and create helpful reports. Once your data is linked, you can simply ask questions in plain language and get immediate answers from your integrated datasets.
@@ -189,9 +190,11 @@ This section outlines common prerequisites for connecting to data sources. Speci
 - Headers should be in the first row
 
 ## Integrations
+
 Connect WisdomAI to your essential business applications and services to unlock deeper insights from all your data.
 
 ### ETL Integration for SaaS Applications
+
 WisdomAI works with leading ETL partners to provide data integration from various SaaS applications.
 
 WisdomAI leverages **Fivetran** or **Airbyte** to ETL data from SaaS applications into a customer-owned data warehouse, alternatively into a WisdomAI managed **BigQuery** based analytics environment.
@@ -219,13 +222,15 @@ This section details any known limitations or restrictions when connecting to da
 
 ## Troubleshooting
 
+Understand common problems and systematic troubleshooting techniques that can help you quickly identify and resolve connectivity issues.
+
 ### Common Connection Issues
 
-| **Issue**             | **Possible Causes**                                             | **Resolution**                                                                         |
-| :-------------------- | :-------------------------------------------------------------- | :------------------------------------------------------------------------------------- |
-| Connection Timeout    | Network latency, Firewall blocking, Server overload             | Check network connectivity, Verify firewall rules, Increase connection timeout setting |
-| Authentication Failed | Incorrect credentials, Expired API keys/tokens, Account lockout | Verify username/password, Regenerate API keys, Check account status                    |
-| Permission Denied     | Insufficient privileges, IP restriction, Resource access limits | Update user permissions, Whitelist IP addresses, Check resource quotas                 |
+| **Issue**             | **Possible Causes**                                                                 | **Resolution**                                                                                             |
+| --------------------- | ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| Connection Timeout    | - Network latency  <br /> - Firewall blocking  <br /> - Server overload             | - Check network connectivity  <br /> - Verify firewall rules  <br /> - Increase connection timeout setting |
+| Authentication Failed | - Incorrect credentials  <br /> - Expired API keys/tokens  <br /> - Account lockout | - Verify username/password  <br /> - Regenerate API keys  <br /> - Check account status                    |
+| Permission Denied     | - Insufficient privileges  <br /> - IP restriction  <br /> - Resource access limits | - Update user permissions  <br /> - Whitelist IP addresses  <br /> - Check resource quotas                 |
 
 For persistent connection issues, contact WisdomAI support at `support@askwisdom.ai` with the connection ID and error logs for assistance.
 
