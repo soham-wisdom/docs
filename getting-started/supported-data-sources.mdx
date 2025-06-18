@@ -26,6 +26,8 @@ This section outlines common prerequisites for connecting to data sources. Speci
 
 <Tabs>
   <Tab title="PostgreSQL">
+The following table lists all the requirements you need to provide when connecting to PostgreSQL.
+    
     | Requirement | Description                        |
     | :---------- | :--------------------------------- |
     | Host        | Server address or IP               |
@@ -35,7 +37,7 @@ This section outlines common prerequisites for connecting to data sources. Speci
     | Password    | User's password                    |
     | SSL Mode    | Recommended for secure connections |
 
-    **Example Connection**
+    Find below an example connection:
 
     ```txt
     Host: [postgres.example.com](http://postgres.example.com)
@@ -47,6 +49,8 @@ This section outlines common prerequisites for connecting to data sources. Speci
     ```
   </Tab>
   <Tab title="Microsoft SQL Server">
+The following table lists all the requirements you need to provide when connecting to Microsoft SQL Server.
+    
     | Requirement              | Description                                   |
     | :----------------------- | :-------------------------------------------- |
     | Server                   | SQL Server address or instance name           |
@@ -57,7 +61,7 @@ This section outlines common prerequisites for connecting to data sources. Speci
     | Password                 | Login password                                |
     | Trust Server Certificate | Whether to trust the server's SSL certificate |
 
-    **Example Connection**
+    Here's an example connection:
 
     ```txt
     Server: [sqlserver.example.com](http://sqlserver.example.com)
@@ -70,6 +74,8 @@ This section outlines common prerequisites for connecting to data sources. Speci
     ```
   </Tab>
   <Tab title="Databricks">
+The following table lists all the requirements you need to provide when connecting to Databricks.
+    
     | Requirement     | Description                      |
     | :-------------- | :------------------------------- |
     | Server Hostname | Databricks SQL endpoint hostname |
@@ -79,7 +85,7 @@ This section outlines common prerequisites for connecting to data sources. Speci
     | Catalog         | Optional Databricks catalog name |
     | Schema          | Optional schema name             |
 
-    **Example Connection**
+    Below is an example key pair connection:
 
     ```txt
     Server Hostname: [dbc-xxxx-yyyy.cloud.databricks.com](http://dbc-xxxx-yyyy.cloud.databricks.com)
@@ -91,6 +97,8 @@ This section outlines common prerequisites for connecting to data sources. Speci
     ```
   </Tab>
   <Tab title="Snowflake">
+The following table lists all the requirements you need to provide when connecting to Snowflake.
+    
     | Requirement      | Description                           |
     | :--------------- | :------------------------------------ |
     | Account          | Snowflake account identifier          |
@@ -101,15 +109,13 @@ This section outlines common prerequisites for connecting to data sources. Speci
     | Schema           | Schema name (optional)                |
     | Role             | User role (optional)                  |
 
-    **Key Pair Authentication (Recommended)**
-
     To set up key pair authentication for Snowflake:
 
     1. Generate an RSA key pair (2048-bit minimum length).
     2. Register the public key with your Snowflake user.
     3. Use the private key (PEM format) when creating a WisdomAI connection.
 
-    **Example Key Pair Connection**
+    Here's an example key pair connection:
 
     ```txt
     Account: [xy12345.us](http://xy12345.us)-east-1
@@ -124,24 +130,29 @@ This section outlines common prerequisites for connecting to data sources. Speci
     Snowflake Key Pair Authentication Documentation: [Link to Snowflake Docs](https://docs.snowflake.com/en/user-guide/key-pair-auth.html).
   </Tab>
   <Tab title="Google BigQuery">
+The following table lists all the requirements you need to provide when connecting to Google BigQuery.
+    
     | Requirement    | Description                       |
     | :------------- | :-------------------------------- |
     | Project ID     | Google Cloud project identifier   |
     | Authentication | Service account key (JSON format) |
     | Dataset        | Default dataset (optional)        |
 
-    **Example Connection**
+    Find below an example connection:
 
-    ```txt 
+    ```txt
     Project ID: my-analytics-project-123
     Authentication: Upload service account key JSON file
     Dataset: analytics_data
     ```
+
   <warning>
   You'll need to create a service account in Google Cloud with appropriate permissions on the BigQuery datasets you want to access.
 </warning>
   </Tab>
   <Tab title="Amazon Redshift">
+The following table lists all the requirements you need to provide when connecting to Amazon Redshift.
+    
     | Requirement | Description                    |
     | :---------- | :----------------------------- |
     | Host        | Redshift cluster endpoint      |
