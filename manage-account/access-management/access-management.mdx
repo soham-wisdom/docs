@@ -22,6 +22,7 @@ The **Administrator** is the superuser of the WisdomAI platform with full system
 They can:
 
 - **Manage users and roles**: Invite or remove users, assign or modify roles, and oversee access permissions.
+- **Manage Domains**: Configure and maintain organizational domains within WisdomAI.
 - **Connect and organize data**: Link external data sources, manage schemas (i.e., the structure of tables and relationships), and maintain core metadata.
 - **Oversee workspace content**: Review, publish, or unpublish key assets like stories and models to control visibility and access.
 - **Monitor and audit activity**: Track system usage, access logs, and platform health metrics to ensure smooth operation.
@@ -32,11 +33,11 @@ They can:
 
 ### Data Administrator
 
-The **Data Administrator** manages and prepares data assets within specific domains. They do not have global system permissions but can:
+The **Data Administrator** manages and prepares data assets within specific Domains. They do not have global system permissions but can:
 
-- **Connect domain-level data**: Set up and configure data sources for their assigned domains.
-- **Model business context**: Define metrics, entities, and relationships relevant to their domain.
-- **Manage content**: Create and maintain Stories, Playbooks, and domain-specific assets.
+- **Connect Domain-level data**: Set up and configure data sources for their assigned Domains.
+- **Model business context**: Define metrics, entities, and relationships relevant to their Domain.
+- **Manage content**: Create and maintain Stories, Playbooks, and Domain-specific assets as well as manage access to Dashboards and Reports.
 - **Apply data policies**: Set row-level and column-level access rules and validation policies.
 - **Collaborate with Explorers**: Ensure data is usable, discoverable, and tailored to user needs.
 
@@ -53,6 +54,8 @@ The **Data Administrator** manages and prepares data assets within specific doma
 - **Use playbooks**: Run and reuse automated data workflows.
 - **Share insights**: Export and share results with others.
 - **Save views**: Bookmark visualizations or findings for later use.
+- **Access Reports**: View and interact with published reports (Access to Reports).
+- **Knowledge Management**: Access and utilize knowledge within the platform.
 
 <Info>
   Explorers cannot manage data sources, users, or settings.
@@ -62,15 +65,19 @@ The **Data Administrator** manages and prepares data assets within specific doma
 
 | Capability                       | Administrator | Data Administrator | Explorer |
 | -------------------------------- | ------------- | ------------------ | -------- |
-| User and role management         | ✅             | ❌                  | ❌        |
-| Domain-specific data modeling    | ✅             | ✅                  | ❌        |
-| Connect data sources             | ✅             | ✅                  | ❌        |
-| Build stories                    | ✅             | ✅                  | ✅        |
-| Use stories and ask questions    | ✅             | ✅                  | ✅        |
-| Audit logs and usage metrics     | ✅             | ❌                  | ❌        |
-| Row/column-level data governance | ✅             | ✅                  | ❌        |
+| User and Role Management         | ✅             | ❌                  | ❌        |
+| Domain Management                | ✅             | ❌                  | ❌        |
+| Audit Logs and Usage Metrics     | ✅             | ❌                  | ❌        |
+| Data Source Management           | ✅             | ✅                  | ❌        |
+| Domain-Specific Data Modeling    | ✅             | ✅                  | ❌        |
+| Row/Column-Level Data Management | ✅             | ✅                  | ❌        |
+| Build/See Stories (Dashboards)   | ✅             | ✅                  | ✅        |
+| Ask Questions                    | ✅             | ✅                  | ✅        |
+| Access to Reports                | ✅             | ✅                  | ✅        |
 
 ## Next Steps
 
-- [Role Capability Matrix](/manage-account/access-management/role-capability-matrix)
 - [Row Level Access Control](/manage-account/access-management/row-level-access-control)
+- [Supported Data Sources](/getting-started/supported-data-sources)
+- [How WisdomAI Works](/getting-started/how-wisdom-ai-works)
+- [Basic Tutorial Connect and Test](/setting-up-wisdom-ai/basic-tutorial-connect-and-test)
