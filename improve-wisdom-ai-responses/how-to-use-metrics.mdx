@@ -1,11 +1,58 @@
 ---
-title: 'How to Use Metrics'
+title: "How to Use Metrics"
+description: "Learn how to create and use metrics effectively for data analysis and tracking business performance in WisdomAI. Explore the interface and practical examples for all metric types."
 ---
 
-<Tip>
-  Page Under Construction
-This page is currently being developed. We're actively working to provide you with helpful and accurate documentation for Wisdom AI.
+Metrics are essential for understanding your data. Simply put, they are numeric, quantitative values that can be measured to assess and track business performance. These quantifiable measurements help you identify trends and make informed decisions. You might also hear them called "Measures" in some analytics tools. This guide will walk you through how to create and use metrics effectively in WisdomAI.
 
-Please check back soon, new content is on the way!
-</Tip>
+## Types of Metrics
 
+Not all metrics are created equal. Here's a breakdown of the common types:
+
+- **Simple Metrics:** These are direct calculations from existing data. Think of something straightforward like the **sum of your total revenue**.
+- **Calculated Metrics:** These metrics combine other metrics using formulas. For example, **Profit** could be a calculated metric derived from subtracting "Cost" from "Revenue."
+- **Ratios:** Ratios involve dividing one metric by another. A classic example is **Conversion Rate**, calculated by dividing "Orders" by "Visits."
+- **Time-based Metrics:** These metrics incorporate time into their calculation, allowing you to analyze trends over periods. Examples include **year-over-year growth** or **rolling averages**.
+
+## Create a Metric
+
+The process of creating a metric in WisdomAI is managed within specific Domains.
+
+Here's a step-by-step guide:
+
+1. Navigate to the **Metrics** Tab within a **Domain**.
+   - Select the relevant **Domain** (e.g., "B2B Sales") \> go to the **Knowledge** tab \> click **Metrics**.
+2. Click the **Add Metric** button on the Metrics tab.
+3. **Configure Your Metric**. In the "Add a Metric" modal window that opens, you will be prompted to provide the following information:
+   - **Metric name:** Give your metric a clear, concise name that accurately describes what it measures.
+   - **Calculation Method:** Select how the metric will be defined. Common options include:
+     - **SQL Expression:** This is where you write standard SQL queries to define your metric's calculation. This is typically used for precise and complex aggregations.
+     - **LLM Prompt:** Use a Large Language Model (LLM) to define the metric by providing a natural language prompt.
+     - **Explain SQL in English** (Beta) Describe your desired SQL calculation in plain English, and the system will attempt to generate the corresponding SQL.
+     - **Calculation Area:** Based on your chosen calculation method, you can use the large text area to input your SQL expression, LLM prompt, or English explanation.
+4. Toggle the **Advanced Options** switch to reveal additional configurations:
+   - **Associated date column (Optional):** This allows you to specify a date column in your data that is relevant to this metric. This is particularly useful for time-based analyses, filtering by date, or for metrics that inherently track changes over time.
+   - **Associated group-by columns (Optional):** Here, you can pre-define columns that are commonly used for grouping or segmenting this metric. This can streamline analysis by suggesting common dimensions to break down the metric by.
+5. Once you have configured your metric, click **Save:**  to add it to your domain's metrics list.
+
+## Sales Metrics Examples
+
+Let's look at some practical examples of sales metrics and how they might be configured. In a tool like WisdomAI, you can define these using SQL expressions, and they would appear in your Metrics list alongside their descriptions and display formats.
+
+| Metric Name              | Description                                                                                                                  | SQL Expression                                              | Display Format                   |
+| :----------------------- | :--------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------- | :------------------------------- |
+| **Revenue**              | Total revenue before discounts and returns                                                                                   | `SUM(total_amount)`                                         | Currency (USD, 2 decimal places) |
+| **Average Order Value**  | Average amount spent per order                                                                                               | `AVG(total_amount)`                                         | Currency (USD, 2 decimal places) |
+| **Profit Margin**        | Percentage of revenue that is profit                                                                                         | `(SUM(total_amount) - SUM(cost)) / SUM(total_amount) * 100` | Percentage (1 decimal place)     |
+| **Items Per Order**      | Average number of items in each order                                                                                        | `SUM(item_count) / COUNT(DISTINCT order_id)`                | Number (1 decimal place)         |
+| **Days to Ship**         | Average time between order and shipment                                                                                      | `AVG(EXTRACT(DAY FROM ship_date - order_date))`             | Number (1 decimal place)         |
+| **AverageSalesPerRep**   | Average Sales Per Rep                                                                                                        | _(Specific SQL would be defined in the system)_             | Automatic                        |
+| **DollarConversionRate** | _(Add description in the system)_                                                                                            | _(Specific SQL would be defined in the system)_             | Automatic                        |
+| **Total Revenue**        | Total revenue from closed-won opportunities                                                                                  | `SUM(total_amount)` _(example)_                             | Automatic                        |
+| **Win_Rate**             | Ratio of the sum of amounts for closed won opportunities to the sum of amounts for closed won and closed loss opportunities. | _(Specific SQL would be defined in the system)_             | Automatic                        |
+
+When you create metrics, especially in platforms that use SQL, you'll define the SQL expression that dictates how the metric is calculated from your raw data. This allows for precise and powerful data analysis.
+
+---
+
+By effectively defining and utilizing metrics within your chosen **Domains**, you can gain deeper insights into your operations and make data-driven decisions that propel your business forward.
