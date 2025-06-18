@@ -7,7 +7,7 @@ Metrics are essential for understanding your data. Simply put, they are numeric,
 
 ## Types of Metrics
 
-Not all metrics are created equal. Here's a breakdown of the common types:
+You can have different kinds of Metrics. Here's a breakdown of the most common types:
 
 - **Simple Metrics:** These are direct calculations from existing data. Think of something straightforward like the **sum of your total revenue**.
 - **Calculated Metrics:** These metrics combine other metrics using formulas. For example, **Profit** could be a calculated metric derived from subtracting "Cost" from "Revenue."
@@ -16,24 +16,25 @@ Not all metrics are created equal. Here's a breakdown of the common types:
 
 ## Create a Metric
 
-The process of creating a metric in WisdomAI is managed within specific Domains.
+The process of creating a metric in WisdomAI is managed within each specific Domain.
 
 Here's a step-by-step guide:
 
 1. Navigate to the **Metrics** Tab within a **Domain**.
    - Select the relevant **Domain** (e.g., "B2B Sales") \> go to the **Knowledge** tab \> click **Metrics**.
 2. Click the **Add Metric** button on the Metrics tab.
-3. **Configure Your Metric**. In the "Add a Metric" modal window that opens, you will be prompted to provide the following information:
+3. **Configure Your Metric**. In the Add a Metric modal window that opens, you will be prompted to provide the following information:
    - **Metric name:** Give your metric a clear, concise name that accurately describes what it measures.
-   - **Calculation Method:** Select how the metric will be defined. Common options include:
+   - **Calculation Method:** Select how the metric will be defined. The options include:
      - **SQL Expression:** This is where you write standard SQL queries to define your metric's calculation. This is typically used for precise and complex aggregations.
      - **LLM Prompt:** Use a Large Language Model (LLM) to define the metric by providing a natural language prompt.
      - **Explain SQL in English** (Beta) Describe your desired SQL calculation in plain English, and the system will attempt to generate the corresponding SQL.
-     - **Calculation Area:** Based on your chosen calculation method, you can use the large text area to input your SQL expression, LLM prompt, or English explanation.
-4. Toggle the **Advanced Options** switch to access additional configurations:
+
+4. **Calculation Area:** Based on your chosen calculation method, you can use the large text area to input your SQL expression, LLM prompt, or English explanation.
+5. _(If SQL was chosen)_ Toggle the **Advanced Options** switch to access additional configurations:
    - **Associated date column:** (Optional)This allows you to specify a date column in your data that is relevant to this metric. This is particularly useful for time-based analyses, filtering by date, or for metrics that inherently track changes over time.
    - **Associated group-by columns:** (Optional) Here, you can pre-define columns that are commonly used for grouping or segmenting this metric. (e.g. account State, customer ID)
-5. Once you have configured your metric, click **Save** to add it to your Domain's metrics list.
+6. Once you have configured your metric, click **Save** to add it to your Domain's metrics list.
 
 ## Sales Metrics Examples
 
