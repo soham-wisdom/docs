@@ -30,14 +30,16 @@ Here's a step-by-step guide:
      - **LLM Prompt:** Use a Large Language Model (LLM) to define the metric by providing a natural language prompt.
      - **Explain SQL in English** (Beta) Describe your desired SQL calculation in plain English, and the system will attempt to generate the corresponding SQL.
      - **Calculation Area:** Based on your chosen calculation method, you can use the large text area to input your SQL expression, LLM prompt, or English explanation.
-4. Toggle the **Advanced Options** switch to reveal additional configurations:
-   - **Associated date column (Optional):** This allows you to specify a date column in your data that is relevant to this metric. This is particularly useful for time-based analyses, filtering by date, or for metrics that inherently track changes over time.
-   - **Associated group-by columns (Optional):** Here, you can pre-define columns that are commonly used for grouping or segmenting this metric. This can streamline analysis by suggesting common dimensions to break down the metric by.
-5. Once you have configured your metric, click **Save:**  to add it to your domain's metrics list.
+4. Toggle the **Advanced Options** switch to access additional configurations:
+   - **Associated date column:** (Optional)This allows you to specify a date column in your data that is relevant to this metric. This is particularly useful for time-based analyses, filtering by date, or for metrics that inherently track changes over time.
+   - **Associated group-by columns:** (Optional) Here, you can pre-define columns that are commonly used for grouping or segmenting this metric. (e.g. account State, customer ID)
+5. Once you have configured your metric, click **Save** to add it to your Domain's metrics list.
 
 ## Sales Metrics Examples
 
-Let's look at some practical examples of sales metrics and how they might be configured. In a tool like WisdomAI, you can define these using SQL expressions, and they would appear in your Metrics list alongside their descriptions and display formats.
+When you create metrics, you define the SQL expression that dictates how the metric is calculated from your raw data. This allows for precise and powerful data analysis. Once defined, they will appear in your Metrics list with their descriptions and display formats.
+
+Here are some practical examples of sales metrics and how they might be configured.
 
 | Metric Name              | Description                                                                                                                  | SQL Expression                                              | Display Format                   |
 | :----------------------- | :--------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------- | :------------------------------- |
@@ -51,8 +53,11 @@ Let's look at some practical examples of sales metrics and how they might be con
 | **Total Revenue**        | Total revenue from closed-won opportunities                                                                                  | `SUM(total_amount)` _(example)_                             | Automatic                        |
 | **Win_Rate**             | Ratio of the sum of amounts for closed won opportunities to the sum of amounts for closed won and closed loss opportunities. | _(Specific SQL would be defined in the system)_             | Automatic                        |
 
-When you create metrics, especially in platforms that use SQL, you'll define the SQL expression that dictates how the metric is calculated from your raw data. This allows for precise and powerful data analysis.
+By effectively defining and utilizing metrics within your chosen Domains, you can gain deeper insights into your operations and make data-driven decisions that propel your business forward.
 
----
+## Next Steps
 
-By effectively defining and utilizing metrics within your chosen **Domains**, you can gain deeper insights into your operations and make data-driven decisions that propel your business forward.
+- [Configure Domains](/improve-wisdom-ai-responses/configure-domains)
+- [Curate Knowledge Workflow](/improve-wisdom-ai-responses/curate-knowledge-workflow)
+- [Basic Tutorial: Connect and Test](/setting-up-wisdom-ai/basic-tutorial-connect-and-test)
+- [Advanced Tutorial: Fine Tuning Your Context](/setting-up-wisdom-ai/advanced-tutorial-fine-tuning-your-context)
