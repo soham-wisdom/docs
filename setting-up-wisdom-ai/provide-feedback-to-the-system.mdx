@@ -30,19 +30,18 @@ Regardless of your user role, your immediate feedback on responses is crucial fo
   </Step>
   <Step title="Refine the Original Question" titleSize="h3">
     Another valuable way to provide feedback for all users is by modifying and refining your original question. If the initial query did not deliver the desired result, rephrasing or adding more specific details to your question helps WisdomAI understand user intent better and improve its query interpretation accuracy for future interactions.
+
+    <Note>
+      To learn more about providing feedback using the Thumb Up/Down icons, read [Validate and Test Answers](https://wisdomai.mintlify.app/improve-wisdom-ai-responses/validate-and-test-answers#use-the-thumbs-up%2Fdown-icons).
+    </Note>
+    <img
+      src="/images/thumb-downv2.png"
+      alt="Thumb Downv2 Pn"
+      title="Thumb Downv2 Pn"
+      style={{ width:"84%" }}
+    />
   </Step>
 </Steps>
-
-<Note>
-  To learn more about providing feedback using the Thumb Up/Down icons, read [Validate and Test Answers](https://wisdomai.mintlify.app/improve-wisdom-ai-responses/validate-and-test-answers#use-the-thumbs-up%2Fdown-icons).
-</Note>
-
-<img
-  src="/images/thumb-downv2.png"
-  alt="Thumb Downv2 Pn"
-  title="Thumb Downv2 Pn"
-  style={{ width:"84%" }}
-/>
 
 ## Advanced Feedback Mechanisms for Administrators
 
@@ -53,8 +52,8 @@ As an Administrator, you have elevated capabilities to provide more granular fee
     For Administrators, each answer provided in the chat interface comes with an **Edit** button. This powerful feature allows you to directly modify the underlying SQL (Structured Query Language) query that WisdomAI generated to retrieve the answer.
 
     - **How it helps:** This direct access enables you to fix calculation issues, add necessary joins, or modify filters to ensure the query precisely extracts the desired data.
-    - **Knowledge Base Integration:** Edited queries are not just one-time fixes; they become a permanent part of the system's knowledge base. This means WisdomAI learns from your corrections and will apply the improved logic to similar questions in the future.
-    - **Value for Domain Experts:** This SQL Edit feature is particularly valuable for domain experts who possess a deep understanding of both the business context and the underlying data model, allowing them to fine-tune the system's data retrieval logic.
+    - **Knowledge base integration:** Edited queries are not just one-time fixes; they become a permanent part of the system's knowledge base. This means WisdomAI learns from your corrections and will apply the improved logic to similar questions in the future.
+    - **Value for Domain experts:** This SQL Edit feature is particularly valuable for domain experts who possess a deep understanding of both the business context and the underlying data model, allowing them to fine-tune the system's data retrieval logic.
 
     ![Sql Editing Pn](/images/sql-editing.png)
 
@@ -91,6 +90,7 @@ As an Administrator, you have elevated capabilities to provide more granular fee
     <Note>
       To learn more about Reviewed Queries, read [Advanced Tutorial: Fine Tuning your Context](https://wisdomai.mintlify.app/setting-up-wisdom-ai/advanced-tutorial-fine-tuning-your-context#reviewed-queries).
     </Note>
+    ![Reviewed Queries Aa Pn](/images/reviewed-queries-aa.png)
   </Step>
 </Steps>
 
@@ -100,7 +100,7 @@ Adding sample Question & Answer (Q&A) pairs is a proactive method for administra
 
 A key feature within this process is setting up **Starter Questions**. When "Enabled," these example questions appear to help new users quickly understand the domain's capabilities and get started with WisdomAI. By creating these pre-defined question-answer pairs, you effectively showcase what WisdomAI can do and guide users on how to phrase their queries.
 
-You can **Edit the default question-answer pairs** to clearly demonstrate the Domain's functionalities. To do so, go to **Domains** \> **Access a Domain** \> **Advanced** Tab \> **Starter Questions**. Once you get here, you can **Edit/Delete a Question** or **Regenerate the Answer**.
+You can **Edit the default question-answer pairs** to clearly demonstrate the Domain's functionalities. To do so, Access a **Domain** \> **Advanced** Tab \> **Starter Questions**. Once you get here, you can **Edit/Delete a Question** or **Regenerate the Answer**.
 
 <Note>
   Note that **deleting all the starter questions will automatically disable this feature**.
@@ -130,12 +130,12 @@ Understanding the differences in what Explorers and Admins can do is crucial for
 
 | Capability                           | Explorer | Admin |
 | :----------------------------------- | :------- | :---- |
-| **Rate Responses** (👍/👎)           | Yes      | Yes   |
-| **Provide Correction Text**          | Yes      | Yes   |
-| **Refine Original Questions**        | Yes      | Yes   |
-| **Directly Edit SQL Queries**        | No       | Yes   |
-| **Review All Negative Feedback**     | No       | Yes   |
-| **Proactively Add Sample Q&A Pairs** | No       | Yes   |
+| **Rate Responses** (👍/👎)           | ✅        | ✅     |
+| **Provide Correction Text**          | ✅        | ✅     |
+| **Refine Original Questions**        | ✅        | ✅     |
+| **Directly Edit SQL Queries**        | ❌        | ✅     |
+| **Review All Negative Feedback**     | ❌        | ✅     |
+| **Proactively Add Sample Q&A Pairs** | ❌        | ✅     |
 
 ## Next steps
 
