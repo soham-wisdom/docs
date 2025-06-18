@@ -37,18 +37,12 @@ This section outlines common prerequisites for connecting to data sources. Speci
 
     **Example Connection**
 
-    ```
-    
+    ```txt
     Host: [postgres.example.com](http://postgres.example.com)
-    
     Port: 5432
-    
     Database: analytics
-    
     Username: wisdom_reader
-    
     Password: \*\*\*\*\*\*\*\*
-    
     SSL Mode: require
     ```
   </Tab>
@@ -65,8 +59,7 @@ This section outlines common prerequisites for connecting to data sources. Speci
 
     **Example Connection**
 
-    ```
-    
+    ```txt
     Server: [sqlserver.example.com](http://sqlserver.example.com)
     Port: 1433
     Database: business_data
@@ -74,7 +67,6 @@ This section outlines common prerequisites for connecting to data sources. Speci
     Username: wisdom_reader
     Password: \*\*\*\*\*\*\*\*
     Trust Server Certificate: True
-    
     ```
   </Tab>
   <Tab title="Databricks">
@@ -89,17 +81,12 @@ This section outlines common prerequisites for connecting to data sources. Speci
 
     **Example Connection**
 
-    ```
+    ```txt
     Server Hostname: [dbc-xxxx-yyyy.cloud.databricks.com](http://dbc-xxxx-yyyy.cloud.databricks.com)
-    
     HTTP Path: /sql/1.0/warehouses/abcdef123456
-    
     Username: wisdom_user
-    
     Password: \*\*\*\*\*\*\*\*
-    
     Catalog: main
-    
     Schema: default
     ```
   </Tab>
@@ -124,20 +111,13 @@ This section outlines common prerequisites for connecting to data sources. Speci
 
     **Example Key Pair Connection**
 
-    ```
-    
+    ```txt
     Account: [xy12345.us](http://xy12345.us)-east-1
-    
     Username: wisdom_analytics
-    
     Private Key File: Upload your private key file (.p8 or .pem format)
-    
     Warehouse: ANALYTICS_WH
-    
     Database: BUSINESS_DATA
-    
     Schema: PUBLIC
-    
     Role: ANALYST_ROLE
     ```
 
@@ -152,16 +132,12 @@ This section outlines common prerequisites for connecting to data sources. Speci
 
     **Example Connection**
 
-    ```
-    
+    ```txt 
     Project ID: my-analytics-project-123
-    
     Authentication: Upload service account key JSON file
-    
     Dataset: analytics_data
     ```
-
-    <warning>
+  <warning>
   You'll need to create a service account in Google Cloud with appropriate permissions on the BigQuery datasets you want to access.
 </warning>
   </Tab>
