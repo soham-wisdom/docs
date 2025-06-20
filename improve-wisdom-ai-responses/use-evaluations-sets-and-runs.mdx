@@ -2,9 +2,28 @@
 title: "Use Evaluations Sets and Runs"
 ---
 
-<Tip>
-  Page Under Construction
-  This page is currently being developed. We're actively working to provide you with helpful and accurate documentation for Wisdom AI.
+**Evaluation Sets** and **Evaluation Runs** are crucial for rigorously testing and validating the performance of your domain's AI, ensuring it consistently generates accurate and relevant responses.
 
-  Please check back soon, new content is on the way\!
-</Tip>
+---
+## Evaluation Sets
+
+**Evaluation Sets** allow you to create specific sets of prompts that simulate user interactions. A key feature is the ability to provide **expected SQL outputs** alongside these prompts. This direct comparison helps measure the AI's accuracy in translating natural language into correct database queries.
+
+To create an Evaluation Set:
+
+* Navigate to the **Evaluation Sets Sub-tab**.
+* Click **Add Evaluation**.
+* Fill out the **Add Evaluation Form**, providing a set name and a JSON input for prompts, optionally including the expected SQL.
+
+The **Evaluation Sets List** displays all your existing evaluation sets.
+
+<img src="/images/eva-sets.png" alt="Image showing the Evaluation Sets sub-tab" />
+
+
+## Evaluation Runs
+
+**Evaluation Runs** are where the AI processes your defined Evaluation Sets. After running these evaluations, you can review the results to identify areas for improvement.
+
+The **Evaluation Runs List** (found in the **Evaluation Runs Sub-tab**) displays all completed evaluation runs and their corresponding results.
+
+<img src="/images/eva-runs.png" alt="Image showing the Evaluation Runs sub-tab" />
