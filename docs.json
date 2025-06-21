@@ -100,6 +100,12 @@
     "dark": "/logo/logo.svg"
   },
   "navbar": {
+    "links": [
+      {
+        "label": "Support",
+        "href": "mailto:support@askwisdom.ai"
+      }
+    ],
     "primary": {
       "type": "button",
       "label": "Dashboard",
