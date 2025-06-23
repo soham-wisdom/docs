@@ -29,11 +29,11 @@
               "setting-up-wisdom-ai/advanced-tutorial-fine-tuning-your-context",
               "setting-up-wisdom-ai/best-practices-testing-and-experimentation",
               {
-                "group": "setting-up-wisdom-ai/provide-feedback-to-the-system",
+                "group": "Feedback Mechanisms",
                 "pages": [
-                  "setting-up-wisdom-ai/provide-feedback-to-the-system",
-                  "setting-up-wisdom-ai/provide-feedback-to-the-system/limited-context",
-                  "setting-up-wisdom-ai/provide-feedback-to-the-system/monitor-negative-feedback"
+                  "setting-up-wisdom-ai/feedback-mechanisms/provide-feedback-to-the-system",
+                  "setting-up-wisdom-ai/feedback-mechanisms/limited-context",
+                  "setting-up-wisdom-ai/feedback-mechanisms/monitor-negative-feedback"
                 ]
               }
             ]

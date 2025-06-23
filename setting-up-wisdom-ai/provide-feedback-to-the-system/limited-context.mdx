@@ -1,23 +1,21 @@
 ---
-title: 'Limited Context'
-description: 'Description of your new file.'
+title: "Limited Context"
+description: "Description of your new file."
 ---
 
-## Limited Context
+The Limited Context marker is a key signal for monitoring the quality of WisdomAI responses. It appears when the system lacked complete domain knowledge to confidently answer a question, forcing the Large Language Model (LLM) to make assumptions based on partial information. These responses may still be useful but require closer review to ensure accuracy.
 
-    The Limited Context marker is a key signal for monitoring the quality of WisdomAI responses. It appears when the system lacked complete domain knowledge to confidently answer a question, forcing the Large Language Model (LLM) to make assumptions based on partial information. These responses may still be useful but require closer review to ensure accuracy.
+Administrators are responsible for identifying and acting upon Limited Context markers to maintain the precision of the domain configuration:
 
-    Administrators are responsible for identifying and acting upon Limited Context markers to maintain the precision of the domain configuration:
+- **Accessing Limited Context:** Within the **Chat Log**, toggle the **Has Limited Context** switch. Then, click **View details** on the relevant conversation to review responses flagged with Limited Context.
 
-    - **Accessing Limited Context:** Within the **Chat Log**, toggle the **Has Limited Context** switch. Then, click **View details** on the relevant conversation to review responses flagged with Limited Context.
+![Image showing the Has Limited Context switch](/images/has-limited-context.png)
 
-    ![Image showing the Has Limited Context switch](/images/has-limited-context.png)
+- **Visual Indicators:** Limited Context markers are displayed next to generated visualizations or answers. Access **View details**, hover over the thumbs down (👎) icon to view more details about knowledge gaps or uncertainties that affected the response.
 
-    - **Visual Indicators:** Limited Context markers are displayed next to generated visualizations or answers. Access **View details**, hover over the thumbs down (👎) icon to view more details about knowledge gaps or uncertainties that affected the response. 
+![Image showing the the View details modal](/images/has-limited-context-view-details.png)
 
-    ![Image showing the the View details modal](/images/has-limited-context-view-details.png)
-
-    - **Validation Process:**
-      - If the response is correct, give it a thumbs up to confirm its validity.
-      - If corrections are required, fork the chat, edit the visualization or answer, and thumbs up the improved version.
-    - **Domain Improvement:** Repeated Limited Context markers on similar topics may indicate missing concepts in the knowledge base. Consider updating domain content to reduce future uncertainty and improve overall response quality.
+- **Validation Process:**
+  - If the response is correct, give it a thumbs up to confirm its validity.
+  - If corrections are required, fork the chat, edit the visualization or answer, and thumbs up the improved version.
+- **Domain Improvement:** Repeated Limited Context markers on similar topics may indicate missing concepts in the knowledge base. Consider updating domain content to reduce future uncertainty and improve overall response quality.
