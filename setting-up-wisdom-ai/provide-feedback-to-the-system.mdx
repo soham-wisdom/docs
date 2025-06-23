@@ -34,7 +34,7 @@ Regardless of your user role, your immediate feedback on responses is crucial fo
     </Note>
     <img
       src="/images/thumb-downv2.png"
-      alt="Thumb Downv2 Pn"
+      alt="Image showing the Thumb Down action in chat"
       title="Thumb Downv2 Pn"
       style={{ width:"84%" }}
     />
@@ -53,13 +53,17 @@ As an Administrator, you have elevated capabilities to provide more granular fee
     - **Knowledge base integration:** Edited queries are not just one-time fixes; they become a permanent part of the system's knowledge base. This means WisdomAI learns from your corrections and will apply the improved logic to similar questions in the future.
     - **Value for Domain experts:** This SQL Edit feature is particularly valuable for Domain experts who possess a deep understanding of both the business context and the underlying data model, allowing them to fine-tune the system's data retrieval logic.
 
-    ![Sql Editing Pn](/images/sql-editing.png)
+    ![Image showing the Sql Editing window](/images/sql-editing.png)
 
     <Note>
       To learn how to edit SQL Queries, read [Validate and Test Answers](https://wisdomai.mintlify.app/improve-wisdom-ai-responses/validate-and-test-answers#edit-the-response).
     </Note>
   </Step>
-  <Step title="Monitor Negative Feedback" titleSize="h3">
+  <Step title="Monitor Response Quality" titleSize="h3">
+    Response quality mechanisms help administrators track and improve how accurately WisdomAI answers questions. These tools provide actionable insights, allowing teams to continuously enhance the knowledge base, correct inaccuracies, and increase confidence in generated responses. Two of the primary indicators to monitor are **Negative Feedback** and **Limited Context**.
+
+    #### Negative Feedback
+
     Administrators are responsible for reviewing and acting upon the negative feedback provided by all users. WisdomAI provides a structured process for this:
 
     - **Accessing Feedback:** Administrators can view all negative feedback by navigating to the **Chat Log** tab within the WisdomAI interface.
@@ -67,7 +71,7 @@ As an Administrator, you have elevated capabilities to provide more granular fee
     - **Email Notifications:** The system automatically channels negative feedback to administrators via email, ensuring prompt attention to issues that require intervention.
 
       <Info>
-        This is a Beta feature, reach out support at [support@wisdomai.com](mailto:support@askwisdom.ai) to sign up for email notifications when negative feedback is submitted.
+        This is a Beta feature, reach out support at [support@askwisdom.ai](mailto:support@askwisdom.ai) to sign up for email notifications when negative feedback is submitted.
       </Info>
     - **Prioritization for Improvement:** Questions marked with negative feedback are automatically prioritized for knowledge base improvement.
     - **Dedicated Administration:** For Domains with high usage or complex data, it is highly recommended to assign a dedicated administrator to regularly review feedback and make necessary updates to the knowledge base, ensuring continuous optimal performance.
@@ -78,6 +82,25 @@ As an Administrator, you have elevated capabilities to provide more granular fee
       title="Negative Feedback Chat Log Pn"
       style={{ width:"100%" }}
     />
+
+    #### Limited Context
+
+    The Limited Context marker is a key signal for monitoring the quality of WisdomAI responses. It appears when the system lacked complete domain knowledge to confidently answer a question, forcing the Large Language Model (LLM) to make assumptions based on partial information. These responses may still be useful but require closer review to ensure accuracy.
+
+    Administrators are responsible for identifying and acting upon Limited Context markers to maintain the precision of the domain configuration:
+
+    - **Accessing Limited Context:** Within the **Chat Log**, toggle the **Has Limited Context** switch. Then, click **View details** on the relevant conversation to review responses flagged with Limited Context.
+
+    ![Image showing the Has Limited Context switch](/images/has-limited-context.png)
+
+    - **Visual Indicators:** Limited Context markers are displayed next to generated visualizations or answers. Access **View details**, hover over the thumbs down (👎) icon to view more details about knowledge gaps or uncertainties that affected the response. 
+
+    ![Image showing the the View details modal](/images/has-limited-context-view-details.png)
+
+    - **Validation Process:**
+      - If the response is correct, give it a thumbs up to confirm its validity.
+      - If corrections are required, fork the chat, edit the visualization or answer, and thumbs up the improved version.
+    - **Domain Improvement:** Repeated Limited Context markers on similar topics may indicate missing concepts in the knowledge base. Consider updating domain content to reduce future uncertainty and improve overall response quality.
   </Step>
   <Step title="Review Queries" titleSize="h3">
     Administrators can directly review and manage a crucial aspect of WisdomAI's intelligence: the **Reviewed Queries** library.
@@ -92,7 +115,7 @@ As an Administrator, you have elevated capabilities to provide more granular fee
     <Note>
       To learn more about Reviewed Queries, read [Advanced Tutorial: Fine Tuning your Context](https://wisdomai.mintlify.app/setting-up-wisdom-ai/advanced-tutorial-fine-tuning-your-context#reviewed-queries).
     </Note>
-    ![Reviewed Queries Aa Pn](/images/reviewed-queries-aa.png)
+    ![Image showing Reviewed Queries](/images/reviewed-queries-aa.png)
   </Step>
 </Steps>
 
@@ -108,7 +131,7 @@ You can **Edit the default question-answer pairs** to clearly demonstrate the Do
   They come as **Enabled** by default. **Deleting all** the starter questions will automatically **Disable** this feature.
 </Warning>
 
-![Starter Question Pn](/images/starter-question.png)
+![Image showing the Starter Questions Page](/images/starter-question.png)
 
 ## **Monitor Learning Impact**
 
