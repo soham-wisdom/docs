@@ -31,6 +31,7 @@
               {
                 "group": "setting-up-wisdom-ai/provide-feedback-to-the-system",
                 "pages": [
+                  "setting-up-wisdom-ai/provide-feedback-to-the-system",
                   "setting-up-wisdom-ai/provide-feedback-to-the-system/limited-context",
                   "setting-up-wisdom-ai/provide-feedback-to-the-system/monitor-negative-feedback"
                 ]
