@@ -7,22 +7,33 @@ description: "Learn how to effectively use Evaluation Sets and Evaluation Runs t
 
 ## Evaluation Sets
 
-**Evaluation Sets** allow you to create specific sets of prompts that simulate user interactions. A key feature is the ability to provide **expected SQL outputs** alongside these prompts. This direct comparison helps measure the AI's accuracy in translating natural language into correct database queries.
+Evaluation Sets allow you to create specific sets of prompts that simulate user interactions. A key feature is the ability to provide expected SQL outputs alongside these prompts. This direct comparison helps measure the AI's accuracy in translating natural language into correct database queries.
 
 To create an Evaluation Set:
 
-- Navigate to the **Evaluation Sets Sub-tab**.
-- Click **Add Evaluation**.
-- Fill out the **Add Evaluation Form**, providing a set name and a JSON input for prompts, optionally including the expected SQL.
+1. Open a Domain and click on the **Evaluation** tab.
+2. Navigate to the **Evaluation Sets** Sub-tab.
+3. Click **Add Evaluation**.
 
-The **Evaluation Sets List** displays all your existing evaluation sets.
+![Image showing the Evaluations tab](/images/add-evaluation.png)
 
-![Image showing the Evaluation Sets sub-tab](/images/eva-sets.png)
+4. Fill out the **Add Evaluation** Form, providing a set **Name** and an array of prompts in JSON format, optionally including the expected SQL.
+
+- This will create 3 conversations, with the second one having 2 messages, and the first and third, having 1 message each.
+
+5. Click on **Save**. The new Evaluation set will appear listed.
+
+![Image showing the Add Evaluations form](/images/add-evaluation-form.png)
 
 ## Evaluation Runs
 
 **Evaluation Runs** are where the AI processes your defined Evaluation Sets. After running these evaluations, you can review the results to identify areas for improvement.
 
-The **Evaluation Runs List** (found in the **Evaluation Runs Sub-tab**) displays all completed evaluation runs and their corresponding results.
+To Run an Evaluation, go to the Evaluations Set tab, select an evaluation and click on **Run**. You will see the results in the Evaluation Runs tab.
 
-![Image showing the Evaluation Runs sub-tab](/images/eva-runs.png)
+## Next Steps
+
+- [Configure Domains](/improve-wisdom-ai-responses/configure-domains)
+- [Curate Knowledge Workflow](/improve-wisdom-ai-responses/curate-knowledge-workflow)
+- [Basic Tutorial: Connect and Test](/setting-up-wisdom-ai/basic-tutorial-connect-and-test)
+- [Advanced Tutorial: Fine Tuning Your Context](/setting-up-wisdom-ai/advanced-tutorial-fine-tuning-your-context)
