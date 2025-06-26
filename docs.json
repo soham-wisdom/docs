@@ -9,9 +9,6 @@
   },
   "favicon": "/favicon.webp",
   "navigation": {
-    "tabs": [
-      {
-        "tab": "Guides",
         "groups": [
           {
             "group": "Getting Started ",
@@ -89,9 +86,8 @@
               "reference-library/limits-and-quotas"
             ]
           }
-        ]
-      }
-    ],
+        ],
+
     "global": {
       "anchors": [
         {
