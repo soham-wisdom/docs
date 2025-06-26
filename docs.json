@@ -98,6 +98,16 @@
           "anchor": "Wisdom AI",
           "href": "https://www.askwisdom.ai/",
           "icon": "/favicon.png"
+        },
+        {
+          "anchor": "Dashboard",
+          "href": "https://try.askwisdom.ai/",
+          "icon": "display"
+        },
+        {
+          "anchor": "Support",
+          "href": "mailto:support@askwisdom.ai",
+          "icon": "headset"
         }
       ]
     }
