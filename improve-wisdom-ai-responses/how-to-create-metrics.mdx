@@ -1,9 +1,8 @@
 ---
 title: "How to Create Metrics"
-description: "Learn how to create and use metrics effectively for data analysis and tracking business performance in WisdomAI. Explore the interface and practical examples for all metric types."
 ---
 
-Metrics are essential for understanding your data. Simply put, they are numeric, quantitative values that can be measured to assess and track business performance. These quantifiable measurements help you identify trends and make informed decisions. You might also hear them called "Measures" in some analytics tools. This guide will walk you through how to create and use metrics effectively in WisdomAI.
+Metrics are numeric, quantitative values that can be measured to assess and track business performance. They help you identify trends to make informed decisions. This guide will walk you through how to create and use metrics effectively in WisdomAI.
 
 ## Types of Metrics
 
@@ -22,7 +21,7 @@ Here's a step-by-step guide:
 
 1. Navigate to the **Metrics** Tab within a **Domain**.
    - Select the relevant **Domain** (e.g., "B2B Sales") \> go to the **Knowledge** tab \> click **Metrics**.
-2. Click the **Add Metric** button on the Metrics tab.
+2. Click the **Add Metric** button.
 
 ![Add Metrics Pn](/images/add-metrics.png)
 
@@ -35,12 +34,12 @@ Here's a step-by-step guide:
      - **LLM Prompt:** Use a Large Language Model (LLM) to define the metric by selecting the Input column and providing a natural language prompt.
 
      ![Llm Prompt Pn](/images/llm-prompt.png)
-     - **Explain SQL in English** (Beta) Describe your desired SQL calculation in plain English and click on **Test** _(a previous step before saving your result)_. The system will attempt to generate the corresponding SQL.
+     - **Explain SQL in English** _(Beta)_ Describe your desired SQL calculation in plain English and click on **Test** _(a previous step before saving your result)_. The system will attempt to generate the corresponding SQL.
 
      ![Sql Explain Pn](/images/sql-explain.png)
 4. Fill in the **Text/SQL Expression Area:** Based on your chosen calculation method, you can use the large text area to input your SQL expression, LLM prompt, or English explanation.
 5. _(If SQL was chosen)_ Toggle the **Advanced Options** switch to access additional configurations:
-   - **Associated date column:** (Optional)This allows you to specify a date column in your data that is relevant to this metric. This is particularly useful for time-based analyses, filtering by date, or for metrics that inherently track changes over time.
+   - **Associated date column:** (Optional) This allows you to specify a date column in your data that is relevant to this metric. This is particularly useful for time-based analyses, filtering by date, or for metrics that inherently track changes over time.
    - **Associated group-by columns:** (Optional) Here, you can pre-define columns that are commonly used for grouping or segmenting this metric. (e.g. account State, customer ID)
 6. Once you have configured your metric, click **Save** to add it to your Domain's metrics list.
 
