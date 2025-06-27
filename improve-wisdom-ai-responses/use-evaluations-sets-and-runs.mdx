@@ -19,10 +19,17 @@ To create an Evaluation Set:
 4. Fill out the **Add Evaluation** Form, providing a set **Name** and an array of prompts in JSON format, optionally including the expected SQL.
 
    <Tip>
-     This will create 3 conversations, with the second one having 2 messages, and the first and third, having 1 message each.
+     The array you provide defines how many conversations will be created. Each _top-level element_ in the array represents a conversation:
+
+     ✔ If it's a string or an object → You get a single-message conversation\
+     ✔ If it's an array → You create a multi-message conversation
+
+     For example, this input:\
+     `["prompt1", ["prompt2.1", "prompt2.2"], "prompt3"]`\
+     creates **3 conversations**: the first and third with one message each, and the second with two messages.
+
+     You can structure the arrays in any way, mixing single and multi-message conversations as required.
    </Tip>
-
-
 5. Click on **Save**. The new Evaluation set will appear listed.
 
 ![Image showing the Add Evaluations form](/images/add-evaluation-form.png)
