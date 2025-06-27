@@ -6,7 +6,7 @@ title: "Use Evaluations Sets and Runs"
 
 ## Evaluation Sets
 
-Evaluation Sets allow you to create specific sets of prompts that simulate user interactions. A key feature is the ability to provide expected SQL outputs alongside these prompts. This direct comparison helps measure the AI's accuracy in translating natural language into correct database queries.
+Evaluation Sets allow you to **create specific sets of prompts** that simulate user interactions. A key feature is the ability to **provide expected SQL outputs** alongside these prompts. This direct comparison helps measure the AI's accuracy in translating natural language into correct database queries.
 
 To create an Evaluation Set:
 
@@ -36,13 +36,60 @@ To create an Evaluation Set:
 
 ## Evaluation Runs
 
-**Evaluation Runs** are where the AI processes your defined Evaluation Sets. After running these evaluations, you can review the results to identify areas for improvement.
+Evaluation Runs are where the AI processes your defined Evaluation Sets. After running these evaluations, you can review the results to identify areas for improvement.
 
 To Run an Evaluation, go to the Evaluations Set tab, select an evaluation and click on **Run**. You will see the results in the Evaluation Runs tab.
 
 ![Run Evaluation Pn](/images/run-evaluation.png)
 
-**[Article in progress]**
+### Evaluation Runs Indicators
+
+**Status:** Signals its progress or completion.
+
+- Running: The evaluation run is currently in progress.
+- Completed: The evaluation run has finished successfully.
+
+**Score:** Reflects the result of the completed evaluation. It tells you how many conversations passed based on predefined criteria.
+
+<Tip>
+  The score criteria depend on how the evaluation was configured, such as specific SQL matches which are set in the evaluation set details.
+</Tip>
+
+
+### View Evaluation Report
+
+When you click on the "View Report" option, you will be taken to an **Evaluation Report**. This report offers comprehensive details about how an evaluation run performed. Here's a breakdown of the information you'll find:
+
+**Report Summary**
+
+At the top of the report, you will see:
+
+- **View Domain:** A link that allows you to navigate to the specific domain that was evaluated.
+- **Soft Match:** This score indicates the overall performance of the evaluation. It's displayed as a fraction (e.g., "0 / 4"), showing how many of the evaluation criteria were successfully met out of the total.
+- \*\*Individual Session Details: \*\*The report organizes the evaluation results by individual sessions or queries.
+
+![View Report 01 Gi](/images/view-report-01.gif)
+
+**Individual Session Details**
+
+For each session, you can explore the following:
+
+- **Session Title:** This clearly states the query or task that was evaluated for that particular session (e.g., "Calculate total revenue for closed won opportunities using ACV.").
+- **Evaluation Details:** This section, which you can expand, provides specific insights into how the session's evaluation was conducted and its outcome:
+  - **Prompt:** The exact prompt that was used for this session.
+  - **Manual Score:** You have the ability to manually score the evaluation (✅ ❌). This overrides the Automated Score calculation.
+  - **Automated Score:** The score automatically assigned by the system for this evaluation.
+  - **Ground Truth:** This section explains the expected or correct outcome of the query. It often includes details about the relevant domain tables (e.g., "Table SalesOpportunities is not part of the domain tables Account, Contact, Contract, Opportunity, Stage, User, UserQuota, UserRole."), helping you understand why the system's output might differ from the expected result.
+  - **Generated Result:** This displays the output produced by the system, often including the underlying SQL query that was generated and the final numerical result (e.g., "\$137.55M").
+- **Conversation:** You can expand this section to review the entire conversational exchange related to that specific session. This includes:
+  - **AI Workstream:** This part offers a deeper look into the AI's processing of your query. It typically includes:
+    - **Tool Selected:** The specific tool or method the AI used (e.g., "Tabular Data").
+    - **Selected Examples:** Relevant examples of similar queries and their corresponding SQL, which guided the AI's understanding.
+    - **Step-by-step plan:** A detailed breakdown of the logical steps the AI followed to interpret your query, identify the necessary data, and construct the solution.
+  - The complete conversational interaction, showing your prompt and the system's response.
+  - A **Reviewed** status, which confirms whether the response has been reviewed and often provides a summary of the outcome (e.g., "The user received a complete response to their request with a specific value for total revenue from closed won opportunities using ACV, so no further action or information is needed.").
+
+By utilizing the "View Report" option, you gain comprehensive visibility into each evaluated query, empowering you to understand the system's processing, verify generated results, and review the underlying conversational logic.
 
 ## Next Steps
 
