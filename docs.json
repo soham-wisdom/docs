@@ -76,7 +76,6 @@
           {
             "group": "Advanced Features",
             "pages": [
-              "advanced-features/embed-or-export-dashboards",
               "advanced-features/visualization-types-and-properties"
             ]
           },
