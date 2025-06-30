@@ -23,20 +23,17 @@ Here's a step-by-step guide:
    - Select the relevant **Domain** (e.g., "B2B Sales") \> go to the **Knowledge** tab \> click **Metrics**.
 2. Click the **Add Metric** button.
 
-![Add Metrics Pn](/images/add-metrics.png)
+![Image showing te Add Metric option](/images/add-metrics.png)
 
 3. **Configure Your Metric**. In the Add a Metric modal window that opens, you will be prompted to provide the following information:
    - **Metric name:** Give your metric a clear, concise name that accurately describes what it measures.
    - **Calculation Method:** Select how the metric will be defined. The options include:
-     - **SQL Expression:** This is where you write standard SQL queries to define your metric's calculation. This is typically used for precise and complex aggregations.
 
-     ![3 And Sql Expression Pn](/images/3-and-sql-expression.png)
-     - **LLM Prompt:** Use a Large Language Model (LLM) to define the metric by selecting the Input column and providing a natural language prompt.
-
-     ![Llm Prompt Pn](/images/llm-prompt.png)
-     - **Explain SQL in English** _(Beta)_ Describe your desired SQL calculation in plain English and click on **Test** _(a previous step before saving your result)_. The system will attempt to generate the corresponding SQL.
-
-     ![Sql Explain Pn](/images/sql-explain.png)
+   | **Calculation Method**          | **Definition**                                                                                                                                                                   |
+   | ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | SQL Expression                  | This is where you write standard SQL queries to define your metric's calculation. This is typically used for precise and complex aggregations.                                   |
+   | LLM Prompt                      | Use a Large Language Model (LLM) to define the metric by selecting the Input column and providing a natural language prompt.                                                     |
+   | Explain SQL in English _(Beta)_ | Describe your desired SQL calculation in plain English and click on Test (a previous step before saving your result). The system will attempt to generate the corresponding SQL. |
 4. Fill in the **Text/SQL Expression Area:** Based on your chosen calculation method, you can use the large text area to input your SQL expression, LLM prompt, or English explanation.
 5. _(If SQL was chosen)_ Toggle the **Advanced Options** switch to access additional configurations:
    - **Associated date column:** (Optional) This allows you to specify a date column in your data that is relevant to this metric. This is particularly useful for time-based analyses, filtering by date, or for metrics that inherently track changes over time.
