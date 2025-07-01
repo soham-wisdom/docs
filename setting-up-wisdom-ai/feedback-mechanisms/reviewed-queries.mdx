@@ -1,0 +1,30 @@
+---
+title: "Reviewed Queries"
+---
+
+Reviewed Queries are a feedback-based type of context made up of a tuple of **a natural language question** and **its ideal SQL response**. By reviewing queries, you can help users get a higher degree of confidence in the answers they receive. This is the most critical aspect of context for the language model to understand your data, since it is directly tied to SQL.
+
+When you add Reviewed Queries, you have the following benefits:
+
+- **Accuracy:** Pre-vetted queries ensure consistent and correct results.
+- **Performance:** Optimized query execution paths for common questions.
+- **Reusability:** Common business questions can be stored once and reused.
+- **Canonicalization:** Standardize the way metrics are calculated and combined.
+
+## Create Reviewed Queries
+
+Reviewed queries are created from the chat experience. Each chat response comes with a thumb up/thumb down button to provide feedback. When you click the **thumb up** icon, a modal to Review the Question opens. Here, you need to add the question that the SQL code answers to. After confirmation, these queries will be listed in the **Knowledge** > **Reviewed Queries** tab.
+
+The following code block shows an example of a query to calculate the win rate for sales that was validated by clicking the thumb up button.
+
+```
+SELECT 
+  SAFE_DIVIDE(
+    SUM(CASE WHEN `stage_label` = 'Closed Won' THEN `acv` ELSE 0 END), 
+    SUM(`acv`)
+  ) AS `win_rate`
+FROM `wisdom-staging-406623`.`b2bsaleshomebrew`.`Opportunity`
+WHERE `stage_label` IN ('Evaluation', 'Negotiation', 'Closed Loss', 'Closed Won');
+```
+
+![Image showing the Review a Question modal](/images/review-question-v02-em.png)

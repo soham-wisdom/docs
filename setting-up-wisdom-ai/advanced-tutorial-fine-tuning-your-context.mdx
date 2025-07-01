@@ -1,122 +1,13 @@
 ---
-title: "Context Configuration in a Domain"
+title: "Add Domain-Specific Knowledge"
 ---
 
-This tutorial is intended for:
+To improve how WisdomAI understands and answers user queries, you can add your business context to your domain. This will help refine data interpretation, align responses with business definitions, and improve overall accuracy.
 
-- Admin users, who are in charge of configuring data sources and setting up the chatbot.
-- Data Administrators, responsible for configuring particular Domains.
+Here's how to do it:
 
-## Learning Objectives
-
-By the end of this tutorial, you will be able to:
-
-- Adjust and enrich the Context used by Wisdom AI to better understand queries.
-- Manage and fine-tune data source connections at a detailed level.
-- Test and validate your adjustments to ensure the chatbot responds correctly.
-
-Once you have completed this tutorial, you will have fine-tuned your data so the Wisdom AI chatbot can deliver more accurate and context-aware responses, improving its ability to analyze and interact with your data effectively.
-
-## Before you Begin
-
-To follow this tutorial, you should:
-
-- Have Admin/Data Admin access to your Wisdom AI account.
-- Have read the [Basic Tutorial: Connect and Experiment](https://wisdomai.mintlify.app/setting-up-wisdom-ai/Basic-Tutorial-Connect-and-Experiment) article to learn how to Connect to your Data Sources and how to create Domains.
-- Have already created at least one Domain and added data to it.
-
-## Fine-tune your Context and Responses
-
-To improve how the AI understands and answers user queries, you can fine-tune your domain’s context and logic directly from the **Domain** tab. This section offers multiple tools to refine data interpretation, align responses with business definitions, and improve overall accuracy.
-
-### Access Domain Configuration
-
-1. Navigate to the **Domain** tab in the left sidebar and open it.
-2. Select the Domain you would like to fine-tune. A panel with multiple tabs will open.
-
-![Domain Tab](/images/domain-tab.png)
-
-### Domain Tabs Useful for Context Configuration
-
-These are the key tabs within the Domain section that help you define and refine contextual information for accurate AI responses.
-
-- **DATA SOURCES**: This tab is where you manage and model the raw data structure to make it queryable and insightful within the platform. To enhance Context from the Data Sources tab, you can:
-  - **Document Tables and Columns**: Write clear natural language descriptions for tables and columns to help the AI interpret schema elements accurately.
-  - **Define Metrics with SQL**: Use SQL formulas to define key metrics and calculations, ensuring consistency and precision in responses.
-- **KNOWLEDGE**: Here is where you define how the system should interpret your data. By adding natural language Context and Reviewed Queries, you help the AI generate more accurate and business-aligned responses that meet your business's definitions and expectations.
-
-  To start fine-tuning your data, you can:
-  - **Add Context**: Provide domain-specific knowledge, rules, or naming conventions in natural language to guide the AI’s understanding.
-  - **Add Reviewed Queries**: Pair natural language questions with their ideal SQL responses to train the system on how key questions should be answered.
-- **SUGGESTIONS**: These are system-generated recommendations that help improve context by identifying ambiguities, missing relationships, or areas where clarification is needed.
-
-![Domain Data Source Tab](/images/data-sources-page.png)
-
-## Document Tables and Columns
-
-Proper documentation of tables and columns is essential for data governance, user understanding, and effective analytics.
-
-### Document Tables
-
-For each table in your data model, there is a single required documentation field:
-
-| **Field**       | **Description**                                                                                                                                                         | **Example**                                                                                                                                                                                                                                                                                                                                             |
-| --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Description** | In this field, you should provide a clear explanation of what the table represents, focusing on a concise, plain-English description of each row’s purpose and content. | This table stores detailed records of business accounts that have monthly revenue exceeding \$10,000. Each row represents a single account and includes fields such as account ID, account name, industry classification, account creation date, current status (active, inactive, suspended), monthly revenue amount, and primary contact information. |
-
-<Tip>
-  Always specify the granularity of each row in your table description. This helps analysts understand the level of detail in the data and prevents misinterpretation during analysis.
-</Tip>
-
-To Document tables, go to **Domains** \> **Select a Domain** \> **Data Sources** \> **Tables**.
-
-![Document Tables](/images/document-tablesv2.png)
-
-### Document Columns
-
-For columns, WisdomAI supports these documentation fields:
-
-| **Field**          | **Description**                                                                                                      |
-| ------------------ | -------------------------------------------------------------------------------------------------------------------- |
-| **Display Name**   | User-friendly name shown in the interface (especially useful if the actual column name is technical or abbreviated). |
-| **Description**    | Clear explanation of what the column represents in business terms.                                                   |
-| **Display Format** | How the data should be formatted and displayed to users.                                                             |
-
-To Document Columns, click on the table's name. A new page will open, displaying a list of all columns in the table.
-
-![Document Columns](/images/document-columnsv2.png)
-
-<Info>
-  To learn more about Defining Metrics with SQL, read [How to Use Metrics](/improve-wisdom-ai-responses/how-to-use-metrics).
-</Info>
-
-## Context
-
-In the Context section, you can share domain-specific knowledge or information in natural language sentences. This helps the system understand your business context and formulate precise queries. For example, you can provide information like: "_Regions are the same as Territories_" or _"My sales stages are: Prospect, Negotiation, Closed_".
-
-When you add Context, you have the following benefits:
-
-- **Accuracy:** Helps the system interpret ambiguous terms and generate precise queries based on your business logic.
-- **Completeness:** Captures domain-specific knowledge that may not exist in the table or the column names, filling important documentation gaps.
-- **Guidance:** Steers the AI to better understand relationships and business rules, improving the quality of responses to natural language questions.
-
-The example on these images below illustrates how adding domain-specific context improves the AI's ability to interpret questions accurately and generate more relevant responses.
-
-<Tabs>
-  <Tab title="Chat response before Context enhancement">
-    ![Calculation Wo Context Pn](/images/calculation-wo-context.png)
-  </Tab>
-  <Tab title="Chat response after Context enhancement">
-    ![Calculation With Context Pn](/images/calculation-with-context.png)
-  </Tab>
-</Tabs>
-
-As you saw with the win rate example, without context the AI gave a simple ratio based on deal counts; basically “closed won divided by total closed deals.” But with the added details, it understood to use revenue values (ACV) and only include deals that reached the evaluation phase, which is much closer to how sales teams really measure success. This shows how important it is to provide clear business logic and data definitions through adding Context so the AI can give answers that actually make sense in your specific workflow.
-
-### Adding Context
-
-1. Open the relevant **Domain** from your dashboard.
-2. Navigate to the **Knowledge** tab within the selected Domain.
+1. Select the relevant **Domain** from your Domains dashboard.
+2. Navigate to the **Knowledge** tab.
 3. Select the **Context** tab inside the Knowledge section.
 4. Click on the **\+ Add Context** button to begin a new entry adding natural language context.
    - Alternatively, **upload a file** containing domain-specific information.
@@ -125,55 +16,15 @@ As you saw with the win rate example, without context the AI gave a simple ratio
 
 ![Add Context Nl Pn](/images/add-context-nl.png)
 
-## Reviewed Queries
+### Domain Tabs Useful for Context Configuration
 
-Reviewed Queries are a tuple of **a natural language question** and **its ideal SQL response**. By reviewing queries, you can help users get a higher degree of confidence in the answers they receive. This is the most critical aspect of context for the language model to understand your data, since it is directly tied to SQL.
+These are other key tabs within the Domain section that help you define and refine contextual information for accurate AI responses.
 
-When you add Reviewed Queries, you have the following benefits:
+- **DATA SOURCES**: This tab is where you manage and model the raw data structure to make it queryable and insightful within the platform. To enhance Context from the Data Sources tab, you can:
+  - [**Document Tables and Columns**](/setting-up-wisdom-ai/document-tables-and-columns): Write clear natural language descriptions for tables and columns to help the AI interpret schema elements accurately.
+  - [**Define Metrics with SQL**](/improve-wisdom-ai-responses/how-to-create-metrics): Use SQL formulas to define key metrics and calculations, ensuring consistency and precision in responses.
+- **KNOWLEDGE**: Here is where you define how the system should interpret your data. By adding natural language Context and Reviewed Queries, you help the AI generate more accurate and business-aligned responses that meet your business's definitions and expectations.
 
-- **Accuracy:** Pre-vetted queries ensure consistent and correct results.
-- **Performance:** Optimized query execution paths for common questions.
-- **Reusability:** Common business questions can be stored once and reused.
-- **Canonicalization:** Standardize the way metrics are calculated and combined.
-
-### Create Reviewed Queries
-
-Reviewed queries are created from the chat experience. Each chat response comes with a thumb up/thumb down button to provide feedback. When you click the **thumb up** icon, a modal to Review the Question opens. Here, you need to add the question that the SQL code answers to. After confirmation, these queries will be listed in the **Knowledge** \> **Reviewed Queries** tab.
-
-The following code block shows an example of a query to calculate the win rate for sales that was validated by clicking the thumb up button.
-
-```
-SELECT 
-  SAFE_DIVIDE(
-    SUM(CASE WHEN `stage_label` = 'Closed Won' THEN `acv` ELSE 0 END), 
-    SUM(`acv`)
-  ) AS `win_rate`
-FROM `wisdom-staging-406623`.`b2bsaleshomebrew`.`Opportunity`
-WHERE `stage_label` IN ('Evaluation', 'Negotiation', 'Closed Loss', 'Closed Won');
-```
-
-![Image showing the Review a Question modal](/images/review-question-v02-em.png)
-
-## Suggestions
-
-Suggestions are AI-generated prompts or recommendations that:
-
-- Identify ambiguous or conflicting data (e.g. conflicting table names like `Opportunity` and `Opportunity_v2`).
-- Recommend additional context or relationships to improve clarity.
-- Help admins clean and improve metadata.
-- Can be accepted and saved to the knowledge base.
-
-Suggestions serve as proactive helpers to improve context completeness and data quality.
-
-## Continuous Learning
-
-WisdomAI continuously improves its understanding through feedback loops with users including:
-
-- **Direct Corrections:** Users can mark responses as incorrect and provide the right answer.
-- **Query Refinements:** System learns from how users modify and refine their questions.
-- **Usage Patterns:** Identify common queries and optimize for them.
-
-To know more about Feedback, refer to the [Provide Feedback to the System](https://wisdomai.mintlify.app/setting-up-wisdom-ai/provide-feedback-to-the-system) article.
 
 ## **Next Steps**
 

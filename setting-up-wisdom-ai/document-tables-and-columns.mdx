@@ -1,0 +1,36 @@
+---
+title: "Document Tables and Columns"
+---
+
+Proper documentation of tables and columns provides the foundational context required for formal semantic modeling. This initial step is essential for translating technical database structures into familiar business concepts and is critical for data governance, user understanding, and effective analytics. This guide will show you how to do it.
+
+## Document Tables
+
+For each table in your data model, there is a single required documentation field:
+
+| **Field**       | **Description**                                                                                                                                                         | **Example**                                                                                                                                                                                                                                                                                                                                             |
+| --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Description** | In this field, you should provide a clear explanation of what the table represents, focusing on a concise, plain-English description of each row’s purpose and content. | This table stores detailed records of business accounts that have monthly revenue exceeding \$10,000. Each row represents a single account and includes fields such as account ID, account name, industry classification, account creation date, current status (active, inactive, suspended), monthly revenue amount, and primary contact information. |
+
+<Tip>
+  Always specify the granularity of each row in your table description. This helps analysts understand the level of detail in the data and prevents misinterpretation during analysis.
+</Tip>
+
+To Document tables, go to **Domains** \> **Select a Domain** \> **Data Sources** \> **Tables**.
+
+![Document Tables](/images/document-tablesv2.png)
+
+## Document Columns
+
+For columns, WisdomAI supports these documentation fields:
+
+| **Field**          | **Description**                                                                                                      |
+| ------------------ | -------------------------------------------------------------------------------------------------------------------- |
+| **Display Name**   | User-friendly name shown in the interface (especially useful if the actual column name is technical or abbreviated). |
+| **Description**    | Clear explanation of what the column represents in business terms.                                                   |
+| **Display Format** | How the data should be formatted and displayed to users.                                                             |
+
+To Document Columns, click on the table's name. A new page will open, displaying a list of all columns in the table.
+
+![Document Columns](/images/document-columnsv2.png)
+
