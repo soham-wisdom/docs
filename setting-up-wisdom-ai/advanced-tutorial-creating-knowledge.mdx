@@ -26,6 +26,10 @@ This section outlines the core concepts behind translating raw database structur
     | ------------ | --------------------------------------------------------------- |
     | Display Name | Sets a user-friendly name for a column.                         |
     | Description  | Explains what the table or column represents in business terms. |
+
+    <Note>
+      For a detailed guide on this topic, please refer to our article [Document Tables and Columns](/setting-up-wisdom-ai/document-tables-and-columns).
+    </Note>
   </Step>
   <Step title="Defining Entities">
     Group columns into logical business objects that represent real-world concepts, like "Customer," "Product," or "Order". When creating an entity, you will name it, map it to one or more data source tables, and configure its properties, including its primary key and the default display name field.
@@ -60,9 +64,7 @@ This section covers the methods for providing the AI with unstructured, domain-s
     Add domain-specific knowledge, rules, or naming conventions in natural language sentences to guide the AI’s understanding. An example is, "_Regions are the same as Territories_". This improves accuracy by helping the system interpret ambiguous terms and captures knowledge that does not exist in the database schema. It is crucial to validate the impact of manual entries by asking a question in the chat interface to see if the response is as expected.
 
     <Note>
-      Refer to the Connect and Experiment Use Case to see an example of the impact of adding context.
-
-      To learn how to add Context, read the article 
+      To learn how to add Context, read the article [Add Domain-Specific Knowledge](/setting-up-wisdom-ai/advanced-tutorial-fine-tuning-your-context). There, you will find an example of how the response changes after you add context.
     </Note>
   </Step>
   <Step title="Importing Unstructured Knowledge (Beta)">
@@ -77,13 +79,15 @@ This section describes the continuous learning loop, where direct user feedback 
 <Steps>
   <Step title="Creating Reviewed Queries">
     Create a library of pre-vetted queries by pairing a natural language question with its ideal SQL response. This is the most critical aspect of context for the language model to understand your data. Reviewed Queries are created from the chat experience by giving a "thumb up" to a correct response and then confirming the natural language question that the SQL code answers. This process ensures accuracy and consistency for common business questions.
+
+    <Note>
+      To learn more about reviewing queries, refer to the [Reviewed Queries](/setting-up-wisdom-ai/feedback-mechanisms/reviewed-queries) article.
+    </Note>
   </Step>
   <Step title="Advanced Feedback and Corrections">
     Provide direct feedback to correct the AI and allow power users to refine the underlying SQL, creating a robust knowledge base from user interactions. Users can mark responses as incorrect to flag them for review.
 
-        \* SQL Editing for Power Users: Each answer in the chat has an "Edit" button, which allows power users to modify the underlying SQL query directly to fix calculation issues, add joins, or modify filters. Edited queries become part of the system's knowledge base for handling similar questions in the future.
-
-        \* Negative Feedback Workflow: Negative feedback is channeled to administrators for review. This is managed through a "Questions" tab in the interface, visual indicators that highlight chats with negative feedback, and automatic email notifications that are sent to administrators for prompt attention.
+    -  SQL Editing for Power Users: Each answer in the chat has an "Edit" button, which allows Admin users to modify the underlying SQL query directly to fix calculation issues, add joins, or modify filters. Edited queries become part of the system's knowledge base for handling similar questions in the future.
+    - Negative Feedback Workflow: Negative feedback is channeled to administrators for review. This is managed through a "Questions" tab in the interface, visual indicators that highlight chats with negative feedback, and automatic email notifications that are sent to administrators for prompt attention.
   </Step>
 </Steps>
-
