@@ -23,7 +23,7 @@
             "group": "Setting Up Wisdom AI",
             "pages": [
               "setting-up-wisdom-ai/basic-tutorial-connect-and-test",
-              "setting-up-wisdom-ai/advanced-tutorial-creating-knowledge",
+              "setting-up-wisdom-ai/advanced-data-modeling-creating-knowledge",
               "setting-up-wisdom-ai/add-domain-specific-knowledge",
               "setting-up-wisdom-ai/document-tables-and-columns",
               {
