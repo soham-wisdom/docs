@@ -21,7 +21,16 @@ This section outlines the core concepts behind translating raw database structur
     </Note>
   </Step>
   <Step title="Defining Entities">
-    Group columns into logical business objects that represent real-world concepts, like "Customer," "Product," or "Order". When creating an entity, you will name it, map it to one or more data source tables, and configure its properties, including its primary key and the default display name field.
+    An Entity is a business-critical object, such as "Account" or "Product," represented within the Data Graph. In Wisdom AI, these entities are treated with priority in the chat experience to enhance user understanding and interaction.
+
+    When an entity is defined, Wisdom AI automatically improves the chat response by:
+
+    - Replacing unintuitive ID columns with human-readable names.
+    - Displaying related columns to provide a more complete context.
+    - Providing direct, automatically resolved answers.
+    - Generating external links to source systems, like Salesforce for an "Opportunity" or Zendesk for a "Case."
+
+    Creating an entity involves grouping columns from one or more data source tables into a logical business object that mirrors a real-world concept. This process includes naming the entity, mapping it to its underlying data tables, and configuring its properties, such as its primary key and the field that will serve as its default display name.
   </Step>
   <Step title="Establishing Relationships">
     Define the connections between entities to allow for precise data model navigation. Create relationships by selecting the source and target tables and their corresponding attributes. You must configure the relationship's cardinality (1:1, 1:M, M:M). 
