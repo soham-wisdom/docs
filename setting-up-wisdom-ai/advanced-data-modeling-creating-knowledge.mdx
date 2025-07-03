@@ -19,6 +19,7 @@ This section outlines the core concepts behind translating raw database structur
     <Note>
       For a detailed guide on this topic, please refer to our article [Document Tables and Columns](/setting-up-wisdom-ai/document-tables-and-columns).
     </Note>
+    ![Document Tables Pn](/images/document-table.png)
   </Step>
   <Step title="Defining Entities">
     An Entity is a business-critical object, such as "Account" or "Product," represented within the Data Graph. In Wisdom AI, these entities are treated with priority in the chat experience to enhance user understanding and interaction.
@@ -31,6 +32,8 @@ This section outlines the core concepts behind translating raw database structur
     - Generating external links to source systems, like Salesforce for an "Opportunity" or Zendesk for a "Case."
 
     Creating an entity involves grouping columns from one or more data source tables into a logical business object that mirrors a real-world concept. This process includes naming the entity, mapping it to its underlying data tables, and configuring its properties, such as its primary key and the field that will serve as its default display name.
+
+    ![Entity Mapping Pn](/images/entity-mapping.png)
   </Step>
   <Step title="Establishing Relationships">
     Define the connections between entities to allow for precise data model navigation. Create relationships by selecting the source and target tables and their corresponding attributes. You must configure the relationship's cardinality (1:1, 1:M, M:M). 
@@ -38,16 +41,24 @@ This section outlines the core concepts behind translating raw database structur
     <Warning>
       Use join cardinality carefully, as incorrect settings can drastically change query results and lead to missing or duplicated data.
     </Warning>
+    ![Create Relationship Pn](/images/create-relationship.png)
   </Step>
-  <Step title="Creating Metrics and Derived Data">
-    Define standard calculations and augment the data model with derived fields to enforce consistent business logic and simplify analysis for end-users. This involves creating:
-
-    - **Metrics**: Quantifiable business calculations, such as Revenue or Conversion Rate, that are defined with SQL expressions and can be reused across the organization.
+  <Step title="Creating Metrics">
+    Define standard calculations to enforce consistent business logic and simplify analysis for end-users. This involves creating Metrics, which are quantifiable business calculations, such as Revenue or Conversion Rate, that are defined with SQL expressions and can be reused across the organization.
 
     <Note>
       For a comprehensive guide on this topic, including step-by-step instructions and detailed examples, please refer to our full article, [How to Create Metrics](/improve-wisdom-ai-responses/how-to-create-metrics).
     </Note>
-    - **Derived Columns and Tables**: Calculated fields or virtual tables created with SQL to clean, enrich, or simplify complex underlying data.
+    ![Metrics Tab Pn](/images/metrics-tab.png)
+  </Step>
+  <Step title="Data Model Augmentation">
+    Augment your data model with derived tables and columns using standard SQL syntax. Derived Columns and Tables are calculated fields or virtual tables created with SQL to clean, enrich, or simplify complex underlying data. These augmentations can be used to:
+
+    - **Clean Data:** Standardize formats, handle missing values, fix inconsistencies.
+    - **Enrich Data:** Add business context, derive new metrics, categorize values.
+    - **Simplify Analysis:** Create business-friendly views of complex underlying data.
+
+    ![Derived Table Pn](/images/derived-table.png)
   </Step>
 </Steps>
 
@@ -64,12 +75,20 @@ This section covers the methods for providing the AI with unstructured, domain-s
     <Note>
       To learn how to add Context, read the article [Add Domain-Specific Knowledge](/setting-up-wisdom-ai/advanced-tutorial-fine-tuning-your-context). There, you will find an example of how the response changes after you add context.
     </Note>
+    ![Context Tab Pn](/images/context-tab.png)
   </Step>
   <Step title="Importing Unstructured Knowledge (Beta)">
-    Enhance the AI’s context by importing knowledge directly from existing business and technical documents. This process is handled through the 'Chat' experience, which allows for an interactive experience to selectively extract context. Supported information types that can be imported include ERD Diagrams, dbt files, SQL queries, Data Dictionaries, and Business Glossaries.
+    Enhance the AI’s context by importing knowledge directly from existing business and technical documents. This process is handled through the 'Chat' experience, which allows for an interactive experience to selectively extract context. Supported information types that can be imported include:
+
+    - ERD Diagrams: Extract entity relationships from diagram images.
+    - dbt Files: Import transformation logic and metric definitions.
+    - SQL Queries: Learn from existing queries and report definitions.
+    - Data Dictionaries: Import field descriptions and business definitions.
+    - Business Glossaries: Learn industry and company-specific terminology.
+    - CSV files: Import master data, mapping tables, or lists of business entities to learn categorical values and key dimensions (e.g., product catalogs, regional hierarchies, or customer segments).
 
     <Note>
-      To learn how to upload CSV files from the chat interface, read the [Basic Tutorial](https://docs.askwisdom.ai/setting-up-wisdom-ai/basic-tutorial-connect-and-test#upload-csv-files).
+      To learn how to upload CSV files, read the [Basic Tutorial](https://docs.askwisdom.ai/setting-up-wisdom-ai/basic-tutorial-connect-and-test#upload-csv-files). Speak with your WisdomAI representative to enable any of the other features.
     </Note>
   </Step>
 </Steps>
@@ -85,11 +104,14 @@ This section describes the continuous learning loop, where direct user feedback 
     <Note>
       To learn more about reviewing queries, refer to the [Reviewed Queries](/setting-up-wisdom-ai/feedback-mechanisms/reviewed-queries) article.
     </Note>
+    ![Reviewed Queries Aa Pn](/images/reviewed-queries-aa.png)
   </Step>
   <Step title="Advanced Feedback and Corrections">
     Provide direct feedback to correct the AI and allow power users to refine the underlying SQL, creating a robust knowledge base from user interactions. Users can mark responses as incorrect to flag them for review.
 
     - [**SQL Editing for Power Users**](https://docs.askwisdom.ai/setting-up-wisdom-ai/feedback-mechanisms/provide-feedback-to-the-system#advanced-feedback-mechanisms-for-administrators): Each answer in the chat has an "Edit" button, which allows Admin users to modify the underlying SQL query directly to fix calculation issues, add joins, or modify filters. Edited queries become part of the system's knowledge base for handling similar questions in the future.
     - [**Negative Feedback Workflow**](/setting-up-wisdom-ai/feedback-mechanisms/monitor-negative-feedback): Negative feedback is channeled to administrators for review. This is managed through visual indicators that highlight chats with negative feedback, and automatic email notifications that are sent to administrators for prompt attention.
+
+    ![Sql Editing Pn](/images/sql-editing.png)
   </Step>
 </Steps>
