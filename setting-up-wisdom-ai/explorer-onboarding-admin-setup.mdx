@@ -1,5 +1,66 @@
 ---
-title: 'Explorer Onboarding Admin Setup'
+title: "Explorer Onboarding Admin Setup"
 ---
 
-Page under construction
+This guide provides administrators with the necessary instructions to configure the onboarding experience for Explorer users. A well-structured onboarding process helps Explorers get answers faster, understand the system's capabilities, and learn how to ask better questions.
+This setup involves three key features:
+
+- [Starter Questions:](#starter-questions) Pre-loaded questions to give new users a starting point.
+- [Prompt Gallery:](#prompt-gallery) A library of curated, reusable prompts that serve as powerful query templates.
+- [Autocomplete:](#autocomplete) Domain-specific query suggestions that are populated directly from your Prompt Gallery.
+
+## Starter Questions
+
+Starter Questions are enabled by default to help users get started with a new domain. These questions come pre-loaded and are designed to work "out of the box." Your primary task is to refine them to better match your organization's specific needs and terminology.
+
+To find them, go to **Domains** \> _Select a domain_ \> **Advanced** \> **Starter Questions**
+
+![Image showing the Starter Questions configuration screen in the Advanced tab.](/images/starter-question.png)
+
+<Note>
+  - Currently, you can only **edit or delete** the default Starter Questions. You **cannot add new ones** from scratch.
+  - If you delete all the Starter Questions, the feature will be disabled, and you will not be able to create new ones. It is highly recommended to **edit the existing questions** rather than deleting them.
+  - To learn how to edit Starter Questions, read [Add Sample Q&A for Starters](/setting-up-wisdom-ai/feedback-mechanisms/provide-feedback-to-the-system#add-sample-q%26a-for-starters).
+</Note>
+
+## Prompt Gallery
+
+The **Prompt Gallery** is a curated collection of reusable prompts. This is the most powerful tool for guiding your Explorers, as it serves two functions:
+
+1. Helps you create a browsable gallery of expert-level queries.
+2. Uses the generated prompts to populate the Autocomplete suggestions in the chat.
+
+To add a new prompt:
+
+1. Navigate to the **Prompt Gallery** tab within your selected domain.
+2. Click the **Add Prompt** button.
+
+![Image showing the Add Prompt button](/images/add-prompt.png)
+
+3. In the dialog box that appears, you will need to define:
+   - **The Prompt:** Write the full query you want to save. This should be a well-formed question or command that provides significant value.
+   - **Topics:** Assign one or more topics (e.g., "Contract Management," "Opportunity Analysis"). This helps organize the gallery for easier Browse.
+4. Click **Create**. Your new prompt is now part of the gallery and will be used for autocomplete suggestions.
+
+![Image showing the Add Prompt Modal](/images/add-prompt-modal.png)
+
+5. Click on the prompt to open the chat and see the system's response to it.
+
+![Prompt Chat Response Pn](/images/prompt-chat-response.png)
+
+### Autocomplete
+
+The Autocomplete feature is directly tied to the prompts you create in the gallery. It is a domain-specific function, this means that a suggestion will only be retrieved from the Prompt Gallery of such domain.
+
+- **Source:** The suggestions are sourced _exclusively_ from the list of prompts in your **Prompt Gallery**. It does not pull from a user's chat history or other sources.
+- **Functionality:** When an Explorer starts typing a query in the main chat window, the system will search the Prompt Gallery for relevant prompts and display them as clickable autocomplete suggestions.
+
+![Gif showing how a prompt from the gallery appears as an autocomplete suggestion in the main chat interface](/images/autocomplete.gif)
+
+To manage your Autocomplete suggestions, you must manage your Prompt Gallery. Adding, editing, or deleting prompts in the gallery will directly affect the suggestions that appear for your Explorers. This setup ensures that users are always guided by a curated and admin-approved set of queries.
+
+## Next Steps
+
+- [Advanced Data Modeling: Creating Knowledge](/setting-up-wisdom-ai/advanced-data-modeling-creating-knowledge)
+- [Provide Feedback to the System](/setting-up-wisdom-ai/provide-feedback-to-the-system)
+- [Configure Domains](/improve-wisdom-ai-responses/configure-domains)
