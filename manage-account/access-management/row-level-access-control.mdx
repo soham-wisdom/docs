@@ -10,15 +10,32 @@ This capability facilitates:
 - **Enhancing data privacy and compliance:** Meeting regulatory requirements (like GDPR, HIPAA) by controlling who can see personal or confidential information.
 - **Creating personalized data views:** Allowing different users to interact with the same underlying data model, but only seeing the relevant subset of information pertinent to their role or responsibilities.
 
-## Advanced Capabilities in WisdomAI
+## How to Set Up Row-Level Authorization
 
-WisdomAI supports advanced row-level access control capabilities that allow administrators to restrict which rows of data specific users or groups can access. This feature is useful for:
+1. Navigate to the Data tab, click the three-dot menu next to the desired table, and select "Row Level Authz".
 
-- Implementing data segregation by region, department, or team.
-- Enforcing privacy and compliance requirements.
-- Creating personalized views of the same data model.
+2. To create the master permission list, choose to configure the table as an "index table".
 
-To configure Row Level Access Control for your environment, please contact [**support@askwisdom.ai**](mailto:support@askwisdom.ai) for assistance.
+3. Set the "Email column" to the column that contains user emails for row-level authorization.
+
+4. Set the "Internal ID column" to the column with the unique identifier used to filter other tables and save.
+
+5. For the data table you want to restrict, open its "Row Level Authz" settings.
+
+6. Choose to configure this table as a "filtered table".
+
+7. Select the "Index Table" you previously configured so it appears in the dropdown.
+
+8. Select the "Internal Column" that will join with the Index Table’s Internal Column.
+
+9. Click on save to keep your changes.
+
+## Key Considerations
+
+- **Data Admins** bypass all restrictions and can view all data, while **Explorers** will always see filtered views.
+- The system works best when user emails in your data match Wisdom user emails, though it can handle some variations.
+- For filtering to work, the index table and filtered tables must be joinable on their respective ID columns.
+- The table embedded RAG solution is not currently filtered by RLA, meaning all users may see all indexed results.
 
 ## Next Steps
 

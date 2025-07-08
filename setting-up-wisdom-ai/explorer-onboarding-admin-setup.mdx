@@ -5,15 +5,15 @@ title: "Explorer Onboarding Admin Setup"
 This guide provides administrators with the necessary instructions to configure the onboarding experience for Explorer users. A well-structured onboarding process helps Explorers get answers faster, understand the system's capabilities, and learn how to ask better questions.
 This setup involves three key features:
 
-- [Starter Questions:](#starter-questions) Pre-loaded questions to give new users a starting point.
-- [Prompt Gallery:](#prompt-gallery) A library of curated, reusable prompts that serve as powerful query templates.
-- [Autocomplete:](#autocomplete) Domain-specific query suggestions that are populated directly from your Prompt Gallery.
+- [Starter Questions:](#starter-questions) Help new users get immediate value by showing them the types of questions they can ask, removing the initial challenge of what to ask first.
+- [Prompt Gallery:](#prompt-gallery) Allow users to leverage expert-level queries without needing to craft them from scratch, enabling more powerful and sophisticated data exploration.
+- [Autocomplete:](#autocomplete) Guide users to better-phrased questions as they type, helping them formulate successful queries faster and more efficiently.
 
 ## Starter Questions
 
-Starter Questions are enabled by default to help users get started with a new domain. These questions come pre-loaded and are designed to work "out of the box." Your primary task is to refine them to better match your organization's specific needs and terminology.
+Starter Questions are enabled by default to help users get started with a new domain. These questions come pre-loaded and are designed to work "out of the box." Your primary task is to refine them to better match your organization's specific needs and terminology. Then, click on **View generated answer** to see the SQL tied to you question and the response.
 
-To find them, go to **Domains** \> _Select a domain_ \> **Advanced** \> **Starter Questions**
+To find them, go to **Domains** \> _Select a domain_ \> **Advanced** \> **Starter Questions.**
 
 ![Image showing the Starter Questions configuration screen in the Advanced tab.](/images/starter-question.png)
 
@@ -48,13 +48,12 @@ To add a new prompt:
 
 ![Prompt Chat Response Pn](/images/prompt-chat-response.png)
 
-### Autocomplete
+## Autocomplete
 
 The Autocomplete feature is directly tied to the prompts you create in the gallery. It is a domain-specific function, this means that a suggestion will only be retrieved from the Prompt Gallery of such domain.
 
 To manage your Autocomplete suggestions, you must manage your Prompt Gallery. Adding, editing, or deleting prompts there will directly affect the suggestions that appear for your Explorers. This setup ensures that users are always guided by a curated and admin-approved set of queries.
 
-How does it work?\
 When a user starts typing a query in the main chat window, the system will search the Prompt Gallery for relevant prompts and display them as clickable autocomplete suggestions.
 
 ![Gif showing how a prompt from the gallery appears as an autocomplete suggestion in the main chat interface](/images/autocomplete.gif)
