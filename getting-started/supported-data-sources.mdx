@@ -27,7 +27,6 @@ This section outlines common prerequisites for connecting to data sources. Speci
 - **SSL/TLS Configuration:** For secure connections, ensure your database/data warehouse is configured to accept SSL/TLS connections, and configure WisdomAI accordingly (e.g., `SSL Mode: require` for PostgreSQL).
 - **Service Accounts (Google BigQuery):** For BigQuery, a Google Cloud service account with appropriate BigQuery permissions is required.
 
-
 <Tabs>
   <Tab title="PostgreSQL">
     The following table lists all the requirements you need to provide when connecting to PostgreSQL.
@@ -166,19 +165,19 @@ This section outlines common prerequisites for connecting to data sources. Speci
     | Password    | User password                  |
     | Schema      | Schema name (optional)         |
   </Tab>
- </Tabs>
+  <Tab title="CSV Files">
+    You can also upload CSV files to a Domain separately. Here are the requirements for these files:
 
---- 
+    - File must be in valid CSV format
+    - Maximum file size: 100MB
+    - UTF-8 encoding recommended
+    - Headers should be in the first row
 
-Apart from the above-mentioned data sources, you can upload CSV files to a Domain separately. Here are the requirements for these files:
+    To learn how to upload them, read [Upload CSV files](/setting-up-wisdom-ai/basic-tutorial-connect-and-test#upload-csv-files).
+  </Tab>
+</Tabs>
 
-- File must be in valid CSV format
-- Maximum file size: 100MB
-- UTF-8 encoding recommended
-- Headers should be in the first row
-
-To learn how to upload them, read [Upload CSV files](/setting-up-wisdom-ai/basic-tutorial-connect-and-test#upload-csv-files).
-  
+---
 
 ## Integrations
 
