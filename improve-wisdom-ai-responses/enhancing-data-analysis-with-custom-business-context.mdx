@@ -38,7 +38,7 @@ A key challenge in data analysis is extracting information from fields containin
 
 The Context feature resolves this by allowing users to define parsing logic with a JSON input. Without this logic, the system cannot perform calculations on data embedded within text.
 
-**Example Implementation: **The following JSON context was provided to teach the system how to parse the 'Skus' column:
+**Example Implementation:** The following JSON context was provided to teach the system how to parse the 'Skus' column:
 
 ```
 {
@@ -57,7 +57,7 @@ The Context feature resolves this by allowing users to define parsing logic with
 
 With this parsing logic supplied, it is now possible to execute highly specific queries.
 
-**Example Query: **"What is the total quantity of 'Ultimate' tier licenses sold for the 'Sales' product line?"
+**Example Query:** "What is the total quantity of 'Ultimate' tier licenses sold for the 'Sales' product line?"
 
 The system can now deconstruct the 'Skus' field for every contract in real-time. It filters for the "Sales" product, identifies the "Ultimate" tier, extracts the corresponding quantity, and aggregates the total, providing a precise numerical answer that was previously impossible to calculate.
 
