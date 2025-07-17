@@ -1,0 +1,33 @@
+---
+title: "Enhancing Data Analysis with Custom Business Context"
+---
+
+WisdomAI is engineered to perform a wide range of queries directly on your dataset. If you are seeking to conduct more advanced, customized analysis, the custom business **Context** feature allows the system to be aligned with your specific operational logic and proprietary terminology. This document outlines an example procedure for leveraging this feature to generate sophisticated, strategic insights.
+
+**Level 1: Foundational Data Interrogation**
+
+The system is designed to process queries that reference explicit data points within your tables. For example, it can accurately count, group, or filter based on existing columns and values.
+
+When a query includes business-specific terminology not explicitly defined in the dataset, such as "Strategic Account" or "At-Risk", the system, by design, will prompt for clarification. This ensures that all subsequent analysis is precise and perfectly aligned with the user's intent.
+
+![Gif showing the first query and the answer without context](/images/2025-07-17_17-09-27.gif)
+
+**Level 2: Implementing Custom Logic with Business Context**
+
+The **Context** feature enables the system to autonomously execute complex queries. This is achieved by providing the tool with a set of rules that define your organization's internal logic.
+
+Example Implementation: To empower the system to identify "At-Risk Strategic Accounts," the following definitions were supplied via the context feature:
+
+> Geographical Sales Territories: \_NA-West (North America West): Includes [Account Names] \_  NA-East (North America East): Includes [Account Names] \_EMEA (Europe, Middle East, and Africa): Includes [Account Names] \_ \*2. Account Tier Definitions:\*\* \_A "Strategic Account" is any customer with a contract duration of 3 years or more. \_  An "At-Risk Strategic Account" is a Strategic Account where Auto Renewal is set to False. \* A "Secure Strategic Account" is a Strategic Account where Auto Renewal is set to True.
+
+![Gif showing the Context page completed with business-specific data](/images/2025-07-17_17-18-54.gif)
+
+**Level 3: Executing Multi-Layered Strategic Analysis**
+
+With the business Context supplied, the system no longer needs to prompt for clarification. It is now configured to perform the multi-layered analysis directly.
+
+When presented with the same query: _"Generate a list of all 'At-Risk Strategic Accounts' and show me which sales region they belong to."_, the system efficiently executes the request. It cross-references contract duration, renewal status, and account-to-territory mapping to produce the precise, targeted list required.
+
+This demonstrates the successful application of custom context to yield high-value, strategic business insights.
+
+![Gif showing the same query and the answer with context](/images/2025-07-17_17-21-24.gif)
