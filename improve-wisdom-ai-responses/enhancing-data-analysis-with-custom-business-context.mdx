@@ -16,7 +16,7 @@ When a query includes business-specific terminology not explicitly defined in th
 
 The **Context** feature enables the system to autonomously execute complex queries. This is achieved by providing the tool with a set of rules that define your organization's internal logic.
 
-Example Implementation: To empower the system to identify "At-Risk Strategic Accounts," the following definitions were supplied via the context feature:
+**Example Implementation:** To empower the system to identify "At-Risk Strategic Accounts," the following definitions were supplied via the context feature:
 
 > Geographical Sales Territories: \_NA-West (North America West): Includes [Account Names] \_  NA-East (North America East): Includes [Account Names] \_EMEA (Europe, Middle East, and Africa): Includes [Account Names] \_ \*2. Account Tier Definitions:\*\* \_A "Strategic Account" is any customer with a contract duration of 3 years or more. \_  An "At-Risk Strategic Account" is a Strategic Account where Auto Renewal is set to False. \* A "Secure Strategic Account" is a Strategic Account where Auto Renewal is set to True.
 
@@ -31,3 +31,34 @@ When presented with the same query: _"Generate a list of all 'At-Risk Strategic 
 This demonstrates the successful application of custom context to yield high-value, strategic business insights.
 
 ![Gif showing the same query and the answer with context](/images/2025-07-17_17-21-24.gif)
+
+**Level 4: Granular Analysis Using JSON Parsing Context**
+
+A key challenge in data analysis is extracting information from fields containing semi-structured text. For example, a single 'Skus' column might contain multiple products, tiers, and quantities in one text string, making direct calculations difficult.
+
+The Context feature resolves this by allowing users to define parsing logic with a JSON input. Without this logic, the system cannot perform calculations on data embedded within text.
+
+**Example Implementation: **The following JSON context was provided to teach the system how to parse the 'Skus' column:
+
+```
+{
+  "example_for_skus_column": {
+    "comment": "Parse the 'Skus' column into a structured list.",
+    "original_skus_column_value": "Sales Ultimate 15 licenses, Marketing Professional 50 users",
+    "expected_parsed_structure": [
+      { "product_family": "Sales", "tier": "Ultimate", "quantity": 15, "unit": "licenses" },
+      { "product_family": "Marketing", "tier": "Professional", "quantity": 50, "unit": "users" }
+    ]
+  }
+}
+```
+
+![Gif showing an example JSON Context](/images/2025-07-17_17-28-57.gif)
+
+With this parsing logic supplied, it is now possible to execute highly specific queries.
+
+**Example Query: **"What is the total quantity of 'Ultimate' tier licenses sold for the 'Sales' product line?"
+
+The system can now deconstruct the 'Skus' field for every contract in real-time. It filters for the "Sales" product, identifies the "Ultimate" tier, extracts the corresponding quantity, and aggregates the total, providing a precise numerical answer that was previously impossible to calculate.
+
+![A gif showing the result calculated successfully after using a JSON context to parse unstructured text](/images/2025-07-17_17-42-43.gif)
