@@ -2,7 +2,7 @@
 title: "Enhancing Data Analysis with Custom Business Context"
 ---
 
-WisdomAI is engineered to perform a wide range of queries directly on your dataset. If you are seeking to conduct more advanced, customized analysis, the custom business **Context** feature allows the system to be aligned with your specific operational logic and proprietary terminology. This document outlines an example procedure for leveraging this feature to generate sophisticated, strategic insights.
+WisdomAI is engineered to perform a wide range of queries directly on your dataset. If you are seeking to conduct more advanced, customized analysis, the custom business Context feature allows the system to be aligned with your specific operational logic and proprietary terminology. This document outlines an example procedure for leveraging this feature to generate strategic insights.
 
 ## Level 1: Foundational Data Interrogation
 
@@ -14,11 +14,21 @@ When a query includes business-specific terminology not explicitly defined in th
 
 ## Level 2: Implementing Custom Logic with Business Context
 
-The **Context** feature enables the system to autonomously execute complex queries. This is achieved by providing the tool with a set of rules that define your organization's internal logic.
+The Context feature enables the system to autonomously execute complex queries. This is achieved by providing the tool with a set of rules that define your organization's internal logic.
 
-**Example Implementation:** To empower the system to identify "At-Risk Strategic Accounts," the following definitions were supplied via the context feature:
+As an explample, let's consider that you want to empower the system to identify "At-Risk Strategic Accounts". To acomplish this, you need to provide the following definitions via the Context feature:
 
-> Geographical Sales Territories: \_NA-West (North America West): Includes [Account Names] \_  NA-East (North America East): Includes [Account Names] \_EMEA (Europe, Middle East, and Africa): Includes [Account Names] \_ \*2. Account Tier Definitions:\*\* \_A "Strategic Account" is any customer with a contract duration of 3 years or more. \_  An "At-Risk Strategic Account" is a Strategic Account where Auto Renewal is set to False. \* A "Secure Strategic Account" is a Strategic Account where Auto Renewal is set to True.
+```
+1. Geographical Sales Territories: 
+- NA-West (North America West): Includes [Account Names] 
+_ NA-East (North America East): Includes [Account Names] 
+- EMEA (Europe, Middle East, and Africa): Includes [Account Names] 
+
+2. Account Tier Definitions:** 
+- A "Strategic Account" is any customer with a contract duration of 3 years or more. 
+- An "At-Risk Strategic Account" is a Strategic Account where Auto Renewal is set to False. 
+- A "Secure Strategic Account" is a Strategic Account where Auto Renewal is set to True.
+```
 
 ![Gif showing the Context page completed with business-specific data](/images/2025-07-17_17-18-54.gif)
 
@@ -26,7 +36,13 @@ The **Context** feature enables the system to autonomously execute complex queri
 
 With the business Context supplied, the system no longer needs to prompt for clarification. It is now configured to perform the multi-layered analysis directly.
 
-When presented with the same query: _"Generate a list of all 'At-Risk Strategic Accounts' and show me which sales region they belong to."_, the system efficiently executes the request. It cross-references contract duration, renewal status, and account-to-territory mapping to produce the precise, targeted list required.
+When presented with the same query: 
+
+```
+Generate a list of all 'At-Risk Strategic Accounts' and show me which sales region they belong to.
+```
+
+The system executes the request. It cross-references contract duration, renewal status, and account-to-territory mapping to produce the precise, targeted list required.
 
 This demonstrates the successful application of custom context to yield high-value, strategic business insights.
 
@@ -34,11 +50,11 @@ This demonstrates the successful application of custom context to yield high-val
 
 ## Level 4: Granular Analysis Using JSON Parsing Context
 
-A key challenge in data analysis is extracting information from fields containing semi-structured text. For example, a single 'Skus' column might contain multiple products, tiers, and quantities in one text string, making direct calculations difficult.
+A key challenge in data analysis is extracting information from fields containing semi-structured text. For example, a single `Skus` column might contain multiple products, tiers, and quantities in one text string, making direct calculations difficult. 
 
-The Context feature resolves this by allowing users to define parsing logic with a JSON input. Without this logic, the system cannot perform calculations on data embedded within text.
+The Context feature resolves this by allowing users to define parsing logic with a JSON input. Without this logic, the system cannot perform calculations on data embedded within text. 
 
-**Example Implementation:** The following JSON context was provided to teach the system how to parse the 'Skus' column:
+The following code snippet shows an example of using JSON context ~~was provided ~~to teach the system how to parse the `Skus` column:
 
 ```
 {
@@ -55,11 +71,13 @@ The Context feature resolves this by allowing users to define parsing logic with
 
 ![Gif showing an example JSON Context](/images/2025-07-17_17-28-57.gif)
 
-With this parsing logic supplied, it is now possible to execute highly specific queries.
+With this parsing logic supplied, it is now possible to execute highly specific queries, like the following example:
 
-**Example Query:** "What is the total quantity of 'Ultimate' tier licenses sold for the 'Sales' product line?"
+```
+What is the total quantity of 'Ultimate' tier licenses sold for the 'Sales' product line?
+```
 
-The system can now deconstruct the 'Skus' field for every contract in real-time. It filters for the "Sales" product, identifies the "Ultimate" tier, extracts the corresponding quantity, and aggregates the total, providing a precise numerical answer that was previously impossible to calculate.
+The system can now deconstruct the `Skus` field for every contract in real-time. It filters for the "Sales" product, identifies the "Ultimate" tier, extracts the corresponding quantity, and aggregates the total, providing a precise numerical answer that was previously impossible to calculate.
 
 ![A gif showing the result calculated successfully after using a JSON context to parse unstructured text](/images/2025-07-17_17-42-43.gif)
 
