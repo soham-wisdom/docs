@@ -86,35 +86,40 @@
             "group": "Integrations",
             "pages": [
               "integrations/embed-chat",
-              "integrations/graphql-api/overview",
               {
-                "group": "Queries",
+                "group": "GraphQL API",
                 "pages": [
-                  "integrations/graphql-api/queries/chat",
-                  "integrations/graphql-api/queries/connection",
-                  "integrations/graphql-api/queries/user"
-                ]
-              },
-              {
-                "group": "Mutations", 
-                "pages": [
-                  "integrations/graphql-api/mutations/connection",
-                  "integrations/graphql-api/mutations/domain",
-                  "integrations/graphql-api/mutations/table"
-                ]
-              },
-              {
-                "group": "Subscriptions",
-                "pages": [
-                  "integrations/graphql-api/subscriptions/conversation"
-                ]
-              },
-              {
-                "group": "Objects",
-                "pages": [
-                  "integrations/graphql-api/objects/conversation",
-                  "integrations/graphql-api/objects/domain", 
-                  "integrations/graphql-api/objects/user"
+                  "integrations/graphql-api/overview",
+                  {
+                    "group": "Queries",
+                    "pages": [
+                      "integrations/graphql-api/queries/chat",
+                      "integrations/graphql-api/queries/connection",
+                      "integrations/graphql-api/queries/user"
+                    ]
+                  },
+                  {
+                    "group": "Mutations", 
+                    "pages": [
+                      "integrations/graphql-api/mutations/connection",
+                      "integrations/graphql-api/mutations/domain",
+                      "integrations/graphql-api/mutations/table"
+                    ]
+                  },
+                  {
+                    "group": "Subscriptions",
+                    "pages": [
+                      "integrations/graphql-api/subscriptions/conversation"
+                    ]
+                  },
+                  {
+                    "group": "Objects",
+                    "pages": [
+                      "integrations/graphql-api/objects/conversation",
+                      "integrations/graphql-api/objects/domain", 
+                      "integrations/graphql-api/objects/user"
+                    ]
+                  }
                 ]
               }
             ]
