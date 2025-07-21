@@ -1,0 +1,40 @@
+---
+title: "User Queries"
+description: "Queries for retrieving current user information and authentication details in Wisdom AI."
+---
+
+Retrieve information about the currently authenticated user and their account details.
+
+## currentUser
+
+Retrieves detailed information about the currently authenticated user, including profile data, preferences, and permissions.
+
+### Signature
+
+```graphql
+currentUser: User!
+```
+
+### Parameters
+
+This query takes no parameters and returns information for the currently authenticated user based on the provided bearer token.
+
+### Response Type
+
+Returns a `User` object containing comprehensive user information. See the [User Objects](/graphql-api/objects/user) documentation for complete field definitions.
+
+## Authentication
+
+User queries require authentication via bearer token. Include your API token in the Authorization header:
+
+```
+Authorization: Bearer YOUR_API_TOKEN
+```
+
+## Related Objects
+
+<CardGroup cols={2}>
+  <Card title="User Objects" icon="user" href="/graphql-api/objects/user">
+    Complete reference for user-related objects
+  </Card>
+</CardGroup>

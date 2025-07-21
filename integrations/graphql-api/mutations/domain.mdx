@@ -1,0 +1,49 @@
+---
+title: "Create Domain"
+description: "Create new domains for organizing related tables and enabling data analysis"
+---
+
+Create a new domain to organize related tables from your data sources. Domains serve as logical groupings that enable focused data analysis and questioning.
+
+## Overview
+
+The `createDomain` mutation creates a new domain with a name and optional description. Once created, you can add tables from your connections to build a cohesive dataset for analysis.
+
+## Mutation
+
+```graphql
+createDomain(name: String!, description: String): ID!
+```
+
+### Arguments
+
+<ParamField path="name" type="String!" required>
+  The name of the domain. Must be unique within your organization.
+</ParamField>
+
+<ParamField path="description" type="String">
+  Optional description explaining the purpose and contents of the domain.
+</ParamField>
+
+### Response
+
+Returns the unique identifier (`ID!`) of the newly created domain.
+
+## Authentication
+
+Include your API token in the Authorization header:
+
+```
+Authorization: Bearer YOUR_API_TOKEN
+```
+
+## Related Operations
+
+<CardGroup cols={2}>
+  <Card title="Add Tables" icon="table" href="/integrations/graphql-api/mutations/table">
+    Add tables from connections to your domain
+  </Card>
+  <Card title="Domain Objects" icon="folder" href="/integrations/graphql-api/objects/domain">
+    Learn about domain structure and properties
+  </Card>
+</CardGroup>

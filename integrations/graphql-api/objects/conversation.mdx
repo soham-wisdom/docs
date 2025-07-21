@@ -1,0 +1,270 @@
+---
+title: "Conversations"
+description: "Objects related to conversations, chat messages, and AI interactions in Wisdom AI."
+---
+
+## Overview
+
+The conversation objects provide a comprehensive structure for handling chat interactions between users and WisdomAI platform. These objects support rich content including text, visualizations, and real-time streaming responses.
+
+## Core Objects
+
+### ConversationMessage
+
+<ParamField path="id" type="ID!" required>
+  A unique identifier for the message.
+</ParamField>
+
+<ParamField path="message" type="[MessageBlock!]!" required>
+  An array of content blocks that make up the message. Each block can be either text or a visualization.
+</ParamField>
+
+<ParamField path="sender" type="ChatMessageSender!" required>
+  Indicates who sent the message (user, assistant, system, etc.).
+</ParamField>
+
+<ParamField path="createdAt" type="DateTime!" required>
+  The date and time when the message was created.
+</ParamField>
+
+<ParamField path="updatedAt" type="DateTime!" required>
+  The date and time when the message was last updated.
+</ParamField>
+
+<ParamField path="errorStrings" type="[String!]">
+  A list of error messages associated with this message, if any errors occurred during processing.
+</ParamField>
+
+<ParamField path="messageId" type="String">
+  An alternative identifier for the message.
+</ParamField>
+
+<ParamField path="dataRefreshedAt" type="DateTime">
+  The date and time when the underlying data was last refreshed, if applicable.
+</ParamField>
+
+<ParamField path="user" type="User">
+  The user who sent the message, if the sender is a user.
+</ParamField>
+
+<ParamField path="cancelledAt" type="DateTime">
+  The date and time when the message was cancelled, if applicable.
+</ParamField>
+
+### ConversationHistoryResponse
+
+<ParamField path="messages" type="[ConversationMessage!]!" required>
+  A list of messages in the conversation.
+</ParamField>
+
+### MessageBlock (Union)
+
+A content block within a message that can be either text or a visualization.
+
+**Possible types:**
+- `TextBlock` - A text content block
+- `VisualizationBlock` - A visualization content block
+
+### TextBlock
+
+<ParamField path="text" type="String!" required>
+  The text content of the block.
+</ParamField>
+
+### VisualizationBlock
+
+<ParamField path="visualization" type="Visualization!" required>
+  The visualization data and metadata.
+</ParamField>
+
+### Visualization
+
+<ParamField path="id" type="ID!" required>
+  A unique identifier for the visualization.
+</ParamField>
+
+<ParamField path="title" type="String">
+  The title of the visualization.
+</ParamField>
+
+<ParamField path="type" type="String!" required>
+  The type of visualization (e.g., "chart", "table", "metric").
+</ParamField>
+
+<ParamField path="dimensions" type="[String!]">
+  The dimensional fields used in the visualization.
+</ParamField>
+
+<ParamField path="measures" type="[String!]">
+  The measure fields used in the visualization.
+</ParamField>
+
+<ParamField path="measureGroups" type="[MeasureGroup!]">
+  Grouped measures with formatting information.
+</ParamField>
+
+<ParamField path="data" type="[DataPoint!]">
+  The actual data points for the visualization.
+</ParamField>
+
+<ParamField path="columns" type="[Column!]">
+  Column definitions for table-style visualizations.
+</ParamField>
+
+<ParamField path="columnOrder" type="[String!]">
+  The order in which columns should be displayed.
+</ParamField>
+
+<ParamField path="columnDisplayFormats" type="JSON">
+  Display formatting information for columns.
+</ParamField>
+
+<ParamField path="hasMore" type="Boolean!" required>
+  Indicates whether there are more data points available beyond what's currently loaded.
+</ParamField>
+
+<ParamField path="pagination" type="Pagination">
+  Pagination information for the visualization data.
+</ParamField>
+
+<ParamField path="code" type="Code">
+  The generated code (SQL, etc.) used to create this visualization.
+</ParamField>
+
+## Supporting Objects
+
+### MeasureGroup
+
+<ParamField path="label" type="String!" required>
+  The display label for the measure group.
+</ParamField>
+
+<ParamField path="measures" type="[String!]!" required>
+  The list of measures in this group.
+</ParamField>
+
+<ParamField path="format" type="String">
+  The formatting pattern for measures in this group.
+</ParamField>
+
+### DataPoint
+
+<ParamField path="value" type="JSON">
+  The value of the data point.
+</ParamField>
+
+<ParamField path="hyperlink" type="String">
+  An optional hyperlink associated with the data point.
+</ParamField>
+
+### Column
+
+<ParamField path="name" type="String!" required>
+  The name of the column.
+</ParamField>
+
+<ParamField path="description" type="String">
+  A description of what the column represents.
+</ParamField>
+
+<ParamField path="alias" type="String">
+  An alternative name for the column.
+</ParamField>
+
+<ParamField path="uniqueRef" type="String">
+  A unique reference identifier for the column.
+</ParamField>
+
+<ParamField path="tableName" type="String">
+  The name of the source table for this column.
+</ParamField>
+
+### Pagination
+
+<ParamField path="pageIndex" type="Int!" required>
+  The current page index (0-based).
+</ParamField>
+
+<ParamField path="pageSize" type="Int!" required>
+  The number of items per page.
+</ParamField>
+
+### Code
+
+<ParamField path="codeStr" type="String!" required>
+  The actual code string.
+</ParamField>
+
+<ParamField path="dialect" type="String">
+  The programming language or SQL dialect of the code.
+</ParamField>
+
+## Streaming Objects
+
+### ConversationStreamResponse
+
+<ParamField path="messageId" type="String">
+  The identifier of the message being streamed.
+</ParamField>
+
+<ParamField path="message" type="[MessageBlock!]!" required>
+  The content blocks being streamed for this message.
+</ParamField>
+
+<ParamField path="inProgress" type="Boolean!" required>
+  Indicates whether the message is still being generated.
+</ParamField>
+
+<ParamField path="conversationId" type="String!" required>
+  The identifier of the conversation this message belongs to.
+</ParamField>
+
+<ParamField path="diffIndex" type="Int!" required>
+  The index of the current diff in the streaming response.
+</ParamField>
+
+<ParamField path="createdAt" type="DateTime!" required>
+  The date and time when the message was created.
+</ParamField>
+
+<ParamField path="updatedAt" type="DateTime!" required>
+  The date and time when the message was last updated.
+</ParamField>
+
+<ParamField path="dataRefreshedAt" type="DateTime">
+  The date and time when the underlying data was last refreshed.
+</ParamField>
+
+<ParamField path="errorStrings" type="[String!]">
+  A list of error messages, if any errors occurred during streaming.
+</ParamField>
+
+<ParamField path="sender" type="ChatMessageSender!" required>
+  Indicates who is sending the message.
+</ParamField>
+
+<ParamField path="userId" type="String">
+  The identifier of the user, if the sender is a user.
+</ParamField>
+
+## Enums
+
+### ChatMessageSender
+
+Indicates who sent a chat message.
+
+**Values:**
+- `USER` - Message sent by a user
+- `ASSISTANT` - Message sent by the AI assistant
+- `SYSTEM` - System-generated message
+
+## Additional Resources
+
+<CardGroup cols={3}>
+  <Card title="Chat Queries" icon="search" href="/integrations/graphql-api/queries/chat">
+    Query conversation history and messages
+  </Card>
+  <Card title="Create Domain" icon="plus" href="/integrations/graphql-api/mutations/domain">
+    Create domains for conversation contexts
+  </Card>
+</CardGroup>

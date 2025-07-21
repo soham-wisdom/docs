@@ -1,0 +1,223 @@
+---
+title: "Users"
+description: "Objects related to users, authentication, and user management in Wisdom AI."
+---
+
+Core objects for managing users, authentication, and permissions in Wisdom AI.
+
+## Overview
+
+User objects provide comprehensive user management capabilities, including authentication, preferences, and permission systems for controlling access to resources.
+
+## Core Objects
+
+### User
+
+<ParamField path="id" type="ID!" required>
+  A unique identifier for the user.
+</ParamField>
+
+<ParamField path="email" type="String!" required>
+  The user's email address.
+</ParamField>
+
+<ParamField path="firstName" type="String">
+  The user's first name.
+</ParamField>
+
+<ParamField path="lastName" type="String">
+  The user's last name.
+</ParamField>
+
+<ParamField path="displayName" type="String!" required>
+  The user's display name (typically first name + last name or email).
+</ParamField>
+
+<ParamField path="avatar" type="String">
+  URL to the user's avatar image.
+</ParamField>
+
+<ParamField path="role" type="UserRole!" required>
+  The user's role in the system.
+</ParamField>
+
+<ParamField path="status" type="UserStatus!" required>
+  The current status of the user account.
+</ParamField>
+
+<ParamField path="createdAt" type="DateTime!" required>
+  The date and time when the user account was created.
+</ParamField>
+
+<ParamField path="updatedAt" type="DateTime!" required>
+  The date and time when the user account was last updated.
+</ParamField>
+
+<ParamField path="lastLoginAt" type="DateTime">
+  The date and time when the user last logged in.
+</ParamField>
+
+<ParamField path="preferences" type="UserPreferences">
+  The user's personal preferences and settings.
+</ParamField>
+
+<ParamField path="permissions" type="[Permission!]">
+  The permissions granted to this user.
+</ParamField>
+
+### UserPreferences
+
+<ParamField path="theme" type="Theme">
+  The user's preferred UI theme.
+</ParamField>
+
+<ParamField path="language" type="String">
+  The user's preferred language code.
+</ParamField>
+
+<ParamField path="timezone" type="String">
+  The user's timezone.
+</ParamField>
+
+<ParamField path="notifications" type="NotificationPreferences">
+  The user's notification preferences.
+</ParamField>
+
+<ParamField path="defaultDomain" type="ID">
+  The ID of the user's default domain.
+</ParamField>
+
+### NotificationPreferences
+
+<ParamField path="email" type="Boolean!" required>
+  Whether to receive email notifications.
+</ParamField>
+
+<ParamField path="inApp" type="Boolean!" required>
+  Whether to receive in-app notifications.
+</ParamField>
+
+<ParamField path="digest" type="Boolean!" required>
+  Whether to receive digest notifications.
+</ParamField>
+
+<ParamField path="frequency" type="NotificationFrequency!" required>
+  How frequently to receive notifications.
+</ParamField>
+
+### Permission
+
+<ParamField path="id" type="ID!" required>
+  A unique identifier for the permission.
+</ParamField>
+
+<ParamField path="name" type="String!" required>
+  The name of the permission.
+</ParamField>
+
+<ParamField path="description" type="String">
+  A description of what the permission allows.
+</ParamField>
+
+<ParamField path="resource" type="String">
+  The resource this permission applies to.
+</ParamField>
+
+<ParamField path="action" type="String!" required>
+  The action this permission allows.
+</ParamField>
+
+<ParamField path="scope" type="PermissionScope">
+  The scope of the permission.
+</ParamField>
+
+## Enums
+
+### UserRole
+
+The role of a user in the system.
+
+**Values:**
+- `ADMIN` - System administrator with full access
+- `EDITOR` - Can create and edit content
+- `VIEWER` - Can view content but not edit
+- `ANALYST` - Can perform data analysis
+- `GUEST` - Limited access guest user
+
+### UserStatus
+
+The status of a user account.
+
+**Values:**
+- `ACTIVE` - User account is active
+- `INACTIVE` - User account is inactive
+- `SUSPENDED` - User account is suspended
+- `PENDING` - User account is pending activation
+- `DELETED` - User account has been deleted
+
+### Theme
+
+UI theme options.
+
+**Values:**
+- `LIGHT` - Light theme
+- `DARK` - Dark theme
+- `AUTO` - Automatically switch based on system preference
+
+### NotificationFrequency
+
+Frequency options for notifications.
+
+**Values:**
+- `IMMEDIATE` - Send notifications immediately
+- `HOURLY` - Send notifications hourly
+- `DAILY` - Send notifications daily
+- `WEEKLY` - Send notifications weekly
+- `NEVER` - Never send notifications
+
+### PermissionScope
+
+The scope of a permission.
+
+**Values:**
+- `GLOBAL` - Permission applies globally
+- `DOMAIN` - Permission applies to specific domains
+- `CONNECTION` - Permission applies to specific connections
+- `USER` - Permission applies to specific users
+
+## Scalar Types
+
+### DateTime
+
+A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+
+### JSON
+
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+
+### ID
+
+The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable.
+
+### String
+
+The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
+
+### Boolean
+
+The `Boolean` scalar type represents `true` or `false`.
+
+### Int
+
+The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.
+
+## Additional Resources
+
+<CardGroup cols={2}>
+  <Card title="Queries" icon="search" href="/graphql-api/queries">
+    Learn how to query user data
+  </Card>
+  <Card title="Mutations" icon="pen-to-square" href="/graphql-api/mutations">
+    Manage users and permissions
+  </Card>
+</CardGroup>

@@ -1,0 +1,52 @@
+---
+title: "Refresh Connection"
+description: "Trigger metadata refresh for data source connections to discover new tables and schemas"
+---
+
+Trigger a metadata refresh for a data warehouse connection to synchronize with the latest tables, schemas, and structure changes in your warehouse.
+
+## Overview
+
+The `connectionRefresh` mutation initiates a metadata synchronization process for a specific connection. This is essential when new tables or schemas have been added to your data warehouse and you want them to be available for domain creation.
+
+## Mutation
+
+```graphql
+connectionRefresh(connectionId: ID!): ConnectionRefreshPayload!
+```
+
+### Arguments
+
+<ParamField path="connectionId" type="ID!" required>
+  The unique identifier of the connection to refresh
+</ParamField>
+
+### Response
+
+Returns a `ConnectionRefreshPayload` with success status and any errors:
+
+```graphql
+type ConnectionRefreshPayload {
+  userErrors: [UserError!]!
+  success: Boolean!
+}
+```
+
+## Authentication
+
+Include your API token in the Authorization header:
+
+```
+Authorization: Bearer YOUR_API_TOKEN
+```
+
+## Related Operations
+
+<CardGroup cols={2}>
+  <Card title="Check Refresh Status" icon="clock" href="/integrations/graphql-api/queries/connection">
+    Monitor refresh progress with connectionLastRefreshStatus
+  </Card>
+  <Card title="Create Domain" icon="plus" href="/integrations/graphql-api/mutations/domain">
+    Create domains after refresh completion
+  </Card>
+</CardGroup>

@@ -1,0 +1,68 @@
+---
+title: "Chat Queries"
+description: "Queries for retrieving conversation history and available chat tools in Wisdom AI."
+---
+
+Retrieve conversation data and available analysis tools for chat interactions.
+
+## conversationHistory
+
+Retrieves the complete message history for a specific conversation, including both text content and visualizations.
+
+### Signature
+
+```graphql
+conversationHistory(conversationId: ID!): ConversationHistoryResponse!
+```
+
+### Parameters
+
+<ParamField path="conversationId" type="ID!" required>
+  The unique identifier of the conversation to retrieve messages from.
+</ParamField>
+
+### Response Type
+
+Returns a `ConversationHistoryResponse` object containing an array of conversation messages.
+
+## chatTools
+
+Retrieves the list of available analysis tools that can be used during chat interactions for a specific domain.
+
+### Signature
+
+```graphql
+chatTools(domainId: ID!): [ChatTool!]!
+```
+
+### Parameters
+
+<ParamField path="domainId" type="ID!" required>
+  The unique identifier of the domain to get available tools for.
+</ParamField>
+
+### Response Type
+
+Returns an array of `ChatTool` objects representing available analysis capabilities.
+
+## Authentication
+
+All chat queries require authentication via bearer token. Include your API token in the Authorization header:
+
+```
+Authorization: Bearer YOUR_API_TOKEN
+```
+
+## Related Operations
+
+<CardGroup cols={3}>
+  <Card title="Conversation Objects" icon="message" href="/integrations/graphql-api/objects/conversation">
+    Learn about conversation and message objects
+  </Card>
+  <Card title="Create Domain" icon="plus" href="/integrations/graphql-api/mutations/domain">
+    Create domains for chat contexts
+  </Card>
+  <Card title="User Objects" icon="user" href="/integrations/graphql-api/objects/user">
+    Understand user and permission structures
+  </Card>
+</CardGroup>

@@ -1,0 +1,84 @@
+---
+title: "Overview"
+description: "Build powerful integrations with Wisdom AI's GraphQL API"
+---
+
+# GraphQL API
+
+Create seamless integrations with Wisdom AI using our comprehensive GraphQL API. Access domains, tables, and analytics data programmatically to build custom applications and workflows.
+
+<Note>
+The GraphQL API is designed for external integrations. All operations require proper authentication and respect your organization's access controls.
+</Note>
+
+## Getting Started
+
+The **Wisdom API** provides real-time access to structured data insights via a WebSocket-based subscription model. Users can ask questions related to business intelligence and receive structured responses, including tabular data and SQL queries.
+
+The Wisdom AI GraphQL API provides a single endpoint for all operations:
+
+```
+https://{ACCOUNT}.askwisdom.ai/graphql
+```
+
+## WebSocket Connection
+
+### Connection URL
+
+```
+wss://{ACCOUNT}.askwisdom.ai/graphql
+```
+
+### Connection Parameters
+
+| Parameter    | Type   | Description                          |
+| ------------ | ------ | ------------------------------------ |
+| `auth.token` | String | JWT session token for authentication |
+
+Example:
+
+```json
+{
+  "auth": {
+    "token": "<SESSION_TOKEN>"
+  }
+}
+```
+
+## Authentication
+
+The GraphQL API uses API key authentication. Include your API key in the `Authorization` header:
+
+```
+Authorization: Bearer YOUR_API_KEY
+```
+
+## Error Handling
+
+| Error Code | Message               | Cause                                   |
+| ---------- | --------------------- | --------------------------------------- |
+| `401`      | Unauthorized          | Invalid or missing authentication token |
+| `400`      | Bad Request           | Malformed request payload               |
+| `500`      | Internal Server Error | Unexpected API failure                  |
+
+
+## Contact & Support
+
+For any queries or support, contact our API team at [**support@askwisdom.ai**](mailto:support@askwisdom.ai).
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Queries" href="/integrations/graphql-api/queries" icon="search">
+    Learn about available queries for fetching data
+  </Card>
+  <Card title="Mutations" href="/integrations/graphql-api/mutations" icon="edit">
+    Discover mutations for creating and updating resources
+  </Card>
+  <Card title="Subscriptions" href="/integrations/graphql-api/subscriptions" icon="broadcast-tower">
+    Explore real-time subscriptions and WebSocket connections
+  </Card>
+  <Card title="Objects" href="/integrations/graphql-api/objects" icon="cube">
+    Explore the complete type system and object definitions
+  </Card>
+</CardGroup>

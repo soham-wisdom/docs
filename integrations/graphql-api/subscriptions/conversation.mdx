@@ -1,0 +1,181 @@
+---
+title: "Chat Subscription"
+description: "Real-time streaming subscription for conversational AI interactions in Wisdom AI."
+---
+
+Stream real-time AI responses for conversational data analysis and insights.
+
+## conversationStream
+
+Establishes a real-time subscription to stream AI responses for conversational data analysis. This subscription enables streaming text and visualization responses as the AI processes queries against your data domains.
+
+### Signature
+
+```graphql
+conversationStream(
+  auth: SubscriptionAuthInput!
+  conversationId: String
+  createHiddenConversation: Boolean
+  domainId: String!
+  query: DeltaInput!
+  skipCompose: Boolean
+  idempotencyKey: String!
+  toolSelection: ToolSelection
+  selectedModelName: String
+  chatThinkingEffort: ChatThinkingEffort
+  enableDeepAnalysis: Boolean
+): ConversationStreamResponse!
+```
+
+### Parameters
+
+<ParamField path="auth" type="SubscriptionAuthInput!" required>
+  Authentication object containing the session token for WebSocket authentication.
+</ParamField>
+
+<ParamField path="domainId" type="String!" required>
+  The unique identifier of the domain (collection of tables) to query against.
+</ParamField>
+
+<ParamField path="query" type="DeltaInput!" required>
+  The structured query input containing the user's question or analysis request.
+</ParamField>
+
+<ParamField path="idempotencyKey" type="String!" required>
+  Unique key to ensure request idempotency and prevent duplicate processing.
+</ParamField>
+
+<ParamField path="conversationId" type="String">
+  Optional conversation ID. If not provided, a new conversation will be created.
+</ParamField>
+
+<ParamField path="toolSelection" type="ToolSelection">
+  Optional selection of specific analysis tools to use (e.g., Python interpreter, tabular data tools).
+</ParamField>
+
+<ParamField path="enableDeepAnalysis" type="Boolean">
+  Whether to enable deep analysis. Defaults to false.
+</ParamField>
+
+### Example Subscription Request
+
+```json
+{
+  "auth": { "token": "<SESSION_TOKEN>" },
+  "domainId": "domain_12345",
+  "query": { 
+    "pieces": [
+      { 
+        "insert": { 
+          "text": "What is the expected revenue from each opportunity?" 
+        } 
+      }
+    ]
+  },
+  "idempotencyKey": "unique_key_12345",
+  "toolSelection": { "optInToolNames": ["TABULAR_DATA"] }
+}
+```
+
+## Response Structure
+
+### Success Response
+
+```json
+{
+  "conversationStream": {
+    "messageId": "msg_12345",
+    "message": [
+      {
+        "text": "Let me analyze the revenue data for each opportunity."
+      },
+      {
+        "visualization": {
+          "id": "viz_67890",
+          "title": "Revenue by Opportunity",
+          "type": "table",
+          "data": [
+            { "value": "Company A", "hyperlink": null },
+            { "value": "$50,000", "hyperlink": null },
+            { "value": "Company B", "hyperlink": null },
+            { "value": "$75,000", "hyperlink": null }
+          ],
+          "columns": [
+            { 
+              "name": "opportunity_name",
+              "description": "Name of the sales opportunity",
+              "alias": "Opportunity"
+            },
+            { 
+              "name": "expected_revenue",
+              "description": "Expected revenue amount",
+              "alias": "Revenue"
+            }
+          ],
+          "code": {
+            "codeStr": "SELECT opportunity_name, expected_revenue FROM sales_opportunities ORDER BY expected_revenue DESC;",
+            "dialect": "SQL"
+          }
+        }
+      }
+    ],
+    "conversationId": "conv_98765",
+    "inProgress": false,
+    "diffIndex": 1,
+    "createdAt": "2024-01-15T10:30:00Z",
+    "updatedAt": "2024-01-15T10:30:05Z",
+    "dataRefreshedAt": "2024-01-15T09:00:00Z",
+    "errorStrings": [],
+    "sender": "ASSISTANT",
+    "userId": "user_123"
+  }
+}
+```
+
+### Response Fields
+
+| Field              | Type      | Description                                           |
+| ------------------ | --------- | ----------------------------------------------------- |
+| `messageId`        | String    | Unique message identifier                             |
+| `message`          | Array     | Array of message blocks (text or visualization)      |
+| `conversationId`   | String    | Conversation ID for session tracking                 |
+| `inProgress`       | Boolean   | Whether the query is still processing                |
+| `diffIndex`        | Int       | Index of the current response diff                   |
+| `createdAt`        | DateTime  | Timestamp when the message was created               |
+| `updatedAt`        | DateTime  | Timestamp when the message was last updated          |
+| `dataRefreshedAt`  | DateTime  | Timestamp when underlying data was last refreshed    |
+| `errorStrings`     | Array     | List of any error messages encountered               |
+| `sender`           | String    | Message sender (USER, ASSISTANT, SYSTEM)             |
+| `userId`           | String    | ID of the user who initiated the query               |
+
+## Authentication
+
+This subscription requires WebSocket authentication using a session token. Include your authentication token in the subscription payload:
+
+```json
+{
+  "auth": { "token": "YOUR_SESSION_TOKEN" }
+}
+```
+
+## Error Handling
+
+| Error Code | Message               | Cause                                   |
+| ---------- | --------------------- | --------------------------------------- |
+| `401`      | Unauthorized          | Invalid or missing authentication token |
+| `400`      | Bad Request           | Malformed request payload               |
+| `500`      | Internal Server Error | Unexpected API failure                  |
+
+## Related Operations
+
+<CardGroup cols={3}>
+  <Card title="Conversation History" icon="history" href="/integrations/graphql-api/queries/chat">
+    Retrieve past conversation messages
+  </Card>
+  <Card title="Chat Tools" icon="tools" href="/integrations/graphql-api/queries/chat">
+    View available analysis tools
+  </Card>
+  <Card title="Domain Management" icon="database" href="/integrations/graphql-api/mutations/domain">
+    Create and manage data domains
+  </Card>
+</CardGroup>

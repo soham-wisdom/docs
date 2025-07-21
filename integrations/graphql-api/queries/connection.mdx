@@ -1,0 +1,90 @@
+---
+title: "Connection Queries"
+description: "Queries for retrieving connection status and metadata refresh information in Wisdom AI."
+---
+
+Retrieve information about data source connections and their synchronization status.
+
+## connectionLastRefreshStatus
+
+Retrieves the last refresh status and timestamp for a specific connection. This is useful for checking when connection metadata was last synchronized with the data source.
+
+### Signature
+
+```graphql
+connectionLastRefreshStatus(connectionId: ID!): ConnectionRefreshStatus!
+```
+
+### Parameters
+
+<ParamField path="connectionId" type="ID!" required>
+  The unique identifier of the connection to check refresh status for.
+</ParamField>
+
+### Response Type
+
+Returns a `ConnectionRefreshStatus` object containing refresh timing and status information.
+
+```graphql
+type ConnectionRefreshStatus {
+  lastRefreshTime: DateTime
+  refreshStatus: ConnectionSyncStatus!
+}
+```
+
+### Refresh Status Values
+
+The `refreshStatus` field can have the following values:
+
+- `PENDING` - Refresh has been initiated but not started
+- `IN_PROGRESS` - Refresh is currently running
+- `COMPLETED` - Refresh completed successfully
+- `FAILED` - Refresh failed with errors
+- `CANCELLED` - Refresh was cancelled by user or system
+
+### Example Workflow
+
+```graphql
+# 1. Trigger a connection refresh
+mutation RefreshConnection($connectionId: ID!) {
+  connectionRefresh(connectionId: $connectionId) {
+    userErrors {
+      field
+      message
+    }
+    success
+  }
+}
+
+# 2. Poll for completion status
+query CheckRefreshStatus($connectionId: ID!) {
+  connectionLastRefreshStatus(connectionId: $connectionId) {
+    lastRefreshTime
+    refreshStatus
+  }
+}
+
+# 3. Once status is COMPLETED, proceed with domain operations
+```
+
+## Authentication
+
+Connection queries require authentication via bearer token. Include your API token in the Authorization header:
+
+```
+Authorization: Bearer YOUR_API_TOKEN
+```
+
+## Related Operations
+
+<CardGroup cols={3}>
+  <Card title="Refresh Connection" icon="refresh" href="/integrations/graphql-api/mutations/connection">
+    Trigger metadata refresh for connections
+  </Card>
+  <Card title="Connection Objects" icon="database" href="/integrations/graphql-api/objects/connection">
+    Learn about connection and data source objects
+  </Card>
+  <Card title="Domain Objects" icon="folder" href="/integrations/graphql-api/objects/domain">
+    Understand domain and table management
+  </Card>
+</CardGroup>
