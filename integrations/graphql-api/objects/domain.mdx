@@ -1,151 +1,118 @@
 ---
-title: "Domains"
-description: "Objects related to domains, connections, and data sources in Wisdom AI."
+title: "DomainModel"
+description: "Schema for domain objects that organize related data sources"
 ---
 
-Core objects for managing domains, data connections, and analysis tools in Wisdom AI.
-
-## Overview
-
-Domain objects provide the foundation for organizing and accessing your data sources. They enable you to group related tables from various connections and manage the tools available for analysis.
-
-## Core Objects
-
-### AddTableToDomainPayload
-
-<ParamField path="userErrors" type="[UserError!]!" required>
-  A list of errors that occurred during the operation, if any.
-</ParamField>
-
-<ParamField path="success" type="Boolean!" required>
-  Indicates whether the operation completed successfully.
-</ParamField>
-
-### ChatTool
+## DomainModel
 
 <ParamField path="id" type="ID!" required>
-  A unique identifier for the tool.
+  Unique identifier for the domain.
+</ParamField>
+
+<ParamField path="version" type="Int!" required>
+  Version number of the domain for change tracking.
 </ParamField>
 
 <ParamField path="name" type="String!" required>
-  The name of the tool.
+  Human-readable name for the domain.
 </ParamField>
 
 <ParamField path="description" type="String">
-  A description of what the tool does.
+  Optional description explaining the purpose and contents of the domain.
 </ParamField>
 
-<ParamField path="type" type="ChatToolType!" required>
-  The type of tool.
+<ParamField path="databases" type="[DatabaseModel!]!" required>
+  List of databases included in this domain. See [DatabaseModel](#databasemodel).
 </ParamField>
 
-<ParamField path="enabled" type="Boolean!" required>
-  Whether the tool is currently enabled for use.
+<ParamField path="knowledge" type="[String!]!" required>
+  Domain-specific knowledge and context information.
 </ParamField>
 
-<ParamField path="configuration" type="JSON">
-  Configuration settings for the tool.
+<ParamField path="domainSystemInstructions" type="String">
+  Custom system instructions for AI interactions within this domain.
 </ParamField>
 
-### Domain
+<ParamField path="fyStartMonth" type="Int">
+  Fiscal year start month (1-12) for financial calculations.
+</ParamField>
+
+<ParamField path="vizConfig" type="VizConfig!" required>
+  Visualization configuration settings. See [VizConfig](#vizconfig).
+</ParamField>
+
+<ParamField path="codegenConfig" type="CodegenConfig!" required>
+  Code generation configuration settings. See [CodegenConfig](#codegenconfig).
+</ParamField>
+
+## DatabaseModel
 
 <ParamField path="id" type="ID!" required>
-  A unique identifier for the domain.
+  Unique identifier for the database.
+</ParamField>
+
+<ParamField path="version" type="Int!" required>
+  Version number of the database for change tracking.
 </ParamField>
 
 <ParamField path="name" type="String!" required>
-  The name of the domain.
+  Name of the database.
 </ParamField>
 
-<ParamField path="description" type="String">
-  A description of the domain and its purpose.
+<ParamField path="domainId" type="ID!" required>
+  Identifier of the domain this database belongs to.
 </ParamField>
 
-<ParamField path="createdAt" type="DateTime!" required>
-  The date and time when the domain was created.
+<ParamField path="connection" type="Connection">
+  Connection details for accessing this database. See [Connection](/integrations/graphql-api/objects/connection).
 </ParamField>
 
-<ParamField path="updatedAt" type="DateTime!" required>
-  The date and time when the domain was last updated.
+<ParamField path="isUserCSVDatabase" type="Boolean!" required>
+  Whether this database was created from user-uploaded CSV files.
 </ParamField>
 
-<ParamField path="tables" type="[DomainTable!]">
-  The tables included in this domain.
+## Configuration Objects
+
+### VizConfig
+
+<ParamField path="alwaysUseCompactNumberFormat" type="Boolean!" required>
+  Whether to always use compact number formatting in visualizations.
 </ParamField>
 
-<ParamField path="owner" type="User">
-  The user who owns this domain.
+<ParamField path="openShowDataPanelByDefault" type="Boolean!" required>
+  Whether to show the data panel by default in visualizations.
 </ParamField>
 
-### DomainTable
+### CodegenConfig
 
-<ParamField path="id" type="ID!" required>
-  A unique identifier for the domain table relationship.
-</ParamField>
-
-<ParamField path="connectionId" type="ID!" required>
-  The identifier of the connection this table belongs to.
-</ParamField>
-
-<ParamField path="databaseName" type="String!" required>
-  The name of the database containing the table.
-</ParamField>
-
-<ParamField path="schemaName" type="String!" required>
-  The name of the schema containing the table.
-</ParamField>
-
-<ParamField path="tableName" type="String!" required>
-  The name of the table.
-</ParamField>
-
-<ParamField path="addedAt" type="DateTime!" required>
-  The date and time when the table was added to the domain.
-</ParamField>
-
-<ParamField path="addedBy" type="User">
-  The user who added the table to the domain.
-</ParamField>
-
-## Supporting Objects
-
-### UserError
-
-<ParamField path="field" type="[String!]">
-  The path to the input field that caused the error.
-</ParamField>
-
-<ParamField path="message" type="String!" required>
-  A description of the error.
-</ParamField>
-
-<ParamField path="code" type="String">
-  An error code that can be used to programmatically handle the error.
+<ParamField path="chatThinkingEffort" type="ChatThinkingEffort!" required>
+  Level of thinking effort for AI code generation. See [ChatThinkingEffort](#chatthinkingeffort).
 </ParamField>
 
 ## Enums
 
-### ChatToolType
+### ChatThinkingEffort
 
-The type of analysis tool.
+The level of thinking effort for AI interactions.
 
 **Values:**
-- `PYTHON_INTERPRETER` - Python code execution environment
-- `SQL_GENERATOR` - SQL query generation tool
-- `CHART_GENERATOR` - Data visualization tool
-- `DATA_ANALYZER` - General data analysis tool
-- `CUSTOM` - Custom tool implementation
+- `Low` - Minimal thinking effort for simple queries
+- `Medium` - Moderate thinking effort for standard analysis
+- `High` - Maximum thinking effort for complex analysis
 
 ## Additional Resources
 
-<CardGroup cols={3}>
+<CardGroup cols={2}>
   <Card title="Create Domain" icon="plus" href="/integrations/graphql-api/mutations/domain">
-    Create new domains for organizing tables
+    Create new domains for organizing data sources
   </Card>
-  <Card title="Add Tables" icon="table" href="/integrations/graphql-api/mutations/table">
-    Add tables from connections to domains
+  <Card title="Connection Objects" icon="link" href="/integrations/graphql-api/objects/connection">
+    Learn about connection schema and properties
   </Card>
-  <Card title="Connection Queries" icon="search" href="/integrations/graphql-api/queries/connection">
-    Check connection status and refresh metadata
+  <Card title="Domain Queries" icon="search" href="/integrations/graphql-api/queries/domain">
+    Query domain information and metadata
+  </Card>
+  <Card title="JobStatus Schema" icon="clock" href="/integrations/graphql-api/objects/job-status">
+    Understand job execution status tracking
   </Card>
 </CardGroup>

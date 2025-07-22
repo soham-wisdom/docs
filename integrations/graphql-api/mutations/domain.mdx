@@ -1,21 +1,29 @@
 ---
 title: "Create Domain"
-description: "Create new domains for organizing related tables and enabling data analysis"
+description: "Create new domains for organizing related data sources and enabling data analysis"
 ---
-
-Create a new domain to organize related tables from your data sources. Domains serve as logical groupings that enable focused data analysis and questioning.
 
 ## Overview
 
-The `createDomain` mutation creates a new domain with a name and optional description. Once created, you can add tables from your connections to build a cohesive dataset for analysis.
+The `createDomain` mutation creates a new domain with a name and optional description.
 
-## Mutation
+## Signature
 
 ```graphql
-createDomain(name: String!, description: String): ID!
+createDomain(input: CreateDomainInput!): DomainModel!
 ```
 
-### Arguments
+<Note>
+  This mutation requires the `domain:create` permission with scope `any`.
+</Note>
+
+## Arguments
+
+<ParamField path="input" type="CreateDomainInput!" required>
+  Input object containing domain creation parameters. See [CreateDomainInput](#createdomaininput).
+</ParamField>
+
+### CreateDomainInput
 
 <ParamField path="name" type="String!" required>
   The name of the domain. Must be unique within your organization.
@@ -25,25 +33,65 @@ createDomain(name: String!, description: String): ID!
   Optional description explaining the purpose and contents of the domain.
 </ParamField>
 
-### Response
+## Response
 
-Returns the unique identifier (`ID!`) of the newly created domain.
+Returns a `DomainModel` object representing the newly created domain. See [DomainModel](/integrations/graphql-api/objects/domain) for the schema.
 
-## Authentication
+## Usage Example
 
-Include your API token in the Authorization header:
+Create a domain for organizing sales-related data sources:
 
+```graphql
+mutation CreateDomain($input: CreateDomainInput!) {
+  createDomain(input: $input) {
+    id
+    version
+    name
+    description
+  }
+}
 ```
-Authorization: Bearer YOUR_API_TOKEN
+
+<RequestExample>
+
+```bash Request
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer your_api_key" \
+  -d '{
+    "query": "mutation CreateDomain($input: CreateDomainInput!) { createDomain(input: $input) { id name description } }",
+    "variables": {
+      "input": {
+        "name": "Sales Analytics",
+        "description": "Customer data, transactions, and sales performance metrics"
+      }
+    }
+  }' \
+  https://{ACCOUNT}.askwisdom.ai/graphql
 ```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "data": {
+    "createDomain": {
+      "id": "ET_DOMAIN_id-here",
+      "name": "Sales Analytics",
+      "description": "Customer data, transactions, and sales performance metrics"
+    }
+  }
+}
+```
+
+</ResponseExample>
 
 ## Related Operations
 
 <CardGroup cols={2}>
-  <Card title="Add Tables" icon="table" href="/integrations/graphql-api/mutations/table">
-    Add tables from connections to your domain
-  </Card>
-  <Card title="Domain Objects" icon="folder" href="/integrations/graphql-api/objects/domain">
+  <Card title="DomainModel Schema" icon="folder" href="/integrations/graphql-api/objects/domain">
     Learn about domain structure and properties
   </Card>
 </CardGroup>
