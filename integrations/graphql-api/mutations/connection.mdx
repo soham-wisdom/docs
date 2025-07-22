@@ -29,6 +29,16 @@ connectionRefresh(id: ID!): Boolean!
   The unique identifier of the connection to refresh
 </ParamField>
 
+## Response
+
+The response returns a `Boolean` indicating whether the refresh job was successfully triggered:
+
+- `true` - Refresh job was successfully started
+
+<Info>
+  On failure, the mutation throws a GraphQL error rather than returning `false`.
+</Info>
+
 ## Usage Example
 
 To refresh a connection's metadata, provide the connection ID to the mutation. Here's an example of how this mutation could be used:
@@ -48,10 +58,10 @@ curl -X POST \
   -d '{
     "query": "mutation RefreshConnection($id: ID!) { connectionRefresh(id: $id) }",
     "variables": {
-      "id": "conn_12345"
+      "id": "et-connection-deab80f29b4545c19fa1ba5519e0d49c"
     }
   }' \
-  https://api.wisdom.ai/graphql
+  https://{ACCOUNT}.askwisdom.ai/graphql
 ```
 
 </RequestExample>
@@ -67,16 +77,6 @@ curl -X POST \
 ```
 
 </ResponseExample>
-
-## Response
-
-The response returns a `Boolean` indicating whether the refresh job was successfully triggered:
-
-- `true` - Refresh job was successfully started
-
-<Info>
-  On failure, the mutation throws a GraphQL error rather than returning `false`.
-</Info>
 
 ## Related Operations
 
