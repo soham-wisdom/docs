@@ -91,6 +91,14 @@
                 "pages": [
                   "integrations/graphql-api/overview",
                   {
+                    "group": "Objects",
+                    "pages": [
+                      "integrations/graphql-api/objects/conversation",
+                      "integrations/graphql-api/objects/domain", 
+                      "integrations/graphql-api/objects/user"
+                    ]
+                  },
+                  {
                     "group": "Queries",
                     "pages": [
                       "integrations/graphql-api/queries/chat",
@@ -110,14 +118,6 @@
                     "group": "Subscriptions",
                     "pages": [
                       "integrations/graphql-api/subscriptions/conversation"
-                    ]
-                  },
-                  {
-                    "group": "Objects",
-                    "pages": [
-                      "integrations/graphql-api/objects/conversation",
-                      "integrations/graphql-api/objects/domain", 
-                      "integrations/graphql-api/objects/user"
                     ]
                   }
                 ]
