@@ -93,8 +93,10 @@
                   {
                     "group": "Objects",
                     "pages": [
+                      "integrations/graphql-api/objects/connection",
                       "integrations/graphql-api/objects/conversation",
                       "integrations/graphql-api/objects/domain", 
+                      "integrations/graphql-api/objects/job-status", 
                       "integrations/graphql-api/objects/user"
                     ]
                   },
