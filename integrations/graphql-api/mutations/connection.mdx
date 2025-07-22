@@ -1,44 +1,82 @@
 ---
 title: "Refresh Connection"
-description: "Trigger metadata refresh for data source connections to discover new tables and schemas"
+description: "Trigger metadata refresh for data warehouse connections to discover new tables and schemas"
 ---
-
-Trigger a metadata refresh for a data warehouse connection to synchronize with the latest tables, schemas, and structure changes in your warehouse.
 
 ## Overview
 
-The `connectionRefresh` mutation initiates a metadata synchronization process for a specific connection. This is essential when new tables or schemas have been added to your data warehouse and you want them to be available for domain creation.
+The `connectionRefresh` mutation triggers an asynchronous job that refreshes the metadata for a data warehouse connection. Specifically, it refreshes the list of databases, tables, and columns for the given connection.
 
-## Mutation
+This operation starts a background job and returns immediately without waiting for completion. The refresh process will discover new tables, updated schemas, and column changes in your data warehouse.
+
+## Signature
 
 ```graphql
-connectionRefresh(connectionId: ID!): ConnectionRefreshPayload!
+connectionRefresh(id: ID!): Boolean!
 ```
 
-### Arguments
+<Note>
+  This mutation requires the `connection:refresh` permission scoped to the specific connection ID.
+</Note>
 
-<ParamField path="connectionId" type="ID!" required>
+<Warning>
+  The refresh cannot be triggered when a connection is already in `QUEUED` or `RUNNING` status. Wait for the current sync to complete before starting a new one.
+</Warning>
+
+## Arguments
+
+<ParamField path="id" type="ID!" required>
   The unique identifier of the connection to refresh
 </ParamField>
 
-### Response
+## Usage Example
 
-Returns a `ConnectionRefreshPayload` with success status and any errors:
+To refresh a connection's metadata, provide the connection ID to the mutation. Here's an example of how this mutation could be used:
 
 ```graphql
-type ConnectionRefreshPayload {
-  userErrors: [UserError!]!
-  success: Boolean!
+mutation RefreshConnection($id: ID!) {
+  connectionRefresh(id: $id)
 }
 ```
 
-## Authentication
+<RequestExample>
 
-Include your API token in the Authorization header:
+```bash Request
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer your_api_key" \
+  -d '{
+    "query": "mutation RefreshConnection($id: ID!) { connectionRefresh(id: $id) }",
+    "variables": {
+      "id": "conn_12345"
+    }
+  }' \
+  https://api.wisdom.ai/graphql
+```
 
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "data": {
+    "connectionRefresh": true
+  }
+}
 ```
-Authorization: Bearer YOUR_API_TOKEN
-```
+
+</ResponseExample>
+
+## Response
+
+The response returns a `Boolean` indicating whether the refresh job was successfully triggered:
+
+- `true` - Refresh job was successfully started
+
+<Info>
+  On failure, the mutation throws a GraphQL error rather than returning `false`.
+</Info>
 
 ## Related Operations
 
