@@ -11,16 +11,6 @@ Domain objects provide the foundation for organizing and accessing your data sou
 
 ## Core Objects
 
-### ConnectionRefreshStatus
-
-<ParamField path="lastRefreshTime" type="DateTime">
-  The date and time when the connection metadata was last refreshed.
-</ParamField>
-
-<ParamField path="refreshStatus" type="ConnectionSyncStatus!" required>
-  The current status of the connection refresh process.
-</ParamField>
-
 ### AddTableToDomainPayload
 
 <ParamField path="userErrors" type="[UserError!]!" required>
@@ -117,40 +107,6 @@ Domain objects provide the foundation for organizing and accessing your data sou
   The user who added the table to the domain.
 </ParamField>
 
-### Connection
-
-<ParamField path="id" type="ID!" required>
-  A unique identifier for the connection.
-</ParamField>
-
-<ParamField path="name" type="String!" required>
-  The name of the connection.
-</ParamField>
-
-<ParamField path="type" type="ConnectionType!" required>
-  The type of data source.
-</ParamField>
-
-<ParamField path="status" type="ConnectionStatus!" required>
-  The current status of the connection.
-</ParamField>
-
-<ParamField path="createdAt" type="DateTime!" required>
-  The date and time when the connection was created.
-</ParamField>
-
-<ParamField path="updatedAt" type="DateTime!" required>
-  The date and time when the connection was last updated.
-</ParamField>
-
-<ParamField path="lastSyncAt" type="DateTime">
-  The date and time when the connection was last synchronized.
-</ParamField>
-
-<ParamField path="configuration" type="JSON">
-  Configuration settings for the connection (sensitive data excluded).
-</ParamField>
-
 ## Supporting Objects
 
 ### UserError
@@ -169,17 +125,6 @@ Domain objects provide the foundation for organizing and accessing your data sou
 
 ## Enums
 
-### ConnectionSyncStatus
-
-The status of a connection synchronization process.
-
-**Values:**
-- `PENDING` - Refresh is queued but not yet started
-- `IN_PROGRESS` - Refresh is currently running
-- `SUCCESS` - Refresh completed successfully
-- `FAILED` - Refresh failed with errors
-- `CANCELLED` - Refresh was cancelled
-
 ### ChatToolType
 
 The type of analysis tool.
@@ -190,31 +135,6 @@ The type of analysis tool.
 - `CHART_GENERATOR` - Data visualization tool
 - `DATA_ANALYZER` - General data analysis tool
 - `CUSTOM` - Custom tool implementation
-
-### ConnectionType
-
-The type of data source connection.
-
-**Values:**
-- `SNOWFLAKE` - Snowflake data warehouse
-- `BIGQUERY` - Google BigQuery
-- `REDSHIFT` - Amazon Redshift
-- `POSTGRES` - PostgreSQL database
-- `MYSQL` - MySQL database
-- `DATABRICKS` - Databricks platform
-- `CLICKHOUSE` - ClickHouse database
-- `CUSTOM` - Custom connection type
-
-### ConnectionStatus
-
-The status of a data source connection.
-
-**Values:**
-- `ACTIVE` - Connection is active and working
-- `INACTIVE` - Connection is inactive
-- `ERROR` - Connection has errors
-- `TESTING` - Connection is being tested
-- `PENDING` - Connection setup is pending
 
 ## Additional Resources
 

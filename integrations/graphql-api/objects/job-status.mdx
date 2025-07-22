@@ -1,0 +1,80 @@
+---
+title: "JobStatus"
+description: "Schema for Job Status"
+---
+
+## JobStatus
+
+<ParamField path="lastRun" type="JobRun">
+  Information about the most recent job execution attempt. See [JobRun](#jobrun).
+</ParamField>
+
+<ParamField path="lastSuccessfulRun" type="JobRun">
+  Information about the most recent successful job execution. See [JobRun](#jobrun).
+</ParamField>
+
+## JobRun
+
+<ParamField path="jobRunId" type="String!" required>
+  Unique identifier for this specific job execution.
+</ParamField>
+
+<ParamField path="jobId" type="String!" required>
+  Identifier for the job definition that was executed.
+</ParamField>
+
+<ParamField path="jobType" type="String!" required>
+  The type of job that was executed (e.g., `CRAWL_METADATA` for connection refresh operations).
+</ParamField>
+
+<ParamField path="userId" type="String!" required>
+  Identifier of the user who initiated the job execution.
+</ParamField>
+
+<ParamField path="status" type="JobRunStatus!" required>
+  The current status of the job execution. See [JobRunStatus](#jobrunstatus).
+</ParamField>
+
+<ParamField path="startedAt" type="String">
+  ISO 8601 timestamp when the job execution started.
+</ParamField>
+
+<ParamField path="endedAt" type="String">
+  ISO 8601 timestamp when the job execution completed (successfully or with failure).
+</ParamField>
+
+<ParamField path="summary" type="String">
+  Human-readable summary of the job execution result.
+</ParamField>
+
+<ParamField path="conciseErrorMessage" type="String">
+  Brief error message if the job failed, null if successful.
+</ParamField>
+
+<ParamField path="createdAt" type="String!" required>
+  ISO 8601 timestamp when the job execution record was created.
+</ParamField>
+
+## JobRunStatus
+
+The status of a job execution.
+
+**Values:**
+- `JOB_RUN_STATUS_UNKNOWN` - Status is unknown or not set
+- `JOB_RUN_STATUS_QUEUED` - Job is queued and waiting to be executed
+- `JOB_RUN_STATUS_RUNNING` - Job is currently executing
+- `JOB_RUN_STATUS_SUCCESS` - Job completed successfully
+- `JOB_RUN_STATUS_FAILED` - Job failed with errors
+- `JOB_RUN_STATUS_SKIPPED` - Job was skipped
+
+
+## Additional Resources
+
+<CardGroup cols={2}>
+  <Card title="Connection Queries" icon="search" href="/integrations/graphql-api/queries/connection">
+    Query connection status and metadata
+  </Card>
+  <Card title="Refresh Connection" icon="refresh" href="/integrations/graphql-api/mutations/connection">
+    Trigger connection metadata refresh
+  </Card>
+</CardGroup>

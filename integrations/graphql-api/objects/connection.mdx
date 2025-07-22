@@ -1,0 +1,80 @@
+---
+title: "Connection"
+description: "Schema for data source connections"
+---
+
+## Connection
+
+<ParamField path="id" type="ID!" required>
+  Unique identifier for the connection.
+</ParamField>
+
+<ParamField path="details" type="ConnectionDetails!" required>
+  Configuration and metadata for the connection. See [ConnectionDetails](#connectiondetails).
+</ParamField>
+
+<ParamField path="status" type="JobStatus!" required>
+  Job execution status for connection operations like metadata refresh. See [JobStatus](/integrations/graphql-api/objects/job-status).
+</ParamField>
+
+## ConnectionDetails
+
+<ParamField path="name" type="String!" required>
+  Human-readable name for the connection.
+</ParamField>
+
+<ParamField path="description" type="String!" required>
+  Description of the connection and its purpose.
+</ParamField>
+
+<ParamField path="dataSourceType" type="DataSourceType!" required>
+  The category of data source. See [DataSourceType](#datasourcetype).
+</ParamField>
+
+<ParamField path="connectionType" type="ConnectionType!" required>
+  The specific type of data source connection. See [ConnectionType](#connectiontype).
+</ParamField>
+
+## Enums
+
+### DataSourceType
+
+The category of data source.
+
+**Values:**
+- `DATA_SOURCE_TYPE_UNSPECIFIED` - Type not specified
+- `WAREHOUSE` - Data warehouse (Snowflake, BigQuery, Redshift, etc.)
+- `BI_TOOL` - Business intelligence tool (Tableau, etc.)
+
+### ConnectionType
+
+The specific type of data source connection.
+
+**Values:**
+- `CONNECTION_TYPE_UNSPECIFIED` - Type not specified
+- `REDSHIFT` - Amazon Redshift data warehouse
+- `SNOWFLAKE` - Snowflake data warehouse
+- `TABLEAU` - Tableau business intelligence platform
+- `BIGQUERY` - Google BigQuery data warehouse
+- `POSTGRES` - PostgreSQL database
+- `SQL_SERVER` - Microsoft SQL Server database
+- `DATABRICKS` - Databricks analytics platform
+- `MYSQL` - MySQL database
+- `CLICKHOUSE` - ClickHouse database
+
+## Additional Resources
+
+<CardGroup cols={2}>
+  <Card title="Connection Queries" icon="search" href="/integrations/graphql-api/queries/connection">
+    Query connection information and status
+  </Card>
+  <Card title="JobStatus Schema" icon="clock" href="/integrations/graphql-api/objects/job-status">
+    Learn about job execution status tracking
+  </Card>
+  <Card title="Refresh Connection" icon="refresh" href="/integrations/graphql-api/mutations/connection">
+    Trigger connection metadata refresh
+  </Card>
+  <Card title="Domain Objects" icon="folder" href="/integrations/graphql-api/objects/domain">
+    Understand domain and table management
+  </Card>
+</CardGroup>

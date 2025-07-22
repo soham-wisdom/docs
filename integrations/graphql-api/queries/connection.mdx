@@ -1,90 +1,101 @@
 ---
 title: "Connection Queries"
-description: "Queries for retrieving connection status and metadata refresh information in Wisdom AI."
+description: "Queries for retrieving connection information and metadata refresh status in Wisdom AI."
 ---
 
-Retrieve information about data source connections and their synchronization status.
+## Overview
 
-## connectionLastRefreshStatus
+Retrieve detailed information about a specific data source connection, including its last job run and last successful job run
 
-Retrieves the last refresh status and timestamp for a specific connection. This is useful for checking when connection metadata was last synchronized with the data source.
-
-### Signature
+## Signature
 
 ```graphql
-connectionLastRefreshStatus(connectionId: ID!): ConnectionRefreshStatus!
+connection(id: ID!): Connection!
 ```
 
-### Parameters
+## Arguments
 
-<ParamField path="connectionId" type="ID!" required>
-  The unique identifier of the connection to check refresh status for.
+<ParamField path="id" type="ID!" required>
+  The unique identifier of the connection to retrieve.
 </ParamField>
 
-### Response Type
+## Response
 
-Returns a `ConnectionRefreshStatus` object containing refresh timing and status information.
+Returns a `Connection` object containing connection details and status information. See [Connection](/integrations/graphql-api/objects/connection) schema.
 
-```graphql
-type ConnectionRefreshStatus {
-  lastRefreshTime: DateTime
-  refreshStatus: ConnectionSyncStatus!
-}
-```
-
-### Refresh Status Values
-
-The `refreshStatus` field can have the following values:
-
-- `PENDING` - Refresh has been initiated but not started
-- `IN_PROGRESS` - Refresh is currently running
-- `COMPLETED` - Refresh completed successfully
-- `FAILED` - Refresh failed with errors
-- `CANCELLED` - Refresh was cancelled by user or system
-
-### Example Workflow
+## Usage Example
 
 ```graphql
-# 1. Trigger a connection refresh
-mutation RefreshConnection($connectionId: ID!) {
-  connectionRefresh(connectionId: $connectionId) {
-    userErrors {
-      field
-      message
+query GetConnectionRefreshStatus($id: ID!) {
+  connection(id: $id) {
+    id
+    status {
+      lastRun {
+        status
+        startedAt
+        endedAt
+        conciseErrorMessage
+      }
+      lastSuccessfulRun {
+        status
+        endedAt
+      }
     }
-    success
   }
 }
+```
 
-# 2. Poll for completion status
-query CheckRefreshStatus($connectionId: ID!) {
-  connectionLastRefreshStatus(connectionId: $connectionId) {
-    lastRefreshTime
-    refreshStatus
+<RequestExample>
+
+```bash Request
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer your_api_key" \
+  -d '{
+    "query": "query GetConnection($id: ID!) { connection(id: $id) { id details { name connectionType } status { lastRun { status endedAt } } } }",
+    "variables": {
+      "id": "et-connection-id-here"
+    }
+  }' \
+  https://{ACCOUNT}.askwisdom.ai/graphql
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "data": {
+    "connection": {
+      "id": "et-connection-id-here",
+      "details": {
+        "name": "Snowflake Jan07",
+        "connectionType": "SNOWFLAKE"
+      },
+      "status": {
+        "lastRun": {
+          "status": "JOB_RUN_STATUS_SUCCESS",
+          "endedAt": "2025-07-21T21:45:54.931+00:00"
+        }
+      }
+    }
   }
 }
-
-# 3. Once status is COMPLETED, proceed with domain operations
 ```
 
-## Authentication
+</ResponseExample>
 
-Connection queries require authentication via bearer token. Include your API token in the Authorization header:
+## Additional Resources
 
-```
-Authorization: Bearer YOUR_API_TOKEN
-```
-
-## Related Operations
-
-<CardGroup cols={3}>
+<CardGroup cols={2}>
   <Card title="Refresh Connection" icon="refresh" href="/integrations/graphql-api/mutations/connection">
     Trigger metadata refresh for connections
   </Card>
-  <Card title="Connection Objects" icon="database" href="/integrations/graphql-api/objects/connection">
-    Learn about connection and data source objects
+  <Card title="Connection Schema" icon="database" href="/integrations/graphql-api/objects/connection">
+    Learn about connection object structure
   </Card>
-  <Card title="Domain Objects" icon="folder" href="/integrations/graphql-api/objects/domain">
-    Understand domain and table management
+  <Card title="JobStatus Schema" icon="clock" href="/integrations/graphql-api/objects/job-status">
+    Understand job execution status tracking
   </Card>
 </CardGroup>
