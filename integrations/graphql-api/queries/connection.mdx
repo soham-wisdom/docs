@@ -13,6 +13,10 @@ Retrieve detailed information about a specific data source connection, including
 connection(id: ID!): Connection!
 ```
 
+<Note>
+  This query requires the `connection:read` permission scoped to the specific connection ID.
+</Note>
+
 ## Arguments
 
 <ParamField path="id" type="ID!" required>
