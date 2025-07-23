@@ -1,0 +1,40 @@
+---
+title: "TableInput"
+description: "Schema for table input objects used in data source operations"
+---
+
+## TableInput
+
+<ParamField path="connection_id" type="String!" required>
+  The unique identifier of the connection that provides access to this table.
+</ParamField>
+
+<ParamField path="database_name" type="String!" required>
+  The name of the database containing this table.
+</ParamField>
+
+<ParamField path="schema_name" type="String">
+  Optional schema name within the database. If not specified, uses the default schema for the database type.
+</ParamField>
+
+<ParamField path="table_name" type="String!" required>
+  The name of the table within the specified database and schema.
+</ParamField>
+
+
+## Related Operations
+
+<CardGroup cols={2}>
+  <Card title="Update Data Sources" icon="refresh" href="/integrations/graphql-api/mutations/domain/update-data-sources">
+    Use TableInput to update domain data sources
+  </Card>
+  <Card title="JoinInput Schema" icon="link" href="/integrations/graphql-api/objects/join-input">
+    Configure relationships between tables
+  </Card>
+  <Card title="Connection Objects" icon="database" href="/integrations/graphql-api/objects/connection">
+    Learn about connection configuration
+  </Card>
+  <Card title="DomainModel Schema" icon="folder" href="/integrations/graphql-api/objects/domain">
+    Understand domain structure and table organization
+  </Card>
+</CardGroup>

@@ -94,32 +94,46 @@
                     "group": "Objects",
                     "pages": [
                       "integrations/graphql-api/objects/connection",
-                      "integrations/graphql-api/objects/conversation",
                       "integrations/graphql-api/objects/domain", 
-                      "integrations/graphql-api/objects/job-status", 
+                      "integrations/graphql-api/objects/job-status",
+                      "integrations/graphql-api/objects/join-input",
+                      "integrations/graphql-api/objects/table-input",
                       "integrations/graphql-api/objects/user"
                     ]
                   },
                   {
                     "group": "Queries",
                     "pages": [
-                      "integrations/graphql-api/queries/chat",
-                      "integrations/graphql-api/queries/connection",
-                      "integrations/graphql-api/queries/user"
+                      {
+                        "group": "Connection", 
+                        "pages": [
+                          "integrations/graphql-api/queries/connection/connection"
+                        ]
+                      },
+                      {
+                        "group": "User", 
+                        "pages": [
+                          "integrations/graphql-api/queries/user/current-user"
+                        ]
+                      }
                     ]
                   },
                   {
                     "group": "Mutations", 
                     "pages": [
-                      "integrations/graphql-api/mutations/connection",
-                      "integrations/graphql-api/mutations/domain",
-                      "integrations/graphql-api/mutations/table"
-                    ]
-                  },
-                  {
-                    "group": "Subscriptions",
-                    "pages": [
-                      "integrations/graphql-api/subscriptions/conversation"
+                      {
+                        "group": "Connection", 
+                        "pages": [
+                          "integrations/graphql-api/mutations/connection/refresh-connection"
+                        ]
+                      },
+                      {
+                        "group": "Domain", 
+                        "pages": [
+                          "integrations/graphql-api/mutations/domain/create-domain",
+                          "integrations/graphql-api/mutations/domain/update-data-sources"
+                        ]
+                      }
                     ]
                   }
                 ]

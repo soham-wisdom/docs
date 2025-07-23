@@ -1,0 +1,161 @@
+---
+title: "Update Data Sources"
+description: "Update data sources for a domain with tables and joins configuration"
+---
+
+## Overview
+
+The `dataSourcesUpdate` mutation updates the data sources configuration for an existing domain by specifying tables and their relationships. This operation allows you to modify which tables are included in a domain and how they are connected through joins.
+
+<Note>
+  The input will overwrite any existing data sources that already existed. Treat the input as what the updated state of data sources should look like.
+</Note>
+
+## Signature
+
+```graphql
+dataSourcesUpdate(input: DataSourcesUpdateInput!): DataSourcesUpdatePayload!
+```
+
+<Note>
+  This mutation requires the `zsheet:write` permission scoped to the specific domain ID.
+</Note>
+
+## Arguments
+
+<ParamField path="input" type="DataSourcesUpdateInput!" required>
+  Input object containing data sources update parameters. See [DataSourcesUpdateInput](#datasourcesupdateinput).
+</ParamField>
+
+### DataSourcesUpdateInput
+
+<ParamField path="domainId" type="ID!" required>
+  The unique identifier of the domain to update.
+</ParamField>
+
+<ParamField path="tables" type="[TableInput!]!" required>
+  List of tables to include in the domain. See [TableInput](/integrations/graphql-api/objects/tables#tableinput).
+</ParamField>
+
+<ParamField path="joins" type="[JoinInput!]!" required>
+  List of join relationships between tables. See [JoinInput](/integrations/graphql-api/objects/joins#joininput).
+</ParamField>
+
+## Response
+
+Returns a `DataSourcesUpdatePayload` object containing:
+
+- Success status
+- Any validation errors that occurred
+
+<ParamField path="userErrors" type="[UserError!]!" required>
+  List of validation errors, if any occurred. Empty array indicates success.
+</ParamField>
+
+<ParamField path="success" type="Boolean!" required>
+  Whether the update operation completed successfully.
+</ParamField>
+
+### UserError
+
+<ParamField path="field" type="[String!]">
+  Path to the field that caused the error.
+</ParamField>
+
+<ParamField path="message" type="String!" required>
+  Human-readable error message explaining what went wrong.
+</ParamField>
+
+## Usage Example
+
+Update a domain's data sources with tables and their relationships:
+
+```graphql
+mutation UpdateDataSources($input: DataSourcesUpdateInput!) {
+  dataSourcesUpdate(input: $input) {
+    success
+    userErrors {
+      field
+      message
+    }
+  }
+}
+```
+
+<RequestExample>
+
+```bash Request
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer your_api_key" \
+  -d '{
+    "query": "mutation UpdateDataSources($input: DataSourcesUpdateInput!) { dataSourcesUpdate(input: $input) { success userErrors { field message } } }",
+    "variables": {
+      "input": {
+        "domainId": "ET_DOMAIN_id-here",
+        "tables": [
+          {
+            "connection_id": "et-connection-id-here",
+            "database_name": "sales_db",
+            "schema_name": "public",
+            "table_name": "customers"
+          },
+          {
+            "connection_id": "conn_123",
+            "database_name": "sales_db",
+            "schema_name": "public",
+            "table_name": "orders"
+          }
+        ],
+        "joins": [
+          {
+            "leftTable": "customers",
+            "rightTable": "orders",
+            "relationshipType": "ONE_TO_MANY",
+            "joinConditions": [
+              {
+                "leftColumnName": "customer_id",
+                "rightColumnName": "customer_id"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }' \
+  https://{ACCOUNT}.askwisdom.ai/graphql
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "data": {
+    "dataSourcesUpdate": {
+      "success": true,
+      "userErrors": []
+    }
+  }
+}
+```
+
+</ResponseExample>
+
+## Related Operations
+
+<CardGroup cols={2}>
+  <Card title="Create Domain" icon="plus" href="/integrations/graphql-api/mutations/domain/create-domain">
+    Create new domains for organizing data sources
+  </Card>
+  <Card title="TableInput Schema" icon="table" href="/integrations/graphql-api/objects/tables">
+    Learn about table input structure and validation
+  </Card>
+  <Card title="JoinInput Schema" icon="link" href="/integrations/graphql-api/objects/joins">
+    Understand join configuration and relationship types
+  </Card>
+  <Card title="DomainModel Schema" icon="folder" href="/integrations/graphql-api/objects/domain">
+    Explore domain structure and properties
+  </Card>
+</CardGroup>
