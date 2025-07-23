@@ -34,11 +34,11 @@ dataSourcesUpdate(input: DataSourcesUpdateInput!): DataSourcesUpdatePayload!
 </ParamField>
 
 <ParamField path="tables" type="[TableInput!]!" required>
-  List of tables to include in the domain. See [TableInput](/integrations/graphql-api/objects/tables#tableinput).
+  List of tables to include in the domain. See [TableInput](/integrations/graphql-api/objects/table-input).
 </ParamField>
 
 <ParamField path="joins" type="[JoinInput!]!" required>
-  List of join relationships between tables. See [JoinInput](/integrations/graphql-api/objects/joins#joininput).
+  List of join relationships between tables. See [JoinInput](/integrations/graphql-api/objects/join-input).
 </ParamField>
 
 ## Response
@@ -149,13 +149,13 @@ curl -X POST \
   <Card title="Create Domain" icon="plus" href="/integrations/graphql-api/mutations/domain/create-domain">
     Create new domains for organizing data sources
   </Card>
-  <Card title="TableInput Schema" icon="table" href="/integrations/graphql-api/objects/tables">
+  <Card title="TableInput Schema" icon="table" href="/integrations/graphql-api/objects/table-input">
     Learn about table input structure and validation
   </Card>
-  <Card title="JoinInput Schema" icon="link" href="/integrations/graphql-api/objects/joins">
+  <Card title="JoinInput Schema" icon="link" href="/integrations/graphql-api/objects/join-input">
     Understand join configuration and relationship types
   </Card>
-  <Card title="DomainModel Schema" icon="folder" href="/integrations/graphql-api/objects/domain">
+  <Card title="DomainModel Schema" icon="folder" href="/integrations/graphql-api/objects/domain-model">
     Explore domain structure and properties
   </Card>
 </CardGroup>

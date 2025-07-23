@@ -8,11 +8,11 @@ description: "Schema for join input objects used to define table relationships"
 Input type for specifying join relationships between tables when updating data sources in a domain.
 
 <ParamField path="leftTable" type="TableInput!" required>
-  The left table in the join relationship. See [TableInput](/integrations/graphql-api/objects/tables#tableinput).
+  The left table in the join relationship. See [TableInput](/integrations/graphql-api/objects/table-input).
 </ParamField>
 
 <ParamField path="rightTable" type="TableInput!" required>
-  The right table in the join relationship. See [TableInput](/integrations/graphql-api/objects/tables#tableinput).
+  The right table in the join relationship. See [TableInput](/integrations/graphql-api/objects/table-input).
 </ParamField>
 
 <ParamField path="relationshipType" type="RelationshipType!" required>
@@ -55,7 +55,7 @@ Enum defining the cardinality relationship between joined tables.
   <Card title="TableInput Schema" icon="table" href="/integrations/graphql-api/objects/table-input">
     Configure tables that participate in joins
   </Card>
-  <Card title="DomainModel Schema" icon="folder" href="/integrations/graphql-api/objects/domain">
+  <Card title="DomainModel Schema" icon="folder" href="/integrations/graphql-api/objects/domain-model">
     Understand how joins fit within domain structure
   </Card>
   <Card title="Create Domain" icon="plus" href="/integrations/graphql-api/mutations/domain/create-domain">
