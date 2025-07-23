@@ -80,26 +80,26 @@ curl -X POST \
         "tables": [
           {
             "connection_id": "et-connection-id-here",
-            "database_name": "sales_db",
-            "schema_name": "public",
-            "table_name": "customers"
+            "database_name": "analytics_warehouse",
+            "schema_name": "customer_intelligence",
+            "table_name": "user_accounts"
           },
           {
-            "connection_id": "conn_123",
-            "database_name": "sales_db",
-            "schema_name": "public",
-            "table_name": "orders"
+            "connection_id": "et-connection-id2-here",
+            "database_name": "analytics_warehouse",
+            "schema_name": "business_metrics",
+            "table_name": "subscription_events"
           }
         ],
         "joins": [
           {
-            "leftTable": "customers",
-            "rightTable": "orders",
+            "leftTable": "user_accounts",
+            "rightTable": "subscription_events",
             "relationshipType": "ONE_TO_MANY",
             "joinConditions": [
               {
-                "leftColumnName": "customer_id",
-                "rightColumnName": "customer_id"
+                "leftColumnName": "account_id",
+                "rightColumnName": "account_id"
               }
             ]
           }
