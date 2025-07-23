@@ -18,7 +18,7 @@ dataSourcesUpdate(input: DataSourcesUpdateInput!): DataSourcesUpdatePayload!
 ```
 
 <Note>
-  This mutation requires the `zsheet:write` permission scoped to the specific domain ID.
+  This mutation can only be executed by an administrator or a data administrator of the specific connection ID.
 </Note>
 
 ## Arguments
@@ -45,25 +45,12 @@ dataSourcesUpdate(input: DataSourcesUpdateInput!): DataSourcesUpdatePayload!
 
 Returns a `DataSourcesUpdatePayload` object containing:
 
-- Success status
-- Any validation errors that occurred
-
-<ParamField path="userErrors" type="[UserError!]!" required>
-  List of validation errors, if any occurred. Empty array indicates success.
+<ParamField path="error" type="String" required>
+  Error, if any occurred. `null` indicates success.
 </ParamField>
 
 <ParamField path="success" type="Boolean!" required>
   Whether the update operation completed successfully.
-</ParamField>
-
-### UserError
-
-<ParamField path="field" type="[String!]">
-  Path to the field that caused the error.
-</ParamField>
-
-<ParamField path="message" type="String!" required>
-  Human-readable error message explaining what went wrong.
 </ParamField>
 
 ## Usage Example
@@ -74,10 +61,7 @@ Update a domain's data sources with tables and their relationships:
 mutation UpdateDataSources($input: DataSourcesUpdateInput!) {
   dataSourcesUpdate(input: $input) {
     success
-    userErrors {
-      field
-      message
-    }
+    error
   }
 }
 ```
@@ -89,7 +73,7 @@ curl -X POST \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer your_api_key" \
   -d '{
-    "query": "mutation UpdateDataSources($input: DataSourcesUpdateInput!) { dataSourcesUpdate(input: $input) { success userErrors { field message } } }",
+    "query": "mutation UpdateDataSources($input: DataSourcesUpdateInput!) { dataSourcesUpdate(input: $input) { success error } }",
     "variables": {
       "input": {
         "domainId": "ET_DOMAIN_id-here",
@@ -135,7 +119,7 @@ curl -X POST \
   "data": {
     "dataSourcesUpdate": {
       "success": true,
-      "userErrors": []
+      "error": null
     }
   }
 }

@@ -14,7 +14,7 @@ description: "Schema for table input objects used in data source operations"
 </ParamField>
 
 <ParamField path="schema_name" type="String">
-  Optional schema name within the database. If not specified, uses the default schema for the database type.
+  Schema name within the database. Optional for data sources which don't have the notion of a schema. Mandatory for other warehouses - leaving it empty will be responded with a failure.
 </ParamField>
 
 <ParamField path="table_name" type="String!" required>
