@@ -118,7 +118,7 @@ The chat tool returns structured content in the following format:
 
 ## Streaming Support (Beta)
 
-When streaming is enabled, the server sends progressive updates via [MCP notifications](https://modelcontextprotocol.io/docs/concepts/transports#notifications) as content is generated. This allows clients to display partial results immediately, providing a more responsive user experience during data analysis.
+When streaming is enabled, the server sends progressive updates via [MCP notifications](https://modelcontextprotocol.io/docs/concepts/transports#notifications) as content is generated.
 
 ### Notification Format
 
@@ -156,7 +156,7 @@ The server throttles streaming updates to a maximum frequency of **once per seco
 </ParamField>
 
 <ParamField path="content" type="Array<ContentItem>" required>
-  The current state of the response content, including all previous and new content items
+  The current state of the response content, **including all previous and new content items**
 </ParamField>
 
 ## Usage Example
