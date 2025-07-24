@@ -1,0 +1,90 @@
+---
+title: "Echo Tool"
+description: "Simple echo tool for testing MCP server connectivity and request/response flow"
+---
+
+## Overview
+
+The `echo` tool is a simple testing utility that echoes back the input message with an "Echo: " prefix. This tool is primarily used for testing MCP server connectivity and verifying that the request/response flow is working correctly.
+
+<Note>
+  This is a sample tool included for testing your client.
+</Note>
+
+## Parameters
+
+<ParamField path="message" type="string" required>
+  The message to echo back. This can be any text string.
+</ParamField>
+
+## Response Format
+
+<ParamField path="structuredContent" type="object" required>
+  Structured version of the response with a `message` array containing the echoed text
+</ParamField>
+
+### Content Structure
+
+```typescript
+{
+  structuredContent: {
+    message: [
+      {
+        text: string
+      }
+    ]
+  }
+}
+```
+
+<RequestExample>
+
+```json MCP Tool Call
+{
+  "jsonrpc": "2.0",
+  "method": "tools/call",
+  "params": {
+    "name": "echo",
+    "arguments": {
+      "message": "Hello, WisdomAI!"
+    }
+  },
+  "id": 1
+}
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "structuredContent": {
+      "message": [
+        {
+          "text": "Echo: Hello, WisdomAI!"
+        }
+      ]
+    }
+  },
+  "id": 1
+}
+```
+
+</ResponseExample>
+
+## Related Resources
+
+<CardGroup cols={2}>
+  <Card title="Chat Tool" icon="message" href="/integrations/mcp-server/tools/chat">
+    Primary tool for data analysis and natural language querying
+  </Card>
+  <Card title="MCP Tools Specification" icon="wrench" href="https://modelcontextprotocol.io/specification/basic/tools">
+    Official MCP tools specification
+  </Card>
+  <Card title="Overview" icon="book" href="/integrations/mcp-server/overview">
+    Return to MCP server overview
+  </Card>
+</CardGroup>

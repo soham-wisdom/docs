@@ -135,6 +135,19 @@
                         ]
                       }
                     ]
+                  },
+                  {
+                    "group": "MCP Server",
+                    "pages": [
+                      "integrations/mcp-server/overview",
+                      {
+                        "group": "Tools", 
+                        "pages": [
+                          "integrations/mcp-server/tools/echo",
+                          "integrations/mcp-server/tools/chat"
+                        ]
+                      }
+                    ]
                   }
                 ]
               }

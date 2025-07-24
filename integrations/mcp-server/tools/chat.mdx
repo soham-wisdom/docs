@@ -1,0 +1,339 @@
+---
+title: "Chat Tool"
+description: "The primary tool for interacting with WisdomAI's analysis capabilities."
+---
+
+## Overview
+
+The `chat` tool is the primary interface for interacting with WisdomAI's powerful data analysis capabilities. It accepts natural language questions and returns structured responses including text explanations, data tables, and interactive visualizations.
+
+## Tool Signature
+
+```json
+{
+  "name": "chat",
+  "description": "Ask WisdomAI a question",
+  "inputSchema": {
+    "message": "string",
+    "domainId": "string",
+    "user_id": "string (optional)",
+    "streaming": "boolean (optional, default: false)",
+    "conversationId": "string (optional)"
+  },
+  "outputSchema": {
+    "content": "Array<ContentItem>"
+  }
+}
+```
+
+## Parameters
+
+<ParamField path="message" type="string" required>
+  The query to ask to WisdomAI
+</ParamField>
+
+<ParamField path="domainId" type="string" required>
+  The unique identifier of the domain you wish to query.
+</ParamField>
+
+<ParamField path="user_id" type="string">
+  Optional identifier of the user who is using the client. Defaults to `MCP Client` user if not provided.
+</ParamField>
+
+<ParamField path="streaming" default="false" type="boolean">
+  Whether to enable streaming responses via [MCP notifications](https://modelcontextprotocol.io/docs/concepts/transports#notifications). When enabled, partial results are sent progressively via notifications.
+
+  <Warning>
+    Streaming support is currently in beta and the implementation may change in future versions.
+  </Warning>
+</ParamField>
+
+<ParamField path="conversationId" type="string">
+  UUID for conversation continuity. Provide an existing conversation ID to continue a chat thread, or leave empty to start a new conversation. Providing an invalid conversation ID is equivalent to leaving it empty.
+</ParamField>
+
+## Response Format
+
+The chat tool returns structured content in the following format:
+
+```typescript
+{
+  structuredContent: {
+    content: Array<ContentItem>;
+  };
+  _meta: {
+    conversationId: string;
+    streamed: boolean;
+    totalUpdates?: number; // Only present for streaming responses
+  };
+}
+```
+
+## Content Types
+
+<ParamField path="TextContent" type="object">
+  Plain text responses and explanations
+
+  ```typescript
+  {
+    type: "text";
+    text: string;
+  }
+  ```
+</ParamField>
+
+<ParamField path="TableContent" type="object">
+  Tabular data with column headers and structured rows
+
+  ```typescript
+  {
+    type: "table";
+    title: string;
+    columns: string[];
+    data: string[][];
+  }
+  ```
+</ParamField>
+
+<ParamField path="ChartContent" type="object">
+  Interactive visualizations with Highcharts configuration
+
+  ```typescript
+  {
+    type: "chart";
+    chart_type: string;
+    title: string;
+    highChartsOptions: string; // JSON string
+    url: string; // Image URL for static rendering
+  }
+  ```
+
+  <Note>
+    `highchartsOptions` also contain the actual data and can be sent as it is to the [highcharts](https://www.highcharts.com/) library/server to generate a visualization.
+  </Note>
+  <Warning>
+    Image URL is valid for 7 days from the time of generation.
+  </Warning>
+</ParamField>
+
+## Streaming Support (Beta)
+
+When streaming is enabled, the server sends progressive updates via [MCP notifications](https://modelcontextprotocol.io/docs/concepts/transports#notifications) as content is generated. This allows clients to display partial results immediately, providing a more responsive user experience during data analysis.
+
+### Notification Format
+
+Streaming updates are sent using the `chat/update` notification method:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "method": "chat/update",
+  "params": {
+    "conversationId": "string",
+    "updateNumber": "number",
+    "isPartial": "boolean",
+    "content": "Array<ContentItem>"
+  }
+}
+```
+
+### Update Frequency
+
+The server throttles streaming updates to a maximum frequency of **once per second**.
+
+### Notification Parameters
+
+<ParamField path="conversationId" type="string" required>
+  The conversation ID associated with the query
+</ParamField>
+
+<ParamField path="updateNumber" type="number" required>
+  Sequential number indicating the order of this update (starts at 1)
+</ParamField>
+
+<ParamField path="isPartial" type="boolean" required>
+  Whether this is still a partial update (`true`) or the final result (`false`)
+</ParamField>
+
+<ParamField path="content" type="Array<ContentItem>" required>
+  The current state of the response content, including all previous and new content items
+</ParamField>
+
+<RequestExample>
+
+```json MCP Tool Call
+{
+  "jsonrpc": "2.0",
+  "method": "tools/call",
+  "params": {
+    "name": "chat",
+    "arguments": {
+      "message": "show aws usage by service as table",
+      "domainId": "ET_DOMAIN_id-here",
+      "user_id": "",
+      "streaming": false
+    }
+  }
+  "id": 1
+}
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "_meta": {
+        "conversationId": "b46e69a9-97bf-4dde-9cfe-96fe48719c07",
+        "streamed": false
+    },
+    "structuredContent": {
+        "content": [
+            {
+                "type": "table",
+                "title": "AWS Usage by Service Table",
+                "columns": [
+                    "name",
+                    "total_usage"
+                ],
+                "data": [
+                    [
+                        "\"EC2\"",
+                        "3875727"
+                    ],
+                    [
+                        "\"S3\"",
+                        "3719077"
+                    ],
+                    [
+                        "\"RDS\"",
+                        "3581600"
+                    ],
+                    [
+                        "\"Lambda\"",
+                        "1683598"
+                    ]
+                ]
+            }
+        ]
+    }
+  },	
+  "id": 1
+}
+```
+
+</ResponseExample>
+
+### Streaming Visualization Request
+
+<RequestExample>
+
+```json MCP Tool Call with Streaming
+{
+  "jsonrpc": "2.0",
+  "method": "tools/call",
+  "params": {
+    "name": "chat",
+    "arguments": {
+      "message": "what can I ask",
+      "domainId": "ET_DOMAIN_id-here",
+      "streaming": true
+    }
+  },
+  "id": 2
+}
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Progressive Notifications and Final Response
+// Notification 1 (partial)
+{
+  "jsonrpc": "2.0",
+  "method": "chat/update",
+  "params": {
+    "conversationId": "f2a5aefb-7538-4044-9684-b68dd8256014",
+    "updateNumber": 1,
+    "content": [
+      {
+        "type": "text",
+        "text": "Here"
+      }
+    ],
+    "isPartial": true
+  }
+}
+
+// Notification 2 (partial)
+{
+  "jsonrpc": "2.0",
+  "method": "chat/update",
+  "params": {
+    "conversationId": "f2a5aefb-7538-4044-9684-b68dd8256014",
+    "updateNumber": 3,
+    "content": [
+      {
+        "type": "text",
+        "text": "Here are some ideas of questions you can ask to explore AWS service usage data:\n\n1. [Show total AWS service usage by region](#ask)\n2. [Which company used the most AWS resources last month?](#ask)\n3. [Visualize service usage by category (compute, storage, etc.)](#ask)\n4. [Top 5 AWS services by overall usage](#ask)\n5. [Which regions see the highest demand for S3?](#ask)\n6. [Compare usage between two companies](#ask)\n7. [What are the most popular services for machine learning?](#ask)\n8. [Which companies have stopped using AWS recently?](#ask)\n9."
+      }
+    ],
+    "isPartial": true
+  }
+}
+
+// Notification 3 (final partial before complete)
+{
+  "jsonrpc": "2.0",
+  "method": "chat/update",
+  "params": {
+    "conversationId": "f2a5aefb-7538-4044-9684-b68dd8256014",
+    "updateNumber": 5,
+    "content": [
+      {
+        "type": "text",
+        "text": "Here are some ideas of questions you can ask to explore AWS service usage data:\n\n1. [Show total AWS service usage by region](#ask)\n2. [Which company used the most AWS resources last month?](#ask)\n3. [Visualize service usage by category (compute, storage, etc.)](#ask)\n4. [Top 5 AWS services by overall usage](#ask)\n5. [Which regions see the highest demand for S3?](#ask)\n6. [Compare usage between two companies](#ask)\n7. [What are the most popular services for machine learning?](#ask)\n8. [Which companies have stopped using AWS recently?](#ask)\n9. [Breakdown of service usage by industry](#ask)\n10. [How does EC2 usage vary across regions?](#ask)\n\nFeel free to pick any of these or ask your own custom questions!"
+      }
+    ],
+    "isPartial": false
+  }
+}
+
+// Final Tool Call Response
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "structuredContent": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Here are some ideas of questions you can ask to explore AWS service usage data:\n\n1. [Show total AWS service usage by region](#ask)\n2. [Which company used the most AWS resources last month?](#ask)\n3. [Visualize service usage by category (compute, storage, etc.)](#ask)\n4. [Top 5 AWS services by overall usage](#ask)\n5. [Which regions see the highest demand for S3?](#ask)\n6. [Compare usage between two companies](#ask)\n7. [What are the most popular services for machine learning?](#ask)\n8. [Which companies have stopped using AWS recently?](#ask)\n9. [Breakdown of service usage by industry](#ask)\n10. [How does EC2 usage vary across regions?](#ask)\n\nFeel free to pick any of these or ask your own custom questions!",
+        },
+      ]
+    },
+    "_meta": {
+      "conversationId": "f2a5aefb-7538-4044-9684-b68dd8256014",
+      "streamed": true,
+      "totalUpdates": 3
+    }
+  },
+  "id": 2
+}
+```
+
+</ResponseExample>
+
+## Related Resources
+
+<CardGroup cols={2}>
+  <Card title="MCP Notifications" icon="bell" href="https://modelcontextprotocol.io/specification/basic/notifications">
+    Official MCP notifications specification
+  </Card>
+  <Card title="Echo Tool" icon="echo" href="/integrations/mcp-server/tools/echo">
+    Simple tool for testing connectivity before using chat
+  </Card>
+</CardGroup>
