@@ -11,10 +11,19 @@ description: "Schema for table input objects used in data source operations"
 
 <ParamField path="database_name" type="String!" required>
   The name of the database containing this table.
+
+  Use the following as `database_name` for:
+  - **BigQuery**: Use the Project ID (e.g., `"my-project-123"`)
+  - **Databricks**: Use the Catalog name (e.g., `"main"`)
 </ParamField>
 
 <ParamField path="schema_name" type="String">
-  Schema name within the database. Optional for data sources which don't have the notion of a schema. Mandatory for other warehouses - leaving it empty will be responded with a failure.
+  Schema name within the database. Optional for data sources which don't have the notion of a schema.
+
+Use the following as `schema_name` for:
+  - **BigQuery**: Use the Dataset name (e.g., `"sales_data"`)
+  - **Databricks**: Use the Schema name (e.g., `"default"`)
+  - **MySQL, ClickHouse**: Do not pass or leave empty (`""`)
 </ParamField>
 
 <ParamField path="table_name" type="String!" required>
