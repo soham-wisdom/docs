@@ -8,12 +8,12 @@ Row-Level Access Control (RLAC), often referred to as Row-Level Security (RLS), 
 
 The setup process involves two key steps:
 
-1. [**Configure an index table:**](configure-an-index-table) Think of this as your master permission list.
+1. [**Configure an index table:**](#configure-an-index-table) Think of this as your master permission list.
    - **Email column:** Select the column that contains the email addresses of your users. This is used to identify who is currently logged in.
    - **Internal ID column:** Select the column that will act as the "key" to unlock data (e.g., a `UserID`, `GroupID`, or `RegionID`).
-2. [**Configure a filtered table:**](configure-a-filtered-table) This is the actual data you want to restrict.
+2. [**Configure a filtered table:**](#configure-a-filtered-table) This is the actual data you want to restrict.
    - **Index Table:** Choose the master permission list (index table) you just configured.
-   - **Internal ID column:** Select the column in _this_ table whose values will be matched against the "key" from your index table. This ensures users only see rows that correspond to their ID.
+   - **Internal ID column:** Select the column in this table whose values will be matched against the "key" from your index table. This ensures users only see rows that correspond to their ID.
 
 ### Configure an Index Table
 
@@ -21,14 +21,12 @@ First, designate a table to act as the master list that maps your users to the d
 
 1. Within the selected Domain, Navigate to the **Data Sources** tab \> **Tables**.
 2. On the row you want to manage access control, click the three-dot menu next to the desired table, and select **Row Level Authz**.
-   
 
    ![Screenshot showing the Row Level Auth menu option](/images/row-level-auth-01.png)
 3. In the modal that opens, choose the **Configure as index table** option to create the master permission list.
 4. Set the **Email column** to the column that contains user emails for row-level authorization.
 5. Set the **Internal ID column** to the column with the unique identifier used to filter other tables.
 6. Click on **Save** to keep your changes.
-   
 
    ![Screenshot showing the Modal window for Row Level Authorization configuration - index table option](/images/row-level-auth-02.png)
 
