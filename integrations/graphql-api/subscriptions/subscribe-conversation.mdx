@@ -7,23 +7,6 @@ description: "Subscribe to real-time conversation updates as messages are sent a
 
 The `subscribeConversation` subscription allows you to listen for real-time updates to a conversation, including new messages and response streams, via a WebSocket-based subscription model.
 
-The API requires authentication using a **session token** obtained via the Descope authentication system.
-
-## Authentication Flow
-
-1. **Obtain Session Token**
-   - Use the `exchange_access_key` method from Descope to exchange an access key for a session token.
-   - Python Example:
-
-     ```python
-     from descope import DescopeClient
-     descope_client = DescopeClient(project_id=WISDOM_PROJECT_ID)
-     auth_info = descope_client.exchange_access_key(WISDOM_AUTH_KEY)
-     auth_token = auth_info["sessionToken"]["jwt"]
-     ```
-2. **Pass Token in Requests**
-   - The session token is required in the WebSocket connection payload and query parameters.
-
 ## Signature
 
 ```graphql
@@ -49,7 +32,7 @@ Returns an array of `ConversationUpdateOneOf` objects representing conversation 
 
 ## Usage Example
 
-Subscribe to a conversation to receive real-time message updates:
+A very simple example to get you started is to do the following:
 
 ```graphql
 subscription SubscribeConversation(
@@ -82,6 +65,11 @@ subscription SubscribeConversation(
         ops {
           insert {
             text
+          }
+          visualization {
+            id
+            title
+            type
           }
         }
       }

@@ -29,29 +29,35 @@ https://{ACCOUNT}.askwisdom.ai/graphql
 wss://{ACCOUNT}.askwisdom.ai/graphql
 ```
 
-### Connection Parameters
-
-| Parameter    | Type   | Description                          |
-| ------------ | ------ | ------------------------------------ |
-| `auth.token` | String | JWT session token for authentication |
-
-Example:
-
-```json
-{
-  "auth": {
-    "token": "<SESSION_TOKEN>"
-  }
-}
-```
-
 ## Authentication
 
-The GraphQL API uses API key authentication. Include your API key in the `Authorization` header:
+The APIs require authentication using a **JWT session token** obtained via the Descope authentication system.
+
+### Authentication Flow
+
+1. **Obtain Session Token**
+
+   - Use the `exchange_access_key` method from Descope to exchange an access key for a session token.
+   - Python Example:
+     ```python
+     from descope import DescopeClient
+     descope_client = DescopeClient(project_id=WISDOM_PROJECT_ID)
+     auth_info = descope_client.exchange_access_key(WISDOM_AUTH_KEY)
+     auth_token = auth_info["sessionToken"]["jwt"]
+     ```
+
+2. **Pass Token in Requests**
+
+   - The session token is required in the WebSocket connection payload and query parameters.
+   
 
 ```
-Authorization: Bearer YOUR_API_KEY
+Authorization: Bearer YOUR_SESSION_TOKEN
 ```
+
+<Note>
+Contact our API team at `support@askwisdom.ai` to obtain your dedicated access token.
+</Note>
 
 ## Error Handling
 
