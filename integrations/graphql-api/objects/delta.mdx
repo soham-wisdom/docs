@@ -1,0 +1,24 @@
+---
+title: "Delta"
+description: "Message content structure using operations"
+---
+
+## Delta
+
+<ParamField path="ops" type="[Operation!]!" required>
+  Array of operations that define the message content. See [Operation](/integrations/graphql-api/objects/operation).
+</ParamField>
+
+## Additional Resources
+
+<CardGroup cols={2}>
+  <Card title="Operation Schema" icon="settings" href="/integrations/graphql-api/objects/operation">
+    Learn about individual operations
+  </Card>
+  <Card title="DeltaInput Schema" icon="edit" href="/integrations/graphql-api/objects/delta-input">
+    Input version for sending messages
+  </Card>
+  <Card title="ChatMessage Schema" icon="message-square" href="/integrations/graphql-api/objects/chat-message">
+    Messages containing Delta content
+  </Card>
+</CardGroup>

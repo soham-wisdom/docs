@@ -1,0 +1,34 @@
+---
+title: "AIWorkstream"
+description: "AI workflow information and status"
+---
+
+## AIWorkstream
+
+<ParamField path="id" type="String!" required>
+  Unique identifier for the AI workstream.
+</ParamField>
+
+<ParamField path="status" type="String!" required>
+  Current status of the AI workflow.
+</ParamField>
+
+<ParamField path="progress" type="Float">
+  Progress percentage of the workflow (0-100).
+</ParamField>
+
+<ParamField path="steps" type="[WorkflowStep!]">
+  Array of workflow steps and their status.
+</ParamField>
+
+<ParamField path="metadata" type="JSON">
+  Additional metadata about the workflow.
+</ParamField>
+
+## Additional Resources
+
+<CardGroup cols={2}>
+  <Card title="DeltaElement Schema" icon="cube" href="/integrations/graphql-api/objects/delta-element">
+    Container for AI workstreams
+  </Card>
+</CardGroup>

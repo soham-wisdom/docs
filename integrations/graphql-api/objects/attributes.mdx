@@ -1,0 +1,92 @@
+---
+title: "Attributes"
+description: "Formatting and metadata attributes for operations"
+---
+
+## Attributes
+
+<ParamField path="code" type="Boolean">
+  Whether the content should be formatted as code.
+</ParamField>
+
+<ParamField path="endline" type="Boolean">
+  Whether the content ends with a line break.
+</ParamField>
+
+<ParamField path="error" type="Boolean">
+  Whether the content represents an error state.
+</ParamField>
+
+<ParamField path="progress" type="Boolean">
+  Whether the content shows progress information.
+</ParamField>
+
+<ParamField path="subtext" type="Boolean">
+  Whether the content is subtext or secondary information.
+</ParamField>
+
+<ParamField path="sqlDialect" type="String">
+  SQL dialect for code formatting.
+</ParamField>
+
+<ParamField path="containerId" type="String">
+  Container identifier for grouping content.
+</ParamField>
+
+<ParamField path="generatingQuery" type="String">
+  Query being generated (for progress indication).
+</ParamField>
+
+<ParamField path="updatedAt" type="String">
+  Timestamp of the last update.
+</ParamField>
+
+<ParamField path="streamId" type="String">
+  Stream identifier for real-time content.
+</ParamField>
+
+<ParamField path="derivedTableName" type="String">
+  Name of derived table (for SQL content).
+</ParamField>
+
+<ParamField path="tool" type="String">
+  Tool that generated this content.
+</ParamField>
+
+<ParamField path="isInsight" type="Boolean">
+  Whether the content represents an insight.
+</ParamField>
+
+<ParamField path="isDomainModelingSuggestion" type="Boolean">
+  Whether the content is a domain modeling suggestion.
+</ParamField>
+
+<ParamField path="reportAttributes" type="ReportAttributes">
+  Report-specific attributes for content.
+</ParamField>
+
+## ReportAttributes
+
+<ParamField path="reportId" type="String">
+  Identifier for the associated report.
+</ParamField>
+
+<ParamField path="intermediateStep" type="Boolean">
+  Whether this is an intermediate step in report generation.
+</ParamField>
+
+<ParamField path="reportElement" type="Boolean">
+  Whether this is a report element.
+</ParamField>
+
+<ParamField path="reportTitle" type="Boolean">
+  Whether this is a report title.
+</ParamField>
+
+## Additional Resources
+
+<CardGroup cols={2}>
+  <Card title="Operation Schema" icon="settings" href="/integrations/graphql-api/objects/operation">
+    Operations using attributes
+  </Card>
+</CardGroup>

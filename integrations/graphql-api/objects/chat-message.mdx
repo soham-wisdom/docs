@@ -1,0 +1,72 @@
+---
+title: "ChatMessage"
+description: "Complete message structure in conversations"
+---
+
+## ChatMessage
+
+<ParamField path="id" type="ID!" required>
+  Unique identifier for the chat message.
+</ParamField>
+
+<ParamField path="body" type="Delta!" required>
+  The content of the message. See [Delta](/integrations/graphql-api/objects/delta).
+</ParamField>
+
+<ParamField path="conversationId" type="String!" required>
+  The unique identifier of the conversation this message belongs to.
+</ParamField>
+
+<ParamField path="domainId" type="String">
+  The unique identifier of the domain associated with this message.
+</ParamField>
+
+<ParamField path="edited" type="Boolean!" required>
+  Whether the message has been edited.
+</ParamField>
+
+<ParamField path="errorStrings" type="[String!]">
+  Array of error messages if any errors occurred during message processing.
+</ParamField>
+
+<ParamField path="messageId" type="String">
+  Optional message identifier for internal tracking.
+</ParamField>
+
+<ParamField path="sender" type="ChatMessageSender!" required>
+  The sender of the message. See [ChatMessageSender](/integrations/graphql-api/objects/chat-message-sender).
+</ParamField>
+
+<ParamField path="createdAt" type="DateTime!" required>
+  The date and time when the message was created.
+</ParamField>
+
+<ParamField path="updatedAt" type="DateTime!" required>
+  The date and time when the message was last updated.
+</ParamField>
+
+<ParamField path="dataRefreshedAt" type="DateTime">
+  The date and time when the message data was last refreshed. Null if never refreshed.
+</ParamField>
+
+<ParamField path="userId" type="String">
+  The unique identifier of the user who sent the message.
+</ParamField>
+
+<ParamField path="cancelledAt" type="DateTime">
+  The date and time when message generation was cancelled. Null if not cancelled.
+</ParamField>
+
+## Additional Resources
+
+<CardGroup cols={2}>
+  <Card title="Delta Schema" icon="layers" href="/integrations/graphql-api/objects/delta">
+    Learn about message content structure
+  </Card>
+  <Card title="ChatMessageSender Enum" icon="user" href="/integrations/graphql-api/objects/chat-message-sender">
+    Message sender types
+  </Card>
+  <Card title="Subscribe Conversation" icon="wifi" href="/integrations/graphql-api/subscriptions/subscribe-conversation">
+    Listen for message updates
+  </Card>
+</CardGroup>

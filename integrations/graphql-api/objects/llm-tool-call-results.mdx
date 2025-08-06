@@ -1,0 +1,43 @@
+---
+title: "LLMToolCallResults"
+description: "Results from AI function calls"
+---
+
+## LLMToolCallResults
+
+<ParamField path="id" type="String!" required>
+  Unique identifier for the result group.
+</ParamField>
+
+<ParamField path="functionCallResults" type="[LLMFunctionCallResult!]!" required>
+  Array of individual function call results.
+</ParamField>
+
+## LLMFunctionCallResult
+
+<ParamField path="id" type="String!" required>
+  Unique identifier for the function call result.
+</ParamField>
+
+<ParamField path="functionName" type="String!" required>
+  Name of the function that was called.
+</ParamField>
+
+<ParamField path="result" type="String!" required>
+  The result returned by the function call.
+</ParamField>
+
+<ParamField path="toolCallId" type="String!" required>
+  Identifier linking this result to its original call.
+</ParamField>
+
+## Additional Resources
+
+<CardGroup cols={2}>
+  <Card title="LLMToolCalls Schema" icon="cog" href="/integrations/graphql-api/objects/llm-tool-calls">
+    Original tool calls
+  </Card>
+  <Card title="DeltaElement Schema" icon="cube" href="/integrations/graphql-api/objects/delta-element">
+    Container for tool call results
+  </Card>
+</CardGroup>

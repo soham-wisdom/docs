@@ -1,0 +1,152 @@
+---
+title: "Send User Message"
+description: "Send a message or question to a conversation for AI-powered analysis"
+---
+
+## Overview
+
+The `sendUserMessage` mutation sends a user's message or question to an existing conversation, triggering AI-powered analysis and response generation.
+
+## Signature
+
+```graphql
+sendUserMessage(
+  conversationId: String!
+  domainId: String!
+  query: DeltaInput!
+  createHiddenConversation: Boolean
+  toolSelection: ToolSelection
+  selectedModelName: String
+  isUserOnboarding: Boolean
+  editArtifactMode: Boolean
+  chatThinkingEffort: ChatThinkingEffort
+  disableClarifications: Boolean
+  enableDeepAnalysis: Boolean
+  isEvaluatingTrigger: Boolean
+): ResponseStatus!
+```
+
+## Arguments
+
+<ParamField path="conversationId" type="String!" required>
+  The unique identifier of the conversation to send the message to.
+</ParamField>
+
+<ParamField path="domainId" type="String!" required>
+  The unique identifier of the domain containing the conversation.
+</ParamField>
+
+<ParamField path="query" type="DeltaInput!" required>
+  The user's message content. See [DeltaInput](/integrations/graphql-api/objects/delta-input).
+</ParamField>
+
+<ParamField path="createHiddenConversation" type="Boolean">
+  Whether to create a hidden conversation if needed. Defaults to false.
+</ParamField>
+
+<ParamField path="toolSelection" type="ToolSelection">
+  Specific tools to use for processing the message. See [ToolSelection](/integrations/graphql-api/objects/tool-selection).
+</ParamField>
+
+<ParamField path="selectedModelName" type="String">
+  The name of the AI model to use for response generation.
+</ParamField>
+
+<ParamField path="isUserOnboarding" type="Boolean">
+  Whether this message is part of user onboarding. Defaults to false.
+</ParamField>
+
+<ParamField path="editArtifactMode" type="Boolean">
+  Whether to enable artifact editing mode. Defaults to false.
+</ParamField>
+
+<ParamField path="chatThinkingEffort" type="ChatThinkingEffort">
+  The level of thinking effort to apply. See [ChatThinkingEffort](/integrations/graphql-api/objects/chat-thinking-effort).
+</ParamField>
+
+<ParamField path="disableClarifications" type="Boolean">
+  Whether to disable clarification questions. Defaults to false.
+</ParamField>
+
+<ParamField path="enableDeepAnalysis" type="Boolean">
+  Whether to enable deep analysis mode. Defaults to false.
+</ParamField>
+
+<ParamField path="isEvaluatingTrigger" type="Boolean">
+  Whether this is an evaluation trigger. Defaults to false.
+</ParamField>
+
+## Response
+
+Returns a `ResponseStatus` object indicating the success or failure of the operation. See [ResponseStatus](/integrations/graphql-api/objects/response-status) for the schema.
+
+## Usage Example
+
+Send a question about sales data to a conversation:
+
+```graphql
+mutation SendUserMessage(
+  $conversationId: String!
+  $domainId: String!
+  $query: DeltaInput!
+) {
+  sendUserMessage(
+    conversationId: $conversationId
+    domainId: $domainId
+    query: $query
+  ) {
+    code
+    message
+  }
+}
+```
+
+<RequestExample>
+
+```bash Request
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer your_api_key" \
+  -d '{
+    "query": "mutation SendUserMessage($conversationId: String!, $domainId: String!, $query: DeltaInput!) { sendUserMessage(conversationId: $conversationId, domainId: $domainId, query: $query) { code message } }",
+    "variables": {
+      "conversationId": "conv_123456789",
+      "domainId": "domain_987654321",
+      "query": {
+        "ops": [
+          {
+            "insert": {
+              "text": "What were our total sales last quarter?"
+            }
+          }
+        ]
+      }
+    }
+  }' \
+  https://{ACCOUNT}.askwisdom.ai/graphql
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "data": {
+    "sendUserMessage": {
+      "code": "OK",
+      "message": "User message sent"
+    }
+  }
+}
+```
+
+</ResponseExample>
+
+## Related Operations
+
+<CardGroup cols={2}>
+  <Card title="Subscribe Conversation" icon="wifi" href="/integrations/graphql-api/subscriptions/subscribe-conversation">
+    Listen for real-time response updates
+  </Card>
+</CardGroup>

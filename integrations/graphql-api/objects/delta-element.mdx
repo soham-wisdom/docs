@@ -1,0 +1,67 @@
+---
+title: "DeltaElement"
+description: "Content elements that can be inserted in operations"
+---
+
+## DeltaElement
+
+<ParamField path="text" type="String">
+  Plain text content to insert.
+</ParamField>
+
+<ParamField path="visualization" type="Visualization">
+  Chart, table, or other data visualization. See [Visualization](/integrations/graphql-api/objects/visualization).
+</ParamField>
+
+<ParamField path="expression" type="DataframeExpression">
+  Data expression or formula reference.
+</ParamField>
+
+<ParamField path="referredMessageId" type="Int">
+  Reference to another message by ID.
+</ParamField>
+
+<ParamField path="reference" type="Reference">
+  Reference to external resources or entities.
+</ParamField>
+
+<ParamField path="vizReference" type="VizReference">
+  Reference to a visualization element.
+</ParamField>
+
+<ParamField path="textArtifact" type="TextArtifact">
+  Rich text content with references and metadata. See [TextArtifact](/integrations/graphql-api/objects/text-artifact).
+</ParamField>
+
+<ParamField path="toolCalls" type="LLMToolCalls">
+  AI function calls made by the assistant. See [LLMToolCalls](/integrations/graphql-api/objects/llm-tool-calls).
+</ParamField>
+
+<ParamField path="toolCallResults" type="LLMToolCallResults">
+  Results from AI function calls. See [LLMToolCallResults](/integrations/graphql-api/objects/llm-tool-call-results).
+</ParamField>
+
+<ParamField path="aiWorkstream" type="AIWorkstream">
+  AI workflow information and status. See [AIWorkstream](/integrations/graphql-api/objects/ai-workstream).
+</ParamField>
+
+<ParamField path="section" type="Section">
+  Content section with title and body. See [Section](/integrations/graphql-api/objects/section).
+</ParamField>
+
+## Additional Resources
+
+<CardGroup cols={2}>
+  <Card title="Operation Schema" icon="settings" href="/integrations/graphql-api/objects/operation">
+    Operations containing DeltaElement
+  </Card>
+  <Card title="Visualization Schema" icon="chart-bar" href="/integrations/graphql-api/objects/visualization">
+    Chart and table visualizations
+  </Card>
+  <Card title="TextArtifact Schema" icon="document-text" href="/integrations/graphql-api/objects/text-artifact">
+    Rich text content with references
+  </Card>
+  <Card title="LLMToolCalls Schema" icon="cog" href="/integrations/graphql-api/objects/llm-tool-calls">
+    AI function calls
+  </Card>
+</CardGroup>

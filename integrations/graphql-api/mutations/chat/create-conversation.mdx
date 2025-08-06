@@ -1,0 +1,82 @@
+---
+title: "Create Conversation"
+description: "Create a new conversation within a specified domain"
+---
+
+## Overview
+
+The `createConversation` mutation creates a new conversation in a specified domain for conducting AI-powered data analysis sessions.
+
+## Signature
+
+```graphql
+createConversation(domainId: String!, hidden: Boolean!): ID!
+```
+
+## Arguments
+
+<ParamField path="domainId" type="String!" required>
+  The unique identifier of the domain where the conversation will be created.
+</ParamField>
+
+<ParamField path="hidden" type="Boolean!" required>
+  Whether the conversation should be hidden from the user interface.
+</ParamField>
+
+## Response
+
+Returns an `ID` representing the unique identifier of the newly created conversation.
+
+## Usage Example
+
+Create a new conversation for data analysis:
+
+```graphql
+mutation CreateConversation(
+  $domainId: String!
+  $hidden: Boolean!
+) {
+  id: createConversation(
+    domainId: $domainId
+    hidden: $hidden
+  )
+}
+```
+
+<RequestExample>
+
+```bash Request
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer your_api_key" \
+  -d '{
+    "query": "mutation CreateConversation($domainId: String!, $hidden: Boolean!) { id: createConversation(domainId: $domainId, hidden: $hidden) }",
+    "variables": {
+      "domainId": "domain_123456789",
+      "hidden": false
+    }
+  }' \
+  https://{ACCOUNT}.askwisdom.ai/graphql
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "data": {
+    "id": "conv_987654321"
+  }
+}
+```
+
+</ResponseExample>
+
+## Related Operations
+
+<CardGroup cols={2}>
+  <Card title="Send User Message" icon="message-square" href="/integrations/graphql-api/mutations/chat/send-user-message">
+    Send a message to the conversation
+  </Card>
+</CardGroup>

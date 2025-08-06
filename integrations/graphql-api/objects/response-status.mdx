@@ -1,0 +1,22 @@
+---
+title: "ResponseStatus"
+description: "Response status for mutation operations"
+---
+
+## ResponseStatus
+
+<ParamField path="code" type="String!" required>
+  Status code indicating success or failure of the operation.
+</ParamField>
+
+<ParamField path="message" type="String!" required>
+  Human-readable message describing the operation result.
+</ParamField>
+
+## Additional Resources
+
+<CardGroup cols={2}>
+  <Card title="Send User Message" icon="message-square" href="/integrations/graphql-api/mutations/chat/send-user-message">
+    Returns ResponseStatus
+  </Card>
+</CardGroup>

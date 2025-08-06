@@ -1,0 +1,36 @@
+---
+title: "Operation"
+description: "Individual operations within Delta content"
+---
+
+## Operation
+
+<ParamField path="insert" type="DeltaElement">
+  Content to insert at the current position. See [DeltaElement](/integrations/graphql-api/objects/delta-element).
+</ParamField>
+
+<ParamField path="delete" type="Int">
+  Number of characters to delete from the current position.
+</ParamField>
+
+<ParamField path="retain" type="Int">
+  Number of characters to retain from the current position.
+</ParamField>
+
+<ParamField path="attributes" type="Attributes">
+  Formatting and metadata attributes for the operation. See [Attributes](/integrations/graphql-api/objects/attributes).
+</ParamField>
+
+## Additional Resources
+
+<CardGroup cols={2}>
+  <Card title="DeltaElement Schema" icon="cube" href="/integrations/graphql-api/objects/delta-element">
+    Content elements for insert operations
+  </Card>
+  <Card title="Attributes Schema" icon="tag" href="/integrations/graphql-api/objects/attributes">
+    Operation formatting and metadata
+  </Card>
+  <Card title="Delta Schema" icon="layers" href="/integrations/graphql-api/objects/delta">
+    Container for operations
+  </Card>
+</CardGroup>

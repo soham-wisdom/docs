@@ -94,24 +94,44 @@
                     "group": "Objects",
                     "pages": [
                       "integrations/graphql-api/objects/connection",
-                      "integrations/graphql-api/objects/domain-model", 
+                      "integrations/graphql-api/objects/domain-model",
                       "integrations/graphql-api/objects/job-status",
                       "integrations/graphql-api/objects/join-input",
                       "integrations/graphql-api/objects/table-input",
-                      "integrations/graphql-api/objects/user"
+                      "integrations/graphql-api/objects/user",
+                      "integrations/graphql-api/objects/conversation-update-one-of",
+                      "integrations/graphql-api/objects/chat-message",
+                      "integrations/graphql-api/objects/chat-message-diff",
+                      "integrations/graphql-api/objects/chat-message-sender",
+                      "integrations/graphql-api/objects/delta",
+                      "integrations/graphql-api/objects/operation",
+                      "integrations/graphql-api/objects/delta-element",
+                      "integrations/graphql-api/objects/delta-input",
+                      "integrations/graphql-api/objects/attributes",
+                      "integrations/graphql-api/objects/visualization",
+                      "integrations/graphql-api/objects/visualization-type",
+                      "integrations/graphql-api/objects/text-artifact",
+                      "integrations/graphql-api/objects/llm-tool-calls",
+                      "integrations/graphql-api/objects/llm-tool-call-results",
+                      "integrations/graphql-api/objects/ai-workstream",
+                      "integrations/graphql-api/objects/section",
+                      "integrations/graphql-api/objects/subscription-auth-input",
+                      "integrations/graphql-api/objects/tool-selection",
+                      "integrations/graphql-api/objects/response-status",
+                      "integrations/graphql-api/objects/chat-thinking-effort"
                     ]
                   },
                   {
                     "group": "Queries",
                     "pages": [
                       {
-                        "group": "Connection", 
+                        "group": "Connection",
                         "pages": [
                           "integrations/graphql-api/queries/connection/connection"
                         ]
                       },
                       {
-                        "group": "User", 
+                        "group": "User",
                         "pages": [
                           "integrations/graphql-api/queries/user/current-user"
                         ]
@@ -119,23 +139,36 @@
                     ]
                   },
                   {
-                    "group": "Mutations", 
+                    "group": "Mutations",
                     "pages": [
                       {
-                        "group": "Connection", 
+                        "group": "Connection",
                         "pages": [
                           "integrations/graphql-api/mutations/connection/refresh-connection"
                         ]
                       },
                       {
-                        "group": "Domain", 
+                        "group": "Domain",
                         "pages": [
                           "integrations/graphql-api/mutations/domain/create-domain",
                           "integrations/graphql-api/mutations/domain/update-data-sources"
                         ]
+                      },
+                      {
+                        "group": "Chat",
+                        "pages": [
+                          "integrations/graphql-api/mutations/chat/create-conversation",
+                          "integrations/graphql-api/mutations/chat/send-user-message"
+                        ]
                       }
                     ]
-                  } 
+                  },
+                  {
+                    "group": "Subscriptions",
+                    "pages": [
+                      "integrations/graphql-api/subscriptions/subscribe-conversation"
+                    ]
+                  }
                 ]
               },
               {
@@ -143,7 +176,7 @@
                 "pages": [
                   "integrations/mcp-server/overview",
                   {
-                    "group": "Tools", 
+                    "group": "Tools",
                     "pages": [
                       "integrations/mcp-server/tools/echo",
                       "integrations/mcp-server/tools/chat"

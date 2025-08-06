@@ -1,0 +1,129 @@
+---
+title: "Visualization"
+description: "Chart, table, and data visualization objects"
+---
+
+## Visualization
+
+<ParamField path="id" type="String!" required>
+  Unique identifier for the visualization.
+</ParamField>
+
+<ParamField path="type" type="VisualizationType!" required>
+  The type of visualization. See [VisualizationType](/integrations/graphql-api/objects/visualization-type).
+</ParamField>
+
+<ParamField path="title" type="String!" required>
+  Display title for the visualization.
+</ParamField>
+
+<ParamField path="originalType" type="VisualizationType!" required>
+  Original type before user modifications.
+</ParamField>
+
+<ParamField path="data" type="[[Cell!]!]!" required>
+  Two-dimensional array of data cells representing the visualization data.
+</ParamField>
+
+<ParamField path="subtotals" type="[Subtotal!]">
+  Subtotal aggregations for drilled-down data.
+</ParamField>
+
+<ParamField path="hasMore" type="Boolean!" required>
+  Whether additional data is available beyond the current page.
+</ParamField>
+
+<ParamField path="pagination" type="Pagination!" required>
+  Pagination information for the data.
+</ParamField>
+
+<ParamField path="totalRows" type="Int">
+  Total number of rows in the complete dataset.
+</ParamField>
+
+<ParamField path="columns" type="[DataframeColumn!]!" required>
+  Column definitions in display order.
+</ParamField>
+
+<ParamField path="columnDisplayFormats" type="[DisplayFormat!]!" required>
+  Display formatting for each column.
+</ParamField>
+
+<ParamField path="columnOrder" type="[String!]!" required>
+  Preferred column order for table views.
+</ParamField>
+
+<ParamField path="dimensions" type="[String!]!" required>
+  Dimension columns for grouping data.
+</ParamField>
+
+<ParamField path="uniqueDimensions" type="[String!]!" required>
+  Unique dimension values.
+</ParamField>
+
+<ParamField path="measures" type="[String!]!" required>
+  Measure columns for numeric analysis.
+</ParamField>
+
+<ParamField path="measureGroups" type="[MeasureGroup!]!" required>
+  Grouped measures with formatting information.
+</ParamField>
+
+<ParamField path="mapDimensions" type="[MapDimensionPair!]!" required>
+  Geographic dimension pairs for map visualizations.
+</ParamField>
+
+<ParamField path="mapColorByColumn" type="String">
+  Column used for color coding in map visualizations.
+</ParamField>
+
+<ParamField path="mapTooltipColumns" type="[String!]!" required>
+  Columns displayed in map tooltips.
+</ParamField>
+
+<ParamField path="filters" type="[FilterOperation!]!" required>
+  Applied filter operations.
+</ParamField>
+
+<ParamField path="parsedFilters" type="[ParsedFilter!]!" required>
+  Human-readable filter representations.
+</ParamField>
+
+<ParamField path="unparsedFilters" type="[FilterOperation!]!" required>
+  Raw filter operations not yet processed.
+</ParamField>
+
+<ParamField path="sortOperation" type="SortOperation">
+  Applied sorting configuration.
+</ParamField>
+
+<ParamField path="updates" type="[UpdateVisualization!]">
+  Available update operations for the visualization.
+</ParamField>
+
+<ParamField path="drillDownSequence" type="[DataframeColumn!]">
+  Sequence of drill-down operations applied.
+</ParamField>
+
+<ParamField path="code" type="Code">
+  Generated SQL or code for the visualization.
+</ParamField>
+
+<ParamField path="codegenConfidenceInfo" type="CodegenConfidenceInfo">
+  Confidence level information for generated code.
+</ParamField>
+
+<ParamField path="llmVizSpec" type="JSON">
+  LLM-generated visualization specification.
+</ParamField>
+
+## Additional Resources
+
+<CardGroup cols={2}>
+  <Card title="VisualizationType Enum" icon="chart-bar" href="/integrations/graphql-api/objects/visualization-type">
+    Available visualization types
+  </Card>
+  <Card title="DeltaElement Schema" icon="cube" href="/integrations/graphql-api/objects/delta-element">
+    Container for visualizations
+  </Card>
+</CardGroup>

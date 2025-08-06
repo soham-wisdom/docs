@@ -1,0 +1,42 @@
+---
+title: "TextArtifact"
+description: "Rich text content with references and metadata"
+---
+
+## TextArtifact
+
+<ParamField path="artifactId" type="ID!" required>
+  Unique identifier for the text artifact.
+</ParamField>
+
+<ParamField path="content" type="String!" required>
+  The main text content of the artifact.
+</ParamField>
+
+<ParamField path="references" type="[Reference!]!" required>
+  Array of references to external resources or entities.
+</ParamField>
+
+<ParamField path="hitCount" type="Int!" required>
+  Number of search hits or matches found.
+</ParamField>
+
+<ParamField path="filterStrings" type="[String!]!" required>
+  Array of filter strings applied to the content.
+</ParamField>
+
+<ParamField path="zsheetId" type="ID">
+  Optional reference to a related ZSheet.
+</ParamField>
+
+<ParamField path="datasetId" type="ID">
+  Optional reference to a related dataset.
+</ParamField>
+
+## Additional Resources
+
+<CardGroup cols={2}>
+  <Card title="DeltaElement Schema" icon="cube" href="/integrations/graphql-api/objects/delta-element">
+    Container for text artifacts
+  </Card>
+</CardGroup>
