@@ -27,18 +27,29 @@ This section outlines common prerequisites for connecting to data sources. Speci
 - **SSL/TLS Configuration:** For secure connections, ensure your database/data warehouse is configured to accept SSL/TLS connections, and configure WisdomAI accordingly (e.g., `SSL Mode: require` for PostgreSQL).
 - **Service Accounts (Google BigQuery):** For BigQuery, a Google Cloud service account with appropriate BigQuery permissions is required.
 
+  <Info>
+    **SSH Tunnel **
+
+    For PostgreSQL and Amazon Redshift, you can optionally provide a bastion host to connect to the database using an SSH tunnel.
+  </Info>
+
 <Tabs>
   <Tab title="PostgreSQL">
     The following table lists all the requirements you need to provide when connecting to PostgreSQL.
 
-    | Requirement | Description                        |
-    | :---------- | :--------------------------------- |
-    | Host        | Server address or IP               |
-    | Port        | Typically `5432`                   |
-    | Database    | Name of the database               |
-    | Username    | Database user with read access     |
-    | Password    | User's password                    |
-    | SSL Mode    | Recommended for secure connections |
+    | Requirement              | Description                                                              |
+    | :----------------------- | :----------------------------------------------------------------------- |
+    | Host                     | Server address or IP                                                     |
+    | Port                     | Typically `5432`                                                         |
+    | Database                 | Name of the database                                                     |
+    | Username                 | Database user with read access                                           |
+    | Password                 | User's password                                                          |
+    | SSL Mode                 | Recommended for secure connections                                       |
+    | SSH Host                 | Hostname or IP address of the bastion host (optional)                    |
+    | SSH Port                 | Port number on the SSH host (optional)                                   |
+    | SSH Username             | The username required to log in to the bastion host (optional)           |
+    | Authentication Method    | You can authenticate using either a Private Key or a Password (optional) |
+    | SSH Private Key/Password | The Private Key or Password used for the SSH authentication (optional)   |
 
     Find below an example connection:
 
@@ -156,14 +167,19 @@ This section outlines common prerequisites for connecting to data sources. Speci
   <Tab title="Amazon Redshift">
     The following table lists all the requirements you need to provide when connecting to Amazon Redshift.
 
-    | Requirement | Description                    |
-    | :---------- | :----------------------------- |
-    | Host        | Redshift cluster endpoint      |
-    | Port        | Typically `5439`               |
-    | Database    | Database name                  |
-    | Username    | Database user with read access |
-    | Password    | User password                  |
-    | Schema      | Schema name (optional)         |
+    | Requirement              | Description                                                               |
+    | :----------------------- | :------------------------------------------------------------------------ |
+    | Host                     | Redshift cluster endpoint                                                 |
+    | Port                     | Typically `5439`                                                          |
+    | Database                 | Database name                                                             |
+    | Username                 | Database user with read access                                            |
+    | Password                 | User password                                                             |
+    | Schema                   | Schema name (optional)                                                    |
+    | SSH Host                 | Hostname or IP address of the bastion host. (Optional)                    |
+    | SSH Port                 | Port number on the SSH host. (Optional)                                   |
+    | SSH Username             | The username required to log in to the bastion host. (Optional)           |
+    | Authentication Method    | You can authenticate using either a Private Key or a Password. (Optional) |
+    | SSH Private Key/Password | The Private Key or Password used for the SSH authentication. (Optional)   |
   </Tab>
   <Tab title="CSV Files">
     You can also upload CSV files to a Domain. Here are the requirements for these files:
