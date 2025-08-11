@@ -1,13 +1,11 @@
 ---
 title: "Users"
-description: "Objects related to users, authentication, and user management in Wisdom AI."
 ---
 
-Core objects for managing users, authentication, and permissions in Wisdom AI.
+This page describes the core objects for managing users, authentication, and permissions in Wisdom AI. These objects provide comprehensive capabilities for handling authentication, setting preferences, and implementing permission systems to control access to resources. They are
 
-## Overview
-
-User objects provide comprehensive user management capabilities, including authentication, preferences, and permission systems for controlling access to resources.
+- Core Objects
+- 
 
 ## Core Objects
 
@@ -30,7 +28,7 @@ User objects provide comprehensive user management capabilities, including authe
 </ParamField>
 
 <ParamField path="displayName" type="String!" required>
-  The user's display name (typically first name + last name or email).
+  The user's display name (typically first name \+ last name or email).
 </ParamField>
 
 <ParamField path="avatar" type="String">
@@ -138,6 +136,7 @@ User objects provide comprehensive user management capabilities, including authe
 The role of a user in the system.
 
 **Values:**
+
 - `ADMIN` - System administrator with full access
 - `EDITOR` - Can create and edit content
 - `VIEWER` - Can view content but not edit
@@ -149,6 +148,7 @@ The role of a user in the system.
 The status of a user account.
 
 **Values:**
+
 - `ACTIVE` - User account is active
 - `INACTIVE` - User account is inactive
 - `SUSPENDED` - User account is suspended
@@ -160,6 +160,7 @@ The status of a user account.
 UI theme options.
 
 **Values:**
+
 - `LIGHT` - Light theme
 - `DARK` - Dark theme
 - `AUTO` - Automatically switch based on system preference
@@ -169,6 +170,7 @@ UI theme options.
 Frequency options for notifications.
 
 **Values:**
+
 - `IMMEDIATE` - Send notifications immediately
 - `HOURLY` - Send notifications hourly
 - `DAILY` - Send notifications daily
@@ -180,6 +182,7 @@ Frequency options for notifications.
 The scope of a permission.
 
 **Values:**
+
 - `GLOBAL` - Permission applies globally
 - `DOMAIN` - Permission applies to specific domains
 - `CONNECTION` - Permission applies to specific connections
@@ -214,7 +217,7 @@ The `Int` scalar type represents non-fractional signed whole numeric values. Int
 ## Additional Resources
 
 <CardGroup cols={2}>
-  <Card title="Queries" icon="search" href="/graphql-api/queries/user/current-user">
+  <Card title="Queries" icon="magnifying-glass" href="/graphql-api/queries/user/current-user">
     Learn how to query user data
   </Card>
 </CardGroup>
