@@ -2,13 +2,13 @@
 title: "Embed Chat"
 ---
 
-Embed a streamlined, white-label version of WisdomAI Chat directly into your application. 
-
-<Info>
-The embedded chat UI is hosted at: `https://<customer>.askwisdom.ai/embed/chat`
-</Info>
+Embed a streamlined, white-label version of WisdomAI Chat directly into your application.
 
 The page is loaded in an `iframe` and intentionally omits WisdomAI branding and features for a seamless integration experience. All core chat capabilities (natural‑language Q&A, table generation, and chart rendering) remain intact.
+
+<Info>
+  The embedded chat UI is hosted at: `https://<customer>.askwisdom.ai/embed/chat`
+</Info>
 
 ## Key Components
 
@@ -35,6 +35,7 @@ The page is loaded in an `iframe` and intentionally omits WisdomAI branding and 
   </Step>
   <Step title="Load Embedded Chat">
     Your platform renders the iframe:
+
     ```html
     <iframe
       src="https://<customer>.askwisdom.ai/embed/chat/{chatId}"
@@ -46,13 +47,12 @@ The page is loaded in an `iframe` and intentionally omits WisdomAI branding and 
   </Step>
 </Steps>
 
-
 ## GraphQL API Capabilities
 
-| Operation | Type | Description |
-|-----------|------|-------------|
-| `createChat` | Mutation | Creates a new blank chat session and returns `chatId` |
-| `listChats` | Query | Retrieves all chat sessions with summaries for custom chat list UI |
+| Operation    | Type     | Description                                                        |
+| ------------ | -------- | ------------------------------------------------------------------ |
+| `createChat` | Mutation | Creates a new blank chat session and returns `chatId`              |
+| `listChats`  | Query    | Retrieves all chat sessions with summaries for custom chat list UI |
 
 ## Authentication
 
@@ -67,9 +67,9 @@ The page is loaded in an `iframe` and intentionally omits WisdomAI branding and 
   </Step>
   <Step title="Request Authorization">
     Attach the signed JWT to every GraphQL request:
+
     ```
     Authorization: Bearer <signed-jwt>
     ```
   </Step>
 </Steps>
-
