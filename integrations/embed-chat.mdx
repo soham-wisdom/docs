@@ -27,13 +27,13 @@ The page is loaded in an `iframe` and intentionally omits WisdomAI branding and 
 ## End-to-End Workflow
 
 <Steps>
-  <Step title="New Chat Trigger">
+  <Step title="New Chat Trigger" titleSize="h3">
     User clicks **New Chat** on your platform
   </Step>
-  <Step title="Backend Creates Chat Session">
+  <Step title="Backend Creates Chat Session" titleSize="h3">
     The platform's backend calls the `createChat` mutation on WisdomAI GraphQL API and receives a `chatId`
   </Step>
-  <Step title="Load Embedded Chat">
+  <Step title="Load Embedded Chat" titleSize="h3">
     Your platform renders the iframe:
 
     ```html
@@ -42,8 +42,8 @@ The page is loaded in an `iframe` and intentionally omits WisdomAI branding and 
       style="width: 100%; height: 100%; border: 0;" />
     ```
   </Step>
-  <Step title="Seamless Interaction">
-    The embedded page controls the chat experience - no further state management is required after the initial load.
+  <Step title="Seamless Interaction" titleSize="h3">
+    The embedded page controls the chat experience; no further state management is required after the initial load.
   </Step>
 </Steps>
 
@@ -54,18 +54,16 @@ The page is loaded in an `iframe` and intentionally omits WisdomAI branding and 
 | `createChat` | Mutation | Creates a new blank chat session and returns `chatId`              |
 | `listChats`  | Query    | Retrieves all chat sessions with summaries for custom chat list UI |
 
-## Authentication
-
-### Machine-to-Machine Flow
+## Machine-to-Machine Authentication Flow
 
 <Steps>
-  <Step title="API Key Provisioning">
+  <Step title="API Key Provisioning" titleSize="h3">
     WisdomAI generates a dedicated API key in the Descope portal and shares it with you. Reach out to our API team at `support@askwisdom.ai` to get a dedicated API key.
   </Step>
-  <Step title="JWT Signing">
+  <Step title="JWT Signing" titleSize="h3">
     Use client-credentials flow to sign a JWT with your API key
   </Step>
-  <Step title="Request Authorization">
+  <Step title="Request Authorization" titleSize="h3">
     Attach the signed JWT to every GraphQL request:
 
     ```
