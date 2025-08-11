@@ -89,7 +89,7 @@
               {
                 "group": "GraphQL API",
                 "pages": [
-                  "integrations/graphql-api/overview",
+                  "integrations/graphql-api/GraphQL-API",
                   {
                     "group": "Objects",
                     "pages": [
