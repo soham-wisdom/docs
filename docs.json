@@ -174,7 +174,7 @@
               {
                 "group": "MCP Server",
                 "pages": [
-                  "integrations/mcp-server/overview",
+                  "integrations/mcp-server/MCP-Server",
                   {
                     "group": "Tools",
                     "pages": [
