@@ -1,7 +1,8 @@
 ---
 title: "JobStatus"
-description: "Schema for Job Status"
 ---
+
+This page describes the schema for Job Status.
 
 ## JobStatus
 
@@ -60,6 +61,7 @@ description: "Schema for Job Status"
 The status of a job execution.
 
 **Values:**
+
 - `JOB_RUN_STATUS_UNKNOWN` - Status is unknown or not set
 - `JOB_RUN_STATUS_QUEUED` - Job is queued and waiting to be executed
 - `JOB_RUN_STATUS_RUNNING` - Job is currently executing
@@ -67,14 +69,13 @@ The status of a job execution.
 - `JOB_RUN_STATUS_FAILED` - Job failed with errors
 - `JOB_RUN_STATUS_SKIPPED` - Job was skipped
 
-
 ## Additional Resources
 
 <CardGroup cols={2}>
-  <Card title="Connection Queries" icon="search" href="/integrations/graphql-api/queries/connection/connection">
+  <Card title="Connection Queries" icon="magnifying-glass" href="/integrations/graphql-api/queries/connection/connection">
     Query connection status and metadata
   </Card>
-  <Card title="Refresh Connection" icon="refresh" href="/integrations/graphql-api/mutations/connection/refresh-connection">
+  <Card title="Refresh Connection" icon="arrows-rotate" href="/integrations/graphql-api/mutations/connection/refresh-connection">
     Trigger connection metadata refresh
   </Card>
 </CardGroup>
