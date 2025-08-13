@@ -1,7 +1,9 @@
 ---
 title: "JoinInput"
 ---
+
 This page describes the schema for join input objects used to define table relationships.
+
 ## JoinInput
 
 Input type for specifying join relationships between tables when updating data sources in a domain.
@@ -36,14 +38,15 @@ Defines a single join condition between two table columns.
 
 ## RelationshipType
 
-Enum defining the cardinality relationship between joined tables.
+The `RelationshipType` enum defines the cardinality between joined tables and can be set to one of the following values:
 
-**Values:**
-- `RELATIONSHIP_TYPE_UNKNOWN` - Relationship type is not specified or unclear
-- `ONE_TO_ONE` - Each record in left table matches exactly one record in right table
-- `ONE_TO_MANY` - Each record in left table can match multiple records in right table
-- `MANY_TO_ONE` - Multiple records in left table can match one record in right table
-- `MANY_TO_MANY` - Multiple records in left table can match multiple records in right table
+| Relationship Type           | Description                                                                       |
+| :-------------------------- | :-------------------------------------------------------------------------------- |
+| `RELATIONSHIP_TYPE_UNKNOWN` | Relationship type is not specified or unclear.                                    |
+| `ONE_TO_ONE`                | Each record in the left table matches exactly one record in the right table.      |
+| `ONE_TO_MANY`               | Each record in the left table can match multiple records in the right table.      |
+| `MANY_TO_ONE`               | Multiple records in the left table can match one record in the right table.       |
+| `MANY_TO_MANY`              | Multiple records in the left table can match multiple records in the right table. |
 
 ## Related Operations
 
