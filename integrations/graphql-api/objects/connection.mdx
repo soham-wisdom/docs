@@ -40,30 +40,30 @@ This page describes the schema used for data source connections, including all f
 
 ### DataSourceType
 
-The category of data source.
+The category of data source. It accepts the following values:
 
-**Values:**
-
-- `DATA_SOURCE_TYPE_UNSPECIFIED` - Type not specified
-- `WAREHOUSE` - Data warehouse (Snowflake, BigQuery, Redshift, etc.)
-- `BI_TOOL` - Business intelligence tool (Tableau, etc.)
+| **Value**                      | **Description**                                      |
+| ------------------------------ | ---------------------------------------------------- |
+| `DATA_SOURCE_TYPE_UNSPECIFIED` | Type not specified                                   |
+| `WAREHOUSE`                    | Data warehouse (Snowflake, BigQuery, Redshift, etc.) |
+| `BI_TOOL`                      | Business intelligence tool (Tableau, etc.)           |
 
 ### ConnectionType
 
-The specific type of data source connection.
+The specific type of data source connection. It accepts the following values:
 
-**Values:**
-
-- `CONNECTION_TYPE_UNSPECIFIED` - Type not specified
-- `REDSHIFT` - Amazon Redshift data warehouse
-- `SNOWFLAKE` - Snowflake data warehouse
-- `TABLEAU` - Tableau business intelligence platform
-- `BIGQUERY` - Google BigQuery data warehouse
-- `POSTGRES` - PostgreSQL database
-- `SQL_SERVER` - Microsoft SQL Server database
-- `DATABRICKS` - Databricks analytics platform
-- `MYSQL` - MySQL database
-- `CLICKHOUSE` - ClickHouse database
+| Connection Type                 | Description                             |
+| :------------------------------ | :-------------------------------------- |
+| `CONNECTION_TYPE_UNSPECIFIED` | Type not specified                      |
+| `REDSHIFT`                      | Amazon Redshift data warehouse          |
+| `SNOWFLAKE`                     | Snowflake data warehouse                |
+| `TABLEAU`                       | Tableau business intelligence platform  |
+| `BIGQUERY`                      | Google BigQuery data warehouse          |
+| `POSTGRES`                      | PostgreSQL database                     |
+| `SQL_SERVER`                    | Microsoft SQL Server database           |
+| `DATABRICKS`                    | Databricks analytics platform           |
+| `MYSQL`                         | MySQL database                          |
+| `CLICKHOUSE`                    | ClickHouse database                     |
 
 ## Additional Resources
 
