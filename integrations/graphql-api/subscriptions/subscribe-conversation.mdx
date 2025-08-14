@@ -82,7 +82,7 @@ subscription SubscribeConversation(
 
 ```bash Request
 wscat -c wss://{ACCOUNT}.askwisdom.ai/graphql \
-  -H "Authorization: Bearer your_api_key" \
+  -H "Authorization: Bearer your_jwt_token_here" \
   -s graphql-ws \
   --execute '{
     "type": "start",
