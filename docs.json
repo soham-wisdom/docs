@@ -11,15 +11,23 @@
   "navigation": {
         "groups": [
           {
-            "group": "Getting Started ",
-            "pages": [
-              "getting-started/overview",
-              "getting-started/how-wisdom-ai-works",
-              "getting-started/supported-data-sources",
-              "getting-started/glossary"
-            ]
-          },
-          {
+  "group": "Getting Started",
+  "pages": [
+    "getting-started/overview",
+    "getting-started/how-wisdom-ai-works",
+    "getting-started/glossary",
+    {
+      "group": "Connect Data Sources",
+      "pages": [
+        "getting-started/connect-data-sources/supported-data-sources",
+        "getting-started/connect-data-sources/connect-to-databricks",
+        "getting-started/connect-data-sources/connect-to-google-bigquery",
+        "getting-started/connect-data-sources/connect-to-snowflake"
+      ]
+    }
+  ]
+},
+{
             "group": "Setting Up Wisdom AI",
             "pages": [
               "setting-up-wisdom-ai/basic-tutorial-connect-and-test",
