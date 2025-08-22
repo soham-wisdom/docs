@@ -16,21 +16,21 @@ Before you begin, make sure you have the following:
 
 You will need the following four pieces of information from your Databricks environment:
 
-- **Host**: The URL of your Databricks workspace, which typically looks like `https://<region>.cloud.databricks.com/`.
-- **HTTP Path**: The specific path to your SQL Warehouse, usually starting with `/sql/1.0/warehouses/`.
-- **Client ID**: The Application ID of your Databricks Service Principal.
-- **Client Secret**: The secret key generated for your Service Principal.
+1. **Host**: The URL of your Databricks workspace, which typically looks like `https://<region>.cloud.databricks.com/`. You can find this in your SQL Warehouse connection details.
+2. **HTTP Path**: The specific path to your SQL Warehouse, usually starting with `/sql/1.0/warehouses/`. You can find this in the "Connection Details" tab of your SQL Warehouse.
+3. **Client ID**: The Application ID of your Databricks Service Principal.
+4. **Client Secret**: The secret key generated for your Databricks Service Principal.
 
 ### How to Find Your Connection Details
 
 #### Host and HTTP Path
 
 1. Navigate to your Databricks Workspace.
-2. Go to **SQL Warehouses**.
+2. Go to **SQL Warehouses **(or SQL Endpoints).
 3. Select the warehouse you want to connect to.
 4. Click on the **Connection Details** tab. Here you will find the **Server Hostname** (your Host) and the **HTTP Path**.
 
-#### Client ID and Client Secret
+#### Client ID and Client Secret (using a Databricks-managed Service Principal)
 
 You'll first need to create a Service Principal in Databricks.
 
@@ -43,11 +43,15 @@ You'll first need to create a Service Principal in Databricks.
 5. Click **Add**.
 6. The **Application ID** shown is your **Client ID**. Copy this value.
 
-**Step 2: Generate a Client Secret**
+**Step 2: Generate a Client Secret for the Service Principal**
 
 1. From the service principal's page, go to the **Secrets** tab.
 2. Under OAuth secrets, click **Generate secret**.
 3. Set a lifetime for the secret (up to 730 days) and click **Generate**.
+
+   <Note>
+     Choose an expiration that balances security and operational convenience.
+   </Note>
 4. Immediately copy the displayed secret. This is your **Client Secret**.
 
 <Warning>
