@@ -58,10 +58,10 @@ WisdomAl will use a JSON key file for authenticating with BigQuery.
 1. Navigate back to **IAM & Admin** \> **Service Accounts**.
 2. Click on the service account you created (e.g., Wisdom-bigquery).
 3. Go to the **KEYS** tab.
-4. Click **ADD KEY **\>**Create new key** .
+4. Click \*\*ADD KEY \*\*\>**Create new key** .
 5. Select **JSON** as the key type.
 6. Click **CREATE**.
-7. A JSON key file will be downloaded to your computer. 
+7. A JSON key file will be downloaded to your computer.
 
    <Warning>
      This file contains sensitive credentials.
@@ -89,17 +89,17 @@ Once you have gathered the required information, you can configure the connectio
 
 ## Troubleshooting Common Issues
 
-**Authentication Failed or Invalid Credentials:**
+### Authentication Failed or Invalid Credentials
 
 - Ensure the JSON key file you pasted is complete and correct. No extra characters, spaces, or missing lines.
 - Verify that the `project_id` in the JSON key matches the project ID you're trying to connect to.
 
-**Permission Denied Errors:**
+### Permission Denied Errors
 
 - Double-check that the service account has all three required roles (**BigQuery Data Viewer**, **BigQuery Job User**, **BigQuery Read Session User**) assigned correctly at either the project or dataset level.
 - Confirm that the BigQuery API is enabled in your Google Cloud Project.
 
-**Dataset Not Found or Table Not Found:**
+### Dataset Not Found or Table Not Found
 
 - Verify the spelling of the dataset or table names.
 - If using dataset filters in WisdomAl, ensure the dataset is included in the filter.
