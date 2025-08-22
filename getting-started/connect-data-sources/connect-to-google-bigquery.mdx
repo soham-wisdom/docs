@@ -1,99 +1,99 @@
 ---
 title: "Connect WisdomAI to Google BigQuery"
 ---
-WisdomAl connects to Google BigQuery using a Google Cloud Platform (GCP) Service Account. This method ensures secure and granular control over the data WisdomAl can access.
 
+WisdomAl connects to Google BigQuery using a Google Cloud Platform (GCP) Service Account. This method ensures secure and granular control over the data WisdomAl can access.
 
 ## Prerequisites
 
-Before connecting WisdomAl to BigQuery, ensure you have:
-* An active Google Cloud Project.
-* The BigQuery API enabled within your Google Cloud Project.
+Before connecting WisdomAl to BigQuery, make sure to have:
 
+- An active Google Cloud Project.
+- The BigQuery API enabled within your Google Cloud Project.
 
 ## 1. Create a GCP Service Account
 
-A service account is a special type of Google account that an application, like WisdomAl, can use to make authorized API calls.
+A service account is a special type of Google account that an application, like WisdomAl, can use to make authorized API calls. To do this:
 
-* Navigate to the GCP Console.
-* Go to IAM & Admin > Service Accounts.
-* Click **+ CREATE SERVICE ACCOUNT**.
-* **Service Account Name:** Choose a descriptive name, such as `wisdom-bigquery`.
-* **Service Account ID:** This will be auto-generated based on the name.
-* **Service Account Description:** (Optional) Add a description, e.g., "Service account for WisdomAl BigQuery connectivity."
-* Click **CREATE AND CONTINUE**.
-
+1. Navigate to the GCP Console.
+2. Go to **IAM & Admin** \> **Service Accounts**.
+3. Click **\+ CREATE SERVICE ACCOUNT**.
+4. **Service Account Name:** Choose a descriptive name, such as `wisdom-bigquery`.
+5. **Service Account ID:** This will be auto-generated based on the name.
+6. **Service Account Description:** (Optional) Add a description, e.g., "Service account for WisdomAl BigQuery connectivity."
+7. Click **CREATE AND CONTINUE**.
 
 ## 2. Assign IAM Roles to the Service Account
 
 To grant WisdomAl the necessary permissions to read data and run queries, assign the following roles to the service account created in the previous step. It's recommended to assign these roles at the project level for broad access, or you can restrict access to specific datasets if needed.
 
-* **BigQuery Data Viewer:** This role grants permission to view BigQuery data and metadata.
-* **BigQuery Job User:** This role allows the service account to run BigQuery jobs, including queries.
-* **BigQuery Read Session User:** This role is crucial for efficient data retrieval using the BigQuery Storage API.
+- **BigQuery Data Viewer:** This role grants permission to view BigQuery data and metadata.
+- **BigQuery Job User:** This role allows the service account to run BigQuery jobs, including queries.
+- **BigQuery Read Session User:** This role is crucial for efficient data retrieval using the BigQuery Storage API.
 
 **Steps to Assign Roles (at Project Level):**
-1.  After creating the service account, on the "Grant this service account access to project" step, select the following roles from the "Select a role" dropdown:
-    * BigQuery Data Viewer
-    * BigQuery Job User
-    * BigQuery Read Session User
-2.  Click **DONE**.
+
+1. After creating the service account, on the "Grant this service account access to project" step, select the following roles from the "Select a role" dropdown:
+   - BigQuery Data Viewer
+   - BigQuery Job User
+   - BigQuery Read Session User
+2. Click **DONE**.
 
 **To Restrict Access to Specific Datasets Only:**
 If you want WisdomAl to only access certain datasets within your project, you can skip assigning the BigQuery roles at the project level and instead grant access directly to the specific datasets:
-1.  Navigate to BigQuery in the GCP Console.
-2.  Select the desired dataset.
-3.  Click **SHARE DATASET**.
-4.  In the "Add principals" field, enter the email address of the service account you created.
-5.  Assign the **BigQuery Data Viewer** and **BigQuery Read Session User** roles to the service account for this specific dataset.
-6.  Assign **BigQuery Job User** at the project level.
-7.  Repeat for all datasets WisdomAl needs to access.
 
+1. Navigate to BigQuery in the GCP Console.
+2. Select the desired dataset.
+3. Click **SHARE DATASET**.
+4. In the "Add principals" field, enter the email address of the service account you created.
+5. Assign the **BigQuery Data Viewer** and **BigQuery Read Session User** roles to the service account for this specific dataset.
+6. Assign **BigQuery Job User** at the project level.
+7. Repeat for all datasets WisdomAl needs to access.
 
 ## 3. Generate a JSON Key for the Service Account
 
 WisdomAl will use a JSON key file for authenticating with BigQuery.
 
-1.  Navigate back to IAM & Admin > Service Accounts.
-2.  Click on the service account you created (e.g., `wisdom-bigquery`).
-3.  Go to the **KEYS** tab.
-4.  Click **ADD KEY > Create new key**.
-5.  Select **JSON** as the key type.
-6.  Click **CREATE**.
-7.  A JSON key file will be downloaded to your computer. This file contains sensitive credentials.
-
+1. Navigate back to IAM & Admin \> Service Accounts.
+2. Click on the service account you created (e.g., `wisdom-bigquery`).
+3. Go to the **KEYS** tab.
+4. Click **ADD KEY \> Create new key**.
+5. Select **JSON** as the key type.
+6. Click **CREATE**.
+7. A JSON key file will be downloaded to your computer. This file contains sensitive credentials.
 
 ## 4. Connect WisdomAl to BigQuery
 
 Once you have gathered the required information, you can configure the connection in WisdomAl:
 
-1.  In WisdomAl, navigate to the Connections section and click **Add Connection**.
-2.  Select **BigQuery** as the data source type.
-3.  Fill in the connection details in the "BigQuery connection details" section:
-    * **Connection Name:** Choose a descriptive name for your connection (e.g., "BigQuery Prod").
-    * **Project Id:** Provide your Google Cloud Project ID (this is usually found on your GCP console dashboard).
-    * **Service Account Info JSON:** Paste the contents of the JSON key file.
-    * **Dataset Filters (Optional):** Specify any Dataset Filters if you want to further restrict the datasets WisdomAl crawls.
-4.  Click **Save and Sync metadata**. WisdomAl will use the provided credentials to connect to BigQuery, scan the metadata of the specified datasets, and tables.
-
+1. In WisdomAl, navigate to the Connections section and click **Add Connection**.
+2. Select **BigQuery** as the data source type.
+3. Fill in the connection details in the "BigQuery connection details" section:
+   - **Connection Name:** Choose a descriptive name for your connection (e.g., "BigQuery Prod").
+   - **Project Id:** Provide your Google Cloud Project ID (this is usually found on your GCP console dashboard).
+   - **Service Account Info JSON:** Paste the contents of the JSON key file.
+   - **Dataset Filters (Optional):** Specify any Dataset Filters if you want to further restrict the datasets WisdomAl crawls.
+4. Click **Save and Sync metadata**. WisdomAl will use the provided credentials to connect to BigQuery, scan the metadata of the specified datasets, and tables.
 
 ## Security Considerations and Best Practices
 
-* **Least Privilege:** Always follow the principle of least privilege. Only grant the necessary roles and permissions to the service account. If dataset-level access is sufficient, avoid granting project-level roles.
-* **Secure Key Management:** The JSON key file is highly sensitive. Treat it like a password. Avoid sharing it via insecure channels like unencrypted email. Use secure methods like LastPass or other secure file sharing services.
-
+- **Least Privilege:** Always follow the principle of least privilege. Only grant the necessary roles and permissions to the service account. If dataset-level access is sufficient, avoid granting project-level roles.
+- **Secure Key Management:** The JSON key file is highly sensitive. Treat it like a password. Avoid sharing it via insecure channels like unencrypted email. Use secure methods like LastPass or other secure file sharing services.
 
 ## Troubleshooting Common Issues
 
 **Authentication Failed or Invalid Credentials:**
-* Ensure the JSON key file you pasted is complete and correct. No extra characters, spaces, or missing lines.
-* Verify that the `project_id` in the JSON key matches the project ID you're trying to connect to.
+
+- Ensure the JSON key file you pasted is complete and correct. No extra characters, spaces, or missing lines.
+- Verify that the `project_id` in the JSON key matches the project ID you're trying to connect to.
 
 **Permission Denied Errors:**
-* Double-check that the service account has all three required roles (**BigQuery Data Viewer**, **BigQuery Job User**, **BigQuery Read Session User**) assigned correctly at either the project or dataset level.
-* Confirm that the BigQuery API is enabled in your Google Cloud Project.
+
+- Double-check that the service account has all three required roles (**BigQuery Data Viewer**, **BigQuery Job User**, **BigQuery Read Session User**) assigned correctly at either the project or dataset level.
+- Confirm that the BigQuery API is enabled in your Google Cloud Project.
 
 **Dataset Not Found or Table Not Found:**
-* Verify the spelling of the dataset or table names.
-* If using dataset filters in WisdomAl, ensure the dataset is included in the filter.
-* Confirm that the service account has permissions on the specific dataset you are trying to access.
+
+- Verify the spelling of the dataset or table names.
+- If using dataset filters in WisdomAl, ensure the dataset is included in the filter.
+- Confirm that the service account has permissions on the specific dataset you are trying to access.
