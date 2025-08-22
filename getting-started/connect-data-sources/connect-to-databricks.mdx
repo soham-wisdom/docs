@@ -26,7 +26,7 @@ You will need the following four pieces of information from your Databricks envi
 #### Host and HTTP Path
 
 1. Navigate to your Databricks Workspace.
-2. Go to **SQL Warehouses **(or SQL Endpoints).
+2. Go to \*\*SQL Warehouses \*\*(or SQL Endpoints).
 3. Select the warehouse you want to connect to.
 4. Click on the **Connection Details** tab. Here you will find the **Server Hostname** (your Host) and the **HTTP Path**.
 
@@ -36,12 +36,17 @@ You'll first need to create a Service Principal in Databricks.
 
 **Step 1: Create a Service Principal**
 
-1. Log in to your Databricks workspace as an administrator.
-2. Navigate to **Admin Settings** \> **Identity and access** \> **Service principals**.
-3. Click **Add Service Principal**.
-4. Select **Databricks managed** and give it a descriptive name (e.g., `WisdomAI-ServicePrincipal`).
-5. Click **Add**.
-6. The **Application ID** shown is your **Client ID**. Copy this value.
+1. Log in to your Databricks environment.
+   - **A) account-level permissions:** Log in to your Databricks **account console**.
+   - **B) administrator-level permissions:** Log in to your Databricks **workspace** as an administrator.
+2. Navigate to the Service Principals section.
+   - **A) From Account Console:** Navigate to **User management \> Service principals**.
+   - **B) From Workspace:** Navigate to **Admin Settings** (click your username in the top right, then Admin Settings) \> **Identity and access \> Service principals**.
+3. Click **Add service principal**.
+4. Select **Databricks managed**.
+5. Provide a descriptive **Name** for the service principal (e.g., WisdomAI-ServicePrincipal).
+6. Click **Add service principal**.
+7. Once created, you will see the **Application ID** for this service principal. This is your **Client ID**. Copy this value.
 
 **Step 2: Generate a Client Secret for the Service Principal**
 
