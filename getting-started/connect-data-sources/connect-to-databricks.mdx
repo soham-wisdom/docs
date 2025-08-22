@@ -6,7 +6,7 @@ WisdomAI connects to Databricks using a **Client ID** and **Client Secret** for 
 
 ## Prerequisites
 
-Before you begin, ensure you have the following:
+Before you begin, make sure you have the following:
 
 - An active Databricks workspace.
 - Permissions to create and manage **Service Principals** within your Databricks account or workspace.
@@ -54,7 +54,6 @@ You'll first need to create a Service Principal in Databricks.
   The Client Secret is only shown once and cannot be retrieved later. Please store it in a secure location immediately.
 </Warning>
 
-
 ## 2. Assign Permissions in Databricks
 
 The Service Principal needs specific permissions to access the required data.
@@ -82,39 +81,44 @@ GRANT SELECT ON ALL TABLES IN SCHEMA <your_catalog_name>.<your_schema_name> TO `
 
 Once you have gathered the required information, you can configure the connection in WisdomAl:
 
-1.  In WisdomAl, navigate to the Connections section and click **Add Connection**.
-2.  Select **Databricks** as the data source type.
-3.  Fill in the connection details in the "Databricks connection details" section.
-    * **Connection Name**: Choose a descriptive name for your connection (e.g., "Databricks Prod").
-    * **Host**: Paste the Server Hostname you obtained from Databricks.
-    * **HTTP Path**: Paste the HTTP Path for your SQL Warehouse.
-    * **Client ID**: Enter your Client ID (Application ID). This field is mandatory.
-    * **Client Secret**: Enter your Client Secret (the value copied immediately after creation). This field is mandatory.
-    * **Catalog Filters (Optional)**: Specify any Catalog Filters if you want to further restrict the catalogs/schemas WisdomAl crawls.
-4.  Click **Save and Sync metadata**. WisdomAl will use the provided credentials to connect to Databricks and scan the metadata of the specified catalogs and tables.
+1. In WisdomAl, navigate to the Connections section and click **Add Connection**.
+2. Select **Databricks** as the data source type.
+3. Fill in the connection details in the "Databricks connection details" section.
+   - **Connection Name**: Choose a descriptive name for your connection (e.g., "Databricks Prod").
+   - **Host**: Paste the Server Hostname you obtained from Databricks.
+   - **HTTP Path**: Paste the HTTP Path for your SQL Warehouse.
+   - **Client ID**: Enter your Client ID (Application ID). This field is mandatory.
+   - **Client Secret**: Enter your Client Secret (the value copied immediately after creation). This field is mandatory.
+   - **Catalog Filters (Optional)**: Specify any Catalog Filters if you want to further restrict the catalogs/schemas WisdomAl crawls.
+4. Click **Save and Sync metadata**. WisdomAl will use the provided credentials to connect to Databricks and scan the metadata of the specified catalogs and tables.
 
 ## Security Considerations and Best Practices
-* **Least Privilege**: Always follow the principle of least privilege. Only grant the necessary permissions to the Service Principal.
-* **Secure Key Management**: Treat your Client ID and Client Secret like passwords. Avoid sharing them via insecure channels like unencrypted email. Use secure methods like LastPass or other secure file sharing services.
-* **Credential Rotation**: Regularly rotate your Client Secrets to enhance security, especially before their expiration.
+
+- **Least Privilege**: Always follow the principle of least privilege. Only grant the necessary permissions to the Service Principal.
+- **Secure Key Management**: Treat your Client ID and Client Secret like passwords. Avoid sharing them via insecure channels like unencrypted email. Use secure methods like LastPass or other secure file sharing services.
+- **Credential Rotation**: Regularly rotate your Client Secrets to enhance security, especially before their expiration.
 
 ## Troubleshooting Common Issues
 
 **Authentication Failed or Invalid Credentials:**
-* Ensure the Host, HTTP Path, Client ID, and Client Secret are complete and correct.
-* No extra characters, spaces, or missing lines.
-* Verify that the Client Secret has not expired or been revoked in Databricks.
-* Confirm that the Service Principal exists and is enabled in Databricks.
+
+- Ensure the Host, HTTP Path, Client ID, and Client Secret are complete and correct.
+- No extra characters, spaces, or missing lines.
+- Verify that the Client Secret has not expired or been revoked in Databricks.
+- Confirm that the Service Principal exists and is enabled in Databricks.
 
 **Permission Denied Errors:**
-* Double-check that the Service Principal has the necessary `CAN USE` permission on the SQL Warehouse.
-* Verify that the Service Principal has the correct `USE CATALOG`, `USE SCHEMA`, and `SELECT` privileges on the Databricks catalogs, schemas, and tables you are trying to access.
-* Confirm that the SQL Warehouse is running and accessible.
+
+- Double-check that the Service Principal has the necessary `CAN USE` permission on the SQL Warehouse.
+- Verify that the Service Principal has the correct `USE CATALOG`, `USE SCHEMA`, and `SELECT` privileges on the Databricks catalogs, schemas, and tables you are trying to access.
+- Confirm that the SQL Warehouse is running and accessible.
 
 **Catalog Not Found or Table Not Found:**
-* Verify the spelling of the catalog or table names.
-* If using catalog filters in WisdomAl, ensure the catalog is included in the filter.
-* Confirm that the Service Principal has permissions on the specific catalog you are trying to access.
+
+- Verify the spelling of the catalog or table names.
+- If using catalog filters in WisdomAl, ensure the catalog is included in the filter.
+- Confirm that the Service Principal has permissions on the specific catalog you are trying to access.
 
 **Connection Timeout or Network Errors:**
-* Verify that WisdomAl's CIDR block (35.238.115.103/32 34.82.248.105/32) is allowlisted in your Snowflake network policies or any corporate firewalls.
+
+- Verify that WisdomAl's CIDR block (35.238.115.103/32 34.82.248.105/32) is allowlisted in your Snowflake network policies or any corporate firewalls.
