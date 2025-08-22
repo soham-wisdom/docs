@@ -23,6 +23,8 @@ You will need the following four pieces of information from your Databricks envi
 
 ### How to Find Your Connection Details
 
+Follow these steps to find the necessary credentials.
+
 #### Host and HTTP Path
 
 1. Navigate to your Databricks Workspace.
@@ -65,15 +67,15 @@ You'll first need to create a Service Principal in Databricks.
 
 ## 2. Assign Permissions in Databricks
 
-The Service Principal needs specific permissions to access the required data.
+The Service Principal needs specific permissions to access the required data that WisdomAI needs.
 
-- **Warehouse Permissions**: Grant **CAN USE** permission to the Service Principal on the SQL Warehouse you are connecting to. You can do this from the **Permissions** tab of the SQL Warehouse.
-- **Data Privileges**: The service principal requires the following privileges in Unity Catalog:
+- **SQL Warehouse/Cluster Permissions**: Grant **CAN USE** permission to the Service Principal on the SQL Warehouse you are connecting to. You can do this from the **Permissions** tab of the SQL Warehouse.
+- **Data Privileges**: The service principal requires the following privileges in Unity Catalog (or Hive Metastore):
   - `USE CATALOG` on the target catalog.
   - `USE SCHEMA` on the target schema.
   - `SELECT` on the tables and views you want WisdomAI to access.
 
-You can grant these permissions using SQL commands:
+You can grant these permissions using SQL commands. Here are some examples:
 
 ```sql
 -- Grant permission to use a specific catalog
@@ -82,15 +84,20 @@ GRANT USAGE ON CATALOG <your_catalog_name> TO `<service_principal_id>`;
 -- Grant permission to use a specific schema
 GRANT USAGE ON SCHEMA <your_catalog_name>.<your_schema_name> TO `<service_principal_id>`;
 
+-- Grant select permission on table
+GRANT SELECT ON TABLE <your_catalog_name>.<your_schema_name>.<your_table_name> TO `<service_principal_id>`;
+
 -- Grant select permission on all tables in a schema
 GRANT SELECT ON ALL TABLES IN SCHEMA <your_catalog_name>.<your_schema_name> TO `<service_principal_id>`;
 ```
+
+Replace `<service_principal_id>` with the Application ID of your service principal, and `<your_catalog_name>`,`<your_schema_name>`, and `<your_table_name>` with your specific values.
 
 ## 3. Connect WisdomAl to Databricks
 
 Once you have gathered the required information, you can configure the connection in WisdomAl:
 
-1. In WisdomAl, navigate to the Connections section and click **Add Connection**.
+1. In WisdomAl, navigate to the **Connections** section and click **Add Connection**.
 2. Select **Databricks** as the data source type.
 3. Fill in the connection details in the "Databricks connection details" section.
    - **Connection Name**: Choose a descriptive name for your connection (e.g., "Databricks Prod").
@@ -101,6 +108,8 @@ Once you have gathered the required information, you can configure the connectio
    - **Catalog Filters (Optional)**: Specify any Catalog Filters if you want to further restrict the catalogs/schemas WisdomAl crawls.
 4. Click **Save and Sync metadata**. WisdomAl will use the provided credentials to connect to Databricks and scan the metadata of the specified catalogs and tables.
 
+![image.png](/images/image.png)
+
 ## Security Considerations and Best Practices
 
 - **Least Privilege**: Always follow the principle of least privilege. Only grant the necessary permissions to the Service Principal.
@@ -109,25 +118,25 @@ Once you have gathered the required information, you can configure the connectio
 
 ## Troubleshooting Common Issues
 
-**Authentication Failed or Invalid Credentials:**
+### Authentication Failed or Invalid Credentials
 
 - Ensure the Host, HTTP Path, Client ID, and Client Secret are complete and correct.
 - No extra characters, spaces, or missing lines.
 - Verify that the Client Secret has not expired or been revoked in Databricks.
 - Confirm that the Service Principal exists and is enabled in Databricks.
 
-**Permission Denied Errors:**
+### Permission Denied Errors
 
 - Double-check that the Service Principal has the necessary `CAN USE` permission on the SQL Warehouse.
 - Verify that the Service Principal has the correct `USE CATALOG`, `USE SCHEMA`, and `SELECT` privileges on the Databricks catalogs, schemas, and tables you are trying to access.
 - Confirm that the SQL Warehouse is running and accessible.
 
-**Catalog Not Found or Table Not Found:**
+### Catalog Not Found or Table Not Found
 
 - Verify the spelling of the catalog or table names.
 - If using catalog filters in WisdomAl, ensure the catalog is included in the filter.
 - Confirm that the Service Principal has permissions on the specific catalog you are trying to access.
 
-**Connection Timeout or Network Errors:**
+### Connection Timeout or Network Errors
 
 - Verify that WisdomAl's CIDR block (35.238.115.103/32 34.82.248.105/32) is allowlisted in your Snowflake network policies or any corporate firewalls.
