@@ -89,13 +89,15 @@
             "group": "Advanced Features",
             "pages": [
               "advanced-features/visualization-types-and-properties",
-              "advanced-features/tutorial-create-agent"
+              "advanced-features/tutorial-create-agent",
+              "advanced-features/deep-analysis"
             ]
           },
           {
             "group": "Integrations",
             "pages": [
               "integrations/embed-chat",
+              "integrations/connect-to-slack",
               {
                 "group": "GraphQL API",
                 "pages": [
