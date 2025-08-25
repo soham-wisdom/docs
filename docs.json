@@ -88,7 +88,8 @@
           {
             "group": "Advanced Features",
             "pages": [
-              "advanced-features/visualization-types-and-properties"
+              "advanced-features/visualization-types-and-properties",
+              "advanced-features/tutorial-create-agent"
             ]
           },
           {
