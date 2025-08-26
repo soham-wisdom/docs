@@ -4,11 +4,11 @@ title: "Create and Manage an Agent"
 
 Manually checking a dashboard every morning to track key business metrics is time-consuming. Instead, you can create an automated monitoring workflow using the Agents feature in WisdomAI. An Agent is an automated process that you configure to keep track of your most important metrics without needing to run manual checks.
 
-An Agent works by following three steps:
+An Agent works by following these steps:
 
 1. Wakes up on a schedule you define (e.g., every day at 9:00 AM).
-2. Evaluates a condition, called a Trigger (e.g., checks if yesterday's sales were below \$50,000).
-3. Acts only if the condition is true by running an analysis and sending a notification to your specified notification channels.
+2. If set, evaluates a condition, called a Trigger (e.g., checks if yesterday's sales were below \$50,000). If no trigger is set, the agent proceeds to the next step every time it runs.
+3. Acts by running an analysis and sending a notification to your specified notification channels.
 
 By the end of this tutorial, you will be able to create an agent that monitors a key business metric, runs a follow-up analysis when a specific condition is met, and sends a notification to your team.
 
@@ -26,7 +26,7 @@ Make sure you have the following:
 - **(Optional) Slack Integration**: If you want to send alerts to a Slack channel, an administrator must first connect your Slack workspace to WisdomAI.
 
   <Note>
-    Read the [Connect to Slack](https://docs.askwisdom.ai/integrations/connect-to-slack) guide to learn how to do it.
+    Read the [Slack](https://docs.askwisdom.ai/integrations/connect-to-slack) guide to learn how to do it.
   </Note>
 
 ## Create an Agent
@@ -36,28 +36,29 @@ To create a new agent, follow these steps:
 1. From the sidebar on the left, select the **Agents** tab.
 2. If no agents have been configured, you will see a welcome screen. Click **Get started**.
 
-![agent01.jpg](/images/agent01.jpg)
+![Screenshot showing the Get Started button](/images/2025-08-26_12-26-03.png)
 
-3. In the configuration form, define the Agent's basic settings:
-   - **Select a Domain**: Choose the data domain the Agent will run in.
-   - **Agent Name**: Provide a descriptive name for your Agent to easily identify it later.
-4. Configure the **Activation** **Trigger**. The trigger is a condition written in natural language that determines if the analysis should run.
-   - In the text box, describe the condition. You can write complex criteria. For example: `If total sales in the last year fall below $100,000`.
-   - Click **Test** to check if your trigger condition is currently met. This helps you verify that the criteria works as expected. Learn more in the [Test an Agent During Configuration](#test-an-agent-during-configuration) section of this tutorial.
+3. **Select a Domain**: Choose the data domain the Agent will run in.
+4. **Agent Name**: Provide a descriptive name for your Agent to easily identify it later.
+5. Configure the **Activation** **Trigger**. The optional trigger allows you to choose between two modes of operation: scheduled reporting or conditional monitoring.
+   1. **Trigger Disabled (Scheduled Reporting)**: Leave the trigger disabled to use the Agent for scheduled reporting. In this mode, the analysis will always run and send out a notification according to the schedule you set.
+   2. **Trigger Enabled (Conditional Monitoring)**: Enable the trigger to use the Agent as a monitor for specific conditions. In this mode, an analysis and notification are sent only if the trigger's conditions are satisfied.
+      - In the text box, describe the condition. You can write complex criteria. For example: `If total sales in the last year fall below $100,000`.
+      - Click **Test** to check if your trigger condition is currently met. This helps you verify that the criteria works as expected. Learn more in the [Test an Agent During Configuration](#test-an-agent-during-configuration) section of this tutorial.
 
-<Tip>
-  Start with simple, single-condition triggers to ensure they work as expected before creating more complex ones.
-</Tip>
+        <Tip>
+          Start with simple, single-condition triggers to ensure they work as expected before creating more complex ones.
+        </Tip>
 
-![Screenshot showing how to configure the Agent](/images/agent02.jpg)
+![Screenshot showing how to configure the Agent](/images/agent-new-ui-02.png)
 
-5. Define the **Work Description**. This is the task the Agent will perform if the trigger condition is met.
+6. Define the **Work Description**. This is the task the Agent will perform if the trigger condition is met.
    - In the work description text box, describe the analysis and action you want in natural language. For example: `Send me a list of all lost deals along with their region, their owner, and their total value`.
    - Click **Test** to run the analysis and see a sample of the output. This allows you to preview the results that will be sent in the notification. Learn more in the [Test an Agent During Configuration](#test-an-agent-during-configuration) section of this tutorial.
-6. Set the **Schedule** for the Agent to run.
+7. Set the **Schedule** for the Agent to run.
    - Choose a start date and time.
    - Define the frequency, such as every day or week.
-7. Configure **Notifications** to define how you will receive the analysis results.
+8. Configure **Notifications** to define how you will receive the analysis results.
    - **Email**: Select this option and enter one or more email addresses. The notification will contain charts and tables from the analysis.
    - **Slack**: Select this option and specify the Slack channel names.
 
@@ -65,45 +66,35 @@ To create a new agent, follow these steps:
   To use the Slack notification option, you must first have a Slack workspace connected. Read the [Connect to Slack](https://docs.askwisdom.ai/integrations/connect-to-slack) guide to learn how to do it.
 </Note>
 
-8. Click **Create Agent** to save and activate it.
+9. Click **Create Agent** to save and activate it.
 
-![Screenshot showing how to configure the Agent](/images/agent06.jpg)
+![Screenshot showing how to configure the Agent](/images/agent-new-ui-09.png)
 
 ## Test an Agent During Configuration
 
 While creating or editing an Agent, you can test its two main components, the **Activation Trigger** and the **Work Description**, independently before saving. This helps you refine each part and ensure the Agent will behave as expected.
 
-- **Test the Activation Trigger**: Next to the trigger text box, click **Test** to check if your condition is currently met based on the data. This is useful for verifying that your natural language criteria are written correctly and will activate when you expect them to. The test will show you if the trigger would fire and why.
-- **Test the Work Description**: Next to the work description text box, click **Test** to run the analysis and preview the output. This allows you to see a sample of the report that the Agent will generate, so you can adjust the description to get the exact information you need in your notifications.
+- **Test the Activation Trigger**: Below the trigger text box (this is only visible when the trigger is enabled), click **Test** to check if your condition is currently met based on the data. This is useful for verifying that your natural language criteria are written correctly and will activate when you expect them to. The test will show you if the trigger would fire and why.
+- **Test the Work Description**: Below the work description text box, click **Test** to run the analysis and preview the output. This allows you to see a sample of the report that the Agent will generate, so you can adjust the description to get the exact information you need in your notifications.
 
-![Gif showing the Test button in action](/images/2025-08-24_21-17-08.gif)
+![Gif showing the Test button in action](/images/agent-new-ui-gif.gif)
 
 ## Manage Existing Agents
 
 After an Agent is created, it appears in a list on the main **Agents** page. From this page, you can manage all the Agents you have access to.
 
-### Test an Agent
+To manage an individual agent, locate it in the list and click the **three-dot menu (...)** under the **Actions** column. A dropdown menu will appear with the following options:
 
-You can test the Agent's entire workflow from start to finish.
+- **Share**: Allows you to share the Agent with other users for collaboration.
+- **Test**: Manually runs the Agent's entire workflow. The Agent will evaluate its trigger (if enabled) and, if the conditions are met (or if the trigger is disabled), run the full analysis and send a notification.
 
-1. On the **Agents** page, find the Agent you wish to test.
-2. Click **Test**.
-3. This action manually activates the Agent, which will then:
-   - Evaluate the trigger criteria.
-   - If the criteria are met, it will run the full analysis and send a notification to the configured channels.
+  <Warning>
+    A notification is only sent if the trigger criteria are satisfied.
+  </Warning>
+- **Edit**: Opens the configuration form, allowing you to modify the Agent's name, trigger, work description, or schedule.
+- **Delete**: Permanently removes the Agent. This action cannot be undone.
 
-<Warning>
-  A notification is only sent if the trigger criteria are satisfied.
-</Warning>
-
-![2025-08-24_21-43-49.png](/images/2025-08-24_21-43-49.png)
-
-### Edit and Share an Agent
-
-- **Edit**: To modify an Agent, click the **Edit** button to return to its configuration form.
-- **Share**: You can share an Agent with other users to allow for collaboration. Once shared, other users can also edit the Agent.
-
-![2025-08-24_21-47-40.png](/images/2025-08-24_21-47-40.png)
+![Screenshot showing the manage an agent options](/images/image.png)
 
 ### Use Deep Analysis with an Agent
 
@@ -116,7 +107,7 @@ You can have an Agent run its analysis using the Deep Analysis feature. When you
   To learn more about this functionality, read the [Deep Analysis Functionality](https://docs.askwisdom.ai/advanced-features/deep-analysis) article.
 </Note>
 
-![2025-08-24_21-52-16.png](/images/2025-08-24_21-52-16.png)
+![Enable Deep Analysis Toggle on](/images/agent-new-ui-da.png)
 
 ## Use Case Examples
 
