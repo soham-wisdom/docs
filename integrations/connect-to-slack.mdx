@@ -29,6 +29,25 @@ Follow these steps to connect your WisdomAI account to Slack:
 
 ![Snippet showing the WisdomAI Integration on Slack](/images/connect-to-slack05.png)
 
+## Permissions
+
+When you connect WisdomAI to Slack, you will be asked to grant a set of permissions. These allow the WisdomAI app to receive your questions and post answers back into your workspace.
+
+Here is a detailed breakdown of what each permission allows WisdomAI to do:
+
+| Permission          | Description                                                                                                        |
+| :------------------ | :----------------------------------------------------------------------------------------------------------------- |
+| `app_mentions:read` | Allows the app to see messages that directly mention `@WisdomAI` in conversations where the app is in.             |
+| `assistant:write`   | Allows WisdomAI to act as an AI Assistant, enabling it to provide intelligent responses and analysis within Slack. |
+| `channels:history`  | View messages and content in public channels that WisdomAI has been added to.                                      |
+| `chat:write`        | Allows WisdomAI to send messages and answers to your questions in channels and conversations.                      |
+| `chat:write.public` | Allows WisdomAI to send messages to public channels that it isn't a member of.                                     |
+| `files:write`       | Allows WisdomAI to upload, edit, and delete files.                                                                 |
+| `im:history`        | View messages and content in direct messages with the WisdomAI app.                                                |
+| `reactions:write`   | Allows WisdomAI to add emoji reactions to messages, for example, to acknowledge a command.                         |
+| `users:read`        | Allows WisdomAI to view basic information about users in your workspace, such as their names and user IDs.         |
+| `users:read.email`  | View email addresses of people in the workspace.                                                                   |
+
 ## Query Your Data in Slack
 
 After connecting the app, you can interact with WisdomAI directly from your Slack workspace.
