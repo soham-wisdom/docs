@@ -96,6 +96,24 @@ To manage an individual agent, locate it in the list and click the **three-dot m
 
 ![Screenshot showing the manage an agent options](/images/image.png)
 
+### View Previous Runs
+
+You can view a detailed history of every time an agent has run. This log is useful for auditing and debugging an agent's behavior over time.
+
+1. To see the log, find your agent on the **Agents** page and click the **Previous Runs** link in its corresponding row.
+2. This will take you to the **Previous Runs** page, which displays a timeline of all past executions. Each entry in the log shows the status of the agent's key stages:
+
+| **Stage**        | **Description**                                                           |
+| :--------------- | :------------------------------------------------------------------------ |
+| **WAKE UP**      | Confirms the agent started at its scheduled time.                         |
+| **EVALUATION**   | Shows whether the trigger criteria were met.                              |
+| **ANALYSIS**     | Confirms if the analysis was completed successfully.                      |
+| **NOTIFICATION** | Shows if the notification was sent successfully or if there was an error. |
+
+3. If an analysis was successfully generated, you can click the **View Conversation** button within the ANALYSIS step. This will take you to the specific conversation where you can inspect the detailed results and the exact query that was run for that execution.
+
+![view-previous-runs.gif](/images/view-previous-runs.gif)
+
 ### Use Deep Analysis with an Agent
 
 You can have an Agent run its analysis using the Deep Analysis feature. When you enable Deep Analysis for an Agent, it performs a more thorough analysis by exploring multiple aspects of the data and providing comprehensive insights. This process may take longer but yields more detailed results.
