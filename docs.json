@@ -92,8 +92,8 @@
       "group": "Agents",
       "pages": [
         "advanced-features/agents/agents",
-        "advanced-features/agents/manage-agents",
-        "advanced-features/agents/tutorial-create-agent"
+        "advanced-features/agents/tutorial-create-agent",
+        "advanced-features/agents/manage-agents"
       ]
     },
     "advanced-features/deep-analysis",
