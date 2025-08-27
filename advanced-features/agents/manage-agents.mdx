@@ -1,5 +1,44 @@
 ---
-title: 'New file'
-description: 'Description of your new file.'
+title: "Manage Your Agents"
+description: "Description of your new file."
 ---
 
+After an Agent is created, it appears in a list on the main **Agents** page. From this page, you can manage all the Agents you have access to.
+
+To manage an individual agent, locate it in the list and click the **three-dot menu (...)** under the **Actions** column. A dropdown menu will appear with the following options:
+
+- **Share**: Allows you to share the Agent with other users for collaboration.
+- **Test**: Manually runs the Agent's entire workflow. The Agent will evaluate its trigger (if enabled) and, if the conditions are met (or if the trigger is disabled), run the full analysis and send a notification.
+
+  <Warning>
+    A notification is only sent if the trigger criteria are satisfied.
+  </Warning>
+- **Edit**: Opens the configuration form, allowing you to modify the Agent's name, trigger, work description, or schedule.
+- **Delete**: Permanently removes the Agent. This action cannot be undone.
+
+## View Previous Runs
+
+You can view a detailed history of every time an agent has run. This log is useful for auditing and debugging an agent's behavior over time.
+
+1. To see the log, find your agent on the **Agents** page and click the **Previous Runs** link in its corresponding row.
+2. This will take you to the **Previous Runs** page, which displays a timeline of all past executions. Each entry in the log shows the status of the agent's key stages:
+
+| **Stage**        | **Description**                                                           |
+| :--------------- | :------------------------------------------------------------------------ |
+| **WAKE UP**      | Confirms the agent started at its scheduled time.                         |
+| **EVALUATION**   | Shows whether the trigger criteria were met.                              |
+| **ANALYSIS**     | Confirms if the analysis was completed successfully.                      |
+| **NOTIFICATION** | Shows if the notification was sent successfully or if there was an error. |
+
+3. If an analysis was successfully generated, you can click the **View Conversation** button within the ANALYSIS step. This will take you to the specific conversation where you can inspect the detailed results and the exact query that was run for that execution.
+
+## Use Deep Analysis with an Agent
+
+You can have an Agent run its analysis using the Deep Analysis feature. When you enable Deep Analysis for an Agent, it performs a more thorough analysis by exploring multiple aspects of the data and providing comprehensive insights. This process may take longer but yields more detailed results.
+
+1. When creating or editing an Agent, enable the **Deep Analysis** toggle.
+2. When the Agent runs, it will automatically generate and execute a multi-step analysis plan based on your work description. You will not be prompted to approve the plan; it will run automatically.
+
+<Note>
+  To learn more about this functionality, read the [Deep Analysis Functionality](https://docs.askwisdom.ai/advanced-features/deep-analysis) article.
+</Note>

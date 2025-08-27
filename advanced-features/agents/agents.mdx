@@ -1,5 +1,44 @@
 ---
-title: 'New file'
-description: 'Description of your new file.'
+title: "Agents"
 ---
 
+Manually checking a dashboard every morning to track key business metrics is time-consuming. Instead, you can create an automated monitoring workflow using the Agents feature in WisdomAI. An Agent is an automated process that you configure to keep track of your most important metrics without needing to run manual checks.
+
+An Agent works by following these steps:
+
+1. Wakes up on a schedule you define (e.g., every day at 9:00 AM).
+2. If set, evaluates a condition, called a Trigger (e.g., checks if yesterday's sales were below \$50,000). If no trigger is set, the agent proceeds to the next step every time it runs.
+3. Acts by running an analysis and sending a notification to your specified notification channels.
+
+You can start by creating your first Agent, and then learn how to manage and update them as needed. The options below guide you through these steps in order.
+
+<Columns cols={2}>
+  <Card title="Create an Agent" icon="1" horizontal href="/agents/tutorial-create-angent">
+    
+  </Card>
+  <Card title="Manage Your Agents" icon="2" horizontal href="/agents/manage-agents">
+    
+  </Card>
+</Columns>
+
+## Where Could an Agent Help?
+
+Agents can take over repetitive monitoring tasks, so you only get notified when something truly important happens. Below are two practical scenarios showing how Agents can make your daily workflow more efficient and proactive.
+
+### Monitor Performance Dips
+
+A common use case is tracking key metrics and detecting problems early.
+
+- **Trigger:** Sales fall below \$100,000 in the last day.
+- **Work:** Send a list of lost deals from the last day, including region, owner, and total value.
+
+This setup ensures a sales manager is alerted only when performance dips, allowing immediate investigation without running daily reports.
+
+### Track Significant Changes
+
+Another use case is spotting major fluctuations, whether positive or negative.
+
+- **Trigger:** Monthly revenue moves outside a 4% range compared to last month.
+- **Work:** Provide a breakdown of revenue by product category and compare it to the previous month.
+
+This ensures the finance team is aware of unusual volatility, so they can act quickly, analyzing a spike to replicate success or investigating a drop to address issues.

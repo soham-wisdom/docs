@@ -1,16 +1,8 @@
 ---
-title: "Create and Manage an Agent"
+title: "Create an Agent"
 ---
 
-Manually checking a dashboard every morning to track key business metrics is time-consuming. Instead, you can create an automated monitoring workflow using the Agents feature in WisdomAI. An Agent is an automated process that you configure to keep track of your most important metrics without needing to run manual checks.
-
-An Agent works by following these steps:
-
-1. Wakes up on a schedule you define (e.g., every day at 9:00 AM).
-2. If set, evaluates a condition, called a Trigger (e.g., checks if yesterday's sales were below \$50,000). If no trigger is set, the agent proceeds to the next step every time it runs.
-3. Acts by running an analysis and sending a notification to your specified notification channels.
-
-By the end of this tutorial, you will be able to create an agent that monitors a key business metric, runs a follow-up analysis when a specific condition is met, and sends a notification to your team.
+Get started by creating your first Agent to keep track of important business metrics automatically. This tutorial will show you how to monitor a key metric, run a follow-up analysis when a condition is met, and send notifications to your team.
 
 <Note>
   1. This guide uses sales monitoring scenarios, but you can apply these steps to any metric you need to watch.
@@ -70,6 +62,10 @@ To create a new agent, follow these steps:
 
 ![Screenshot showing how to configure the Agent](/images/agent-new-ui-09.png)
 
+10. You will receive a notification alerting you that you have been subscribed to that Agent. From there, you can directly access it using the **View Agent** button. This is what an email notification looks like:
+
+![2025-08-27_08-57-07.png](/images/2025-08-27_08-57-07.png)
+
 ## Test an Agent During Configuration
 
 While creating or editing an Agent, you can test its two main components, the **Activation Trigger** and the **Work Description**, independently before saving. This helps you refine each part and ensure the Agent will behave as expected.
@@ -79,80 +75,11 @@ While creating or editing an Agent, you can test its two main components, the **
 
 ![Gif showing the Test button in action](/images/agent-new-ui-gif.gif)
 
-## Manage Existing Agents
-
-After an Agent is created, it appears in a list on the main **Agents** page. From this page, you can manage all the Agents you have access to.
-
-To manage an individual agent, locate it in the list and click the **three-dot menu (...)** under the **Actions** column. A dropdown menu will appear with the following options:
-
-- **Share**: Allows you to share the Agent with other users for collaboration.
-- **Test**: Manually runs the Agent's entire workflow. The Agent will evaluate its trigger (if enabled) and, if the conditions are met (or if the trigger is disabled), run the full analysis and send a notification.
-
-  <Warning>
-    A notification is only sent if the trigger criteria are satisfied.
-  </Warning>
-- **Edit**: Opens the configuration form, allowing you to modify the Agent's name, trigger, work description, or schedule.
-- **Delete**: Permanently removes the Agent. This action cannot be undone.
-
-![Screenshot showing the manage an agent options](/images/image.png)
-
-### View Previous Runs
-
-You can view a detailed history of every time an agent has run. This log is useful for auditing and debugging an agent's behavior over time.
-
-1. To see the log, find your agent on the **Agents** page and click the **Previous Runs** link in its corresponding row.
-2. This will take you to the **Previous Runs** page, which displays a timeline of all past executions. Each entry in the log shows the status of the agent's key stages:
-
-| **Stage**        | **Description**                                                           |
-| :--------------- | :------------------------------------------------------------------------ |
-| **WAKE UP**      | Confirms the agent started at its scheduled time.                         |
-| **EVALUATION**   | Shows whether the trigger criteria were met.                              |
-| **ANALYSIS**     | Confirms if the analysis was completed successfully.                      |
-| **NOTIFICATION** | Shows if the notification was sent successfully or if there was an error. |
-
-3. If an analysis was successfully generated, you can click the **View Conversation** button within the ANALYSIS step. This will take you to the specific conversation where you can inspect the detailed results and the exact query that was run for that execution.
-
-![view-previous-runs.gif](/images/view-previous-runs.gif)
-
-### Use Deep Analysis with an Agent
-
-You can have an Agent run its analysis using the Deep Analysis feature. When you enable Deep Analysis for an Agent, it performs a more thorough analysis by exploring multiple aspects of the data and providing comprehensive insights. This process may take longer but yields more detailed results.
-
-1. When creating or editing an Agent, enable the **Deep Analysis** toggle.
-2. When the Agent runs, it will automatically generate and execute a multi-step analysis plan based on your work description. You will not be prompted to approve the plan; it will run automatically.
-
-<Note>
-  To learn more about this functionality, read the [Deep Analysis Functionality](https://docs.askwisdom.ai/advanced-features/deep-analysis) article.
-</Note>
-
-![Enable Deep Analysis Toggle on](/images/agent-new-ui-da.png)
-
-## Use Case Examples
-
-Here are a couple of examples of how you can use an Agent.
-
-### Monitoring for Performance Dips
-
-This is a common use case for monitoring business health and detecting anomalies. You can set up an Agent to watch a key metric and alert you only when it drops into an undesirable range.
-
-- **Scenario**: A sales manager wants to be automatically notified if sales performance drops below a specific daily threshold.
-- **Trigger Example**: `If total sales in the last day fall below $100,000`.
-- **Analysis Example**: `Send me a list of all lost deals from the last day, including their region, owner, and total value`.
-- **Outcome**: The manager receives an alert only when a problem is detected, allowing them to investigate the cause of the low sales immediately without needing to manually run reports each day.
-
-### Tracking Significant Changes
-
-You can also use an Agent to monitor for significant changes in a metric, whether positive or negative. The trigger can be configured to activate if a metric moves outside of its typical range.
-
-- **Scenario**: A finance team wants to track if monthly revenue deviates significantly from the previous month's performance.
-- **Trigger Example**: `If revenue this month is outside a 4% range of last month's revenue`.
-- **Analysis Example**: `Provide a breakdown of revenue by product category and compare it to last month`.
-- **Outcome**: The team is notified of any unusual volatility. This allows them to analyze a sudden revenue spike to understand what went right or investigate a drop to see what went wrong.
-
 ## Next steps
 
 Congratulations, you've created your first agent\! Now you can try the following:
 
 - 
+- [Manage Your Agents](https://docs.askwisdom.ai/advanced-features/agents/manage-agents)
 - [Connect to Slack](https://docs.askwisdom.ai/integrations/connect-to-slack)
 - [Deep Analysis Functionality](https://docs.askwisdom.ai/advanced-features/deep-analysis)
