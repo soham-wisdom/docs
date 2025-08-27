@@ -5,14 +5,32 @@ description: "Description of your new file."
 
 After an Agent is created, it appears in a list on the main **Agents** page. From this page, you can manage all the Agents you have access to.
 
+![Snippet showing the options to manage an agent](/images/manage-agent.png)
+
 To manage an individual agent, locate it in the list and click the **three-dot menu (...)** under the **Actions** column. A dropdown menu will appear with the following options:
 
 - **Share**: Allows you to share the Agent with other users for collaboration.
+  - **Manage access**: grant **editor** or **viewer** access for that agent.
+  - **Manage general access**: share it with everyone in your organization.
+
+    <img
+      src="/images/2025-08-27_09-20-17.png"
+      alt="Snippet showing the share modal"
+      title="2025-08-27_09-20-17.png"
+      className="mr-auto"
+      style={{ width:"70%" }}
+    />
 - **Test**: Manually runs the Agent's entire workflow. The Agent will evaluate its trigger (if enabled) and, if the conditions are met (or if the trigger is disabled), run the full analysis and send a notification.
 
   <Warning>
     A notification is only sent if the trigger criteria are satisfied.
   </Warning>
+  Once you get the notification, you will be able to:
+  - **View in WisdomAI**: it takes you to the chat window.
+  - **View Agent**: it takes you to the agent configuration page.
+
+![Snippet showing the email notification when the agent performs the analysis](/images/2025-08-27_09-28-10.png)
+
 - **Edit**: Opens the configuration form, allowing you to modify the Agent's name, trigger, work description, or schedule.
 - **Delete**: Permanently removes the Agent. This action cannot be undone.
 
@@ -32,6 +50,8 @@ You can view a detailed history of every time an agent has run. This log is usef
 
 3. If an analysis was successfully generated, you can click the **View Conversation** button within the ANALYSIS step. This will take you to the specific conversation where you can inspect the detailed results and the exact query that was run for that execution.
 
+![Gif showing the Previous Runs](/images/view-previous-runs.gif)
+
 ## Use Deep Analysis with an Agent
 
 You can have an Agent run its analysis using the Deep Analysis feature. When you enable Deep Analysis for an Agent, it performs a more thorough analysis by exploring multiple aspects of the data and providing comprehensive insights. This process may take longer but yields more detailed results.
@@ -42,3 +62,12 @@ You can have an Agent run its analysis using the Deep Analysis feature. When you
 <Note>
   To learn more about this functionality, read the [Deep Analysis Functionality](https://docs.askwisdom.ai/advanced-features/deep-analysis) article.
 </Note>
+
+![Snippet showing the Deep Analysis toggle enabled](/images/agent-new-ui-da.png)
+
+## Next steps
+
+Now that you know how to manage your agents, you can try the following:
+
+- [Connect to Slack](https://docs.askwisdom.ai/integrations/connect-to-slack)
+- [Deep Analysis Functionality](https://docs.askwisdom.ai/advanced-features/deep-analysis)
