@@ -68,7 +68,7 @@ mutation UpdateDataSources($input: DataSourcesUpdateInput!) {
 ```bash Request
 curl -X POST \
   -H "Content-Type: application/json" \
-  -H "Authorization: Bearer your_api_key" \
+  -H "Authorization: Bearer <jwt_token>" \
   -d '{
     "query": "mutation UpdateDataSources($input: DataSourcesUpdateInput!) { dataSourcesUpdate(input: $input) { success error } }",
     "variables": {

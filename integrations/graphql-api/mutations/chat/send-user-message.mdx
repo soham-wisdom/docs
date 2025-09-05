@@ -103,7 +103,7 @@ mutation SendUserMessage(
 ```bash Request
 curl -X POST \
   -H "Content-Type: application/json" \
-  -H "Authorization: Bearer your_api_key" \
+  -H "Authorization: Bearer <jwt_token>" \
   -d '{
     "query": "mutation SendUserMessage($conversationId: String!, $domainId: String!, $query: DeltaInput!) { sendUserMessage(conversationId: $conversationId, domainId: $domainId, query: $query) { code message } }",
     "variables": {

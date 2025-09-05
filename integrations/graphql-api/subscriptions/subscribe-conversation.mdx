@@ -84,7 +84,7 @@ subscription SubscribeConversation(
 
 ```bash Request
 wscat -c wss://{ACCOUNT}.askwisdom.ai/graphql \
-  -H "Authorization: Bearer your_jwt_token_here" \
+  -H "Authorization: Bearer <jwt_token>" \
   -s graphql-ws \
   --execute '{
     "type": "start",
@@ -92,7 +92,7 @@ wscat -c wss://{ACCOUNT}.askwisdom.ai/graphql \
       "query": "subscription SubscribeConversation($auth: SubscriptionAuthInput!, $conversationId: String!) { subscribeConversation(auth: $auth, conversationId: $conversationId) { assistantMessageSent { id body { ops { insert { text } } } sender createdAt } assistantResponseDiff { bodyDiff { ops { insert { text } } } sender inProgress } assistantResponseCancelled } }",
       "variables": {
         "auth": {
-          "token": "your_jwt_token_here"
+          "token": "<jwt_token>"
         },
         "conversationId": "conv_123456789"
       }

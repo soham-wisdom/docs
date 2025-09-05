@@ -45,7 +45,7 @@ mutation CreateConversation(
 ```bash Request
 curl -X POST \
   -H "Content-Type: application/json" \
-  -H "Authorization: Bearer your_api_key" \
+  -H "Authorization: Bearer <jwt_token>" \
   -d '{
     "query": "mutation CreateConversation($domainId: String!, $hidden: Boolean!) { id: createConversation(domainId: $domainId, hidden: $hidden) }",
     "variables": {

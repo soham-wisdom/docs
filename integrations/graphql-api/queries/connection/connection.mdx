@@ -51,7 +51,7 @@ query GetConnectionRefreshStatus($id: ID!) {
 ```bash Request
 curl -X POST \
   -H "Content-Type: application/json" \
-  -H "Authorization: Bearer your_api_key" \
+  -H "Authorization: Bearer <jwt_token>" \
   -d '{
     "query": "query GetConnection($id: ID!) { connection(id: $id) { id details { name connectionType } status { lastRun { status endedAt } } } }",
     "variables": {

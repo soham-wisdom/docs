@@ -54,7 +54,7 @@ mutation CreateDomain($input: CreateDomainInput!) {
 ```bash Request
 curl -X POST \
   -H "Content-Type: application/json" \
-  -H "Authorization: Bearer your_api_key" \
+  -H "Authorization: Bearer <jwt_token>" \
   -d '{
     "query": "mutation CreateDomain($input: CreateDomainInput!) { createDomain(input: $input) { id name description } }",
     "variables": {
