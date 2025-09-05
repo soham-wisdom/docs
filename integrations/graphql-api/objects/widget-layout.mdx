@@ -1,0 +1,34 @@
+---
+title: "Widget Layout"
+---
+
+This page describes the WidgetLayout object that defines the positioning and sizing of dashboard widgets.
+
+## WidgetLayout
+
+<ParamField path="height" type="Int!" required>
+  Height of the widget in grid units.
+</ParamField>
+
+<ParamField path="width" type="Int!" required>
+  Width of the widget in grid units.
+</ParamField>
+
+<ParamField path="top" type="Int!" required>
+  Top position of the widget in grid coordinates.
+</ParamField>
+
+<ParamField path="left" type="Int!" required>
+  Left position of the widget in grid coordinates.
+</ParamField>
+
+## Additional Resources
+
+<CardGroup cols={2}>
+  <Card title="DashboardWidget Object" icon="chart-bar" href="/integrations/graphql-api/objects/dashboard-widget">
+    Widget that uses this layout
+  </Card>
+  <Card title="WidgetLayoutInput Object" icon="pen-to-square" href="/integrations/graphql-api/objects/widget-layout-input">
+    Input version for creating/updating layouts
+  </Card>
+</CardGroup>

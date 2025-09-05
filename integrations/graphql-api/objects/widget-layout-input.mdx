@@ -1,0 +1,34 @@
+---
+title: "Widget Layout Input"
+---
+
+This page describes the WidgetLayoutInput object used for creating and updating widget layouts.
+
+## WidgetLayoutInput
+
+<ParamField path="height" type="Int!" required>
+  Height of the widget in grid units.
+</ParamField>
+
+<ParamField path="width" type="Int!" required>
+  Width of the widget in grid units.
+</ParamField>
+
+<ParamField path="top" type="Int!" required>
+  Top position of the widget in grid coordinates.
+</ParamField>
+
+<ParamField path="left" type="Int!" required>
+  Left position of the widget in grid coordinates.
+</ParamField>
+
+## Additional Resources
+
+<CardGroup cols={2}>
+  <Card title="WidgetLayout Object" icon="layout" href="/integrations/graphql-api/objects/widget-layout">
+    Output version of layout
+  </Card>
+  <Card title="DashboardWidgetInput Object" icon="chart-bar" href="/integrations/graphql-api/objects/dashboard-widget-input">
+    Input object that uses WidgetLayoutInput
+  </Card>
+</CardGroup>

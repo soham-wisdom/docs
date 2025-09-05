@@ -1,0 +1,91 @@
+---
+title: "Dashboard Widget"
+---
+
+This page describes the DashboardWidget object that represents individual visualizations and content blocks within a dashboard.
+
+## DashboardWidget
+
+<ParamField path="id" type="ID!" required>
+  Unique identifier for the widget.
+</ParamField>
+
+<ParamField path="domain" type="ZSheet">
+  Domain associated with this widget. May be null if the domain was deleted after widget creation.
+</ParamField>
+
+<ParamField path="title" type="String!" required>
+  Display title for the widget.
+</ParamField>
+
+<ParamField path="nlQuery" type="String!" required>
+  Natural language query that generated this widget's content.
+</ParamField>
+
+<ParamField path="visualization" type="Visualization">
+  Chart or table visualization data. Null if there was an error generating the visualization. See [Visualization](/integrations/graphql-api/objects/visualization).
+</ParamField>
+
+<ParamField path="visualizationType" type="VisualizationType">
+  Type of visualization (chart, table, etc.). See [VisualizationType](/integrations/graphql-api/objects/visualization-type).
+</ParamField>
+
+<ParamField path="layout" type="WidgetLayout!" required>
+  Positioning and sizing information for the widget. See [WidgetLayout](/integrations/graphql-api/objects/widget-layout).
+</ParamField>
+
+<ParamField path="dataRefreshedAt" type="DateTime!" required>
+  Timestamp when the widget data was last refreshed.
+</ParamField>
+
+<ParamField path="conversationId" type="String">
+  ID of the conversation that generated this widget. Null if not sourced from a conversation.
+</ParamField>
+
+<ParamField path="messageId" type="String">
+  ID of the message that generated this widget. Null if not sourced from a conversation.
+</ParamField>
+
+<ParamField path="userCanAskFollowUp" type="Boolean!" required>
+  Whether the current user can ask follow-up questions about this widget.
+</ParamField>
+
+<ParamField path="userCanViewOriginalMessage" type="Boolean!" required>
+  Whether the current user can view the original conversation message that generated this widget.
+</ParamField>
+
+<ParamField path="widgetType" type="WidgetType!" required>
+  Type of widget content. See [WidgetType](#widgettype).
+</ParamField>
+
+<ParamField path="markdownContent" type="String">
+  Markdown content for text/markdown widgets.
+</ParamField>
+
+## WidgetType
+
+The type of content displayed in the widget:
+
+| Value               | Description                              |
+| ------------------- | ---------------------------------------- |
+| `WIDGET_TYPE_UNKNOWN` | Unknown widget type                    |
+| `WIDGET_TYPE_VISUALIZATION` | Chart or table visualization         |
+| `WIDGET_TYPE_MARKDOWN` | Rich text content                     |
+| `WIDGET_TYPE_SUMMARY` | Summary or aggregated content         |
+
+## Additional Resources
+
+<CardGroup cols={2}>
+  <Card title="Dashboard Object" icon="folder" href="/integrations/graphql-api/objects/dashboard">
+    Parent dashboard structure
+  </Card>
+  <Card title="WidgetLayout Object" icon="layout" href="/integrations/graphql-api/objects/widget-layout">
+    Widget positioning and sizing
+  </Card>
+  <Card title="Visualization Object" icon="chart-bar" href="/integrations/graphql-api/objects/visualization">
+    Chart and table data structure
+  </Card>
+  <Card title="Update Dashboard Widgets" icon="pen-to-square" href="/integrations/graphql-api/mutations/dashboard/update-dashboard-widgets">
+    Modify widget properties
+  </Card>
+</CardGroup>

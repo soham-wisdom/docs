@@ -1,0 +1,26 @@
+---
+title: "Dashboard Scope"
+---
+
+This page describes the DashboardScope enum that defines access levels for dashboard operations.
+
+## DashboardScope
+
+The access level for dashboard operations:
+
+| Value          | Description                              |
+| -------------- | ---------------------------------------- |
+| `NO_ACCESS`    | User has no access to the dashboard      |
+| `VIEWER`       | User can view the dashboard              |
+| `EDITOR`       | User can view and edit the dashboard     |
+
+## Additional Resources
+
+<CardGroup cols={2}>
+  <Card title="Dashboard Object" icon="folder" href="/integrations/graphql-api/objects/dashboard">
+    Dashboard with access level information
+  </Card>
+  <Card title="Dashboard Query" icon="search" href="/integrations/graphql-api/queries/dashboard/dashboard">
+    Query requiring scope parameter
+  </Card>
+</CardGroup>

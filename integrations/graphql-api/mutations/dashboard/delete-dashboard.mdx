@@ -1,0 +1,68 @@
+---
+title: "Delete Dashboard"
+---
+
+The `deleteDashboard` mutation permanently removes a dashboard and all its associated data.
+
+## Signature
+
+```graphql
+deleteDashboard(id: String!): Boolean!
+```
+
+## Arguments
+
+<ParamField path="id" type="String!" required>
+  The unique identifier of the dashboard to delete.
+</ParamField>
+
+## Response
+
+Returns `true` if the dashboard was successfully deleted, `false` otherwise.
+
+## Usage Example
+
+Delete a dashboard:
+
+```graphql
+mutation DeleteDashboard($id: String!) {
+  deleteDashboard(id: $id)
+}
+```
+
+<RequestExample>
+
+```bash Request
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <jwt_token>" \
+  -d '{
+    "query": "mutation DeleteDashboard($id: String!) { deleteDashboard(id: $id) }",
+    "variables": {
+      "id": "dashboard_123456789"
+    }
+  }' \
+  https://{ACCOUNT}.askwisdom.ai/graphql
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "data": {
+    "deleteDashboard": true
+  }
+}
+```
+
+</ResponseExample>
+
+## Related Operations
+
+<CardGroup cols={2}>
+  <Card title="Dashboards Query" icon="list" href="/integrations/graphql-api/queries/dashboard/dashboards">
+    List available dashboards
+  </Card>
+</CardGroup>

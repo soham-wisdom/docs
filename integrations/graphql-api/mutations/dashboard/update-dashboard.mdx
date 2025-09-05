@@ -1,0 +1,94 @@
+---
+title: "Update Dashboard"
+---
+
+The `updateDashboard` mutation modifies the properties of an existing dashboard.
+
+## Signature
+
+```graphql
+updateDashboard(id: String!, dashboard: DashboardInput): Dashboard!
+```
+
+## Arguments
+
+<ParamField path="id" type="String!" required>
+  The unique identifier of the dashboard to update.
+</ParamField>
+
+<ParamField path="dashboard" type="DashboardInput" required>
+  Input object containing the updated dashboard properties. See [DashboardInput](/integrations/graphql-api/objects/dashboard-input).
+</ParamField>
+
+## Response
+
+Returns the updated `Dashboard` object with all properties populated. See [Dashboard](/integrations/graphql-api/objects/dashboard) for the schema.
+
+## Usage Example
+
+Update dashboard name and description:
+
+```graphql
+mutation UpdateDashboard($id: String!, $dashboard: DashboardInput!) {
+  updateDashboard(id: $id, dashboard: $dashboard) {
+    id
+    name
+    description
+    widgets {
+      id
+      title
+    }
+  }
+}
+```
+
+<RequestExample>
+
+```bash Request
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <jwt_token>" \
+  -d '{
+    "query": "mutation UpdateDashboard($id: String!, $dashboard: DashboardInput!) { updateDashboard(id: $id, dashboard: $dashboard) { id name description } }",
+    "variables": {
+      "id": "dashboard_123456789",
+      "dashboard": {
+        "name": "Updated Sales Dashboard",
+        "description": "Updated monthly sales metrics and KPIs"
+      }
+    }
+  }' \
+  https://{ACCOUNT}.askwisdom.ai/graphql
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "data": {
+    "updateDashboard": {
+      "id": "dashboard_123456789",
+      "name": "Updated Sales Dashboard",
+      "description": "Updated monthly sales metrics and KPIs"
+    }
+  }
+}
+```
+
+</ResponseExample>
+
+## Related Operations
+
+<CardGroup cols={2}>
+  <Card title="Create Dashboard" icon="plus" href="/integrations/graphql-api/mutations/dashboard/create-dashboard">
+    Create a new dashboard
+  </Card>
+  <Card title="Update Dashboard Widgets" icon="pen-to-square" href="/integrations/graphql-api/mutations/dashboard/update-dashboard-widgets">
+    Update dashboard widgets
+  </Card>
+  <Card title="DashboardInput Object" icon="folder" href="/integrations/graphql-api/objects/dashboard-input">
+    Dashboard update input schema
+  </Card>
+</CardGroup>

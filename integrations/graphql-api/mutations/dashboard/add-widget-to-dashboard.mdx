@@ -1,0 +1,114 @@
+---
+title: "Add Widget to Dashboard"
+---
+
+The `addWidgetToDashboard` mutation adds a new widget to an existing dashboard.
+
+## Signature
+
+```graphql
+addWidgetToDashboard(id: String!, widget: DashboardWidgetInput!): Dashboard!
+```
+
+## Arguments
+
+<ParamField path="id" type="String!" required>
+  The unique identifier of the dashboard to add the widget to.
+</ParamField>
+
+<ParamField path="widget" type="DashboardWidgetInput!" required>
+  Widget configuration for the new widget. See [DashboardWidgetInput](/integrations/graphql-api/objects/dashboard-widget-input).
+</ParamField>
+
+## Response
+
+Returns the updated `Dashboard` object with the new widget included. See [Dashboard](/integrations/graphql-api/objects/dashboard) for the schema.
+
+## Usage Example
+
+Add a new widget to an existing dashboard:
+
+```graphql
+mutation AddWidgetToDashboard($id: String!, $widget: DashboardWidgetInput!) {
+  addWidgetToDashboard(id: $id, widget: $widget) {
+    id
+    widgets {
+      id
+      title
+      layout {
+        top
+        left
+        width
+        height
+      }
+    }
+  }
+}
+```
+
+<RequestExample>
+
+```bash Request
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <jwt_token>" \
+  -d '{
+    "query": "mutation AddWidgetToDashboard($id: String!, $widget: DashboardWidgetInput!) { addWidgetToDashboard(id: $id, widget: $widget) { id widgets { id title layout { top left width height } } } }",
+    "variables": {
+      "id": "dashboard_123456789",
+      "widget": {
+        "title": "Revenue Trend",
+        "nlQuery": "Show revenue trend over time",
+        "layout": {
+          "top": 4,
+          "left": 0,
+          "width": 6,
+          "height": 4
+        }
+      }
+    }
+  }' \
+  https://{ACCOUNT}.askwisdom.ai/graphql
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "data": {
+    "addWidgetToDashboard": {
+      "id": "dashboard_123456789",
+      "widgets": [
+        {
+          "id": "widget_987654321",
+          "title": "Revenue Trend",
+          "layout": {
+            "top": 4,
+            "left": 0,
+            "width": 6,
+            "height": 4
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+</ResponseExample>
+
+## Related Operations
+
+<CardGroup cols={2}>
+  <Card title="Update Dashboard Widgets" icon="pen-to-square" href="/integrations/graphql-api/mutations/dashboard/update-dashboard-widgets">
+    Update existing widgets
+  </Card>
+  <Card title="Delete Widget from Dashboard" icon="trash" href="/integrations/graphql-api/mutations/dashboard/delete-widget-from-dashboard">
+    Remove widgets from dashboard
+  </Card>
+  <Card title="DashboardWidgetInput Object" icon="folder" href="/integrations/graphql-api/objects/dashboard-widget-input">
+    Widget creation input schema
+  </Card>
+</CardGroup>

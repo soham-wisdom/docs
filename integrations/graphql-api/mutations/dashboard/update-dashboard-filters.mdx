@@ -1,0 +1,107 @@
+---
+title: "Update Dashboard Filters"
+---
+
+The `updateDashboardFilters` mutation applies filter changes to a dashboard and updates all affected widgets.
+
+## Signature
+
+```graphql
+updateDashboardFilters(id: String!, version: String, filterMutations: FilterMutationInput!): Dashboard!
+```
+
+## Arguments
+
+<ParamField path="id" type="String!" required>
+  The unique identifier of the dashboard to update filters for.
+</ParamField>
+
+<ParamField path="filterMutations" type="FilterMutationInput!" required>
+  Filter mutation configuration specifying the changes to apply. See [FilterMutationInput](/integrations/graphql-api/objects/filter-mutation-input).
+</ParamField>
+
+## Response
+
+Returns the updated `Dashboard` object with refreshed filter definitions. See [Dashboard](/integrations/graphql-api/objects/dashboard) for the schema.
+
+## Usage Example
+
+Apply filter changes to dashboard:
+
+```graphql
+mutation UpdateDashboardFilters($id: String!, $filterMutations: FilterMutationInput!) {
+  updateDashboardFilters(id: $id, filterMutations: $filterMutations) {
+    id
+    filters {
+      id
+      parsedFilter {
+        column
+        value
+      }
+      appliedState {
+        widgetId
+        filterIdOnWidget
+      }
+    }
+  }
+}
+```
+
+<RequestExample>
+
+```bash Request
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <jwt_token>" \
+  -d '{
+    "query": "mutation UpdateDashboardFilters($id: String!, $filterMutations: FilterMutationInput!) { updateDashboardFilters(id: $id, filterMutations: $filterMutations) { id filters { id parsedFilter { column value } } } }",
+    "variables": {
+      "id": "dashboard_123456789",
+      "filterMutations": {
+        "addFilters": [
+          {
+            "column": "region",
+            "value": "North America"
+          }
+        ]
+      }
+    }
+  }' \
+  https://{ACCOUNT}.askwisdom.ai/graphql
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "data": {
+    "updateDashboardFilters": {
+      "id": "dashboard_123456789",
+      "filters": [
+        {
+          "id": "filter_987654321",
+          "parsedFilter": {
+            "column": "region",
+            "value": "North America"
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+</ResponseExample>
+
+## Related Operations
+
+<CardGroup cols={2}>
+  <Card title="Dashboard Query" icon="search" href="/integrations/graphql-api/queries/dashboard/dashboard">
+    Retrieve dashboard with updated filters
+  </Card>
+  <Card title="DashboardFilterDefinition Object" icon="filter" href="/integrations/graphql-api/objects/dashboard-filter-definition">
+    Filter definition schema
+  </Card>
+</CardGroup>

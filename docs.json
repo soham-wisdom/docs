@@ -137,7 +137,18 @@
                       "integrations/graphql-api/objects/subscription-auth-input",
                       "integrations/graphql-api/objects/tool-selection",
                       "integrations/graphql-api/objects/response-status",
-                      "integrations/graphql-api/objects/chat-thinking-effort"
+                      "integrations/graphql-api/objects/chat-thinking-effort",
+                      "integrations/graphql-api/objects/dashboard",
+                      "integrations/graphql-api/objects/dashboard-widget",
+                      "integrations/graphql-api/objects/widget-layout",
+                      "integrations/graphql-api/objects/dashboards-response",
+                      "integrations/graphql-api/objects/dashboard-scope",
+                      "integrations/graphql-api/objects/dashboard-input",
+                      "integrations/graphql-api/objects/widget-layout-input",
+                      "integrations/graphql-api/objects/dashboard-widget-input",
+                      "integrations/graphql-api/objects/dashboard-filter-definition",
+                      "integrations/graphql-api/objects/filter-applied-state",
+                      "integrations/graphql-api/objects/widget-type"
                     ]
                   },
                   {
@@ -156,6 +167,13 @@
                         ]
                       },
                       {
+                        "group": "Dashboard",
+                        "pages": [
+                          "integrations/graphql-api/queries/dashboard/dashboard",
+                          "integrations/graphql-api/queries/dashboard/dashboards"
+                        ]
+                      },
+                      {
                         "group": "User",
                         "pages": [
                           "integrations/graphql-api/queries/user/current-user"
@@ -167,9 +185,28 @@
                     "group": "Mutations",
                     "pages": [
                       {
+                        "group": "Chat",
+                        "pages": [
+                          "integrations/graphql-api/mutations/chat/create-conversation",
+                          "integrations/graphql-api/mutations/chat/send-user-message"
+                        ]
+                      },
+                      {
                         "group": "Connection",
                         "pages": [
                           "integrations/graphql-api/mutations/connection/refresh-connection"
+                        ]
+                      },
+                      {
+                        "group": "Dashboard",
+                        "pages": [
+                          "integrations/graphql-api/mutations/dashboard/create-dashboard",
+                          "integrations/graphql-api/mutations/dashboard/update-dashboard",
+                          "integrations/graphql-api/mutations/dashboard/update-dashboard-filters",
+                          "integrations/graphql-api/mutations/dashboard/add-widget-to-dashboard",
+                          "integrations/graphql-api/mutations/dashboard/delete-dashboard",
+                          "integrations/graphql-api/mutations/dashboard/delete-widget-from-dashboard",
+                          "integrations/graphql-api/mutations/dashboard/refresh-dashboard"
                         ]
                       },
                       {
@@ -177,13 +214,6 @@
                         "pages": [
                           "integrations/graphql-api/mutations/domain/create-domain",
                           "integrations/graphql-api/mutations/domain/update-data-sources"
-                        ]
-                      },
-                      {
-                        "group": "Chat",
-                        "pages": [
-                          "integrations/graphql-api/mutations/chat/create-conversation",
-                          "integrations/graphql-api/mutations/chat/send-user-message"
                         ]
                       }
                     ]

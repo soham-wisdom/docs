@@ -1,0 +1,37 @@
+---
+title: "Dashboard Input"
+---
+
+This page describes the DashboardInput object used for creating and updating dashboards.
+
+## DashboardInput
+
+<ParamField path="id" type="String">
+  Optional dashboard ID for update operations. Omit for creation.
+</ParamField>
+
+<ParamField path="name" type="String!" required>
+  Display name for the dashboard.
+</ParamField>
+
+<ParamField path="description" type="String">
+  Optional description of the dashboard's purpose and contents.
+</ParamField>
+
+<ParamField path="domainId" type="String">
+  Optional domain ID to associate with the dashboard.
+</ParamField>
+
+## Additional Resources
+
+<CardGroup cols={2}>
+  <Card title="Create Dashboard" icon="plus" href="/integrations/graphql-api/mutations/dashboard/create-dashboard">
+    Mutation using DashboardInput
+  </Card>
+  <Card title="Update Dashboard" icon="pen-to-square" href="/integrations/graphql-api/mutations/dashboard/update-dashboard">
+    Update mutation using DashboardInput
+  </Card>
+  <Card title="Dashboard Object" icon="folder" href="/integrations/graphql-api/objects/dashboard">
+    Resulting dashboard structure
+  </Card>
+</CardGroup>

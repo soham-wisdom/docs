@@ -1,0 +1,26 @@
+---
+title: "Filter Applied State"
+---
+
+This page describes the FilterAppliedState object that tracks how filters are applied to individual widgets.
+
+## FilterAppliedState
+
+<ParamField path="widgetId" type="ID!" required>
+  Unique identifier of the widget this filter state applies to.
+</ParamField>
+
+<ParamField path="filterIdOnWidget" type="ID!" required>
+  Identifier of the filter as it exists on the specific widget.
+</ParamField>
+
+## Additional Resources
+
+<CardGroup cols={2}>
+  <Card title="DashboardFilterDefinition Object" icon="filter" href="/integrations/graphql-api/objects/dashboard-filter-definition">
+    Parent filter definition
+  </Card>
+  <Card title="DashboardWidget Object" icon="chart-bar" href="/integrations/graphql-api/objects/dashboard-widget">
+    Widget that filter applies to
+  </Card>
+</CardGroup>

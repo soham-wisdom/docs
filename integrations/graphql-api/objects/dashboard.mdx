@@ -1,0 +1,72 @@
+---
+title: "Dashboard"
+---
+
+This page describes the Dashboard object that represents a collection of widgets and visualizations.
+
+## Dashboard
+
+<ParamField path="id" type="ID!" required>
+  Unique identifier for the dashboard.
+</ParamField>
+
+<ParamField path="name" type="String!" required>
+  Display name of the dashboard.
+</ParamField>
+
+<ParamField path="description" type="String">
+  Optional description explaining the dashboard's purpose and contents.
+</ParamField>
+
+<ParamField path="owner" type="User">
+  User who created the dashboard. Null for system-generated dashboards.
+</ParamField>
+
+<ParamField path="domain" type="ZSheet">
+  Deprecated: Use `domains` field instead. Primary domain associated with the dashboard.
+</ParamField>
+
+<ParamField path="domains" type="[ZSheet!]!" required>
+  List of domains associated with this dashboard.
+</ParamField>
+
+<ParamField path="widgets" type="[DashboardWidget!]!" required>
+  Array of widgets contained in this dashboard. See [DashboardWidget](/integrations/graphql-api/objects/dashboard-widget).
+</ParamField>
+
+<ParamField path="filters" type="[DashboardFilterDefinition!]!" required>
+  Global filter definitions applied to the dashboard. See [DashboardFilterDefinition](/integrations/graphql-api/objects/dashboard-filter-definition).
+</ParamField>
+
+<ParamField path="createdAt" type="DateTime!" required>
+  Timestamp when the dashboard was created.
+</ParamField>
+
+<ParamField path="accessLevel" type="DashboardScope!" required>
+  Current user's access level to this dashboard. See [DashboardScope](/integrations/graphql-api/objects/dashboard-scope).
+</ParamField>
+
+<ParamField path="version" type="String">
+  Version identifier for dashboard snapshots. Null if dashboard hasn't been modified.
+</ParamField>
+
+<ParamField path="roleAssignments" type="[RoleAssignment!]!" required>
+  List of user and group role assignments for this dashboard.
+</ParamField>
+
+## Additional Resources
+
+<CardGroup cols={2}>
+  <Card title="Dashboard Query" icon="search" href="/integrations/graphql-api/queries/dashboard/dashboard">
+    Retrieve dashboard by ID
+  </Card>
+  <Card title="Dashboards Query" icon="list" href="/integrations/graphql-api/queries/dashboard/dashboards">
+    Retrieve multiple dashboards
+  </Card>
+  <Card title="DashboardWidget Object" icon="chart-bar" href="/integrations/graphql-api/objects/dashboard-widget">
+    Widget structure and properties
+  </Card>
+  <Card title="DashboardScope Object" icon="shield" href="/integrations/graphql-api/objects/dashboard-scope">
+    Access level definitions
+  </Card>
+</CardGroup>

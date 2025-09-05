@@ -1,0 +1,40 @@
+---
+title: "Dashboard Filter Definition"
+---
+
+This page describes the DashboardFilterDefinition object that defines global filters for dashboards.
+
+## DashboardFilterDefinition
+
+<ParamField path="id" type="ID!" required>
+  Unique identifier for the filter definition.
+</ParamField>
+
+<ParamField path="parsedFilter" type="ParsedFilter!" required>
+  The parsed filter configuration.
+</ParamField>
+
+<ParamField path="appliedState" type="[FilterAppliedState!]!" required>
+  Array of widget-specific filter application states. See [FilterAppliedState](#filterappliedstate).
+</ParamField>
+
+## FilterAppliedState
+
+<ParamField path="widgetId" type="ID!" required>
+  ID of the widget this filter state applies to.
+</ParamField>
+
+<ParamField path="filterIdOnWidget" type="ID!" required>
+  ID of the filter as it exists on the specific widget.
+</ParamField>
+
+## Additional Resources
+
+<CardGroup cols={2}>
+  <Card title="Dashboard Object" icon="folder" href="/integrations/graphql-api/objects/dashboard">
+    Dashboard containing filter definitions
+  </Card>
+  <Card title="Update Dashboard Filters" icon="filter" href="/integrations/graphql-api/mutations/dashboard/update-dashboard-filters">
+    Apply filter changes to dashboard
+  </Card>
+</CardGroup>

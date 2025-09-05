@@ -1,0 +1,73 @@
+---
+title: "Dashboard Widget Input"
+---
+
+This page describes the DashboardWidgetInput object used for creating and updating dashboard widgets.
+
+## DashboardWidgetInput
+
+<ParamField path="id" type="String">
+  Optional widget ID for update operations. Omit for creation.
+</ParamField>
+
+<ParamField path="domainId" type="String">
+  Optional domain ID associated with the widget.
+</ParamField>
+
+<ParamField path="title" type="String">
+  Optional display title. If null, the natural language query will be used as title.
+</ParamField>
+
+<ParamField path="nlQuery" type="String">
+  Natural language query for generating the widget content.
+</ParamField>
+
+<ParamField path="visualizationId" type="String">
+  Optional ID of an existing visualization to use for the widget.
+</ParamField>
+
+<ParamField path="visualizationType" type="VisualizationType">
+  Optional visualization type. If null, will be determined from the natural language query. See [VisualizationType](/integrations/graphql-api/objects/visualization-type).
+</ParamField>
+
+<ParamField path="layout" type="WidgetLayoutInput">
+  Positioning and sizing information for the widget. See [WidgetLayoutInput](/integrations/graphql-api/objects/widget-layout-input).
+</ParamField>
+
+<ParamField path="sourceConversationId" type="String">
+  Optional ID of the conversation that generated this widget.
+</ParamField>
+
+<ParamField path="sourceMessageId" type="String">
+  Optional ID of the message that generated this widget.
+</ParamField>
+
+<ParamField path="dataRefreshedAt" type="DateTime">
+  Optional timestamp for when data was last refreshed.
+</ParamField>
+
+<ParamField path="body" type="UpdateChatMessageBodyOneOf">
+  Optional message body for chat-based widget updates.
+</ParamField>
+
+<ParamField path="widgetType" type="WidgetType">
+  Type of widget content. See [WidgetType](/integrations/graphql-api/objects/dashboard-widget#widgettype).
+</ParamField>
+
+<ParamField path="markdownContent" type="String">
+  Markdown content for text/markdown widgets.
+</ParamField>
+
+## Additional Resources
+
+<CardGroup cols={2}>
+  <Card title="DashboardWidget Object" icon="chart-bar" href="/integrations/graphql-api/objects/dashboard-widget">
+    Resulting widget structure
+  </Card>
+  <Card title="Create Dashboard" icon="plus" href="/integrations/graphql-api/mutations/dashboard/create-dashboard">
+    Mutation using DashboardWidgetInput
+  </Card>
+  <Card title="Update Dashboard Widgets" icon="pen-to-square" href="/integrations/graphql-api/mutations/dashboard/update-dashboard-widgets">
+    Update mutation using DashboardWidgetInput
+  </Card>
+</CardGroup>

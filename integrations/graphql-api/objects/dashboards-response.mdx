@@ -1,0 +1,26 @@
+---
+title: "Dashboards Response"
+---
+
+This page describes the DashboardsResponse object returned by dashboard listing queries.
+
+## DashboardsResponse
+
+<ParamField path="nodes" type="[Dashboard!]!" required>
+  Array of dashboard objects matching the query criteria. See [Dashboard](/integrations/graphql-api/objects/dashboard).
+</ParamField>
+
+<ParamField path="pageInfo" type="PageInfo!" required>
+  Pagination information for the result set.
+</ParamField>
+
+## Additional Resources
+
+<CardGroup cols={2}>
+  <Card title="Dashboards Query" icon="list" href="/integrations/graphql-api/queries/dashboard/dashboards">
+    Query that returns this response
+  </Card>
+  <Card title="Dashboard Object" icon="folder" href="/integrations/graphql-api/objects/dashboard">
+    Individual dashboard structure
+  </Card>
+</CardGroup>

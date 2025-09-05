@@ -1,0 +1,84 @@
+---
+title: "Refresh Dashboard"
+---
+
+The `refreshDashboard` mutation refreshes all data in a dashboard's widgets to show the latest information.
+
+## Signature
+
+```graphql
+refreshDashboard(id: String!, version: String): Dashboard!
+```
+
+## Arguments
+
+<ParamField path="id" type="String!" required>
+  The unique identifier of the dashboard to refresh.
+</ParamField>
+
+## Response
+
+Returns the refreshed `Dashboard` object with updated widget data. See [Dashboard](/integrations/graphql-api/objects/dashboard) for the schema.
+
+## Usage Example
+
+Refresh all dashboard data:
+
+```graphql
+mutation RefreshDashboard($id: String!) {
+  refreshDashboard(id: $id) {
+    id
+    widgets {
+      id
+      title
+      dataRefreshedAt
+    }
+  }
+}
+```
+
+<RequestExample>
+
+```bash Request
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <jwt_token>" \
+  -d '{
+    "query": "mutation RefreshDashboard($id: String!) { refreshDashboard(id: $id) { id widgets { id title dataRefreshedAt } } }",
+    "variables": {
+      "id": "dashboard_123456789"
+    }
+  }' \
+  https://{ACCOUNT}.askwisdom.ai/graphql
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "data": {
+    "refreshDashboard": {
+      "id": "dashboard_123456789",
+      "widgets": [
+        {
+          "id": "widget_987654321",
+          "title": "Sales Chart",
+          "dataRefreshedAt": "2024-01-15T10:30:00Z"
+        }
+      ]
+    }
+  }
+}
+```
+
+</ResponseExample>
+
+## Related Operations
+
+<CardGroup cols={2}>
+  <Card title="Dashboard Query" icon="search" href="/integrations/graphql-api/queries/dashboard/dashboard">
+    Retrieve refreshed dashboard data
+  </Card>
+</CardGroup>

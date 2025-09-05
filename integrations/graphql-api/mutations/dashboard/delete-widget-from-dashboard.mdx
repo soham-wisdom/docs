@@ -1,0 +1,90 @@
+---
+title: "Delete Widget from Dashboard"
+---
+
+The `deleteWidgetFromDashboard` mutation removes a specific widget from a dashboard.
+
+## Signature
+
+```graphql
+deleteWidgetFromDashboard(id: String!, widgetId: String!): Dashboard!
+```
+
+## Arguments
+
+<ParamField path="id" type="String!" required>
+  The unique identifier of the dashboard containing the widget.
+</ParamField>
+
+<ParamField path="widgetId" type="String!" required>
+  The unique identifier of the widget to remove from the dashboard.
+</ParamField>
+
+## Response
+
+Returns the updated `Dashboard` object with the widget removed. See [Dashboard](/integrations/graphql-api/objects/dashboard) for the schema.
+
+## Usage Example
+
+Remove a widget from a dashboard:
+
+```graphql
+mutation DeleteWidgetFromDashboard($id: String!, $widgetId: String!) {
+  deleteWidgetFromDashboard(id: $id, widgetId: $widgetId) {
+    id
+    widgets {
+      id
+      title
+    }
+  }
+}
+```
+
+<RequestExample>
+
+```bash Request
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <jwt_token>" \
+  -d '{
+    "query": "mutation DeleteWidgetFromDashboard($id: String!, $widgetId: String!) { deleteWidgetFromDashboard(id: $id, widgetId: $widgetId) { id widgets { id title } } }",
+    "variables": {
+      "id": "dashboard_123456789",
+      "widgetId": "widget_987654321"
+    }
+  }' \
+  https://{ACCOUNT}.askwisdom.ai/graphql
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "data": {
+    "deleteWidgetFromDashboard": {
+      "id": "dashboard_123456789",
+      "widgets": [
+        {
+          "id": "widget_remaining",
+          "title": "Remaining Widget"
+        }
+      ]
+    }
+  }
+}
+```
+
+</ResponseExample>
+
+## Related Operations
+
+<CardGroup cols={2}>
+  <Card title="Add Widget to Dashboard" icon="plus" href="/integrations/graphql-api/mutations/dashboard/add-widget-to-dashboard">
+    Add widgets to dashboard
+  </Card>
+  <Card title="Update Dashboard Widgets" icon="pen-to-square" href="/integrations/graphql-api/mutations/dashboard/update-dashboard-widgets">
+    Update existing widgets
+  </Card>
+</CardGroup>

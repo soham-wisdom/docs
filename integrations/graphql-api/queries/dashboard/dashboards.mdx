@@ -1,0 +1,116 @@
+---
+title: "Dashboards"
+---
+
+The `dashboards` query retrieves a list of dashboards accessible to the current user, with optional filtering by domain and owner.
+
+## Signature
+
+```graphql
+dashboards(scope: DashboardScope!, domainId: String, ownerId: String): DashboardsResponse!
+```
+
+## Arguments
+
+<ParamField path="scope" type="DashboardScope!" required>
+  The access level to filter dashboards by. See [DashboardScope](/integrations/graphql-api/objects/dashboard-scope).
+</ParamField>
+
+<ParamField path="domainId" type="String">
+  Optional filter to retrieve only dashboards associated with a specific domain.
+</ParamField>
+
+<ParamField path="ownerId" type="String">
+  Optional filter to retrieve only dashboards owned by a specific user.
+</ParamField>
+
+## Response
+
+Returns a `DashboardsResponse` object containing a list of accessible dashboards. See [DashboardsResponse](/integrations/graphql-api/objects/dashboards-response) for the schema.
+
+## Usage Example
+
+Retrieve all dashboards with viewer access:
+
+```graphql
+query GetDashboards($scope: DashboardScope!) {
+  dashboards(scope: $scope) {
+    nodes {
+      id
+      name
+      createdAt
+      domains {
+        id
+        name
+      }
+      owner {
+        id
+        displayName
+      }
+      accessLevel
+    }
+  }
+}
+```
+
+<RequestExample>
+
+```bash Request
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <jwt_token>" \
+  -d '{
+    "query": "query GetDashboards($scope: DashboardScope!) { dashboards(scope: $scope) { nodes { id name createdAt domains { id name } owner { id displayName } accessLevel } } }",
+    "variables": {
+      "scope": "VIEWER"
+    }
+  }' \
+  https://{ACCOUNT}.askwisdom.ai/graphql
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "data": {
+    "dashboards": {
+      "nodes": [
+        {
+          "id": "dashboard_123456789",
+          "name": "Sales Performance Dashboard",
+          "createdAt": "2024-01-15T10:30:00Z",
+          "domains": [
+            {
+              "id": "domain_987654321",
+              "name": "Sales Analytics"
+            }
+          ],
+          "owner": {
+            "id": "user_456789123",
+            "displayName": "John Doe"
+          },
+          "accessLevel": "EDITOR"
+        }
+      ]
+    }
+  }
+}
+```
+
+</ResponseExample>
+
+## Related Operations
+
+<CardGroup cols={2}>
+  <Card title="Dashboard Query" icon="search" href="/integrations/graphql-api/queries/dashboard/dashboard">
+    Retrieve a specific dashboard
+  </Card>
+  <Card title="Create Dashboard" icon="plus" href="/integrations/graphql-api/mutations/dashboard/create-dashboard">
+    Create a new dashboard
+  </Card>
+  <Card title="DashboardsResponse Object" icon="folder" href="/integrations/graphql-api/objects/dashboards-response">
+    Complete response schema
+  </Card>
+</CardGroup>

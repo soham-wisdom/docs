@@ -1,0 +1,124 @@
+---
+title: "Create Dashboard"
+---
+
+The `createDashboard` mutation creates a new dashboard with the specified configuration and initial widgets.
+
+## Signature
+
+```graphql
+createDashboard(dashboard: DashboardInput!, widgets: [DashboardWidgetInput!]!): Dashboard!
+```
+
+## Arguments
+
+<ParamField path="dashboard" type="DashboardInput!" required>
+  Input object containing the dashboard configuration. See [DashboardInput](/integrations/graphql-api/objects/dashboard-input).
+</ParamField>
+
+<ParamField path="widgets" type="[DashboardWidgetInput!]!" required>
+  Array of widget configurations to include in the new dashboard. See [DashboardWidgetInput](/integrations/graphql-api/objects/dashboard-widget-input).
+</ParamField>
+
+## Response
+
+Returns the newly created `Dashboard` object with all properties populated. See [Dashboard](/integrations/graphql-api/objects/dashboard) for the schema.
+
+## Usage Example
+
+Create a new dashboard with initial widgets:
+
+```graphql
+mutation CreateDashboard($dashboard: DashboardInput!, $widgets: [DashboardWidgetInput!]!) {
+  createDashboard(dashboard: $dashboard, widgets: $widgets) {
+    id
+    name
+    description
+    widgets {
+      id
+      title
+      layout {
+        top
+        left
+        width
+        height
+      }
+    }
+    accessLevel
+  }
+}
+```
+
+<RequestExample>
+
+```bash Request
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <jwt_token>" \
+  -d '{
+    "query": "mutation CreateDashboard($dashboard: DashboardInput!, $widgets: [DashboardWidgetInput!]!) { createDashboard(dashboard: $dashboard, widgets: $widgets) { id name widgets { id title layout { top left width height } } } }",
+    "variables": {
+      "dashboard": {
+        "name": "Sales Performance Dashboard",
+        "description": "Monthly sales metrics and KPIs",
+        "domainId": "domain_987654321"
+      },
+      "widgets": [
+        {
+          "title": "Total Sales",
+          "nlQuery": "What are the total sales?",
+          "layout": {
+            "top": 0,
+            "left": 0,
+            "width": 6,
+            "height": 4
+          }
+        }
+      ]
+    }
+  }' \
+  https://{ACCOUNT}.askwisdom.ai/graphql
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "data": {
+    "createDashboard": {
+      "id": "dashboard_123456789",
+      "name": "Sales Performance Dashboard",
+      "widgets": [
+        {
+          "id": "widget_987654321",
+          "title": "Total Sales",
+          "layout": {
+            "top": 0,
+            "left": 0,
+            "width": 6,
+            "height": 4
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+</ResponseExample>
+
+## Related Operations
+
+<CardGroup cols={2}>
+  <Card title="Update Dashboard" icon="pen-to-square" href="/integrations/graphql-api/mutations/dashboard/update-dashboard">
+    Modify dashboard properties
+  </Card>
+  <Card title="Add Widget to Dashboard" icon="plus" href="/integrations/graphql-api/mutations/dashboard/add-widget-to-dashboard">
+    Add widgets to existing dashboard
+  </Card>
+  <Card title="DashboardInput Object" icon="folder" href="/integrations/graphql-api/objects/dashboard-input">
+    Dashboard creation input schema
+  </Card>
+</CardGroup>
