@@ -62,8 +62,8 @@ The page is loaded in an `iframe` and intentionally omits WisdomAI branding and 
   </Step>
   <Step title="JWT Signing" titleSize="h3">
     Use the following GraphQL API to get a JWT from the access key
-    ```html
-    query Query($accessKey: String!) {
+    ```graphql
+    query ExchangeAccessToken($accessKey: String!) {
       exchangeAccessToken(accessToken: $accessKey)
     }
     ```
@@ -76,3 +76,7 @@ The page is loaded in an `iframe` and intentionally omits WisdomAI branding and 
     ```
   </Step>
 </Steps>
+
+<Info>
+  For detailed information about the authentication flow and API usage, see the [Exchange Access Token](/integrations/graphql-api/queries/auth/exchange-access-token) documentation.
+</Info>

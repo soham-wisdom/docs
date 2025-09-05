@@ -1,0 +1,59 @@
+---
+title: "Exchange Access Token"
+---
+
+Exchange an access key for a JWT token for authentication with the GraphQL API.
+
+## exchangeAccessToken
+
+This query exchanges a dedicated access key for a JWT token that can be used to authenticate subsequent GraphQL API requests.
+
+### Signature
+
+```graphql
+exchangeAccessToken(accessToken: String!): String!
+```
+
+### Parameters
+
+<ParamField path="accessToken" type="String!" required>
+  The dedicated access key provided by WisdomAI for your organization. Contact `support@askwisdom.ai` to obtain your access key.
+</ParamField>
+
+### Response
+
+Returns a JWT token as a string that should be used in the `Authorization` header for subsequent API requests.
+
+### Usage Example
+
+```graphql
+query ExchangeAccessToken($accessToken: String!) {
+  exchangeAccessToken(accessToken: $accessToken)
+}
+```
+
+```bash
+curl -X POST https://{ACCOUNT}.askwisdom.ai/graphql \
+  -H "Content-Type: application/json" \
+  -d '{
+    "query": "query ExchangeAccessToken($accessToken: String!) { exchangeAccessToken(accessToken: $accessToken) }",
+    "variables": {
+      "accessToken": "your-access-key-here"
+    }
+  }'
+```
+
+<Info>
+  JWT tokens have a limited lifetime. You will need to exchange your access key for a new JWT token periodically.
+</Info>
+
+## Related Topics
+
+<CardGroup cols={2}>
+  <Card title="GraphQL API Overview" icon="code" href="/integrations/graphql-api/GraphQL-API">
+    Complete GraphQL API authentication guide
+  </Card>
+  <Card title="Embed Chat" icon="message" href="/integrations/embed-chat">
+    Authentication for embedded chat integrations
+  </Card>
+</CardGroup>

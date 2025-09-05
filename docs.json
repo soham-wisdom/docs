@@ -144,6 +144,12 @@
                     "group": "Queries",
                     "pages": [
                       {
+                        "group": "Auth",
+                        "pages": [
+                          "integrations/graphql-api/queries/auth/exchange-access-token"
+                        ]
+                      },
+                      {
                         "group": "Connection",
                         "pages": [
                           "integrations/graphql-api/queries/connection/connection"

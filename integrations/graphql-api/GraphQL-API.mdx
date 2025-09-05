@@ -33,27 +33,25 @@ The APIs require authentication using a **JWT session token** obtained via the D
 The authentication flow consists of the following steps:
 
 <Steps>
-  <Step title="Obtain Session Token" titleSize="h3">
-    - Use the `exchange_access_key` method from Descope to exchange an access key for a session token.
-    - Python Example:
+  <Step title="Obtain Access Key" titleSize="h3">
+    Contact WisdomAI support at `support@askwisdom.ai` to obtain your dedicated access key.
+  </Step>
+  <Step title="Exchange Access Key for JWT Token" titleSize="h3">
+    Use WisdomAI's GraphQL API `exchangeAccessToken` query to exchange your access key for a JWT token.
+    - GraphQL Query:
 
-      ```python
-      from descope import DescopeClient
-      descope_client = DescopeClient(project_id=WISDOM_PROJECT_ID)
-      auth_info = descope_client.exchange_access_key(WISDOM_AUTH_KEY)
-      auth_token = auth_info["sessionToken"]["jwt"]
+      ```graphql
+      query ExchangeAccessToken($accessToken: String!) {
+        exchangeAccessToken(accessToken: $accessToken)
+      }
       ```
   </Step>
   <Step title="Pass Token in Requests" titleSize="h3">
-    The session token is required in the WebSocket connection payload and query parameters.
+    The session token is required in all API requests and WebSocket connection payload.
 
     ```
     Authorization: Bearer YOUR_SESSION_TOKEN
     ```
-
-    <Note>
-      Contact our API team at `support@askwisdom.ai` to obtain your dedicated access token.
-    </Note>
   </Step>
 </Steps>
 
@@ -72,8 +70,8 @@ The authentication flow consists of the following steps:
 ## Next Steps
 
 <CardGroup cols={2}>
-  <Card title="Objects" icon="cube" href="/integrations/graphql-api/objects">
-    Explore the complete type system and object definitions
+  <Card title="Exchange Access Token" icon="key" href="/integrations/graphql-api/queries/auth/exchange-access-token">
+    Authenticate with the GraphQL API using access keys
   </Card>
   <Card title="Queries" icon="magnifying-glass" href="/integrations/graphql-api/queries">
     Learn about available queries for fetching data
