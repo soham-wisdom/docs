@@ -1,0 +1,64 @@
+---
+mode: custom
+title: "Homepage"
+---
+
+import {HomeBanner, PageWrapper, HomeCard} from "/snippets/home.jsx"
+
+<HomeBanner/>
+
+<PageWrapper>
+
+<Columns cols={3}>
+  <HomeCard
+    href="/docs/getting-started"
+    src="/images/home/light/card1.svg"
+    darkSrc="/images/home/dark/card1.svg"
+    title="Getting started"
+  >
+    Start utilizing the platform’s features effectively.
+  </HomeCard>
+
+  <HomeCard
+    href="/docs/setup"
+    src="/images/home/light/card2.svg"
+    darkSrc="/images/home/dark/card2.svg"
+    title="Setting Up WisdomAI"
+  >
+    Connect data sources and start creating knowledge
+  </HomeCard>
+
+  <HomeCard
+    href="/docs/improve-responses"
+    src="/images/home/light/card3.svg"
+    darkSrc="/images/home/dark/card3.svg"
+    title="Improve Wisdom AI Responses"
+  >
+    Explore and understand the available tools to enhance your responses
+  </HomeCard>
+</Columns>
+<Columns cols={2}>
+  <HomeCard
+    href="/docs/everyday-usage"
+    src="/images/home/light/card4.svg"
+    darkSrc="/images/home/dark/card4.svg"
+    title="Using Wisdom AI Everyday"
+  >
+    Learn how to build your questions to get the best possible information
+  </HomeCard>
+
+  <HomeCard
+    href="/docs/integrations"
+    src="/images/home/light/card5.svg"
+    darkSrc="/images/home/dark/card5.svg"
+    title="Integrations"
+  >
+    Learn how to perform external integrations such as GraphQL and Slack
+  </HomeCard>
+</Columns>
+</PageWrapper>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
