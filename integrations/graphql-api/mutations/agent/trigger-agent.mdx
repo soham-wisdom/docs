@@ -1,0 +1,64 @@
+---
+title: "Trigger Agent"
+---
+
+The `triggerSchedule` mutation allows you to manually trigger an existing agent schedule to run immediately.
+
+Go to [agent docs](/advanced-features/agents/agents) to learn more about agents and how to create one.
+
+## Trigger Agent Schedules
+
+### Signature
+
+```graphql
+triggerSchedule(id: String!): Boolean!
+```
+
+## Arguments
+
+<ParamField path="id" type="String!" required>
+  The unique identifier of the agent schedule to trigger. You can find it in URL of agent edit page.
+</ParamField>
+
+## Response
+
+Returns a `Boolean` indicating whether the trigger was successful.
+
+## Usage Example
+
+Trigger an existing agent schedule:
+
+```graphql
+mutation TriggerAgent($scheduleId: String!) {
+  success: triggerSchedule(id: $scheduleId)
+}
+```
+
+<RequestExample>
+
+```bash Request
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer your_api_key" \
+  -d '{
+    "query": "mutation TriggerAgent($scheduleId: String!) { success: triggerSchedule(id: $scheduleId) }",
+    "variables": {
+      "scheduleId": "schedule_987654321"
+    }
+  }' \
+  https://{ACCOUNT}.askwisdom.ai/graphql
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "data": {
+    "triggerSchedule": true
+  }
+}
+```
+
+</ResponseExample>
