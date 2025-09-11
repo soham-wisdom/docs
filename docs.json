@@ -194,7 +194,7 @@
                       {
                         "group": "Agent",
                         "pages": [
-                          "integrations/graphql-api/mutations/agent/trigger-agent",
+                          "integrations/graphql-api/mutations/agent/trigger-agent"
                         ]
                       },
                       {
