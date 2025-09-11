@@ -192,6 +192,12 @@
                         ]
                       },
                       {
+                        "group": "Agent",
+                        "pages": [
+                          "integrations/graphql-api/mutations/agent/trigger-agent",
+                        ]
+                      },
+                      {
                         "group": "Connection",
                         "pages": [
                           "integrations/graphql-api/mutations/connection/refresh-connection"
