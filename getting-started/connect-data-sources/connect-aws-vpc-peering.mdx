@@ -8,6 +8,17 @@ This method establishes a private, secure connection between WisdomAI's AWS envi
   VPC Peering cannot be configured directly in the UI. You must contact the WisdomAI support team to initiate this process.
 </Warning>
 
+## Prerequisites
+
+Before you begin, ensure you have the following:
+
+* An active WisdomAI account.
+* A supported data source (e.g., Redshift, Databricks) already deployed and running within an AWS VPC.
+* Access to an AWS IAM user or role with permissions to manage your VPC. Specifically, you will need to be able to:
+    * View VPC details (like VPC ID and CIDR blocks).
+    * Accept VPC peering requests.
+    * Modify VPC route tables and security groups.
+
 ## Supported Data Sources
 
 This connection method is applicable to any supported data source you have deployed within an AWS VPC, including but not limited to:
