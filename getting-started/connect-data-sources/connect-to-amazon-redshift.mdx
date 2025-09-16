@@ -26,21 +26,19 @@ There are three ways to connect your Amazon Redshift data warehouse to WisdomAI:
 
 Use this method if your Redshift cluster is publicly accessible or if you have whitelisted WisdomAI's IP addresses in your security group.
 
-1. Navigate to the **Data Sources** page in WisdomAI.
-2. Click **Add Data Source** and select **Amazon Redshift**.
-3. Fill in the required connection details.
+1. In WisdomAl, navigate to the **Connections** section and click **Add Connection**.
+2. Select **Redshift** as the data source type.
+3. Fill in the connection details in the **Redshift connection details** section:
 
-| Requirement | Description                    |
-| :---------- | :----------------------------- |
-| Host        | Redshift cluster endpoint      |
-| Port        | Typically `5439`               |
-| Database    | Database name                  |
-| Username    | Database user with read access |
-| Password    | User password                  |
-| Schema      | Schema name (optional)         |
+| Requirement      | Description                    |
+| :--------------- | :----------------------------- |
+| Host             | Redshift cluster endpoint      |
+| Port             | Typically `5439`               |
+| Username         | Database user with read access |
+| Password         | User password                  |
+| Database Filters |                                |
 
-4. Click **Test Connection** to verify that WisdomAI can reach your data warehouse.
-5. If the test is successful, click **Save**.
+4. Click **Save and Sync metadata.** WisdomAl will use the provided credentials to connect to your Redshift account and scan the metadata of the specified databases and tables.
 
 ### Option 2: Connect via an SSH Tunnel
 
