@@ -1,0 +1,27 @@
+---
+title: "Connect via AWS VPC Peering"
+---
+
+This method establishes a private, secure connection between WisdomAI's AWS environment and your Amazon VPC. This process is managed with the help of the WisdomAI support team.
+
+<Warning>
+  VPC Peering cannot be configured directly in the UI. You must contact the WisdomAI support team to initiate this process.
+</Warning>
+
+## Supported Data Sources
+
+This connection method is applicable to any supported data source you have deployed within an AWS VPC, including but not limited to:
+
+- Amazon Redshift
+- Databricks (when deployed on AWS)
+- ClickHouse (when deployed on AWS)
+
+## Configuration Steps
+
+1. Collect the following details from your AWS account:
+   - AWS Account ID and Region of the VPC
+   - VPC ID
+   - VPC CIDR block(s) (both primary and any secondary)
+2. Email the information gathered in the previous step to the WisdomAI support team at `support@askwisdom.ai` to request a VPC peering connection.
+3. The WisdomAI team will initiate a VPC peering request. You will receive an email with the request details and instructions to accept it within your AWS Management Console.
+4. After accepting the request, you must update your VPC's route tables to direct traffic destined for the WisdomAI VPC through the peering connection. You also need to configure your security group rules to allow inbound traffic from WisdomAI's VPC CIDR. The support team will provide all necessary information for these steps.
