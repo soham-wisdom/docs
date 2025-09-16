@@ -2,6 +2,12 @@
 title: "Connect to Amazon Redshift"
 ---
 
+WisdomAI allows you to connect to Amazon Redshift by choosing one of three methods: 
+1. [Direct Connection](#option-1%3A-direct-connection)
+2. [Connect via an SSH Tunnel](#option-2%3A-connect-via-an-ssh-tunnel)
+3. [Connect via VPC Peering](#option-3%3A-connect-via-vpc-peering)
+This flexibility ensures you can establish a secure connection that matches your specific network architecture.
+
 This tutorial guides you through the process of connecting WisdomAI to your Amazon Redshift data warehouse. By the end, you will be able to establish a secure connection using one of three methods: a direct connection, an SSH tunnel, or VPC peering.
 
 ## Prerequisites
@@ -13,15 +19,7 @@ Before you begin, make sure you have the following:
 - If using an SSH tunnel, you need the credentials for your bastion host.
 - If using VPC peering, you need permissions to manage VPC settings in your AWS account.
 
-## Connection Methods
-
-There are three ways to connect your Amazon Redshift data warehouse to WisdomAI:
-
-1. [Direct Connection](#option-1%3A-direct-connection)
-2. [Connect via an SSH Tunnel](#option-2%3A-connect-via-an-ssh-tunnel)
-3. [Connect via VPC Peering](#option-3%3A-connect-via-vpc-peering)
-
-### Option 1: Direct Connection
+## Option 1: Direct Connection
 
 Use this method if your Redshift cluster is publicly accessible or if you have whitelisted WisdomAI's IP addresses in your security group.
 
@@ -41,7 +39,7 @@ Use this method if your Redshift cluster is publicly accessible or if you have w
 
 ![Snippet displaying the Add Connection page](/images/redshift-01.png)
 
-### Option 2: Connect via an SSH Tunnel
+## Option 2: Connect via an SSH Tunnel
 
 Use this method to securely connect to a Redshift cluster that is not publicly accessible by routing traffic through a bastion host.
 
@@ -60,7 +58,7 @@ Use this method to securely connect to a Redshift cluster that is not publicly a
 
 ![Snippet displaying the Add Connection page with the SSH Tunnel Configuration section displayed](/images/redshift-02.png)
 
-### Option 3: Connect via VPC Peering
+## Option 3: Connect via VPC Peering
 
 This method establishes a private, secure connection between WisdomAI's AWS environment and your Amazon VPC. This process is managed with the help of the WisdomAI support team.
 
