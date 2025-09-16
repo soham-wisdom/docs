@@ -30,40 +30,36 @@ Use this method if your Redshift cluster is publicly accessible or if you have w
 2. Select **Redshift** as the data source type.
 3. Fill in the connection details in the **Redshift connection details** section:
 
-| Requirement      | Description                    |
-| :--------------- | :----------------------------- |
-| Host             | Redshift cluster endpoint      |
-| Port             | Typically `5439`               |
-| Username         | Database user with read access |
-| Password         | User password                  |
-| Database Filters |                                |
+| Requirement      | Description                                      |
+| :--------------- | :----------------------------------------------- |
+| Host             | Redshift cluster endpoint                        |
+| Port             | Typically `5439`                                 |
+| Username         | Database user with read access                   |
+| Password         | User password                                    |
+| Database Filters | Optionally restrict which databases are crawled. |
 
 4. Click **Save and Sync metadata.** WisdomAl will use the provided credentials to connect to your Redshift account and scan the metadata of the specified databases and tables.
+
+![Snippet displaying the Add Connection page](/images/redshift-01.png)
 
 ### Option 2: Connect via an SSH Tunnel
 
 Use this method to securely connect to a Redshift cluster that is not publicly accessible by routing traffic through a bastion host.
 
-1. Navigate to the **Data Sources** page in WisdomAI.
-2. Click **Add Data Source** and select **Amazon Redshift**.
-3. Fill in the standard database details and the SSH Tunnel configuration fields.
+1. When configuring the connection as shown in option 1, expand the **SSH Tunnel Configuration** section. 
+2. Fill in the standard database details and the SSH Tunnel configuration fields.
 
 | Requirement              | Description                                                   |
 | :----------------------- | :------------------------------------------------------------ |
-| Host                     | Redshift cluster endpoint                                     |
-| Port                     | Typically `5439`                                              |
-| Database                 | Database name                                                 |
-| Username                 | Database user with read access                                |
-| Password                 | User password                                                 |
-| Schema                   | Schema name (optional)                                        |
 | SSH Host                 | Hostname or IP address of the bastion host                    |
 | SSH Port                 | Port number on the SSH host (e.g., `22`)                      |
 | SSH Username             | The username required to log in to the bastion host           |
 | Authentication Method    | Authenticate using either a **Private Key** or a **Password** |
 | SSH Private Key/Password | The Private Key or Password for the SSH authentication        |
 
-4. Click **Test Connection** to validate the configuration.
-5. If the test is successful, click **Save**.
+4. Click **Save and Sync metadata.** 
+
+![Snippet displaying the Add Connection page](/images/redshift-02.png)
 
 ### Option 3: Connect via VPC Peering
 
@@ -80,8 +76,3 @@ This method establishes a private, secure connection between WisdomAI's AWS envi
 2. Email the information gathered in the previous step to the WisdomAI support team at `support@askwisdom.ai` to request a VPC peering connection.
 3. The WisdomAI team will initiate a VPC peering request. You will receive an email with the request details and instructions to accept it within your AWS Management Console.
 4. After accepting the request, you must update your VPC's route tables to direct traffic destined for the WisdomAI VPC through the peering connection. You also need to configure your security group rules to allow inbound traffic from WisdomAI's VPC CIDR. The support team will provide all necessary information for these steps.
-
-## Next Steps
-
-- [Basic Tutorial: Connect and Test](/setting-up-wisdom-ai/basic-tutorial-connect-and-test)
-- [Advanced Data Modeling: Creating Knowledge](/setting-up-wisdom-ai/advanced-data-modeling-creating-knowledge)
