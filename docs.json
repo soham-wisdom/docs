@@ -20,6 +20,7 @@
       "group": "Connect Data Sources",
       "pages": [
         "getting-started/connect-data-sources/supported-data-sources",
+        "getting-started/connect-data-sources/connect-to-amazon-redshift",
         "getting-started/connect-data-sources/connect-to-databricks",
         "getting-started/connect-data-sources/connect-to-google-bigquery",
         "getting-started/connect-data-sources/connect-to-snowflake"
