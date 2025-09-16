@@ -1,6 +1,5 @@
 ---
 title: "Connect to Amazon Redshift"
-description: "Description of your new file."
 ---
 
 This tutorial guides you through the process of connecting WisdomAI to your Amazon Redshift data warehouse. By the end, you will be able to establish a secure connection using one of three methods: a direct connection, an SSH tunnel, or VPC peering.
@@ -46,8 +45,8 @@ Use this method if your Redshift cluster is publicly accessible or if you have w
 
 Use this method to securely connect to a Redshift cluster that is not publicly accessible by routing traffic through a bastion host.
 
-1. When configuring the connection as shown in option 1, expand the **SSH Tunnel Configuration** section. 
-2. Fill in the standard database details and the SSH Tunnel configuration fields.
+1. On the **Add Connection** page, fill in the direct connection details and expand the **SSH Tunnel Configuration** section.
+2. Complete the standard database details and the **SSH Tunnel configuration fields**.
 
 | Requirement              | Description                                                   |
 | :----------------------- | :------------------------------------------------------------ |
@@ -57,9 +56,9 @@ Use this method to securely connect to a Redshift cluster that is not publicly a
 | Authentication Method    | Authenticate using either a **Private Key** or a **Password** |
 | SSH Private Key/Password | The Private Key or Password for the SSH authentication        |
 
-4. Click **Save and Sync metadata.** 
+4. Click **Save and Sync metadata.**
 
-![Snippet displaying the Add Connection page](/images/redshift-02.png)
+![Snippet displaying the Add Connection page with the SSH Tunnel Configuration section displayed](/images/redshift-02.png)
 
 ### Option 3: Connect via VPC Peering
 
