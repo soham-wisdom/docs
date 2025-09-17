@@ -1,5 +1,5 @@
 ---
-title: "Embed Chat"
+title: "Embed a Chat"
 ---
 
 Embed a streamlined, white-label version of WisdomAI Chat directly into your application.
@@ -9,6 +9,8 @@ The page is loaded in an `iframe` and intentionally omits WisdomAI branding and 
 <Info>
   The embedded chat UI is hosted at: `https://<customer>.askwisdom.ai/chat/embed`
 </Info>
+
+The section below describes the steps to configure your embedded chat.
 
 ## 1. Request an Access Token
 
@@ -81,6 +83,6 @@ To embed the chat into your application, add the iframe shown below.
   style="width: 100%; height: 100%; border: 0;" />
 ```
 
-In the `conversationId` you'd add the ID for this specific chat and in the token query param, add the signed `jwt-token` that you generated in step 2.
+In the `conversationId`, add the ID for this specific chat and in the token query param, add the signed `jwt-token` that you generated in step 2.
 
 The embedded page controls the chat experience; no further state management is required after the initial load.
