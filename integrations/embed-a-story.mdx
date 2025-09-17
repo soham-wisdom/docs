@@ -1,0 +1,82 @@
+---
+title: "Embed a Story"
+---
+
+Embed a read-only version of a WisdomAI Story directly into your application or internal portal.
+
+The page is loaded in an `iframe` for a seamless integration experience. See all visualizations, tables, and narrative content from the Story.
+
+<Info>
+  The embedded story UI is hosted at: `https://<customer>.askwisdom.ai/stories/embed/{story-id}`
+</Info>
+
+Key Components
+
+<CardGroup cols={2}>
+  <Card title="Embedded Story Page" icon="file">
+    The read-only WisdomAI Story UI rendered in an iframe.
+  </Card>
+  <Card title="GraphQL API" icon="code">
+    Programmatically generates a temporary, single-use token for viewing.
+  </Card>
+  <Card title="Access Token Auth" icon="shield-check">
+    Machine-to-machine JWT authentication using a permanent access token provided by the WisdomAI team.
+  </Card>
+</CardGroup>
+
+## End-to-End Workflow
+
+<Steps>
+  <Step title="User Loads Page" titleSize="h3">
+    A user visits a page on your platform that contains the embedded Story iframe.
+  </Step>
+  <Step title="Backend Generates JWT" titleSize="h3">
+    Your platform's backend calls the `exchangeAccessToken` query on the WisdomAI GraphQL API and receives a JWT.
+  </Step>
+  <Step title="Load Embedded Story" titleSize="h3">
+    Your platform's frontend renders the iframe with the JWT appended as a token:
+
+    ```html
+    <iframe
+      src="https://<customer>.askwisdom.ai/stories/embed/{story-id}?token=<signed-jwt>"
+      style="width: 100%; height: 100%; border: 0;">
+    ```
+  </Step>
+  <Step title="Seamless Viewing" titleSize="h3">
+    The embedded page loads the Story securely; no further state management is required from your application.
+  </Step>
+</Steps>
+
+## GraphQL API Capabilities
+
+| Operation             | Type  | Description                                                              |
+| :-------------------- | :---- | :----------------------------------------------------------------------- |
+| `exchangeAccessToken` | Query | Exchanges a permanent access token for a JWT required for the embed URL. |
+
+## Access Token Authentication Flow
+
+<Steps>
+  <Step title="Token Provisioning" titleSize="h3">
+    The WisdomAI team provides you with a permanent Access Token. To get started, reach out to our team with the service account or user email you'd like to use.
+  </Step>
+  <Step title="JWT Generation" titleSize="h3">
+    From your backend, use the following GraphQL query to get a temporary JWT from your permanent access token.
+
+    ```graphql
+    query Query($accessToken: String!) {
+      exchangeAccessToken(accessToken: $accessToken)
+    }
+    ```
+  </Step>
+  <Step title="URL Authorization" titleSize="h3">
+    Append the signed JWT to the embed URL as a query parameter named `token`.
+
+    ```
+    https://<customer>.askwisdom.ai/stories/embed/{story-id}?token=<signed-jwt>
+    ```
+  </Step>
+</Steps>
+
+<Warning>
+Handle the token exchange on your server to keep your permanent Access Token secure.
+</Warning>
