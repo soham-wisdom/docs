@@ -11,16 +11,16 @@ This guide outlines the complete, multi-step process for modeling context in Wis
 
 The sections below describe each step of this workflow.
 
-## Step 1: Build the Foundation
+## Step 1: Build the Foundation with a Semantic Layer
 
 Before you can tackle complex analysis, you must establish a solid foundation. This involves creating a business-friendly semantic layer over your raw database structures and enriching it with basic, domain-specific language.
 
-- **What you'll do**: Document tables and columns, define business entities, establish relationships, and add simple rules in natural language.
+- **What you'll do**: Document tables and columns, define business entities, establish relationships, and add simple rules using natural language context.
 - **How to do it**: For a detailed walkthrough, refer to our guide on [**Advanced Data Modeling: Creating Knowledge**](link_to_advanced_data_modeling_guide).
 
-## Step 2: Define Complex Metrics
+## Step 2: Define Complex Metrics with Validated Queries
 
-For critical business calculations that require specific or complex logic, you need to provide the AI with pre-vetted examples. This ensures that common or important questions are always answered with guaranteed accuracy and consistency.
+For specific business calculations where a very precise SQL structure is required, you should provide the AI with pre-vetted examples. This is ideal for complex metrics that might need window functions or nested queries.
 
 - **What you'll do**: Create a library of **Validated Queries** by pairing a natural language question with its ideal SQL response.
 - **How to do it**: The creation process is covered in our guide on [**Advanced Data Modeling: Creating Knowledge**](link_to_advanced_data_modeling_guide).
@@ -40,7 +40,7 @@ The structure of your SQL has a significant impact on clarity and reusability. F
 
 In some complex cases, the AI might not follow a SQL example perfectly, leading to logical errors like double counting. You can prevent this by supplementing your Reviewed Queries with explicit instructions in the Language Context.
 
-For example, add a rule like: `"Never sum up country_population column across different rows for the same country"` to prevent incorrect aggregations.
+For example, if there is a pre-aggregated `country_population` column in a `statewise_population` table, adding `country_population` across states in the same country would lead to double counting. An instruction might help to make sure this never happens; add a rule like: `"Never sum up country_population column across different rows for the same country"` to prevent incorrect aggregations.
 
 ## Step 4: Test and Measure Your Impact
 
@@ -54,3 +54,29 @@ Context modeling is an iterative process. To validate your improvements and trac
 - [Curate Knowledge Workflow](link_to_curate_knowledge_workflow)
 - [Provide Feedback to the System](link_to_provide_feedback_guide)
 - [Validate and Test Answers](link_to_validate_and_test_guide)
+
+## 
+
+## Refine and Harden Your Logic
+
+Once your foundational context is in place, you can apply advanced strategies to make your logic more robust, maintainable, and accurate.
+
+### Optimize Your SQL for Validated Queries
+
+The structure of your SQL has a significant impact on clarity and reusability. Follow these best practices to write more effective queries.
+
+- [cite_start]**Use Common Table Expressions (CTEs) for clarity.** For complex logic, breaking the query into understandable CTEs makes it more readable and allows for reuse in future metrics[cite: 357, 422].
+- [cite_start]**Maintain consistent structures for related metrics.** When creating multiple variations of a metric, use a shared CTE to define the base calculation[cite: 358, 360]. [cite_start]This prevents logic from drifting between different reports[cite: 461].
+
+### Combine Context Types for Greater Accuracy
+
+[cite_start]In some complex cases, the AI might not follow a SQL example perfectly, leading to logical errors like double counting[cite: 463, 464]. [cite_start]You can prevent this by supplementing your queries with explicit instructions in the Language Context[cite: 463].
+
+[cite_start]For example, add a rule like: `"Never sum up country_population column across different rows for the same country"` to prevent incorrect aggregations[cite: 465].
+
+## Test and Measure Impact with Evaluation Sets
+
+Context modeling is an iterative process. [cite_start]The best way to validate your work is to create a test set of natural language questions and SQL pairs[cite: 467]. [cite_start]As you add more knowledge and context, you can track the accuracy score of the evaluation to see it go up[cite: 468].
+
+- **What you'll do**: Create **Evaluation Sets** containing test prompts and their expected SQL outputs, run evaluations, and analyze the reports to identify areas for improvement.
+- **How to do it**: Learn the complete testing workflow in our guide, [**Use Evaluations Sets and Runs**](link_to_use_evaluations_sets_guide).
