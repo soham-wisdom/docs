@@ -33,12 +33,12 @@ Once your foundational context is in place, you can apply advanced strategies to
 
 The structure of your SQL has a significant impact on clarity and reusability. Follow these best practices to write more effective queries.
 
-- **Use Common Table Expressions (CTEs) for clarity.** For complex logic, breaking the query into understandable CTEs makes it more readable and allows for reuse in future metrics[cite: 422].
+- **Use Common Table Expressions (CTEs) for clarity.** For complex logic, breaking the query into understandable CTEs makes it more readable and allows for reuse in future metrics.
 - **Maintain consistent structures for related metrics.** When creating multiple variations of a metric, use a shared CTE to define the base calculation. This prevents logic from drifting between different reports.
 
 ### Combine Context Types for Greater Accuracy
 
-In some complex cases, the AI might not follow a SQL example perfectly, leading to logical errors like double counting. You can prevent this by supplementing your Reviewed Queries with explicit instructions in the Language Context[cite: 463].
+In some complex cases, the AI might not follow a SQL example perfectly, leading to logical errors like double counting. You can prevent this by supplementing your Reviewed Queries with explicit instructions in the Language Context.
 
 For example, add a rule like: `"Never sum up country_population column across different rows for the same country"` to prevent incorrect aggregations.
 
