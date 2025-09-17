@@ -10,60 +10,77 @@ The page is loaded in an `iframe` and intentionally omits WisdomAI branding and 
   The embedded chat UI is hosted at: `https://<customer>.askwisdom.ai/chat/embed`
 </Info>
 
+## 1. Request an Access Token
 
-## End-to-End Workflow
+Your permanent Access Token authenticates your server to the WisdomAI API. This token does not expire and must be kept secret.
 
-<Steps>
-  <Step title="New Chat Trigger" titleSize="h3">
-    User clicks **New Chat** on your platform
-  </Step>
-  <Step title="Backend Creates Chat Session" titleSize="h3">
-    The platform's backend calls the `createConversation` mutation on WisdomAI GraphQL API and receives a `conversationId`
-  </Step>
-  <Step title="Load Embedded Chat" titleSize="h3">
-    Your platform renders the iframe:
+To get your token, contact the WisdomAI team and provide the email address of the user account you wish to associate with the token.
 
-    ```html
-    <iframe
-      src="https://<customer>.askwisdom.ai/chat/embed/{conversationId}?token=<signed-jwt>"
-      style="width: 100%; height: 100%; border: 0;" />
-    ```
-  </Step>
-  <Step title="Seamless Interaction" titleSize="h3">
-    The embedded page controls the chat experience; no further state management is required after the initial load.
-  </Step>
-</Steps>
+<Note>
+  **Choose the Right User Account**
 
-## GraphQL API Capabilities
+  - **Service Account (Recommended)**: If you use a service account's email, you won't need to manage sharing permissions for each Story you embed. This is the most scalable approach.
+  - **Specific User Account**: If you use a specific user's email, any Story you want to embed must be explicitly shared with "everyone in the organization" from that user's account in WisdomAI.
+</Note>
 
-| Operation            | Type     | Description                                                        |
-| -------------------- | -------- | ------------------------------------------------------------------ |
-| `createConversation` | Mutation | Creates a new blank chat session and returns `conversationId`      |
-| `conversations`      | Query    | Retrieves all conversations based on limit and offset |
+## 2. Generate a JWT Token
 
-## Machine-to-Machine Authentication Flow
+With your Access Token, you can now generate a temporary JWT for a user's session. This action must always be performed on your server to avoid leaking your permanent Access Token to the client's browser.
 
-<Steps>
-  <Step title="API Key Provisioning" titleSize="h3">
-    WisdomAI generates a dedicated access key in the Descope portal and shares it with you. Reach out to our API team at `support@askwisdom.ai` to get a dedicated access key.
-  </Step>
-  <Step title="JWT Signing" titleSize="h3">
-    Use the following GraphQL API to get a JWT from the access key
-    ```graphql
-    query ExchangeAccessToken($accessKey: String!) {
-      exchangeAccessToken(accessToken: $accessKey)
+<Warning>
+  Never expose your permanent Access Token in client-side code. It provides long-term access to the WisdomAI API and must be protected on your backend.
+</Warning>
+
+Make a server-side POST request to the WisdomAI GraphQL endpoint.
+
+```bash
+curl -X POST https://<customer>.askwisdom.ai/graphql -d "query Query($accessToken: String!) {
+  exchangeAccessToken(accessToken: $accessToken)
+}
+```
+
+Include your permanent Access Token in the variables of the GraphQL query.
+
+**Example Request (using cURL):**
+
+```bash
+curl -X POST \
+  -H "Content-Type: application/json" \
+  --data '{
+    "query": "query Query($accessToken: String!) { exchangeAccessToken(accessToken: $accessToken) }",
+    "variables": {
+      "accessToken": "YOUR_PERMANENT_ACCESS_TOKEN"
     }
-    ```
-  </Step>
-  <Step title="Request Authorization" titleSize="h3">
-    Attach the signed JWT to every GraphQL request:
+  }' \
+  https://<customer>.askwisdom.ai/graphql
+```
 
-    ```
-    Authorization: Bearer <signed-jwt>
-    ```
-  </Step>
-</Steps>
+The API will respond with the temporary JWT token.
+
+**Example Response:**
+
+```json
+{
+  "data": {
+    "exchangeAccessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+  }
+}
+```
 
 <Info>
   For detailed information about the authentication flow and API usage, see the [Exchange Access Token](/integrations/graphql-api/queries/auth/exchange-access-token) documentation.
 </Info>
+
+## 3. Embed the Chat
+
+To embed the chat into your application, add the iframe shown below.
+
+```html
+<iframe
+  src="https://<customer>.askwisdom.ai/chat/embed/{conversationId}?token=<signed-jwt>"
+  style="width: 100%; height: 100%; border: 0;" />
+```
+
+In the `conversationId` you'd add the ID for this specific chat and in the token query param, add the signed `jwt-token` that you generated in step 2.
+
+The embedded page controls the chat experience; no further state management is required after the initial load.
