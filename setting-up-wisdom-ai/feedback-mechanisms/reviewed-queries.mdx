@@ -1,19 +1,25 @@
 ---
-title: "Reviewed Queries"
+title: "Validated Queries"
 ---
 
-Reviewed Queries are a feedback-based type of context made up of a tuple of a natural language question and its ideal SQL response. By reviewing queries, you can help users get a higher degree of confidence in the answers they receive. This is the most critical aspect of context for the language model to understand your data, since it is directly tied to SQL.
+Validated Queries are curated pairs of a natural language question and its ideal SQL response. They serve as a powerful tool to guarantee accuracy, especially for business-critical calculations or complex metrics that require a specific SQL structure, such as window functions or nested queries.
 
-When you add Reviewed Queries, you have the following benefits:
+By building a repository of these pre-vetted queries, you ensure that everyone in your organization gets consistent, correct answers for the most important questions. This is the most critical aspect of context for the language model to understand your data, as it provides direct, unambiguous examples of how to query your tables.
 
-- **Accuracy:** Pre-vetted queries ensure consistent and correct results.
-- **Performance:** Optimized query execution paths for common questions.
-- **Reusability:** Common business questions can be stored once and reused.
-- **Canonicalization:** Standardize the way metrics are calculated and combined.
+## Create Validated Queries
 
-## Create Reviewed Queries
+There are two primary ways to add queries to your knowledge base: directly from the chat interface or in bulk using a CSV file.
 
-Reviewed queries are created from the chat experience. Each chat response comes with a thumb up/thumb down button to provide feedback. When you click the **thumb up** icon, a modal to Review the Question opens. Here, you need to add the question that the SQL code answers to. After confirmation, these queries will be listed in the **Knowledge** \> **Reviewed Queries** tab.
+### Create from the Chat Interface
+
+The most common workflow is to validate queries as you interact with the system. This allows you to refine the AI's generated SQL or provide your own from scratch.
+
+An easy workflow to define validated queries is to ask the question in the chat, provide feedback or edit the generated SQL, and then validate the response.
+
+1. Ask a question and review the generated answer.
+2. If the answer is correct, click the **thumb up** icon.
+3. In the **Review a Question** modal that appears, confirm or edit the natural language question that the SQL code answers.
+4. After confirmation, the query will be saved and listed in the **Knowledge \> Reviewed Queries** tab.
 
 The following code block shows an example of a query to calculate the win rate for sales that was validated by clicking the thumb up button.
 
@@ -28,6 +34,71 @@ WHERE `stage_label` IN ('Evaluation', 'Negotiation', 'Closed Loss', 'Closed Won'
 ```
 
 ![Image showing the Review a Question modal](/images/review-question-v02-em.png)
+
+5. If the answer needs changes, click the **Edit** button (pencil icon) to modify the SQL. Once you are satisfied, click **Mark as reviewed**.
+
+### Example: Editing a Query for Granularity
+
+This example shows how to refine a query to get a more detailed view of your data.
+
+Suppose you ask, **“Show me the yearly ARR trend,”** and the system generates the following correct, but high-level, query:
+
+```
+SELECT
+  DATE_TRUNC(`close_date`, YEAR) AS `year`,
+  SUM(`acv`) AS `arr`
+FROM
+  `wisdom-staging-406623`.`b2bsaleshomebrew`.`Opportunity`
+WHERE
+  `stage_label` = 'Closed Won'
+GROUP BY
+  `year`
+ORDER BY
+  `year` ASC
+```
+
+The chart shows a clear year-over-year trend. However, you decide that a **quarterly view** would be more insightful for tracking seasonal performance. To get this, you can click the **Edit** button (pencil icon) to modify the SQL directly.
+
+![Edit Sql 0925 Pn](/images/Edit-sql-0925.png)
+
+The only change needed is to adjust the `DATE_TRUNC` function from `YEAR` to `QUARTER`.
+
+Here is the **edited SQL**:
+
+```
+SELECT
+  DATE_TRUNC(`close_date`, QUARTER) AS `quarter`,
+  SUM(`acv`) AS `arr`
+FROM
+  `wisdom-staging-406623`.`b2bsaleshomebrew`.`Opportunity`
+WHERE
+  `stage_label` = 'Closed Won'
+GROUP BY
+  `quarter`
+ORDER BY
+  `quarter` ASC
+```
+
+![Sql Edited 0925 Pn](/images/sql-edited-0925.png)
+
+After applying the change and seeing the updated quarterly chart, you can save this improved version. You would click **Mark as reviewed** and update the question to **“Show me the quarterly ARR trend”** to save it as a new, more specific Validated Query for future use.
+
+![Review Question Sql 0925 Pn](/images/review-question-sql-0925.png)
+
+### Bulk Upload with CSV
+
+For adding many validated queries at once, you can use the CSV upload option in the **Knowledge** \> **Reviewed Queries** tab. This is ideal for migrating existing reports or defining a set of canonical metrics from the start.
+
+To bulk upload, create a CSV file that contains two column headers: `Query` and `SQL`. Populate the rows with the natural language questions and their corresponding SQL code.
+
+## Best Practices for Well-Formed SQL
+
+For a validated query to be effective and reusable, follow these best practices when writing your SQL:
+
+- **Keep it concise and readable:** Write SQL that is easy to understand. If the logic is complex, use comments or break it down.
+- **Split complex examples:** Instead of creating one example that calculates multiple metrics (e.g., “Show revenue and ARR trend”), split it into two separate, focused examples (“Show revenue trend” and “Show ARR trend”).
+- **Use CTEs for complex logic:** If the SQL requires multiple steps or transformations, break it down into more understandable Common Table Expressions (CTEs).
+- **Be consistent:** Use a consistent SQL structure for different variations of the same metric. For example, the queries for “Yearly trend of ARR” and “ARR by segment” should be built from a consistent base calculation of ARR, ideally using the same CTE.
 
 ## Next steps
 
