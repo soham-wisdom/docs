@@ -59,7 +59,7 @@ ORDER BY
 
 The chart shows a clear year-over-year trend. However, you decide that a **quarterly view** would be more insightful for tracking seasonal performance. To get this, you can click the **Edit** button (pencil icon) to modify the SQL directly.
 
-![Edit Sql 0925 Pn](/images/Edit-sql-0925.png)
+![Image showing the Edit Sql option in chat](/images/Edit-sql-0925.png)
 
 The only change needed is to adjust the `DATE_TRUNC` function from `YEAR` to `QUARTER`.
 
@@ -79,17 +79,19 @@ ORDER BY
   `quarter` ASC
 ```
 
-![Sql Edited 0925 Pn](/images/sql-edited-0925.png)
+![Image showing the Edited SQL](/images/sql-edited-0925.png)
 
 After applying the change and seeing the updated quarterly chart, you can save this improved version. You would click **Mark as reviewed** and update the question to **“Show me the quarterly ARR trend”** to save it as a new, more specific Validated Query for future use.
 
-![Review Question Sql 0925 Pn](/images/review-question-sql-0925.png)
+![Image showing the Review a Question modal](/images/review-question-sql-0925.png)
 
 ### Bulk Upload with CSV
 
 For adding many validated queries at once, you can use the CSV upload option in the **Knowledge** \> **Reviewed Queries** tab. This is ideal for migrating existing reports or defining a set of canonical metrics from the start.
 
 To bulk upload, create a CSV file that contains two column headers: `Query` and `SQL`. Populate the rows with the natural language questions and their corresponding SQL code.
+
+![Import Csv File 0925 Pn](/images/import-csv-file-0925.png)
 
 ## Best Practices for Well-Formed SQL
 
@@ -99,6 +101,18 @@ For a validated query to be effective and reusable, follow these best practices 
 - **Split complex examples:** Instead of creating one example that calculates multiple metrics (e.g., “Show revenue and ARR trend”), split it into two separate, focused examples (“Show revenue trend” and “Show ARR trend”).
 - **Use CTEs for complex logic:** If the SQL requires multiple steps or transformations, break it down into more understandable Common Table Expressions (CTEs).
 - **Be consistent:** Use a consistent SQL structure for different variations of the same metric. For example, the queries for “Yearly trend of ARR” and “ARR by segment” should be built from a consistent base calculation of ARR, ideally using the same CTE.
+
+## Combining with Language Context for Complex Cases
+
+While Validated Queries are powerful, some complex business rules are best enforced by pairing them with explicit instructions in your **Language Context**. Validated Queries teach the model _how_ to calculate a specific metric, while Language Context can teach it _what not to do_ to avoid common logical errors.
+
+For instance, imagine you have a `statewise_population` table with a pre-aggregated `country_population` column. Summing this column across multiple states from the same country would lead to massive double-counting.
+
+While a Validated Query can show the correct way to get the population, adding a clear instruction in [Language Context](/setting-up-wisdom-ai/advanced-data-modeling-creating-knowledge#natural-language-context) provides an extra layer of protection against mistakes:
+
+**Instruction Example:** “Never sum up the `country_population` column across different rows for the same country.”
+
+Using both features together ensures that even when the AI generates new or slightly different queries, it still adheres to your most important business logic.
 
 ## Next steps
 
