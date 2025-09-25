@@ -43,7 +43,7 @@ curl -X POST https://{ACCOUNT}.askwisdom.ai/graphql \
     "query": "query ImpersonateUser($accessToken: String!, $userEmail: String!) { impersonateUser(accessToken: $accessToken, userEmail: $userEmail) }",
     "variables": {
       "accessToken": "your-access-key-here",
-      "userEmail": "service-user@yourcompany.com"
+      "userEmail": "user-email@yourcompany.com"
     }
   }'
 ```
