@@ -30,10 +30,15 @@ This section outlines common prerequisites for connecting to data sources. Speci
   <Info>
     For PostgreSQL and Amazon Redshift, you can optionally configure an SSH Tunnel to connect through a bastion host.
   </Info>
+  
 
 <Tabs>
   <Tab title="PostgreSQL">
     The following table lists all the requirements you need to provide when connecting to PostgreSQL.
+    
+    <Info>
+      SSH settings are optional.
+    </Info>
 
     | Requirement              | Description                                                              |
     | :----------------------- | :----------------------------------------------------------------------- |
@@ -42,12 +47,11 @@ This section outlines common prerequisites for connecting to data sources. Speci
     | Database                 | Name of the database                                                     |
     | Username                 | Database user with read access                                           |
     | Password                 | User's password                                                          |
-    | SSL Mode                 | Recommended for secure connections                                       |
-    | SSH Host                 | Hostname or IP address of the bastion host (optional)                    |
-    | SSH Port                 | Port number on the SSH host (optional)                                   |
-    | SSH Username             | The username required to log in to the bastion host (optional)           |
-    | Authentication Method    | You can authenticate using either a Private Key or a Password (optional) |
-    | SSH Private Key/Password | The Private Key or Password used for the SSH authentication (optional)   |
+    | SSH Host                 | Hostname or IP address of the bastion host (Optional)                    |
+    | SSH Port                 | Port number on the SSH host (Optional)                                   |
+    | SSH Username             | The username required to log in to the bastion host (Optional)           |
+    | Authentication Method    | You can authenticate using either a Private Key or a Password (Optional) |
+    | SSH Private Key/Password | The Private Key or Password used for the SSH authentication (Optional)   |
 
     Find below an example connection:
 
@@ -158,12 +162,16 @@ This section outlines common prerequisites for connecting to data sources. Speci
     Dataset: analytics_data
     ```
 
-    <warning>
-  You'll need to create a service account in Google Cloud with appropriate permissions on the BigQuery datasets you want to access.
-</warning>
+    <Warning>
+      You'll need to create a service account in Google Cloud with appropriate permissions on the BigQuery datasets you want to access.
+    </Warning>
   </Tab>
   <Tab title="Amazon Redshift">
     The following table lists all the requirements you need to provide when connecting to Amazon Redshift.
+
+    <Info>
+      SSH settings are optional.
+    </Info>
 
     | Requirement              | Description                                                              |
     | :----------------------- | :----------------------------------------------------------------------- |
@@ -172,12 +180,13 @@ This section outlines common prerequisites for connecting to data sources. Speci
     | Database                 | Database name                                                            |
     | Username                 | Database user with read access                                           |
     | Password                 | User password                                                            |
-    | Schema                   | Schema name (optional)                                                   |
-    | SSH Host                 | Hostname or IP address of the bastion host (optional)                    |
-    | SSH Port                 | Port number on the SSH host (optional)                                   |
-    | SSH Username             | The username required to log in to the bastion host (optional)           |
-    | Authentication Method    | You can authenticate using either a Private Key or a Password (optional) |
-    | SSH Private Key/Password | The Private Key or Password used for the SSH authentication (optional)   |
+    | Schema                   | Schema name (Optional)                                                   |
+    | SSH Host                 | Hostname or IP address of the bastion host (Optional)                    |
+    | SSH Port                 | Port number on the SSH host (Optional)                                   |
+    | SSH Username             | The username required to log in to the bastion host (Optional)           |
+    | Authentication Method    | You can authenticate using either a Private Key or a Password (Optional) |
+    | SSH Private Key/Password | The Private Key or Password used for the SSH authentication (Optional)   |
+
   </Tab>
   <Tab title="CSV Files">
     You can also upload CSV files to a Domain. Here are the requirements for these files:
