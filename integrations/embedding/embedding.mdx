@@ -34,7 +34,7 @@ curl -X POST https://<customer>.askwisdom.ai/graphql -d "query Query($accessToke
 }
 ```
 
-Include your permanent Access Token and the user email in the variables of the GraphQL query.
+Include your permanent access token and the user email in the variables of the GraphQL query.
 
 **Example Request (using cURL):**
 
@@ -45,7 +45,7 @@ curl -X POST \
     "query": "query Query($accessToken: String!, $userEmail: String!) { impersonateUser(accessToken: $accessToken, userEmail: $userEmail) }",
     "variables": {
       "accessToken": "YOUR_PERMANENT_ACCESS_TOKEN",
-      "userEmail": "service-user@yourcompany.com"
+      "userEmail": "user-email@yourcompany.com"
     }
   }' \
   https://<customer>.askwisdom.ai/graphql
