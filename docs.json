@@ -106,9 +106,25 @@
           {
             "group": "Integrations",
             "pages": [
-              "integrations/embed-chat",
-              "integrations/embed-a-story",
               "integrations/connect-to-slack",
+              {
+                "group": "Embedding",
+                "pages": [
+                  "integrations/embedding/Embedding",
+                  {
+                    "group": "Story",
+                    "pages": [
+                      "integrations/embedding/story/embed-a-story"
+                    ]
+                  },
+                  {
+                    "group": "Chat",
+                    "pages": [
+                      "integrations/embedding/chat/embed-chat"
+                    ]
+                  }
+                ]
+              },
               {
                 "group": "GraphQL API",
                 "pages": [
@@ -161,7 +177,8 @@
                       {
                         "group": "Auth",
                         "pages": [
-                          "integrations/graphql-api/queries/auth/exchange-access-token"
+                          "integrations/graphql-api/queries/auth/exchange-access-token",
+                          "integrations/graphql-api/queries/auth/impersonate-user"
                         ]
                       },
                       {

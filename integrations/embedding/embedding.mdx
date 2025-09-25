@@ -1,0 +1,75 @@
+---
+title: "Embedding WisdomAI Chat and Stories"
+---
+
+Embed a streamlined, white-label version of WisdomAI chat / stories directly into your application.
+
+The pages are loaded in an `iframe` and intentionally omits WisdomAI branding and features for a seamless integration experience. All core chat capabilities (natural‑language Q&A, table generation, and chart rendering) remain intact.
+
+The section below describes the steps to configure your embeddeded chat/story.
+
+## 1. Request an Access Token
+
+Your permanent Access Token authenticates your server to the WisdomAI API and grants impersonation permissions. This token does not expire and must be kept secret.
+
+Contact `support@askwisdom.ai` to obtain your access token. The access token will have impersonation permissions.
+
+## 2. Generate a JWT Token
+
+With your Access Token and the user email, you can now generate a temporary JWT that impersonates the specified user. This action must always be performed on your server to avoid leaking your permanent Access Token to the client's browser.
+
+<Warning>
+  Never expose your permanent Access Token in client-side code. It provides long-term impersonation capabilities and must be protected on your backend. Do not store, cache, or transmit this token to any client-side application, mobile app, or frontend code.
+</Warning>
+
+<Warning>
+  The permanent access token grants impersonation privileges. If this token is compromised, an attacker could impersonate any user in your organization. Store it only in secure server-side environment variables or secret management systems.
+</Warning>
+
+Make a server-side POST request to the WisdomAI GraphQL endpoint.
+
+```bash
+curl -X POST https://<customer>.askwisdom.ai/graphql -d "query Query($accessToken: String!, $userEmail: String!) {
+  impersonateUser(accessToken: $accessToken, userEmail: $userEmail)
+}
+```
+
+Include your permanent Access Token and the user email in the variables of the GraphQL query.
+
+**Example Request (using cURL):**
+
+```bash
+curl -X POST \
+  -H "Content-Type: application/json" \
+  --data '{
+    "query": "query Query($accessToken: String!, $userEmail: String!) { impersonateUser(accessToken: $accessToken, userEmail: $userEmail) }",
+    "variables": {
+      "accessToken": "YOUR_PERMANENT_ACCESS_TOKEN",
+      "userEmail": "service-user@yourcompany.com"
+    }
+  }' \
+  https://<customer>.askwisdom.ai/graphql
+```
+
+The API will respond with the temporary JWT token that authenticates as the impersonated user.
+
+<Info>
+  For detailed information about the authentication flow and API usage, see the [Impersonate User](/integrations/graphql-api/queries/auth/impersonate-user) documentation.
+</Info>
+
+
+## Next Steps
+
+Visit the following pages to embed chat and/or stories in your application:
+
+<CardGroup cols={2}>
+  <Card title="Embed a Story" icon="chart-bar" href="/integrations/embedding/story/embed-a-story">
+    Learn how to embed interactive dashboards and visualizations
+  </Card>
+  <Card title="Embed Chat" icon="message" href="/integrations/embedding/chat/embed-chat">
+    Discover how to embed conversational AI chat interfaces
+  </Card>
+  <Card title="Impersonate User API" icon="user" href="/integrations/graphql-api/queries/auth/impersonate-user">
+    Detailed documentation for the authentication API
+  </Card>
+</CardGroup>

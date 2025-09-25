@@ -4,6 +4,10 @@ title: "Exchange Access Token"
 
 Exchange an access key for a JWT token for authentication with the GraphQL API.
 
+<Warning>
+  **Deprecation Notice**: For embedding use cases, use the [Impersonate User](/integrations/graphql-api/queries/auth/impersonate-user) API instead, which provides better security and user context.
+</Warning>
+
 ## exchangeAccessToken
 
 This query exchanges a dedicated access key for a JWT token that can be used to authenticate subsequent GraphQL API requests.
@@ -53,7 +57,7 @@ curl -X POST https://{ACCOUNT}.askwisdom.ai/graphql \
   <Card title="GraphQL API Overview" icon="code" href="/integrations/graphql-api/GraphQL-API">
     Complete GraphQL API authentication guide
   </Card>
-  <Card title="Embed Chat" icon="message" href="/integrations/embed-chat">
-    Authentication for embedded chat integrations
+  <Card title="Impersonate User" icon="user" href="/integrations/graphql-api/queries/auth/impersonate-user">
+    Recommended API for embedding use cases
   </Card>
 </CardGroup>
