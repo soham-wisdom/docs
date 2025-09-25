@@ -10,13 +10,13 @@ The section below describes the steps to configure your embeddeded chat/story.
 
 ## 1. Request an Access Token
 
-Your permanent Access Token authenticates your server to the WisdomAI API and grants impersonation permissions. This token does not expire and must be kept secret.
+Your permanent access token authenticates your server to the WisdomAI API and grants impersonation permissions. This token does not expire and must be kept secret.
 
 Contact `support@askwisdom.ai` to obtain your access token. The access token will have impersonation permissions.
 
 ## 2. Generate a JWT Token
 
-With your Access Token and the user email, you can now generate a temporary JWT that impersonates the specified user. This action must always be performed on your server to avoid leaking your permanent Access Token to the client's browser.
+With your access token and the user email, you can now generate a temporary JWT that impersonates the specified user. This action must always be performed on your server to avoid leaking your permanent Access Token to the client's browser.
 
 <Warning>
   Never expose your permanent access token in client-side code. It provides long-term impersonation capabilities and must be protected on your backend. Do not store, cache, or transmit this token to any client-side application, mobile app, or frontend code.
