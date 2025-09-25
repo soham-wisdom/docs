@@ -110,17 +110,17 @@
               {
                 "group": "Embedding",
                 "pages": [
-                  "integrations/embedding/Embedding",
-                  {
-                    "group": "Story",
-                    "pages": [
-                      "integrations/embedding/story/embed-a-story"
-                    ]
-                  },
+                  "integrations/embedding/embedding",
                   {
                     "group": "Chat",
                     "pages": [
                       "integrations/embedding/chat/embed-chat"
+                    ]
+                  },
+                  {
+                    "group": "Story",
+                    "pages": [
+                      "integrations/embedding/story/embed-a-story"
                     ]
                   }
                 ]
