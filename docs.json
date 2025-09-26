@@ -261,6 +261,7 @@
                     "group": "Tools",
                     "pages": [
                       "integrations/mcp-server/tools/echo",
+                      "integrations/mcp-server/tools/list-domains",
                       "integrations/mcp-server/tools/chat"
                     ]
                   }

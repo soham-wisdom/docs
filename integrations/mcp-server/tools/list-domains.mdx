@@ -1,0 +1,122 @@
+---
+title: "List Domains Tool"
+---
+
+The `list-domains` tool retrieves all domains accessible to the authenticated user. This tool is essential for discovering available data domains before making queries with the chat tool.
+
+## Tool Signature
+
+```json
+{
+  "name": "list-domains",
+  "description": "List domains accessible to the user",
+  "inputSchema": {},
+  "outputSchema": {
+    "domains": "Array<Domain>"
+  }
+}
+```
+
+## Parameters
+
+This tool requires no input parameters. Authentication is handled automatically through the MCP session.
+
+## Response Format
+
+The list-domains tool returns structured content with domain information:
+
+```typescript
+{
+  structuredContent: {
+    domains: Array<{
+      id: string;
+      name: string;
+      description: string;
+    }>;
+  };
+}
+```
+
+## Domain Object
+
+<ParamField path="id" type="string" required>
+  Unique identifier for the domain. Use this ID when making chat tool requests.
+</ParamField>
+
+<ParamField path="name" type="string" required>
+  Human-readable name of the domain
+</ParamField>
+
+<ParamField path="description" type="string" required>
+  Description of the domain's purpose and data content. May be empty for some domains.
+</ParamField>
+
+## Usage Example
+
+### Request
+
+```json MCP Tool Call
+{
+  "jsonrpc": "2.0",
+  "method": "tools/call",
+  "params": {
+    "name": "list-domains"
+  },
+  "id": 1
+}
+```
+
+### Response
+
+```json Response
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "structuredContent": {
+      "domains": [
+        {
+          "id": "ET_DOMAIN_aws-usage",
+          "name": "AWS Usage Analytics",
+          "description": "AWS service usage data across regions and companies"
+        },
+        {
+          "id": "ET_DOMAIN_sales-data",
+          "name": "Sales Performance",
+          "description": "Sales metrics, revenue data, and customer analytics"
+        },
+        {
+          "id": "ET_DOMAIN_hr-metrics",
+          "name": "HR Analytics",
+          "description": "Employee data, performance metrics, and organizational insights"
+        }
+      ]
+    }
+  },
+  "id": 1
+}
+```
+
+## Common Use Cases
+
+<CardGroup cols={2}>
+  <Card title="Domain Discovery" icon="search">
+    List all available domains with their IDs before starting a chat
+  </Card>
+  <Card title="Access Validation" icon="shield-check">
+    Verify which domains the current user can access
+  </Card>
+  <Card title="User Onboarding" icon="user-plus">
+    Help new users understand available data sources
+  </Card>
+</CardGroup>
+
+## Related Resources
+
+<CardGroup cols={2}>
+  <Card title="Chat Tool" icon="message" href="/integrations/mcp-server/tools/chat">
+    Use domain IDs from this tool to query specific domains
+  </Card>
+  <Card title="MCP Server Overview" icon="server" href="/integrations/mcp-server/MCP-Server">
+    Learn more about the MCP server architecture
+  </Card>
+</CardGroup>

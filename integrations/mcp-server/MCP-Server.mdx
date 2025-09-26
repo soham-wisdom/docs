@@ -18,8 +18,8 @@ The server implements the [MCP specification](https://modelcontextprotocol.io/sp
   <Card title="Structured Content" icon="table">
     Rich responses including text, tables, and chart visualizations
   </Card>
-  <Card title="Bearer Authentication" icon="shield-check">
-    Secure API key-based authentication for all requests
+  <Card title="OAuth 2.1 Authentication" icon="shield-check">
+    Secure OAuth 2.1 with Dynamic Client Registration (DCR) and Proof Key for Code Exchange (PKCE)
   </Card>
 </CardGroup>
 
@@ -33,30 +33,87 @@ The WisdomAI MCP server provides a single endpoint for all operations:
 https://{ACCOUNT}.askwisdom.ai/mcp
 ```
 
-## Authentication Method
+## Authentication
 
-The MCP server uses Bearer token authentication. All requests must include a valid Auth token in the Authorization header:
+The WisdomAI MCP Server implements **OAuth 2.1** with **Dynamic Client Registration (DCR)** and **Proof Key for Code Exchange (PKCE)** for secure authentication, following the [MCP Authorization specification](https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization). This provides:
 
-```
-Authorization: Bearer YOUR_AUTH_TOKEN
-```
+- **Automatic client registration** without manual setup
+- **PKCE** for secure authorization flows
+- **Resource-specific token binding** using RFC 8707 Resource Indicators
+- **Audience validation** to prevent token misuse
+
+### OAuth Discovery Endpoints
+
+The server exposes standard OAuth discovery endpoints:
+
+- **Protected Resource Metadata**: `/.well-known/oauth-protected-resource`
+- **Authorization Server Metadata**: `/.well-known/oauth-authorization-server`
+
+The authorization server metadata endpoint returns the locations of additional endpoints including:
+
+- **DCR**: `/register` (obtained from `registration_endpoint`)
+- **Authorization Endpoint**: `/authorize` (obtained from `authorization_endpoint`)
+- **Token Endpoint**: `/token` (obtained from `token_endpoint`)
 
 <Note>
-  Contact our API team at `support@askwisdom.ai` to obtain your dedicated MCP Auth token.
+  MCP clients should query the `/.well-known/oauth-authorization-server` endpoint to discover the actual URLs for registration, authorization, and token endpoints rather than assuming fixed paths.
 </Note>
+
+### Authorization Flow
+
+1. **Discover Server Capabilities**: MCP clients query the protected resource metadata endpoint
+2. **DCR**: Clients automatically register using DCR (RFC 7591)
+3. **Authorization Request**: Include `resource` parameter specifying the MCP server URL
+4. **PKCE Challenge**: Generate code verifier and challenge for secure authorization
+5. **Token Exchange**: Exchange authorization code for access token with PKCE verification
+6. **API Access**: Use access token in Authorization header for MCP requests
 
 ### Session Management
 
-The server supports session-based connections using the [MCP transport layer](https://modelcontextprotocol.io/specification/basic/transports). Each session maintains its own context and can handle multiple sequential requests.
+The server supports session-based connections using the [MCP transport layer](https://modelcontextprotocol.io/specification/basic/transports). Each session maintains its own context and can handle multiple sequential requests with the same OAuth token.
 
 <Info>
   For any queries or support, contact our API team at [**support@askwisdom.ai**](mailto:support@askwisdom.ai).
 </Info>
 
+## Testing with MCP Inspector
+
+You can test the WisdomAI MCP Server using the [MCP Inspector](https://modelcontextprotocol.io/docs/tools/inspector):
+
+```bash
+# Install MCP Inspector
+npx @modelcontextprotocol/inspector
+```
+
+The inspector will automatically:
+
+1. Discover OAuth capabilities via protected resource metadata
+2. Register as an OAuth client using DCR
+3. Launch the authorization flow with PKCE
+4. Handle token exchange and validation
+
+The inspector provides an interactive interface to:
+
+- Test OAuth authorization flows
+- Test tool calls and responses
+- Inspect server capabilities and metadata
+- Debug authentication and token validation
+- Validate streaming functionality
+
+<Note>
+  Replace `your-account` with your actual WisdomAI account subdomain. The inspector handles OAuth authentication automatically.
+</Note>
+
 ## Next Steps
 
-<CardGroup cols={2}>
+<CardGroup cols={3}>
+  <Card title="List Domains Tool" icon="list" href="/integrations/mcp-server/tools/list-domains">
+    Discover available domains for querying
+  </Card>
   <Card title="Chat Tool" icon="message" href="/integrations/mcp-server/tools/chat">
     Primary tool for natural language data analysis
+  </Card>
+  <Card title="Echo Tool" icon="signal-stream" href="/integrations/mcp-server/tools/echo">
+    Test connectivity and basic functionality
   </Card>
 </CardGroup>
