@@ -2,9 +2,11 @@
 title: "Supported Data Sources"
 ---
 
-This page covers the data sources that can be connected to WisdomAI, including databases, data warehouses, and CSV files. It outlines the connection requirements, necessary configurations, and troubleshooting tips for seamless integration.
+This page covers the data sources that can be connected to WisdomAI, including databases, data warehouses, and Files (PDFs, PPTs, Docs). It outlines the connection requirements, necessary configurations, and troubleshooting tips for seamless integration.
 
 WisdomAI works with the following data sources:
+
+## Warehouse sources
 
 - PostgreSQL
 - Microsoft SQL Server
@@ -15,6 +17,15 @@ WisdomAI works with the following data sources:
 - ClickHouse _(Beta)_
 - Trino _(Beta)_
 - CSV files
+
+## File sources
+
+- Amazon S3
+- Google Cloud Storage (GCS)
+- Azure Blob Storage
+- Direct upload
+
+Supported file types: PDFs, DOC/DOCX files, PowerPoint files, txt files, and images.
 
 To learn how to connect to your Data Sources, read the [Basic Tutorial: Connect and Test](/setting-up-wisdom-ai/basic-tutorial-connect-and-test).
 
@@ -223,7 +234,7 @@ To integrate data from SaaS applications, please contact WisdomAI support at `su
 
 This section details any known limitations or restrictions when connecting to data sources.
 
-- **CSV File Size:** Maximum CSV file size for direct upload is 100MB. For larger CSV datasets, consider uploading them to a data warehouse (e.g., S3, Google Cloud Storage) and connecting WisdomAI to the warehouse.
+- **File Size:** Maximum file size for direct upload is 100MB. For larger files or datasets, consider uploading them to a data warehouse or cloud storage (e.g., Amazon S3, Google Cloud Storage) and connecting WisdomAI to the warehouse/storage.
 - **Query Limits:** Be aware of any rate limits or query concurrency limits imposed by your database or data warehouse provider. WisdomAI's queries will contribute to these limits.
 - **Data Type Support:** While WisdomAI strives to support a wide range of data types, some highly specialized or proprietary data types might require specific handling or may not be fully supported. Contact us if you request any assistance.
 
