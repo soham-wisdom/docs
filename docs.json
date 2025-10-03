@@ -52,7 +52,7 @@
           {
             "group": "Improve Wisdom AI Responses",
             "pages": [
-              "improve-wisdom-ai-responses/curate-knowledge-workflow",
+              "improve-wisdom-ai-responses/admin-capabilities-auditing",
               "improve-wisdom-ai-responses/refine-prompts-and-query-patterns",
               "improve-wisdom-ai-responses/validate-and-test-answers",
               "improve-wisdom-ai-responses/enhancing-data-analysis-with-custom-business-context",
