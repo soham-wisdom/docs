@@ -9,26 +9,17 @@ This guide outlines the process for embedding a WisdomAI Story into your applica
 Construct the special embed URL for your Story and append the newly generated JWT in the authentication stage.
 
 1. Take your original Story URL and insert `/embed/` before the Story's name and ID.
-2. Append the JWT as a `token` query parameter.
+2. Append the JWT as a `token` query parameter. The URL should look like the following:
+   - **Original URL**: `https://<customer>.askwisdom.ai/stories/name-id`
+   - **Final Embed URL**: `https://<customer>.askwisdom.ai/stories/embed/name-id?token=<JWT_FROM_STEP_1>`
+3. You can now use this URL as the `src` for an `<iframe>` in your application:
 
-**Original URL:**
-
-`https://<customer>.askwisdom.ai/stories/name-id`
-
-**Final Embed URL:**
-
-`https://<customer>.askwisdom.ai/stories/embed/name-id?token=<JWT_FROM_STEP_1>`
-
-## 3. Embed in your Application
-
-You can now use this URL as the `src` for an `<iframe>` in your application:
-
-```html
-<iframe
-  src="https://<customer>.askwisdom.ai/stories/embed/name-id?token=<JWT_TOKEN>"
-  style="width: 100%; height: 100%; border: 0;" />
-```
+   ```html
+   <iframe
+     src="https://<customer>.askwisdom.ai/stories/embed/name-id?token=<JWT_TOKEN>"
+     style="width: 100%; height: 100%; border: 0;" />
+   ```
 
 ## Validation
 
-To validate that the process worked, open the final embed URL in your browser. The WisdomAI Story should load correctly without prompting for a login. If you see an error, check the troubleshooting steps below.
+To validate that the process worked, open the final embed URL in your browser. The WisdomAI Story should load correctly without prompting for a login. If you encounter an error, please refer to the troubleshooting steps below.

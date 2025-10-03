@@ -2,33 +2,29 @@
 title: "Impersonate User"
 ---
 
-Exchange an access key for a JWT token that impersonates a specific user for authentication with the GraphQL API.
+The `impersonateUser` query exchanges a dedicated access key for a JWT token that can be used to authenticate subsequent GraphQL API requests while impersonating a specific user. This is useful for embedding scenarios where you need to authenticate as a particular user.
 
-## impersonateUser
-
-This query exchanges a dedicated access key for a JWT token that can be used to authenticate subsequent GraphQL API requests while impersonating a specific user. This is useful for embedding scenarios where you need to authenticate as a particular user.
-
-### Signature
+## Signature
 
 ```graphql
 impersonateUser(accessToken: String!, userEmail: String!): String!
 ```
 
-### Parameters
+## Parameters
 
 <ParamField path="accessToken" type="String!" required>
   The dedicated access key provided by WisdomAI for your organization. Contact `support@askwisdom.ai` to obtain your access key. The access key will have impersonation permissions.
 </ParamField>
 
 <ParamField path="userEmail" type="String!" required>
-  The email address of the user to impersonate. This user must exist in the WisdomAI system and the access token must have impersonation permissions.
+  The email address of the user to impersonate. This user must exist in the WisdomAI system, and the access token must have impersonation permissions.
 </ParamField>
 
-### Response
+## Response
 
 Returns a JWT token as a string that should be used in the `Authorization` header for subsequent API requests. This JWT will authenticate as the impersonated user.
 
-### Usage Example
+## Usage Example
 
 ```graphql
 query ImpersonateUser($accessToken: String!, $userEmail: String!) {

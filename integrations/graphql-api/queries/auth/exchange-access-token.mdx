@@ -2,33 +2,30 @@
 title: "Exchange Access Token"
 ---
 
-Exchange an access key for a JWT token for authentication with the GraphQL API.
+The `exchangeAccessToken` query exchanges a dedicated access key for a JWT token that can be used to authenticate subsequent GraphQL API requests.
 
 <Warning>
-  **Deprecation Notice**: For embedding use cases, use the [Impersonate User](/integrations/graphql-api/queries/auth/impersonate-user) API instead, which provides better security and user context.
+  **Deprecation Notice**\
+  For embedding use cases, use the [Impersonate User](/integrations/graphql-api/queries/auth/impersonate-user) API instead, which provides better security and user context.
 </Warning>
 
-## exchangeAccessToken
-
-This query exchanges a dedicated access key for a JWT token that can be used to authenticate subsequent GraphQL API requests.
-
-### Signature
+## Signature
 
 ```graphql
 exchangeAccessToken(accessToken: String!): String!
 ```
 
-### Parameters
+## Parameters
 
 <ParamField path="accessToken" type="String!" required>
   The dedicated access key provided by WisdomAI for your organization. Contact `support@askwisdom.ai` to obtain your access key.
 </ParamField>
 
-### Response
+## Response
 
 Returns a JWT token as a string that should be used in the `Authorization` header for subsequent API requests.
 
-### Usage Example
+## Usage Example
 
 ```graphql
 query ExchangeAccessToken($accessToken: String!) {
