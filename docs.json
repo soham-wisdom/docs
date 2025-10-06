@@ -78,15 +78,15 @@
             "group": "Access Management",
             "pages": [
               {
-                "group": "Access Management",
+                "group": "Row Level Access Control",
                 "pages": [
-                "manage-account/access-management/users-management"
+                 "manage-account/row-level-access-control/row-level-access-control"
                 ]
               },
               "manage-account/monitor-performance-and-usage",
               "manage-account/compliance-and-best-practices",
-              "manage-account/access-management/row-level-access-control",
-              "manage-account/access-management/access-management"
+              "manage-account/users-management",
+              "manage-account/access-management"
             ]
           },
           {
