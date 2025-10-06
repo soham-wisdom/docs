@@ -80,7 +80,8 @@
               {
                 "group": "Row Level Access Control",
                 "pages": [
-                 "manage-account/row-level-access-control/row-level-access-control"
+                 "manage-account/row-level-access-control/row-level-access-control",
+                 "manage-account/row-level-access-control/understanding-row-level-security"
                 ]
               },
               "manage-account/access-management",
