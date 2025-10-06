@@ -71,7 +71,7 @@
               "using-wisdom-ai-everyday/turn-answers-into-stories",
               "using-wisdom-ai-everyday/share-stories-and-set-access-control",
               "using-wisdom-ai-everyday/schedule-story-notifications",
-              "improve-wisdom-ai-responses/auditing"
+              "using-wisdom-ai-everyday/auditing"
             ]
           },
           {
@@ -83,10 +83,11 @@
                  "manage-account/row-level-access-control/row-level-access-control"
                 ]
               },
-              "manage-account/monitor-performance-and-usage",
-              "manage-account/compliance-and-best-practices",
+              "manage-account/access-management",
               "manage-account/users-management",
-              "manage-account/access-management"
+              "manage-account/monitor-performance-and-usage",
+              "manage-account/compliance-and-best-practices"
+              
             ]
           },
           {
