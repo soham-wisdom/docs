@@ -52,7 +52,7 @@
           {
             "group": "Improve Wisdom AI Responses",
             "pages": [
-              "improve-wisdom-ai-responses/admin-capabilities-auditing",
+              
               "improve-wisdom-ai-responses/refine-prompts-and-query-patterns",
               "improve-wisdom-ai-responses/validate-and-test-answers",
               "improve-wisdom-ai-responses/enhancing-data-analysis-with-custom-business-context",
@@ -70,7 +70,8 @@
               "using-wisdom-ai-everyday/ask-better-questions",
               "using-wisdom-ai-everyday/turn-answers-into-stories",
               "using-wisdom-ai-everyday/share-stories-and-set-access-control",
-              "using-wisdom-ai-everyday/schedule-story-notifications"
+              "using-wisdom-ai-everyday/schedule-story-notifications",
+              "improve-wisdom-ai-responses/admin-capabilities-auditing"
             ]
           },
           {
