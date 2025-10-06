@@ -79,13 +79,13 @@
               {
                 "group": "Access Management",
                 "pages": [
-                  "manage-account/access-management/access-management",
-                  "manage-account/access-management/row-level-access-control",
-                  "manage-account/access-management/users-management"
+                "manage-account/access-management/users-management"
                 ]
               },
               "manage-account/monitor-performance-and-usage",
-              "manage-account/compliance-and-best-practices"
+              "manage-account/compliance-and-best-practices",
+              "manage-account/access-management/row-level-access-control",
+              "manage-account/access-management/access-management"
             ]
           },
           {
