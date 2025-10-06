@@ -1,10 +1,58 @@
 ---
 title: "How to Configure Row-Level Security"
 ---
+This guide walks you through the step-by-step process of configuring Row-Level Security (RLS) filters in WisdomAI to control which rows of data users can access.
 
-<Tip>
-  Page Under Construction
-This page is currently being developed. We're actively working to provide you with helpful and accurate documentation for Wisdom AI.
+For a detailed explanation of RLS concepts, functions, and best practices, please see our [**Understanding Row-Level Security**](https://www.google.com/search?q=/row-level-security) guide.
 
-Please check back soon, new content is on the way!
-</Tip>
+## Before You Begin
+
+Make sure you have:
+
+- Admin access to your WisdomAI domain.
+- A clear understanding of the table you want to secure.
+- (Optional) User attributes or entitlement tables already set up for dynamic filtering.
+
+## Configure RLS on a Table
+
+Find below the steps to configure row-level security for a table in your WisdomAI domain.
+
+### 1. Open the RLS Configuration
+
+1. In your WisdomAI domain, go to the **Tabular Uploads** tab to see the list of tables.
+2. Locate the table you want to secure.
+3. Click the **three-dot menu** on the right side of the row and select **Row-Level Security**.
+4. The **Row-Level Security Configuration** screen opens.
+
+### 2. Define the SQL Filter
+
+1. In **Describe Filters**, optionally enter a short description of your security requirement (for documentation purposes).
+2. In the **SQL** text box, enter the `WHERE` clause that defines which rows are visible.
+3. You can use Wisdom’s built-in functions for dynamic, user-aware filtering. For a complete list of functions and examples, see [**Dynamic Filters with Custom Functions**](https://www.google.com/search?q=/row-level-security%23dynamic-filters-with-custom-functions) in our guide to understanding RLS.
+
+### 3. Preview the Filter
+
+1. Click **Preview**.
+2. In the **Preview Table with Row-Level Security** modal, enter the email of a user in the **User Email** field.
+3. Click **Impersonate** to see how the table appears for that user.
+4. (Optional) Add temporary custom user attributes in the preview for advanced testing.
+
+### 4. Save the Configuration
+
+1. When the filter behaves as expected, click **Save** to apply it.
+2. The filter will now be automatically added to all queries involving this table.
+3. To disable RLS on a table, clear the SQL text box and save again.
+
+## Optional Adjustments
+
+For more advanced use cases, refer to the [**Understanding Row-Level Security**](https://www.google.com/search?q=/row-level-security) guide to learn about:
+
+- **Applying RLS to Admin Users**: By default, admins bypass RLS. You can change this behavior in the domain's **Advanced** tab.
+- **Using Entitlement Tables**: For complex permission models, you can use an entitlements table to manage access.
+
+## Next Steps
+
+- [Users Management](/manage-account/users-management)
+- [Supported Data Sources](/getting-started/supported-data-sources)
+- [How WisdomAI Works](/getting-started/how-wisdom-ai-works)
+- [Basic Tutorial Connect and Test](/setting-up-wisdom-ai/basic-tutorial-connect-and-test)

@@ -1,0 +1,75 @@
+---
+title: "Configure Entitlements Tables"
+description: "Description of your new file."
+---
+This guide provides a step-by-step walkthrough for using an entitlements table in your data warehouse to manage complex, centralized Row-Level Security (RLS) policies in WisdomAI.
+
+## Prerequisites:
+
+- You should understand the concept of an entitlements table. See [**Understanding Row-Level Security**](understanding-row-level-access-control).
+- You should be familiar with the basic RLS configuration screen. See [**How to Configure Row-Level Security**](/row-level-access-control).
+
+## Step-by-Step Instructions
+Follow the steps below to configure an entitlements table properly.
+
+1. Navigate to your Domain and Create the Entitlements Table
+
+In your data warehouse, create a table to store user permissions. The table must contain specific columns for the user's email, the type of resource, and the resource value they can access.
+
+Here is a sample SQL command to create the table. The exact data types (`VARCHAR`, `TEXT`, etc.) may vary depending on your data warehouse.
+
+SQL
+
+```
+CREATE TABLE user_permissions (
+    user_email      VARCHAR(255),
+    resource_type   VARCHAR(100),
+    resource_value  VARCHAR(100)
+);
+```
+
+- `user_email`: Will be matched against the logged-in user's email via `USER_EMAIL()`.
+- `resource_type`: Defines the category of data being restricted (e.g., 'Territory', 'Department').
+- `resource_value`: Defines the specific value the user can see (e.g., 'USA', 'Finance', or `'*'` for a wildcard).
+
+### Step 2: Populate the Table with Permissions
+
+Once the table is created, populate it with rows that map users to the resources they are allowed to access.
+
+For example:
+
+| user_email        | resource_type | resource_value |
+| :---------------- | :------------ | :------------- |
+| john@askwisdom.ai | Territory     | USA            |
+| john@askwisdom.ai | Territory     | Canada         |
+| john@askwisdom.ai | Department    | \*             |
+| jane@askwisdom.ai | Territory     | Germany        |
+
+### Step 3: Apply a Subquery Filter
+
+Navigate to the RLS configuration screen for the data table you want to restrict (e.g., `sales_records`). In the SQL text box, write a `WHERE` clause that uses a subquery to look up permissions from your `user_permissions` table.
+
+This example filters by `Territory` and correctly handles the wildcard (`*`) character.
+
+SQL
+
+```
+territory IN (
+    SELECT resource_value
+    FROM user_permissions
+    WHERE user_email = USER_EMAIL()
+    AND resource_type = 'Territory'
+) OR EXISTS (
+    SELECT 1
+    FROM user_permissions
+    WHERE user_email = USER_EMAIL()
+    AND resource_type = 'Territory'
+    AND resource_value = '*'
+)
+```
+
+### Step 4: Preview and Save
+
+Follow the standard workflow to preview and save your configuration.
+
+It is especially important to **Impersonate** different users (e.g., `john@askwisdom.ai` and `jane@askwisdom.ai`) to verify that your subquery and wildcard logic are performing as expected before saving.
