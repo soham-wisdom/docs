@@ -34,26 +34,35 @@ To Document Columns, click on the table's name. A new page will open, displaying
 
 ![Document Columns](/images/document-columnsv2.png)
 
-### Set Up RAG for Textual Columns
+### Set up RAG for Textual Columns
 
-Retrieval-Augmented Generation (RAG) for Textual Columns is a feature that enhances the AI's ability to understand and search through the data within a specific table. You configure it by selecting columns that serve different purposes to improve search relevance and accuracy.
+Retrieval-Augmented Generation (RAG) for Textual Columns is a feature that enhances the AI's ability to understand and search through the data within a specific table. By configuring RAG for a table, you enhance the AI's ability to search through data by selecting specific columns for different functions:
 
-The configuration involves defining:
-
-- Text content columns for search: Columns containing rich text content that will be searched over.
-- Filter columns for queries: Columns with structured data (like IDs or dates) used to narrow down search results.
-- Primary key: One or more columns that uniquely identify each row in the table.
+- **Text content for search**: You can define which columns contain rich text that should be searched over.
+- **Filters for queries**: You can select columns with structured data, such as IDs and dates, which can be used to narrow down search results.
+- **Primary Keys**: You can pick columns that uniquely identify each row, which aids in data retrieval.
 
 To configure RAG for a table, follow these steps:
 
-1. Navigate to **Domains** \> Select your preferred domain \> **Data Sources** \> **Tables** and locate the table you want to configure. 
-1. Click on the three dots icon and then on **RAG Settings**. The RAG Configuration for Textual Columns window will open.
-3. In the **Text content columns for search** field, select the columns that contain rich text content that will be searched over.
-4. In the **Filter columns for queries** field, select columns with structured data (like IDs or dates) that can be used to narrow down search results.
-5. In the **Primary key** field, choose one or more columns that uniquely identify each row in the table.
-6. In the **Description of search columns** text box, write a brief description of what the combination of the search columns represents. This helps the AI better understand the context of your data.
-7. (Optional) Click **Advanced Options** to specify **columns for citation titles** **and URLs** in the AI's answers.
-8. Click **Save** to apply your settings. A notification will appear confirming the configuration is updated and the data sync has been triggered.
+1. Navigate to **Domains** \> Select your preferred domain \> **Data Sources** \> **Tables** and locate the table for which you want to configure RAG columns.
+2. Click on the **three vertical dots** icon and then on **RAG Settings**.
+
+<img
+  src="/images/RAG-Configuration-columns-01.png"
+  alt="RAG Configuration Columns 01 Pn"
+  title="Snippet showing how to open the RAG Settings"
+  style={{ width:"100%" }}
+/>
+
+3. In the RAG Configuration for Textual Columns window that opens, complete the following:
+   - In the **Text content columns for search** field, select the columns that contain rich text content that will be searched over.
+   - In the **Filter columns for queries** field, select columns with structured data (like IDs or dates) that can be used to narrow down search results.
+   - In the **Primary key** field, choose one or more columns that uniquely identify each row in the table.
+   - In the **Description of search columns** text box, write a brief description of what the combination of the search columns represents. This helps the AI better understand the context of your data.
+   - (Optional) Click **Advanced Options** to specify **columns for citation titles** **and URLs** in the AI's answers.
+4. Click **Save** to apply your settings. A notification will appear confirming the configuration is updated and the data sync has been triggered.
+
+   ![Snippet showing the RAG Configuration Modal](/images/RAG-Configuration-columns02.png)
 
 ## Next Steps
 
