@@ -25,9 +25,9 @@ Once your setup is ready, follow these steps to configure row-level security for
 
 ![row-level-security-10-25.png](/images/row-level-security-10-25.png)
 
-RLS filters are defined as `WHERE` clauses that WisdomAI applies to every query on the table. You can define this filter using natural language (recommended) or by writing SQL directly.
-
-- Option A: Describe the Filter in Natural Language (Recommended)
+<Note>
+  RLS filters are defined as `WHERE` clauses that WisdomAI applies to every query on the table. You can define this filter using natural language (recommended) or by writing SQL directly.
+</Note>
 
 3. Use the **Describe Filters** text box to explain your access rule in plain language.
 4. Click **Generate**. WisdomAI will automatically generate a valid SQL `WHERE` clause based on your description, recognizing table columns, user attributes, and entitlements. Here are some examples to help you describe a filter:
@@ -48,14 +48,14 @@ EXISTS (
 )
 ```
 
-- Option B: Write the SQL Filter Manually
+<Info>
+  For complex or highly specific rules, you can write the `WHERE` clause directly in the **SQL** text box in a valid SQL syntax. For this, you can use WisdomAI's built-in functions for dynamic filtering, such as:
 
-For complex or highly specific rules, you can write the `WHERE` clause directly in the **SQL** text box in a valid SQL syntax. For this, you can use WisdomAI's built-in functions for dynamic filtering, such as:
+  - `USER_EMAIL()`: Returns the email of the user running the query.
+  - `USER_ATTRIBUTE('attribute_name')`: Returns the value of a specified attribute for the current user.
 
-- `USER_EMAIL()`: Returns the email of the user running the query.
-- `USER_ATTRIBUTE('attribute_name')`: Returns the value of a specified attribute for the current user.
-
-For a complete list of functions, see [Dynamic Filters with Custom Functions](/manage-account/row-level-access-control/understanding-row-level-security#dynamic-filters-with-custom-functions).
+  For a complete list of functions, see [Dynamic Filters with Custom Functions](/manage-account/row-level-access-control/understanding-row-level-security#dynamic-filters-with-custom-functions).
+</Info>
 
 ![row-level-security-10-25-02.png](/images/row-level-security-10-25-02.png)
 
