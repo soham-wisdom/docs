@@ -20,14 +20,10 @@ Before configuring RLS, make sure you have the following:
 
 Once your setup is ready, follow these steps to configure row-level security for a table in your WisdomAI domain.
 
-### Step 1: Open the RLS Configuration
-
 1. In your WisdomAI domain, navigate to **Data** \> **Tables**.
 2. Locate the table you want to secure, click the three-dot menu on the right side of the table row and select **Row-Level Security**. The **Row-Level Security Configuration** window will open.
 
 ![row-level-security-10-25.png](/images/row-level-security-10-25.png)
-
-### Step 2: Define the SQL Filter
 
 RLS filters are defined as `WHERE` clauses that WisdomAI applies to every query on the table. You can define this filter using natural language (recommended) or by writing SQL directly.
 
@@ -63,10 +59,6 @@ For a complete list of functions, see [Dynamic Filters with Custom Functions](/m
 
 ![row-level-security-10-25-02.png](/images/row-level-security-10-25-02.png)
 
-### Step 3: Preview and Verify the Filter
-
-Before applying the filter, test it to ensure it behaves as expected.
-
 5. Click **Preview**.
 6. In the **Preview Table with Row-Level Security** window, enter the email address of a user in the **Impersonate User** field.
 7. Click **Impersonate**. The data preview will update to show exactly what that user would see.
@@ -74,8 +66,6 @@ Before applying the filter, test it to ensure it behaves as expected.
 9. Repeat with different users to validate all access cases.
 
 ![row-level-security-10-25-03.png](/images/row-level-security-10-25-03.png)
-
-### Step 4: Save and Apply the Filter
 
 10. Once you have verified that the filter works correctly, close the **Preview Table with Row-Level Security** window and click **Save** to apply the RLS rule. The filter is now active and will be automatically appended to all queries against this table for non-admin users.
 
