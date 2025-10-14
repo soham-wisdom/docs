@@ -49,10 +49,7 @@ EXISTS (
 ```
 
 <Info>
-  For complex or highly specific rules, you can write the `WHERE` clause directly in the **SQL** text box in a valid SQL syntax. For this, you can use WisdomAI's built-in functions for dynamic filtering, such as:
-
-  - `USER_EMAIL()`: Returns the email of the user running the query.
-  - `USER_ATTRIBUTE('attribute_name')`: Returns the value of a specified attribute for the current user.
+  For complex or highly specific rules, you can write the `WHERE` clause directly in the **SQL** text box in a valid SQL syntax. For this, you can use WisdomAI's built-in functions for dynamic filtering.
 
   For a complete list of functions, see [Dynamic Filters with Custom Functions](/manage-account/row-level-access-control/understanding-row-level-security#dynamic-filters-with-custom-functions).
 </Info>
@@ -60,7 +57,7 @@ EXISTS (
 ![row-level-security-10-25-02.png](/images/row-level-security-10-25-02.png)
 
 5. Click **Preview**.
-6. In the **Preview Table with Row-Level Security** window, enter the email address of a user in the **Impersonate User** field.
+6. In the **Preview Table with Row-Level Security** window that opens, locate the **Impersonate User** field and enter a user's email address.
 7. Click **Impersonate**. The data preview will update to show exactly what that user would see.
 8. (Optional) Add temporary user attributes to test different scenarios.
 9. Repeat with different users to validate all access cases.
