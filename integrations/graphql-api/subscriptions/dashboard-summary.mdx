@@ -1,0 +1,115 @@
+---
+title: "Dashboard Summary"
+---
+
+The `dashboardSummary` subscription allows you to generate summary of a dashboard, based on the instructions provided to it
+
+## Signature
+
+```graphql
+dashboardSummary(
+    auth: SubscriptionAuthInput!
+    id: String!
+    idempotencyKey: String!
+    customInstructions: String
+    summaryType: DashboardSummaryType
+  ): DashboardSummaryDiff! 
+```
+
+## Arguments
+
+<ParamField path="auth" type="SubscriptionAuthInput!" required>
+  Authentication credentials for the subscription. See [SubscriptionAuthInput](/integrations/graphql-api/objects/subscription-auth-input).
+</ParamField>
+
+<ParamField path="id" type="String!" required>
+  The unique identifier of the dashboard whose summary is to be generated.
+</ParamField>
+
+<ParamField path="idempotencyKey" type="String!" required>
+  The random string to be passed to avoid duplicate calls to the server.
+</ParamField>
+
+<ParamField path="customInstructions" type="String">
+  The instructions to be followed while generating summary.
+</ParamField>
+
+<ParamField path="summaryType" type="DashboardSummaryType">
+  The type of summary to be generated. See [DashboardSummaryType](/integrations/graphql-api/objects/dashboard-summary-type).
+</ParamField>
+
+## Response
+
+Returns an array of `DashboardSummaryDiff` objects representing conversation updates. See [DashboardSummaryDiff](/integrations/graphql-api/objects/dashboard-summary-diff) for the schema.
+
+## Usage Example
+
+A very simple example to get you started is to do the following:
+
+```graphql
+ subscription DashboardSummary(
+    $auth: SubscriptionAuthInput!,
+    $id: String!,
+    $idempotencyKey: String!,
+    $customInstructions: String,
+    $summaryType: DashboardSummaryType,
+  ) {
+    dashboardSummary(
+      auth: $auth,
+      id: $id,
+      idempotencyKey: $idempotencyKey,
+      customInstructions: $customInstructions,
+      summaryType: $summaryType,
+    ) {
+      chunk
+    }
+  }
+```
+
+<RequestExample>
+
+```bash Request
+wscat -c wss://{ACCOUNT}.askwisdom.ai/graphql \
+  -H "Authorization: Bearer <jwt_token>" \
+  -s graphql-ws \
+  --execute '{
+    "type": "start",
+    "payload": {
+      "query": "subscription DashboardSummary($auth: SubscriptionAuthInput!,$id: String!,$idempotencyKey: String!, $customInstructions: String,$summaryType: DashboardSummaryType) { dashboardSummary(auth: $auth, id: $id, idempotencyKey: $idempotencyKey, customInstructions: $customInstructions, summaryType: $summaryType) { chunk }",
+      "variables": {
+        "auth": {
+          "token": "<jwt_token>"
+        },
+        "id": "dash_1234",
+        "idempotencyKey": "abc",
+        "customInstructions": "User guidelines: ....",
+      }
+    }
+  }'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "data": {
+    "dashboardSummary": [
+      {
+        "chunk": "The summary of",
+      }
+    ]
+  }
+}
+```
+
+</ResponseExample>
+
+## Related Operations
+
+<CardGroup cols={2}>
+  <Card title="ConversationUpdateOneOf Schema" icon="cube" href="/integrations/graphql-api/objects/conversation-update-one-of">
+    Learn about conversation update types
+  </Card>
+</CardGroup>
