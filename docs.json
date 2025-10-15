@@ -143,6 +143,8 @@
                   "integrations/graphql-api/objects/chat-message",
                   "integrations/graphql-api/objects/chat-message-diff",
                   "integrations/graphql-api/objects/chat-message-sender",
+                  "integrations/graphql-api/objects/dashboard-summary-type",
+                  "integrations/graphql-api/objects/dashboard-summary-diff",
                   "integrations/graphql-api/objects/delta",
                   "integrations/graphql-api/objects/operation",
                   "integrations/graphql-api/objects/delta-element",
@@ -249,7 +251,8 @@
               {
                 "group": "Subscriptions",
                 "pages": [
-                  "integrations/graphql-api/subscriptions/subscribe-conversation"
+                  "integrations/graphql-api/subscriptions/subscribe-conversation",
+                  "integrations/graphql-api/subscriptions/dashboard-summary"
                 ]
               }
             ]
