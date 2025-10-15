@@ -42,6 +42,7 @@ query GetDashboard($id: String!, $scope: DashboardScope!) {
       id
       title
       nlQuery
+      widgetType
       layout {
         top
         left
@@ -53,13 +54,28 @@ query GetDashboard($id: String!, $scope: DashboardScope!) {
         title
         type
       }
+      summaryWidgetConfig{
+        customInstructions
+      }
     }
     filters {
       id
       parsedFilter {
-        column
-        value
-        allowedValues
+        filterId
+        operator
+        lhs {
+          displayName
+        }
+        rhs {
+          literal {
+            flattened {
+              literal {
+                value
+              }
+            }
+          
+          }
+        }
       }
     }
     accessLevel
@@ -104,6 +120,46 @@ curl -X POST \
             "width": 6,
             "height": 4
           }
+        },
+        {
+          "id": "widget_96f27a852f55",
+          "title": " ",
+          "nlQuery": "",
+          "widgetType": "WIDGET_TYPE_SUMMARY",
+          "layout": {
+            "top": 1,
+            "left": 0,
+            "width": 12,
+            "height": 3,
+          },
+          "visualization": null,
+          "summaryWidgetConfig": {
+            "customInstructions": "User guidelines:Generate Short Summary",
+          },
+        },
+      ],
+      "filters": [
+        {
+          "id": "dashboard_123456789-filter_1234",
+          "parsedFilter": {
+            "filterId": "filter_1234",
+            "operator": "FUNC_ILIKE",
+            "lhs": {
+              "displayName": "acc.ACCOUNT_NAME",
+              "__typename": "LHS"
+            },
+            "rhs": {
+              "literal": {
+                "flattened": [
+                  {
+                    "literal": {
+                      "value": "\"%Account%\"",
+                    },
+                  }
+                ],
+              },
+            },
+          },
         }
       ],
       "accessLevel": "EDITOR"
