@@ -7,7 +7,7 @@ Unlike table-level permissions, RLS allows for granular control based on user-sp
 
 ## Basic Mechanism
 
-The basic mechanism of RLS involves defining a per-table SQL `WHERE` clause that Wisdom automatically injects into every query that uses that table. This filter can leverage Wisdom-specific custom functions to access information about the user running the query. For example, a policy can be set to only return rows where the `user_email` column matches the logged-in user's email address.
+The basic mechanism of RLS involves defining a per-table SQL `WHERE` clause that Wisdom automatically injects into every query that uses that table. This filter can leverage Wisdom-specific custom functions to access information about the user running the query. For example, a policy can be set only to return rows where the `user_email` column matches the logged-in user's email address.
 
 ## How the SQL Executor Works
 
@@ -88,3 +88,14 @@ For testing purposes, you can preview filtered data:
 ### Admin Access Control
 
 By default, administrators bypass RLS filters. To apply the same restrictions to them, go to the **Advanced** tab in the domain's settings and enable **Enable RLS for admin**.
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="How to Configure Row-Level Security" icon="user-shield" href="/manage-account/row-level-access-control/understanding-row-level-security">
+    Learn to restrict data access for specific users or roles at the row level.
+  </Card>
+  <Card title="User Management" icon="users" href="/manage-account/users-management">
+    Manage user roles, permissions, and access to the platform.
+  </Card>
+</CardGroup>
