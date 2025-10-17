@@ -2,8 +2,7 @@
 title: "Explorer Onboarding Admin Setup"
 ---
 
-This guide provides administrators with the necessary instructions to configure the onboarding experience for Explorer users. A well-structured onboarding process helps Explorers get answers faster, understand the system's capabilities, and learn how to ask better questions.
-This setup involves three key features:
+This guide provides administrators with the necessary instructions to configure the onboarding experience for Explorer users. A well-structured onboarding process helps Explorers get answers faster, understand the system's capabilities, and learn how to ask better questions. This setup involves three key features:
 
 - [Starter Questions:](#starter-questions) Help new users get immediate value by showing them the types of questions they can ask, removing the initial challenge of what to ask first.
 - [Prompt Gallery:](#prompt-gallery) Allow users to leverage expert-level queries without needing to craft them from scratch, enabling more powerful and sophisticated data exploration.
@@ -11,7 +10,7 @@ This setup involves three key features:
 
 ## Starter Questions
 
-Starter Questions are enabled by default to help users get started with a new domain. These questions come pre-loaded and are designed to work "out of the box." Your primary task is to refine them to better match your organization's specific needs and terminology. Then, click on **View generated answer** to see the SQL tied to you question and the response.
+Starter Questions are enabled by default to help users get started with a new domain. These questions come pre-loaded and are designed to work "out of the box." Your primary task is to refine them better to match your organization's specific needs and terminology. Then, click on **View generated answer** to see the SQL tied to your question and the response.
 
 To find them, go to **Domains** \> _Select a domain_ \> **Advanced** \> **Starter Questions.**
 
@@ -39,7 +38,7 @@ To add a new prompt:
 
 3. In the dialog box that appears, you will need to define:
    - **The Prompt:** Write the full query you want to save. This should be a well-formed question or command that provides significant value.
-   - **Topics:** Assign one or more topics (e.g., "Contract Management," "Opportunity Analysis"). This helps organize the gallery for easier Browse.
+   - **Topics:** Assign one or more topics (e.g., "Contract Management," "Opportunity Analysis"). This helps organize the gallery for easier browsing.
 4. Click **Create**. Your new prompt is now part of the gallery and will be used for autocomplete suggestions.
 
 ![Image showing the Add Prompt Modal](/images/add-prompt-modal.png)
@@ -50,9 +49,9 @@ To add a new prompt:
 
 ## Autocomplete
 
-The Autocomplete feature is directly tied to the prompts you create in the gallery. It is a domain-specific function, this means that a suggestion will only be retrieved from the Prompt Gallery of such domain.
+The Autocomplete feature is directly tied to the prompts you create in the gallery. It is a domain-specific function, which means that a suggestion will only be retrieved from the Prompt Gallery of such a domain.
 
-To manage your Autocomplete suggestions, you must manage your Prompt Gallery. Adding, editing, or deleting prompts there will directly affect the suggestions that appear for your Explorers. This setup ensures that users are always guided by a curated and admin-approved set of queries.
+To manage your Autocomplete suggestions, you must manage your Prompt Gallery. Adding, editing, or deleting prompts will directly affect the suggestions that appear for your Explorers. This setup ensures that users are always guided by a curated and admin-approved set of queries.
 
 When a user starts typing a query in the main chat window, the system will search the Prompt Gallery for relevant prompts and display them as clickable autocomplete suggestions.
 
@@ -60,6 +59,14 @@ When a user starts typing a query in the main chat window, the system will searc
 
 ## Next Steps
 
-- [Advanced Data Modeling: Creating Knowledge](/setting-up-wisdom-ai/advanced-data-modeling-creating-knowledge)
-- [Provide Feedback to the System](/setting-up-wisdom-ai/feedback-mechanisms/provide-feedback-to-the-system)
-- [Configure Domains](/improve-wisdom-ai-responses/configure-domains)
+<CardGroup cols={3}>
+  <Card title="Advanced Data Modeling" icon="sitemap" href="/setting-up-wisdom-ai/advanced-data-modeling-creating-knowledge">
+    Define relationships and context in your data to enable more powerful analysis.
+  </Card>
+  <Card title="Provide Feedback to the System" icon="thumbs-up" href="/setting-up-wisdom-ai/feedback-mechanisms/provide-feedback-to-the-system">
+    Learn how to rate answers and provide corrections to improve the system's accuracy.
+  </Card>
+  <Card title="Configure Domains" icon="sliders" href="/improve-wisdom-ai-responses/configure-domains">
+    Manage and customize your data domains to refine context and improve query results.
+  </Card>
+</CardGroup>
