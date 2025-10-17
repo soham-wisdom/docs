@@ -14,9 +14,9 @@ When a query includes business-specific terminology not explicitly defined in th
 
 ## Level 2: Implementing Custom Logic with Business Context
 
-The Context feature enables the system to autonomously execute complex queries. This is achieved by providing the tool with a set of rules that define your organization's internal logic.
+The Context feature enables the system to execute complex queries autonomously. This is achieved by providing the tool with a set of rules that define your organization's internal logic.
 
-As an explample, let's consider that you want to empower the system to identify "At-Risk Strategic Accounts". To acomplish this, you need to provide the following definitions via the Context feature:
+As an example, let's consider that you want to empower the system to identify "At-Risk Strategic Accounts". To accomplish this, you need to provide the following definitions via the Context feature:
 
 ```
 1. Geographical Sales Territories: 
@@ -36,7 +36,7 @@ _ NA-East (North America East): Includes [Account Names]
 
 With the business Context supplied, the system no longer needs to prompt for clarification. It is now configured to perform the multi-layered analysis directly.
 
-When presented with the same query: 
+When presented with the same query:
 
 ```
 Generate a list of all 'At-Risk Strategic Accounts' and show me which sales region they belong to.
@@ -50,9 +50,9 @@ This demonstrates the successful application of custom context to yield high-val
 
 ## Level 4: Granular Analysis Using JSON Parsing Context
 
-A key challenge in data analysis is extracting information from fields containing semi-structured text. For example, a single `Skus` column might contain multiple products, tiers, and quantities in one text string, making direct calculations difficult. 
+A key challenge in data analysis is extracting information from fields containing semi-structured text. For example, a single `Skus` column might contain multiple products, tiers, and quantities in one text string, making direct calculations difficult.
 
-The Context feature resolves this by allowing users to define parsing logic with a JSON input. Without this logic, the system cannot perform calculations on data embedded within text. 
+The Context feature resolves this by allowing users to define parsing logic with a JSON input. Without this logic, the system cannot perform calculations on data embedded within text.
 
 The following code snippet shows an example of using JSON context ~~was provided ~~to teach the system how to parse the `Skus` column:
 
@@ -71,7 +71,7 @@ The following code snippet shows an example of using JSON context ~~was provided
 
 ![Gif showing an example JSON Context](/images/2025-07-17_17-28-57.gif)
 
-With this parsing logic supplied, it is now possible to execute highly specific queries, like the following example:
+With this parsing logic supplied, it is now possible to execute precise queries, like the following example:
 
 ```
 What is the total quantity of 'Ultimate' tier licenses sold for the 'Sales' product line?
@@ -83,7 +83,17 @@ The system can now deconstruct the `Skus` field for every contract in real-time.
 
 ## Next Steps
 
-- [Advanced Data Modeling: Creating Knowledge](/setting-up-wisdom-ai/advanced-data-modeling-creating-knowledge)
-- [Validate and Test Answers](/improve-wisdom-ai-responses/validate-and-test-answers)
-- [Provide Feedback to the System](/setting-up-wisdom-ai/feedback-mechanisms/provide-feedback-to-the-system)
-- [Turn Answers into Stories](/using-wisdom-ai-everyday/turn-answers-into-stories)
+<CardGroup cols={2}>
+  <Card title="Advanced Data Modeling" icon="sitemap" href="/setting-up-wisdom-ai/advanced-data-modeling-creating-knowledge">
+    Define relationships and context in your data to enable more powerful analysis.
+  </Card>
+  <Card title="Validate and Test Answers" icon="check-double" href="/improve-wisdom-ai-responses/validate-and-test-answers">
+    Understand the methods for verifying the correctness and reliability of generated answers.
+  </Card>
+  <Card title="Provide Feedback to the System" icon="thumbs-up" href="/setting-up-wisdom-ai/feedback-mechanisms/provide-feedback-to-the-system">
+    Learn how to rate answers and provide corrections to improve the system's accuracy.
+  </Card>
+  <Card title="Turn Answers into Stories" icon="book-open" href="/using-wisdom-ai-everyday/turn-answers-into-stories">
+    Compile key insights and visualizations into a shareable, narrative-driven report.
+  </Card>
+</CardGroup>

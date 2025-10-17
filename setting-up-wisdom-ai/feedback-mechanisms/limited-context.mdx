@@ -2,13 +2,13 @@
 title: "Limited Context"
 ---
 
-The Limited Context marker is a key signal for monitoring the quality of WisdomAI responses. It appears when the system lacked complete domain knowledge to confidently answer a question, forcing the Large Language Model (LLM) to make assumptions based on partial information. These responses may still be useful but require closer review to ensure accuracy.
+The Limited Context marker is a key signal for monitoring the quality of WisdomAI responses. If the system lacked complete domain knowledge to answer a question confidently, it forced the Large Language Model (LLM) to make assumptions based on partial information. These responses may still be helpful but require closer review to ensure accuracy.
 
 Administrators are responsible for identifying and acting upon Limited Context markers to maintain the precision of the domain configuration. You can find this filter in the **Chat Log**.
 
 ![Image showing the Has Limited Context switch](/images/has-limited-context.png)
 
-Limited Context markers are displayed next to generated visualizations or answers. Access **View details**, hover over the Limited Context [\!] marker and the thumbs down (👎) icon to view more details about knowledge gaps or uncertainties that affected the response.
+Limited Context markers are displayed next to generated visualizations or answers. Access **View details**, hover over the Limited Context [!] marker and the thumbs-down (👎) icon to view more information about knowledge gaps or uncertainties that affected the response.
 
 ![Gif showing the Limited Context Marker](/images/Limited-Context-marker.gif)
 
@@ -18,6 +18,14 @@ Limited Context markers are displayed next to generated visualizations or answer
 
 ## Next steps
 
-- [Turn Answers into Stories](/using-wisdom-ai-everyday/turn-answers-into-stories)
-- [Monitor Negative Feedback](/setting-up-wisdom-ai/feedback-mechanisms/monitor-negative-feedback)
-- [Provide Feedback to the System](/setting-up-wisdom-ai/feedback-mechanisms/provide-feedback-to-the-system)
+<CardGroup cols={3}>
+  <Card title="Turn Answers into Stories" icon="book-open" href="/using-wisdom-ai-everyday/turn-answers-into-stories">
+    Compile key insights and visualizations into a shareable, narrative-driven report.
+  </Card>
+  <Card title="Monitor Negative Feedback" icon="thumbs-down" href="/setting-up-wisdom-ai/feedback-mechanisms/monitor-negative-feedback">
+    Track and analyze negative user feedback to identify areas for system improvement.
+  </Card>
+  <Card title="Provide Feedback to the System" icon="thumbs-up" href="/setting-up-wisdom-ai/feedback-mechanisms/provide-feedback-to-the-system">
+    Learn how to rate answers and provide corrections to improve the system's accuracy.
+  </Card>
+</CardGroup>
