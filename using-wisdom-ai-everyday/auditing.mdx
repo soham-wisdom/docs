@@ -31,7 +31,7 @@ To tag a chat:
 
 ![Image showing the chat section and the rename it modal](/images/rename-chatv2.png)
 
-Once confirmed, the chat will be updated with its new name, which will also be reflected in the Chat Log, enhancing its discoverability when using the **Filter by summary** option or other search functionalities to locate chats by their assigned categories.
+Once confirmed, the chat will be updated with its new name, which will also be reflected in the Chat Log. This change will enhance its discoverability when using the **Filter by summary** option or other search functionalities to locate chats by their assigned categories.
 
 ![Image displaying the Filter by summary option within the Chat Log](/images/filter-by-summary.png)
 
@@ -41,7 +41,7 @@ The Chat Log helps you review valuable information. You can filter, review, and 
 
 To navigate the Chat Log:
 
-1. Access the **Chat Log**, located in the left sidebar to open its main interface.
+1. Access the **Chat Log**, located in the left sidebar, to open its main interface.
 2. View **Chat Log entries**. The Chat Log displays a tabular view of interactions, with each row representing a chat entry and providing key metadata:
 
    <Tabs>
@@ -58,7 +58,7 @@ To navigate the Chat Log:
        Offers a concise overview of the initial query of the interaction or the Chat title.
      </Tab>
      <Tab title="Responses">
-       Displays the number of responses within a chat, indicating the depth of the conversation. Accompanying icons provide additional context on interaction types (e.g. If [negative feedback](/setting-up-wisdom-ai/feedback-mechanisms/monitor-negative-feedback) has been given or if the answer has [limited context](/setting-up-wisdom-ai/feedback-mechanisms/limited-context)).
+       Displays the number of responses within a chat, indicating the depth of the conversation. Accompanying icons provide additional context on interaction types (e.g., if negative feedback has been given or if the answer has limited context).
      </Tab>
    </Tabs>
 3. **Filter** and locate **interactions**. You can efficiently locate specific historical interactions using various filtering options to streamline your review process:
@@ -83,10 +83,10 @@ To navigate the Chat Log:
 
 ![The Chat Log interface is displayed showing a list of chats with metadata like user, domain, and number of responses](/images/chat-log-interface.png)
 
-4. Access the detailed chat history to obtain a complete understanding of any interaction's progression and context by clicking the **View details** button corresponding to any chat entry opens a dedicated view or modal containing the full chat transcript. Here, you can:
+4. Access the detailed chat history to obtain a complete understanding of any interaction's progression and context. Click the **View details** button corresponding to any chat entry to open a dedicated view or modal containing the full chat transcript. Here, you can:
    - **Review Full Conversations:** The detailed view presents the entire sequence of messages, queries, and responses chronologically. This comprehensive record illustrates the evolution of information and discussions, providing complete context.
    - **Identify User Contributions:** You can see who said what, which helps with accountability and tracking the source of each idea.
-   - **Explore Data Drill-Downs:** The detailed view also provides clickable links to associated data, allowing for direct access and deeper examination of the underlying metrics and complete datasets relevant to the specific conversation.
+   - **Explore Data Drill-Downs:** The detailed view provides clickable links to associated data, allowing direct access and deeper examination of underlying metrics and complete datasets relevant to the specific conversation.
 
    ![View Details window displayed](/images/view-details-window.png)
 
@@ -96,8 +96,8 @@ The Chat Log also allows you to open your past chat windows and share these inte
 
 Follow these steps to share vetted answers from the Chat Log:
 
-1. Access the **Chat Log**, choose an **interaction** from the list and click on **View Details**.
-2. Locate and click on the specific **chat entry** that contains the vetted answer you wish to share. This action opens a detailed view of that specific data from the conversation.
+1. Access the **Chat Log**, choose an **interaction** from the list, and click on **View Details**.
+2. Locate and click on the specific **chat entry** that contains the vetted answer you wish to share. This action opens a detailed view of that particular data from the conversation.
 
 ![The share vetted answers interface is displayed](/images/share-vetted-answers-01.png)
 
@@ -110,14 +110,26 @@ Follow these steps to share vetted answers from the Chat Log:
    - **General Access Options:**
      - **Share with everyone in your organization:** Toggle this switch to allow all members of your organization to view the chat.
      - **Share with anyone:** Toggle this switch to generate a public link that can be accessed by anyone, regardless of whether they are in your organization. Use this option with caution for sensitive information. Obtain a direct **link** to the shared chat by clicking the **Copy link button**. This copies the URL to your clipboard, which you can then paste into emails, messages, or documents.
-5. Once you have configured the desired sharing permissions, either by selecting specific users or enabling general access, click the **Done** button. The chat is now shared according to your selected preferences, making the vetted answer accessible to the specified audience.
+5. Once you have configured the desired sharing permissions, either by selecting specific users or enabling general access, click the **Done** button. The chat is now shared according to your chosen preferences, making the vetted answer accessible to the specified audience.
 
 ![Sharing options dialog with dropdowns for users, organization toggle, and public link generation](/images/share-vetted-answers-02v2.png)
 
 ## Next Steps
 
-- [Advanced Data Modeling: Creating Knowledge](/setting-up-wisdom-ai/advanced-data-modeling-creating-knowledge)
-- [Validate and Test Answers](/improve-wisdom-ai-responses/validate-and-test-answers)
-- [Provide Feedback to the System](/setting-up-wisdom-ai/feedback-mechanisms/provide-feedback-to-the-system)
-- [Turn Answers into Stories](/using-wisdom-ai-everyday/turn-answers-into-stories)
-- [Enhancing Data Analysis with Custom Business Context](/improve-wisdom-ai-responses/enhancing-data-analysis-with-custom-business-context)
+<CardGroup cols={3}>
+  <Card title="Advanced Data Modeling" icon="sitemap" href="/setting-up-wisdom-ai/advanced-data-modeling-creating-knowledge">
+    Define relationships and context in your data to enable more powerful analysis.
+  </Card>
+  <Card title="Validate and Test Answers" icon="check-double" href="/improve-wisdom-ai-responses/validate-and-test-answers">
+    Understand the methods for verifying the correctness and reliability of generated answers.
+  </Card>
+  <Card title="Provide Feedback to the System" icon="thumbs-up" href="/setting-up-wisdom-ai/feedback-mechanisms/provide-feedback-to-the-system">
+    Learn how to rate answers and provide corrections to improve the system's accuracy.
+  </Card>
+  <Card title="Turn Answers into Stories" icon="book-open" href="/using-wisdom-ai-everyday/turn-answers-into-stories">
+    Compile key insights and visualizations into a shareable, narrative-driven report.
+  </Card>
+  <Card title="Enhance Analysis with Business Context" icon="lightbulb" href="/improve-wisdom-ai-responses/enhancing-data-analysis-with-custom-business-context">
+    Improve analysis by providing custom business definitions, synonyms, and other contextual information.
+  </Card>
+</CardGroup>
