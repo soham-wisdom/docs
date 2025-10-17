@@ -8,7 +8,7 @@ Metrics are numeric, quantitative values that can be measured to assess and trac
 
 You can have different kinds of Metrics. Here's a breakdown of the most common types:
 
-- **Simple Metrics:** These are direct calculations from existing data. Think of something straightforward like the sum of your total revenue.
+- **Simple Metrics:** These are direct calculations from existing data. Think of something straightforward, such as the sum of your total revenue.
 - **Calculated Metrics:** These metrics combine other metrics using formulas. For example, Profit could be a calculated metric derived from subtracting "Cost" from "Revenue."
 - **Ratios:** Ratios involve dividing one metric by another. A classic example is Conversion Rate, calculated by dividing "Orders" by "Visits."
 - **Time-based Metrics:** These metrics incorporate time into their calculation, allowing you to analyze trends over periods. Examples include year-over-year growth or rolling averages.
@@ -36,7 +36,7 @@ Here's a step-by-step guide:
 
 5. _(If SQL was chosen)_ Toggle the **Advanced Options** switch to access additional configurations:
    - **Associated date column:** (Optional) This allows you to specify a date column in your data that is relevant to this metric. This is particularly useful for time-based analyses, filtering by date, or for metrics that inherently track changes over time.
-   - **Associated group-by columns:** (Optional) Here, you can pre-define columns that are commonly used for grouping or segmenting this metric. (e.g. account State, customer ID)
+   - **Associated group-by columns:** (Optional) Here, you can pre-define columns that are commonly used for grouping or segmenting this metric. (e.g., account State, customer ID)
 6. Once you have configured your metric, click **Save** to add it to your Domain's metrics list.
 
 ![Add Metric 45and6 Pn](/images/add-metric-3-45and6.png)
@@ -47,23 +47,33 @@ When you create metrics, you define the SQL expression that dictates how the met
 
 Here are some practical examples of sales metrics and how they might be configured.
 
-| Metric Name              | Description                                                                                                                  | SQL Expression                                              | Display Format                   |
-| :----------------------- | :--------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------- | :------------------------------- |
-| **Revenue**              | Total revenue before discounts and returns                                                                                   | `SUM(total_amount)`                                         | Currency (USD, 2 decimal places) |
-| **Average Order Value**  | Average amount spent per order                                                                                               | `AVG(total_amount)`                                         | Currency (USD, 2 decimal places) |
-| **Profit Margin**        | Percentage of revenue that is profit                                                                                         | `(SUM(total_amount) - SUM(cost)) / SUM(total_amount) * 100` | Percentage (1 decimal place)     |
-| **Items Per Order**      | Average number of items in each order                                                                                        | `SUM(item_count) / COUNT(DISTINCT order_id)`                | Number (1 decimal place)         |
-| **Days to Ship**         | Average time between order and shipment                                                                                      | `AVG(EXTRACT(DAY FROM ship_date - order_date))`             | Number (1 decimal place)         |
-| **AverageSalesPerRep**   | Average Sales Per Rep                                                                                                        | _(Specific SQL would be defined in the system)_             | Automatic                        |
-| **DollarConversionRate** | _(Add description in the system)_                                                                                            | _(Specific SQL would be defined in the system)_             | Automatic                        |
-| **Total Revenue**        | Total revenue from closed-won opportunities                                                                                  | `SUM(total_amount)` _(example)_                             | Automatic                        |
-| **Win_Rate**             | Ratio of the sum of amounts for closed won opportunities to the sum of amounts for closed won and closed loss opportunities. | _(Specific SQL would be defined in the system)_             | Automatic                        |
+| Metric Name              | Description                                                                                                                     | SQL Expression                                              | Display Format                   |
+| :----------------------- | :------------------------------------------------------------------------------------------------------------------------------ | :---------------------------------------------------------- | :------------------------------- |
+| **Revenue**              | Total revenue before discounts and returns                                                                                      | `SUM(total_amount)`                                         | Currency (USD, 2 decimal places) |
+| **Average Order Value**  | Average amount spent per order                                                                                                  | `AVG(total_amount)`                                         | Currency (USD, 2 decimal places) |
+| **Profit Margin**        | Percentage of revenue that is profit                                                                                            | `(SUM(total_amount) - SUM(cost)) / SUM(total_amount) * 100` | Percentage (1 decimal place)     |
+| **Items Per Order**      | Average number of items in each order                                                                                           | `SUM(item_count) / COUNT(DISTINCT order_id)`                | Number (1 decimal place)         |
+| **Days to Ship**         | Average time between order and shipment                                                                                         | `AVG(EXTRACT(DAY FROM ship_date - order_date))`             | Number (1 decimal place)         |
+| **AverageSalesPerRep**   | Average Sales Per Rep                                                                                                           | _(Specific SQL would be defined in the system)_             | Automatic                        |
+| **DollarConversionRate** | _(Add description in the system)_                                                                                               | _(Specific SQL would be defined in the system)_             | Automatic                        |
+| **Total Revenue**        | Total revenue from closed-won opportunities                                                                                     | `SUM(total_amount)` _(example)_                             | Automatic                        |
+| **Win_Rate**             | Ratio of the sum of amounts for closed won opportunities to the sum of quantities for closed won and closed loss opportunities. | _(Specific SQL would be defined in the system)_             | Automatic                        |
 
 By effectively defining and utilizing metrics within your chosen Domains, you can gain deeper insights into your operations and make data-driven decisions that propel your business forward.
 
 ## Next Steps
 
-- [Configure Domains](/improve-wisdom-ai-responses/configure-domains)
-- [Auditing](/using-wisdom-ai-everyday/auditing)
-- [Basic Tutorial: Connect and Test](/setting-up-wisdom-ai/basic-tutorial-connect-and-test)
-- [Advanced Data Modeling: Creating Knowledge](/setting-up-wisdom-ai/advanced-data-modeling-creating-knowledge)
+<CardGroup cols={2}>
+  <Card title="Configure Domains" icon="sliders" href="/improve-wisdom-ai-responses/configure-domains">
+    Manage and customize your data domains to refine context and improve query results.
+  </Card>
+  <Card title="Auditing" icon="clipboard-list" href="/using-wisdom-ai-everyday/auditing">
+    Organize insights by tagging chats, navigating history, and sharing vetted answers with your team.
+  </Card>
+  <Card title="Basic Tutorial: Connect and Test" icon="rocket" href="/setting-up-wisdom-ai/basic-tutorial-connect-and-test">
+    Walk through the initial setup to connect a data source and run your first query.
+  </Card>
+  <Card title="Advanced Data Modeling" icon="sitemap" href="/setting-up-wisdom-ai/advanced-data-modeling-creating-knowledge">
+    Define relationships and context in your data to enable more powerful analysis.
+  </Card>
+</CardGroup>
