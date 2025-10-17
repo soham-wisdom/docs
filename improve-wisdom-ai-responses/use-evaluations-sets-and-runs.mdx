@@ -38,36 +38,36 @@ To create an Evaluation Set:
 
 Evaluation Runs are where the AI processes your defined Evaluation Sets. After running these evaluations, you can review the results to identify areas for improvement.
 
-To Run an Evaluation, go to the **Evaluations Set** tab, select an evaluation and click on **Run**. You will see the results in the Evaluation Runs tab.
+To run an Evaluation, go to the **Evaluations Set** tab, select an evaluation, and click on **Run**. You will see the results in the Evaluation Runs tab.
 
 ![Run Evaluation Pn](/images/run-evaluation.png)
 
 ### Evaluation Run Indicators
 
-Evaluation Run Indicators provide a concise overview of the run's progress and outcome. These indicators offer immediate feedback on the evaluation's status and score, detailing how well the AI's generated responses matched the expected results. They are:
+Evaluation Run Indicators provide a concise overview of the Run's progress and outcome. These indicators offer immediate feedback on the Evaluation's status and score, detailing how well the AI's generated responses matched the expected results. They are:
 
 - **Status:** Signals its progress or completion.
   - Running: The evaluation run is currently in progress.
   - Completed: The evaluation run has finished successfully.
-- **Score:** Reflects the result of the completed evaluation. It tells you how many conversations passed based on the predefined **evaluation criteria** (i.e. Prompt \+ Expected SQL result added in the Evaluation set modal).
+- **Score:** Reflects the result of the completed Evaluation. It tells you how many conversations passed based on the predefined **evaluation criteria** (i.e., Prompt + Expected SQL result added in the Evaluation set modal).
 
 <Tip>
-  The Score evaluation criteria refers to how much the generated answer matches the expected SQL result defined previously.
+  The Score evaluation criteria refer to how much the generated answer matches the expected SQL result defined previously.
 </Tip>
 
 ![Evaluation Runs Indicatorsv2 Pn](/images/evaluation-runs-indicatorsv2.png)
 
 ### Evaluation Run Report
 
-When you click the **View Report** option, you will see comprehensive details about how an evaluation run performed. Here's a breakdown of the information you'll find:
+When you click the **View Report** option, you will see comprehensive details about how the evaluation run performed. Here's a breakdown of the information you'll find:
 
 - **View Domain:** A link that allows you to navigate to the specific domain that was evaluated.
-- **Soft Match:** This **Score** indicates the overall performance of the evaluation. It shows how many of the evaluation criteria were successfully met out of the total. It is named as Soft Match since it is possible that results are consider a match even if they are not exactly the same as the expected (provided) SQL.
+- **Soft Match:** This **Score** indicates the overall performance of the Evaluation. It shows how many of the evaluation criteria were successfully met out of the total. It is named as Soft Match since results may be considered a match even if they are not the same as the expected (provided) SQL.
 - **Individual Session Details**: The report organizes the evaluation results by individual sessions or queries (e.g., Session 1, Session 2).
 
 ![View Report 01v2 Gi](/images/view-report-01v2.gif)
 
-For each session, the report is broken down into several components, allowing you to thoroughly analyze the AI's performance.
+For each session, the report is broken down into several components, allowing you to analyze the AI's performance thoroughly.
 
 - **Session Title:** This states the query or task that was evaluated for that particular session (e.g., "Calculate total revenue for closed won opportunities using ACV.").
 - **Evaluation Details:** This expandable section provides specific insights into the session's outcome. The core components are detailed in the table below.
@@ -75,15 +75,15 @@ For each session, the report is broken down into several components, allowing yo
 | Component            | Description                                                                                                     |
 | :------------------- | :-------------------------------------------------------------------------------------------------------------- |
 | **Prompt**           | The specific input prompt that was used for the session.                                                        |
-| **Manual Score**     | An option for you to manually score the evaluation (✅ or ❌), which overrides the automated score.               |
-| **Automated Score**  | The score automatically assigned by the system. This corresponds to the **Soft Match**.                         |
+| **Manual Score**     | An option for you to manually score the Evaluation (✅ or ❌), which overrides the automated score.               |
+| **Automated Score**  | The system automatically assigns the score. This corresponds to the **Soft Match**.                             |
 | **Ground Truth**     | The expected or correct outcome, typically the ideal SQL query (`SELECT SUM(amount) FROM Opportunity`).         |
 | **Generated Result** | The output produced by the system, including the generated SQL query and the final result (e.g., `"$137.55M"`). |
 
 ![Gif showing the Session Details](/images/session-details.gif)
 
 <Warning>
-  Providing an incorrect or inaccurate SQL code will lead to a syntax or semantic error, and the system will provide a message in red detailing the nature of the error, often including the location within the query where the problem occurred, to aid in correction.
+  Providing an incorrect SQL code will lead to a syntax or semantic error. The system will display a red message detailing the nature of the error, often including the location within the query where the problem occurred, to aid in correction.
 
   ![Example showing an Incorrect Sql in Red](/images/incorrect-sql-example.png)
 </Warning>
@@ -98,7 +98,17 @@ Navigating the report helps you understand the system's processing, verify gener
 
 ## Next Steps
 
-- [Configure Domains](/improve-wisdom-ai-responses/configure-domains)
-- [Auditing](/using-wisdom-ai-everyday/auditing)
-- [Basic Tutorial: Connect and Test](/setting-up-wisdom-ai/basic-tutorial-connect-and-test)
-- [Advanced Data Modeling: Creating Knowledge](/setting-up-wisdom-ai/advanced-data-modeling-creating-knowledge)
+<CardGroup cols={2}>
+  <Card title="Configure Domains" icon="sliders" href="/improve-wisdom-ai-responses/configure-domains">
+    Manage and customize your data domains to refine context and improve query results.
+  </Card>
+  <Card title="Auditing" icon="clipboard-list" href="/using-wisdom-ai-everyday/auditing">
+    Organize insights by tagging chats, navigating history, and sharing vetted answers with your team.
+  </Card>
+  <Card title="Basic Tutorial: Connect and Test" icon="rocket" href="/setting-up-wisdom-ai/basic-tutorial-connect-and-test">
+    Walk through the initial setup to connect a data source and run your first query.
+  </Card>
+  <Card title="Advanced Data Modeling" icon="sitemap" href="/setting-up-wisdom-ai/advanced-data-modeling-creating-knowledge">
+    Define relationships and context in your data to enable more powerful analysis.
+  </Card>
+</CardGroup>
