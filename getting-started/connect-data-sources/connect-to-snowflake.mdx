@@ -20,7 +20,7 @@ To connect WisdomAl to Snowflake directly, you will need the following informati
 - **Account**: Your Snowflake account identifier. This consists of the name of the account prefixed by its organization (e.g., myorg-account123).
 
   <Note>
-    Refer to the [the Account identifiers page on the Snowflake documentation](https://docs.snowflake.com/en/user-guide/admin-account-identifier) for details on finding your account identifier.
+    Refer to [the Account identifiers page on the Snowflake documentation](https://docs.snowflake.com/en/user-guide/admin-account-identifier) for details on finding your account identifier.
   </Note>
 - **Warehouse**: The name of the virtual warehouse to use for compute (e.g., "COMPUTE_WH").
 - **User**: The Snowflake username that WisdomAl will use for access.
@@ -30,7 +30,7 @@ To connect WisdomAl to Snowflake directly, you will need the following informati
     Refer to the [Key-pair authentication page on the Snowflake documentation](https://docs.snowflake.com/en/user-guide/key-pair-auth) for details on generating a private key.
   </Note>
 - **Private Key Passphrase**: This is required if your private key is encrypted.
-- **Role**: The Snowflake role to use for access privileges (e.g., ACCOUNTADMIN). See the Using a Custom Role section below for details on using a custom role.
+- **Role**: The Snowflake role to use for access privileges (e.g., ACCOUNTADMIN). See the Using a Custom Role section below for details.
 - **[Optional] Database Filters**: See the Database Filters section below for more details.
 - **[Optional] Allowlist**: You may need to allowlist WisdomAl's CIDR block in your Snowflake network policies or firewalls to allow incoming connections. Use the CIDR block that corresponds to your instance's creation date:
   - **Before July 24, 2025**: `35.238.115.103/32`
@@ -72,7 +72,7 @@ Once you have gathered the required information, you can configure the connectio
    - **Private Key**: Paste the content of your private key, including the `BEGIN ENCRYPTED PRIVATE KEY` and `END PRIVATE KEY` headers and footers.
    - **Private Key Passphrase**: Enter the passphrase if your private key is encrypted.
    - **Role**: Enter the Snowflake role (e.g., ACCOUNTADMIN).
-   - **Database Filters (Optional)**: Specify any Database Filters if you want to further restrict the databases WisdomAl crawls.
+   - **Database Filters (Optional)**: Specify any Database Filters if you want to restrict the databases WisdomAl crawls further.
 4. Click **Save and Sync metadata.** WisdomAl will use the provided credentials to connect to your Snowflake account and scan the metadata of the specified databases and tables.
 
 ![image.png](/images/snowflake.png)
