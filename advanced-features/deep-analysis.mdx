@@ -2,7 +2,7 @@
 title: "Use the Deep Analysis Functionality"
 ---
 
-Use the Deep Analysis feature to investigate complex, open-ended questions, such as, "Why did our revenue spike last quarter?". The feature automates the investigation by creating a multi-step analysis plan, executing it, and generating a comprehensive report with its findings.
+Use the Deep Analysis feature to investigate complex, open-ended questions, such as "Why did our revenue spike last quarter?". The feature automates the investigation by creating a multi-step analysis plan, executing it, and generating a comprehensive report with its findings.
 
 This tutorial teaches you how to investigate a data anomaly, refine the analysis plan, and interpret the final report to understand its root cause.
 
@@ -66,7 +66,7 @@ When the investigation is complete, Deep Analysis compiles the findings into a d
 - **Conclusions and Actionable Insights:** This section synthesizes the key findings into a clear conclusion and provides practical takeaways.
 - **Follow-up data analysis:** The report suggests new questions to guide your next steps.
 
-You can continue the conversation by asking follow-up questions about the report, such as `generate a shorter one page version of the report`, to further refine the insights.
+You can continue the conversation by asking follow-up questions about the report, such as `generate a shorter one page version of the report`, to refine the insights further.
 
 ![GIF showing a request to generate a one-page report](/images/2025-08-25_15-07-12.gif)
 
@@ -78,13 +78,13 @@ Deep Analysis is ideal for situations where a single data point isn't enough to 
 
 This is a primary use case for conducting root cause analysis when a key metric changes unexpectedly.
 
-- **Scenario**: You see a sudden increase in user engagement for a specific feature and need to understand what caused it.
+- **Scenario**: You notice a sudden increase in user engagement for a specific feature and need to understand the cause.
 - **Question**: `Investigate the key drivers for the spike in user engagement for the 'new dashboard' feature last month.`
-- **Outcome**: Deep Analysis generates a report identifying the primary causes, such as a recent marketing campaign, a new integration partner driving traffic, or a specific segment of users adopting the feature heavily. The report would include charts breaking down engagement by user segment and traffic source.
+- **Outcome**: Deep Analysis generates a report identifying the primary causes, such as a recent marketing campaign, a new integration partner driving traffic, or a specific segment of users heavily adopting the feature. The report would include charts breaking down engagement by user segment and traffic source.
 
 ### Understanding Complex Business Trends
 
-Use Deep Analysis for exploratory analysis when the factors influencing a trend are not immediately obvious.
+Use Deep Analysis for exploratory analysis when the factors influencing a trend are not immediately apparent.
 
 - **Scenario**: Your quarterly report shows an increase in customer churn, but the high-level numbers don't explain why it's happening.
 - **Question**: `What are the primary factors contributing to customer churn in Q2?`
@@ -92,7 +92,11 @@ Use Deep Analysis for exploratory analysis when the factors influencing a trend 
 
 ## Next Steps
 
-Now that you know how to perform a deep analysis, consider automating the detection of the anomalies you investigate.
-
-- [**Agents**](https://docs.askwisdom.ai/advanced-features/agents/agents)
-- [**Enhance Data Analysis with Custom Business Context**](https://docs.askwisdom.ai/improve-wisdom-ai-responses/enhancing-data-analysis-with-custom-business-context)
+<CardGroup cols={2}>
+  <Card title="Agents" icon="robot" href="/advanced-features/agents/agents">
+    Automate data monitoring and receive proactive alerts when specific conditions are met.
+  </Card>
+  <Card title="Enhance Analysis with Business Context" icon="lightbulb" href="/improve-wisdom-ai-responses/enhancing-data-analysis-with-custom-business-context">
+    Improve analysis by providing custom business definitions, synonyms, and other contextual information.
+  </Card>
+</CardGroup>
