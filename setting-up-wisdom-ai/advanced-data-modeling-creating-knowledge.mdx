@@ -8,20 +8,19 @@ This article, intended for Admin users and Data Administrators, details the thre
 - [Natural Language Context: Enrich the AI's understanding with natural language.](#natural-language-context)
 - [Feedback-Based Context: Improve accuracy through direct user feedback.](#feedback-based-context)
 
-### Formal Semantic Modeling
+## Formal Semantic Modeling
 
 This section outlines the core concepts behind translating raw database structures into a well-defined, business-friendly semantic layer. This allows users to interact with data in familiar business terms.
 
-<Steps>
-  <Step title="Table and Column Documentation">
-    Properly documenting tables and columns provides foundational context to enable effective analytics. For each table, provide a clear, plain-English description of what the table represents, and include a statement of what each row's granularity represents, such as, "_Each row represents a single sales transaction from a point-of-sale system_". For each column, define a user-friendly Display Name, a Description in business terms, and a Display Format.
+### Table and Column Documentation
+Properly documenting tables and columns provides foundational context to enable effective analytics. For each table, provide a clear, plain-English description of what the table represents, and include a statement of what each row's granularity represents, such as, "_Each row represents a single sales transaction from a point-of-sale system_". For each column, define a user-friendly Display Name, a Description in business terms, and a Display Format.
 
     <Note>
       For a detailed guide on this topic, please refer to our article [Document Tables and Columns](/setting-up-wisdom-ai/document-tables-and-columns).
     </Note>
     ![Image showing the Document Tables interface](/images/document-table.png)
-  </Step>
-  <Step title="Defining Entities">
+ 
+### Defining Entities
     An Entity is a business-critical object, such as "Account" or "Product," represented within the Data Graph. In Wisdom AI, these entities are treated with priority in the chat experience to enhance user understanding and interaction.
 
     When an entity is defined, Wisdom AI automatically improves the chat response by:
@@ -34,24 +33,24 @@ This section outlines the core concepts behind translating raw database structur
     Creating an entity involves grouping columns from one or more data source tables into a logical business object that mirrors a real-world concept. This process includes naming the entity, mapping it to its underlying data tables, and configuring its properties, such as its primary key and the field that will serve as its default display name.
 
     ![Image showing the Entity Mapping option](/images/entity-mapping.png)
-  </Step>
-  <Step title="Establishing Relationships">
+  
+### Establishing Relationships
     Define the connections between entities to allow for precise data model navigation. Create relationships by selecting the source and target tables and their corresponding attributes. You must configure the relationship's cardinality (1:1, 1:M, M:M). 
 
     <Warning>
       Use join cardinality carefully, as incorrect settings can drastically change query results and lead to missing or duplicated data.
     </Warning>
     ![Image showing the Create Relationship modal](/images/create-relationship.png)
-  </Step>
-  <Step title="Creating Metrics">
+  
+### Creating Metrics
     Define standard calculations to enforce consistent business logic and simplify analysis for end-users. This involves creating Metrics, which are quantifiable business calculations, such as Revenue or Conversion Rate, that are defined with SQL expressions and can be reused across the organization.
 
     <Note>
       For a comprehensive guide on this topic, including step-by-step instructions and detailed examples, please refer to our full article, [How to Create Metrics](/improve-wisdom-ai-responses/how-to-create-metrics).
     </Note>
     ![Image showing the Metrics Tab](/images/metrics-tab.png)
-  </Step>
-  <Step title="Data Model Augmentation">
+  
+### Data Model Augmentation
     Augment your data model with derived tables and columns using standard SQL syntax. Derived Columns and Tables are calculated fields or virtual tables created with SQL to clean, enrich, or simplify complex underlying data. These augmentations can be used to:
 
     - **Clean Data:** Standardize formats, handle missing values, fix inconsistencies.
@@ -59,8 +58,7 @@ This section outlines the core concepts behind translating raw database structur
     - **Simplify Analysis:** Create business-friendly views of complex underlying data.
 
     ![Image showing the Derived Table](/images/derived-table.png)
-  </Step>
-</Steps>
+
 
 ---
 
@@ -68,16 +66,15 @@ This section outlines the core concepts behind translating raw database structur
 
 This section covers the methods for providing the AI with unstructured, domain-specific knowledge that is difficult to capture in a formal data model, such as business rules or specific terminology.
 
-<Steps>
-  <Step title="Manual Context Entry">
+### Manual Context Entry
     Add domain-specific knowledge, rules, or naming conventions in natural language sentences to guide the AI’s understanding. An example is, "_Regions are the same as Territories_". This improves accuracy by helping the system interpret ambiguous terms and captures knowledge that does not exist in the database schema. It is crucial to validate the impact of manual entries by asking a question in the chat interface to see if the response is as expected.
 
     <Note>
       To learn how to add Context, read the article [Add Domain-Specific Knowledge](/setting-up-wisdom-ai/add-domain-specific-knowledge). There, you will find an example of how the response changes after you add context.
     </Note>
     ![Image showing the Context Tab](/images/context-tab.png)
-  </Step>
-  <Step title="Importing Unstructured Knowledge (Beta)">
+  
+### Importing Unstructured Knowledge (Beta)
     Enhance the AI’s context by importing knowledge directly from existing business and technical documents. This process is handled through the 'Chat' experience, which allows for an interactive experience to selectively extract context. Supported information types that can be imported include:
 
     - ERD Diagrams: Extract entity relationships from diagram images.
@@ -90,31 +87,28 @@ This section covers the methods for providing the AI with unstructured, domain-s
     <Note>
       To learn how to upload CSV files, read the [Basic Tutorial](https://docs.askwisdom.ai/setting-up-wisdom-ai/basic-tutorial-connect-and-test#upload-csv-files). Speak with your WisdomAI representative to enable any of the other features.
     </Note>
-  </Step>
-</Steps>
+
 
 ## Feedback-Based Context
 
 This section describes the continuous learning loop, where direct user feedback on AI-generated responses is used to validate and refine the system's knowledge and accuracy over time.
 
-<Steps>
-  <Step title="Creating Reviewed Queries">
+### Creating Reviewed Queries
     Create a library of pre-vetted queries by pairing a natural language question with its ideal SQL response. This is the most critical aspect of context for the language model to understand your data. Validated Queries are created from the chat experience by giving a "thumb up" to a correct response and then confirming the natural language question that the SQL code answers. This process ensures accuracy and consistency for common business questions.
 
     <Note>
       To learn more about validated queries, refer to the [Validated Queries](/setting-up-wisdom-ai/feedback-mechanisms/reviewed-queries) article.
     </Note>
     ![Image showing the Validated Queries tab](/images/reviewed-queries-aa.png)
-  </Step>
-  <Step title="Advanced Feedback and Corrections">
+
+### Advanced Feedback and Corrections
     Provide direct feedback to correct the AI and allow power users to refine the underlying SQL, creating a robust knowledge base from user interactions. Users can mark responses as incorrect to flag them for review.
 
     - [**SQL Editing for Power Users**](https://docs.askwisdom.ai/setting-up-wisdom-ai/feedback-mechanisms/provide-feedback-to-the-system#advanced-feedback-mechanisms-for-administrators): Each answer in the chat has an "Edit" button, which allows Admin users to modify the underlying SQL query directly to fix calculation issues, add joins, or modify filters. Edited queries become part of the system's knowledge base for handling similar questions in the future.
     - [**Negative Feedback Workflow**](/setting-up-wisdom-ai/feedback-mechanisms/monitor-negative-feedback): Negative feedback is channeled to administrators for review. This is managed through visual indicators that highlight chats with negative feedback, and automatic email notifications that are sent to administrators for prompt attention.
 
     ![Image showing the Sql Editing Option](/images/sql-editing.png)
-  </Step>
-</Steps>
+
 
 ## **Next Steps**
 
