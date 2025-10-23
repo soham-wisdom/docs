@@ -12,71 +12,80 @@ WisdomAI responses improve through user feedback, leading to more accurate and r
 
 Regardless of your user role, your immediate feedback on responses is crucial for WisdomAI's learning. You can:
 
-<Steps>
-  <Step title="Use Thumbs Up (👍) / Thumbs Down (👎)" titleSize="h3">
-    After WisdomAI provides an answer in the chat interface, you will see a thumbs-up (👍) and a thumbs-down (👎) icon.
+- [Use Thumbs Up (👍) / Thumbs Down (👎)](#use-thumbs-up--thumbs-down)
+- [Provide the Correct Text](#provide-the-correct-text)
+- [Refine the Original Question](#refine-the-original-question)
 
-    - **Thumbs Up (👍):** If the answer provided by WisdomAI is accurate, relevant, and helpful, click the thumbs up icon. This positive reinforcement helps the system understand what works well.
-    - **Thumbs Down (👎):** If the answer is incorrect, incomplete, or unhelpful, click the thumbs down icon. This negative feedback immediately flags the response for administrator review and prompts further learning.
-  </Step>
-  <Step title="Provide the Correct Text" titleSize="h3">
-    When you provide negative feedback (👎), you will typically be prompted to offer more details. This is an opportunity to educate the system directly:
+### Use Thumbs Up (👍) / Thumbs Down (👎)
 
-    - **If the response was incorrect:** You can provide the correct answer in the designated text field.
-    - **If the response was incomplete:** You can add additional context or information that was missing from the answer.
-  </Step>
-  <Step title="Refine the Original Question" titleSize="h3">
-    Another valuable way to provide feedback for all users is by modifying and refining your original question. If the initial query did not deliver the desired result, rephrasing or adding more specific details to your question helps WisdomAI understand user intent better and improve its query interpretation accuracy for future interactions.
+After WisdomAI provides an answer in the chat interface, you will see a thumbs-up (👍) and a thumbs-down (👎) icon.
 
-    <Note>
-      To learn more about providing feedback using the Thumb Up/Down icons, read [Validate and Test Answers](https://wisdomai.mintlify.app/improve-wisdom-ai-responses/validate-and-test-answers#use-the-thumbs-up%2Fdown-icons).
-    </Note>
-    <img
-      src="/images/thumb-downv2.png"
-      alt="Image showing the Thumb Down action in chat"
-      title="Thumb Downv2 Pn"
-      style={{ width:"84%" }}
-    />
-  </Step>
-</Steps>
+- **Thumbs Up (👍):** If the answer provided by WisdomAI is accurate, relevant, and helpful, click the thumbs up icon. This positive reinforcement helps the system understand what works well.
+- **Thumbs Down (👎):** If the answer is incorrect, incomplete, or unhelpful, click the thumbs down icon. This negative feedback immediately flags the response for administrator review and prompts further learning.
+
+### Provide the Correct Text
+
+When you provide negative feedback (👎), you will typically be prompted to offer more details. This is an opportunity to educate the system directly:
+
+- **If the response was incorrect:** You can provide the correct answer in the designated text field.
+- **If the response was incomplete:** You can add additional context or information that was missing from the answer.
+
+### Refine the Original Question
+
+Another valuable way to provide feedback for all users is by modifying and refining your original question. If the initial query did not deliver the desired result, rephrasing or adding more specific details to your question helps WisdomAI understand user intent better and improve its query interpretation accuracy for future interactions.
+
+<Note>
+  To learn more about providing feedback using the Thumb Up/Down icons, read [Validate and Test Answers](https://wisdomai.mintlify.app/improve-wisdom-ai-responses/validate-and-test-answers#use-the-thumbs-up%2Fdown-icons).
+</Note>
+
+<img
+  src="/images/thumb-downv2.png"
+  alt="Image showing the Thumb Down action in chat"
+  title="Thumb Downv2 Pn"
+  style={{ width:"84%" }}
+/>
 
 ## Advanced Feedback Mechanisms for Administrators
 
 As an Administrator, you have elevated capabilities to provide more granular feedback and directly influence WisdomAI's underlying knowledge base. These are:
+- [SQL Editing](#sql-editing)
+- [Monitor Response Quality](#monitor-response-quality)
+- [Validate Queries](#validate-queries)
 
-<Steps>
-  <Step title="SQL Editing" titleSize="h3">
-    For Administrators, each answer provided in the chat interface comes with an **Edit** button. This feature allows you to directly modify the underlying SQL (Structured Query Language) query that WisdomAI generated to retrieve the answer.
+### SQL Editing
 
-    - **How it helps:** This direct access enables you to fix calculation issues, add necessary joins, or modify filters to ensure the query precisely extracts the desired data.
-    - **Knowledge base integration:** Edited queries are not just one-time fixes; they become a permanent part of the system's knowledge base. This means WisdomAI learns from your corrections and will apply the improved logic to similar questions in the future.
-    - **Value for Domain experts:** This SQL Edit feature is particularly valuable for Domain experts who possess a deep understanding of both the business context and the underlying data model, allowing them to fine-tune the system's data retrieval logic.
+For Administrators, each answer provided in the chat interface comes with an **Edit** button. This feature allows you to directly modify the underlying SQL (Structured Query Language) query that WisdomAI generated to retrieve the answer.
 
-    ![Image showing the Sql Editing window](/images/sql-editing.png)
+- **How it helps:** This direct access enables you to fix calculation issues, add necessary joins, or modify filters to ensure the query precisely extracts the desired data.
+- **Knowledge base integration:** Edited queries are not just one-time fixes; they become a permanent part of the system's knowledge base. This means WisdomAI learns from your corrections and will apply the improved logic to similar questions in the future.
+- **Value for Domain experts:** This SQL Edit feature is particularly valuable for Domain experts who possess a deep understanding of both the business context and the underlying data model, allowing them to fine-tune the system's data retrieval logic.
 
-    <Note>
-      To learn how to edit SQL Queries, read [Validate and Test Answers](https://wisdomai.mintlify.app/improve-wisdom-ai-responses/validate-and-test-answers#edit-the-response).
-    </Note>
-  </Step>
-  <Step title="Monitor Response Quality" titleSize="h3">
-    Response quality mechanisms help administrators track and improve how accurately WisdomAI answers questions. These tools provide actionable insights, allowing teams to continuously enhance the knowledge base, correct inaccuracies, and increase confidence in generated responses. Two of the primary indicators to monitor are [**Negative Feedback**](/setting-up-wisdom-ai/feedback-mechanisms/monitor-negative-feedback) and [**Limited Context**](/setting-up-wisdom-ai/feedback-mechanisms/limited-context).
-  </Step>
-  <Step title="Validate Queries" titleSize="h3">
-    Administrators can directly review and manage a crucial aspect of WisdomAI's intelligence: the **Reviewed Queries** library.
+![Image showing the Sql Editing window](/images/sql-editing.png)
 
-    | Aspect    | Description                                                                                                                                                                                                                                                                                                                                                                          |
-    | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | Purpose   | A library of pre-validated queries, each a pair of a natural language question and its ideal SQL response. This direct link to SQL provides crucial context for WisdomAI to understand your data.                                                                                                                                                                                    |
-    | Benefits  | - **Accuracy:** Guarantees consistent and correct results for essential business questions. <br /> - **Performance:** Optimized query execution for frequently asked questions. <br /> - **Reusability:** Stores common business questions and their perfect SQL for easy reuse. <br /> - **Canonicalization:** Standardizes metric calculations and combinations across the system. |
-    | Creation  | Primarily created when a user gives a "Thumbs Up" (👍) to a chat response. Once validated, these queries appear in the **Knowledge \> Reviewed Queries** tab.                                                                                                                                                                                                                        |
-    | Relevance | By managing this library, administrators ensure WisdomAI has a robust set of expertly defined question-to-SQL mappings, crucial for generating accurate and efficient queries for new questions.                                                                                                                                                                                     |
+<Note>
+  To learn how to edit SQL Queries, read [Validate and Test Answers](https://wisdomai.mintlify.app/improve-wisdom-ai-responses/validate-and-test-answers#edit-the-response).
+</Note>
 
-    <Note>
-      To learn more about Validated Queries, read [Validated Queries](/setting-up-wisdom-ai/feedback-mechanisms/reviewed-queries).
-    </Note>
-    ![Image showing Reviewed Queries](/images/reviewed-queries-aa.png)
-  </Step>
-</Steps>
+### Monitor Response Quality
+
+Response quality mechanisms help administrators track and improve how accurately WisdomAI answers questions. These tools provide actionable insights, allowing teams to continuously enhance the knowledge base, correct inaccuracies, and increase confidence in generated responses. Two of the primary indicators to monitor are [**Negative Feedback**](/setting-up-wisdom-ai/feedback-mechanisms/monitor-negative-feedback) and [**Limited Context**](/setting-up-wisdom-ai/feedback-mechanisms/limited-context).
+
+### Validate Queries
+
+Administrators can directly review and manage a crucial aspect of WisdomAI's intelligence: the **Reviewed Queries** library.
+
+| Aspect    | Description   |
+| :-------- | :----------------- |
+| Purpose   | A library of pre-validated queries, each a pair of a natural language question and its ideal SQL response. This direct link to SQL provides crucial context for WisdomAI to understand your data.    |
+| Benefits  | - **Accuracy:** Guarantees consistent and correct results for essential business questions. <br /> - **Performance:** Optimized query execution for frequently asked questions. <br /> - **Reusability:** Stores common business questions and their perfect SQL for easy reuse. <br /> - **Canonicalization:** Standardizes metric calculations and combinations across the system. |
+| Creation  | Primarily created when a user gives a "Thumbs Up" (👍) to a chat response. Once validated, these queries appear in the **Knowledge \> Reviewed Queries** tab.    |
+| Relevance | By managing this library, administrators ensure WisdomAI has a robust set of expertly defined question-to-SQL mappings, crucial for generating accurate and efficient queries for new questions.   |
+
+<Note>
+  To learn more about Validated Queries, read [Validated Queries](/setting-up-wisdom-ai/feedback-mechanisms/reviewed-queries).
+</Note>
+
+![Image showing Reviewed Queries](/images/reviewed-queries-aa.png)
 
 ## Add Sample Q&A for Starters
 
@@ -92,7 +101,7 @@ You can **Edit the default question-answer pairs** to demonstrate the Domain's f
 
 ![Image showing the Starter Questions Page](/images/starter-question.png)
 
-## **Monitor Learning Impact**
+## Monitor Learning Impact
 
 Observing the impact of your feedback over time is a rewarding aspect of using WisdomAI, especially for administrators.
 
