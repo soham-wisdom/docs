@@ -82,42 +82,49 @@ In all these cases, the system will use the provided data to adjust the Context 
 Once you have validated or edited a chatbot response, it is crucial to test the outcome to ensure the changes improve accuracy and maintain the integrity of the original question. Testing not only verifies that the answer is correct, it also helps train the system to generate more reliable responses in the future.
 
 There are several ways you can actively test and refine your interactions:
+- [Retry with Adjustments](#retry-with-adjustments)
+- [Re-Query the Dataset with Updated SQL](#use-the-updated-sql-to-re-query-the-dataset)
+- [Mark as Reviewed for Future Accuracy](#mark-as-reviewed-for-future-accuracy)
+- [Test for Generalizability](#test-for-generalizability)
 
-<Steps>
-  <Step title="Retry with Adjustments" icon="check">
-    After submitting feedback (e.g., via thumbs down), the chat interface offers a **Retry** option. This allows the system to regenerate the response while incorporating your adjustments or corrections, whether it is a refined SQL query or an updated natural language prompt. This is especially helpful for:
+### Retry with Adjustments
 
-    - Verifying whether your edit resolved the issue.
-    - Comparing original vs. improved outputs.
-    - Seeing how changes affect the data visualization.
-  </Step>
-  <Step title="Use the Updated SQL to Re-Query the Dataset" icon="check">
-    If you edited the SQL, click [**Update response**](/improve-wisdom-ai-responses/validate-and-test-answers#sql-code-tab) to run the revised query. This re-executes the logic and updates the answer and/or chart accordingly. This step is essential for:
+After submitting feedback (e.g., via thumbs down), the chat interface offers a **Retry** option. This allows the system to regenerate the response while incorporating your adjustments or corrections, whether it is a refined SQL query or an updated natural language prompt. This is especially helpful for:
 
-    - Confirming that syntax and logic errors have been fixed.
-    - Testing if the new query returns accurate and expected data.
-    - Visualizing how different filters or joins affect the results.
+- Verifying whether your edit resolved the issue.
+- Comparing original vs. improved outputs.
+- Seeing how changes affect the data visualization.
 
-    You can also validate results by cross-referencing with known values or external reports.
-  </Step>
-  <Step title="Mark as Reviewed for Future Accuracy" icon="check">
-    After confirming that the answer and query are correct, select [**Mark as reviewed**](/improve-wisdom-ai-responses/validate-and-test-answers#sql-code-tab). This promotes the question–answer pair (with its SQL) into the **Reviewed Queries** repository. Reviewed queries serve as a trustworthy reference for similar future questions and strengthen the chatbot’s knowledge within that Domain.
+### Use the Updated SQL to Re-Query the Dataset
 
-    This workflow is especially useful for:
+If you edited the SQL, click [**Update response**](/improve-wisdom-ai-responses/validate-and-test-answers#sql-code-tab) to run the revised query. This re-executes the logic and updates the answer and/or chart accordingly. This step is essential for:
 
-    - Teams collaborating on analytics.
-    - Ensuring consistent outputs over time.
-    - Building a library of validated queries for business-critical topics.
-  </Step>
-  <Step title="Test for Generalizability" icon="check">
-    Once an answer is working, try rephrasing your original question to see if the chatbot still returns accurate results. For example:
+- Confirming that syntax and logic errors have been fixed.
+- Testing if the new query returns accurate and expected data.
+- Visualizing how different filters or joins affect the results.
 
-    - Original: _“Show me revenue by region for last quarter.”_
-    - Variation: _“How much did each territory earn last quarter?”_
+You can also validate results by cross-referencing with known values or external reports.
 
-    If the system handles both well, it means it understands your business context. If not, consider refining the [**Context**](/improve-wisdom-ai-responses/validate-and-test-answers#fine-tune-the-context) in the Knowledge section to improve generalization.
-  </Step>
-</Steps>
+### Mark as Reviewed for Future Accuracy
+
+After confirming that the answer and query are correct, select [**Mark as reviewed**](/improve-wisdom-ai-responses/validate-and-test-answers#sql-code-tab). This promotes the question–answer pair (with its SQL) into the **Reviewed Queries** repository. Reviewed queries serve as a trustworthy reference for similar future questions and strengthen the chatbot’s knowledge within that Domain.
+
+This workflow is especially useful for:
+
+- Teams collaborating on analytics.
+- Ensuring consistent outputs over time.
+- Building a library of validated queries for business-critical topics.
+
+### Test for Generalizability
+
+Once an answer is working, try rephrasing your original question to see if the chatbot still returns accurate results. Example for generalizability testing:
+
+| Test Type | Example Question                                 | Purpose                        |
+| :-------- | :----------------------------------------------- | :----------------------------- |
+| Original  | “Show me revenue by region for last quarter.”    | Baseline accuracy              |
+| Variation | “How much did each territory earn last quarter?” | Tests contextual understanding |
+
+If the system handles both well, it means it understands your business context. If not, consider refining the [**Context**](/improve-wisdom-ai-responses/validate-and-test-answers#fine-tune-the-context) in the Knowledge section to improve generalization.
 
 ## Next Steps
 
