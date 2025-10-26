@@ -1,0 +1,110 @@
+---
+title: "Remove Scope Role Assignments for Sharing"
+---
+
+The `removeScopeRoleAssignmentsForSharing` mutation removes access to a specific resource (like a Story) by revoking roles from users. This allows you to stop sharing Stories with individuals or groups.
+
+## Signature
+
+```graphql
+removeScopeRoleAssignmentsForSharing(
+  scopeId: ID!
+  scopeRoleAssignments: [ScopeRoleAssignmentInput!]!
+  scopeType: ScopeType!
+): ResponseStatus!
+```
+
+## Arguments
+
+<ParamField path="scopeId" type="ID!" required>
+  The unique identifier of the resource you want to remove sharing from (e.g., a Story ID).
+</ParamField>
+
+<ParamField path="scopeRoleAssignments" type="[ScopeRoleAssignmentInput!]!" required>
+  Array of user-role assignments to remove. See [ScopeRoleAssignmentInput](/integrations/graphql-api/objects/scope-role-assignment-input) for the input structure.
+</ParamField>
+
+<ParamField path="scopeType" type="ScopeType!" required>
+  The type of resource being unshared. For Stories, this should be `DASHBOARD`.
+</ParamField>
+
+## Response
+
+Returns a `ResponseStatus` object indicating the success or failure of the operation:
+
+```json
+{
+  "code": "OK",
+  "message": "Role removed successfully"
+}
+```
+
+## Usage Example
+
+The following example shows how to remove sharing access from a colleague:
+
+```graphql
+mutation RemoveScopeRoleAssignments($scopeId: ID!, $scopeRoleAssignments: [ScopeRoleAssignmentInput!]!, $scopeType: ScopeType!) {
+  removeScopeRoleAssignmentsForSharing(
+    scopeId: $scopeId
+    scopeRoleAssignments: $scopeRoleAssignments
+    scopeType: $scopeType
+  ) {
+    code
+    message
+  }
+}
+```
+
+<RequestExample>
+
+```bash Request
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <jwt_token>" \
+  -d '{
+    "query": "mutation RemoveScopeRoleAssignments($scopeId: ID!, $scopeRoleAssignments: [ScopeRoleAssignmentInput!]!, $scopeType: ScopeType!) { removeScopeRoleAssignmentsForSharing(scopeId: $scopeId, scopeRoleAssignments: $scopeRoleAssignments, scopeType: $scopeType) { code message } }",
+    "variables": {
+      "scopeId": "story_123456789",
+      "scopeRoleAssignments": [
+        {
+          "roleId": "00000000-0000-0000-0000-000000000009",
+          "principalId": "user_987654321"
+        }
+      ],
+      "scopeType": "DASHBOARD"
+    }
+  }' \
+  https://{ACCOUNT}.askwisdom.ai/graphql
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "data": {
+    "removeScopeRoleAssignmentsForSharing": {
+      "code": "OK",
+      "message": "Role removed successfully"
+    }
+  }
+}
+```
+
+</ResponseExample>
+
+## Related Operations
+
+<CardGroup cols={2}>
+  <Card title="Add Scope Role Assignments for Sharing" icon="user-plus" href="/integrations/graphql-api/mutations/dashboard/add-scope-role-assignments-for-sharing">
+    Grant sharing access to users
+  </Card>
+  <Card title="Delete Dashboard" icon="trash" href="/integrations/graphql-api/mutations/dashboard/delete-dashboard">
+    Permanently delete a Story
+  </Card>
+  <Card title="Dashboard Object" icon="folder" href="/integrations/graphql-api/objects/dashboard">
+    Story object schema and properties
+  </Card>
+</CardGroup>

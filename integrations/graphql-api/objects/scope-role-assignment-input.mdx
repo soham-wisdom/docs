@@ -1,0 +1,28 @@
+---
+title: "Scope Role Assignment Input"
+---
+
+This page describes the ScopeRoleAssignmentInput object used for managing user access to shared resources like Stories.
+
+## ScopeRoleAssignmentInput
+
+<ParamField path="roleId" type="ID!" required>
+  The identifier of the role to assign. For Stories, use:
+  - `00000000-0000-0000-0000-000000000008` for viewer access (read-only)
+  - `00000000-0000-0000-0000-000000000009` for editor access (read and write)
+</ParamField>
+
+<ParamField path="principalId" type="String!" required>
+  The unique identifier of the user who will receive the specified role and access to the shared resource.
+</ParamField>
+
+## Related Operations
+
+<CardGroup cols={2}>
+  <Card title="Add Scope Role Assignments for Sharing" icon="user-plus" href="/integrations/graphql-api/mutations/dashboard/add-scope-role-assignments-for-sharing">
+    Grant access using ScopeRoleAssignmentInput
+  </Card>
+  <Card title="Remove Scope Role Assignments for Sharing" icon="user-minus" href="/integrations/graphql-api/mutations/dashboard/remove-scope-role-assignments-for-sharing">
+    Remove access using ScopeRoleAssignmentInput
+  </Card>
+</CardGroup>

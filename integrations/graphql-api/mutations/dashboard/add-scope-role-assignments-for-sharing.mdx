@@ -1,0 +1,117 @@
+---
+title: "Add Scope Role Assignments for Sharing"
+---
+
+The `addScopeRoleAssignmentsForSharing` mutation grants access to a specific resource (like a Story) by assigning roles to users. This allows you to share Stories with individual team members or groups.
+
+## Signature
+
+```graphql
+addScopeRoleAssignmentsForSharing(
+  scopeId: ID!
+  scopeRoleAssignments: [ScopeRoleAssignmentInput!]!
+  scopeType: ScopeType!
+  message: String
+): ResponseStatus!
+```
+
+## Arguments
+
+<ParamField path="scopeId" type="ID!" required>
+  The unique identifier of the resource you want to share (e.g., a Story ID).
+</ParamField>
+
+<ParamField path="scopeRoleAssignments" type="[ScopeRoleAssignmentInput!]!" required>
+  Array of user-role assignments defining who gets access and what level of access they receive. See [ScopeRoleAssignmentInput](/integrations/graphql-api/objects/scope-role-assignment-input) for the input structure.
+</ParamField>
+
+<ParamField path="scopeType" type="ScopeType!" required>
+  The type of resource being shared. For Stories, this should be `DASHBOARD`.
+</ParamField>
+
+<ParamField path="message" type="String">
+  Optional personal message to include in the sharing notification email sent to recipients.
+</ParamField>
+
+## Response
+
+Returns a `ResponseStatus` object indicating the success or failure of the operation:
+
+```json
+{
+  "code": "OK",
+  "message": "Role added successfully"
+}
+```
+
+## Usage Example
+
+The following example shows how to share a Story with a colleague:
+
+```graphql
+mutation AddScopeRoleAssignments($scopeId: ID!, $scopeRoleAssignments: [ScopeRoleAssignmentInput!]!, $scopeType: ScopeType!, $message: String) {
+  addScopeRoleAssignmentsForSharing(
+    scopeId: $scopeId
+    scopeRoleAssignments: $scopeRoleAssignments
+    scopeType: $scopeType
+    message: $message
+  ) {
+    code
+    message
+  }
+}
+```
+
+<RequestExample>
+
+```bash Request
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <jwt_token>" \
+  -d '{
+    "query": "mutation AddScopeRoleAssignments($scopeId: ID!, $scopeRoleAssignments: [ScopeRoleAssignmentInput!]!, $scopeType: ScopeType!, $message: String) { addScopeRoleAssignmentsForSharing(scopeId: $scopeId, scopeRoleAssignments: $scopeRoleAssignments, scopeType: $scopeType, message: $message) { code message } }",
+    "variables": {
+      "scopeId": "story_123456789",
+      "scopeRoleAssignments": [
+        {
+          "roleId": "00000000-0000-0000-0000-000000000009",
+          "principalId": "user_987654321"
+        }
+      ],
+      "scopeType": "DASHBOARD",
+      "message": "Please review and edit this sales dashboard"
+    }
+  }' \
+  https://{ACCOUNT}.askwisdom.ai/graphql
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "data": {
+    "addScopeRoleAssignmentsForSharing": {
+      "code": "OK",
+      "message": "Role added successfully"
+    }
+  }
+}
+```
+
+</ResponseExample>
+
+## Related Operations
+
+<CardGroup cols={2}>
+  <Card title="Remove Scope Role Assignments for Sharing" icon="user-minus" href="/integrations/graphql-api/mutations/dashboard/remove-scope-role-assignments-for-sharing">
+    Remove sharing access from users
+  </Card>
+  <Card title="Create Dashboard" icon="plus" href="/integrations/graphql-api/mutations/dashboard/create-dashboard">
+    Create a new Story to share
+  </Card>
+  <Card title="Dashboard Object" icon="folder" href="/integrations/graphql-api/objects/dashboard">
+    Story object schema and properties
+  </Card>
+</CardGroup>
