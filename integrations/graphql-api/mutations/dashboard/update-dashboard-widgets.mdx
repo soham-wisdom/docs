@@ -1,0 +1,138 @@
+---
+title: "Update Dashboard Widgets"
+---
+
+The `updateDashboardWidgets` mutation updates multiple existing widgets on a dashboard in a single operation. This allows for bulk updates to widget properties such as titles, layouts, and other configurations.
+
+## Signature
+
+```graphql
+updateDashboardWidgets(widgets: [DashboardWidgetInput!]): Dashboard!
+```
+
+## Arguments
+
+<ParamField path="widgets" type="[DashboardWidgetInput!]!" required>
+  Array of widget input objects containing the updates to apply. Each widget must include an `id` field to identify which widget to update. See [DashboardWidgetInput](/integrations/graphql-api/objects/dashboard-widget-input) for the complete schema.
+</ParamField>
+
+## Response
+
+Returns the updated `Dashboard` object with all widgets populated, including the updated widget configurations. See [Dashboard](/integrations/graphql-api/objects/dashboard) for the schema.
+
+## Usage Example
+
+The following example shows how to update multiple widget properties on a dashboard:
+
+```graphql
+mutation UpdateDashboardWidgets($widgets: [DashboardWidgetInput!]) {
+  updateDashboardWidgets(widgets: $widgets) {
+    id
+    version
+    name
+    widgets {
+      id
+      title
+      nlQuery
+      layout {
+        top
+        left
+        width
+        height
+      }
+      widgetType
+    }
+  }
+}
+```
+
+<RequestExample>
+
+```bash Request
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <jwt_token>" \
+  -d '{
+    "query": "mutation UpdateDashboardWidgets($widgets: [DashboardWidgetInput!]) { updateDashboardWidgets(widgets: $widgets) { id version name widgets { id title nlQuery layout { top left width height } widgetType } } }",
+    "variables": {
+      "widgets": [
+        {
+          "id": "widget_123456789",
+          "title": "Updated Revenue Chart",
+          "nlQuery": "Show monthly revenue by region"
+        },
+        {
+          "id": "widget_987654321",
+          "layout": {
+            "top": 6,
+            "left": 4,
+            "width": 8,
+            "height": 6
+          }
+        }
+      ]
+    }
+  }' \
+  https://{ACCOUNT}.askwisdom.ai/graphql
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "data": {
+    "updateDashboardWidgets": {
+      "id": "dashboard_abcdef123456",
+      "version": "v1.2",
+      "name": "Sales Dashboard",
+      "widgets": [
+        {
+          "id": "widget_123456789",
+          "title": "Updated Revenue Chart",
+          "nlQuery": "Show monthly revenue by region",
+          "layout": {
+            "top": 0,
+            "left": 0,
+            "width": 6,
+            "height": 4
+          },
+          "widgetType": "WIDGET_TYPE_VISUALIZATION"
+        },
+        {
+          "id": "widget_987654321",
+          "title": "Customer Count",
+          "nlQuery": "Total customers",
+          "layout": {
+            "top": 6,
+            "left": 4,
+            "width": 8,
+            "height": 6
+          },
+          "widgetType": "WIDGET_TYPE_SUMMARY"
+        }
+      ]
+    }
+  }
+}
+```
+
+</ResponseExample>
+
+## Related Operations
+
+<CardGroup cols={2}>
+  <Card title="Add Widget to Dashboard" icon="plus" href="/integrations/graphql-api/mutations/dashboard/add-widget-to-dashboard">
+    Add a new widget to dashboard
+  </Card>
+  <Card title="Delete Widget from Dashboard" icon="trash" href="/integrations/graphql-api/mutations/dashboard/delete-widget-from-dashboard">
+    Remove widgets from dashboard
+  </Card>
+  <Card title="Update Dashboard" icon="pen-to-square" href="/integrations/graphql-api/mutations/dashboard/update-dashboard">
+    Update dashboard properties
+  </Card>
+  <Card title="DashboardWidgetInput Object" icon="folder" href="/integrations/graphql-api/objects/dashboard-widget-input">
+    Widget input schema
+  </Card>
+</CardGroup>

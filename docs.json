@@ -234,6 +234,7 @@
                       "integrations/graphql-api/mutations/dashboard/create-dashboard",
                       "integrations/graphql-api/mutations/dashboard/update-dashboard",
                       "integrations/graphql-api/mutations/dashboard/update-dashboard-filters",
+                      "integrations/graphql-api/mutations/dashboard/update-dashboard-widgets",
                       "integrations/graphql-api/mutations/dashboard/add-widget-to-dashboard",
                       "integrations/graphql-api/mutations/dashboard/delete-dashboard",
                       "integrations/graphql-api/mutations/dashboard/delete-widget-from-dashboard",
