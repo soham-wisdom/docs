@@ -24,8 +24,6 @@ When an answer is incorrect, you can directly edit the underlying SQL query.
 />
 
 2. The **Editor** window will open. Go to the **SQL Code** tab.
-
-
 4. Modify the SQL statement to fix inaccuracies, add joins, or correct filters.
 5. Click **Update response** to run the revised query and refresh the data.
 5. (Optional) Switch back to the **Editor** tab to configure chart types, add filters, or drag-and-drop columns for visualization.
@@ -38,19 +36,23 @@ After editing the query, you must test the new response.
 
 - **Retry with Adjustments:** Use the **Retry** option in the chat window to have the system regenerate the response using your new SQL.
 - **Cross-Reference:** Validate the new result by cross-referencing it with a known value or an external report.
-- **Test for Accuracy:** Try rephrasing the original question in a few different ways (e.g., "revenue by region" vs. "how much did each territory earn?"). If the system doesn't return the correct answer, you may need to [Add Knowledge](/setting-up-wisdom-ai/add-domain-specific-knowledge) to help it with precise queries.
+- **Test for Accuracy:** Try rephrasing the original question in a few different ways (e.g., "revenue by region" vs. "how much did each territory earn?"). If the system doesn't return the correct answer, you may need to [Add Knowledge](#add-knowledge-context) to help it with precise queries.
 
 ## 3. Add Knowledge (Context)
 
-If the system consistently misunderstands terms, you can add explicit context.
+If the system consistently misunderstands terms, you can add explicit context. This helps the system formulate more precise queries.
 
-1. Navigate to **Domains** > (Select your Domain) > **Knowledge** > **Context** and click **Add Context**.
+1. Navigate to **Domains** \> (Select your Domain) \> **Knowledge** \> **Context** and click **Add Context**.
 3. Add natural language sentences to define business terms.
    - _Example 1:_ `Regions are the same as Territories.`
    - _Example 2:_ `My sales stages are: Prospect, Negotiation, Closed.`
-4. Click **SAVE**. This helps the system formulate more precise queries.
+4. Click **SAVE**.
 
 ![Add and save context workflow](/images/add-and-save-context.png)
+
+<Info>
+  To learn more about adding context to a domain, refer to the **Add Domain-Specific Knowledge **guide.
+</Info>
 
 ## 4. Mark the Answer as Reviewed
 
