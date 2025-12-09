@@ -10,8 +10,18 @@ This page describes the tool selection configuration used for message processing
   Array of specific tools to enable for message processing.
 
   Supported values:
-  * `TABULAR_DATA`: Enables querying databases.
-  * `TEXTUAL_DATA`: Enables querying unstructured documents.
+
+  - `TABULAR_DATA`: Enables querying databases.
+  - `TEXTUAL_DATA`: Enables querying unstructured documents.
+
+  ```
+    "toolSelection": {
+      "optInToolNames": [
+          "TABULAR_DATA",
+          "TEXTUAL_DATA"
+        ]
+      }
+  ```
 </ParamField>
 
 ## Related Operation
