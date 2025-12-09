@@ -42,7 +42,21 @@ sendUserMessage(
 </ParamField>
 
 <ParamField path="toolSelection" type="ToolSelection">
-  Specific tools to use for processing the message. See [ToolSelection](/integrations/graphql-api/objects/tool-selection).
+  Specific tools to use for processing the message.
+
+  - Use `TABULAR_DATA` to enable querying databases.
+  - Use `TEXTUAL_DATA` to enable querying unstructured documents.
+
+  ```
+  "toolSelection": {
+    "optInToolNames": [
+        "TABULAR_DATA",
+        "TEXTUAL_DATA"
+      ]
+    }
+  ```
+
+  See [ToolSelection](/integrations/graphql-api/objects/tool-selection).
 </ParamField>
 
 <ParamField path="selectedModelName" type="String">
