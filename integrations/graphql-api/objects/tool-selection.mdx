@@ -2,12 +2,16 @@
 title: "ToolSelection"
 ---
 
-his page describes the tool selection configuration used for message processing.
+This page describes the tool selection configuration used for message processing.
 
 ## ToolSelection
 
 <ParamField path="optInToolNames" type="[ChatToolName!]">
   Array of specific tools to enable for message processing.
+
+  Supported values:
+  * `TABULAR_DATA`: Enables querying databases.
+  * `TEXTUAL_DATA`: Enables querying unstructured documents.
 </ParamField>
 
 ## Related Operation
