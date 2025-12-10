@@ -1,0 +1,51 @@
+---
+title: "Connect an MCP Server"
+---
+
+WisdomAI allows you to connect any server that implements the [Model Context Protocol (MCP)](https://modelcontextprotocol.io/docs/getting-started/intro). This integration enables WisdomAI to scan metadata, build a knowledge graph, and fetch real-time data to generate visualizations when users ask questions in natural language.
+
+## Prerequisites
+
+- [Admin access](/manage-account/access-management) to your WisdomAI workspace.
+- The Server URL (for HTTP/SSE) or Command (for STDIO) of your MCP server.
+- Authentication credentials (API Key or OAuth configuration), if required by your server.
+
+## Configure the connection
+
+Follow these steps to register your MCP server as a data source in WisdomAI.
+
+1. Navigate to **Connections** \> **Add Connection**.
+2. In the **Data source** dropdown, select **MCP Server**.
+3. Enter a unique **Connection name** (e.g., "Linear MCP Server").
+4. Select the **Transport Type** supported by your server:
+   - **Streamable HTTP**: Uses standard HTTP streaming for communication.
+   - **SSE**: Uses Server-Sent Events.
+   - **STDIO**: Runs the server as a local process via standard input/output.
+5. Enter the **Server URL** (for HTTP/SSE) or connection details.
+6. Select the **Authentication Type**:
+   - **None**: For public or internal servers without auth.
+   - **API Key**: Uses a static key for all requests.
+   - **OAuth**: Uses user-based authentication.
+7. (Optional) Click **\+ Add Header** to include custom headers required by your environment.
+
+   ![MCP Server connection settings showing Transport Type and Authentication options](/mcp-01.png)
+8. Click **Connect**. You may be prompted to authorize the connection to validate the setup.
+
+   ![Chat interface prompting the user to authenticate with the MCP tool](/images/mcp-03-access-request.png)
+
+<Info>
+  **User-based authentication**
+
+  If you select **OAuth**, authentication happens on a user-by-user basis. WisdomAI does not store a global credential. Instead, when a user asks a question that requires data from this server, WisdomAI will prompt them to authenticate via a secure popup during the chat session.
+</Info>
+
+## Validate the connection
+
+Once connected, you can verify the integration by asking a natural language question in the chat interface.
+
+1. Start a **Chat**.
+2. Ask a question relevant to the connected tool (e.g., "Show me my issues").
+3. If using OAuth, and you haven't authenticated yet, WisdomAI will detect the need for authentication. Click **Connect** in the chat response and Authorize the request in the popup window. \
+   WisdomAI will pull the requested data and generate the appropriate visualization or text response.
+
+![Chat interface prompting the user to authenticate with the MCP tool](/mcp-02.png)
