@@ -309,7 +309,7 @@
     "primary": {
       "type": "button",
       "label": "Support",
-      "href": "mailto:support@askwisdom.ai"
+      "href": "/manage-account/contact-support"
     }
   },
   "seo": {
