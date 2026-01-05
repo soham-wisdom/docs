@@ -70,17 +70,67 @@ After you have added your data source, you will need to select what data you wan
 
 ![Create a Domain](/images/create-domain6.png)
 
-## Upload CSV Files
+## Upload CSV files
 
-With WisdomAI, you can seamlessly integrate and analyze your existing data stored in CSV files. This standard and versatile format allows for quick integration within the platform, enabling you to gain rapid insights directly from your readily available data.
+With WisdomAI, you can seamlessly integrate and analyze your existing data stored in **CSV**, **TSV**, or **Excel** files. Follow these steps to upload your data:
 
-To upload CSV files:
+1.  Navigate to the **Homepage**.
+2.  Click the **Domain switcher**.
+3.  Select the **Upload CSV file...** option.
 
-1. Navigate to the **Homepage**.
-2. Click on the **Domain switcher**.
-3. Select the **Upload CSV file** option.
+![Image showing the Upload CSV option](/images/upload-csv-01.png)
 
-![Image showing the Upload CSV Option](/images/upload-csv-01.png)
+4.  Choose your destination logic:
+    * **New Domain**: (Default option) The system creates a new domain from the uploaded file.
+    * **Existing Domain**: Select an existing domain (e.g., "B2B Sales - 1Q25") from the **Add to Domain** dropdown.
+5.  Select the **Table Operation**:
+    * **Add as a new CSV Table**: Creates a fresh table within the selected domain.
+    * **Replace an existing CSV Table**: Updates the data of a specific table while preserving settings.
+
+<img
+  src="/images/upload-csv-02.png"
+  alt="Image showing the Upload CSV File modal"
+  title=""
+  style={{ width:"80%" }}
+/>
+
+6.  If replacing data, select the specific table to be replaced from the **Select table to replace** dropdown.
+7.  Drag and drop your file into the upload area or click to browse.
+8.  Click **Continue**.
+
+<img
+  src="/images/upload-csv-03.png"
+  alt="Image showing the Upload CSV File modal"
+  title=""
+  style={{ width:"80%" }}
+/>
+
+### File Configuration
+After the initial upload, you must verify the data structure:
+
+1.  **Configure Columns**: Review the detected column types (e.g., String, Integer). You can unmark the checkboxes to exclude specific columns from the upload.
+2.  Click **Preview**. 
+
+<img
+  src="/images/upload-csv-04.png"
+  alt="Image showing the Upload CSV File modal"
+  title=""
+  style={{ width:"80%" }}
+
+3.  Ensure the data in the preview grid maps correctly. Click **Upload & Create Table** (or **Replace table** if updating an existing one).
+
+<img
+  src="/images/upload-csv-05.png"
+  alt="Image showing the Upload CSV File modal"
+  title=""
+  style={{ width:"80%" }}
+/>
+
+<info>
+**Data Replacement Behavior**
+When you replace an existing CSV table, the system updates only the raw data. All existing column descriptions, settings, and domain configurations remain intact—only the table data itself is replaced.
+</info>
+
 
 4. In the modal that opens, you can:
    - See an example.
