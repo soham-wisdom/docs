@@ -207,6 +207,24 @@ This section outlines common prerequisites for connecting to data sources. Speci
   </Tab>
 </Tabs>
 
+## Protocol-based source: MCP Server
+
+Connect any server implementing the [Model Context Protocol](https://modelcontextprotocol.io).
+
+### MCP Server Requirements
+
+The Model Context Protocol (MCP) allows WisdomAI to fetch real-time data and scan metadata. To connect, you need:
+
+| Requirement            | Description                                     |
+| :--------------------- | :---------------------------------------------- |
+| **Transport Type**     | Streamable HTTP, SSE, or STDIO.                 |
+| **Server URL/Command** | The endpoint or command used to run the server. |
+| **Auth Type**          | API Key, OAuth, or None.                        |
+
+<Info>
+  For detailed setup instructions, see [Connect an MCP Server](/setting-up-wisdom-ai/connect-mcp-server).
+</Info>
+
 ## Integrations
 
 Connect WisdomAI to your essential business applications and services to unlock deeper insights from all your data.
