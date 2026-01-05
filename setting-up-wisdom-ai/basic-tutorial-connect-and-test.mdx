@@ -74,43 +74,43 @@ After you have added your data source, you will need to select what data you wan
 
 With WisdomAI, you can seamlessly integrate and analyze your existing data stored in **CSV**, **TSV**, or **Excel** files. Follow these steps to upload your data:
 
-1.  Navigate to the **Homepage**.
-2.  Click the **Domain switcher**.
-3.  Select the **Upload CSV file...** option.
+1. Navigate to the **Homepage**.
+2. Click the **Domain switcher**.
+3. Select the **Upload CSV file...** option.
 
 ![Image showing the Upload CSV option](/images/upload-csv-01.png)
 
-4.  Choose your destination logic:
-    * **New Domain**: (Default option) The system creates a new domain from the uploaded file.
-    * **Existing Domain**: Select an existing domain (e.g., "B2B Sales - 1Q25") from the **Add to Domain** dropdown.
-5.  Select the **Table Operation**:
-    * **Add as a new CSV Table**: Creates a fresh table within the selected domain.
-    * **Replace an existing CSV Table**: Updates the data of a specific table while preserving settings.
+4. Choose your destination logic:
+   - **New Domain**: (Default option) The system creates a new domain from the uploaded file.
+   - **Existing Domain**: Select an existing domain (e.g., "B2B Sales - 1Q25") from the **Add to Domain** dropdown.
+5. Select the **Table Operation**:
+   - **Add as a new CSV Table**: Creates a fresh table within the selected domain.
+   - **Replace an existing CSV Table**: Updates the data of a specific table while preserving settings.
 
 ![Upload CSV dialog showing the ‘Add to domain’ dropdown set to an existing domain and the ‘Table operation’ options to add a new CSV table or replace an existing CSV table](/images/upload-csv-02.png)
 
-6.  If replacing data, select the specific table to be replaced from the **Select table to replace** dropdown.
-7.  Drag and drop your file into the upload area or click to browse.
-8.  Click **Continue**.
+6. If replacing data, select the specific table to be replaced from the **Select table to replace** dropdown.
+7. Drag and drop your file into the upload area or click to browse.
+8. Click **Continue**.
 
 ![Upload CSV dialog with ‘Replace an existing CSV table’ selected, a dropdown to choose the table to replace, and a confirmation state indicating the CSV file is ready for upload](/images/upload-csv-03.png)
 
-
 ### File configuration
+
 After the initial upload, you must verify the data structure:
 
-1.  **Configure Columns**: Review the detected column types (e.g., String, Integer). You can unmark the checkboxes to exclude specific columns from the upload.
-2.  Click **Preview**. 
+1. **Configure Columns**: Review the detected column types (e.g., String, Integer). You can unmark the checkboxes to exclude specific columns from the upload.
+2. Click **Preview**.
 
 ![Configure Columns step displaying included CSV columns, column names, data types, and sample values, with options to adjust types or exclude columns before upload](/images/upload-csv-04.png)
 
-3.  Ensure the data in the preview grid maps correctly. Click **Create Table** (or **Replace table** if updating an existing one).
+3. Ensure the data in the preview grid maps correctly. Click **Create table** (or **Replace table** if updating an existing one).
 
 ![Preview CSV screen showing table name, column mappings, and sample data, with an option to replace the existing table using the uploaded CSV file](/images/upload-csv-05.png)
 
 <info>
-**Data Replacement Behavior**
-When you replace an existing CSV table, the system updates only the raw data. All existing column descriptions, settings, and domain configurations remain intact—only the table data itself is replaced.
+  **Data Replacement Behavior**
+  When you replace an existing CSV table, the system updates only the raw data. All existing column descriptions, settings, and domain configurations remain intact—only the table data itself is replaced.
 </info>
 
 ## Start Testing
@@ -137,8 +137,8 @@ In all these cases, the system will use the provided data to adjust the context 
 
 ![Revenue By Region](/images/revenue-by-region.png)
 
-
 ## Next Steps
+
 <CardGroup cols={3}>
   <Card title="Supported Data Sources" icon="database" href="/getting-started/connect-data-sources/supported-data-sources">
     Explore the full list of databases and platforms you can connect to the system.
