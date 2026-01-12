@@ -3,75 +3,62 @@ title: "Work with CSV Files"
 ---
 
 With WisdomAI, you can integrate and analyze data stored in **CSV**, **TSV**, or **Excel** files. Depending on your goals and permissions, there are three distinct ways to work with these files:
+
 1. [Add Data to a Domain (Admins)](#1-add-data-to-a-domain-admins)
 2. [Create a Private Domain (Admins/Explorers)](#2-create-a-private-domain-admins%2Fexplorers)
 3. [Attach a File to a Chat (Admins/Explorers)](#3-attach-a-file-to-a-chat-admins%2Fexplorers)
 
 ## 1. Add Data to a Domain (Admins)
 
-**Best for:** Making a dataset available to your entire team permanently.
+**Best for:** Making a dataset available to your entire team.
 
-Admins can add CSV files as tables within a shared domain. This change affects the domain-level schema, meaning every Explorer assigned to that domain can query this data.
+Admins can add or replace CSV files as tables within a shared domain or replace exiting tables. This change affects the domain-level schema, meaning every Explorer assigned to that domain can query this data.
 
 1. Navigate to **Domains** and select your target domain.
 2. Click the **Data Sources** tab.
 3. Click **Add Table** \> **from CSV file**.
 
-Proceed to [File Configuration](#file-configuration) to finalize the upload logic and data structure.
-
 ![Create Table From Csv Domain01](/images/create_table_from_csv_domain01.png)
 
-## 2. Create a Private Domain (Admins/Explorers)
-
-**Best for:** One-off analysis or testing a dataset before sharing it.
-
-Admins or Explorers can create their own "Sandbox" domains by uploading a file. These domains are private by default; no other user can see them unless the creator explicitly shares them.
-
-1. Navigate to the **Homepage**.
-2. Click the **Domain switcher**.
-3. Select the **Upload CSV file...** option.
-
-Proceed to [File Configuration](#file-configuration) to finalize the upload logic and data structure.
-
-![Image showing the Upload CSV option](/images/upload-csv-01.png)
-
-### File configuration
-
-After initiating an upload from a domain or the Homepage, you must define how the system handles the file:
-
-4. Choose your destination logic:
-   - **New Domain**: (Default option) The system creates a new domain from the uploaded file.
-   - **Existing Domain**: Select an existing domain (e.g., "B2B Sales - 1Q25") from the **Add to Domain** dropdown.
-5. Select the **Table Operation**:
+4. The domain will come set by default, while you will be able to select the **Table Operation**:
    - **Add as a new CSV Table**: Creates a fresh table within the selected domain.
    - **Replace an existing CSV Table**: Updates the data of a specific table while preserving settings.
+5. If replacing data, select the specific table to be replaced from the **Select table to replace** dropdown.
 
-![Upload CSV dialog showing the 'Add to domain' dropdown set to an existing domain and the 'Table operation' options to add a new CSV table or replace an existing CSV table](/images/upload-csv-02.png)
+   ![Upload CSV dialog with 'Replace an existing CSV table' selected, a dropdown to choose the table to replace, and a confirmation state indicating the CSV file is ready for upload](/images/upload-csv-0301.png)
+6. Drag and drop your file into the upload area or click to browse.
+7. Click **Continue**.
 
-6. If replacing data, select the specific table to be replaced from the **Select table to replace** dropdown.
-7. Drag and drop your file into the upload area or click to browse.
-8. Click **Continue**.
+![Upload Csv 0401](/images/upload-csv-0401.png)
 
-![Upload CSV dialog with 'Replace an existing CSV table' selected, a dropdown to choose the table to replace, and a confirmation state indicating the CSV file is ready for upload](/images/upload-csv-03.png)
+8. **Configure Columns**: Review the detected column types (e.g., String, Integer). You can unmark the checkboxes to exclude specific columns from the upload.
+9. Click **Preview**.
 
-### Data structure verification
+![Upload Csv 09](/images/upload-csv-09.png)
 
-Once the file is uploaded, verify the data structure to ensure accurate analysis:
-
-9. **Configure Columns**: Review the detected column types (e.g., String, Integer). You can unmark the checkboxes to exclude specific columns from the upload.
-2. Click **Preview**.
-
-![Configure Columns step displaying included CSV columns, column names, data types, and sample values, with options to adjust types or exclude columns before upload](/images/upload-csv-04.png)
-
-11. Ensure the data in the preview grid maps correctly. Click **Create table** (or **Replace table** if updating an existing one).
-
-![Preview CSV screen showing table name, column mappings, and sample data, with an option to replace the existing table using the uploaded CSV file](/images/upload-csv-05.png)
+10. Ensure the data in the preview grid maps correctly. Click **Create table** (or **Replace table** if updating an existing one).
 
 <Info>
   **Data Replacement Behavior**
 
   When you replace an existing CSV table, the system updates only the raw data. All existing column descriptions, settings, and domain configurations remain intact, only the table data itself is replaced.
 </Info>
+
+![Upload Csv 10](/images/upload-csv-10.png)
+
+## 2. Create a Private Domain (Admins/Explorers)
+
+**Best for:** One-off analysis or testing a dataset before sharing it.
+
+Admins or Explorers can create their own domains by uploading a file. These domains are private by default; no other user can see them unless the creator explicitly shares them.
+
+1. Navigate to the **Homepage**.
+2. Click the **Domain switcher**.
+3. Select the **Upload CSV file...** option.
+
+![Image showing the Upload CSV option](/images/upload-csv-01.png)
+
+4. In the **Upload CSV or TSV file** modal that opens, leave the default option **New Domain** selected and continue uploading your CSV files.
 
 ## 3. Attach a File to a Chat (Admins/Explorers)
 
