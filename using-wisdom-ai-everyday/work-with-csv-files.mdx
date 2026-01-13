@@ -12,7 +12,7 @@ With WisdomAI, you can integrate and analyze data stored in **CSV**, **TSV**, or
 
 **Best for:** Making a dataset available to your entire team.
 
-Admins can add or replace CSV files as tables within a shared domain or replace exiting tables. This change affects the domain-level schema, meaning every Explorer assigned to that domain can query this data.
+Admins can add new CSV files as tables or replace existing tables within a shared domain. This change affects the domain-level schema, meaning every Explorer assigned to that domain can query this data.
 
 1. Navigate to **Domains** and select your target domain.
 2. Click the **Data Sources** tab.
@@ -50,7 +50,7 @@ Admins can add or replace CSV files as tables within a shared domain or replace 
 
 **Best for:** One-off analysis or testing a dataset before sharing it.
 
-Admins or Explorers can create their own domains by uploading a file. These domains are private by default; no other user can see them unless the creator explicitly shares them.
+Admins or Explorers can create their own domains by uploading a file. These domains are private by default, and no other user can see them unless the creator explicitly shares them.
 
 1. Navigate to the **Homepage**.
 2. Click the **Domain switcher**.
@@ -58,7 +58,39 @@ Admins or Explorers can create their own domains by uploading a file. These doma
 
 ![Image showing the Upload CSV option](/images/upload-csv-01.png)
 
-4. In the **Upload CSV or TSV file** modal that opens, leave the default option **New Domain** selected and continue uploading your CSV files.
+4. In the **Upload CSV or TSV file** modal that opens, leave the default option **\+ Create a New Domain with this CSV** selected.
+5. Upload your files and click **Continue**.
+
+![Upload CSV modal window with the Continue button highlighted](/images/upload-csv-method2-01.png)
+
+6. The **Preview CSV file** modal window opens. Click **Configure columns** to continue.
+
+![Preview CSV file modal window with the Configure columns button highlighted](/images/upload-csv-method2-02.png)
+
+7. The **Configure CSV file** modal opens, displaying a preview of all columns detected in your CSV file.
+
+By default, basic configuration options are shown. To access additional controls, switch the **Show advanced options** toggle **ON** (top-right corner of the modal).
+
+<Tip>
+  Check the expandable section below to review all available advanced options and their descriptions.
+</Tip>
+
+<Expandable title="Advanced configuration options">
+  Advanced options let you control identifiers, ordering, allowed values, and lookup behavior used during analysis.
+
+  - **Primary key**: Marks a column as uniquely identifying each row.
+  - **User identifier**: Identifies columns that represent individual users or customers.
+  - **Allowed values**: Restricts the column to a defined set of values.
+  - **Order allowed values**: Defines a logical order for categorical values.
+  - **Default order**: Sets the default sort order for the column.
+  - **Enable lookups**: Allows the column to be used for grouping, filtering, and comparisons.
+
+  Review and adjust the column settings as needed.
+</Expandable>
+
+8. When you’re done configuring the file, click **Start asking questions**. A chat opens where you can immediately begin querying your data.
+
+![Upload Csv Method2 03](/images/upload-csv-method2-03.png)
 
 ## 3. Attach a File to a Chat (Admins/Explorers)
 
