@@ -51,6 +51,19 @@
         ]
       },
       {
+        "group": "Manage your Domains",
+        "pages": [
+          "manage-domains/understand-domains",
+          "manage-domains/overview-tab",
+          "manage-domains/data-sources-tab",
+          "manage-domains/knowledge-tab",
+          "manage-domains/changelog-tab",
+          "manage-domains/advanced-tab",
+          "manage-domains/evaluation-tab",
+          "manage-domains/sql-playground-tab"
+        ]
+      },
+      {
         "group": "Improve Wisdom AI Responses",
         "pages": [
           "improve-wisdom-ai-responses/refine-prompts-and-query-patterns",
