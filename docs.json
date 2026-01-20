@@ -55,10 +55,10 @@
         "setting-up-wisdom-ai/manage-domains/overview-tab",
         "setting-up-wisdom-ai/manage-domains/data-sources-tab",
         "setting-up-wisdom-ai/manage-domains/knowledge-tab",
-        "setting-up-wisdom-ai/manage-domains/evaluation-tab",
-        "setting-up-wisdom-ai/manage-domains/sql-playground-tab",
+        "setting-up-wisdom-ai/manage-domains/changelog-tab",
         "setting-up-wisdom-ai/manage-domains/advanced-tab",
-        "setting-up-wisdom-ai/manage-domains/changelog-tab"
+        "setting-up-wisdom-ai/manage-domains/evaluation-tab",
+        "setting-up-wisdom-ai/manage-domains/sql-playground-tab"
       ]
     }
   ]
