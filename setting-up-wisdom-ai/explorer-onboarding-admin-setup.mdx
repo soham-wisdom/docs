@@ -2,15 +2,15 @@
 title: "Explorer Onboarding Admin Setup"
 ---
 
-This guide provides administrators with the necessary instructions to configure the onboarding experience for Explorer users. A well-structured onboarding process helps Explorers get answers faster, understand the system's capabilities, and learn how to ask better questions. This setup involves three key features:
+This guide provides administrators with instructions to configure the onboarding experience for Explorer users. This setup involves the following configurations:
 
-- [Starter Questions:](#starter-questions) Help new users get immediate value by showing them the types of questions they can ask, removing the initial challenge of what to ask first.
-- [Prompt Gallery:](#prompt-gallery) Allow users to leverage expert-level queries without needing to craft them from scratch, enabling more powerful and sophisticated data exploration.
-- [Autocomplete:](#autocomplete) Guide users to better-phrased questions as they type, helping them formulate successful queries faster and more efficiently.
+- [Starter Questions:](#starter-questions) Question examples that appear in the chat interface for new domains.
+- [Prompt Gallery:](#prompt-gallery) A collection of saved, reviewed queries available for users to reuse.
+- [Autocomplete:](#autocomplete) Real-time suggestions that appear as users type in the chat.
 
 ## Starter Questions
 
-Starter Questions are enabled by default to help users get started with a new domain. These questions come pre-loaded and are designed to work "out of the box." Your primary task is to refine them better to match your organization's specific needs and terminology. Then, click on **View generated answer** to see the SQL tied to your question and the response.
+Starter Questions are disabled by default for new domains. To activate them, you must first generate a set of initial questions. Once generated, you can refine these questions to match your organization's specific terminology. Then, click on **View generated answer** to see the SQL tied to your question and the response.
 
 To find them, go to **Domains** \> _Select a domain_ \> **Advanced** \> **Starter Questions.**
 
@@ -18,42 +18,27 @@ To find them, go to **Domains** \> _Select a domain_ \> **Advanced** \> **Starte
 
 <Note>
   - Currently, you can only **edit or delete** the default Starter Questions. You **cannot add new ones** from scratch.
-  - If you delete all the Starter Questions, the feature will be disabled, and you will not be able to create new ones. It is highly recommended to **edit the existing questions** rather than deleting them.
+  - Deleting all Starter Questions disables the feature. To maintain the feature, **edit the existing questions** rather than deleting them.
   - To learn how to edit Starter Questions, read [Add Sample Q&A for Starters](/setting-up-wisdom-ai/feedback-mechanisms/provide-feedback-to-the-system#add-sample-q%26a-for-starters).
 </Note>
 
 ## Prompt Gallery
 
-The **Prompt Gallery** is a curated collection of reusable prompts. This is the most powerful tool for guiding your Explorers, as it serves two functions:
+The Prompt Gallery is a collection of reusable prompt templates used to populate the Autocomplete suggestions in the chat.
 
-1. Helps you create a browsable gallery of expert-level queries.
-2. Uses the generated prompts to populate the Autocomplete suggestions in the chat.
+**Prompt templates** are generated from the chat interface when a response is marked as ["reviewed"](https://docs.wisdom.ai/improve-wisdom-ai-responses/validate-and-test-answers#4-mark-the-answer-as-reviewed).
 
-To add a new prompt:
+<Note>
+  **Topics**
 
-1. Navigate to the **Prompt Gallery** tab within your selected domain.
-2. Click the **Add Prompt** button.
-
-![Image showing the Add Prompt button](/images/add-prompt.png)
-
-3. In the dialog box that appears, you will need to define:
-   - **The Prompt:** Write the full query you want to save. This should be a well-formed question or command that provides significant value.
-   - **Topics:** Assign one or more topics (e.g., "Contract Management," "Opportunity Analysis"). This helps organize the gallery for easier browsing.
-4. Click **Create**. Your new prompt is now part of the gallery and will be used for autocomplete suggestions.
-
-![Image showing the Add Prompt Modal](/images/add-prompt-modal.png)
-
-5. Click on the prompt to open the chat and see the system's response to it.
-
-![Prompt Chat Response Pn](/images/prompt-chat-response.png)
+  Prompts are sometimes grouped into Topics to organize the gallery. Topics act as categories for prompts that then appear as cards on the homepage for user selection.
+</Note>
 
 ## Autocomplete
 
 The Autocomplete feature is directly tied to the prompts you create in the gallery. It is a domain-specific function, which means that a suggestion will only be retrieved from the Prompt Gallery of such a domain.
 
-To manage your Autocomplete suggestions, you must manage your Prompt Gallery. Adding, editing, or deleting prompts will directly affect the suggestions that appear for your Explorers. This setup ensures that users are always guided by a curated and admin-approved set of queries.
-
-When a user starts typing a query in the main chat window, the system will search the Prompt Gallery for relevant prompts and display them as clickable autocomplete suggestions.
+When a user starts typing a query in the main chat window, the system will search the Prompt Gallery (when available) for relevant prompts and display them as clickable autocomplete suggestions.
 
 ![Gif showing how a prompt from the gallery appears as an autocomplete suggestion in the main chat interface](/images/autocomplete.gif)
 
