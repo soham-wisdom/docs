@@ -1,0 +1,19 @@
+---
+title: "Data Sources Tab"
+---
+
+The Data Sources section is where you manage and model the raw data that WisdomAI accesses and interprets. This configuration is fundamental to making your data queryable, connected, and meaningful.
+
+Within this section, you define which data sources are available to the AI, how structured data is modeled, and how file-based content is indexed. Properly configuring data sources ensures WisdomAI understands both the structure and context of your information.
+
+![New Data Sources Tab](/images/new-data-sources-tab.png)
+
+The Data Sources section includes three tabs:
+
+- **Database**: Use this tab to manage tables sourced from a connected database (for example, BigQuery). You can control which database tables are visible to the AI, add display names and descriptions, and [define relationships between tables](/setting-up-wisdom-ai/advanced-data-modeling-creating-knowledge#establishing-relationships) to accurately model your data. This view also lets you review key schema details, such as columns, derived fields, and RAG-enabled data.
+- **Tabular Uploads**: Use this tab to upload structured files, such as CSV or Excel, and create tables manually within the domain. These uploaded tables behave like database tables for querying purposes, allowing you to control visibility, add descriptions, and review the columns and data types added from the uploaded file.
+- **Files**: Use this tab to upload and manage unstructured files that provide additional context to the AI responses.
+
+  <Note>
+    This feature is in beta. Currently, PDFs, DOC/DOCX files, PowerPoint files, txt files, and images are supported.
+  </Note>
