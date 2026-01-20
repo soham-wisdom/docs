@@ -47,22 +47,22 @@
               "setting-up-wisdom-ai/feedback-mechanisms/limited-context",
               "setting-up-wisdom-ai/feedback-mechanisms/monitor-negative-feedback"
             ]
-          }
-        ]
-      },
-      {
-        "group": "Manage your Domains",
-        "pages": [
-          "manage-domains/understand-domains",
-          "manage-domains/overview-tab",
-          "manage-domains/data-sources-tab",
-          "manage-domains/knowledge-tab",
-          "manage-domains/changelog-tab",
-          "manage-domains/advanced-tab",
-          "manage-domains/evaluation-tab",
-          "manage-domains/sql-playground-tab"
-        ]
-      },
+    },
+    {
+      "group": "Manage Domains",
+      "pages": [
+        "setting-up-wisdom-ai/manage-domains/understand-domains",
+        "setting-up-wisdom-ai/manage-domains/overview-tab",
+        "setting-up-wisdom-ai/manage-domains/data-sources-tab",
+        "setting-up-wisdom-ai/manage-domains/knowledge-tab",
+        "setting-up-wisdom-ai/manage-domains/evaluation-tab",
+        "setting-up-wisdom-ai/manage-domains/sql-playground-tab",
+        "setting-up-wisdom-ai/manage-domains/advanced-tab",
+        "setting-up-wisdom-ai/manage-domains/changelog-tab"
+      ]
+    }
+  ]
+},
       {
         "group": "Improve Wisdom AI Responses",
         "pages": [
