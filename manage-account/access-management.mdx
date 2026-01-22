@@ -2,25 +2,23 @@
 title: "Access Management"
 ---
 
-We use **role-based access control (RBAC)** to ensure users have the right permissions for their job. In an RBAC model, each user is assigned one or more roles, and each role bundles a set of capabilities. This ensures that team members access only the information they need to do their job.
+We use **role-based access control (RBAC)** to ensure users have the right permissions for their job. In an RBAC model, each user is assigned one or more roles, and each role bundles a set of capabilities. Our tool also implements **granular access controls** (including row- and column-level security) to protect data. This ensures that team members access only the information they need to do their job.
 
-Our tool also implements **granular access controls** (including row- and column-level security) to protect data. Every operation in WisdomAI, from viewing dashboards to managing data sources, falls under these role-based permissions:
+## Core Roles in WisdomAI
+
+Every operation in WisdomAI, from viewing dashboards to managing data sources, falls under these role-based permissions:
 
 - [Administrator](#administrator)
 - [Data Administrator](#data-administrator)
 - [Explorer](#explorer)
 
-## Core Roles in WisdomAI
-
 ### Administrator
 
-The **Administrator** is the superuser of the WisdomAI platform with full system-wide privileges. Administrators are responsible for the foundational setup and governance of the workspace.
-
-They can:
+The Administrator is the superuser of the WisdomAI platform with full system-wide privileges. Administrators are responsible for the foundational setup and governance of the workspace. They can:
 
 - **Manage users and roles**: Invite or remove users, assign or modify roles, and oversee access permissions.
-- **Manage Domains**: Configure and maintain organizational domains within WisdomAI.
-- **Connect and organize data**: Link external data sources, manage schemas (i.e., the structure of tables and relationships), and maintain core metadata.
+- **Manage Domains**: Configure and maintain organizational Domains within WisdomAI.
+- **Connect and organize data**: Link external data sources, manage schemas (i.e., the structure of tables and relationships) and context import, which ingests business rules and data dictionaries.
 - **Oversee workspace content**: Review, publish, or unpublish key assets like stories and models to control visibility and access.
 - **Monitor and audit activity**: Track system usage, access logs, and platform health metrics to ensure smooth operation.
 
@@ -30,11 +28,11 @@ They can:
 
 ### Data Administrator
 
-The **Data Administrator** manages and prepares data assets within specific Domains. They do not have global system permissions but can:
+The Data Administrator manages and prepares data assets within specific Domains. They do not have global system permissions but can:
 
 - **Connect Domain-level data**: Set up and configure data sources for their assigned Domains.
 - **Model business context**: Define metrics, entities, and relationships relevant to their Domain.
-- **Manage content**: Create and maintain Stories, Playbooks, and Domain-specific assets as well as manage access to Dashboards and Reports.
+- **Manage content**: Create and maintain Stories, and Domain-specific assets as well as manage access to Dashboards and Reports.
 - **Apply data policies**: Set row-level and column-level access rules and validation policies.
 - **Collaborate with Explorers**: Ensure data is usable, discoverable, and tailored to user needs.
 
@@ -44,15 +42,14 @@ The **Data Administrator** manages and prepares data assets within specific Doma
 
 ### Explorer
 
-**Explorers** are data consumers. They use WisdomAI to explore, analyze, and interact with data through stories and chat. They can:
+Explorers are data consumers. They use WisdomAI to explore, analyze, and interact with data through stories and chat. They can:
 
 - **Ask questions**: Use natural language chat to query data.
-- **Explore stories**: View and interact with published stories and dashboards.
-- **Use playbooks**: Run and reuse automated data workflows.
-- **Share insights**: Export and share results with others.
+- **Leverage enterprise context**: Access and utilize organizational knowledge directly within the chat to ground responses in business-specific logic.
+- **Explore Stories**: View and interact with published Stories and Dashboards.
+- **Share insights**: Export results to Slack or email and share findings with others.
 - **Save views**: Bookmark visualizations or findings for later use.
 - **Access Reports**: View and interact with published reports (Access to Reports).
-- **Knowledge Management**: Access and utilize knowledge within the platform.
 
 <Info>
   Explorers cannot manage data sources, users, or settings.
