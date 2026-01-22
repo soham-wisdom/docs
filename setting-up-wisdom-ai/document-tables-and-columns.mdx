@@ -8,10 +8,10 @@ Proper documentation of tables and columns provides the foundational context req
 
 For each table in your data model, you can configure the following fields:
 
-| **Field**        | **Description**                                                                                                                                                         | **Example**                                                                                                                                                                                                                                                                                                                                             |
-| :--------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Display Name** | User-friendly name shown in the interface, used to replace technical or system-generated table names with something clearer and more meaningful for end users.          | The table name "contact" can be displayed as "B2B Contact Details", clarifying the type of contact data represented in the table.                                                                                                                                                                                                                       |
-| **Description**  | In this field, you should provide a clear explanation of what the table represents, focusing on a concise, plain-English description of each row’s purpose and content. | This table stores detailed records of business accounts that have monthly revenue exceeding \$10,000. Each row represents a single account and includes fields such as account ID, account name, industry classification, account creation date, current status (active, inactive, suspended), monthly revenue amount, and primary contact information. |
+| **Field**        | **Description**                                                                                                                                                                                                                                       | **Example**                                                                                                                                                                                                                                                                                                                                             |
+| :--------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Display Name** | A business-friendly alias that replaces technical or system-generated table names. You can assign unique display names to the same table across different domains. If left blank, the system defaults to the technical table name for SQL generation. | The table name "contact" can be displayed as "B2B Contact Details", clarifying the type of contact data represented in the table.                                                                                                                                                                                                                       |
+| **Description**  | In this field, you should provide a clear explanation of what the table represents, focusing on a concise, plain-English description of each row’s purpose and content.                                                                               | This table stores detailed records of business accounts that have monthly revenue exceeding \$10,000. Each row represents a single account and includes fields such as account ID, account name, industry classification, account creation date, current status (active, inactive, suspended), monthly revenue amount, and primary contact information. |
 
 <Tip>
   Always specify the granularity of each row in your table description. This helps analysts understand the level of detail in the data and prevents misinterpretation during analysis.
@@ -66,10 +66,7 @@ To configure RAG for a table, follow these steps:
   alt="RAG Configuration Columns 01 Pn"
   title="Snippet showing how to open the RAG Settings"
   className="rounded-image"
-  style={{
-    width: "100%",
-    borderRadius: "10px"
-  }}
+  style={{ width:"100%",borderRadius:"10px" }}
 />
 
 3. In the **RAG Configuration for Textual Columns** window that opens, complete the following:
@@ -85,12 +82,8 @@ To configure RAG for a table, follow these steps:
   alt="RAG Configuration Columns 01 Pn"
   title="Snippet showing the RAG Configuration Modal"
   className="rounded-image"
-  style={{
-    width: "100%",
-    borderRadius: "10px"
-  }}
-/>  
-
+  style={{ width:"100%",borderRadius:"10px" }}
+/>
 
 ## Next Steps
 
