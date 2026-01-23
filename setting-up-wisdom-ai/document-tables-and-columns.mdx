@@ -37,14 +37,14 @@ To document columns, click on the table's name. A new page will open, displaying
 
 If you toggle the **Show advanced options** switch on, the following additional configuration fields will appear, allowing for more granular control over your data model:
 
-| **Field**                | **Description**                                                                                 |
-| :----------------------- | :---------------------------------------------------------------------------------------------- |
-| **Primary Key**          | Identifies if the column is a unique identifier for the rows in the table.                      |
-| **Default Order**        | Sets the default sorting direction (Ascending or Descending) for the column.                    |
-| **Allowed values**       | Defines a specific list of acceptable values for the column.                                    |
-| **Order allowed values** | Enables or disables a specific custom sorting order for the defined allowed values.             |
-| **User identifier**      | Marks the column as containing user-specific identifying information such as email or username. |
-| **Enable Lookups**       | Toggles whether this column can be used for data lookup operations.                             |
+| **Field**                | **Description**                                                                                                                                                                                                                                        |
+| :----------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Primary Key**          | Identifies if the column is a unique identifier for the rows in the table.                                                                                                                                                                             |
+| **Default Order**        | Sets the default sorting direction (Ascending or Descending) for the column.                                                                                                                                                                           |
+| **Allowed values**       | Defines a list of valid entries to guide WisdomAI's understanding of the column's content. These values are case-sensitive and are used for semantic context only; the system does not validate or restrict incoming database data based on this list. |
+| **Order allowed values** | Enables or disables a specific custom sorting order for the defined allowed values. This custom sequence overrides the Default Order setting.                                                                                                          |
+| **User identifier**      | Marks the column as containing user-specific identifying information such as email or username.                                                                                                                                                        |
+| **Enable Lookups**       | Toggles whether this column can be used for data lookup operations.                                                                                                                                                                                    |
 
 ![A table view of database columns showing advanced configuration options, such as Primary Key and Allowed Values, enabled by the "Show advanced options" toggle.](/images/advanced-config-columns.png)
 
