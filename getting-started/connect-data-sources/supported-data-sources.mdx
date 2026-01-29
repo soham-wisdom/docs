@@ -29,6 +29,10 @@ Supported file types: PDFs, DOC/DOCX files, PowerPoint files, txt files, and ima
 
 To learn how to connect to your Data Sources, read the [Basic Tutorial: Connect and Test](/setting-up-wisdom-ai/basic-tutorial-connect-and-test).
 
+<Info>
+  **Note on Syncing**: After successfully adding a connection, the initial sync may take a few minutes to complete before data is available for analysis. 
+</Info>
+
 ### Connection Requirements
 
 This section outlines common prerequisites for connecting to data sources. Specific requirements are detailed under each data source.
@@ -44,7 +48,7 @@ This section outlines common prerequisites for connecting to data sources. Speci
 
 <Tabs>
   <Tab title="PostgreSQL">
-    The following table lists all the requirements you need to provide when connecting to PostgreSQL.
+    The following table lists the requirements you must provide when connecting to PostgreSQL.
 
     <Info>
       SSH settings are optional.
@@ -74,7 +78,7 @@ This section outlines common prerequisites for connecting to data sources. Speci
     ```
   </Tab>
   <Tab title="Microsoft SQL Server">
-    The following table lists all the requirements you need to provide when connecting to Microsoft SQL Server.
+    The following table lists the requirements you must provide when connecting to Microsoft SQL Server.
 
     | Requirement              | Description                                   |
     | :----------------------- | :-------------------------------------------- |
@@ -99,7 +103,7 @@ This section outlines common prerequisites for connecting to data sources. Speci
     ```
   </Tab>
   <Tab title="Databricks">
-    The following table lists all the requirements you need to provide when connecting to Databricks.
+    The following table lists the requirements you must provide when connecting to Databricks.
 
     | Requirement     | Description                      |
     | :-------------- | :------------------------------- |
@@ -122,7 +126,7 @@ This section outlines common prerequisites for connecting to data sources. Speci
     ```
   </Tab>
   <Tab title="Snowflake">
-    The following table lists all the requirements you need to provide when connecting to Snowflake.
+    The following table lists the requirements you must provide when connecting to Snowflake.
 
     | Requirement      | Description                           |
     | :--------------- | :------------------------------------ |
@@ -155,7 +159,7 @@ This section outlines common prerequisites for connecting to data sources. Speci
     Access the [Snowflake Docs](https://docs.snowflake.com/en/user-guide/key-pair-auth.html) to get more information about Key Pair Authentication.
   </Tab>
   <Tab title="Google BigQuery">
-    The following table lists all the requirements you need to provide when connecting to Google BigQuery.
+    The following table lists the requirements you must provide when connecting to Google BigQuery.
 
     | Requirement    | Description                       |
     | :------------- | :-------------------------------- |
@@ -176,7 +180,7 @@ This section outlines common prerequisites for connecting to data sources. Speci
     </Warning>
   </Tab>
   <Tab title="Amazon Redshift">
-    The following table lists all the requirements you need to provide when connecting to Amazon Redshift.
+    The following table lists the requirements you must provide when connecting to Amazon Redshift.
 
     <Info>
       SSH settings are optional.
@@ -198,7 +202,7 @@ This section outlines common prerequisites for connecting to data sources. Speci
   <Tab title="CSV Files">
     You can also upload CSV files to a Domain. Here are the requirements for these files:
 
-    - File must be in valid CSV format
+    - File must be in a valid CSV format
     - Maximum file size: 100MB
     - UTF-8 encoding recommended
     - Headers should be in the first row
@@ -209,17 +213,17 @@ This section outlines common prerequisites for connecting to data sources. Speci
 
 ## Protocol-based source: MCP Server
 
-Connect any server implementing the [Model Context Protocol](https://modelcontextprotocol.io). MCP enables WisdomAI to fetch real-time data and scan metadata from external systems through a standardized protocol.
+Connect to any server that implements the [Model Context Protocol](https://modelcontextprotocol.io). MCP enables WisdomAI to fetch real-time data and scan metadata from external systems through a standardized protocol.
 
 ### MCP Server Requirements
 
 To connect an MCP server, you must provide:
 
-| Requirement            | Description                                     |
-| :--------------------- | :---------------------------------------------- |
+| Requirement            | Description                                         |
+| :--------------------- | :-------------------------------------------------- |
 | **Transport Type**     | Streamable HTTP, Server-Sent Events (SSE), or STDIO |
-| **Server URL/Command** | The endpoint or command used to run the MCP server |
-| **Auth Type**          | API Key, OAuth, or None                       |
+| **Server URL/Command** | The endpoint or command used to run the MCP server  |
+| **Auth Type**          | API Key, OAuth, or None                             |
 
 <Info>
   For detailed setup instructions, see [Connect an MCP Server](/getting-started/connect-data-sources/connect-mcp-server).
@@ -233,7 +237,7 @@ Connect WisdomAI to your essential business applications and services to unlock 
 
 WisdomAI works with leading (Extract, Transform, and Load) ETL partners to provide data integration from various SaaS applications.
 
-WisdomAI leverages **Fivetran** or **Airbyte** to ETL data from SaaS applications into a customer-owned data warehouse, alternatively into a WisdomAI-managed **BigQuery**-based analytics environment.
+WisdomAI leverages **Fivetran** or **Airbyte** to ETL data from SaaS applications into a customer-owned data warehouse or, alternatively, into a WisdomAI-managed **BigQuery**-based analytics environment.
 
 ### Supported SaaS Data Sources
 
@@ -274,7 +278,7 @@ For persistent connection issues, contact WisdomAI support at `support@askwisdom
 
 <CardGroup cols={3}>
   <Card title="Connect Unstructured Repositories" icon="folder-plus" href="/improve-wisdom-ai-responses/connect-unstructed-repositories-datasets">
-    Integrate unstructured data sources like documents or knowledge bases to enrich your analysis.
+    Integrate unstructured data sources, such as documents or knowledge bases, to enrich your analysis.
   </Card>
   <Card title="Connect and Test Tutorial" icon="rocket" href="/setting-up-wisdom-ai/basic-tutorial-connect-and-test">
     Walk through the initial setup to connect a data source and run your first query.
