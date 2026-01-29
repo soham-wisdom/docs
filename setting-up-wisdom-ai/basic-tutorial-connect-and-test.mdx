@@ -2,7 +2,7 @@
 title: "Basic Tutorial: Connect and Test"
 ---
 
-This tutorial is intended for Admin users, responsible for configuring data sources and setting up the chatbot.
+This tutorial is intended for Admin users who are responsible for configuring data sources and setting up the chatbot.
 
 ## Learning Objectives
 
@@ -10,7 +10,7 @@ By the end of this tutorial, you will be able to:
 
 - Connect to your Database.
 - Start experimenting with your WisdomAI chatbot to test it.
-- Provide feedback so the system can create context by itself.
+- Provide feedback so the system can create context on its own.
 
 Once you have completed this tutorial, you will have a working chatbot connected to your data and ready to improve through real-time interaction and feedback.
 
@@ -50,9 +50,13 @@ To get started, you first need to connect your existing data source to WisdomAI 
 
 ![Add a Connection](/images/add-connection-2-5.png)
 
+<Info>
+  **Note on Syncing**: After successfully adding a connection, the initial sync may take a few minutes to complete before data is available for analysis.
+</Info>
+
 ## Select the Data
 
-After you have added your data source, you will need to select what data you want to use in your project. For this, you will need to create a Domain.
+After you add your data source, select the data you want to use in your project. For this, you will need to create a Domain.
 
 1. Go to **Domains** in the left sidebar.
 
@@ -85,7 +89,7 @@ In addition to database connections, Admins can add data directly to a Domain us
 ![Configure tables modal](/images/configure_columns_domain.png)
 
 <Note>
-  **Replace an Existing table**
+  **Replace an Existing Table**
 
   You can also replace an existing CSV table instead of uploading a new one. This allows you to update the underlying data while preserving all existing column descriptions, settings, and domain configurations. To learn how to do it, see our [Work with CSV Files](/using-wisdom-ai-everyday/work-with-csv-files) guide.
 </Note>
@@ -110,15 +114,15 @@ Once your data is set up and selected, you can begin experimenting with your Wis
 
 While experimenting with your chatbot, you can **train** it by providing **feedback**. There are three main ways to do so:
 
-- Using the **thumbs up/down** icons. If your feedback was thumbs down, a new window opens to let you adjust the query accordingly. The more thumbs up/down you provide, the more you will be training the tool to get a high-quality, correct answer.
+- Using the **thumbs up/down** icons. If your feedback was thumbs down, a new window opens so you can adjust the query accordingly. The more thumbs up/down you provide, the more you will train the tool to get high-quality, correct answers.
 - By **changing the SQL Code**.
 - By **Fine-tuning** the **Context**.
 
 <Info>
-  Think about the following scenario: you are telling the system that the Report it has created is not correct, so you provide the accurate data within the chat. If this additional context has not been added through the database tables, you will be able to add it directly through the chat.
+  Think about the following scenario: you tell the system that the Report it created is incorrect, so you provide the accurate data in the chat. If this additional context has not been added to the database tables, you can add it directly in the chat.
 </Info>
 
-In all these cases, the system will use the provided data to adjust the context of your database further, enabling it to provide better answers in future searches, as shown in the example images below.
+In all these cases, the system will use the provided data to further refine the context of your database, enabling it to provide better answers in future searches, as shown in the example images below.
 
 ![Thumb Down Feedback](/images/thumb-downv2.png)
 
