@@ -1,0 +1,56 @@
+---
+title: "Manage Organizations"
+---
+
+This guide explains how to use the Organizations manager to create and maintain isolated environments within your tenant. Organizations ensure full data separation, meaning that connections, domains, users, dashboards, and agents are kept entirely independent across different environments.
+
+<Check>
+  **Beta Feature:** The Organizations manager is currently in beta. It is available for complementary access during the preview period.
+</Check>
+
+## Before you start
+
+To perform these tasks, you must have **overall site administrator** permissions. Regular users or organization-level admins cannot access the global Organizations manager.
+
+Read the [Access Management](/manage-account/access-management) guide to learn more about roles and permissions.
+
+## Create a new organization
+
+Provisioning a new organization creates a blank environment with its own unique URL.
+
+1. Sign in to Wisdom AI as a site administrator.
+2. Click the **Organizations** icon in the bottom-left navigation menu.
+3. Click the **Add Organization** tile.
+4. Enter the **Organization Name** (e.g., "Finance-Dept").
+5. Define the **URI** (e.g., `finance`). This creates a unique access point: `https://try.askwisdom.ai/orgs/finance`.
+6. Add **Organization Admins** by entering their email addresses.
+7. Click **Create Organization**.
+
+## Manage existing organizations
+
+Once created, you can manage organizations directly from the dashboard using quick-access icons.
+
+### Modify settings and access
+
+- **Edit Details**: Click the **three-dot menu (...)** on an organization tile and select **Edit** to update the name, URI, or administrative owners.
+- **Access Domains**: Click the **monitor icon** to configure AI domains specific to that organization.
+- **Manage Connections**: Click the **sync icon** to set up or modify data source integrations for that environment.
+
+### User administration
+
+Click the **person icon** on an organization tile to open the user management view:
+
+- **Invite Users**: Click **Invite Users** to grant access to the specific organization.
+- **Export List**: Click **Export to CSV** to download a record of all users assigned to the organization.
+
+### Archive an organization
+
+If an environment is no longer needed, you can deactivate it to prevent further access.
+
+1. Click the **three-dot menu (...)** on the organization tile.
+2. Select **Archive organization**.
+3. Confirm the action in the dialog box.
+
+<Warning>
+  Archiving an organization hides it from the dashboard and revokes all user access. Archived data is typically subject to a 30-day grace period before permanent deletion.
+</Warning>

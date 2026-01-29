@@ -9,6 +9,20 @@
   },
   "favicon": "/favicon.webp",
   "navigation": {
+    "global": {
+      "anchors": [
+        {
+          "anchor": "Wisdom AI",
+          "icon": "/favicon.png",
+          "href": "https://www.askwisdom.ai/"
+        },
+        {
+          "anchor": "Support",
+          "icon": "headset",
+          "href": "/manage-account/contact-support"
+        }
+      ]
+    },
     "groups": [
       {
         "group": "Getting Started",
@@ -46,22 +60,22 @@
               "setting-up-wisdom-ai/feedback-mechanisms/limited-context",
               "setting-up-wisdom-ai/feedback-mechanisms/monitor-negative-feedback"
             ]
-    },
-    {
-      "group": "Manage Domains",
-      "pages": [
-        "setting-up-wisdom-ai/manage-domains/understand-domains",
-        "setting-up-wisdom-ai/manage-domains/overview-tab",
-        "setting-up-wisdom-ai/manage-domains/data-sources-tab",
-        "setting-up-wisdom-ai/manage-domains/knowledge-tab",
-        "setting-up-wisdom-ai/manage-domains/changelog-tab",
-        "setting-up-wisdom-ai/manage-domains/advanced-tab",
-        "setting-up-wisdom-ai/manage-domains/evaluation-tab",
-        "setting-up-wisdom-ai/manage-domains/sql-playground-tab"
-      ]
-    }
-  ]
-},
+          },
+          {
+            "group": "Manage Domains",
+            "pages": [
+              "setting-up-wisdom-ai/manage-domains/understand-domains",
+              "setting-up-wisdom-ai/manage-domains/overview-tab",
+              "setting-up-wisdom-ai/manage-domains/data-sources-tab",
+              "setting-up-wisdom-ai/manage-domains/knowledge-tab",
+              "setting-up-wisdom-ai/manage-domains/changelog-tab",
+              "setting-up-wisdom-ai/manage-domains/advanced-tab",
+              "setting-up-wisdom-ai/manage-domains/evaluation-tab",
+              "setting-up-wisdom-ai/manage-domains/sql-playground-tab"
+            ]
+          }
+        ]
+      },
       {
         "group": "Improve Wisdom AI Responses",
         "pages": [
@@ -90,6 +104,7 @@
       {
         "group": "Access Management",
         "pages": [
+          "access-management/manage-organizations",
           {
             "group": "Row Level Access Control",
             "pages": [
@@ -271,7 +286,6 @@
                 "pages": [
                   "integrations/graphql-api/subscriptions/dashboard-summary",
                   "integrations/graphql-api/subscriptions/subscribe-conversation"
-                  
                 ]
               }
             ]
@@ -298,21 +312,7 @@
           "reference-library/limits-and-quotas"
         ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Wisdom AI",
-          "href": "https://www.askwisdom.ai/",
-          "icon": "/favicon.png"
-        },
-        {
-          "anchor": "Support",
-          "href": "/manage-account/contact-support",
-          "icon": "headset"
-        }
-      ]
-    }
+    ]
   },
   "logo": {
     "light": "/logo/logo-white.svg",
