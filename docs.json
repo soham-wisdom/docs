@@ -104,7 +104,6 @@
       {
         "group": "Access Management",
         "pages": [
-          "access-management/manage-organizations",
           {
             "group": "Row Level Access Control",
             "pages": [
@@ -114,6 +113,7 @@
           },
           "manage-account/access-management",
           "manage-account/users-management",
+          "access-management/manage-organizations",
           "manage-account/monitor-performance-and-usage",
           "manage-account/compliance-and-best-practices"
         ]
