@@ -84,7 +84,6 @@
           "improve-wisdom-ai-responses/enhancing-data-analysis-with-custom-business-context",
           "improve-wisdom-ai-responses/connect-unstructed-repositories-datasets",
           "improve-wisdom-ai-responses/how-to-create-metrics",
-          "improve-wisdom-ai-responses/use-files-to-improve-responses",
           "improve-wisdom-ai-responses/use-evaluations-sets-and-runs",
           "improve-wisdom-ai-responses/build-dashboards"
         ]
@@ -98,6 +97,7 @@
           "using-wisdom-ai-everyday/schedule-story-notifications",
           "using-wisdom-ai-everyday/auditing",
           "using-wisdom-ai-everyday/work-with-csv-files",
+          "improve-wisdom-ai-responses/attach-files-to-chat",
           "using-wisdom-ai-everyday/prompt-templates"
         ]
       },
