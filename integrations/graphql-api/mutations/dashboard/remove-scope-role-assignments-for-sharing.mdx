@@ -2,7 +2,7 @@
 title: "Remove Scope Role Assignments for Sharing"
 ---
 
-The `removeScopeRoleAssignmentsForSharing` mutation removes access to a specific resource (like a Story) by revoking roles from users. This allows you to stop sharing Stories with individuals or groups.
+The `removeScopeRoleAssignmentsForSharing` mutation removes access to a specific resource (like a Dashboard) by revoking roles from users. This allows you to stop sharing Dashboards with individuals or groups.
 
 ## Signature
 
@@ -17,7 +17,7 @@ removeScopeRoleAssignmentsForSharing(
 ## Arguments
 
 <ParamField path="scopeId" type="ID!" required>
-  The unique identifier of the resource you want to remove sharing from (e.g., a Story ID).
+  The unique identifier of the resource you want to remove sharing from (e.g., a Dashboard ID).
 </ParamField>
 
 <ParamField path="scopeRoleAssignments" type="[ScopeRoleAssignmentInput!]!" required>
@@ -25,7 +25,7 @@ removeScopeRoleAssignmentsForSharing(
 </ParamField>
 
 <ParamField path="scopeType" type="ScopeType!" required>
-  The type of resource being unshared. For Stories, this should be `DASHBOARD`.
+  The type of resource being unshared. For Dashboards, this should be `DASHBOARD`.
 </ParamField>
 
 ## Response
@@ -102,9 +102,9 @@ curl -X POST \
     Grant sharing access to users
   </Card>
   <Card title="Delete Dashboard" icon="trash" href="/integrations/graphql-api/mutations/dashboard/delete-dashboard">
-    Permanently delete a Story
+    Permanently delete a Dashboard
   </Card>
   <Card title="Dashboard Object" icon="folder" href="/integrations/graphql-api/objects/dashboard">
-    Story object schema and properties
+    Dashboard object schema and properties
   </Card>
 </CardGroup>
