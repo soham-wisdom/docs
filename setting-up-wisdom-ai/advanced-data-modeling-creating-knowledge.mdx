@@ -1,12 +1,12 @@
 ---
-title: "Advanced Data Modeling: Creating Knowledge"
+title: "Advanced Data Modeling: Creating Context"
 ---
 
 This article, intended for Admin users and Data Administrators, details the three primary methods for creating and curating knowledge to improve AI-powered analytics in responses. The main goal of this page is to explain the following concepts:
 
 - [Formal Semantic Modeling: Model data using a formal semantic layer.](#formal-semantic-modeling)
-- [Natural Language Context: Enrich the AI's understanding with natural language.](#natural-language-context)
-- [Feedback-Based Context: Improve accuracy through direct user feedback.](#feedback-based-context)
+- [Natural Language Knowledge: Enrich the AI's understanding with natural language.](#natural-language-context)
+- [Feedback-Based Knowledge: Improve accuracy through direct user feedback.](#feedback-based-context)
 
 ## Formal Semantic Modeling
 
@@ -62,19 +62,19 @@ Properly documenting tables and columns provides foundational context to enable 
 
 ---
 
-## Natural Language Context
+## Natural Language Knowledge
 
 This section covers the methods for providing the AI with unstructured, domain-specific knowledge that is difficult to capture in a formal data model, such as business rules or specific terminology.
 
-### Manual Context Entry
+### Manual Knowledge Entry
     Add domain-specific knowledge, rules, or naming conventions in natural language sentences to guide the AI’s understanding. An example is, "_Regions are the same as Territories_". This improves accuracy by helping the system interpret ambiguous terms and captures knowledge that does not exist in the database schema. It is crucial to validate the impact of manual entries by asking a question in the chat interface to see if the response is as expected.
 
     <Note>
-      To learn how to add Context, read the article [Add Domain-Specific Knowledge](/setting-up-wisdom-ai/add-domain-specific-knowledge). There, you will find an example of how the response changes after you add context.
+      To learn how to add Knowledge, read the article [Add Domain-Specific Context](/setting-up-wisdom-ai/add-domain-specific-knowledge). There, you will find an example of how the response changes after you add context.
     </Note>
-    ![Image showing the Context Tab](/images/context-tab.png)
+    ![Image showing the Knowledge Tab](/images/context-tab.png)
   
-### Importing Unstructured Knowledge (Beta)
+### Importing Unstructured Context (Beta)
     Enhance the AI’s context by importing knowledge directly from existing business and technical documents. This process is handled through the 'Chat' experience, which allows for an interactive experience to selectively extract context. Supported information types that can be imported include:
 
     - ERD Diagrams: Extract entity relationships from diagram images.
@@ -89,7 +89,7 @@ This section covers the methods for providing the AI with unstructured, domain-s
     </Note>
 
 
-## Feedback-Based Context
+## Feedback-Based Knowledge
 
 This section describes the continuous learning loop, where direct user feedback on AI-generated responses is used to validate and refine the system's knowledge and accuracy over time.
 

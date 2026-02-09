@@ -19,7 +19,7 @@ An easy workflow to define validated queries is to ask the question in the chat,
 1. Ask a question and review the generated answer.
 2. If the answer is correct, click the **thumbs-up** icon.
 3. In the **Review a Question** modal that appears, confirm or edit the natural language question that the SQL code answers.
-4. After confirmation, the query will be saved and listed in the **Knowledge \> Reviewed Queries** tab.
+4. After confirmation, the query will be saved and listed in the **Context \> Reviewed Queries** tab.
 
 The following code block shows an example of a query to calculate the win rate for sales that was validated by clicking the thumbs-up button.
 
@@ -87,7 +87,7 @@ After applying the change and seeing the updated quarterly chart, you can save t
 
 ### Bulk Upload with CSV
 
-For adding many validated queries at once, you can use the CSV upload option in the **Knowledge** \> **Reviewed Queries** tab. This is ideal for migrating existing reports or defining a set of canonical metrics from the start.
+For adding many validated queries at once, you can use the CSV upload option in the **Context** \> **Reviewed Queries** tab. This is ideal for migrating existing reports or defining a set of canonical metrics from the start.
 
 To bulk upload, create a CSV file that contains two column headers: `Query` and `SQL`. Populate the rows with the natural language questions and their corresponding SQL code.
 
@@ -102,13 +102,13 @@ For a validated query to be effective and reusable, follow these best practices 
 - **Use CTEs for complex logic:** If the SQL requires multiple steps or transformations, break it down into more understandable Common Table Expressions (CTEs).
 - **Be consistent:** Use a consistent SQL structure for different variations of the same metric. For example, the queries for “Yearly trend of ARR” and “ARR by segment” should be built from a consistent base calculation of ARR, ideally using the same CTE.
 
-## Combining with Language Context for Complex Cases
+## Combining with Language Knowledge for Complex Cases
 
-While Validated Queries are powerful, some complex business rules are best enforced by pairing them with explicit instructions in your **Language Context**. Validated Queries teach the model _how_ to calculate a specific metric, while Language Context can teach it _what not to do_ to avoid common logical errors.
+While Validated Queries are powerful, some complex business rules are best enforced by pairing them with explicit instructions in your **Language Knowledge**. Validated Queries teach the model _how_ to calculate a specific metric, while Language Knowledge can teach it _what not to do_ to avoid common logical errors.
 
 For instance, imagine you have a `statewise_population` table with a pre-aggregated `country_population` column. Summing this column across multiple states from the same country would lead to massive double-counting.
 
-While a Validated Query can show the correct way to get the population, adding a clear instruction in [Language Context](/setting-up-wisdom-ai/advanced-data-modeling-creating-knowledge#natural-language-context) provides an extra layer of protection against mistakes:
+While a Validated Query can show the correct way to get the population, adding a clear instruction in [Language Knowledge](/setting-up-wisdom-ai/advanced-data-modeling-creating-knowledge#natural-language-context) provides an extra layer of protection against mistakes:
 
 **Instruction Example:** “Never sum up the `country_population` column across different rows for the same country.”
 
@@ -117,7 +117,7 @@ Using both features together ensures that even when the AI generates new or slig
 ## Next steps
 
 <CardGroup cols={2}>
-  <Card title="Limited Context" icon="puzzle-piece" href="/setting-up-wisdom-ai/feedback-mechanisms/limited-context">
+  <Card title="Limited Knowledge" icon="puzzle-piece" href="/setting-up-wisdom-ai/feedback-mechanisms/limited-context">
     Understand how to identify and flag when the system's answers lack necessary context.
   </Card>
   <Card title="Provide Feedback to the System" icon="thumbs-up" href="/setting-up-wisdom-ai/feedback-mechanisms/provide-feedback-to-the-system">
