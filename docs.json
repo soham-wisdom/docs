@@ -53,7 +53,7 @@
           "setting-up-wisdom-ai/add-domain-specific-knowledge",
           "setting-up-wisdom-ai/document-tables-and-columns",
           {
-            "group": "Feedback Mechanisms",
+            "group": "Feedback Options",
             "pages": [
               "setting-up-wisdom-ai/feedback-mechanisms/provide-feedback-to-the-system",
               "setting-up-wisdom-ai/feedback-mechanisms/reviewed-queries",
@@ -72,6 +72,14 @@
               "setting-up-wisdom-ai/manage-domains/advanced-tab",
               "setting-up-wisdom-ai/manage-domains/evaluation-tab",
               "setting-up-wisdom-ai/manage-domains/sql-playground-tab"
+            ]
+          },
+          {
+            "group": "Manage Tables & Columns",
+            "pages": [
+              "setting-up-wisdom-ai/manage-tables-columns/document-tables-and-columns",
+              "setting-up-wisdom-ai/manage-tables-columns/advanced-column-options",
+              "setting-up-wisdom-ai/manage-tables-columns/set-up-rag"
             ]
           }
         ]
