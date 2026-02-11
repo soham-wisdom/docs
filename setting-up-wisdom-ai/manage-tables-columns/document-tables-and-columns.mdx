@@ -17,7 +17,7 @@ For each table in your data model, you can configure the following fields:
   Always specify the granularity of each row in your table description. This helps analysts understand the level of detail in the data and prevents misinterpretation during analysis.
 </Tip>
 
-To Document tables, go to **Domains** \> **Select a Domain** \> **Data Sources** \> **Tables**.
+To Document tables, go to **Domains** > **Select a Domain** > **Data Sources** > **Tables**.
 
 ![The table is listed with the Display name and Description highlighted](/images/new-document-table.png)
 
@@ -33,57 +33,7 @@ To document columns, click on the table's name. A new page will open, displaying
 
 ![The column is listed with the Display name and the Descrption highlighted](/images/new-document-column-00.png)
 
-### Advanced Column Options
 
-If you toggle the **Show advanced options** switch on, the following additional configuration fields will appear, allowing for more granular control over your data model:
-
-| **Field**                | **Description**                                                                                                                                                                                                                                        |
-| :----------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Primary Key**          | Identifies if the column is a unique identifier for the rows in the table.                                                                                                                                                                             |
-| **Default Order**        | Sets the default sorting direction (Ascending or Descending) for the column.                                                                                                                                                                           |
-| **Allowed values**       | Defines a list of valid entries to guide WisdomAI's understanding of the column's content. These values are case-sensitive and are used for semantic context only; the system does not validate or restrict incoming database data based on this list. |
-| **Order allowed values** | Enables or disables a specific custom sorting order for the defined allowed values. This custom sequence overrides the Default Order setting.                                                                                                          |
-| **User identifier**      | Marks the column as containing user-specific identifying information such as email or username.                                                                                                                                                        |
-| **Enable Lookups**       | Toggles whether this column can be used for data lookup operations.                                                                                                                                                                                    |
-
-![A table view of database columns showing advanced configuration options, such as Primary Key and Allowed Values, enabled by the "Show advanced options" toggle.](/images/advanced-config-columns.png)
-
-### Set up RAG for Textual Columns
-
-Retrieval-Augmented Generation (RAG) for Textual Columns is a feature that enhances the AI's ability to understand and search through the data within a specific table. By configuring RAG for a table, you enhance the AI's ability to search through data by selecting specific columns for different functions:
-
-- **Text content for search**: You can define which columns contain rich text that should be searched over.
-- **Filters for queries**: You can select columns with structured data, such as IDs and dates, which can be used to narrow down search results.
-- **Primary Keys**: You can pick columns that uniquely identify each row, which aids in data retrieval.
-
-To configure RAG for a table, follow these steps:
-
-1. Navigate to **Domains** \> Select your preferred domain \> **Data Sources** \> **Tables** and locate the table for which you want to configure RAG columns.
-2. Click on the **three vertical dots** icon and then on **RAG Settings**.
-
-<img
-  src="/images/RAG-Configuration-columns-01.png"
-  alt="RAG Configuration Columns 01 Pn"
-  title="Snippet showing how to open the RAG Settings"
-  className="rounded-image"
-  style={{ width:"100%",borderRadius:"10px" }}
-/>
-
-3. In the **RAG Configuration for Textual Columns** window that opens, complete the following:
-   - In the **Text content columns for search** field, select the columns that contain rich text content that will be searched over.
-   - In the **Filter columns for queries** field, select columns with structured data (like IDs or dates) that can be used to narrow down search results.
-   - In the **Primary key** field, choose one or more columns that uniquely identify each row in the table.
-   - In the **Description of search columns** text box, write a brief description of what the combination of the search columns represents. This helps the AI better understand the context of your data.
-   - (Optional) Click **Advanced Options** to specify **columns for citation titles** **and URLs** in the AI's answers.
-4. Click **Save** to apply your settings. A notification will appear confirming that the configuration is updated and the data sync has been triggered.
-
-<img
-  src="/images/RAG-Configuration-columns02.png"
-  alt="RAG Configuration Columns 01 Pn"
-  title="Snippet showing the RAG Configuration Modal"
-  className="rounded-image"
-  style={{ width:"100%",borderRadius:"10px" }}
-/>
 
 ## Next Steps
 
