@@ -65,7 +65,6 @@
               "setting-up-wisdom-ai/advanced-data-modeling-creating-knowledge",
               "setting-up-wisdom-ai/context-modeling-guide-workflow",
               "setting-up-wisdom-ai/add-domain-specific-knowledge",
-              "setting-up-wisdom-ai/document-tables-and-columns",
               {
                 "group": "Feedback Options",
                 "pages": [
@@ -326,7 +325,7 @@
           {
             "group": "Start Here",
             "pages": [
-              "setting-up-wisdom-ai/explorer-onboarding-admin-setup"
+              "explorers/getting-started-explorers"
             ]
           },
           {
