@@ -1,0 +1,67 @@
+---
+title: "Deployment Options"
+---
+
+This guide details WisdomAI’s two deployment models, helping you select the best path based on your organization’s security, data residency, and infrastructure requirements.
+
+<Columns cols={2}>
+  <Card title="WisdomAI Hosted (SaaS)" icon="cloud" href="#wisdomai-hosted-saas" cta="View SaaS details">
+    A full out-of-the-box experience where WisdomAI manages the infrastructure within our own tenant.
+  </Card>
+  <Card title="Customer-Hosted (Cloud-Prem)" icon="server" href="#customer-hosted-cloud-prem" cta="View Cloud-Prem details">
+    Deploy WisdomAI as a managed service within your own AWS, GCP, or Azure environment for total data residency.
+  </Card>
+</Columns>
+
+### Shared Architecture
+
+Regardless of the model you choose, WisdomAI provides:
+
+- **Single-Tenant Infrastructure**: Every customer’s data is isolated within its own environment.
+- **Managed Operations**: WisdomAI remains responsible for upgrades, patching, and monitoring.
+- **Feature Parity**: The product and its features (Agents and Deep Analysis) are identical in both models.
+
+## WisdomAI Hosted (SaaS)
+
+In this model, WisdomAI hosts your instance within our own secure tenant. Enjoy a true SaaS experience with zero infrastructure responsibility, making it perfect for teams seeking immediate value without the burden of administrative overhead. The advantages of choosing this model are:
+
+- **Zero Infrastructure Management**: WisdomAI handles all upgrades, patching, and monitoring.
+- **Fastest Time-to-Value**: Skip cloud provisioning and start using the product immediately.
+- **Simplified Billing**: A licensing model where WisdomAI covers all underlying infrastructure costs.
+- **Global Reach**: Access the platform across multiple geographic regions.
+
+## Customer-Hosted (Cloud-Prem)
+
+In the Cloud-Prem model, your WisdomAI tenant is deployed **as a managed service** in isolation within your own cloud environment. This option is ideal for organizations with strict data residency mandates or existing cloud spend commitments.
+
+<Note>
+  **Important:** This is **not** a traditional self-hosted model. It operates under a hosted SaaS model, where WisdomAI retains minimal access to operate, patch, and update the service remotely, ensuring your version is always up to date.
+</Note>
+
+The advantages of choosing Cloud-Prem as your deployment option are:
+
+- **Strict Data Residency**: Data never leaves your organizational boundaries or your chosen cloud account.
+- **Cloud Spend Utilization**: Use your existing **AWS, GCP, or Azure spend commitments** to offset hosting costs.
+- **Full Operational Visibility**: Maintain access to all raw logs for compliance and security auditing.
+
+### Supported Environments
+
+We support deployment across all major cloud providers:
+
+- **On AWS**: Deployed inside your VPC; compatible with **Service Control Policies (SCPs)**.
+- **On GCP**: Deployed within your project; compatible with **VPC Service Controls**.
+- **On Azure**: Deployed within your VNet; integrated with **Azure Policy** and **Network Security Groups (NSGs)**.
+
+## Comparison Summary
+
+| Feature                    | WisdomAI Hosted (SaaS) | Customer-Hosted (Cloud-Prem)      |
+| :------------------------- | :--------------------- | :-------------------------------- |
+| **Infrastructure Owner**   | WisdomAI               | Customer (AWS, GCP, or Azure)     |
+| **Maintenance & Patching** | WisdomAI (Automated)   | WisdomAI (Remote Managed Service) |
+| **Data Residency**         | WisdomAI Tenant        | Customer Tenant                   |
+| **Setup Complexity**       | Low                    | Medium                            |
+| **Infrastructure Cost**    | Included in license    | Paid via customer cloud account   |
+
+<Warning>
+  WisdomAI does not support customer-manual patching or architectural alterations. Our architecture is a fully integrated system. If your cloud environment has significant restrictions on third-party managed services, we recommend the **WisdomAI Hosted** option.
+</Warning>
