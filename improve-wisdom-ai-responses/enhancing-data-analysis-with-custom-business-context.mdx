@@ -1,8 +1,8 @@
 ---
-title: "Enhancing Data Analysis with Custom Business Context"
+title: "Enhancing Data Analysis with Custom Business Knowledge"
 ---
 
-WisdomAI is engineered to perform a wide range of queries directly on your dataset. If you are seeking to conduct more advanced, customized analysis, the custom business Context feature allows the system to be aligned with your specific operational logic and proprietary terminology. This document outlines an example procedure for leveraging this feature to generate strategic insights.
+WisdomAI is engineered to perform a wide range of queries directly on your dataset. If you are seeking to conduct more advanced, customized analysis, the custom business Knowledge feature allows the system to be aligned with your specific operational logic and proprietary terminology. This document outlines an example procedure for leveraging this feature to generate strategic insights.
 
 ## 1. Foundational Data Interrogation
 
@@ -12,11 +12,11 @@ When a query includes business-specific terminology not explicitly defined in th
 
 ![Gif showing the first query and the answer without context](/images/2025-07-17_17-09-27.gif)
 
-## 2. Implementing Custom Logic with Business Context
+## 2. Implementing Custom Logic with Business Knowledge
 
-The Context feature enables the system to execute complex queries autonomously. This is achieved by providing the tool with a set of rules that define your organization's internal logic.
+The Knowledge feature enables the system to execute complex queries autonomously. This is achieved by providing the tool with a set of rules that define your organization's internal logic.
 
-As an example, let's consider that you want to empower the system to identify "At-Risk Strategic Accounts". To accomplish this, you need to provide the following definitions via the Context feature:
+As an example, let's consider that you want to empower the system to identify "At-Risk Strategic Accounts". To accomplish this, you need to provide the following definitions via the Knowledge feature:
 
 ```
 1. Geographical Sales Territories: 
@@ -30,11 +30,11 @@ _ NA-East (North America East): Includes [Account Names]
 - A "Secure Strategic Account" is a Strategic Account where Auto Renewal is set to True.
 ```
 
-![Gif showing the Context page completed with business-specific data](/images/2025-07-17_17-18-54.gif)
+![Gif showing the Knowledge page completed with business-specific data](/images/2025-07-17_17-18-54.gif)
 
 ## 3. Executing Multi-Layered Strategic Analysis
 
-With the business Context supplied, the system no longer needs to prompt for clarification. It is now configured to perform the multi-layered analysis directly.
+With the business Knowledge supplied, the system no longer needs to prompt for clarification. It is now configured to perform the multi-layered analysis directly.
 
 When presented with the same query:
 
@@ -48,11 +48,11 @@ This demonstrates the successful application of custom context to yield high-val
 
 ![Gif showing the same query and the answer with context](/images/2025-07-17_17-21-24.gif)
 
-## 4. Granular Analysis Using JSON Parsing Context
+## 4. Granular Analysis Using JSON Parsing Knowledge
 
 A key challenge in data analysis is extracting information from fields containing semi-structured text. For example, a single `Skus` column might contain multiple products, tiers, and quantities in one text string, making direct calculations difficult.
 
-The Context feature resolves this by allowing users to define parsing logic with a JSON input. Without this logic, the system cannot perform calculations on data embedded within text.
+The Knowledge feature resolves this by allowing users to define parsing logic with a JSON input. Without this logic, the system cannot perform calculations on data embedded within text.
 
 The following code snippet shows an example of using JSON context ~~was provided ~~to teach the system how to parse the `Skus` column:
 
@@ -69,7 +69,7 @@ The following code snippet shows an example of using JSON context ~~was provided
 }
 ```
 
-![Gif showing an example JSON Context](/images/2025-07-17_17-28-57.gif)
+![Gif showing an example JSON Knowledge](/images/2025-07-17_17-28-57.gif)
 
 With this parsing logic supplied, it is now possible to execute precise queries, like the following example:
 
@@ -93,7 +93,7 @@ The system can now deconstruct the `Skus` field for every contract in real-time.
   <Card title="Provide Feedback to the System" icon="thumbs-up" href="/setting-up-wisdom-ai/feedback-mechanisms/provide-feedback-to-the-system">
     Learn how to rate answers and provide corrections to improve the system's accuracy.
   </Card>
-  <Card title="Turn Answers into Stories" icon="book-open" href="/using-wisdom-ai-everyday/turn-answers-into-stories">
+  <Card title="Turn Answers into Dashboards" icon="book-open" href="/using-wisdom-ai-everyday/turn-answers-into-stories">
     Compile key insights and visualizations into a shareable, narrative-driven report.
   </Card>
 </CardGroup>

@@ -1,14 +1,14 @@
 ---
-title: "Embed a Story"
+title: "Embed a Dashboard"
 ---
 
-This guide outlines the process for embedding a WisdomAI Story into your application. Before proceeding, ensure you've reviewed the [main embedding documentation](/integrations/embedding/embedding) for authentication setup and security requirements.
+This guide outlines the process for embedding a WisdomAI Dashboard into your application. Before proceeding, ensure you've reviewed the [main embedding documentation](/integrations/embedding/embedding) for authentication setup and security requirements.
 
 ## Construct the Embed URL
 
-Construct the special embed URL for your Story and append the newly generated JWT in the authentication stage.
+Construct the special embed URL for your Dashboard and append the newly generated JWT in the authentication stage.
 
-1. Take your original Story URL and insert `/embed/` before the Story's name and ID.
+1. Take your original Dashboard URL and insert `/embed/` before the Dashboard's name and ID.
 2. Append the JWT as a `token` query parameter. The URL should look like the following:
    - **Original URL**: `https://<customer>.askwisdom.ai/stories/name-id`
    - **Final Embed URL**: `https://<customer>.askwisdom.ai/stories/embed/name-id?token=<JWT_FROM_STEP_1>`
@@ -22,7 +22,7 @@ Construct the special embed URL for your Story and append the newly generated JW
 
 ## Validation
 
-To validate that the process worked, open the final embed URL in your browser. The WisdomAI Story should load correctly without prompting for a login. If you encounter an error, please refer to the troubleshooting steps below.
+To validate that the process worked, open the final embed URL in your browser. The WisdomAI Dashboard should load correctly without prompting for a login. If you encounter an error, please refer to the troubleshooting steps below.
 
 ## Related Operations
 

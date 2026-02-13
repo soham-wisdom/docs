@@ -2,7 +2,7 @@
 title: "Add Scope Role Assignments for Sharing"
 ---
 
-The `addScopeRoleAssignmentsForSharing` mutation grants access to a specific resource (like a Story) by assigning roles to users. This allows you to share Stories with individual team members or groups.
+The `addScopeRoleAssignmentsForSharing` mutation grants access to a specific resource (like a Dashboard) by assigning roles to users. This allows you to share Dashboards with individual team members or groups.
 
 ## Signature
 
@@ -18,7 +18,7 @@ addScopeRoleAssignmentsForSharing(
 ## Arguments
 
 <ParamField path="scopeId" type="ID!" required>
-  The unique identifier of the resource you want to share (e.g., a Story ID).
+  The unique identifier of the resource you want to share (e.g., a Dashboard ID).
 </ParamField>
 
 <ParamField path="scopeRoleAssignments" type="[ScopeRoleAssignmentInput!]!" required>
@@ -26,7 +26,7 @@ addScopeRoleAssignmentsForSharing(
 </ParamField>
 
 <ParamField path="scopeType" type="ScopeType!" required>
-  The type of resource being shared. For Stories, this should be `DASHBOARD`.
+  The type of resource being shared. For Dashboards, this should be `DASHBOARD`.
 </ParamField>
 
 <ParamField path="message" type="String">
@@ -46,7 +46,7 @@ Returns a `ResponseStatus` object indicating the success or failure of the opera
 
 ## Usage Example
 
-The following example shows how to share a Story with a colleague:
+The following example shows how to share a Dashboard with a colleague:
 
 ```graphql
 mutation AddScopeRoleAssignments($scopeId: ID!, $scopeRoleAssignments: [ScopeRoleAssignmentInput!]!, $scopeType: ScopeType!, $message: String) {
@@ -109,9 +109,9 @@ curl -X POST \
     Remove sharing access from users
   </Card>
   <Card title="Create Dashboard" icon="plus" href="/integrations/graphql-api/mutations/dashboard/create-dashboard">
-    Create a new Story to share
+    Create a new Dashboard to share
   </Card>
   <Card title="Dashboard Object" icon="folder" href="/integrations/graphql-api/objects/dashboard">
-    Story object schema and properties
+    Dashboard object schema and properties
   </Card>
 </CardGroup>
