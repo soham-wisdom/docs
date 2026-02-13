@@ -164,8 +164,8 @@
                     "pages": ["integrations/embedding/chat/embed-chat"]
                   },
                   {
-                    "group": "Story",
-                    "pages": ["integrations/embedding/story/embed-a-story"]
+                    "group": "Dashboard",
+                    "pages": ["integrations/embedding/story/embed-a-dashboard"]
                   }
                 ]
               },
