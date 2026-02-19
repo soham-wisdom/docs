@@ -6,17 +6,42 @@ This guide explains how to use the Organizations manager to create and maintain 
 
 ## Before you start
 
-To perform these tasks, you must have overall site administrator permissions. Regular users or organization-level admins cannot access the global Organizations manager.
+To perform these tasks, you must have **Site Administrator** permissions. Regular users or organization-level admins cannot access the global Organizations manager.
 
 Read the [Access Management](/manage-account/access-management) guide to learn more about roles and permissions.
 
-## Create a new Organization
+## Create a new organization
 
-Currently, our team handles provisioning new organizations to ensure your environment is configured correctly.
+New organizations are provisioned by Site Administrators through the platform. To do this, follow the steps below:
 
-To create a new organization, please [contact the WisdomAI support team](/manage-account/contact-support). Provide the desired Organization Name and your preferred URI (e.g., `finance`), and our team will set up the blank environment and unique access URL (e.g., `https://try.askwisdom.ai/orgs/finance`) for you.
+1. Sign in to Wisdom AI as a Site Administrator.
+2. Click the **Organizations** icon in the left-hand navigation menu.
+3. Click the **Add Organization** option.
 
-## Manage existing Organizations
+<Frame>
+  <img
+    src="/images/create-new-organization.png"
+    alt="Create New Organization UI"
+    title="Create New Organization"
+  />
+</Frame>
+
+4. In the modal that opens, under **Organization Details**: 
+   4. Enter the **Organization Name** (e.g., "Finance-Dept"). 
+   4. Define the **URI** (e.g., `finance`). This creates a unique access point: `https://try.askwisdom.ai/organizations/finance`. 
+   4. Add **Organization Admins** by entering their email addresses. 
+   4. (Optional) Expand **Advanced Options** to define **Allowed email domains**.
+
+      <Tip>
+        The **Allowed email domains** setting acts as a security gate. By specifying a domain (e.g., `company.com`), you ensure that only users with official company emails can be added to the organization, preventing accidental access by external or personal accounts.
+      </Tip>
+5. Click **Create Organization**.
+
+<Note>
+  If you encounter any issues during provisioning, please contact [the WisdomAI support team](/manage-account/contact-support) for assistance.
+</Note>
+
+## Manage existing organizations
 
 Once created, you can manage organizations directly from the dashboard using quick-access icons.
 
@@ -24,14 +49,34 @@ Once created, you can manage organizations directly from the dashboard using qui
 
 - **Edit Details**: Click the **three-dot menu (...)** on an organization tile and select **Edit** to update the name, URI, or administrative owners.
 
-![Edit Organizations modal](/images/edit-organizations-01.png)
+<Frame>
+  <img
+    src="/images/edit-organizations-02.png"
+    alt="Edit Organizations modal"
+  />
+</Frame>
 
 - **Access Domains**: Click the **monitor icon** to configure AI domains specific to that organization.
 - **Manage Connections**: Click the **sync/connections icon** to set up or modify data source integrations for that environment.
 
+<Frame>
+  <img
+    src="/images/manage-organization-icons-2.png"
+    alt="Manage Organization Icons"
+    title="Manage Organization Icons"
+    className="mr-auto hidden dark:block"
+  />
+  <img
+    src="/images/manage-organization-icons-1.png"
+    alt="Manage Organization Icons"
+    title="Manage Organization Icons"
+    className="mr-auto dark:hidden"
+  />
+</Frame>
+
 ### User administration
 
-Click the **person icon** on an organization tile to open the user management view:
+Click the **person icon** to open the user management view:
 
 - **Invite Users**: Click **Invite Users** to grant access to the specific organization.
 - **Export List**: Click **Export to CSV** to download a record of all users assigned to the organization.
@@ -51,22 +96,22 @@ If an environment is no longer needed, you can deactivate it to prevent further 
 ## Next Steps
 
 <CardGroup cols={3}>
-  <Card title="Row-Level Access Control" icon="user-shield" href="/manage-account/row-level-access-control/row-level-access-control">
-    Learn how to restrict data access for specific users or roles at the row level.
+  <Card icon="user-shield" href="/manage-account/row-level-access-control/row-level-access-control" title="Row-Level Access Control">
+    Learn how to restrict data access at the row level for specific users or roles.
   </Card>
-  <Card title="Access Management" icon="key" href="/manage-account/access-management">
-    Control user permissions and manage access to features and data within the platform.
+  <Card icon="key" href="/manage-account/access-management" title="Access Management">
+    Control user permissions and manage access to platform features and data.
   </Card>
-  <Card title="Supported Data Sources" icon="database" href="/getting-started/connect-data-sources/supported-data-sources">
+  <Card icon="database" href="/getting-started/connect-data-sources/supported-data-sources" title="Supported Data Sources">
     Explore the full list of databases and platforms you can connect to the system.
   </Card>
-  <Card title="How WisdomAI Works" icon="brain" href="/getting-started/how-wisdom-ai-works">
+  <Card icon="brain" href="/getting-started/how-wisdom-ai-works" title="How WisdomAI Works">
     Understand the core concepts and architecture behind the platform's data analysis capabilities.
   </Card>
-  <Card title="Basic Tutorial: Connect and Test" icon="rocket" href="/setting-up-wisdom-ai/basic-tutorial-connect-and-test">
+  <Card icon="rocket" href="/setting-up-wisdom-ai/basic-tutorial-connect-and-test" title="Basic Tutorial: Connect and Test">
     Walk through the initial setup to connect a data source and run your first query.
   </Card>
-  <Card title="Manage Domains" href="/setting-up-wisdom-ai/manage-domains/understand-domains">
+  <Card href="/setting-up-wisdom-ai/manage-domains/understand-domains" title="Manage Domains">
     Configure how WisdomAI accesses data, understands your business context, and evaluates response accuracy.
   </Card>
 </CardGroup>
