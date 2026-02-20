@@ -14,12 +14,12 @@ Every operation in WisdomAI, from viewing dashboards to managing data sources, f
 
 ### Administrator
 
-The Administrator is the superuser of the WisdomAI platform with full system-wide privileges. Administrators are responsible for the foundational setup and governance of the workspace. They can:
+The Administrator is the superuser of the WisdomAI platform with full system-wide privileges. Administrators are responsible for the foundational setup and governance of the organization. They can:
 
 - **Manage users and roles**: Invite or remove users, assign or modify roles, and oversee access permissions.
 - **Manage Domains**: Configure and maintain organizational Domains within WisdomAI.
-- **Connect and organize data**: Link external data sources, manage schemas (i.e., the structure of tables and relationships) and context import, which ingests business rules and data dictionaries.
-- **Oversee workspace content**: Review, publish, or unpublish key assets like stories and models to control visibility and access.
+- **Connect and organize data**: Link external data sources, manage schemas (i.e., the structure of tables and relationships), and context import, which ingests business rules and data dictionaries.
+- **Oversee your organization's content**: Review, publish, or unpublish key assets like stories and models to control visibility and access.
 - **Monitor and audit activity**: Track system usage, access logs, and platform health metrics to ensure smooth operation.
 
 <Info>
@@ -28,11 +28,11 @@ The Administrator is the superuser of the WisdomAI platform with full system-wid
 
 ### Data Administrator
 
-The Data Administrator manages and prepares data assets within specific Domains. They do not have global system permissions but can:
+The Data Administrator manages and prepares data assets within specific Domains. They do not have global system permissions, but can:
 
 - **Connect Domain-level data**: Set up and configure data sources for their assigned Domains.
 - **Model business context**: Define metrics, entities, and relationships relevant to their Domain.
-- **Manage content**: Create and maintain Dashboards, and Domain-specific assets as well as manage access to Dashboards and Reports.
+- **Manage content**: Create and maintain Dashboards and Domain-specific assets, as well as manage access to Dashboards and Reports.
 - **Apply data policies**: Set row-level and column-level access rules and validation policies.
 - **Collaborate with Explorers**: Ensure data is usable, discoverable, and tailored to user needs.
 
@@ -57,31 +57,31 @@ Explorers are data consumers. They use WisdomAI to explore, analyze, and interac
 
 ## Role Comparison Table
 
-| Capability                       | Administrator | Data Administrator | Explorer |
-| -------------------------------- | ------------- | ------------------ | -------- |
-| User and Role Management         | ✅             | ❌                  | ❌        |
-| Domain Management                | ✅             | ❌                  | ❌        |
-| Audit Logs and Usage Metrics     | ✅             | ❌                  | ❌        |
-| Data Source Management           | ✅             | ✅                  | ❌        |
-| Domain-Specific Data Modeling    | ✅             | ✅                  | ❌        |
-| Row/Column-Level Data Management | ✅             | ✅                  | ❌        |
-| Build/See Dashboards (Dashboards)   | ✅             | ✅                  | ✅        |
-| Ask Questions                    | ✅             | ✅                  | ✅        |
-| Access to Reports                | ✅             | ✅                  | ✅        |
+| Capability                        | Administrator | Data Administrator | Explorer |
+| --------------------------------- | ------------- | ------------------ | -------- |
+| User and Role Management          | ✅             | ❌                  | ❌        |
+| Domain Management                 | ✅             | ❌                  | ❌        |
+| Audit Logs and Usage Metrics      | ✅             | ❌                  | ❌        |
+| Data Source Management            | ✅             | ✅                  | ❌        |
+| Domain-Specific Data Modeling     | ✅             | ✅                  | ❌        |
+| Row/Column-Level Data Management  | ✅             | ✅                  | ❌        |
+| Build/See Dashboards (Dashboards) | ✅             | ✅                  | ✅        |
+| Ask Questions                     | ✅             | ✅                  | ✅        |
+| Access to Reports                 | ✅             | ✅                  | ✅        |
 
 ## Next Steps
 
 <CardGroup cols={2}>
-  <Card title="Row Level Access Control" icon="user-shield" href="/manage-account/row-level-access-control/row-level-access-control">
+  <Card icon="user-shield" href="/manage-account/row-level-access-control/row-level-access-control" title="Row Level Access Control">
     Learn how to restrict data access for specific users or roles at the row level.
   </Card>
-  <Card title="Supported Data Sources" icon="database" href="/getting-started/connect-data-sources/supported-data-sources">
+  <Card icon="database" href="/getting-started/connect-data-sources/supported-data-sources" title="Supported Data Sources">
     Explore the full list of databases and platforms you can connect to the system.
   </Card>
-  <Card title="How WisdomAI Works" icon="brain" href="/getting-started/how-wisdom-ai-works">
+  <Card icon="brain" href="/getting-started/how-wisdom-ai-works" title="How WisdomAI Works">
     Understand the core concepts and architecture behind the platform's data analysis capabilities.
   </Card>
-  <Card title="Basic Tutorial: Connect and Test" icon="rocket" href="/setting-up-wisdom-ai/basic-tutorial-connect-and-test">
+  <Card icon="rocket" href="/setting-up-wisdom-ai/basic-tutorial-connect-and-test" title="Basic Tutorial: Connect and Test">
     Walk through the initial setup to connect a data source and run your first query.
   </Card>
 </CardGroup>
