@@ -4,7 +4,7 @@ title: "Basic Tutorial: Connect and Test"
 
 This tutorial is intended for Admin users who are responsible for configuring data sources and setting up the chatbot.
 
-## Learning Objectives
+## Learning objectives
 
 By the end of this tutorial, you will be able to:
 
@@ -14,7 +14,7 @@ By the end of this tutorial, you will be able to:
 
 Once you have completed this tutorial, you will have a working chatbot connected to your data and ready to improve through real-time interaction and feedback.
 
-## Before you Begin
+## Before you begin
 
 To follow this tutorial, you should:
 
@@ -25,36 +25,51 @@ To follow this tutorial, you should:
 
 To get started, you first need to connect your existing data source to WisdomAI so the system can access and prepare your data for use and create reports:
 
-1. Go to the left sidebar, click on **Connections**, and click on the **Add Connection** button to start.
+1. Go to the left sidebar and select **Connections**.
+2. Click on the **Add Connection** button to start.
 
    <Note>
-     This action lets you link your existing data sources to WisdomAI. Doing so enables the system to scan metadata. For data warehouse connections, it also allows WisdomAI to fetch data when users ask questions in natural language.
+     This action lets you link your existing data sources to WisdomAI. Doing so enables the system to scan metadata. For data warehouse connections, it also enables WisdomAI to fetch data when users ask natural-language questions.
    </Note>
 
-![Add a Connection](/images/add-connection.png)
+<Frame>
+  ![Add a Connection](/images/newui-add-connection.png)
+</Frame>
 
-2. Add a **Connection name**. Make it representative so it is easy to identify among other connections.
-3. Select the **Data Source** type.
+3. Add a **Connection name**. Make it representative so it is easy to identify among other connections.
+4. Select the **Data Source** type.
 
    <Info>
      Access [Supported Data Sources](/getting-started/connect-data-sources/supported-data-sources) to see the complete list of supported data sources by WisdomAI.
    </Info>
-4. Once selected, add your data source credentials, including:
+5. Once selected, add your data source credentials, including:
    - **Account**
    - **Warehouse**
    - **User**
    - **Role**
    - **Private Key**
    - **Database Filters**
-5. After you have added your credentials, click on the **Save and Sync metadata** button.
+6. After you have added your credentials, click on the **Save and Sync metadata** button.
 
-![Add a Connection](/images/add-connection-2-5.png)
+<Frame>
+  <img
+    src="/images/newui-add-connection-01.png"
+    alt="Add a Connection"
+    className="hidden dark:block"
+  />
+</Frame>
+
+<img
+  src="/images/newui-add-connection-01-1.png"
+  alt="Add a Connection"
+  className="dark:hidden"
+/>
 
 <Warning>
-  **Note on Syncing**: After successfully adding a connection, the initial sync may take a few minutes to complete before data is available for analysis.
+  **Note on Syncing**: After successfully adding a connection, the initial sync may take a few minutes to complete. Then, data will be available for analysis.
 </Warning>
 
-## Select the Data
+## Select the data
 
 After you add your data source, select the data you want to use in your project. For this, you will need to create a Domain.
 
@@ -65,14 +80,31 @@ After you add your data source, select the data you want to use in your project.
    </Note>
 2. Click on the **Add Domain** button. A new window will open.
 
-![Create a Domain](/images/create-domain.png)
+<Frame>
+  ![Create a Domain](/images/newui-create-domain.png)
+</Frame>
 
-3. Enter the **Domain name** and a **Description** for it.
-4. **Select the database** from the dropdown menu. Once selected, the list of tables will be displayed.
-5. Choose the **tables** you would like to use, then drag and drop them into the working area.
-6. Click on **Save and continue**. Now you are ready to start testing the WisdomAI chatbot to retrieve information and generate reports about your business.
+3. Enter the **Domain name** and **select the data source** from the dropdown menu. Once selected, the list of tables will be displayed.
+4. Click **Create Domain** to continue.
 
-![Create a Domain](/images/create-domain6.png)
+<Frame>
+  ![Modal for creating a new domain](/images/newui-create-domain-02.png)
+</Frame>
+
+5. A new modal window will open. Select the **tables** you would like to use from the data source.
+6. Click on **Add Table** to continue. Now you are ready to start testing the WisdomAI chatbot to retrieve information and generate reports about your business.
+
+<Frame>
+  ![Add Data to Domain modal window displayed](/images/newui-create-domain-03.png)
+</Frame>
+
+<Tip>
+  If you want to connect a new source, select this option in step 3. In the next modal window, you'll be able to connect to the Data store, the MCP server, or add files (CSV, TSV).
+
+  <Frame>
+    ![Connect Data Surce step](/images/newui-create-domain-04-callout.png)
+  </Frame>
+</Tip>
 
 ## Upload CSV files
 
@@ -94,7 +126,7 @@ In addition to database connections, Admins can add data directly to a Domain us
   You can also replace an existing CSV table instead of uploading a new one. This allows you to update the underlying data while preserving all existing column descriptions, settings, and domain configurations. To learn how to do it, see our [Work with CSV Files](/using-wisdom-ai-everyday/work-with-csv-files) guide.
 </Note>
 
-6. Click **Create Table**.
+5. Click **Create Table**.
 
 ![Create Table From Csv Domain02](/images/create_table_from_csv_domain02.png)
 
@@ -131,13 +163,13 @@ In all these cases, the system will use the provided data to further refine the 
 ## Next Steps
 
 <CardGroup cols={3}>
-  <Card title="Supported Data Sources" icon="database" href="/getting-started/connect-data-sources/supported-data-sources">
+  <Card icon="database" href="/getting-started/connect-data-sources/supported-data-sources" title="Supported Data Sources">
     Explore the full list of databases and platforms you can connect to the system.
   </Card>
-  <Card title="Advanced Data Modeling" icon="sitemap" href="/setting-up-wisdom-ai/advanced-data-modeling-creating-knowledge">
+  <Card icon="sitemap" href="/setting-up-wisdom-ai/advanced-data-modeling-creating-knowledge" title="Advanced Data Modeling">
     Define relationships and context in your data to enable more powerful analysis.
   </Card>
-  <Card title="Provide Feedback to the System" icon="thumbs-up" href="/setting-up-wisdom-ai/feedback-mechanisms/provide-feedback-to-the-system">
+  <Card icon="thumbs-up" href="/setting-up-wisdom-ai/feedback-mechanisms/provide-feedback-to-the-system" title="Provide Feedback to the System">
     Learn how to rate answers and provide corrections to improve the system's accuracy.
   </Card>
 </CardGroup>
