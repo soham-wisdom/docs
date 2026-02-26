@@ -24,15 +24,17 @@
       ]
     },
     "tabs": [
-            {
+      {
         "tab": "Home",
         "icon": "home",
         "groups": [
-      {
-        "group": "Home",
-        "pages": [ "index" ]
-      }
-      ]
+          {
+            "group": "Home",
+            "pages": [
+              "index"
+            ]
+          }
+        ]
       },
       {
         "tab": "Admins",
@@ -86,14 +88,14 @@
                   "setting-up-wisdom-ai/manage-domains/evaluation-tab",
                   "setting-up-wisdom-ai/manage-domains/sql-playground-tab"
                 ]
-          },
-          {
-            "group": "Manage Tables & Columns",
-            "pages": [
-              "setting-up-wisdom-ai/manage-tables-columns/document-tables-and-columns",
-              "setting-up-wisdom-ai/manage-tables-columns/advanced-column-options",
-              "setting-up-wisdom-ai/manage-tables-columns/set-up-rag"
-            ]
+              },
+              {
+                "group": "Manage Tables & Columns",
+                "pages": [
+                  "setting-up-wisdom-ai/manage-tables-columns/document-tables-and-columns",
+                  "setting-up-wisdom-ai/manage-tables-columns/advanced-column-options",
+                  "setting-up-wisdom-ai/manage-tables-columns/set-up-rag"
+                ]
               }
             ]
           },
@@ -116,7 +118,8 @@
               "using-wisdom-ai-everyday/share-dashboards-and-set-access-control",
               "using-wisdom-ai-everyday/schedule-dashboards-notifications",
               "using-wisdom-ai-everyday/auditing",
-              "using-wisdom-ai-everyday/prompt-templates"
+              "using-wisdom-ai-everyday/prompt-templates",
+              "using-wisdom-ai-everyday/knowledge-management-via-graph-ql-api"
             ]
           },
           {
@@ -161,11 +164,15 @@
                   "integrations/embedding/embedding",
                   {
                     "group": "Chat",
-                    "pages": ["integrations/embedding/chat/embed-chat"]
+                    "pages": [
+                      "integrations/embedding/chat/embed-chat"
+                    ]
                   },
                   {
                     "group": "Dashboard",
-                    "pages": ["integrations/embedding/story/embed-a-dashboard"]
+                    "pages": [
+                      "integrations/embedding/story/embed-a-dashboard"
+                    ]
                   }
                 ]
               },
@@ -230,7 +237,9 @@
                       },
                       {
                         "group": "Connection",
-                        "pages": ["integrations/graphql-api/queries/connection/connection"]
+                        "pages": [
+                          "integrations/graphql-api/queries/connection/connection"
+                        ]
                       },
                       {
                         "group": "Dashboard",
@@ -241,7 +250,9 @@
                       },
                       {
                         "group": "User",
-                        "pages": ["integrations/graphql-api/queries/user/current-user"]
+                        "pages": [
+                          "integrations/graphql-api/queries/user/current-user"
+                        ]
                       }
                     ]
                   },
@@ -257,11 +268,15 @@
                       },
                       {
                         "group": "Agent",
-                        "pages": ["integrations/graphql-api/mutations/agent/trigger-agent"]
+                        "pages": [
+                          "integrations/graphql-api/mutations/agent/trigger-agent"
+                        ]
                       },
                       {
                         "group": "Connection",
-                        "pages": ["integrations/graphql-api/mutations/connection/refresh-connection"]
+                        "pages": [
+                          "integrations/graphql-api/mutations/connection/refresh-connection"
+                        ]
                       },
                       {
                         "group": "Dashboard",
@@ -314,7 +329,9 @@
           },
           {
             "group": "Reference Library",
-            "pages": ["reference-library/limits-and-quotas"]
+            "pages": [
+              "reference-library/limits-and-quotas"
+            ]
           }
         ]
       },

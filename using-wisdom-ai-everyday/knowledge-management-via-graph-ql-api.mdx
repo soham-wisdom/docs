@@ -1,0 +1,231 @@
+---
+title: "Knowledge Management via GraphQL API"
+---
+
+WisdomAI provides a complete GraphQL API for managing domain knowledge. You can create, read, update, and delete knowledge items programmatically.
+
+Knowledge represents domain-specific information that helps improve AI accuracy. This feature allows you to programmatically manage how the system understands specific terms and processes within your domain.
+
+### When to Use Knowledge Management
+
+- **Defining Regional Terms**: For example, establishing that "Regions are Territories."
+- **Outlining Sales Stages**: Defining a sequence like "Prospect, Negotiation, Closed."
+- **Specifying Contract Types**: Categorizing items such as "Standard, Enterprise, Custom."
+
+<Warning>
+  You must have **Data Administrator** rights on the domain to use this API. Only users with this access level can create, update, or delete knowledge items.
+</Warning>
+
+## Create Knowledge
+
+Add one or more knowledge items to a domain.
+
+To add knowledge:
+
+1. Use the `addKnowledge` mutation.
+2. Provide the `domainId` and your `knowledgeEntries`.
+
+**Mutation:**
+
+```graphql
+mutation AddKnowledge($domainId: ID!, $knowledgeEntries: [KnowledgeInput!]!) {
+  addKnowledge(domainId: $domainId, knowledgeEntries: $knowledgeEntries) {
+    id
+    name
+    knowledge {
+      name
+      description
+    }
+  }
+}
+```
+
+```json Example Request
+{
+  "domainId": "abc-123-def",
+  "knowledgeEntries": [
+    {
+      "name": "Regional Terms",
+      "description": "Regions are Territories"
+    },
+    {
+      "description": "Sales stages: Prospect, Negotiation, Closed"
+    }
+  ]
+}
+```
+
+<Note>
+  - `description` is required; `name` is optional.
+  - Duplicate knowledge (identified by the description) is automatically filtered out.
+  - You can add multiple items in a single request.
+</Note>
+
+## Read Knowledge
+
+Retrieve all knowledge items currently associated with a domain.
+
+To retrieve knowledge:
+
+1. Execute the `GetDomainKnowledge` query.
+2. Input the relevant `domainId`.
+
+**Query:**
+
+```graphql
+query GetDomainKnowledge($domainId: ID!) {
+  zSheet(id: $domainId) {
+    id
+    name
+    knowledge {
+      name
+      description
+    }
+  }
+}
+```
+
+```json Example Request
+{
+  "domainId": "abc-123-def"
+}
+```
+
+```json Example Response
+{
+  "data": {
+    "zSheet": {
+      "id": "abc-123-def",
+      "name": "Sales Domain",
+      "knowledge": [
+        {
+          "name": "Regional Terms",
+          "description": "Regions are Territories"
+        },
+        {
+          "name": null,
+          "description": "Sales stages: Prospect, Negotiation, Closed"
+        }
+      ]
+    }
+  }
+}
+```
+
+## Update Knowledge
+
+Modify an existing knowledge item. You must provide the exact original description to identify which item to update.
+
+To update an item:
+
+1. Identify the `oldKnowledge` entry using its exact description.
+2. Define the `updatedKnowledge` with your new values.
+
+**Mutation:**
+
+```graphql
+mutation UpdateKnowledge(
+  $domainId: ID!
+  $oldKnowledge: KnowledgeInput!
+  $updatedKnowledge: KnowledgeInput!
+) {
+  updateKnowledge(
+    domainId: $domainId
+    oldKnowledge: $oldKnowledge
+    updatedKnowledge: $updatedKnowledge
+  ) {
+    id
+    knowledge {
+      name
+      description
+    }
+  }
+}
+```
+
+<Warning>
+  **Important:** The exact knowledge description must match what is currently in the system. If the knowledge has been modified since it was last read, the update will fail.
+</Warning>
+
+```json Example Request
+{
+  "domainId": "abc-123-def",
+  "oldKnowledge": {
+    "description": "Sales stages: Prospect, Negotiation, Closed"
+  },
+  "updatedKnowledge": {
+    "name": "Sales Pipeline",
+    "description": "Sales stages: Lead, Prospect, Negotiation, Closed, Lost"
+  }
+}
+```
+
+## Delete Knowledge
+
+Remove a knowledge item from a domain.
+
+To delete an item:
+
+1. Provide the `domainId`.
+2. Provide the exact description of the item you wish to remove.
+
+```graphql
+mutation DeleteKnowledge($domainId: ID!, $knowledge: KnowledgeInput!) {
+  deleteKnowledge(domainId: $domainId, knowledge: $knowledge) {
+    id
+    knowledge {
+      name
+      description
+    }
+  }
+}
+```
+
+```json Example Request
+{
+  "domainId": "abc-123-def",
+  "knowledge": {
+    "description": "Regions are Territories"
+  }
+}
+```
+
+<Warning>
+  **Important:** You must provide the exact knowledge description. If it does not match exactly, the deletion will fail.
+</Warning>
+
+## Common Scenarios
+
+Below are typical workflows for maintaining and restructuring domain knowledge.
+
+### Bulk Import Knowledge
+
+You can add multiple knowledge items at once by listing them within the `knowledgeEntries` array.
+
+**Mutation**:
+
+```graphql
+mutation {
+  addKnowledge(
+    domainId: "abc-123-def"
+    knowledgeEntries: [
+      { description: "Item 1" }
+      { description: "Item 2" }
+      { name: "Named Item", description: "Item 3" }
+    ]
+  ) {
+    knowledge {
+      name
+      description
+    }
+  }
+}
+```
+
+### Replace All Knowledge
+
+To completely refresh a domain's knowledge base:
+
+1. **Query** the domain to retrieve all current knowledge items.
+2. **Delete** each item individually using the delete mutation.
+3. **Add** the new set of knowledge items.
