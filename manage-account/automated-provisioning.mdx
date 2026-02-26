@@ -1,0 +1,32 @@
+---
+title: "Automated Provisioning (JIT & SCIM)"
+hidden: true
+---
+
+For organizations using Single Sign-On (SSO), WisdomAI can automate account creation and synchronization, eliminating the need to manually invite users.
+
+## Just-In-Time (JIT) Provisioning
+
+When SSO and JIT are enabled, user accounts are created automatically the first time they log in to the platform, removing the manual overhead of sending email invitations.
+
+<Note>
+  **Setup**: You must contact WisdomAI Support to enable JIT for your specific instance.
+</Note>
+
+## SCIM Provisioning
+
+When SSO and SCIM (System for Cross-domain Identity Management) are enabled, users are synchronized directly from your Identity Provider (IdP) down to WisdomAI.
+
+Here's how it works:
+
+- **Dynamic Syncing**: If a user is added in your SSO provider, Wisdom automatically creates an equivalent user.
+- **Automatic Updates**: Any changes to a user profile or the removal of a user on the SSO side are immediately reflected in the Wisdom platform.
+- **Group Management**: When SCIM is enabled, user group memberships are managed entirely by your IdP.
+
+### Enable SCIM
+
+To set up SCIM provisioning, follow these steps:
+
+1. **Generate Setup Link**: Open the SSO setup suite and generate a secure setup link.
+2. **Configure your IdP**: Share this link with your IT administrator to configure SCIM in your Identity Provider. Note that this link is valid for 7 days.
+3. **Activate**: Once the IdP is configured, toggle the **Enable SCIM Provisioning** option to "on" within your Wisdom settings.

@@ -1,0 +1,36 @@
+---
+title: "Role Mapping & SSO Groups"
+hidden: true
+---
+
+Once users are provisioned via SSO, you can automate their permission levels by mapping Identity Provider (IdP) data to WisdomAI roles.
+
+### Role Management through SCIM
+
+When SCIM is enabled, your existing SSO groups are automatically detected and synced to Wisdom.
+
+- **View Synced Groups**: Navigate to the **SSO Groups** list in the SSO Configuration settings to see groups like "Engineering" or "Sales" along with their sync status.
+- **Assign Roles to Groups**: Use the **Add SSO Group** button to link a synced group to a specific WisdomAI role (e.g., Explorer).
+- **Inheritance**: Any user belonging to that SSO group will automatically inherit the assigned roles and domain permissions in WisdomAI.
+
+### Role Management through Claims
+
+If you prefer not to use SCIM groups, you can configure roles based on "claims" within the IDP's JSON Web Token (JWT).
+
+- **Claim Structure**: The claim should be provided as a list of strings within the token.
+- **Manual Mapping**: Use the **Add SSO Group** button to manually map specific claim strings to WisdomAI user groups.
+- **Activation**: Contact Wisdom support to enable claims-based role management for your instance.
+
+### 4.3 Auto SSO Group Generation
+
+To eliminate manual mapping entirely, WisdomAI can auto-generate groups based on a specific string schema in your IdP claims.
+
+Each claim string must follow this schema:
+
+`wisdom.[optional_workspace_uri].role.[optional_scope_type].[optional_scope]`
+
+**Examples of valid claim strings:**
+
+- `wisdom.explorer`: Assigns the Explorer role on all domains in the default workspace.
+- `wisdom.foo.explorer`: Assigns the Explorer role on all domains within the "foo" workspace.
+- `wisdom.explorer.DOMAIN.ET_DOMAIN_foo`: Assigns the Explorer role to a specific domain in the default workspace.

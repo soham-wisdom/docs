@@ -1,12 +1,14 @@
 ---
-title: "User Management"
+title: "Manual User Management"
 ---
+
+When Single Sign-On (SSO) is not enabled for your organization, users are managed manually through the Users IAM page.
 
 This article will guide Administrators through effective user management within WisdomAI, focusing on how to invite new users and assign permissions carefully based on user responsibilities.
 
 ## Invite Users
 
-As an administrator, you can invite additional users to your WisdomAI environment:
+As an administrator, you can invite new users to join your WisdomAI environment via email.
 
 1. Navigate to **Users** \> **Invite Users**. The Invite Users modal window will open.
 
@@ -37,22 +39,38 @@ Whether you need to add or change a user's role, you can do it from the users li
 
 ![Image showing the Edit Users Modal](/images/edit-user-modalv2.png)
 
+### Edit Existing Users
+
+You can modify a user's permissions or attributes at any time.
+
+- Find the user in the list and select **Edit** to open the **Edit User** modal.
+- Update the user's **Roles** or add additional roles.
+- Manage **Local Attributes** to define custom key-value pairs used for Row-Level Security.
+- Click **Update** to save your changes.
+
+### Manage User Groups
+
+To simplify management, you can create groups that bundle specific roles together.
+
+- **Inheritance:** Users assigned to a group automatically inherit all roles associated with that group.
+- **Setup:** Use the **Add User Group** button, name the group, and assign the required roles.
+
 ## Next Steps
 
 <CardGroup cols={3}>
-  <Card title="Row-Level Access Control" icon="user-shield" href="/manage-account/row-level-access-control/row-level-access-control">
+  <Card icon="user-shield" href="/manage-account/row-level-access-control/row-level-access-control" title="Row-Level Access Control">
     Learn how to restrict data access for specific users or roles at the row level.
   </Card>
-  <Card title="Access Management" icon="key" href="/manage-account/access-management">
+  <Card icon="key" href="/manage-account/access-management" title="Access Management">
     Control user permissions and manage access to features and data within the platform.
   </Card>
-  <Card title="Supported Data Sources" icon="database" href="/getting-started/connect-data-sources/supported-data-sources">
+  <Card icon="database" href="/getting-started/connect-data-sources/supported-data-sources" title="Supported Data Sources">
     Explore the full list of databases and platforms you can connect to the system.
   </Card>
-  <Card title="How WisdomAI Works" icon="brain" href="/getting-started/how-wisdom-ai-works">
+  <Card icon="brain" href="/getting-started/how-wisdom-ai-works" title="How WisdomAI Works">
     Understand the core concepts and architecture behind the platform's data analysis capabilities.
   </Card>
-  <Card title="Basic Tutorial: Connect and Test" icon="rocket" href="/setting-up-wisdom-ai/basic-tutorial-connect-and-test">
+  <Card icon="rocket" href="/setting-up-wisdom-ai/basic-tutorial-connect-and-test" title="Basic Tutorial: Connect and Test">
     Walk through the initial setup to connect a data source and run your first query.
   </Card>
 </CardGroup>

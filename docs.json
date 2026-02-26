@@ -133,10 +133,17 @@
                 ]
               },
               "manage-account/access-management",
-              "manage-account/users-management",
               "access-management/manage-organizations",
               "manage-account/monitor-performance-and-usage",
-              "manage-account/compliance-and-best-practices"
+              "manage-account/compliance-and-best-practices",
+              {
+                "group": "User Management",
+                "pages": [
+                  "manage-account/users-management",
+                  "manage-account/automated-provisioning",
+                  "manage-account/role-mapping-and-sso-groups"
+                ]
+              }
             ]
           },
           {
