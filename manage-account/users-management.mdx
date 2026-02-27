@@ -2,9 +2,7 @@
 title: "Manual User Management"
 ---
 
-When Single Sign-On (SSO) is not enabled for your organization, users are managed manually through the Users IAM page.
-
-This article will guide Administrators through effective user management within WisdomAI, focusing on how to invite new users and assign permissions carefully based on user responsibilities.
+When Single Sign-On (SSO) is not enabled for your organization, users are managed manually through the **Users IAM page**. This article guides Administrators on how to invite users and assign permissions based on responsibilities.
 
 ## Invite Users
 
@@ -26,9 +24,9 @@ As an administrator, you can invite new users to join your WisdomAI environment 
 
 ![Image showing the Invite Users Modal](/images/invite-users-modal.png)
 
-## Assign Roles
+## Assign Roles (Individual)
 
-Whether you need to add or change a user's role, you can do it from the users list.
+Roles may be managed on a per-user basis. Whether you need to add or change a user's role, you can do it from the users list.
 
 1. Navigate to **Users** \> Find the user to assign/change the role, click on the kebab menu (three vertical dots) on its row, and select **Edit**. The Edit User modal window will open.
 
@@ -38,6 +36,24 @@ Whether you need to add or change a user's role, you can do it from the users li
 3. Click **Update**.
 
 ![Image showing the Edit Users Modal](/images/edit-user-modalv2.png)
+
+## Manage User Groups
+
+You can also create groups with roles to streamline management. Users will inherit any roles from the groups they belong to.
+
+1. Navigate to **Users \> Groups** and click **Add Group**.
+2. In the **Add User Group** modal that opens, provide a name for the group (e.g., `example_group`).
+3. Assign the **Role(s)** and **Domain(s)** that all group members should have.
+4. Click **Create**.
+
+   <Frame>
+     ![Add User Group modal](/images/manual-add-groups.png)
+   </Frame>
+5. Assign users to these groups via the **Edit User** modal. When a user is in a group, their profile will show roles as **Inherited from group**.
+
+   <Frame>
+     ![Edit User Group Modal](/images/edit-user-group-modal.png)
+   </Frame>
 
 ## Next Steps
 
