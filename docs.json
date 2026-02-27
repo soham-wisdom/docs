@@ -368,6 +368,10 @@
     {
       "source": "/integrations/embedding/story/embed-a-story",
       "destination": "/integrations/embedding/story/embed-a-dashboard"
+    },
+    {
+      "source": "/setting-up-wisdom-ai/manage-domains/knowledge-tab",
+      "destination": "/setting-up-wisdom-ai/manage-domains/knowledge-tab"
     }
   ],
   "navbar": {
