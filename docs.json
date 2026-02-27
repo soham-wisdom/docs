@@ -64,7 +64,7 @@
             "group": "Setting Up WisdomAI",
             "pages": [
               "setting-up-wisdom-ai/basic-tutorial-connect-and-test",
-              "setting-up-wisdom-ai/advanced-data-modeling-creating-knowledge",
+              "setting-up-wisdom-ai/advanced-data-modeling-creating-context",
               "setting-up-wisdom-ai/context-modeling-guide-workflow",
               "setting-up-wisdom-ai/add-domain-specific-knowledge",
               {
