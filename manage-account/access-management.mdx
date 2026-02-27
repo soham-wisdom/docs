@@ -11,6 +11,7 @@ Every operation in WisdomAI, from viewing dashboards to managing data sources, f
 - [Administrator](#administrator)
 - [Data Administrator](#data-administrator)
 - [Explorer](#explorer)
+- [Observer](#observer)
 
 ### Administrator
 
@@ -55,19 +56,32 @@ Explorers are data consumers. They use WisdomAI to explore, analyze, and interac
   Explorers cannot manage data sources, users, or settings.
 </Info>
 
+### Observer
+
+The Observer role provides "read-only" access to the platform. This role is ideal for stakeholders who need to see high-level results without interacting with the underlying data or creating new content.
+
+- **Read-only access**: View published Dashboards and Reports.
+- **No Resource Creation**: Cannot create dashboards, stories, or data models.
+- **No Chat Interaction**: Cannot use the natural language chat to query data.
+
+<Info>
+  **Seat Usage:** You can have an unlimited number of Observers in WisdomAI; they do not count against your organization's total seat limit.
+</Info>
+
 ## Role Comparison Table
 
-| Capability                        | Administrator | Data Administrator | Explorer |
-| --------------------------------- | ------------- | ------------------ | -------- |
-| User and Role Management          | ✅             | ❌                  | ❌        |
-| Domain Management                 | ✅             | ❌                  | ❌        |
-| Audit Logs and Usage Metrics      | ✅             | ❌                  | ❌        |
-| Data Source Management            | ✅             | ✅                  | ❌        |
-| Domain-Specific Data Modeling     | ✅             | ✅                  | ❌        |
-| Row/Column-Level Data Management  | ✅             | ✅                  | ❌        |
-| Build/See Dashboards (Dashboards) | ✅             | ✅                  | ✅        |
-| Ask Questions                     | ✅             | ✅                  | ✅        |
-| Access to Reports                 | ✅             | ✅                  | ✅        |
+| Capability                     | Administrator | Data Administrator | Explorer | Observer |
+| :----------------------------- | :-----------: | :----------------: | :------: | :------: |
+| **User and Role Management**   | ✅             | ❌                  | ❌        | ❌        |
+| **Domain Management**          | ✅             | ❌                  | ❌        | ❌        |
+| **Audit Logs & Usage Metrics** | ✅             | ❌                  | ❌        | ❌        |
+| **Data Source Management**     | ✅             | ✅                  | ❌        | ❌        |
+| **Domain Data Modeling**       | ✅             | ✅                  | ❌        | ❌        |
+| **Row/Column-Level Security**  | ✅             | ✅                  | ❌        | ❌        |
+| **Ask Questions (Chat)**       | ✅             | ✅                  | ✅        | ❌        |
+| **Create Dashboards/Reports**  | ✅             | ✅                  | ✅        | ❌        |
+| **View Dashboards/Reports**    | ✅             | ✅                  | ✅        | ✅        |
+| **Counts Against Seat Limit**  | Yes           | Yes                | Yes      | **No**   |
 
 ## Next Steps
 
