@@ -364,10 +364,12 @@
       }
     ]
   },
-  "logo": {
-    "light": "/logo/logo-white.svg",
-    "dark": "/logo/logo.svg"
-  },
+  "redirects": [
+    {
+      "source": "/integrations/embedding/story/embed-a-story",
+      "destination": "/integrations/embedding/story/embed-a-dashboard"
+    }
+  ],
   "navbar": {
     "primary": {
       "type": "button",
