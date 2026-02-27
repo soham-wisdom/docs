@@ -28,20 +28,48 @@ When SCIM is enabled, your existing SSO groups are automatically detected and sy
 
 If you prefer not to use SCIM groups, you can configure roles based on "claims" within the IDP's JSON Web Token (JWT).
 
-- **Claim Structure**: The claim should be provided as a list of strings within the token.
-- **Manual Mapping**: Use the **Add SSO Group** button to manually map specific claim strings to WisdomAI user groups.
-- **Activation**: Contact Wisdom support to enable claims-based role management for your instance.
+<Tip>
+  Contact [WisdomAI support](/manage-account/contact-support) to enable claims-based role management for your instance.
+</Tip>
 
-### 4.3 Auto SSO Group Generation
+**How the Mapping Works:**
 
-To eliminate manual mapping entirely, WisdomAI can auto-generate groups based on a specific string schema in your IdP claims.
+1. When a user logs in, WisdomAI reads a specific claim from the JWT (typically named `roles` or `groups`) which contains a list of strings.
+2. An **SSO Group** in WisdomAI acts as a bridge. It maps a specific **string element** from that JWT list to the assigned **WisdomAI Role**.
+3. If a user’s JWT contains the string `"marketing_admin"`, and you have created an SSO Group in Wisdom that maps `"marketing_admin"` to the **Explorer** role, that user is automatically granted those permissions.
+
+**Setting it Up:**
+
+- Click the **Add Group** button.
+- In the **Add SSO Group** modal that opens, enter the string element that matches your IDP claim in the **SSO Group Name** field.
+
+  <Info>
+    The claim should be a list of strings.
+  </Info>
+- **Role Assignments**: Select the Role (e.g., Explorer) and the corresponding Domains to be mapped to that string.
+- Click **Create User Group** to finalize the mapping.
+
+### Auto SSO Group Generation
+
+To avoid manual mapping entirely, WisdomAI can auto-generate groups based on a specific string schema in your IdP claims.
+
+<Tip>
+  Contact [WisdomAI support](/manage-account/contact-support) to enable claims-based role management for your instance.
+</Tip>
 
 Each claim string must follow this schema:
 
 `wisdom.[optional_workspace_uri].role.[optional_scope_type].[optional_scope]`
+
+1. `wisdom.` prefix for namespace and versioning purposes
+2. `optional workspace URI.` (default workspace if not given)
+3. `role.` (one of administrator, data_administrator, explorer, observer)
+4. `optional scope type.` (required if scope is given)
+5. `optional scope` (required if scope type is given)
 
 **Examples of valid claim strings:**
 
 - `wisdom.explorer`: Assigns the Explorer role on all domains in the default workspace.
 - `wisdom.foo.explorer`: Assigns the Explorer role on all domains within the "foo" workspace.
 - `wisdom.explorer.DOMAIN.ET_DOMAIN_foo`: Assigns the Explorer role to a specific domain in the default workspace.
+- `wisdom.foo.explorer.DOMAIN.ET_DOMAIN_bar`: Assigns the Explorer role on a specific domain in the foo workspace.
