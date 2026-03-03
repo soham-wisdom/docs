@@ -33,7 +33,9 @@ FROM `wisdom-staging-406623`.`b2bsaleshomebrew`.`Opportunity`
 WHERE `stage_label` IN ('Evaluation', 'Negotiation', 'Closed Loss', 'Closed Won');
 ```
 
-![Image showing the Review a Question modal](/images/review-question-v02-em.png)
+<Frame>
+  ![Image showing the Review a Question modal](/images/review-question-v02-em.png)
+</Frame>
 
 5. If the answer needs changes, click the **Edit** button (pencil icon) to modify the SQL. Once you are satisfied, click **Mark as reviewed**.
 
@@ -59,7 +61,9 @@ ORDER BY
 
 The chart shows a clear year-over-year trend. However, you decide that a **quarterly view** would be more insightful for tracking seasonal performance. To get this, you can click the **Edit** button (pencil icon) to modify the SQL directly.
 
-![Image showing the Edit Sql option in chat](/images/Edit-sql-0925.png)
+<Frame>
+  ![Image showing the Edit Sql option in chat](/images/Edit-sql-0925.png)
+</Frame>
 
 The only change needed is to adjust the `DATE_TRUNC` function from `YEAR` to `QUARTER`.
 
@@ -79,11 +83,15 @@ ORDER BY
   `quarter` ASC
 ```
 
-![Image showing the Edited SQL](/images/sql-edited-0925.png)
+<Frame>
+  ![Image showing the Edited SQL](/images/sql-edited-0925.png)
+</Frame>
 
 After applying the change and seeing the updated quarterly chart, you can save this improved version. You would click **Mark as reviewed** and update the question to **“Show me the quarterly ARR trend”** to save it as a new, more specific Validated Query for future use.
 
-![Image showing the Review a Question modal](/images/review-question-sql-0925.png)
+<Frame>
+  ![Image showing the Review a Question modal](/images/review-question-sql-0925.png)
+</Frame>
 
 ### Bulk Upload with CSV
 
@@ -91,7 +99,9 @@ For adding many validated queries at once, you can use the CSV upload option in 
 
 To bulk upload, create a CSV file that contains two column headers: `Query` and `SQL`. Populate the rows with the natural language questions and their corresponding SQL code.
 
-![Import CSV File button shown](/images/import-csv-file-0925.png)
+<Frame>
+  ![Import CSV File button shown](/images/new-ui-import-csv.png)
+</Frame>
 
 ## Best Practices for Well-Formed SQL
 
@@ -117,16 +127,16 @@ Using both features together ensures that even when the AI generates new or slig
 ## Next steps
 
 <CardGroup cols={2}>
-  <Card title="Limited Knowledge" icon="puzzle-piece" href="/setting-up-wisdom-ai/feedback-mechanisms/limited-context">
+  <Card icon="puzzle-piece" href="/setting-up-wisdom-ai/feedback-mechanisms/limited-context" title="Limited Knowledge">
     Understand how to identify and flag when the system's answers lack necessary context.
   </Card>
-  <Card title="Provide Feedback to the System" icon="thumbs-up" href="/setting-up-wisdom-ai/feedback-mechanisms/provide-feedback-to-the-system">
+  <Card icon="thumbs-up" href="/setting-up-wisdom-ai/feedback-mechanisms/provide-feedback-to-the-system" title="Provide Feedback to the System">
     Learn how to rate answers and provide corrections to improve the system's accuracy.
   </Card>
-  <Card title="Monitor Negative Feedback" icon="thumbs-down" href="/setting-up-wisdom-ai/feedback-mechanisms/monitor-negative-feedback">
+  <Card icon="thumbs-down" href="/setting-up-wisdom-ai/feedback-mechanisms/monitor-negative-feedback" title="Monitor Negative Feedback">
     Track and analyze negative user feedback to identify areas for system improvement.
   </Card>
-  <Card title="Turn Answers into Dashboards" icon="book-open" href="/using-wisdom-ai-everyday/turn-answers-into-stories">
+  <Card icon="book-open" href="/using-wisdom-ai-everyday/turn-answers-into-stories" title="Turn Answers into Dashboards">
     Compile key insights and visualizations into a shareable, narrative-driven report.
   </Card>
 </CardGroup>
