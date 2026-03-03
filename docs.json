@@ -355,8 +355,8 @@
           {
             "group": "Daily Usage",
             "pages": [
+              "using-wisdom-ai-everyday/ask-better-questions",
               "improve-wisdom-ai-responses/attach-files-to-chat",
-              "provide-feedback-to-the-system",
               "explorers-feedback/provide-feedback-to-the-system",
               "using-wisdom-ai-everyday/turn-answers-into-dashboards"
             ]
