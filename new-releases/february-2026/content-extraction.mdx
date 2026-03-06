@@ -1,0 +1,68 @@
+---
+title: "WisdomAI Context Extraction"
+---
+
+Context Extraction is a feature within the Adaptive Context Engine (wACE) that helps you build your Domain by using existing documentation. By uploading files like dbt YAML, internal docs, PDFs, or query logs, the system identifies and proposes suggestions tailored to your data environment. 
+
+This guide will walk you through the steps to upload your files, extract metadata, and review the resulting suggestions.
+
+## How it Works
+
+The process follows three stages to ensure all metadata is verified before it is added to your Domain.
+
+1. Navigate to your domain page to upload files. You can optionally provide a short prompt to steer the engine toward specific logic or business context you want to find.
+
+2. Wisdom analyzes the content and proposes structured items. When possible, the system validates these suggestions based on SQL execution to ensure the logic is accurate. All proposals appear in the **Suggestions** experience. You can compare the suggestion side-by-side with the source content. 
+
+3. From this view, you can click **Accept**, **Reject**, or **Edit** before the information is published.
+
+<Callout type="Tip">
+This feature reduces manual entry and helps standardize definitions across teams while keeping you in control through a review-first workflow. It also improves trust with source attribution by showing exactly which part of your documentation generated a suggestion. 
+</Callout>
+
+## Extracted Metadata Types
+
+Context Extraction identifies the following categories of information:
+
+| Item Type | Description |
+| :--- | :--- |
+| Descriptions | Table and column definitions. |
+| Metrics | Metric definitions and associated SQL. |
+| Joins | Relationships and join logic between tables. |
+| Business Context | Rules, conventions, and SQL hints. |
+| Reviewed Queries | Example question-to-SQL pairs for model training. |
+
+## Supported File Types
+
+You can use various files to provide context, including:
+* **YAML Files:** Such as dbt-style configurations.
+* **LookML:** Looker modeling files.
+* **Unstructured Documents:** PDFs and text files.
+* **Query Logs:** Historical SQL records.
+
+## Frequently Asked Questions
+
+<AccordionGroup>
+  <Accordion title="Does anything get published automatically?">
+    No. Extracted items remain as suggestions until an admin clicks **Accept** in the Suggestions experience.
+  </Accordion>
+
+  <Accordion title="Where do I review suggestions?">
+    Suggestions are located in the **Knowledge** tab of your Domain. Each entry shows the specific source content used for the extraction.
+  </Accordion>
+
+  <Accordion title="Can I guide the extraction?">
+    Yes. During the upload step, you can use the prompt field to tell Wisdom exactly what metadata to look for.
+  </Accordion>
+</AccordionGroup>
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Advanced Data Modeling" icon="sitemap" href="/setting-up-wisdom-ai/advanced-data-modeling-creating-knowledge">
+    Learn how to manually create relationships and context.
+  </Card>
+  <Card title="Manage Domains" icon="layer-group" href="/manage-domains/understand-domains">
+    Explore how to organize your data logic using Domains.
+  </Card>
+</CardGroup>
