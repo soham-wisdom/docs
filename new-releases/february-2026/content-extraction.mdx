@@ -1,8 +1,8 @@
 ---
-title: "WisdomAI Context Extraction"
+title: "WisdomAI Context Extractor"
 ---
 
-Context Extraction is a feature within the Adaptive Context Engine (wACE) that helps you build your Domain by using existing documentation. By uploading files like dbt YAML, internal docs, PDFs, or query logs, the system identifies and proposes suggestions tailored to your data environment. 
+Context Extraction is a feature within WisdomAI's Adaptive Context Engine (wACE) that helps you build your Domain's context by using existing documentation. By uploading files like dbt YAML, internal docs, PDFs, or query logs, the Context Extraction tool proposes reviewable suggestions tailored to your data. You stay in control by accepting, rejecting, or editing suggestions before anything is published.
 
 This guide will walk you through the steps to upload your files, extract metadata, and review the resulting suggestions.
 
@@ -10,11 +10,21 @@ This guide will walk you through the steps to upload your files, extract metadat
 
 The process follows three stages to ensure all metadata is verified before it is added to your Domain.
 
-1. Navigate to your domain page to upload files. You can optionally provide a short prompt to steer the engine toward specific logic or business context you want to find.
+<Steps>
+  <Step title="Upload" icon="upload">
+    Upload files directly from your **Domain** page. You can optionally provide a short prompt to steer what the system should focus on during the **context extraction**.
+  </Step>
 
-2. Wisdom analyzes the content and proposes structured items. When possible, the system validates these suggestions based on SQL execution to ensure the logic is accurate. All proposals appear in the **Suggestions** experience. You can compare the suggestion side-by-side with the source content. 
+  <Step title="Extract" icon="wand-magic-sparkles">
+    WisdomAI analyzes the content and proposes structured items like descriptions, metrics, joins, and business context. When possible, WisdomAI validates these suggestions, for example, by utilizing a test SQL execution.
+  </Step>
 
-3. From this view, you can click **Accept**, **Reject**, or **Edit** before the information is published.
+  <Step title="Review and Publish" icon="check-double">
+    Review all proposed changes in the **Suggestions** experience. Compare the suggestion side-by-side with the source file to ensure accuracy. You can choose to **Accept**, **Reject**, or **Edit** any item before publishing it to your knowledge base.
+  </Step>
+</Steps>
+
+<video src="/images/context-extractor.mp4" controls={true} />
 
 <Callout type="Tip">
 This feature reduces manual entry and helps standardize definitions across teams while keeping you in control through a review-first workflow. It also improves trust with source attribution by showing exactly which part of your documentation generated a suggestion. 
