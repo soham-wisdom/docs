@@ -367,6 +367,10 @@
   },
   "redirects": [
     {
+      "source": "/setting-up-wisdom-ai/advanced-data-modeling-creating-knowledge",
+      "destination": "/setting-up-wisdom-ai/advanced-data-modeling-creating-context"
+    },
+    {
       "source": "/integrations/embedding/story/embed-a-story",
       "destination": "/integrations/embedding/story/embed-a-dashboard"
     },
