@@ -14,7 +14,7 @@
         {
           "anchor": "WisdomAI",
           "icon": "/favicon.png",
-          "href": "https://www.askwisdom.ai/"
+          "href": "https:/www.askwisdom.ai/"
         },
         {
           "anchor": "Support",
@@ -384,13 +384,13 @@
   },
   "seo": {
     "metatags": {
-      "canonical": "https://docs.wisdom.ai/",
+      "canonical": "https:/docs.wisdom.ai/",
       "og:site_name": "WisdomAI Docs"
     }
   },
   "footer": {
     "socials": {
-      "linkedin": "https://www.linkedin.com/company/wisdomai-inc/"
+      "linkedin": "https:/www.linkedin.com/company/wisdomai-inc/"
     }
   }
 }
