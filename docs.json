@@ -384,13 +384,13 @@
   },
   "seo": {
     "metatags": {
-      "canonical": "https:/docs.wisdom.ai/",
+      "canonical": "https:/docs.wisdom.ai",
       "og:site_name": "WisdomAI Docs"
     }
   },
   "footer": {
     "socials": {
-      "linkedin": "https:/www.linkedin.com/company/wisdomai-inc/"
+      "linkedin": "https:/www.linkedin.com/company/wisdomai-inc"
     }
   }
 }
