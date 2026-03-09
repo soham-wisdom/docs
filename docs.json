@@ -391,12 +391,44 @@
   },
   "redirects": [
     {
+      "source": "/setting-up-wisdom-ai/advanced-data-modeling-creating-knowledge",
+      "destination": "/setting-up-wisdom-ai/advanced-data-modeling-creating-context"
+    },
+    {
       "source": "/integrations/embedding/story/embed-a-story",
       "destination": "/integrations/embedding/story/embed-a-dashboard"
     },
     {
+      "source": "/using-wisdom-ai-everyday/turn-answers-into-stories",
+      "destination": "/using-wisdom-ai-everyday/turn-answers-into-dashboards"
+    },
+    {
+      "source": "/improve-wisdom-ai-responses/setting-up-wisdom-ai/manage-domains/understand-domains",
+      "destination": "/setting-up-wisdom-ai/manage-domains/understand-domains"
+    },
+    {
       "source": "/setting-up-wisdom-ai/manage-domains/knowledge-tab",
       "destination": "/setting-up-wisdom-ai/manage-domains/context-tab"
+    },
+    {
+      "source": "/graphql-api/objects/user",
+      "destination": "/integrations/graphql-api/objects/user"
+    },
+    {
+      "source": "/using-wisdom-ai-everyday/schedule-story-notifications",
+      "destination": "/using-wisdom-ai-everyday/schedule-dashboards-notifications"
+    },
+     {
+      "source": "/setting-up-wisdom-ai/document-tables-and-columns",
+      "destination": "/setting-up-wisdom-ai/manage-tables-columns/document-tables-and-columns"
+    },
+     {
+      "source": "/graphql-api/queries/user/current-user",
+      "destination": "/integrations/graphql-api/queries/user/current-user"
+    },
+    {
+      "source": "/using-wisdom-ai-everyday/share-stories-and-set-access-control",
+      "destination": "/using-wisdom-ai-everyday/share-dashboards-and-set-access-control"
     }
   ],
   "navbar": {
@@ -408,13 +440,13 @@
   },
   "seo": {
     "metatags": {
-      "canonical": "https://docs.wisdom.ai/",
+      "canonical": "https://docs.wisdom.ai",
       "og:site_name": "WisdomAI Docs"
     }
   },
   "footer": {
     "socials": {
-      "linkedin": "https://www.linkedin.com/company/wisdomai-inc/"
+      "linkedin": "https://www.linkedin.com/company/wisdomai-inc"
     }
   }
 }
