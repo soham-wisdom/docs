@@ -1,0 +1,70 @@
+---
+title: "Dual-Axis Charts"
+---
+
+Dual-Axis Charts, also known as combo charts, are visualizations that combine multiple chart types or Y-axes into a single view[cite: 1788, 1789]. They allow you to display measures with different scales or units, such as absolute revenue alongside a percentage margin, by rendering each measure as a different series type[cite: 1790].
+
+This feature ensures that metrics with different semantic meanings remain readable and helps you identify relationships between different data points that a single axis might obscure[cite: 1807, 1810, 1811]. This guide will walk you through the steps to understand how these charts are structured and how to use them to spot correlations in your data.
+
+## How it Works
+
+The system uses specific detection methods and structural components to build these rich visualizations.
+
+### Detection Methods
+The system identifies the need for a dual-axis chart in two ways:
+* **Rule-based:** It recognizes keywords such as "combo chart," "dual axis," or "dual-axis" in your query[cite: 1806].
+* **LLM-based:** The AI automatically detects when requested measures have different scales or semantic meanings[cite: 1807].
+
+### Chart Structure
+Each dual-axis chart is built using a specific layout specification:
+* **Dual Y-axes:** Independent scales are provided for both the left and right Y-axes[cite: 1793].
+* **Multiple Series Types:** Each measure can be rendered as a **COLUMN**, **BAR**, **LINE**, or **AREA**[cite: 1794, 1795, 1796, 1797, 1798].
+* **Layout Mapping:** The system explicitly defines what data appears on the X-axis, which measures belong to each Y-axis, and the rendering position for each series[cite: 1799, 1800, 1801, 1802, 1803].
+
+## Key Capabilities
+
+Dual-Axis Charts allow you to perform advanced analysis within a single visualization:
+
+* **Compare Different Scales:** View metrics with entirely different units, like transaction volume and conversion rates, in one place[cite: 1817, 1823].
+* **Mix Visual Styles:** Combine bars and lines to distinguish between volume-based data and efficiency-based trends[cite: 1818, 1819].
+* **Consolidate Insights:** Replace multiple standalone charts with a single visual that tells a more complete story[cite: 1813, 1820].
+
+## Common Use Cases
+
+| Metric A (Bars/Area) | Metric B (Line) | Purpose |
+| :--- | :--- | :--- |
+| Revenue | Margin % | Compare absolute profit to efficiency[cite: 1822]. |
+| Transaction Volume | Conversion Rate | Track activity alongside success rates[cite: 1823]. |
+| Pipeline Size | Win Rate | Monitor potential revenue against closing effectiveness[cite: 1824]. |
+| Spend | ROI | Visualize investment against return levels[cite: 1825]. |
+
+## Frequently Asked Questions
+
+<AccordionGroup>
+  <Accordion title="Do I need to configure axes manually?">
+    No. The system automatically chooses the appropriate axes and chart types based on the detected metrics[cite: 1827].
+  </Accordion>
+
+  <Accordion title="Can I mix different chart styles?">
+    Yes. Combo charts can combine bars, lines, or area series within the same visualization[cite: 1828].
+  </Accordion>
+
+  <Accordion title="When should I use a combo chart?">
+    Use a combo chart when you need to compare metrics with different scales or when you want to see how two distinct trends relate to one another[cite: 1829].
+  </Accordion>
+
+  <Accordion title="Will this work with time series data?">
+    Yes. Dual-axis charts are particularly effective for making time-based comparisons across multiple metrics[cite: 1830].
+  </Accordion>
+</AccordionGroup>
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Visualization Types" icon="chart-mixed" href="/advanced-features/visualization-types-and-properties">
+    Explore the full library of chart types and properties available in WisdomAI[cite: 137].
+  </Card>
+  <Card title="Knowledge Playground" icon="flask" href="/setting-up-wisdom-ai/knowledge-playground">
+    Experiment with different queries to see how the system generates dual-axis charts[cite: 104].
+  </Card>
+</CardGroup>

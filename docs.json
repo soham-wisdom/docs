@@ -362,6 +362,24 @@
             ]
           }
         ]
+      },
+      {
+        "tab": "New Features",
+        "icon": "circle-arrow-up-right",
+        "groups": [
+          {
+            "group": "February 2026",
+            "pages": [
+              {
+      "group": "New Features Released",
+      "expanded": false,
+      "pages": [
+              "new-releases/february-2026/02-26-release-overview"
+              ]
+             }
+            ]
+          }
+        ]
       }
     ]
   },
