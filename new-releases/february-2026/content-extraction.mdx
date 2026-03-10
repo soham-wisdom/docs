@@ -11,42 +11,43 @@ This guide will walk you through the steps to upload your files, extract metadat
 The process follows three stages to ensure all metadata is verified before it is added to your Domain.
 
 <Steps>
-  <Step title="Upload" icon="upload">
+  <Step icon="upload" title="Upload">
     Upload files directly from your **Domain** page. You can optionally provide a short prompt to steer what the system should focus on during the **context extraction**.
   </Step>
-
-  <Step title="Extract" icon="wand-magic-sparkles">
+  <Step icon="wand-magic-sparkles" title="Extract">
     WisdomAI analyzes the content and proposes structured items like descriptions, metrics, joins, and business context. When possible, WisdomAI validates these suggestions, for example, by utilizing a test SQL execution.
   </Step>
-
-  <Step title="Review and Publish" icon="check-double">
+  <Step icon="check-double" title="Review and Publish">
     Review all proposed changes in the **Suggestions** experience. Compare the suggestion side-by-side with the source file to ensure accuracy. You can choose to **Accept**, **Reject**, or **Edit** any item before publishing it to your knowledge base.
   </Step>
 </Steps>
 
-<Callout type="Tip">
-This feature reduces manual entry and helps standardize definitions across teams while keeping you in control through a review-first workflow. It also improves trust with source attribution by showing exactly which part of your documentation generated a suggestion. 
-</Callout>
+<video src="/videos/context-extractor-video.mp4" controls={true} />
+
+<Tip>
+  This feature reduces manual entry and helps standardize definitions across teams while keeping you in control through a review-first workflow. It also improves trust with source attribution by showing exactly which part of your documentation generated a suggestion.
+</Tip>
 
 ## Extracted Metadata Types
 
 Context Extraction identifies the following categories of information:
 
-| Item Type | Description |
-| :--- | :--- |
-| Descriptions | Table and column definitions. |
-| Metrics | Metric definitions and associated SQL. |
-| Joins | Relationships and join logic between tables. |
-| Business Context | Rules, conventions, and SQL hints. |
+| Item Type        | Description                                       |
+| :--------------- | :------------------------------------------------ |
+| Descriptions     | Table and column definitions.                     |
+| Metrics          | Metric definitions and associated SQL.            |
+| Joins            | Relationships and join logic between tables.      |
+| Business Context | Rules, conventions, and SQL hints.                |
 | Reviewed Queries | Example question-to-SQL pairs for model training. |
 
 ## Supported File Types
 
 You can use various files to provide context, including:
-* **YAML Files:** Such as dbt-style configurations.
-* **LookML:** Looker modeling files.
-* **Unstructured Documents:** PDFs and text files.
-* **Query Logs:** Historical SQL records.
+
+- **YAML Files:** Such as dbt-style configurations.
+- **LookML:** Looker modeling files.
+- **Unstructured Documents:** PDFs and text files.
+- **Query Logs:** Historical SQL records.
 
 ## Frequently Asked Questions
 
@@ -54,11 +55,9 @@ You can use various files to provide context, including:
   <Accordion title="Does anything get published automatically?">
     No. Extracted items remain as suggestions until an admin clicks **Accept** in the Suggestions experience.
   </Accordion>
-
   <Accordion title="Where do I review suggestions?">
     Suggestions are located in the **Knowledge** tab of your Domain. Each entry shows the specific source content used for the extraction.
   </Accordion>
-
   <Accordion title="Can I guide the extraction?">
     Yes. During the upload step, you can use the prompt field to tell Wisdom exactly what metadata to look for.
   </Accordion>
@@ -67,10 +66,10 @@ You can use various files to provide context, including:
 ## Next Steps
 
 <CardGroup cols={2}>
-  <Card title="Advanced Data Modeling" icon="sitemap" href="/setting-up-wisdom-ai/advanced-data-modeling-creating-knowledge">
+  <Card icon="sitemap" href="/setting-up-wisdom-ai/advanced-data-modeling-creating-knowledge" title="Advanced Data Modeling">
     Learn how to manually create relationships and context.
   </Card>
-  <Card title="Manage Domains" icon="layer-group" href="/manage-domains/understand-domains">
+  <Card icon="layer-group" href="/manage-domains/understand-domains" title="Manage Domains">
     Explore how to organize your data logic using Domains.
   </Card>
 </CardGroup>
