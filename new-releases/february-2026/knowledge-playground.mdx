@@ -6,43 +6,45 @@ The Knowledge Playground is a dedicated workspace for turning business questions
 
 This feature helps you avoid messy iterations in chat threads, improves accuracy through testing, and speeds up the build-test-refine loop. This guide will walk you through the steps to start a question, iterate on your SQL, and save your finalized results.
 
-## How it Works
+## How It works
 
 The process follows three steps to move from a plain-language idea to a validated, repeatable answer.
 
-### 1. Start with a Question
-Pick the appropriate data area and describe what you want to answer in plain language. You can also add optional hints if you already know specific filters or fields that the AI should include in the draft.
+<Steps>
+  <Step icon="messages-question" title="Start with a Question">
+    Pick the appropriate data area and describe what you want to answer in plain language. You can also add optional hints if you already know specific filters or fields that the AI should include in the draft.
+  </Step>
+  <Step icon="code" title="Iterate on the SQL">
+    Review the generated SQL and edit it manually as needed. **Retry** or update the code directly until the logic matches your intent.
+  </Step>
+  <Step icon="floppy-disk" title="Run, Validate, and Save">
+    **Run** the query and inspect the results in the table and visualization views. Once you confirm the output is correct and tells the right story, click **Mark as reviewed** to keep the query for future reuse.
+  </Step>
+</Steps>
 
-### 2. Iterate on the SQL
-Review the generated SQL and edit it manually as needed. You can click **Retry** or update the code directly until the logic matches your intent.
+<video src="/videos/knowledge_playgroung_video.mp4" controls={true} />
 
-### 3. Run, Validate, and Save
-Click **Execute** to run the query and inspect the results in the table and visualization views. Once you confirm the output is correct and tells the right story, click **Save** to finalize the query for future reuse.
-
-## Key Capabilities
+## Key capabilities
 
 Knowledge Playground allows you to perform the following actions:
 
-* **Draft SQL:** Create a starting point using plain-English questions.
-* **Refine Logic:** Manually edit and rerun SQL until the output matches your requirements.
-* **Inspect Results:** View data in table form and explore different visualizations to confirm accuracy.
-* **Establish Reusability:** Save finalized queries so they can be reused consistently across your organization.
+- **Draft SQL:** Create a starting point using plain-English questions.
+- **Refine Logic:** Manually edit and rerun SQL until the output matches your requirements.
+- **Inspect Results:** View data in table form and explore different visualizations to confirm accuracy.
+- **Establish Reusability:** Save finalized queries so they can be reused consistently across your organization.
 
-## Frequently Asked Questions
+## FAQs
 
 <AccordionGroup>
   <Accordion title="Can I edit the SQL after it is generated?">
     Yes. You can manually update the SQL and rerun it until the output is correct.
   </Accordion>
-
   <Accordion title="How do I know the results are accurate?">
     Run the query, inspect the output, and iterate until the results match your expectations. The goal is to validate the data before saving it for broader use.
   </Accordion>
-
   <Accordion title="Is this for experiments or production work?">
     Both. It is designed for quick experimentation and for turning those experiments into validated, production-ready queries.
   </Accordion>
-
   <Accordion title="Do I need special access to use it?">
     You may need elevated permissions depending on your workspace settings. If you cannot click **Execute** or **Save**, check with your workspace administrator.
   </Accordion>
@@ -51,10 +53,10 @@ Knowledge Playground allows you to perform the following actions:
 ## Next Steps
 
 <CardGroup cols={2}>
-  <Card title="Context Extraction" icon="wand-magic-sparkles" href="/setting-up-wisdom-ai/context-extraction">
+  <Card icon="wand-magic-sparkles" href="/setting-up-wisdom-ai/context-extraction" title="Context Extraction">
     Learn how to automatically generate suggestions from your existing documentation.
   </Card>
-  <Card title="Manage Domains" icon="layer-group" href="/manage-domains/understand-domains">
+  <Card icon="layer-group" href="/manage-domains/understand-domains" title="Manage Domains">
     Explore how to organize the data logic you create in the Knowledge Playground.
   </Card>
 </CardGroup>
