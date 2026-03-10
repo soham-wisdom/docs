@@ -1,18 +1,18 @@
 ---
-title: "WisdomAI Context Extractor"
+title: "Context Extractor"
 ---
 
 Context Extraction is a feature within WisdomAI's Adaptive Context Engine (wACE) that helps you build your Domain's context by using existing documentation. By uploading files like dbt YAML, internal docs, PDFs, or query logs, the Context Extraction tool proposes reviewable suggestions tailored to your data. You stay in control by accepting, rejecting, or editing suggestions before anything is published.
 
 This guide will walk you through the steps to upload your files, extract metadata, and review the resulting suggestions.
 
-## How it Works
+## How it works
 
 The process follows three stages to ensure all metadata is verified before it is added to your Domain.
 
 <Steps>
   <Step icon="upload" title="Upload">
-    Upload files directly from your **Domain** page. You can optionally provide a short prompt to steer what the system should focus on during the **context extraction**.
+    Upload files directly from your **Domain** page. You can optionally provide a short prompt to steer what the system should focus on during the context extraction.
   </Step>
   <Step icon="wand-magic-sparkles" title="Extract">
     WisdomAI analyzes the content and proposes structured items like descriptions, metrics, joins, and business context. When possible, WisdomAI validates these suggestions, for example, by utilizing a test SQL execution.
@@ -24,11 +24,11 @@ The process follows three stages to ensure all metadata is verified before it is
 
 <video src="/videos/context-extractor-video.mp4" controls={true} />
 
-<Tip>
+<Note>
   This feature reduces manual entry and helps standardize definitions across teams while keeping you in control through a review-first workflow. It also improves trust with source attribution by showing exactly which part of your documentation generated a suggestion.
-</Tip>
+</Note>
 
-## Extracted Metadata Types
+## Extracted metadata types
 
 Context Extraction identifies the following categories of information:
 
@@ -37,10 +37,10 @@ Context Extraction identifies the following categories of information:
 | Descriptions     | Table and column definitions.                     |
 | Metrics          | Metric definitions and associated SQL.            |
 | Joins            | Relationships and join logic between tables.      |
-| Business Context | Rules, conventions, and SQL hints.                |
+| Business Context | Rules, definitions, conventions, and SQL hints.   |
 | Reviewed Queries | Example question-to-SQL pairs for model training. |
 
-## Supported File Types
+## Supported file types
 
 You can use various files to provide context, including:
 
@@ -49,7 +49,14 @@ You can use various files to provide context, including:
 - **Unstructured Documents:** PDFs and text files.
 - **Query Logs:** Historical SQL records.
 
-## Frequently Asked Questions
+## Target users
+
+The context extractor feature is available to:
+
+- **Data Admins** who manage and curate trusted domain knowledge (descriptions, metrics, joins, and definitions).
+- **Explorers** who rely on accurate context to ask better questions and interpret results with confidence.
+
+## FAQs
 
 <AccordionGroup>
   <Accordion title="Does anything get published automatically?">
@@ -63,7 +70,7 @@ You can use various files to provide context, including:
   </Accordion>
 </AccordionGroup>
 
-## Next Steps
+## Next steps
 
 <CardGroup cols={2}>
   <Card icon="sitemap" href="/setting-up-wisdom-ai/advanced-data-modeling-creating-knowledge" title="Advanced Data Modeling">
