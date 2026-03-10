@@ -2,47 +2,55 @@
 title: "Data Query on Slack"
 ---
 
-Slack in Channels allows you to @mention @WisdomAI in public or private Slack channels to ask data questions collaboratively. Previously, the Slack app only worked in direct messages. Now teams can have shared data conversations that are visible to all channel members.
+Slack in Channels allows you to `@mention` `@WisdomAI` in public or private Slack channels to ask data questions collaboratively. Previously, the Slack app only worked in direct messages. Now teams can have shared data conversations that are visible to all channel members.
 
 This feature turns Slack into a shared space for data-driven conversations where insights are shared openly. This guide will walk you through the steps to set the data context, ask questions in a channel, and collaborate using threads.
 
-## How it Works
+## How it works
 
 The process follows three steps to move data conversations from private messages to shared team spaces.
 
-### Step 1: Set the Context
-An administrator links a specific Slack channel to a data area. This ensures that the system knows which data to reference when members ask questions within that channel.
+<Steps>
+  <Step icon="link" title="Set the Context">
+    An administrator links a specific Slack channel to a data area. This ensures that the system knows which data to reference when members ask questions within that channel.
 
-### Step 2: Ask in the Channel
-Any member of the channel can type a question and @mention @WisdomAI. The system processes the natural language request based on the linked data context.
+    <Frame>
+      ![Connect To Slack](/images/Connect-to-slack.jpg)
+    </Frame>
+  </Step>
+  <Step icon="messages-question" title="Ask in the Channel">
+    Any member of the channel can type a question and @mention **@WisdomAI**. The system processes the natural language request based on the linked data context.
+  </Step>
+  <Step icon="comments" title="Collaborate in Threads">
+    Responses appear as threaded replies. This keeps the main channel history clean while allowing team members to ask follow-up questions or discuss the results in a preserved context.
 
-### Step 3: Collaborate in Threads
-Responses appear as threaded replies. This keeps the main channel history clean while allowing team members to ask follow-up questions or discuss the results in a preserved context.
+    <Frame>
+      ![Query Slack Thread](/images/query-slack-thread.png)
+    </Frame>
+  </Step>
+</Steps>
 
-## Key Capabilities
+## Key capabilities
 
 Data Query on Slack helps teams integrate data into their existing communication workflows:
 
-* **Shared Visibility:** Move important data questions out of private DMs and into open channels where the whole team can learn.
-* **Reduced Repetition:** Keep answers visible so teammates can see previously asked questions and results.
-* **Organized Discussions:** Use Slack threads to manage detailed data conversations without cluttering the main chat.
-* **Customized Contexts:** Link different Slack channels to different data areas depending on the needs of the specific team or project.
+- **Shared Visibility:** Move important data questions out of private DMs and into open channels where the whole team can learn.
+- **Reduced Repetition:** Keep answers visible so teammates can see previously asked questions and results.
+- **Organized Discussions:** Use Slack threads to manage detailed data conversations without cluttering the main chat.
+- **Customized Contexts:** Link different Slack channels to different data areas depending on the needs of the specific team or project.
 
-## Frequently Asked Questions
+## FAQs
 
 <AccordionGroup>
   <Accordion title="Who can see the answers?">
     Anyone who is a member of the Slack channel can see the conversation, provided they have the necessary permissions to access the underlying data source.
   </Accordion>
-
   <Accordion title="Are permissions respected?">
     Yes. The system enforces access controls, ensuring each person only sees data they are authorized to access.
   </Accordion>
-
   <Accordion title="Can multiple channels use different data?">
     Yes. You can link each individual Slack channel to its own unique data context.
   </Accordion>
-
   <Accordion title="Will this clutter my channels?">
     No. All responses are neatly organized in threads to maintain readability in the main channel view.
   </Accordion>
@@ -51,10 +59,10 @@ Data Query on Slack helps teams integrate data into their existing communication
 ## Next Steps
 
 <CardGroup cols={2}>
-  <Card title="Slack Integration Setup" icon="slack" href="/integrations/slack">
+  <Card icon="slack" href="/integrations/slack" title="Slack Integration Setup">
     Learn how to connect your Slack workspace to WisdomAI.
   </Card>
-  <Card title="Ask Better Questions" icon="message-question" href="/using-wisdom-ai-everyday/ask-better-questions">
+  <Card icon="message-question" href="/using-wisdom-ai-everyday/ask-better-questions" title="Ask Better Questions">
     Review strategies for phrasing questions to get the best results in Slack.
   </Card>
 </CardGroup>
