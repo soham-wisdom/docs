@@ -2,61 +2,72 @@
 title: "Ghost Text Completion"
 ---
 
-Ghost Text Completion is an AI-powered autocomplete feature that provides real-time suggestions as you type in the chat input box. Similar to modern coding tools like GitHub Copilot, it displays completions as gray "ghost" text that you can quickly accept or ignore.
+Ghost Text Completion is an AI-powered autocomplete feature that provides real-time suggestions as you type in the chat input box. Similar to modern coding tools like GitHub Copilot or Cursor's autocomplete, it displays suggestions as gray "ghost" text that you can quickly accept or ignore.
 
 This feature helps you write precise questions faster and discover available metrics or terms within your specific Domain. This guide will walk you through the steps to use these suggestions and how they integrate into your workflow.
 
-
-
-## How it Works
+## How it works
 
 The process is designed to be seamless and keyboard-friendly, ensuring you stay in your creative flow.
 
-### Step 1: Start Typing
-Begin entering your question or command in the chat input box. The system begins analyzing your input immediately to predict the most relevant completion.
+<Steps>
+  <Step icon="keyboard" title="Start Typing">
+    Begin entering your question or command in the chat input box. The system begins analyzing your input immediately to predict the most relevant completion.
+  </Step>
+  <Step icon="wand-magic-sparkles" title="See Suggestions Appear">
+    Helpful completions appear automatically as gray ghost text. These suggestions are tailored to the specific data, metrics, and terminology defined within your current Domain.
+  </Step>
+  <Step icon="check" title="Accept or Ignore">
+    If the suggestion matches your intent, press **Tab** to accept it and instantly fill the text. If the suggestion is not what you need, simply continue typing to dismiss it.
+  </Step>
+</Steps>
 
-### Step 2: See Suggestions Appear
-Helpful completions appear automatically as gray ghost text. These suggestions are tailored to the specific data, metrics, and terminology defined within your current Domain.
+<Frame>
+  ![Ghost Text](/images/ghost-text.png)
+</Frame>
 
-### Step 3: Accept or Ignore
-If the suggestion matches your intent, press **Tab** to accept it and instantly fill the text. If the suggestion is not what you need, simply continue typing to dismiss it.
-
-## Key Capabilities
+## Key capabilities
 
 Ghost Text Completion provides several benefits for both new and experienced users:
 
-* **Faster Input:** Write complex questions with fewer keystrokes.
-* **Domain Discovery:** Identify specific terms, metrics, and data patterns unique to your organization.
-* **Consistent Querying:** Reuse common styles and phrasing effortlessly.
-* **Keyboard-First Workflow:** Maintain focus on your question without needing to use a mouse or navigate menus.
+- **Faster Input:** Write complex questions with fewer keystrokes.
+- **Domain Discovery:** Identify specific terms, metrics, and data patterns unique to your organization.
+- **Consistent Querying:** Reuse common styles and phrasing effortlessly.
+- **Keyboard-First Workflow:** Maintain focus on your question without needing to use a mouse or navigate menus.
 
-## Frequently Asked Questions
+## Designed for
+
+Querying data on Slack channels is key for:
+
+- **Explorers** who are learning what questions they can ask of their data. 
+- **Builders** who write complex or technical queries. 
+- **Operators** who want faster access to insights. 
+- **Power Users** who value speed and keyboard-first workflows.
+
+## FAQs
 
 <AccordionGroup>
   <Accordion title="Do I have to use the suggestions?">
     No. Suggestions are entirely optional and are designed to stay out of your way if you choose to ignore them.
   </Accordion>
-
-  <Accordion title="Are suggestions relevant to my data?">
+  <Accordion title="Are the suggestions relevant to my data?">
     Yes. The completions are specifically generated based on the context of the Domain you are currently using.
   </Accordion>
-
   <Accordion title="Does this slow down the typing experience?">
     No. The system is optimized to show suggestions quickly and update them seamlessly as you continue to type.
   </Accordion>
-
   <Accordion title="Does this provide user-level personalization?">
     Not currently. This feature focuses on Domain-specific terminology and common patterns. Individual user personalization is planned for a future update.
   </Accordion>
 </AccordionGroup>
 
-## Next Steps
+## Next steps
 
 <CardGroup cols={2}>
-  <Card title="Ask Better Questions" icon="message-question" href="/using-wisdom-ai-everyday/ask-better-questions">
+  <Card icon="message-question" href="/using-wisdom-ai-everyday/ask-better-questions" title="Ask Better Questions">
     Learn strategies for phrasing your queries to get the most accurate results.
   </Card>
-  <Card title="Manage Domains" icon="layer-group" href="/manage-domains/understand-domains">
-    Ensure your Domain knowledge is up to date so the autocomplete can suggest the right terms.
+  <Card icon="link" href="/improve-wisdom-ai-responses/attach-files-to-chat" title="Using File Attachments in Chat">
+    Attach a file to your WisdomAI chat to provide additional context for the session.
   </Card>
 </CardGroup>
