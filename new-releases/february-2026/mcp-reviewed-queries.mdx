@@ -2,59 +2,63 @@
 title: "MCP Reviewed Queries"
 ---
 
-MCP Reviewed Queries extends the existing reviewed queries system to support visualizations generated from Model Context Protocol (MCP) tool calls. When you provide positive feedback on an MCP-generated visualization, it becomes a high-quality example that the system uses to improve future responses for similar questions.
+MCP Reviewed Queries extends the existing reviewed queries system to support visualizations generated from Model Context Protocol (MCP) tool calls. When you provide positive feedback on an MCP-generated visualization, it becomes a high-quality example that the system uses to improve future responses for similar queries.
 
-This feature creates a continuous learning loop where your everyday interactions help the system understand what a correct answer looks like. This guide will walk you through the steps to ask questions, approve results, and improve the system's accuracy over time.
+This feature creates a continuous learning loop in which your everyday interactions help the system understand what a correct answer looks like, forming patterns it can repeat. This guide will walk you through the steps for asking questions, approving results, and improving the system's accuracy over time.
 
-## How it Works
+## How it works
 
 The process follows three steps to turn a single correct answer into a repeatable pattern for the system.
 
-### Step 1: Ask a Question
-Start by asking a question in chat that requires a connected tool to generate a response. The system will use the tool to provide data and a corresponding visualization.
+<Steps>
+  <Step icon="messages-question" title="Ask a Question">
+    Start by asking a question in chat that requires a connected tool to generate a response. The system will use the tool to provide data and a corresponding visualization.
+  </Step>
+  <Step icon="thumbs-up" title="Approve the Result">
+    Inspect the visualization and the data provided. If the result is accurate and meets your requirements, click the **Thumbs Up** icon. This action flags the response as a validated example.
+  </Step>
+  <Step icon="sparkles" title="Get Better Answers">
+    The system automatically uses that approved example to guide its logic when answering similar questions in the future. Over time, these reviewed queries reduce inconsistency and ensure the system follows your preferred patterns.
+  </Step>
+</Steps>
 
-### Step 2: Approve the Result
-Inspect the visualization and the data provided. If the result is accurate and meets your requirements, click the **Thumbs Up** icon. This action flags the response as a validated example.
-
-### Step 3: Get Better Answers
-The system automatically uses that approved example to guide its logic when answering similar questions in the future. Over time, these reviewed queries reduce inconsistency and ensure the system follows your preferred patterns.
-
-## Key Capabilities
+## Key capabilities
 
 MCP Reviewed Queries allow you to improve system performance without complex manual setup:
 
-* **Automatic Improvements:** Enhance tool-based answers simply by interacting with the chat.
-* **Reusable Examples:** Turn one-off correct visualizations into reference points for the AI.
-* **Pattern Recognition:** Help the system learn real-world usage patterns that metadata and schemas alone cannot capture.
-* **Consistency:** Reduce variations in how the system responds to similar questions across your organization.
+- **Automatic Improvements:** Enhance tool-based answers simply by interacting with the chat.
+- **Reusable Examples:** Turn one-off correct visualizations into reference points for the AI.
+- **Pattern Recognition:** Help the system learn real-world usage patterns that metadata and schemas alone cannot capture.
+- **Consistency:** Reduce variations in how the system responds to similar questions across your organization.
 
-## Frequently Asked Questions
+## Target users
+
+The MCP Reviewed Queries feature is available to **Admins** and **Explorers** who rely on validated query patterns to ensure accuracy, reduce inconsistency, and maintain high-quality data standards across their organization.
+
+## FAQs
 
 <AccordionGroup>
   <Accordion title="What happens when I click the thumbs-up icon?">
-    The system treats that specific result as a high-quality example. It uses the logic and output of that interaction to guide how it handles similar requests in the future.
+    The system treats that specific result as a high-quality example. It uses the logic and output of that interaction to guide its handling of similar requests in the future.
   </Accordion>
-
   <Accordion title="Do I need to manage these examples manually?">
     No. The learning process happens automatically once you approve a result. You do not need to perform additional configuration in the Domain settings.
   </Accordion>
-
-  <Accordion title="Will this change answers for other users?">
-    Yes. Approved examples help the system respond better to similar questions for all users within the Domain, while still strictly respecting individual access controls and permissions.
+  <Accordion title="Will this change the answers for other users?">
+    Yes. Approved examples help the system respond more effectively to similar questions for all users within the Domain, while strictly respecting individual access controls and permissions.
   </Accordion>
-
   <Accordion title="Can I see or edit my approved examples?">
     Basic feedback and approval are supported currently. More advanced visibility and management options for these examples are planned for future updates.
   </Accordion>
 </AccordionGroup>
 
-## Next Steps
+## Next steps
 
 <CardGroup cols={2}>
-  <Card title="Provide Feedback to the System" icon="thumbs-up" href="/setting-up-wisdom-ai/provide-feedback-to-the-system">
+  <Card icon="thumbs-up" href="/explorers-feedback/provide-feedback-to-the-system" title="Provide Feedback to the System">
     Learn more about how different types of feedback help train WisdomAI.
   </Card>
-  <Card title="MCP Visualizations in Dashboards" icon="chart-pie" href="/advanced-features/mcp-visualizations-in-dashboards">
+  <Card icon="chart-pie" href="new-releases/february-2026/mcp-in-dashboards" title="MCP Visualizations in Dashboards">
     Save your approved visualizations directly to live, refreshable dashboards.
   </Card>
 </CardGroup>
