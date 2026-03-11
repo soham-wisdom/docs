@@ -158,6 +158,7 @@
                 ]
               },
               "advanced-features/deep-analysis",
+              "advanced-features/python-interpreter-tool",
               "advanced-features/visualization-types-and-properties"
             ]
           },
