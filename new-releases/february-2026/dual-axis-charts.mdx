@@ -15,7 +15,7 @@ The system uses specific detection methods and structural components to build th
 The system identifies the need for a dual-axis chart in two ways:
 
 - **Rule-based:** It recognizes keywords such as "combo chart," "dual axis," or "dual-axis" in your query.
-- **LLM-based:** The AI automatically detects when requested measures use different scales or have different semantic meanings.
+- **LLM-based:** The AI automatically detects when requested measures have different scales or semantic meanings.
 
 ### Chart Structure
 
@@ -28,7 +28,7 @@ Each dual-axis chart is built using a specific layout specification:
 </Frame>
 
 - **Multiple Series Types:** Each measure can be rendered as a **COLUMN** (vertical), **BAR** (horizontal), **LINE**, or **AREA**.
-- **Layout Mapping:** The system explicitly defines what data appears on the X-axis, which measures belong to each Y-axis, and the rendering position for each series. Explicit specifications of chart structure **(ChartLayoutSpec)** include:
+- **Layout Mapping:** The system explicitly defines what data appears on the X-axis, which measures belong to each Y-axis, and the rendering position for each series. The chart structure is defined using **ChartLayoutSpec**, which includes:
   - **x_axis.columns[]** - What goes on the X-axis
   - **y_axes[].columns[]** - Measures per Y-axis
   - **y_axes[].series_type** - How to render (column/line/bar/area)
@@ -52,6 +52,10 @@ Dual-Axis Charts allow you to perform advanced analysis within a single visualiz
 | Pipeline Size        | Win Rate        | Monitor potential revenue against closing effectiveness. |
 | Spend                | ROI             | Visualize investment against return levels.              |
 
+## Targeted users
+
+This feature is available to **Explorers** and **Admins**.
+
 ## FAQs
 
 <AccordionGroup>
@@ -59,7 +63,7 @@ Dual-Axis Charts allow you to perform advanced analysis within a single visualiz
     No. The system automatically chooses the appropriate axes and chart types based on the detected metrics.
   </Accordion>
   <Accordion title="Can I mix different chart styles?">
-    Yes. Combo charts can combine bars, lines, or area series in a single visualization.
+    Yes. Combo charts can combine bars, lines, or area series within a single visualization.
   </Accordion>
   <Accordion title="When should I use a combo chart?">
     Use a combo chart when you need to compare metrics on different scales or when you want to see how two distinct trends relate.
