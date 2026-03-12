@@ -1,47 +1,82 @@
 ---
-title: "Chat With a Dashboard"
+title: "Chat with a Dashboard"
 ---
 
 The Chat with a Dashboard feature embeds a conversational AI copilot directly into your dashboard pages. This allows you to ask natural-language questions about your data, receive automated executive summaries, and identify key changes since your last visit. By keeping the chat experience within the dashboard, you can perform deep-dive analysis without losing the context of your visual reports.
 
 ## How it works
 
-The dashboard chat operates as a scoped conversation, meaning the AI automatically understands the data domains associated with the widgets you are currently viewing.
+When a user opens a dashboard, the system automatically initializes a contextual chat experience tied to the dashboard’s data. The dashboard chat operates as a scoped conversation, meaning the AI automatically detects the domain associated with the dashboard and uses it as context for the conversation.
 
-### Step 1: Access the chat
+<Steps>
+  <Step icon="sidebar" title="Access the Chat">
+    When you open a dashboard, the chat sidebar typically appears on the right side of the page by default. You can also manually toggle the sidebar by clicking the **Sidebar** icon located in the **Dashboard Header** or by using the keyboard shortcut **Cmd+I** (macOS) or **Ctrl+I** (Windows).
+  </Step>
+  <Step icon="sparkles" title="Review Automated Insights">
+    At the top of the chat interface, the system provides two specialized AI tiles:
 
-When you open a dashboard, the chat sidebar typically opens by default on the right side of the page. You can also manually toggle the sidebar by clicking the sidebar icon located in the **Dashboard header** or by using the keyboard shortcut **Cmd+I** (macOS) or **Ctrl+I** (Windows).
+    - **Executive Summary:** A streaming summary of all dashboard data that provides a narrative overview of your metrics.
+    - **What Changed:** A time-diff comparison that highlights specific data deltas and trends since your previous visit.
+  </Step>
+  <Step icon="messages-question" title="Interaction and Follow-up">
+    Below the automated tiles, you can use the full Wisdom chat experience to ask specific natural-language questions. If you want to analyze a specific widget, click the **...** kebab menu on that widget and select **Ask follow-up questions**. This action utilizes **context extraction** to attach the widget's specific data as a reference for your chat query.
+  </Step>
+  <Step icon="circle-plus" title="Update the Dashboard">
+    If you are a dashboard creator, you can add new insights directly to the page from the chat. When the AI generates a chart or table you wish to keep, click the **Add to Dashboard** button on the chat artifact, or simply type "Add this chart to the dashboard" into the input field.
+  </Step>
+</Steps>
 
-### Step 2: Review automated insights
+## Dashboard chat tools
 
-At the top of the chat interface, the system provides two specialized AI tiles:
+The dashboard chat experience uses specialized tools that allow the AI to interact with the dashboard data and structure.
 
-- **Executive Summary:** A streaming summary of all dashboard data that provides a narrative overview of your metrics.
-- **What Changed:** A time-diff comparison that highlights specific data deltas and trends that have occurred since your previous visit.
+| Tool                    | Purpose                                                       |
+| :---------------------- | :------------------------------------------------------------ |
+| **SUMMARIZE_DASHBOARD** | Generates AI summaries of dashboard metrics and widget data.  |
+| **DASHBOARD_CRUD**      | Creates, updates, or modifies dashboard widgets and elements. |
+| **LIST_DASHBOARDS**     | Retrieves available dashboards and related metadata.          |
 
-### Step 3: Interaction and follow-up
+These tools allow the AI to analyze dashboard data, generate summaries, and create new visualizations that can be added directly to the dashboard.
 
-Below the automated tiles, you can use the full Wisdom chat experience to ask specific questions. If you want to analyze a specific widget, click the **...** kebab menu on that widget and select **Ask follow-up questions**. This action utilizes context extraction to attach the widget's specific data as a reference for your chat query.
-
-### Step 4: Update the dashboard (Creator Mode)
-
-If you are a dashboard creator, you can add new insights directly to the page from the chat. When the AI generates a chart or table you wish to keep, click the **Add to Dashboard** button on the chat artifact, or simply type "Add this chart to the dashboard" into the input field.
-
-## Key Capabilities
+## Key capabilities
 
 Chat with a Dashboard provides several tools to streamline your data monitoring and creation workflows:
 
 - **In-Context Summaries:** Receive an instant narrative overview of complex dashboards without manual interpretation.
 - **Historical Comparisons:** Quickly identify what has changed in your data between sessions.
 - **Widget-Specific Analysis:** Use the **Ask follow-up questions** feature to dive deeper into the specific logic of any individual chart.
-- **Streamlined Editing:** Creators can build and iterate on dashboards by adding chat-generated widgets instantly.
+- **Streamlined Editing:** Creators can build and iterate on dashboards by instantly adding chat-generated widgets.
 
-## Target Users
+## Target users
 
-- **Stakeholders and Executives:** Use the **Executive Summary** for high-level narrative overviews.
+- **Admins:** Use the **Executive Summary** for high-level narrative overviews.
 - **Explorers and Analysts:** Use the chat sidebar to ask ad-hoc questions about specific data points.
-- **Dashboard Builders:** Use creator mode to rapidly add new visualizations to a story from a chat conversation.
+- **Dashboard Builders:** Use creator mode to quickly add new visualizations to a dashboard based on a chat conversation.
 
 ## FAQ
 
-## Next Steps
+<AccordionGroup>
+  <Accordion title="Do I need to start a new chat to ask questions about a dashboard?">
+    No. The chat sidebar is automatically scoped to the dashboard’s data, allowing you to ask questions without leaving the page.
+  </Accordion>
+  <Accordion title="Can I ask questions about a specific widget?">
+    Yes. From the widget menu, select **Ask follow-up questions** to attach that widget’s data to the conversation.
+  </Accordion>
+  <Accordion title="Can I add widgets from chat responses?">
+    Yes. In creator mode, chat responses can generate artifacts such as charts that include an **Add to Dashboard** action.
+  </Accordion>
+  <Accordion title="What permissions are required?">
+    The feature must be enabled through the `DASHBOARD_CHAT_ENABLED` feature flag, and users must have permission to read the dashboard data.
+  </Accordion>
+</AccordionGroup>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card icon="chart-line" href="/advanced-features/dashboards" title="Dashboards">
+    Learn how dashboards are created and structured in WisdomAI.
+  </Card>
+  <Card icon="sparkles" href="/using-wisdom-ai/chat" title="Using Chat">
+    Explore how to ask questions and analyze data using the WisdomAI chat interface.
+  </Card>
+</CardGroup>
