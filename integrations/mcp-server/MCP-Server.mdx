@@ -103,9 +103,9 @@ When you first connect, your client will prompt you to:
 
 The server implements **OAuth 2.1** with **Dynamic Client Registration (DCR)** and **Proof Key for Code Exchange (PKCE)**, following the [MCP Authorization specification](https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization). This means:
 
-- **No manual setup required** — clients register automatically.
-- **Secure token binding** — tokens are scoped to your MCP session.
-- **Session continuity** — each session maintains its own context and can handle multiple requests with the same token.
+- **No manual setup required**: clients register automatically.
+- **Secure token binding**: tokens are scoped to your MCP session.
+- **Session continuity**: each session maintains its own context and can handle multiple requests with the same token.
 
 <Accordion title="OAuth Discovery Endpoints">
   The server exposes standard OAuth discovery endpoints for clients that need them:
@@ -126,11 +126,11 @@ The server implements **OAuth 2.1** with **Dynamic Client Registration (DCR)** a
 
 Once connected, the following tools are available:
 
-| Tool                                                            | Description                                                                                               |
-| :-------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------- |
-| [**chat**](/integrations/mcp-server/tools/chat)                 | Ask natural language questions against your data domains. Returns text, tables, and chart visualizations. |
-| [**list-domains**](/integrations/mcp-server/tools/list-domains) | Discover available domains and their IDs before making queries.                                           |
-| [**echo**](/integrations/mcp-server/tools/echo)                 | Test connectivity and verify the request/response flow is working.                                        |
+| Tool                                                            | Description                                                                                             |
+| :-------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------ |
+| [**chat**](/integrations/mcp-server/tools/chat)                 | Ask natural-language questions about your data domains. Returns text, tables, and chart visualizations. |
+| [**list-domains**](/integrations/mcp-server/tools/list-domains) | Discover available domains and their IDs before making queries.                                         |
+| [**echo**](/integrations/mcp-server/tools/echo)                 | Test connectivity and verify the request/response flow is working.                                      |
 
 ## Example Prompts
 
