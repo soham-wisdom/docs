@@ -1,0 +1,8 @@
+#navigation-items div a img {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+#navigation-items div a div:has(img) {
+  order: 1 !important;
+}
