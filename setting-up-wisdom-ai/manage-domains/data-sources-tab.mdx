@@ -10,11 +10,13 @@ Within this section, you define which data sources are available to the AI, how 
   ![Snippet showing the Data Sources tab within a domain](/images/new-ui-data-sources-tab.png)
 </Frame>
 
-The Data Sources section includes three tabs:
+The Data Sources section includes the following tabs:
 
 - **Database**: Use this tab to manage tables sourced from a connected database (for example, BigQuery). You can control which database tables are visible to the AI, add display names and descriptions, and [define relationships between tables](/setting-up-wisdom-ai/advanced-data-modeling-creating-knowledge#establishing-relationships) to accurately model your data. This view also lets you review key schema details, such as columns, derived fields, and RAG-enabled data.
 - **Tabular Uploads**: Use this tab to upload structured files, such as CSV or Excel, and create tables manually within the domain. These uploaded tables behave like database tables for querying, allowing you to control visibility, add descriptions, and review the columns and data types from the uploaded file.
 - **Files**: Use this tab to upload and manage unstructured files that provide additional context to the AI responses.
+- **MCP Servers**: If an MCP server is connected, this tab displays the server's tools and configuration. See [Connect an MCP Server](/getting-started/connect-data-sources/connect-mcp-server) for details.
+- **Web Search**: If Web Search is enabled, this tab lets you configure the source policy that controls which websites the AI can search. See [Search the Web](/getting-started/connect-data-sources/search-the-web) for details.
 
   <Note>
     This feature is in beta. Currently, PDFs, DOC/DOCX files, PowerPoint files, txt files, and images are supported.
