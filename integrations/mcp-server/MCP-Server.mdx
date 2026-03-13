@@ -2,118 +2,175 @@
 title: "MCP Server"
 ---
 
-WisdomAI provides a [Model Knowledge Protocol (MCP)](https://modelcontextprotocol.io) server that enables direct integration with MCP-compatible clients. The MCP server exposes WisdomAI's powerful data analysis capabilities through standardized tool interfaces.
+WisdomAI provides a hosted [Model Context Protocol (MCP)](https://modelcontextprotocol.io) server that lets you connect AI tools — such as Claude, Cursor, VS Code, and ChatGPT — directly to your WisdomAI domains. Once connected, you can ask natural language questions about your data and receive structured responses including text, tables, and interactive charts.
 
-The server implements the [MCP specification](https://modelcontextprotocol.io/specification) with [**Streamable HTTP**](https://modelcontextprotocol.io/specification/2025-06-18/basic/transports#streamable-http) Transport. All responses include structured content that can be rendered as text, tables, or interactive charts.
+## Endpoint
 
-## Key Features
+The WisdomAI MCP Server is available at a single endpoint:
 
-<CardGroup cols={2}>
-  <Card title="Chat Tool" icon="message">
-    Natural language querying with domain-specific context and conversation continuity
-  </Card>
-  <Card title="Streaming Support" icon="signal-stream">
-    Real-time progressive responses for immediate feedback during analysis
-  </Card>
-  <Card title="Structured Content" icon="table">
-    Rich responses including text, tables, and chart visualizations
-  </Card>
-  <Card title="OAuth 2.1 Authentication" icon="shield-check">
-    Secure OAuth 2.1 with Dynamic Client Registration (DCR) and Proof Key for Code Exchange (PKCE)
-  </Card>
-</CardGroup>
-
-## Get Started
-
-The **WisdomAI MCP Server** provides real-time access to structured data insights through the standardized [Model Knowledge Protocol](https://modelcontextprotocol.io). Users can ask questions related to business intelligence and receive structured responses, including tabular data, visualizations, and natural language explanations.
-
-The WisdomAI MCP server provides a single endpoint for all operations:
-
+```text
+https://{ACCOUNT}.wisdom.ai/mcp
 ```
-https://{ACCOUNT}.askwisdom.ai/mcp
-```
+
+Replace `{ACCOUNT}` with your WisdomAI account subdomain.
+
+## Connect Your Client
+
+Add the WisdomAI MCP Server to your preferred AI client using the configuration below.
+
+<Tabs>
+  <Tab title="Claude Code">
+    Run this command in your terminal:
+
+    ```bash
+    claude mcp add --transport http wisdomai https://{ACCOUNT}.wisdom.ai/mcp
+    ```
+
+    Then authenticate by running `/mcp` in Claude Code and following the OAuth flow.
+  </Tab>
+  <Tab title="Cursor">
+    Add the following to your `~/.cursor/mcp.json` file:
+
+    ```json
+    {
+      "mcpServers": {
+        "wisdomai": {
+          "url": "https://{ACCOUNT}.wisdom.ai/mcp"
+        }
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="VS Code">
+    Add the following to your VS Code MCP settings (`.vscode/mcp.json`):
+
+    ```json
+    {
+      "servers": {
+        "wisdomai": {
+          "type": "http",
+          "url": "https://{ACCOUNT}.wisdom.ai/mcp"
+        }
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="Other Clients">
+    For any MCP-compatible client, use the following configuration:
+
+    | Transport                         | URL                               |
+    | :-------------------------------- | :-------------------------------- |
+    | **Streamable HTTP** (recommended) | `https://{ACCOUNT}.wisdom.ai/mcp` |
+
+    Most clients accept a JSON configuration in this format:
+
+    ```json
+    {
+      "mcpServers": {
+        "wisdomai": {
+          "url": "https://{ACCOUNT}.wisdom.ai/mcp"
+        }
+      }
+    }
+    ```
+
+    If your client does not support remote HTTP connections directly, use the `mcp-remote` proxy:
+
+    ```json
+    {
+      "mcpServers": {
+        "wisdomai": {
+          "command": "npx",
+          "args": ["-y", "mcp-remote", "https://{ACCOUNT}.wisdom.ai/mcp"]
+        }
+      }
+    }
+    ```
+  </Tab>
+</Tabs>
+
+<Note>
+  Replace `{ACCOUNT}` with your WisdomAI account url above.
+</Note>
 
 ## Authentication
 
-The WisdomAI MCP Server implements **OAuth 2.1** with **Dynamic Client Registration (DCR)** and **Proof Key for Code Exchange (PKCE)** for secure authentication, following the [MCP Authorization specification](https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization). This provides:
+When you first connect, your client will prompt you to:
 
-- **Automatic client registration** without manual setup
-- **PKCE** for secure authorization flows
-- **Resource-specific token binding** using RFC 8707 Resource Indicators
-- **Audience validation** to prevent token misuse
+1. Log in with your WisdomAI account.
+2. Accept the OAuth authorization.
+3. Grant access to the necessary permissions.
 
-### OAuth Discovery Endpoints
+The server implements **OAuth 2.1** with **Dynamic Client Registration (DCR)** and **Proof Key for Code Exchange (PKCE)**, following the [MCP Authorization specification](https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization). This means:
 
-The server exposes standard OAuth discovery endpoints:
+- **No manual setup required** — clients register automatically.
+- **Secure token binding** — tokens are scoped to your MCP session.
+- **Session continuity** — each session maintains its own context and can handle multiple requests with the same token.
 
-- **Protected Resource Metadata**: `/.well-known/oauth-protected-resource`
-- **Authorization Server Metadata**: `/.well-known/oauth-authorization-server`
+<Accordion title="OAuth Discovery Endpoints">
+  The server exposes standard OAuth discovery endpoints for clients that need them:
 
-The authorization server metadata endpoint returns the locations of additional endpoints including:
+  - **Protected Resource Metadata**: `/.well-known/oauth-protected-resource`
+  - **Authorization Server Metadata**: `/.well-known/oauth-authorization-server`
 
-- **DCR**: `/register` (obtained from `registration_endpoint`)
-- **Authorization Endpoint**: `/authorize` (obtained from `authorization_endpoint`)
-- **Token Endpoint**: `/token` (obtained from `token_endpoint`)
+  The authorization server metadata endpoint returns the locations of additional endpoints, including:
 
-<Note>
-  MCP clients should query the `/.well-known/oauth-authorization-server` endpoint to discover the actual URLs for registration, authorization, and token endpoints rather than assuming fixed paths.
-</Note>
+  - **DCR**: `/register` (obtained from `registration_endpoint`)
+  - **Authorization Endpoint**: `/authorize` (obtained from `authorization_endpoint`)
+  - **Token Endpoint**: `/token` (obtained from `token_endpoint`)
 
-### Authorization Flow
+  MCP clients should query the `/.well-known/oauth-authorization-server` endpoint to discover the actual URLs rather than assuming fixed paths.
+</Accordion>
 
-1. **Discover Server Capabilities**: MCP clients query the protected resource metadata endpoint
-2. **DCR**: Clients automatically register using DCR (RFC 7591)
-3. **Authorization Request**: Include `resource` parameter specifying the MCP server URL
-4. **PKCE Challenge**: Generate code verifier and challenge for secure authorization
-5. **Token Exchange**: Exchange authorization code for access token with PKCE verification
-6. **API Access**: Use access token in Authorization header for MCP requests
+## Available Tools
 
-### Session Management
+Once connected, the following tools are available:
 
-The server supports session-based connections using the [MCP transport layer](https://modelcontextprotocol.io/specification/basic/transports). Each session maintains its own context and can handle multiple sequential requests with the same OAuth token.
+| Tool                                                            | Description                                                                                               |
+| :-------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------- |
+| [**chat**](/integrations/mcp-server/tools/chat)                 | Ask natural language questions against your data domains. Returns text, tables, and chart visualizations. |
+| [**list-domains**](/integrations/mcp-server/tools/list-domains) | Discover available domains and their IDs before making queries.                                           |
+| [**echo**](/integrations/mcp-server/tools/echo)                 | Test connectivity and verify the request/response flow is working.                                        |
 
-<Info>
-  For any queries or support, contact our API team at [**support@askwisdom.ai**](mailto:support@askwisdom.ai).
-</Info>
+## Example Prompts
 
-## Testing with MCP Inspector
+Once connected, try these prompts to start using WisdomAI from your AI client:
+
+- `What domains are available in WisdomAI?`
+- `Show me total revenue by region as a table`
+- `What are the top 5 products by sales this quarter?`
+- `Visualize monthly active users over the last 12 months`
+- `What can I ask about the Sales domain?`
+
+## Test with MCP Inspector
 
 You can test the WisdomAI MCP Server using the [MCP Inspector](https://modelcontextprotocol.io/docs/tools/inspector):
 
-```bash
-# Install MCP Inspector
-npx @modelcontextprotocol/inspector
-```
+1. Install and launch the MCP Inspector:
 
-The inspector will automatically:
+   ```bash
+   npx @modelcontextprotocol/inspector
+   ```
+2. In the Inspector, enter your MCP server URL:
 
-1. Discover OAuth capabilities via protected resource metadata
-2. Register as an OAuth client using DCR
-3. Launch the authorization flow with PKCE
-4. Handle token exchange and validation
+   ```text
+   https://{ACCOUNT}.wisdom.ai/mcp
+   ```
+3. Click **Connect**. The Inspector will automatically handle the OAuth authorization flow.
+4. Once connected, click **List Tools** to see the available tools.
+5. Select a tool (for example, **list-domains**) and click **Call** to test it.
 
-The inspector provides an interactive interface to:
+The Inspector provides an interactive interface to test tool calls, inspect responses, and debug authentication.
 
-- Test OAuth authorization flows
-- Test tool calls and responses
-- Inspect server capabilities and metadata
-- Debug authentication and token validation
-- Validate streaming functionality
+## Troubleshooting
 
-<Note>
-  Replace `your-account` with your actual WisdomAI account subdomain. The inspector handles OAuth authentication automatically.
-</Note>
+| Issue                      | Resolution                                                                                                                        |
+| :------------------------- | :-------------------------------------------------------------------------------------------------------------------------------- |
+| OAuth authentication fails | Ensure your client supports OAuth. Try reauthenticating using your client's MCP management flow.                                  |
+| Tools not appearing        | Verify that authentication completed successfully and that you have access to at least one WisdomAI domain.                       |
+| Connection timeout         | Check that the server URL is correct (`https://{ACCOUNT}.wisdom.ai/mcp`) and that your network allows outbound HTTPS connections. |
+| Empty responses from chat  | Make sure you are providing a valid `domainId`. Use the **list-domains** tool first to find available domain IDs.                 |
 
-## Related Operations
-
-<CardGroup cols={3}>
-  <Card title="List Domains Tool" icon="list" href="/integrations/mcp-server/tools/list-domains">
-    Discover available domains for querying
-  </Card>
-  <Card title="Chat Tool" icon="message" href="/integrations/mcp-server/tools/chat">
-    Primary tool for natural language data analysis
-  </Card>
-  <Card title="Echo Tool" icon="signal-stream" href="/integrations/mcp-server/tools/echo">
-    Test connectivity and basic functionality
-  </Card>
-</CardGroup>
+<Info>
+  For any queries or support, contact our team at [**support@wisdom.ai**](mailto:support@wisdom.ai).
+</Info>
