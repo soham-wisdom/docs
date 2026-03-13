@@ -39,8 +39,8 @@ export const HomeCard = ({
     >
       {/* Image (light/dark swap) */}
       <div className="relative w-full">
-        <img src={src} alt={title} className="w-full object-cover dark:hidden" noZoom />
-        <img src={darkSrc} alt={title} className="hidden w-full object-cover dark:block" noZoom />
+        <img src={src} alt={title} className="m-0 w-full object-cover dark:hidden" noZoom />
+        <img src={darkSrc} alt={title} className="m-0 hidden w-full object-cover dark:block" noZoom />
       </div>
 
       {/* Text area */}
