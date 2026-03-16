@@ -2,11 +2,11 @@
 title: "Reviewed Queries"
 ---
 
-Reviewed Queries are curated pairs of a natural language question and its ideal SQL response. They serve as a powerful tool to guarantee accuracy, especially for business-critical calculations or complex metrics that require a specific SQL structure, such as window functions or nested queries.
+Reviewed queries are curated pairs of a natural language question and its ideal SQL response. They serve as a powerful tool to guarantee accuracy, especially for business-critical calculations or complex metrics that require a specific SQL structure, such as window functions or nested queries.
 
 By building a repository of these pre-vetted queries, you ensure that everyone in your organization receives consistent, accurate answers to the most important questions. This is the most critical aspect of context for the language model to understand your data, as it provides direct, unambiguous examples of how to query your tables.
 
-## Create Validated Queries
+## Create Reviewed Queries
 
 There are two primary ways to add queries to your knowledge base: directly from the chat interface or in bulk using a CSV file.
 
@@ -14,7 +14,7 @@ There are two primary ways to add queries to your knowledge base: directly from 
 
 The most common workflow is to validate queries as you interact with the system. This allows you to refine the AI's generated SQL or provide your own from scratch.
 
-An easy workflow to define validated queries is to ask the question in the chat, provide feedback or edit the generated SQL, and then validate the response.
+An easy workflow to define reviewed queries is to ask the question in the chat, provide feedback or edit the generated SQL, and then validate the response.
 
 1. Ask a question and review the generated answer.
 2. If the answer is correct, click the **thumbs-up** icon.
@@ -105,7 +105,7 @@ To bulk upload, create a CSV file that contains two column headers: `Query` and 
 
 ## Best Practices for Well-Formed SQL
 
-For a validated query to be effective and reusable, follow these best practices when writing your SQL:
+For a reviewed query to be effective and reusable, follow these best practices when writing your SQL:
 
 - **Keep it concise and readable:** Write SQL that is easy to understand. If the logic is complex, use comments or break it down.
 - **Split complex examples:** Instead of creating one example that calculates multiple metrics (e.g., “Show revenue and ARR trend”), split it into two separate, focused examples (“Show revenue trend” and “Show ARR trend”).
@@ -114,15 +114,26 @@ For a validated query to be effective and reusable, follow these best practices 
 
 ## Combining with Language Knowledge for Complex Cases
 
-While Validated Queries are powerful, some complex business rules are best enforced by pairing them with explicit instructions in your **Language Knowledge**. Validated Queries teach the model _how_ to calculate a specific metric, while Language Knowledge can teach it _what not to do_ to avoid common logical errors.
+While reviewed queries are powerful, some complex business rules are best enforced by pairing them with explicit instructions in your **language knowledge**. Reviewed queries teach the model _how_ to calculate a specific metric, while language knowledge can teach it _what not to do_ to avoid common logical errors.
 
 For instance, imagine you have a `statewise_population` table with a pre-aggregated `country_population` column. Summing this column across multiple states from the same country would lead to massive double-counting.
 
-While a Validated Query can show the correct way to get the population, adding a clear instruction in [Language Knowledge](/setting-up-wisdom-ai/advanced-data-modeling-creating-knowledge#natural-language-context) provides an extra layer of protection against mistakes:
+While a validated query can show the correct way to get the population, adding a clear instruction in [language knowledge](/setting-up-wisdom-ai/advanced-data-modeling-creating-knowledge#natural-language-context) provides an extra layer of protection against mistakes:
 
 **Instruction Example:** “Never sum up the `country_population` column across different rows for the same country.”
 
 Using both features together ensures that even when the AI generates new or slightly different queries, it still adheres to your most important business logic.
+
+## Manage Reviewed Queries
+
+As a Domain Data Admin, you can edit a reviewed query or reopen the conversation where it was created.
+
+- To edit a reviewed query, click the query row and update the query text as needed.
+- To reopen the original query workflow, click the **Open conversation** icon. This opens the conversation where the query was validated, allowing you to re-ask the question, modify the visualization, refine the query, edit its SQL, or regenerate the results.
+
+<Frame>
+  ![Edit Reviewed Queries Chat](/images/edit-reviewed-queries-chat.png)
+</Frame>
 
 ## Next steps
 
