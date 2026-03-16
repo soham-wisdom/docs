@@ -31,6 +31,7 @@ export const HomeCard = ({
   darkSrc = "/images/home/cards/getting-started-dark.png",
   href = "#",
   children,
+  badge,
 }) => {
   return (
     <a
@@ -45,7 +46,14 @@ export const HomeCard = ({
 
       {/* Text area */}
       <div className="p-5">
-        <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">{title}</h3>
+        <span className="flex items-center gap-2 mb-2">
+          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100 m-0">{title}</h3>
+          {badge && (
+            <Badge color="green" size="sm">
+              New
+            </Badge>
+          )}
+        </span>
         <p className="mt-1 text-sm leading-6 text-zinc-600 dark:text-zinc-400">{description || children}</p>
       </div>
     </a>
