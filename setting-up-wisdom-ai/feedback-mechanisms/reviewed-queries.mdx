@@ -1,10 +1,10 @@
 ---
-title: "Validated Queries"
+title: "Reviewed Queries"
 ---
 
-Validated Queries are curated pairs of a natural language question and its ideal SQL response. They serve as a powerful tool to guarantee accuracy, especially for business-critical calculations or complex metrics that require a specific SQL structure, such as window functions or nested queries.
+Reviewed Queries are curated pairs of a natural language question and its ideal SQL response. They serve as a powerful tool to guarantee accuracy, especially for business-critical calculations or complex metrics that require a specific SQL structure, such as window functions or nested queries.
 
-By building a repository of these pre-vetted queries, you ensure that everyone in your organization gets consistent, correct answers for the most important questions. This is the most critical aspect of context for the language model to understand your data, as it provides direct, unambiguous examples of how to query your tables.
+By building a repository of these pre-vetted queries, you ensure that everyone in your organization receives consistent, accurate answers to the most important questions. This is the most critical aspect of context for the language model to understand your data, as it provides direct, unambiguous examples of how to query your tables.
 
 ## Create Validated Queries
 
@@ -21,9 +21,9 @@ An easy workflow to define validated queries is to ask the question in the chat,
 3. In the **Review a Question** modal that appears, confirm or edit the natural language question that the SQL code answers.
 4. After confirmation, the query will be saved and listed in the **Context \> Reviewed Queries** tab.
 
-The following code block shows an example of a query to calculate the win rate for sales that was validated by clicking the thumbs-up button.
+The following code block shows an example query to calculate the win rate for sales, validated by clicking the thumbs-up button.
 
-```
+```text
 SELECT 
   SAFE_DIVIDE(
     SUM(CASE WHEN `stage_label` = 'Closed Won' THEN `acv` ELSE 0 END), 
@@ -45,7 +45,7 @@ This example shows how to refine a query to get a more detailed view of your dat
 
 Suppose you ask, **“Show me the yearly ARR trend,”** and the system generates the following correct, but high-level, query:
 
-```
+```text
 SELECT
   DATE_TRUNC(`close_date`, YEAR) AS `year`,
   SUM(`acv`) AS `arr`
@@ -59,7 +59,7 @@ ORDER BY
   `year` ASC
 ```
 
-The chart shows a clear year-over-year trend. However, you decide that a **quarterly view** would be more insightful for tracking seasonal performance. To get this, you can click the **Edit** button (pencil icon) to modify the SQL directly.
+The chart shows a clear year-over-year trend. However, you decide that a **quarterly view** would be more insightful for tracking seasonal performance. To do this, click the **Edit** button (the pencil icon) to modify the SQL directly.
 
 <Frame>
   ![Image showing the Edit Sql option in chat](/images/Edit-sql-0925.png)
@@ -69,7 +69,7 @@ The only change needed is to adjust the `DATE_TRUNC` function from `YEAR` to `QU
 
 Here is the **edited SQL**:
 
-```
+```text
 SELECT
   DATE_TRUNC(`close_date`, QUARTER) AS `quarter`,
   SUM(`acv`) AS `arr`
