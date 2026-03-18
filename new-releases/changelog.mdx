@@ -1,0 +1,129 @@
+---
+title: "Product Updates"
+---
+
+<Update label="March 2026" description="v1.4.0">
+
+### 🤖 Metrics & Derived Column Copilots
+
+Defining business logic is now much easier with AI-powered copilots. Describe what you want in plain English, and WisdomAI generates the SQL, identifies the correct source table, and validates the expression against your warehouse before saving. The generated SQL is fully editable, allowing you to review and adjust it before adding it to your domain.
+
+**⚙️ How it works:**
+- Describe a metric or derived column in natural language  
+- WisdomAI classifies the request and generates SQL  
+- The query is validated against your warehouse  
+- Review and edit before saving  
+
+### 📄 Tabular Extraction from Unstructured Datasets
+
+Turn unstructured files—like PDFs, images, and Word documents—into fully queryable tables. By defining fields using plain-English prompts, WisdomAI extracts values across multiple file formats and materializes them into structured data that can be queried, filtered, and joined with your existing datasets.
+
+**⚙️ How it works:**
+- Upload files to a dataset  
+- Define fields with names, types, and prompts  
+- Preview extraction on a sample of files  
+- Run extraction to generate a structured table  
+
+### 📊 Warehouse Observability
+
+WisdomAI now provides visibility into how your warehouse is being queried and how your team is using the platform. A system-generated domain, **WisdomAI Usage Metrics**, includes pre-built dashboards with query-level details such as execution time, rows returned, bytes scanned, and cache status, along with overall usage analytics.
+
+**⚙️ How it works:**
+- A system domain is automatically created  
+- Dashboards display query activity and usage metrics  
+- Data can be explored directly within WisdomAI  
+
+### 🔐 Login Method Memory
+
+WisdomAI now remembers how you last signed in to streamline future logins. Your previous method, Google, SSO, or email, is highlighted with a “Last used” badge, and email addresses are pre-filled when applicable. This information is stored locally in your browser and is not sent to any server.
+
+**⚙️ How it works:**
+- Sign in using any available method  
+- WisdomAI stores the method locally in your browser  
+- On your next visit, the last method is highlighted  
+
+<Frame>
+ ![Log in screen with a “Last used” badge](/images/changelog/last-login-badge.png)
+</Frame>
+
+</Update>
+
+<Update label="February 2026" description="v1.3.0">
+
+### 🧠 Smarter Data Crawling
+
+WisdomAI has improved how it crawls warehouse data by identifying columns that contain meaningful categorical values and prioritizing them during scheduled runs. Other columns are fetched on demand, reducing unnecessary queries and improving performance for large schemas.
+
+**⚙️ How it works:**
+- Scheduled crawls scan selected categorical columns  
+- Adding a filter triggers a targeted crawl for that column  
+- Values appear shortly after the crawl completes  
+
+### 🧩 Partition & View Awareness
+
+WisdomAI now detects partition columns and distinguishes between base tables, views, and materialized views during schema crawling. This information is used when generating SQL to include appropriate partition filters and adjust query behavior accordingly.
+
+**⚙️ How it works:**
+- Schema crawl identifies partitions and table types  
+- Generated SQL includes partition filters when required  
+- Query strategy adapts based on table structure  
+
+### 🔌 Teradata Connector
+
+WisdomAI now connects natively to Teradata Vantage, enabling natural-language querying and schema discovery without requiring data replication. Queries are executed in read-only mode to ensure data safety.
+
+**⚙️ How it works:**
+- Create a connection from Settings  
+- Enter credentials and validate access  
+- WisdomAI crawls the schema and enables querying  
+
+### ☁️ Google Cloud Spanner Support
+
+WisdomAI now supports direct connections to Google Cloud Spanner. The system automatically detects whether the database uses Google Standard SQL or PostgreSQL and handles both without additional configuration.
+
+**⚙️ How it works:**
+- Add a new Spanner connection  
+- Provide project and authentication details  
+- WisdomAI detects dialect and crawls the schema  
+
+### 🔗 AI-Powered Join Suggestions
+
+WisdomAI analyzes your schema to detect missing relationships between tables and validates them against actual data to ensure meaningful joins. These suggestions can be reviewed and applied to improve query accuracy.
+
+**⚙️ How it works:**
+- Schema analysis identifies potential relationships  
+- Column values are checked for overlap  
+- Suggestions are reviewed and accepted in the UI  
+
+### 🔔 Notify When Completed
+
+WisdomAI can now notify you when long-running queries finish, even if you switch tabs. Notifications include a browser alert, sound, and tab update when results are ready.
+
+**⚙️ How it works:**
+- After a few seconds, a notification prompt appears  
+- Opt in for that query  
+- Receive a notification when processing completes  
+
+### 🌍 World Map Visualization
+
+WisdomAI now includes a choropleth world map visualization for country-level data, using color gradients to represent metric values and tooltips to display exact figures.
+
+**⚙️ How it works:**
+- Queries with country-level data trigger map suggestions  
+- Countries are colored based on metric values  
+- Hovering displays detailed values  
+
+</Update>
+
+<Update label="January 2026" description="v1.2.0">
+
+### 💬 Slack Link Previews
+
+Sharing a WisdomAI link in Slack now generates a rich preview that displays charts or data tables directly in the conversation. Access is controlled based on permissions, ensuring only authorized users can view the data.
+
+**⚙️ How it works:**
+- Paste a WisdomAI link in Slack  
+- Slack requests a preview from WisdomAI  
+- A preview is displayed based on access permissions  
+
+</Update>
