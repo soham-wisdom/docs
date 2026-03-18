@@ -2,7 +2,7 @@
 title: "Product Updates"
 ---
 
-<Update label="March 2026" description="v1.4.0">
+<Update label="March 2026">
   ### 🤖 Metrics & Derived Column Copilots
 
   Defining business logic is now much easier with AI-powered copilots. Describe what you want in plain English, and WisdomAI generates the SQL, identifies the correct source table, and validates the expression against your warehouse before saving. The generated SQL is fully editable, allowing you to review and adjust it before adding it to your domain.
@@ -50,15 +50,15 @@ title: "Product Updates"
   </Frame>
 </Update>
 
-<Update label="February 2026" description="v1.3.0">
+<Update label="February 2026">
   ### 🧠 Smarter Data Crawling
 
-  WisdomAI has improved how it crawls warehouse data by identifying columns that contain meaningful categorical values and prioritizing them during scheduled runs. Other columns are fetched on demand, reducing unnecessary queries and improving performance for large schemas.
+  WisdomAI has improved its warehouse data crawling to populate filter dropdowns, autocomplete suggestions, and data exploration features by identifying columns that contain meaningful categorical values and prioritizing them during scheduled runs. Other columns are fetched on demand, reducing unnecessary queries and improving performance for large schemas.
 
   **⚙️ How it works:**
 
-  - Scheduled crawls scan selected categorical columns
-  - Adding a filter triggers a targeted crawl for that column
+  - Scheduled crawls scan selected columns with named entities (customer names, status values)
+  - Adding a filter or enabling "lookup" triggers a targeted crawl for that column
   - Values appear shortly after the crawl completes
 
   ### 🧩 Partition & View Awareness
@@ -122,10 +122,10 @@ title: "Product Updates"
   - Hovering displays detailed values
 </Update>
 
-<Update label="January 2026" description="v1.2.0">
+<Update label="January 2026">
   ### 💬 Slack Link Previews
 
-  Sharing a WisdomAI link in Slack now generates a rich preview that displays charts or data tables directly in the conversation. Access is controlled based on permissions, ensuring only authorized users can view the data.
+  Sharing a WisdomAI link in Slack now generates a rich preview that displays charts or data tables directly in the conversation. Access is controlled by permissions, ensuring that only authorized users can view the data.
 
   **⚙️ How it works:**
 
