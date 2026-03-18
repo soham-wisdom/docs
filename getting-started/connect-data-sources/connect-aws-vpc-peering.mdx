@@ -36,3 +36,19 @@ This connection method is applicable to any supported data source you have deplo
 2. Email the information gathered in the previous step to the WisdomAI support team at `support@askwisdom.ai` to request a VPC peering connection.
 3. The WisdomAI team will initiate a VPC peering request. You will receive an email with the request details and instructions to accept it within your AWS Management Console.
 4. After accepting the request, you must update your VPC's route tables to direct traffic destined for the WisdomAI VPC through the peering connection. You also need to configure your security group rules to allow inbound traffic from WisdomAI's VPC CIDR. The support team will provide all necessary information for these steps.
+
+## Next Steps
+
+<CardGroup cols={3}>
+  <Card title="Connect to Amazon Redshift" icon="aws" href="/getting-started/connect-data-sources/connect-to-amazon-redshift">
+    Connect to Amazon Redshift using three methods: Direct Connection, SSH Tunnel, or VPC Peering, according to your network architecture.
+  </Card>
+
+  <Card title="Connect to Databricks" icon="layer-group" href="/getting-started/connect-data-sources/connect-to-databricks">
+    Connect to Databricks using a Client ID and Client Secret for authentication, enabling secure and controlled access to your data.
+  </Card>
+
+  <Card title="Connect to Google BigQuery" icon="google" href="/getting-started/connect-data-sources/connect-to-google-bigquery">
+    Connect to Google BigQuery using a Google Cloud Platform Service Account for secure and granular access to your data.
+  </Card>
+</CardGroup>
