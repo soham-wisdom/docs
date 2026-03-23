@@ -1,0 +1,168 @@
+---
+title: "Product Updates"
+---
+
+<Update label="March 2026">
+  ### 🤖 Metrics & Derived Column Copilots
+
+  Defining business logic is now much easier with the AI-powered Metrics & Derived Column Copilot. Describe what you want in plain English, and WisdomAI generates the SQL, identifies the correct source table, and validates the expression against your warehouse before saving. The generated SQL is fully editable, allowing you to review and adjust it before adding it to your domain.
+
+  **⚙️ How it works:**
+
+  1. Access **Context** \> **Metrics** tab \> **Add Metric**
+  2. Describe a metric or derived column in natural language and select **Generate**
+  3. WisdomAI classifies the request and generates SQL
+  4. The query is validated against your warehouse
+  5. Review and edit before saving
+
+  <Frame>
+    ![Add A Metric](/images/add-a-metric.png)
+  </Frame>
+
+  ### 📄 Tabular Extraction from Unstructured Datasets
+
+  Turn unstructured files, such as PDF, Word, PowerPoint, plain text, Markdown, HTML, JSON, XML, YAML, and image formats into fully queryable tables. By defining fields with plain-English prompts, WisdomAI extracts values from multiple file formats and materializes them as structured data that can be queried, filtered, and joined with your existing datasets.
+
+  **⚙️ How it works:**
+
+  1. Upload files to a dataset in a domain, go to **Data Sources** \> **Wisdom Storage**
+  2. Select the uploaded files and click **Extract from files.**
+  3. Preview extraction on a sample of files (up to 10)
+  4. Run extraction by clicking **Save & Extract** to generate a structured table, ready to query immediately
+
+  ### 📊 Warehouse Observability
+
+  WisdomAI now provides visibility into how your warehouse is queried and how your team uses the platform. A system-generated domain, **WisdomAI Usage Metrics**, is automatically provisioned for every account.
+
+  **⚙️ How it works:**
+
+  - A new system-generated domain is available to Admins in the domain list, featuring two pre-built dashboards:
+    - **Warehouse Usage Dashboard**: Displays query-level details including execution time, rows returned, bytes scanned, and cache status.
+    - **Usage Analytics Dashboard**: Tracks team adoption via conversation counts, active users, questions asked, and feedback rates.
+  - Data can be explored directly within WisdomAI
+
+  ### 🔐 Login Method Memory
+
+  WisdomAI now remembers your last sign-in to streamline future logins. Your previous method, Google, SSO, or email, is highlighted with a “Last used” badge, and email addresses are pre-filled when applicable. This information is stored locally in your browser and is not sent to any server.
+
+  **⚙️ How it works:**
+
+  1. Sign in using any available method.
+  2. WisdomAI stores the method locally in your browser
+  3. On your next visit, the last method is highlighted
+
+  <Frame>
+    ![Log in screen with a “Last used” badge](/images/changelog/last-login-badge.png)
+  </Frame>
+</Update>
+
+<Update label="February 2026">
+  ### 🧠 Smarter Data Crawling
+
+  WisdomAI has improved its warehouse data crawling to populate filter dropdowns, autocomplete suggestions, and data exploration features by identifying columns that contain meaningful categorical values and prioritizing them during scheduled runs. Other columns are fetched on demand, reducing unnecessary queries and improving performance for large schemas.
+
+  **⚙️ How it works:**
+
+  1. Scheduled crawls scan selected columns with named entities (customer names, status values)
+  2. Adding a filter or enabling "lookup" triggers a targeted crawl for that column
+  3. Values appear shortly after the crawl completes
+
+  ### 🧩 Partition & View Awareness
+
+  WisdomAI now detects partition columns and distinguishes between base tables, views, and materialized views during schema crawling. This information is used to generate more efficient SQL queries with appropriate partition filters and optimized query strategies. This results in fewer query failures, faster performance on large datasets, and reduced warehouse costs.
+
+  **⚙️ How it works:**
+
+  1. Schema crawl identifies partition columns and table types
+  2. Generated SQL includes partition filters to avoid full-table scans
+  3. Query strategy adapts based on table structure
+  4. Background crawling prioritizes recent partitions to improve efficiency
+
+  <Note>
+    **Supported warehouses**: BigQuery, ClickHouse, Databricks, and Redshift.
+  </Note>
+
+  ### 🔌 Teradata Connector
+
+  WisdomAI now connects natively to Teradata Vantage, enabling natural-language querying, AI-powered analytics, and interactive dashboards without requiring data replication. It automatically discovers schemas across databases and generates Teradata-specific SQL, while executing all queries in read-only mode to ensure data safety and compliance.
+
+  Make sure to include a column with country names or ISO country codes, and at least one numeric metric.
+
+  **⚙️ How it works:**
+
+  1. Access **Connections** \> **Add connection** and select **Teradata**
+  2. Enter credentials and validate access
+  3. Optionally limit access using database filters
+  4. WisdomAI crawls the schema and enables querying
+
+  <Frame>
+    ![Teradata](/images/teradata-1.png)
+  </Frame>
+
+  ### ☁️ Google Cloud Spanner Support
+
+  WisdomAI connects directly to Google Cloud Spanner, automatically detecting whether your database uses Google Standard SQL or PostgreSQL and handling both without additional configuration. It also performs full schema discovery and executes all queries in read-only mode for safety.
+
+  **⚙️ How it works:**
+
+  1. Access **Connections** \> **Add connection** and select **Google Cloud Spanner**
+  2. Provide project details and Service Account credentials
+  3. WisdomAI validates access, detects the SQL dialect, and crawls the schema
+
+  <Frame>
+    ![Spanner](/images/spanner.png)
+  </Frame>
+
+  ### 🔗 AI-Powered Join Suggestions
+
+  WisdomAI analyzes your schema to detect missing relationships between tables and validates them against actual data to ensure meaningful joins. These are surfaced as one-click suggestions that can be reviewed and applied to improve query accuracy.
+
+  **⚙️ How it works:**
+
+  1. WisdomAI analyzes table schemas to identify potential foreign key relationships
+  2. Candidate joins are validated using real data overlap
+  3. Suggestions appear in the domain for review
+  4. Accept or decline each join and define the relationship type
+
+  <Frame>
+    ![Suggestions](/images/suggestions.png)
+  </Frame>
+
+  ### 🔔 Notify when Completed
+
+  WisdomAI can now notify you when long-running queries finish, even if you switch tabs. After a few seconds, you can opt in to receive a browser alert, sound, and tab update when results are ready.
+
+  **⚙️ How it works:**
+
+  - After a few seconds, a **"Notify me when complete"** prompt appears
+  - Opt in to receive notifications
+  - Get notified when processing completes
+
+  ### 🌍 World Map Visualization
+
+  WisdomAI includes a choropleth world map visualization for country-level data, automatically detecting geographic dimensions and using color gradients to highlight differences in metric values. Tooltips provide exact figures for each country.
+
+  Supports both country names and ISO country codes, and is available in chat and dashboards.
+
+  **⚙️ How it works:**
+
+  1. Queries with country-level data automatically trigger world map visualization suggestions
+  2. Countries are colored based on metric values (darker = higher)
+  3. Hovering displays country names and detailed values
+
+  <Frame>
+    ![World Map Visualization](/images/world-map-visualization.png)
+  </Frame>
+</Update>
+
+<Update label="January 2026">
+  ### 💬 Slack Link Previews
+
+  Sharing a WisdomAI link in Slack now generates a rich preview that displays charts or data tables directly in the conversation. Access is controlled by permissions, ensuring that only authorized users can view the data.
+
+  **⚙️ How it works:**
+
+  - Paste a WisdomAI link in Slack
+  - Slack requests a preview from WisdomAI
+  - A preview is displayed based on access permissions
+</Update>
