@@ -101,23 +101,32 @@ title: "Product Updates"
 
   ### ☁️ Google Cloud Spanner Support
 
-  WisdomAI now supports direct connections to Google Cloud Spanner. The system automatically detects whether the database uses Google Standard SQL or PostgreSQL and handles both without additional configuration.
+  WisdomAI connects directly to Google Cloud Spanner, automatically detecting whether your database uses Google Standard SQL or PostgreSQL and handling both without additional configuration. It also performs full schema discovery and executes all queries in read-only mode for safety.
 
   **⚙️ How it works:**
 
-  - Add a new Spanner connection
-  - Provide project and authentication details
-  - WisdomAI detects dialect and crawls the schema
+  1. Access **Connections** \> **Add connection** and select **Google Cloud Spanner**
+  2. Provide project details and Service Account credentials
+  3. WisdomAI validates access, detects the SQL dialect, and crawls the schema
+
+  <Frame>
+    ![Spanner](/images/spanner.png)
+  </Frame>
 
   ### 🔗 AI-Powered Join Suggestions
 
-  WisdomAI analyzes your schema to detect missing relationships between tables and validates them against actual data to ensure meaningful joins. These suggestions can be reviewed and applied to improve query accuracy.
+  WisdomAI analyzes your schema to detect missing relationships between tables and validates them against actual data to ensure meaningful joins. These are surfaced as one-click suggestions that can be reviewed and applied to improve query accuracy.
 
   **⚙️ How it works:**
 
-  - Schema analysis identifies potential relationships
-  - Column values are checked for overlap
-  - Suggestions are reviewed and accepted in the UI
+  1. WisdomAI analyzes table schemas to identify potential foreign key relationships
+  2. Candidate joins are validated using real data overlap
+  3. Suggestions appear in the domain for review
+  4. Accept or decline each join and define the relationship type
+
+  <Frame>
+    ![Suggestions](/images/suggestions.png)
+  </Frame>
 
   ### 🔔 Notify When Completed
 
