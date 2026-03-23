@@ -9,11 +9,11 @@ title: "Product Updates"
 
   **⚙️ How it works:**
 
-  - Access **Context** \> **Metrics** tab \> **Add Metric**
-  - Describe a metric or derived column in natural language and select **Generate**
-  - WisdomAI classifies the request and generates SQL
-  - The query is validated against your warehouse
-  - Review and edit before saving
+  1. Access **Context** \> **Metrics** tab \> **Add Metric**
+  2. Describe a metric or derived column in natural language and select **Generate**
+  3. WisdomAI classifies the request and generates SQL
+  4. The query is validated against your warehouse
+  5. Review and edit before saving
 
   <Frame>
     ![Add A Metric](/images/add-a-metric.png)
@@ -25,10 +25,10 @@ title: "Product Updates"
 
   **⚙️ How it works:**
 
-  - Upload files to a dataset in a domain, and go to the **Data Sources** tab
-  - Access **Add Table** \> **Extract from files** and define fields with names, types, and prompts
-  - Preview extraction on a sample of files (up to 10)
-  - Run extraction by clicking **Save & Extract** to generate a structured table, ready to query immediately
+  1. Upload files to a dataset in a domain, go to **Data Sources** \> **Wisdom Storage**
+  2. Select the uploaded files and click **Extract from files.**
+  3. Preview extraction on a sample of files (up to 10)
+  4. Run extraction by clicking **Save & Extract** to generate a structured table, ready to query immediately
 
   ### 📊 Warehouse Observability
 
@@ -47,9 +47,9 @@ title: "Product Updates"
 
   **⚙️ How it works:**
 
-  - Sign in using any available method
-  - WisdomAI stores the method locally in your browser
-  - On your next visit, the last method is highlighted
+  1. Sign in using any available method. 
+  2. WisdomAI stores the method locally in your browser
+  3. On your next visit, the last method is highlighted
 
   <Frame>
     ![Log in screen with a “Last used” badge](/images/changelog/last-login-badge.png)
@@ -63,29 +63,39 @@ title: "Product Updates"
 
   **⚙️ How it works:**
 
-  - Scheduled crawls scan selected columns with named entities (customer names, status values)
-  - Adding a filter or enabling "lookup" triggers a targeted crawl for that column
-  - Values appear shortly after the crawl completes
+  1. Scheduled crawls scan selected columns with named entities (customer names, status values)
+  2. Adding a filter or enabling "lookup" triggers a targeted crawl for that column
+  3. Values appear shortly after the crawl completes
 
   ### 🧩 Partition & View Awareness
 
-  WisdomAI now detects partition columns and distinguishes between base tables, views, and materialized views during schema crawling. This information is used when generating SQL to include appropriate partition filters and adjust query behavior accordingly.
+  WisdomAI now detects partition columns and distinguishes between base tables, views, and materialized views during schema crawling. This information is used to generate more efficient SQL queries with appropriate partition filters and optimized query strategies. This results in fewer query failures, faster performance on large datasets, and reduced warehouse costs.
 
   **⚙️ How it works:**
 
-  - Schema crawl identifies partitions and table types
-  - Generated SQL includes partition filters when required
-  - Query strategy adapts based on table structure
+  1. Schema crawl identifies partition columns and table types
+  2. Generated SQL includes partition filters to avoid full-table scans
+  3. Query strategy adapts based on table structure
+  4. Background crawling prioritizes recent partitions to improve efficiency
+
+  <Note>
+    **Supported warehouses**: BigQuery, ClickHouse, Databricks, and Redshift.
+  </Note>
 
   ### 🔌 Teradata Connector
 
-  WisdomAI now connects natively to Teradata Vantage, enabling natural-language querying and schema discovery without requiring data replication. Queries are executed in read-only mode to ensure data safety.
+  WisdomAI now connects natively to Teradata Vantage, enabling natural-language querying, AI-powered analytics, and interactive dashboards without requiring data replication. It automatically discovers schemas across databases and generates Teradata-specific SQL, while executing all queries in read-only mode to ensure data safety and compliance.
 
   **⚙️ How it works:**
 
-  - Create a connection from Settings
-  - Enter credentials and validate access
-  - WisdomAI crawls the schema and enables querying
+  1. Access **Connections** \> **Add connection** and select **Teradata**
+  2. Enter credentials and validate access
+  3. Optionally limit access using database filters
+  4. WisdomAI crawls the schema and enables querying
+
+  <Frame>
+    ![Teradata](/images/teradata-1.png)
+  </Frame>
 
   ### ☁️ Google Cloud Spanner Support
 
@@ -119,13 +129,19 @@ title: "Product Updates"
 
   ### 🌍 World Map Visualization
 
-  WisdomAI now includes a choropleth world map visualization for country-level data, using color gradients to represent metric values and tooltips to display exact figures.
+  WisdomAI includes a choropleth world map visualization for country-level data, automatically detecting geographic dimensions and using color gradients to highlight differences in metric values. Tooltips provide exact figures for each country.
+
+  Supports both country names and ISO country codes, and is available in chat and dashboards.
 
   **⚙️ How it works:**
 
-  - Queries with country-level data trigger map suggestions
-  - Countries are colored based on metric values
-  - Hovering displays detailed values
+  1. Queries with country-level data automatically trigger world map visualization suggestions
+  2. Countries are colored based on metric values (darker = higher)
+  3. Hovering displays country names and detailed values
+
+  <Frame>
+    ![World Map Visualization](/images/world-map-visualization.png)
+  </Frame>
 </Update>
 
 <Update label="January 2026">
