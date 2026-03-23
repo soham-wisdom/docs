@@ -442,7 +442,11 @@
       "destination": "/using-wisdom-ai-everyday/share-dashboards-and-set-access-control"
     },
     {
-      "source":"new-releases/february-2026/search-the-web",
+      "source": "/new-features",
+      "destination": "/new-releases/february-2026/02-26-release-overview"
+    },
+    {
+      "source":"/new-releases/february-2026/search-the-web",
       "destination": "/getting-started/connect-data-sources/search-the-web"
     }
   ],
