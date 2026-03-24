@@ -108,12 +108,11 @@ title: "Product Updates"
 
   ### 🔌 Teradata Connector
 
-  WisdomAI now connects natively to Teradata Vantage, enabling natural-language querying, AI-powered analytics, and interactive dashboards without requiring data replication. It automatically discovers schemas across databases and generates Teradata-specific SQL, while executing all queries in read-only mode to ensure data safety and compliance. 
+  WisdomAI now connects natively to Teradata Vantage, enabling natural-language querying, AI-powered analytics, and interactive dashboards without requiring data replication. It automatically discovers schemas across databases and generates Teradata-specific SQL, while executing all queries in read-only mode to ensure data safety and compliance.
 
   **⚙️ How it works:**
 
   1. Access **Connections** \> **Add connection** and select **Teradata**
-
   2. Enter credentials and validate access
   3. Optionally limit access using database filters
   4. WisdomAI crawls the schema and enables querying
@@ -122,17 +121,17 @@ title: "Product Updates"
     ![Teradata](/images/teradata-1.png)
   </Frame>
 
-<Accordion title="FAQs">
-  <AccordionGroup>
-    <Accordion title="Which Teradata products are supported?">
-      WisdomAI connects to Teradata Vantage, supporting both on-premises and cloud (VantageCloud) deployments. The only requirement is that your host is network-accessible from WisdomAI.
-    </Accordion>
+  <Accordion title="FAQs">
+    <AccordionGroup>
+      <Accordion title="Which Teradata products are supported?">
+        WisdomAI connects to Teradata Vantage, supporting both on-premises and cloud (VantageCloud) deployments. The only requirement is that your host is network-accessible from WisdomAI.
+      </Accordion>
 
-    <Accordion title="Can WisdomAI modify data in Teradata?">
-      No. WisdomAI operates in read-only mode and never writes, updates, or deletes data in your Teradata warehouse.
-    </Accordion>
-  </AccordionGroup>
-</Accordion>
+      <Accordion title="Can WisdomAI modify data in Teradata?">
+        No. WisdomAI operates in read-only mode and never writes, updates, or deletes data in your Teradata warehouse.
+      </Accordion>
+    </AccordionGroup>
+  </Accordion>
 
   ### ☁️ Google Cloud Spanner Support
 
@@ -148,6 +147,18 @@ title: "Product Updates"
     ![Spanner](/images/spanner.png)
   </Frame>
 
+  <Accordion title="FAQs">
+    <AccordionGroup>
+      <Accordion title="How does WisdomAI detect my Spanner SQL dialect?">
+        WisdomAI automatically detects the dialect when you create the connection by querying the Spanner Admin API — no manual configuration needed.
+      </Accordion>
+
+      <Accordion title="Can WisdomAI modify data in Spanner?">
+        No. WisdomAI operates in read-only mode and executes all queries as read-only snapshots, ensuring your data is never modified.
+      </Accordion>
+    </AccordionGroup>
+  </Accordion>
+
   ### 🔗 AI-Powered Join Suggestions
 
   WisdomAI analyzes your schema to detect missing relationships between tables and validates them against actual data to ensure meaningful joins. These are surfaced as one-click suggestions that can be reviewed and applied to improve query accuracy.
@@ -159,9 +170,25 @@ title: "Product Updates"
   3. Suggestions appear in the domain for review
   4. Accept or decline each join and define the relationship type
 
+  <Tip>
+    Join suggestions are also automatically populated from Looker and Tableau imports.
+  </Tip>
+
   <Frame>
     ![Suggestions](/images/suggestions.png)
   </Frame>
+
+  <Accordion title="FAQs">
+    <AccordionGroup>
+      <Accordion title="How does WisdomAI know which joins to suggest?">
+        WisdomAI uses an LLM to identify columns that are likely foreign keys, then validates each candidate against your actual warehouse data by checking for value overlap between columns.
+      </Accordion>
+
+      <Accordion title="Why does this matter for query accuracy?">
+        Table relationships are essential for correct SQL generation. In internal testing, adding the right joins improved multi-table query accuracy from 30% to 86.7%.
+      </Accordion>
+    </AccordionGroup>
+  </Accordion>
 
   ### 🔔 Notify when Completed
 
