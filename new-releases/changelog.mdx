@@ -11,13 +11,25 @@ title: "Product Updates"
 
   1. Access **Context** \> **Metrics** tab \> **Add Metric**
   2. Describe a metric or derived column in natural language and select **Generate**
-  3. WisdomAI classifies the request and generates SQL
+  3. WisdomAI classifies the request, identifies the source table, and generates the SQL
   4. The query is validated against your warehouse
   5. Review and edit before saving
 
   <Frame>
     ![Add A Metric](/images/add-a-metric.png)
   </Frame>
+
+  <Accordion title="FAQs">
+    <AccordionGroup>
+      <Accordion title="What is the difference between a metric and a derived column?">
+        A metric is an aggregated value across multiple rows, such as total revenue. A derived column is a row-level calculation, such as combining first and last name. WisdomAI automatically determines which type fits your description.
+      </Accordion>
+
+      <Accordion title="Can I edit the generated SQL?">
+        Yes. The right panel is a full SQL editor where you can modify the generated expression before saving it to your domain.
+      </Accordion>
+    </AccordionGroup>
+  </Accordion>
 
   ### 📄 Tabular Extraction from Unstructured Datasets
 
@@ -26,9 +38,24 @@ title: "Product Updates"
   **⚙️ How it works:**
 
   1. Upload files to a dataset in a domain, go to **Data Sources** \> **Wisdom Storage**
-  2. Select the uploaded files and click **Extract from files.**
-  3. Preview extraction on a sample of files (up to 10)
-  4. Run extraction by clicking **Save & Extract** to generate a structured table, ready to query immediately
+  2. Select the uploaded files and click **Extract**
+  3. Wait for the status to change to **Success,** and a new structured table will appear in your domain
+
+  <Frame>
+    ![Extract](/images/extract.png)
+  </Frame>
+
+  <Accordion title="FAQs">
+    <AccordionGroup>
+      <Accordion title="Can I query extracted data alongside my warehouse data?">
+        Yes. The extracted table appears in your domain alongside your warehouse tables, and you can ask questions that join document data with warehouse data in a single natural-language query.
+      </Accordion>
+
+      <Accordion title="Can I update my field definitions after extraction?">
+        Yes. If you update your field definitions, you can re-run the extraction, and the table will be updated automatically.
+      </Accordion>
+    </AccordionGroup>
+  </Accordion>
 
   ### 📊 Warehouse Observability
 
@@ -36,10 +63,28 @@ title: "Product Updates"
 
   **⚙️ How it works:**
 
-  - A new system-generated domain is available to Admins in the domain list, featuring two pre-built dashboards:
-    - **Warehouse Usage Dashboard**: Displays query-level details including execution time, rows returned, bytes scanned, and cache status.
-    - **Usage Analytics Dashboard**: Tracks team adoption via conversation counts, active users, questions asked, and feedback rates.
-  - Data can be explored directly within WisdomAI
+  A new system-generated domain is available to Admins in the domain list, featuring two pre-built dashboards:
+
+  - **Warehouse Usage Dashboard**: Displays query-level details including execution time, rows returned, bytes scanned, and cache status.
+  - **Usage Analytics Dashboard**: Tracks team adoption via conversation counts, active users, questions asked, and feedback rates.
+
+  You can also ask natural-language questions directly within the domain, such as "How many queries did we run last week?"
+
+  <Accordion title="FAQs">
+  <AccordionGroup>
+    <Accordion title="Where do I find the Warehouse Observability domain?">
+      It appears in your domain list with a "System generated" badge, visible only to users with Data Admin or Admin roles.
+    </Accordion>
+
+    <Accordion title="How often is the data updated?">
+      Query execution logs are written in real time. Enrichment data is updated every 2 hours for Snowflake and Databricks connections.
+    </Accordion>
+
+    <Accordion title="Is this domain visible to all users?">
+      No. It is restricted to Data Admin and Admin roles. Regular users do not see it in the domain list.
+    </Accordion>
+  </AccordionGroup>
+  </Accordion>
 
   ### 🔐 Login Method Memory
 
@@ -47,13 +92,26 @@ title: "Product Updates"
 
   **⚙️ How it works:**
 
-  1. Sign in using any available method.
+  1. Sign in using any available method
   2. WisdomAI stores the method locally in your browser
-  3. On your next visit, the last method is highlighted
+  3. On your next visit, the last method is highlighted with a "Last used" badge
 
   <Frame>
     ![Log in screen with a “Last used” badge](/images/changelog/last-login-badge.png)
   </Frame>
+
+  <Accordion title="FAQs">
+  <AccordionGroup>
+    <Accordion title="Is my login information stored securely?">
+      Yes. Only your login method and email address are saved, stored locally in your browser. No authentication tokens or passwords are ever stored.
+    </Accordion>
+
+    <Accordion title="Can I still sign in with a different method?">
+      Yes. The "Last used" badge is a visual hint only and does not restrict your options. You can select any login method at any time.
+    </Accordion>
+  </AccordionGroup>
+  </Accordion>
+
 </Update>
 
 <Update label="February 2026">
@@ -257,15 +315,14 @@ title: "Product Updates"
   4. A rich preview appears inline below the message
 
   <Accordion title="FAQs">
-  <AccordionGroup>
-    <Accordion title="Do I need to do anything to enable this?">
-      Yes. Your organization needs to reinstall the WisdomAI app in Slack, as updated permissions are required for previews to work.
-    </Accordion>
+    <AccordionGroup>
+      <Accordion title="Do I need to do anything to enable this?">
+        Yes. Your organization needs to reinstall the WisdomAI app in Slack, as updated permissions are required for previews to work.
+      </Accordion>
 
-    <Accordion title="Will everyone in the channel see the preview?">
-      Yes. WisdomAI checks the permissions of the user who shared the link. If they have access to the data, the preview is visible to everyone in the channel.
-    </Accordion>
-  </AccordionGroup>
+      <Accordion title="Will everyone in the channel see the preview?">
+        Yes. WisdomAI checks the permissions of the user who shared the link. If they have access to the data, the preview is visible to everyone in the channel.
+      </Accordion>
+    </AccordionGroup>
   </Accordion>
-
 </Update>
