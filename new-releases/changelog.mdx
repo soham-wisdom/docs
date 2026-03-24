@@ -247,11 +247,25 @@ title: "Product Updates"
 <Update label="January 2026">
   ### 💬 Slack Link Previews
 
-  Sharing a WisdomAI link in Slack now generates a rich preview that displays charts or data tables directly in the conversation. Access is controlled by permissions, ensuring that only authorized users can view the data.
+  Sharing a WisdomAI link in Slack now generates a rich preview that displays charts or data tables directly in the conversation, with no clicks or context-switching required.
 
   **⚙️ How it works:**
 
-  1. Paste a WisdomAI link in Slack
-  2. Slack requests a preview from WisdomAI
-  3. A preview is displayed based on access permissions
+  1. Paste a WisdomAI link in any Slack channel or DM
+  2. Slack requests a preview from WisdomAI in the background
+  3. WisdomAI verifies the poster's identity and data access
+  4. A rich preview appears inline below the message
+
+  <Accordion title="FAQs">
+  <AccordionGroup>
+    <Accordion title="Do I need to do anything to enable this?">
+      Yes. Your organization needs to reinstall the WisdomAI app in Slack, as updated permissions are required for previews to work.
+    </Accordion>
+
+    <Accordion title="Will everyone in the channel see the preview?">
+      Yes. WisdomAI checks the permissions of the user who shared the link. If they have access to the data, the preview is visible to everyone in the channel.
+    </Accordion>
+  </AccordionGroup>
+  </Accordion>
+
 </Update>
