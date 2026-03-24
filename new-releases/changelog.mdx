@@ -197,24 +197,51 @@ title: "Product Updates"
   **⚙️ How it works:**
 
   1. After a few seconds, a **"Notify me when complete"** prompt appears
-  2. Opt in to receive notifications
-  3. Get notified when processing completes
+  2. Click it and grant browser notification permission if prompted
+  3. Switch to any other tab or app and keep working
+  4. When the response is ready, you'll receive a browser notification, an audio chime, and a tab title update simultaneously
+
+  <Accordion title="FAQs">
+    <AccordionGroup>
+      <Accordion title="Do I need to install anything?">
+        No. Notifications use your browser's native notification system. The first time you opt in, your browser will ask for permission, and once granted, it works automatically going forward.
+      </Accordion>
+
+      <Accordion title="What if my browser blocks notifications?">
+        A message will appear in the prompt indicating notifications are blocked. You can re-enable them in your browser's site permissions settings.
+      </Accordion>
+
+      <Accordion title="Will I be notified if I close the tab?">
+        Not currently. The tab must remain open, even in the background, for notifications to fire.
+      </Accordion>
+    </AccordionGroup>
+  </Accordion>
 
   ### 🌍 World Map Visualization
 
-  WisdomAI includes a choropleth world map visualization for country-level data, automatically detecting geographic dimensions and using color gradients to highlight differences in metric values. Tooltips provide exact figures for each country.
-
-  Supports both country names and ISO country codes, and is available in chat and dashboards.
+  WisdomAI includes a choropleth world map visualization for country-level data, automatically detecting geographic dimensions and using color gradients to highlight differences in metric values. Tooltips provide exact figures for each country. Supports both country names and ISO country codes, and is available in chat and dashboards.
 
   **⚙️ How it works:**
 
-  1. Queries with country-level data automatically trigger world map visualization suggestions
+  1. Queries with country-level data automatically trigger a world map visualization suggestion
   2. Countries are colored based on metric values (darker = higher)
-  3. Hovering displays country names and detailed values
+  3. Hovering over a country displays its name and exact metric value
 
   <Frame>
     ![World Map Visualization](/images/world-map-visualization.png)
   </Frame>
+
+  <Accordion title="FAQs">
+    <AccordionGroup>
+      <Accordion title="What data does my query need to produce a world map?">
+        Your data must include a column with country names or ISO country codes, and at least one numeric metric. WisdomAI will detect the country column and automatically suggest the world map.
+      </Accordion>
+
+      <Accordion title="Can I add a world map to a dashboard?">
+        Yes. World map visualizations can be pinned to any dashboard, just like other chart types.
+      </Accordion>
+    </AccordionGroup>
+  </Accordion>
 </Update>
 
 <Update label="January 2026">
