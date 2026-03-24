@@ -63,34 +63,57 @@ title: "Product Updates"
 
   **⚙️ How it works:**
 
-  1. Scheduled crawls scan selected columns with named entities (customer names, status values)
-  2. Adding a filter or enabling "lookup" triggers a targeted crawl for that column
-  3. Values appear shortly after the crawl completes
+  - Scheduled crawls scan selected columns with named entities (customer names, status values)
+  - Adding a filter or enabling "lookup" triggers a targeted crawl for that column
+  - Values appear shortly after the crawl completes
+
+  <Accordion title="FAQs">
+    <AccordionGroup>
+      <Accordion title="What if a filter dropdown shows no values?">
+        When you add a new filter, the dropdown may initially be empty. Within 3-4 minutes, the on-demand crawl will complete, and values will appear. Reload the page to see them.
+      </Accordion>
+
+      <Accordion title="Can I force a column to always be crawled?">
+        Yes. In your domain's column settings, you can manually enable value crawling for any column. Manual settings take the highest priority and are never overridden by automatic detection.
+      </Accordion>
+    </AccordionGroup>
+  </Accordion>
 
   ### 🧩 Partition & View Awareness
 
   WisdomAI now detects partition columns and distinguishes between base tables, views, and materialized views during schema crawling. This information is used to generate more efficient SQL queries with appropriate partition filters and optimized query strategies. This results in fewer query failures, faster performance on large datasets, and reduced warehouse costs.
 
-  **⚙️ How it works:**
-
-  1. Schema crawl identifies partition columns and table types
-  2. Generated SQL includes partition filters to avoid full-table scans
-  3. Query strategy adapts based on table structure
-  4. Background crawling prioritizes recent partitions to improve efficiency
-
   <Note>
     **Supported warehouses**: BigQuery, ClickHouse, Databricks, and Redshift.
   </Note>
 
+  **⚙️ How it works:**
+
+  1. Schema crawl identifies partition columns and table types
+  2. Generated SQL includes partition filters to avoid full-table scans
+  3. Query strategy adapts based on whether the table is a base table, view, or materialized view
+  4. Background crawling prioritizes recent partitions to improve efficiency
+
+  <Accordion title="FAQs">
+    <AccordionGroup>
+      <Accordion title="Do I need to configure anything?">
+        No. Partition and view awareness are enabled automatically. WisdomAI detects everything during its regular schema crawl.
+      </Accordion>
+
+      <Accordion title="How does this reduce BigQuery costs?">
+        BigQuery bills based on bytes scanned and will reject queries that are missing partition filters. WisdomAI handles this automatically by adding the correct filters, avoiding failed queries and costly full-table scans.
+      </Accordion>
+    </AccordionGroup>
+  </Accordion>
+
   ### 🔌 Teradata Connector
 
-  WisdomAI now connects natively to Teradata Vantage, enabling natural-language querying, AI-powered analytics, and interactive dashboards without requiring data replication. It automatically discovers schemas across databases and generates Teradata-specific SQL, while executing all queries in read-only mode to ensure data safety and compliance.
-
-  Make sure to include a column with country names or ISO country codes, and at least one numeric metric.
+  WisdomAI now connects natively to Teradata Vantage, enabling natural-language querying, AI-powered analytics, and interactive dashboards without requiring data replication. It automatically discovers schemas across databases and generates Teradata-specific SQL, while executing all queries in read-only mode to ensure data safety and compliance. 
 
   **⚙️ How it works:**
 
   1. Access **Connections** \> **Add connection** and select **Teradata**
+
   2. Enter credentials and validate access
   3. Optionally limit access using database filters
   4. WisdomAI crawls the schema and enables querying
@@ -98,6 +121,18 @@ title: "Product Updates"
   <Frame>
     ![Teradata](/images/teradata-1.png)
   </Frame>
+
+<Accordion title="FAQs">
+  <AccordionGroup>
+    <Accordion title="Which Teradata products are supported?">
+      WisdomAI connects to Teradata Vantage, supporting both on-premises and cloud (VantageCloud) deployments. The only requirement is that your host is network-accessible from WisdomAI.
+    </Accordion>
+
+    <Accordion title="Can WisdomAI modify data in Teradata?">
+      No. WisdomAI operates in read-only mode and never writes, updates, or deletes data in your Teradata warehouse.
+    </Accordion>
+  </AccordionGroup>
+</Accordion>
 
   ### ☁️ Google Cloud Spanner Support
 
