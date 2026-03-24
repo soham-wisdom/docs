@@ -155,7 +155,8 @@
                 "pages": [
                   "advanced-features/agents/agents",
                   "advanced-features/agents/tutorial-create-agent",
-                  "advanced-features/agents/manage-agents"
+                  "advanced-features/agents/manage-agents",
+                  "advanced-features/agents/reviewed-runs-in-agents"
                 ]
               },
               "advanced-features/deep-analysis",
@@ -373,6 +374,12 @@
             "group": "Release Notes",
             "pages": [
               {
+                "group": "March 2026",
+                "pages": [
+                  "new-releases/february-2026/02-26-release-overview-copied-1"
+                ]
+              },
+              {
                 "group": "February 2026",
                 "expanded": false,
                 "pages": [
@@ -386,13 +393,6 @@
                   "new-releases/february-2026/chat-with-dashboard",
                   "new-releases/february-2026/dual-axis-charts",
                   "getting-started/connect-data-sources/search-the-web"
-                ]
-              },
-              {
-                "group": "March 2026",
-                "hidden": true,
-                "pages": [
-                  "reviewed-runs-in-agents"
                 ]
               }
             ]
