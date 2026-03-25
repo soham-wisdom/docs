@@ -2,11 +2,11 @@
 title: "Embedding WisdomAI Chat and Dashboards"
 ---
 
-Embed a streamlined, white-label version of WisdomAI chat/stories directly into your application.
+Embed a streamlined, white-label version of WisdomAI chat/dashboards directly into your application.
 
 The pages are loaded in an `iframe` and intentionally omits WisdomAI branding and features for a seamless integration experience. All core chat capabilities (natural‑language Q&A, table generation, and chart rendering) remain intact.
 
-The section below describes the steps to configure your embedded chat/story.
+The section below describes the steps to configure your embedded chat/dashboard.
 
 ## 1. Request an Access Token
 
@@ -16,7 +16,7 @@ Contact `support@askwisdom.ai` to obtain your access token. The access token wil
 
 ## 2. Generate a JWT Token
 
-With your access token and the user email, you can now generate a temporary JWT that impersonates the specified user. This action must always be performed on your server to avoid leaking your permanent Access Token to the client's browser.
+With your access token and the user email, you can now generate a temporary JWT that impersonates the specified user. This action must always be performed on your server to prevent your permanent Access Token from being leaked to the client's browser.
 
 <Warning>
   Never expose your permanent access token in client-side code. It provides long-term impersonation capabilities and must be protected on your backend. Do not store, cache, or transmit this token to any client-side application, mobile app, or frontend code.
@@ -63,9 +63,11 @@ The API will respond with the temporary JWT token that authenticates as the impe
   <Card title="Embed Chat" icon="message" href="/integrations/embedding/chat/embed-chat">
     Discover how to embed conversational AI chat interfaces
   </Card>
+
   <Card title="Embed a Dashboard" icon="chart-bar" href="/integrations/embedding/story/embed-a-story">
     Learn how to embed interactive dashboards and visualizations
   </Card>
+
   <Card title="Impersonate User API" icon="user" href="/integrations/graphql-api/queries/auth/impersonate-user">
     Detailed documentation for the authentication API
   </Card>
