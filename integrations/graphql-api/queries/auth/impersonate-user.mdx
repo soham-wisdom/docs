@@ -2,7 +2,7 @@
 title: "Impersonate User"
 ---
 
-The `impersonateUser` query exchanges a dedicated access key for a JWT token that can be used to authenticate subsequent GraphQL API requests while impersonating a specific user. This is useful for embedding scenarios where you need to authenticate as a particular user.
+The `impersonateUser` query exchanges a dedicated access key for a JWT token that can be used to authenticate subsequent GraphQL API requests while impersonating a specific user. This is useful for embedding scenarios in which you need to authenticate as a specific user.
 
 ## Signature
 
@@ -45,7 +45,7 @@ curl -X POST https://{ACCOUNT}.askwisdom.ai/graphql \
 ```
 
 <Info>
-  JWT tokens have a limited lifetime. You will need to exchange your access key for a new JWT token periodically.
+  JWT tokens have a limited lifetime. You will need to periodically exchange your access key for a new JWT token.
 </Info>
 
 ## Related Operations
@@ -54,7 +54,8 @@ curl -X POST https://{ACCOUNT}.askwisdom.ai/graphql \
   <Card title="GraphQL API Overview" icon="code" href="/integrations/graphql-api/GraphQL-API">
     Complete GraphQL API authentication guide
   </Card>
+
   <Card title="Embed Dashboard" icon="chart-bar" href="/integrations/embedding/story/embed-a-story">
-    Authentication for embedded story integrations
+    Authentication for embedded dashboard integrations
   </Card>
 </CardGroup>
