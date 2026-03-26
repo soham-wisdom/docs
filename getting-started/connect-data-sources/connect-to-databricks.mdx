@@ -32,7 +32,7 @@ Follow these steps to find the necessary credentials.
 3. Select the warehouse you want to connect to.
 4. Click on the **Connection Details** tab. Here you will find the **Server Hostname** (your Host) and the **HTTP Path**.
 
-#### Client ID and client secret (using a databricks-managed service principal)
+#### Client ID and client secret (using a Databricks-managed Service Principal)
 
 You'll first need to create a Service Principal in Databricks.
 
@@ -55,7 +55,6 @@ You'll first need to create a Service Principal in Databricks.
 1. From the service principal's page, go to the **Secrets** tab.
 2. Under OAuth secrets, click **Generate secret**.
 3. Set a lifetime for the secret (up to 730 days) and click **Generate**.
-
    <Note>
      Choose an expiration that balances security and operational convenience.
    </Note>
@@ -142,16 +141,17 @@ Having trouble? Here are solutions to some frequently encountered problems.
 
 - Verify that WisdomAl's CIDR block (3`5.238.115.103/32` or `34.82.248.105/32`) is allowlisted in your Snowflake network policies or any corporate firewalls.
 
-
 ## Next steps
 
 <CardGroup cols={3}>
   <Card title="Connect to Snowflake" icon="snowflake" href="/getting-started/connect-data-sources/connect-to-snowflake">
     Connect to Snowflake directly or via a proxy using key-pair authentication and a Snowflake virtual warehouse.
   </Card>
+
   <Card title="Connect to Google BigQuery" icon="google" href="/getting-started/connect-data-sources/connect-to-google-bigquery">
     Connect to Google BigQuery using a Google Cloud Platform Service Account for secure and granular access to your data.
   </Card>
+
   <Card title="Connect and Test Tutorial" icon="rocket" href="/setting-up-wisdom-ai/basic-tutorial-connect-and-test">
     Walk through the initial setup to connect a data source and run your first query.
   </Card>
