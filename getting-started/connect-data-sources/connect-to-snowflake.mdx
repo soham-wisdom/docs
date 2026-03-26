@@ -13,7 +13,7 @@ Before connecting WisdomAl to Snowflake, be sure to have:
 - A Snowflake user with the necessary permissions to create or assign roles and manage private keys.
 - Network access configured to allow connections from WisdomAl to your Snowflake instance.
 
-## 1. Information Required for Direct Connection Setup:
+## 1. Information required for direct connection setup:
 
 To connect WisdomAl to Snowflake directly, you will need the following information:
 
@@ -36,7 +36,7 @@ To connect WisdomAl to Snowflake directly, you will need the following informati
   - **Before July 24, 2025**: `35.238.115.103/32`
   - **On or after July 24, 2025**: `34.82.248.105/32`
 
-## 2. Using a Custom Role:
+## 2. Using a custom role:
 
 To create a custom role and use it for WisdomAl communication, ensure the role has:
 
@@ -58,9 +58,9 @@ Refer to the following SQL statements to grant appropriate privileges:
   See [this page of the Snowflake documentation](https://docs.snowflake.com/en/sql-reference/sql/grant-privilege) for more details on granting privileges to your role.
 </Note>
 
-## 3. Connect WisdomAl to Snowflake:
+## 3. Connect WisdomAI to Snowflake:
 
-Once you have gathered the required information, you can configure the connection in WisdomAl:
+Once you have gathered the required information, you can configure the connection in WisdomAI:
 
 1. In WisdomAl, navigate to the **Connections** section and click **Add Connection**.
 2. Select **Snowflake** as the data source type.
@@ -77,38 +77,38 @@ Once you have gathered the required information, you can configure the connectio
 
 ![image.png](/images/snowflake.png)
 
-## Security Considerations and Best Practices
+## Security considerations and best practices
 
 - **Least Privilege**: Always follow the principle of least privilege. Only grant the necessary permissions (USAGE, SELECT) to the Snowflake user that WisdomAl will use, and restrict it to specific warehouses, databases, and schemas.
 - **Secure Credential Management**: Treat your private key file (rsa_key.p8) as extremely sensitive. Store it in a secure, encrypted location (e.g., a secrets manager or secure file system). Never hardcode private keys in application code or share them via insecure channels.
 - **Credential Rotation**: Regularly rotate private keys used for WisdomAl's Snowflake connection.
 - **Auditing**: Enable and regularly review Snowflake audit logs to monitor access and activity performed by the WisdomAl connection.
 
-## Troubleshooting Common Issues
+## Troubleshooting common issues
 
 Having trouble? Here are solutions to some frequently encountered problems.
 
-### Authentication Failed or Invalid Private Key
+### Authentication failed or invalid private key
 
 - Ensure the private key content is copied exactly, including the `BEGIN` and `END` headers and footers, without any extra spaces or line breaks.
 - If your private key is encrypted, verify that the Private Key Passphrase is entered correctly.
 - Confirm that the Snowflake username matches the user associated with the private key.
 
-### Warehouse Not Found or Database Not Found
+### Warehouse not found or database not found
 
 - Double-check the spelling of the warehouse and database names in the WisdomAl connection details.
 - Ensure the Snowflake user/role has USAGE privilege on the specified warehouse and database.
 
-### Insufficient Privileges
+### Insufficient privileges
 
 - Verify that the Snowflake role assigned to WisdomAl has all the necessary USAGE and SELECT privileges as detailed in the Using a Custom Role section above.
 - If you're using database filters, ensure the role has privileges on the filtered databases.
 
-### Connection Timeout or Network Errors
+### Connection timeout or network errors
 
 - Verify that WisdomAl's CIDR block (`35.238.115.103/32` or `34.82.248.105/32`) is allowlisted in your Snowflake network policies or any corporate firewalls.
 
-## Next Steps
+## Next steps
 
 <CardGroup cols={3}>
   <Card title="Connect to Databricks" icon="layer-group" href="/getting-started/connect-data-sources/connect-to-databricks">

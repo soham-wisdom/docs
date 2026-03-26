@@ -19,7 +19,7 @@ Before you begin, make sure you have the following:
 - If using an SSH tunnel, you need the credentials for your bastion host.
 - If using VPC peering, you need permissions to manage VPC settings in your AWS account.
 
-## Option 1: Direct Connection
+## Option 1: Direct connection
 
 Use this method if your Redshift cluster is publicly accessible or if you have whitelisted WisdomAI's IP addresses in your security group.
 
@@ -39,7 +39,7 @@ Use this method if your Redshift cluster is publicly accessible or if you have w
 
 ![Snippet displaying the Add Connection page](/images/redshift-01.png)
 
-## Option 2: Connect via an SSH Tunnel
+## Option 2: Connect via an SSH tunnel
 
 Use this method to securely connect to a Redshift cluster that is not publicly accessible by routing traffic through a bastion host.
 
@@ -58,13 +58,13 @@ Use this method to securely connect to a Redshift cluster that is not publicly a
 
 ![Snippet displaying the Add Connection page with the SSH Tunnel Configuration section displayed](/images/redshift-02.png)
 
-## Option 3: Connect via VPC Peering
+## Option 3: Connect via VPC peering
 
 This method establishes a private and secure network connection between WisdomAI's AWS environment and your Amazon VPC, preventing exposure to the public internet.
 
 This is a standardized procedure for all supported data sources hosted on AWS. For the complete, step-by-step instructions, please refer to our comprehensive guide: [Connect via AWS VPC Peering](https://docs.askwisdom.ai/getting-started/connect-data-sources/connect-aws-vpc-peering).
 
-## Next Steps
+## Next steps
 
 <CardGroup cols={3}>
   <Card title="Connect to Databricks" icon="layer-group" href="/getting-started/connect-data-sources/connect-to-databricks">

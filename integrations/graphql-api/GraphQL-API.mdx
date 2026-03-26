@@ -8,7 +8,7 @@ Create seamless integrations with WisdomAI using our comprehensive GraphQL API. 
   The GraphQL API is designed for external integrations. All operations require proper authentication and respect your organization's access controls.
 </Note>
 
-## Get Started
+## Get started
 
 The **Wisdom API** provides real-time access to structured data insights via a WebSocket-based subscription model. Users can ask questions related to business intelligence and receive structured responses, including tabular data and SQL queries.
 
@@ -18,7 +18,7 @@ The WisdomAI GraphQL API provides a single endpoint for all operations:
 https://{ACCOUNT}.askwisdom.ai/graphql
 ```
 
-## WebSocket Connection
+## WebSocket connection
 
 Use the following URL to establish the WebSocket connection:
 
@@ -33,10 +33,10 @@ The APIs require authentication using a **JWT session token** obtained via the D
 The authentication flow consists of the following steps:
 
 <Steps>
-  <Step title="Obtain Access Key" titleSize="h3">
+  <Step title="Obtain access key" titleSize="h3">
     Contact WisdomAI support at `support@askwisdom.ai` to obtain your dedicated access key.
   </Step>
-  <Step title="Exchange Access Key for JWT Token" titleSize="h3">
+  <Step title="Exchange access key for JWT token" titleSize="h3">
     Use WisdomAI's GraphQL API `exchangeAccessToken` query to exchange your access key for a JWT token.
     - GraphQL Query:
 
@@ -46,7 +46,7 @@ The authentication flow consists of the following steps:
       }
       ```
   </Step>
-  <Step title="Pass Token in Requests" titleSize="h3">
+  <Step title="Pass token in requests" titleSize="h3">
     The session token is required in all API requests and WebSocket connection payload.
 
     ```
@@ -55,7 +55,7 @@ The authentication flow consists of the following steps:
   </Step>
 </Steps>
 
-## Error Handling
+## Error handling
 
 | Error Code | Message               | Cause                                   |
 | ---------- | --------------------- | --------------------------------------- |
@@ -67,7 +67,7 @@ The authentication flow consists of the following steps:
   For any queries or support, contact our API team at [**support@askwisdom.ai**](mailto:support@askwisdom.ai).
 </Info>
 
-## Related Operations
+## Next steps
 
 <CardGroup cols={2}>
   <Card title="Exchange Access Token" icon="key" href="/integrations/graphql-api/queries/auth/exchange-access-token">

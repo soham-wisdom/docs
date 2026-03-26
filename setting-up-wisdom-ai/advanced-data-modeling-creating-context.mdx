@@ -12,7 +12,7 @@ This article, intended for Admin users and Data Administrators, details the thre
 
 This section outlines the core concepts behind translating raw database structures into a well-defined, business-friendly semantic layer. This allows users to interact with data in familiar business terms.
 
-### Table and Column Documentation
+### Table and column documentation
 
 Properly documenting tables and columns provides foundational context to enable effective analytics. For each table, provide a clear, plain-English description of what the table represents, and include a statement of what each row's granularity represents, such as, "_Each row represents a single sales transaction from a point-of-sale system_". For each column, define a user-friendly Display Name, a Description in business terms, and a Display Format.
 
@@ -41,7 +41,7 @@ Creating an entity involves grouping columns from one or more data source tables
   ![Image showing the Entity Mapping option](/images/entity-mapping.png)
 </Frame>
 
-### Establishing Relationships
+### Establishing relationships
 
 Define the connections between entities to enable precise data-model navigation. Create relationships by selecting the source and target tables and their corresponding attributes. You must configure the relationship's cardinality (1:1, 1:M, M:M). 
 
@@ -65,7 +65,7 @@ Define standard calculations to enforce consistent business logic and simplify a
   ![Image showing the Metrics Tab](/images/new-ui-metrics.png)
 </Frame>
 
-### Data Model Augmentation
+### Data model augmentation
 
 Augment your data model with derived tables and columns using standard SQL syntax. Derived Columns and Tables are calculated fields or virtual tables created with SQL to clean, enrich, or simplify complex underlying data. These augmentations can be used to:
 
@@ -75,11 +75,11 @@ Augment your data model with derived tables and columns using standard SQL synta
 
 ![Image showing the Derived Table](/images/derived-table.png)
 
-## Natural Language Knowledge
+## Natural language Knowledge
 
 This section covers the methods for providing the AI with unstructured, domain-specific knowledge that is difficult to capture in a formal data model, such as business rules or specific terminology.
 
-### Manual Knowledge Entry
+### Manual Knowledge entry
 
 Add domain-specific knowledge, rules, or naming conventions in natural language sentences to guide the AI’s understanding. An example is: "_Regions are the same as Territories_." This improves accuracy by helping the system interpret ambiguous terms and captures knowledge that does not exist in the database schema. It is crucial to validate the impact of manual entries by asking a question in the chat interface to see if the response is as expected.
 
@@ -91,7 +91,7 @@ Add domain-specific knowledge, rules, or naming conventions in natural language 
   ![Image showing the Knowledge Tab](/images/NEW-knowledge-tab.png)
 </Frame>
 
-### Importing Unstructured Context (Beta)
+### Importing unstructured Context (beta)
 
 Enhance the AI’s Context by importing knowledge directly from existing business and technical documents. This process is handled through the 'Chat' window, which provides an interactive interface for selectively extracting Context. Supported information types that can be imported include:
 
@@ -106,21 +106,21 @@ Enhance the AI’s Context by importing knowledge directly from existing busines
   To learn how to upload CSV files, read the [Basic Tutorial](https://docs.askwisdom.ai/setting-up-wisdom-ai/basic-tutorial-connect-and-test#upload-csv-files). Speak with your WisdomAI representative to enable any of the other features.
 </Note>
 
-## Feedback-Based Context
+## Feedback-based Context
 
 This section describes the continuous learning loop, where direct user feedback on AI-generated responses is used to validate and refine the system's knowledge and accuracy over time.
 
 ### Creating Reviewed Queries
 
-Create a library of pre-vetted queries by pairing a natural language question with its ideal SQL response. This is the most critical aspect of Context for the language model to understand your data. Validated Queries are created from the chat experience by giving a "thumbs up" to a correct response, then confirming the natural-language question that the SQL code answers. This process ensures accuracy and consistency for common business questions.
+Create a library of pre-vetted queries by pairing a natural language question with its ideal SQL response. This is the most critical aspect of Context for the language model to understand your data. Reviewed Queries are created from the chat experience by giving a "thumbs up" to a correct response, then confirming the natural-language question that the SQL code answers. This process ensures accuracy and consistency for common business questions.
 
 <Note>
-  To learn more about validated queries, refer to the [Validated Queries](/setting-up-wisdom-ai/feedback-mechanisms/reviewed-queries) article.
+  To learn more about validating your queries, refer to the [Reviewed Queries](/setting-up-wisdom-ai/feedback-mechanisms/reviewed-queries) article.
 </Note>
 
 ![Image showing the Reviewed Queries tab](/images/new-ui-reviewed-queries.png)
 
-### Advanced Feedback and Corrections
+### Advanced feedback and corrections
 
 Provide direct feedback to correct the AI and allow power users to refine the underlying SQL, creating a robust knowledge base from user interactions. Users can mark responses as incorrect to flag them for review.
 
@@ -129,7 +129,7 @@ Provide direct feedback to correct the AI and allow power users to refine the un
 
 ![Image showing the Sql Editing Option](/images/sql-editing.png)
 
-## **Next Steps**
+## **Next steps**
 
 <CardGroup cols={3}>
   <Card icon="clipboard-list" href="/using-wisdom-ai-everyday/auditing" title="Auditing">

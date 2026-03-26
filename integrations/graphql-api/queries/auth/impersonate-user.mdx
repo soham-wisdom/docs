@@ -24,7 +24,7 @@ impersonateUser(accessToken: String!, userEmail: String!): String!
 
 Returns a JWT token as a string that should be used in the `Authorization` header for subsequent API requests. This JWT will authenticate as the impersonated user.
 
-## Usage Example
+## Usage example
 
 ```graphql
 query ImpersonateUser($accessToken: String!, $userEmail: String!) {
@@ -48,7 +48,7 @@ curl -X POST https://{ACCOUNT}.askwisdom.ai/graphql \
   JWT tokens have a limited lifetime. You will need to periodically exchange your access key for a new JWT token.
 </Info>
 
-## Related Operations
+## Next steps
 
 <CardGroup cols={2}>
   <Card title="GraphQL API Overview" icon="code" href="/integrations/graphql-api/GraphQL-API">

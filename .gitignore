@@ -1,0 +1,6 @@
+# Local tools
+vale.ini
+styles/
+Vale-MCP/
+title-to-sentence-case.js
+.vscode/

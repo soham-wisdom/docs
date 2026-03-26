@@ -6,7 +6,7 @@ WisdomAI provides a GraphQL API for defining and maintaining domain knowledge.
 
 Knowledge entries represent domain-specific terminology and workflows that guide how the system interprets data and generates responses.
 
-### When to Use Knowledge Management
+### When to use Knowledge management
 
 - **Defining Regional Terms**: For example, establishing that "Regions are Territories."
 - **Outlining Sales Stages**: Defining a sequence like "Prospect, Negotiation, Closed."
@@ -194,11 +194,11 @@ mutation DeleteKnowledge($domainId: ID!, $knowledge: KnowledgeInput!) {
   **Important:** You must provide the exact knowledge description. If it does not match exactly, the deletion will fail.
 </Warning>
 
-## Common Scenarios
+## Common scenarios
 
 Below are typical workflows for maintaining and restructuring domain knowledge.
 
-### Bulk Import Knowledge
+### Bulk import Knowledge
 
 You can add multiple knowledge items at once by listing them within the `knowledgeEntries` array.
 
@@ -222,7 +222,7 @@ mutation {
 }
 ```
 
-### Replace All Knowledge
+### Replace all Knowledge
 
 To completely refresh a domain's knowledge base:
 

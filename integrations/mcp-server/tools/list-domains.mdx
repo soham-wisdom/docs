@@ -4,7 +4,7 @@ title: "List Domains Tool"
 
 The `list-domains` tool retrieves all domains accessible to the authenticated user. This tool is essential for discovering available data domains before making queries with the chat tool.
 
-## Tool Signature
+## Tool signature
 
 ```json
 {
@@ -21,7 +21,7 @@ The `list-domains` tool retrieves all domains accessible to the authenticated us
 
 This tool requires no input parameters. Authentication is handled automatically through the MCP session.
 
-## Response Format
+## Response format
 
 The list-domains tool returns structured content with domain information:
 
@@ -37,7 +37,7 @@ The list-domains tool returns structured content with domain information:
 }
 ```
 
-## Domain Object
+## Domain object
 
 <ParamField path="id" type="string" required>
   Unique identifier for the domain. Use this ID when making chat tool requests.
@@ -51,7 +51,7 @@ The list-domains tool returns structured content with domain information:
   Description of the domain's purpose and data content. May be empty for some domains.
 </ParamField>
 
-## Usage Example
+## Usage example
 
 ### Request
 
@@ -96,7 +96,7 @@ The list-domains tool returns structured content with domain information:
 }
 ```
 
-## Common Use Cases
+## Common use cases
 
 <CardGroup cols={2}>
   <Card title="Domain Discovery" icon="search">
@@ -110,7 +110,7 @@ The list-domains tool returns structured content with domain information:
   </Card>
 </CardGroup>
 
-## Related Operations
+## Next steps
 
 <CardGroup cols={2}>
   <Card title="Chat Tool" icon="message" href="/integrations/mcp-server/tools/chat">
