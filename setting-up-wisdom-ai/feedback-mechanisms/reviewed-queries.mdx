@@ -10,7 +10,7 @@ By building a repository of these pre-vetted queries, you ensure that everyone i
 
 There are two primary ways to add queries to your knowledge base: directly from the chat interface or in bulk using a CSV file.
 
-### Create from the Chat Interface
+### Create from the chat interface
 
 The most common workflow is to validate queries as you interact with the system. This allows you to refine the AI's generated SQL or provide your own from scratch.
 
@@ -39,7 +39,7 @@ WHERE `stage_label` IN ('Evaluation', 'Negotiation', 'Closed Loss', 'Closed Won'
 
 5. If the answer needs changes, click the **Edit** button (pencil icon) to modify the SQL. Once you are satisfied, click **Mark as reviewed**.
 
-### Example: Editing a Query for Granularity
+### Example: Editing a query for granularity
 
 This example shows how to refine a query to get a more detailed view of your data.
 
@@ -93,7 +93,7 @@ After applying the change and seeing the updated quarterly chart, you can save t
   ![Image showing the Review a Question modal](/images/review-question-sql-0925.png)
 </Frame>
 
-### Bulk Upload with CSV
+### Bulk upload with CSV
 
 For adding many validated queries at once, you can use the CSV upload option in the **Context** \> **Reviewed Queries** tab. This is ideal for migrating existing reports or defining a set of canonical metrics from the start.
 
@@ -103,7 +103,7 @@ To bulk upload, create a CSV file that contains two column headers: `Query` and 
   ![Import CSV File button shown](/images/new-ui-import-csv.png)
 </Frame>
 
-## Best Practices for Well-Formed SQL
+## Best practices for well-formed SQL
 
 For a reviewed query to be effective and reusable, follow these best practices when writing your SQL:
 
@@ -112,7 +112,7 @@ For a reviewed query to be effective and reusable, follow these best practices w
 - **Use CTEs for complex logic:** If the SQL requires multiple steps or transformations, break it down into more understandable Common Table Expressions (CTEs).
 - **Be consistent:** Use a consistent SQL structure for different variations of the same metric. For example, the queries for “Yearly trend of ARR” and “ARR by segment” should be built from a consistent base calculation of ARR, ideally using the same CTE.
 
-## Combining with Language Knowledge for Complex Cases
+## Combining with language Knowledge for complex cases
 
 While reviewed queries are powerful, some complex business rules are best enforced by pairing them with explicit instructions in your **language knowledge**. Reviewed queries teach the model _how_ to calculate a specific metric, while language knowledge can teach it _what not to do_ to avoid common logical errors.
 

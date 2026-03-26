@@ -16,7 +16,7 @@ Before configuring RLS, make sure you have the following:
   - **User Attributes:** Key-value pairs assigned to users that define their permissions (e.g., `tenantId: 'abc-123'`). Attributes can be set manually by an admin or provisioned automatically via SAML SSO.
   - **Entitlements Table:** A dedicated table that maps users to the specific data resources they are allowed to access.
 
-## Configure RLS on a Table
+## Configure RLS on a table
 
 Once your setup is ready, follow these steps to configure row-level security for a table in your WisdomAI domain.
 
@@ -72,7 +72,7 @@ EXISTS (
 - **Applying RLS to Admin Users:** By default, admins can see all data. To apply RLS filters to admins as well, enable the corresponding setting in your domain's **Settings** \> **Advanced** tab.
 - **Using a Table as an Entitlements Source:** If the table you are securing is itself an entitlements table, check the **Set as entitlements table** option. This optimizes how WisdomAI uses it for RLS checks on other tables.
 
-## Next Steps
+## Next steps
 
 <CardGroup cols={2}>
   <Card title="Users Management" icon="users" href="/manage-account/users-management">

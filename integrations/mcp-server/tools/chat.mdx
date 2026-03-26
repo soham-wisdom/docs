@@ -4,7 +4,7 @@ title: "Chat Tool"
 
 The `chat` tool is the primary interface for interacting with WisdomAI's powerful data analysis capabilities. It accepts natural language questions and returns structured responses including text explanations, data tables, and interactive visualizations.
 
-## Tool Signature
+## Tool signature
 
 ```json
 {
@@ -44,7 +44,7 @@ The `chat` tool is the primary interface for interacting with WisdomAI's powerfu
   UUID for conversation continuity. Provide an existing conversation ID to continue a chat thread, or leave empty to start a new conversation. Providing an invalid conversation ID is equivalent to leaving it empty.
 </ParamField>
 
-## Response Format
+## Response format
 
 The chat tool returns structured content in the following format:
 
@@ -61,7 +61,7 @@ The chat tool returns structured content in the following format:
 }
 ```
 
-## Content Types
+## Content types
 
 <ParamField path="TextContent" type="object">
   Plain text responses and explanations
@@ -108,11 +108,11 @@ The chat tool returns structured content in the following format:
   </Warning>
 </ParamField>
 
-## Streaming Support (Beta)
+## Streaming support (Beta)
 
 When streaming is enabled, the server sends progressive updates via [MCP notifications](https://modelcontextprotocol.io/docs/concepts/transports#notifications) as content is generated.
 
-### Notification Format
+### Notification format
 
 Streaming updates are sent using the `chat/update` notification method:
 
@@ -129,11 +129,11 @@ Streaming updates are sent using the `chat/update` notification method:
 }
 ```
 
-### Update Frequency
+### Update frequency
 
 The server throttles streaming updates to a maximum frequency of **once per second**.
 
-### Notification Parameters
+### Notification parameters
 
 <ParamField path="conversationId" type="string" required>
   The conversation ID associated with the query
@@ -151,7 +151,7 @@ The server throttles streaming updates to a maximum frequency of **once per seco
   The current state of the response content, **including all previous and new content items**
 </ParamField>
 
-## Usage Example
+## Usage example
 
 ### Request
 
@@ -314,7 +314,7 @@ The server throttles streaming updates to a maximum frequency of **once per seco
 
 </ResponseExample>
 
-## Related Operations
+## Next steps
 
 <CardGroup cols={2}>
   <Card title="List Domains Tool" icon="list" href="/integrations/mcp-server/tools/list-domains">

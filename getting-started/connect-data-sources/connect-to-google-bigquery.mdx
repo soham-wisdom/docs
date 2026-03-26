@@ -11,7 +11,7 @@ Before connecting WisdomAl to BigQuery, make sure to have:
 - An active Google Cloud Project.
 - The BigQuery API enabled within your Google Cloud Project.
 
-## 1. Create a GCP Service Account
+## 1. Create a GCP service account
 
 A service account is a special type of Google account that an application, like WisdomAl, can use to make authorized API calls. To do this:
 
@@ -23,7 +23,7 @@ A service account is a special type of Google account that an application, like 
 6. **Service Account Description:** (Optional) Add a description, e.g., "Service account for WisdomAl BigQuery connectivity."
 7. Click **CREATE AND CONTINUE**.
 
-## 2. Assign IAM Roles to the Service Account
+## 2. Assign IAM roles to the service account
 
 To grant WisdomAl the necessary permissions to read data and run queries, assign the following roles to the service account created in the previous step. It's recommended to assign these roles at the project level for broad access, or you can restrict access to specific datasets if needed.
 
@@ -39,7 +39,7 @@ Follow these steps to Assign Roles (at Project Level):
    - **BigQuery Read Session User**
 2. Click **DONE**.
 
-### Restrict Access to Specific Datasets Only
+### Restrict access to specific datasets only
 
 If you want WisdomAl to only access certain datasets within your project, you can skip assigning the BigQuery roles at the project level and instead grant access directly to the specific datasets:
 
@@ -51,7 +51,7 @@ If you want WisdomAl to only access certain datasets within your project, you ca
 6. Assign **BigQuery Job User** at the project level.
 7. Repeat for all datasets WisdomAl needs to access.
 
-## 3. Generate a JSON Key for the Service Account
+## 3. Generate a JSON key for the service account
 
 WisdomAl will use a JSON key file for authenticating with BigQuery.
 
@@ -67,7 +67,7 @@ WisdomAl will use a JSON key file for authenticating with BigQuery.
      This file contains sensitive credentials.
    </Warning>
 
-## 4. Connect WisdomAl to BigQuery
+## 4. Connect WisdomAI to BigQuery
 
 Once you have gathered the required information, you can configure the connection in WisdomAl:
 
@@ -82,32 +82,32 @@ Once you have gathered the required information, you can configure the connectio
 
 ![image.png](/images/bigquery.png)
 
-## Security Considerations and Best Practices
+## Security considerations and best practices
 
 - **Least Privilege:** Always follow the principle of least privilege. Only grant the necessary roles and permissions to the service account. If dataset-level access is sufficient, avoid granting project-level roles.
 - **Secure Key Management:** The JSON key file is highly sensitive. Treat it like a password. Avoid sharing it via insecure channels like unencrypted email. Use secure methods like LastPass or other secure file sharing services.
 
-## Troubleshooting Common Issues
+## Troubleshooting common issues
 
 Facing issues? Here are solutions to some frequently encountered problems.
 
-### Authentication Failed or Invalid Credentials
+### Authentication failed or invalid credentials
 
 - Ensure the JSON key file you pasted is complete and correct. No extra characters, spaces, or missing lines.
 - Verify that the `project_id` in the JSON key matches the project ID you're trying to connect to.
 
-### Permission Denied Errors
+### Permission denied errors
 
 - Double-check that the service account has all three required roles (**BigQuery Data Viewer**, **BigQuery Job User**, **BigQuery Read Session User**) assigned correctly at either the project or dataset level.
 - Confirm that the BigQuery API is enabled in your Google Cloud Project.
 
-### Dataset Not Found or Table Not Found
+### Dataset not found or table not found
 
 - Verify the spelling of the dataset or table names.
 - If using dataset filters in WisdomAl, ensure the dataset is included in the filter.
 - Confirm that the service account has permissions on the specific dataset you are trying to access.
 
-## Next Steps
+## Next steps
 
 <CardGroup cols={3}>
   <Card title="Connect to Snowflake" icon="snowflake" href="/getting-started/connect-data-sources/connect-to-snowflake">

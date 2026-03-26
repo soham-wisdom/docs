@@ -4,7 +4,7 @@ title: "Role Mapping & SSO Groups"
 
 Once users are provisioned via SSO, you can automate their permission levels by mapping Identity Provider (IdP) data to WisdomAI roles.
 
-### Role Management through SCIM
+### Role management through SCIM
 
 When SCIM is enabled, your existing SSO groups are automatically detected and synced to Wisdom.
 
@@ -23,7 +23,7 @@ When SCIM is enabled, your existing SSO groups are automatically detected and sy
   Any user belonging to that SSO group will automatically inherit the assigned roles and domain permissions in WisdomAI.
 </Note>
 
-### Role Management through Claims
+### Role management through claims
 
 If you prefer not to use SCIM groups, you can configure roles based on "claims" within the IDP's JSON Web Token (JWT).
 
@@ -31,13 +31,13 @@ If you prefer not to use SCIM groups, you can configure roles based on "claims" 
   Contact [WisdomAI support](/manage-account/contact-support) to enable claims-based role management for your instance.
 </Tip>
 
-**How the Mapping Works:**
+**How the mapping works:**
 
 1. When a user logs in, WisdomAI reads a specific claim from the JWT (typically named `roles` or `groups`) which contains a list of strings.
 2. An **SSO Group** in WisdomAI acts as a bridge. It maps a specific **string element** from that JWT list to the assigned **WisdomAI Role**.
 3. If a user’s JWT contains the string `"marketing_admin"`, and you have created an SSO Group in Wisdom that maps `"marketing_admin"` to the **Explorer** role, that user is automatically granted those permissions.
 
-**Setting it Up:**
+**Set it up:**
 
 - Click the **Add Group** button.
 - In the **Add SSO Group** modal that opens, enter the string element that matches your IDP claim in the **SSO Group Name** field.
@@ -48,7 +48,7 @@ If you prefer not to use SCIM groups, you can configure roles based on "claims" 
 - **Role Assignments**: Select the Role (e.g., Explorer) and the corresponding Domains to be mapped to that string.
 - Click **Create User Group** to finalize the mapping.
 
-### Auto SSO Group Generation
+### Auto SSO group generation
 
 To avoid manual mapping entirely, WisdomAI can auto-generate groups based on a specific string schema in your IdP claims.
 
@@ -73,7 +73,7 @@ Each claim string must follow this schema:
 - `wisdom.explorer.DOMAIN.ET_DOMAIN_foo`: Assigns the Explorer role to a specific domain in the default workspace.
 - `wisdom.foo.explorer.DOMAIN.ET_DOMAIN_bar`: Assigns the Explorer role on a specific domain in the foo workspace.
 
-## Next Steps
+## Next steps
 
 <CardGroup cols={3}>
   <Card icon="database" href="/getting-started/connect-data-sources/supported-data-sources" title="Supported Data Sources">
