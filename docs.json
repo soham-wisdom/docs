@@ -417,7 +417,8 @@
     },
     {
       "source": "/using-wisdom-ai-everyday/turn-answers-into-stories",
-      "destination": "/using-wisdom-ai-everyday/turn-answers-into-dashboards"
+      "destination": "/using-wisdom-ai-everyday/turn-answers-into-dashboards",
+      "permanent": true
     },
     {
       "source": "/improve-wisdom-ai-responses/setting-up-wisdom-ai/manage-domains/understand-domains",
@@ -433,7 +434,8 @@
     },
     {
       "source": "/using-wisdom-ai-everyday/schedule-story-notifications",
-      "destination": "/using-wisdom-ai-everyday/schedule-dashboards-notifications"
+      "destination": "/using-wisdom-ai-everyday/schedule-dashboards-notifications",
+      "permanent": true
     },
      {
       "source": "/setting-up-wisdom-ai/document-tables-and-columns",
@@ -445,7 +447,8 @@
     },
     {
       "source": "/using-wisdom-ai-everyday/share-stories-and-set-access-control",
-      "destination": "/using-wisdom-ai-everyday/share-dashboards-and-set-access-control"
+      "destination": "/using-wisdom-ai-everyday/share-dashboards-and-set-access-control",
+      "permanent": true
     },
     {
       "source": "/new-features",
