@@ -185,7 +185,7 @@
                   {
                     "group": "Dashboard",
                     "pages": [
-                      "integrations/embedding/story/embed-a-dashboard"
+                      "integrations/embedding/dashboard/embed-a-dashboard"
                     ]
                   }
                 ]
