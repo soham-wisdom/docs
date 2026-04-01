@@ -1,0 +1,98 @@
+---
+title: "Delete Users From Workspace"
+---
+
+The `deleteUsersFromWorkspace` mutation removes one or more users from a workspace.
+
+<Warning>
+  This action is **irreversible**. Deleted users cannot be restored. Any active sessions for the deleted users will also be invalidated.
+</Warning>
+
+## Signature
+
+```graphql
+deleteUsersFromWorkspace(input: DeleteUsersFromWorkspaceInput!): DeleteUsersFromWorkspaceResponse!
+```
+
+## Arguments
+
+<ParamField path="input" type="DeleteUsersFromWorkspaceInput!" required>
+  Input object identifying the users to delete and the target workspace.
+</ParamField>
+
+### DeleteUsersFromWorkspaceInput fields
+
+<ParamField path="ids" type="[ID!]!" required>
+  The IDs of the users to delete. Use [listUsers](/integrations/graphql-api/queries/user/list-users) to find user IDs.
+</ParamField>
+
+<ParamField path="workspaceID" type="ID!">
+  The workspace to delete the users from. Required for multi-workspace deployments.
+</ParamField>
+
+## Response
+
+<ParamField path="status" type="ResponseStatus!">
+  Indicates whether the operation succeeded. See [ResponseStatus](/integrations/graphql-api/objects/response-status).
+</ParamField>
+
+## Usage example
+
+```graphql
+mutation DeleteUsersFromWorkspace($input: DeleteUsersFromWorkspaceInput!) {
+  deleteUsersFromWorkspace(input: $input) {
+    status {
+      code
+      message
+    }
+  }
+}
+```
+
+<RequestExample>
+
+```bash Request
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <access_token>" \
+  -d '{
+    "query": "mutation DeleteUsersFromWorkspace($input: DeleteUsersFromWorkspaceInput!) { deleteUsersFromWorkspace(input: $input) { status { code message } } }",
+    "variables": {
+      "input": {
+        "ids": ["user_abc123", "user_def456"],
+        "workspaceID": "workspace_123"
+      }
+    }
+  }' \
+  https://{ACCOUNT}.askwisdom.ai/graphql
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Success
+{
+  "data": {
+    "deleteUsersFromWorkspace": {
+      "status": {
+        "code": "OK",
+        "message": "Users deleted successfully"
+      }
+    }
+  }
+}
+```
+
+</ResponseExample>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="List users" icon="users" href="/integrations/graphql-api/queries/user/list-users">
+    Query users before deleting them
+  </Card>
+  <Card title="Create users" icon="user-plus" href="/integrations/graphql-api/mutations/user/create-users">
+    Provision new users in a workspace
+  </Card>
+</CardGroup>

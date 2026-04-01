@@ -1,0 +1,59 @@
+---
+title: "User Management"
+---
+
+WisdomAI provides a set of GraphQL operations for provisioning and managing users programmatically. This is the primary method for setting up embedded users — users must be created via API before they can be impersonated for embedded sessions.
+
+## Operations
+
+| Operation | Type | Description |
+|-----------|------|-------------|
+| [`createUsers`](/integrations/graphql-api/mutations/user/create-users) | Mutation | Provision one or more users, with optional role assignments and attributes |
+| [`setUserAttributes`](/integrations/graphql-api/mutations/user/set-user-attributes) | Mutation | Replace the DATABASE-sourced attributes on an existing user |
+| [`deleteUsersFromWorkspace`](/integrations/graphql-api/mutations/user/delete-users-from-workspace) | Mutation | Remove users from a workspace (irreversible) |
+| [`listUsers`](/integrations/graphql-api/queries/user/list-users) | Query | Retrieve users with their current attributes and role assignments |
+
+## Typical workflow
+
+For embedding, the standard flow is:
+
+1. **Create the user** — call `createUsers` with their email, role, and any persistent attributes
+2. **Update attributes if needed** — call `setUserAttributes` when the user's data access context changes
+3. **Impersonate to start a session** — call [`impersonateUser`](/integrations/graphql-api/queries/auth/impersonate-user) to get a short-lived JWT for the iframe embed URL
+4. **Look up users** — call `listUsers` to find user IDs or inspect current attribute state
+5. **Remove users** — call `deleteUsersFromWorkspace` when offboarding
+
+## User attributes
+
+User attributes are key-value pairs that control parameterized connections and row-level data access. They can be set at creation time, updated later, or passed transiently at impersonation time for session-only overrides.
+
+See [User attributes](/integrations/embedding/user-attributes) for the full explanation of attribute sources (`DATABASE` vs `JWT`) and when to use each approach.
+
+## Authentication
+
+All user management operations require a permanent access token with `iam:write` permission in the `Authorization: Bearer` header. This token must be kept server-side — never expose it in client code.
+
+Contact `support@askwisdom.ai` to obtain your access token.
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Create users" icon="user-plus" href="/integrations/graphql-api/mutations/user/create-users">
+    Provision users with roles and attributes
+  </Card>
+  <Card title="Set user attributes" icon="tag" href="/integrations/graphql-api/mutations/user/set-user-attributes">
+    Update DATABASE-sourced attributes
+  </Card>
+  <Card title="List users" icon="users" href="/integrations/graphql-api/queries/user/list-users">
+    Query users and inspect their attributes
+  </Card>
+  <Card title="Impersonate user" icon="user-secret" href="/integrations/graphql-api/queries/auth/impersonate-user">
+    Generate a session JWT for embedding
+  </Card>
+  <Card title="Embedding overview" icon="code" href="/integrations/embedding/embedding">
+    Full server-side embedding flow
+  </Card>
+  <Card title="User attributes" icon="list" href="/integrations/embedding/user-attributes">
+    How attributes control data access
+  </Card>
+</CardGroup>
