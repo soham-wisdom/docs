@@ -2,60 +2,159 @@
 title: "Impersonate User"
 ---
 
-The `impersonateUser` query exchanges a dedicated access key for a JWT token that can be used to authenticate subsequent GraphQL API requests while impersonating a specific user. This is useful for embedding scenarios in which you need to authenticate as a specific user.
+The `impersonateUser` query exchanges a dedicated access key for a short-lived JWT token that authenticates subsequent requests as a specific user. This is the core of the embedded session flow — the returned JWT is passed as the `token` query parameter in iframe embed URLs.
 
 ## Signature
 
 ```graphql
-impersonateUser(accessToken: String!, userEmail: String!): String!
+impersonateUser(input: ImpersonateUserInput!): ImpersonateUserResponse!
 ```
 
 ## Parameters
 
-<ParamField path="accessToken" type="String!" required>
-  The dedicated access key provided by WisdomAI for your organization. Contact `support@askwisdom.ai` to obtain your access key. The access key will have impersonation permissions.
+<ParamField path="input" type="ImpersonateUserInput!" required>
+  Input object identifying the user to impersonate and optional transient attributes.
 </ParamField>
 
-<ParamField path="userEmail" type="String!" required>
-  The email address of the user to impersonate. This user must exist in the WisdomAI system, and the access token must have impersonation permissions.
+### ImpersonateUserInput fields
+
+<ParamField path="userId" type="ID!" required>
+  The ID of the user to impersonate. The user must exist in the workspace. Use [listUsers](/integrations/graphql-api/queries/user/list-users) to find user IDs, or capture the ID returned when the user was created via [createUsers](/integrations/graphql-api/mutations/user/create-users).
+</ParamField>
+
+<ParamField path="workspaceId" type="ID!" required>
+  The ID of the workspace the session should be scoped to.
+</ParamField>
+
+<ParamField path="transientAttributes" type="[UserAttributeInput!]">
+  Optional key-value pairs applied **only for this session**. Transient attributes override DATABASE-sourced attributes for the duration of the session and are not persisted. They are useful for passing context that should not be stored on the user (e.g., a specific report context or request-scoped filter).
+
+  See [User attributes](/integrations/embedding/user-attributes) for how attribute sources are prioritized.
 </ParamField>
 
 ## Response
 
-Returns a JWT token as a string that should be used in the `Authorization` header for subsequent API requests. This JWT will authenticate as the impersonated user.
+<ParamField path="token" type="String!">
+  A short-lived JWT for use in the `Authorization: Bearer` header or as the `token` query parameter in embed URLs.
+</ParamField>
+
+<ParamField path="expiration" type="DateTime!">
+  The UTC timestamp at which the token expires.
+</ParamField>
+
+<ParamField path="status" type="ResponseStatus!">
+  Indicates whether the operation succeeded. See [ResponseStatus](/integrations/graphql-api/objects/response-status).
+</ParamField>
+
+<Warning>
+  **The returned JWT expires in 1 hour.** Your server must handle re-impersonation before the token expires — there is no refresh mechanism. For long-running embedded sessions, call `impersonateUser` again to obtain a new token.
+</Warning>
+
+<Warning>
+  Never expose your permanent access token in client-side code. Always call this query from your server. See the [embedding overview](/integrations/embedding/embedding) for the secure server-side flow.
+</Warning>
 
 ## Usage example
 
+### With transient attributes
+
 ```graphql
-query ImpersonateUser($accessToken: String!, $userEmail: String!) {
-  impersonateUser(accessToken: $accessToken, userEmail: $userEmail)
+query ImpersonateUser($input: ImpersonateUserInput!) {
+  impersonateUser(input: $input) {
+    token
+    expiration
+    status {
+      code
+      message
+    }
+  }
 }
 ```
 
-```bash
-curl -X POST https://{ACCOUNT}.askwisdom.ai/graphql \
+<RequestExample>
+
+```bash Without transient attributes
+curl -X POST \
   -H "Content-Type: application/json" \
   -d '{
-    "query": "query ImpersonateUser($accessToken: String!, $userEmail: String!) { impersonateUser(accessToken: $accessToken, userEmail: $userEmail) }",
+    "query": "query ImpersonateUser($input: ImpersonateUserInput!) { impersonateUser(input: $input) { token expiration status { code message } } }",
     "variables": {
-      "accessToken": "your-access-key-here",
-      "userEmail": "user-email@yourcompany.com"
+      "input": {
+        "userId": "user_abc123",
+        "workspaceId": "workspace_123"
+      }
     }
-  }'
+  }' \
+  https://{ACCOUNT}.askwisdom.ai/graphql
 ```
 
-<Info>
-  JWT tokens have a limited lifetime. You will need to periodically exchange your access key for a new JWT token.
-</Info>
+```bash With transient attributes
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -d '{
+    "query": "query ImpersonateUser($input: ImpersonateUserInput!) { impersonateUser(input: $input) { token expiration status { code message } } }",
+    "variables": {
+      "input": {
+        "userId": "user_abc123",
+        "workspaceId": "workspace_123",
+        "transientAttributes": [
+          { "key": "report_id", "value": "q3-sales-summary" },
+          { "key": "customer_id", "value": "cust_789" }
+        ]
+      }
+    }
+  }' \
+  https://{ACCOUNT}.askwisdom.ai/graphql
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "data": {
+    "impersonateUser": {
+      "token": "eyJhbGciOiJSUzI1NiIsInR5...",
+      "expiration": "2024-01-15T14:30:00Z",
+      "status": {
+        "code": "OK",
+        "message": "Token issued successfully"
+      }
+    }
+  }
+}
+```
+
+</ResponseExample>
+
+<Tip>
+  Attributes that are stable for a given user (such as `account_id`) should be set permanently via [`createUsers`](/integrations/graphql-api/mutations/user/create-users) or [`setUserAttributes`](/integrations/graphql-api/mutations/user/set-user-attributes). Attributes that change per session (such as a selected view or context) can be passed transiently via `transientAttributes` here.
+</Tip>
+
+## Token lifecycle
+
+| Property | Value |
+|----------|-------|
+| Lifetime | 1 hour |
+| Refresh | Not supported — call `impersonateUser` again to get a new token |
+| Expiry error | HTTP 200 with an authentication error in the response body |
+
+To avoid session interruptions, re-impersonate the user before the token expires (e.g., after 50–55 minutes).
 
 ## Next steps
 
 <CardGroup cols={2}>
-  <Card title="GraphQL API Overview" icon="code" href="/integrations/graphql-api/GraphQL-API">
-    Complete GraphQL API authentication guide
+  <Card title="Embed a dashboard" icon="chart-bar" href="/integrations/embedding/story/embed-a-dashboard">
+    Use the token in an iframe embed URL
   </Card>
-
-  <Card title="Embed Dashboard" icon="chart-bar" href="/integrations/embedding/story/embed-a-story">
-    Authentication for embedded dashboard integrations
+  <Card title="Embed chat" icon="message" href="/integrations/embedding/chat/embed-chat">
+    Use the token for embedded chat
+  </Card>
+  <Card title="Create users" icon="user-plus" href="/integrations/graphql-api/mutations/user/create-users">
+    Create users before impersonating them
+  </Card>
+  <Card title="User attributes" icon="list" href="/integrations/embedding/user-attributes">
+    Understand transient vs persistent attributes
   </Card>
 </CardGroup>

@@ -28,6 +28,23 @@ Construct the special embed URL for your Dashboard and append the newly generate
   If you are currently using an older URL containing `/stories/`, it will continue to work and does not require immediate replacement.
 </Note>
 
+## Controlling edit permissions with RBAC
+
+Embedded dashboards reflect the user's RBAC role. To hide edit buttons and prevent modifications in your embedded view, assign the user the **Viewer** role when creating them.
+
+There is no separate embed-specific parameter for this — edit access flows entirely from the user's role assignment:
+
+- **Viewer**: can view dashboards; edit controls are hidden
+- **Editor** or higher: edit controls are visible
+
+Set the role in `CreateUsersInput.roleAssignments` when provisioning the user:
+
+```json
+"roleAssignments": [{ "role": "VIEWER", "scopeId": "workspace_123" }]
+```
+
+See [Create users](/integrations/graphql-api/mutations/user/create-users) for the full input schema.
+
 ## Validation
 
 To validate that the process worked, open the final embed URL in your browser. The WisdomAI Dashboard should load correctly without prompting for a login. If you encounter an error, please refer to the troubleshooting steps below.

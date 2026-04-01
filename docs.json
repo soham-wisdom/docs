@@ -176,6 +176,7 @@
                 "group": "Embedding",
                 "pages": [
                   "integrations/embedding/embedding",
+                  "integrations/embedding/user-attributes",
                   {
                     "group": "Chat",
                     "pages": [
@@ -194,6 +195,8 @@
                 "group": "GraphQL API",
                 "pages": [
                   "integrations/graphql-api/GraphQL-API",
+                  "integrations/graphql-api/graphql-primer",
+                  "integrations/graphql-api/user-management",
                   {
                     "group": "Objects",
                     "pages": [
@@ -265,7 +268,8 @@
                       {
                         "group": "User",
                         "pages": [
-                          "integrations/graphql-api/queries/user/current-user"
+                          "integrations/graphql-api/queries/user/current-user",
+                          "integrations/graphql-api/queries/user/list-users"
                         ]
                       }
                     ]
@@ -304,7 +308,18 @@
                           "integrations/graphql-api/mutations/dashboard/delete-widget-from-dashboard",
                           "integrations/graphql-api/mutations/dashboard/refresh-dashboard",
                           "integrations/graphql-api/mutations/dashboard/add-scope-role-assignments-for-sharing",
-                          "integrations/graphql-api/mutations/dashboard/remove-scope-role-assignments-for-sharing"
+                          "integrations/graphql-api/mutations/dashboard/remove-scope-role-assignments-for-sharing",
+                          "integrations/graphql-api/mutations/dashboard/export-dashboard",
+                          "integrations/graphql-api/mutations/dashboard/import-dashboard",
+                          "integrations/graphql-api/mutations/dashboard/duplicate-dashboard"
+                        ]
+                      },
+                      {
+                        "group": "User",
+                        "pages": [
+                          "integrations/graphql-api/mutations/user/create-users",
+                          "integrations/graphql-api/mutations/user/set-user-attributes",
+                          "integrations/graphql-api/mutations/user/delete-users-from-workspace"
                         ]
                       },
                       {

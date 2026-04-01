@@ -2,22 +2,55 @@
 title: "ResponseStatus"
 ---
 
-This page describes the response status for mutation operations.
+`ResponseStatus` is returned by mutations to indicate whether the operation succeeded. It is a distinct type from the `UserStatus` enum — mutation responses use this object, not the enum.
 
-## ResponseStatus
+## Fields
 
 <ParamField path="code" type="String!" required>
-  Status code indicating success or failure of the operation.
+  A string code indicating the result of the operation. `"OK"` means the operation succeeded; any other value indicates failure.
 </ParamField>
 
 <ParamField path="message" type="String!" required>
-  Human-readable message describing the operation result.
+  A human-readable message describing the result. On failure, this field contains the error details.
 </ParamField>
 
-## Related operations
+## Example values
+
+```json Success
+{
+  "status": {
+    "code": "OK",
+    "message": "Operation completed successfully"
+  }
+}
+```
+
+```json Failure
+{
+  "status": {
+    "code": "ERROR",
+    "message": "User with email alice@yourcompany.com already exists"
+  }
+}
+```
+
+<Note>
+  GraphQL returns HTTP 200 even when `status.code` is not `"OK"`. Always check the `code` field in the response body to determine success or failure. See [Error handling](/integrations/graphql-api/GraphQL-API#error-handling).
+</Note>
+
+## Operations that return ResponseStatus
 
 <CardGroup cols={2}>
-  <Card title="Send User Message" icon="message" href="/integrations/graphql-api/mutations/chat/send-user-message">
+  <Card title="Create users" icon="user-plus" href="/integrations/graphql-api/mutations/user/create-users">
+    Returns ResponseStatus
+  </Card>
+  <Card title="Set user attributes" icon="tag" href="/integrations/graphql-api/mutations/user/set-user-attributes">
+    Returns ResponseStatus
+  </Card>
+  <Card title="Delete users from workspace" icon="user-minus" href="/integrations/graphql-api/mutations/user/delete-users-from-workspace">
+    Returns ResponseStatus
+  </Card>
+  <Card title="Send user message" icon="message" href="/integrations/graphql-api/mutations/chat/send-user-message">
     Returns ResponseStatus
   </Card>
 </CardGroup>

@@ -2,73 +2,122 @@
 title: "Embedding WisdomAI Chat and Dashboards"
 ---
 
-Embed a streamlined, white-label version of WisdomAI chat/dashboards directly into your application.
+Embed a streamlined, white-label version of WisdomAI chat and dashboards directly into your application.
 
-The pages are loaded in an `iframe` and intentionally omits WisdomAI branding and features for a seamless integration experience. All core chat capabilities (natural‑language Q&A, table generation, and chart rendering) remain intact.
+The pages are loaded in an `iframe` and intentionally omit WisdomAI branding and navigation for a seamless integration experience. All core capabilities (natural-language Q&A, table generation, and chart rendering) remain intact.
 
-The section below describes the steps to configure your embedded chat/dashboard.
+## Prerequisites
 
-## 1. Request an Access Token
-
-Your permanent access token authenticates your server to the WisdomAI API and grants impersonation permissions. This token does not expire and must be kept secret.
-
-Contact `support@askwisdom.ai` to obtain your access token. The access token will have impersonation permissions.
-
-## 2. Generate a JWT Token
-
-With your access token and the user email, you can now generate a temporary JWT that impersonates the specified user. This action must always be performed on your server to prevent your permanent Access Token from being leaked to the client's browser.
+Contact `support@askwisdom.ai` to obtain your permanent access token. This token authenticates your server to the WisdomAI API and grants impersonation permissions. It does not expire and must be kept secret. 
 
 <Warning>
-  Never expose your permanent access token in client-side code. It provides long-term impersonation capabilities and must be protected on your backend. Do not store, cache, or transmit this token to any client-side application, mobile app, or frontend code.
+  Never expose your permanent access token in client-side code. It provides long-term impersonation capabilities and must be protected on your backend. Store it only in secure server-side environment variables or a secret management system. Do not store, cache, or transmit this token to any client-side application, mobile app, or frontend code.
 </Warning>
 
-<Warning>
-  The permanent access token grants impersonation privileges. If this token is compromised, an attacker could impersonate any user in your organization. Store it only in secure server-side environment variables or secret management systems.
-</Warning>
+## Embedding flow
 
-Make a server-side POST request to the WisdomAI GraphQL endpoint.
+Every embedded session follows this five-step flow on your server:
 
-```bash
-curl -X POST https://<customer>.askwisdom.ai/graphql -d "query Query($accessToken: String!, $userEmail: String!) {
-  impersonateUser(accessToken: $accessToken, userEmail: $userEmail)
-}
-```
+<Steps>
+  <Step title="Get your access token" titleSize="h3">
+    Contact `support@askwisdom.ai` to receive your permanent access token. You only need to do this once.
+  </Step>
 
-Include your permanent access token and the user email in the variables of the GraphQL query.
+  <Step title="Create the end user" titleSize="h3">
+    Before you can impersonate a user, they must exist in WisdomAI. Call `createUsers` to provision them:
 
-**Example Request (using cURL):**
+    ```bash
+    curl -X POST \
+      -H "Content-Type: application/json" \
+      -H "Authorization: Bearer <access_token>" \
+      -d '{
+        "query": "mutation CreateUsers($input: CreateUsersInput!) { createUsers(input: $input) { status { code message } } }",
+        "variables": {
+          "input": {
+            "emails": ["alice@yourcompany.com"],
+            "workspaceID": "workspace_123",
+            "roleAssignments": [{ "role": "VIEWER", "scopeId": "workspace_123" }],
+            "sendWelcomeEmail": false
+          }
+        }
+      }' \
+      https://{ACCOUNT}.askwisdom.ai/graphql
+    ```
 
-```bash
-curl -X POST \
-  -H "Content-Type: application/json" \
-  --data '{
-    "query": "query Query($accessToken: String!, $userEmail: String!) { impersonateUser(accessToken: $accessToken, userEmail: $userEmail) }",
-    "variables": {
-      "accessToken": "YOUR_PERMANENT_ACCESS_TOKEN",
-      "userEmail": "user-email@yourcompany.com"
-    }
-  }' \
-  https://<customer>.askwisdom.ai/graphql
-```
+    <Note>
+      **Email uniqueness:** User matching is email-based. If your embedded users don't have globally unique emails (e.g., multiple customers share email addresses), append a unique identifier to the email prefix — for example, `alice+tenant123@yourcompany.com`. This prevents one user's session from accidentally matching another.
+    </Note>
 
-The API will respond with the temporary JWT token that authenticates as the impersonated user.
+    If the user already exists, this call is safe to retry — check the `status.code` in the response. You can skip this step for users you've already provisioned.
+  </Step>
 
-<Info>
-  For detailed information about the authentication flow and API usage, see the [Impersonate User](/integrations/graphql-api/queries/auth/impersonate-user) documentation.
-</Info>
+  <Step title="Set user attributes (optional)" titleSize="h3">
+    User attributes are key-value pairs that control parameterized connections and row-level data access. Set them at creation time via `userAttributes` in `CreateUsersInput`, or update them later via `setUserAttributes`.
+
+    See [User attributes](/integrations/embedding/user-attributes) for details on how attributes work and how to set them.
+  </Step>
+
+  <Step title="Impersonate the user to get a JWT" titleSize="h3">
+    Call `impersonateUser` from your server to generate a short-lived JWT for the user. This step must always be performed server-side to protect your permanent access token.
+
+    ```bash
+    curl -X POST \
+      -H "Content-Type: application/json" \
+      -d '{
+        "query": "query ImpersonateUser($input: ImpersonateUserInput!) { impersonateUser(input: $input) { token expiration status { code message } } }",
+        "variables": {
+          "input": {
+            "userId": "user_abc123",
+            "workspaceId": "workspace_123"
+          }
+        }
+      }' \
+      https://{ACCOUNT}.askwisdom.ai/graphql
+    ```
+
+    The returned JWT expires in **1 hour**. Your server must re-impersonate the user before the token expires — there is no refresh mechanism.
+
+    See [Impersonate user](/integrations/graphql-api/queries/auth/impersonate-user) for the full API reference, including how to pass transient attributes.
+  </Step>
+
+  <Step title="Use the JWT in the iframe embed URL" titleSize="h3">
+    Append the JWT as a `token` query parameter to the embed URL and set it as the `src` of an `<iframe>`:
+
+    ```html
+    <!-- Embed a dashboard -->
+    <iframe
+      src="https://{ACCOUNT}.askwisdom.ai/dashboards/embed/<dashboard-name-id>?token=<JWT>"
+      style="width: 100%; height: 100%; border: 0;" />
+
+    <!-- Embed chat -->
+    <iframe
+      src="https://{ACCOUNT}.askwisdom.ai/chat/embed?token=<JWT>"
+      style="width: 100%; height: 100%; border: 0;" />
+    ```
+
+    The token is valid for 1 hour. Regenerate it on your server and reload the iframe before expiry for long-running sessions.
+  </Step>
+</Steps>
 
 ## Next steps
 
 <CardGroup cols={2}>
-  <Card title="Embed Chat" icon="message" href="/integrations/embedding/chat/embed-chat">
-    Discover how to embed conversational AI chat interfaces
+  <Card title="Embed chat" icon="message" href="/integrations/embedding/chat/embed-chat">
+    Embed the conversational AI chat interface
   </Card>
-
-  <Card title="Embed a Dashboard" icon="chart-bar" href="/integrations/embedding/story/embed-a-story">
-    Learn how to embed interactive dashboards and visualizations
+  <Card title="Embed a dashboard" icon="chart-bar" href="/integrations/embedding/story/embed-a-dashboard">
+    Embed interactive dashboards and visualizations
   </Card>
-
-  <Card title="Impersonate User API" icon="user" href="/integrations/graphql-api/queries/auth/impersonate-user">
-    Detailed documentation for the authentication API
+  <Card title="User attributes" icon="list" href="/integrations/embedding/user-attributes">
+    Control data access with user attributes
+  </Card>
+  <Card title="Impersonate user API" icon="user-secret" href="/integrations/graphql-api/queries/auth/impersonate-user">
+    Full reference for the impersonation query
+  </Card>
+  <Card title="Create users API" icon="user-plus" href="/integrations/graphql-api/mutations/user/create-users">
+    Full reference for user provisioning
+  </Card>
+  <Card title="GraphQL primer" icon="code" href="/integrations/graphql-api/graphql-primer">
+    New to GraphQL? Start here
   </Card>
 </CardGroup>
