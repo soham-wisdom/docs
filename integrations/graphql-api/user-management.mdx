@@ -2,44 +2,233 @@
 title: "User Management"
 ---
 
-WisdomAI provides a set of GraphQL operations for provisioning and managing users programmatically. This is the primary method for setting up embedded users — users must be created via API before they can be impersonated for embedded sessions.
+This guide walks through the full workflow for creating and managing users via the WisdomAI GraphQL API. User attributes are key-value pairs attached to a user that drive parameterized connection resolution, row-level authorization, and personalized data access.
 
-## Operations
+**Workflow in short:**
 
-| Operation | Type | Description |
-|-----------|------|-------------|
-| [`createUsers`](/integrations/graphql-api/mutations/user/create-users) | Mutation | Provision one or more users, with optional role assignments and attributes |
-| [`setUserAttributes`](/integrations/graphql-api/mutations/user/set-user-attributes) | Mutation | Replace the DATABASE-sourced attributes on an existing user |
-| [`deleteUsersFromWorkspace`](/integrations/graphql-api/mutations/user/delete-users-from-workspace) | Mutation | Remove users from a workspace (irreversible) |
-| [`listUsers`](/integrations/graphql-api/queries/user/list-users) | Query | Retrieve users with their current attributes and role assignments |
+1. Create one or more users with role assignments and (optionally) attributes
+2. Update attributes on existing users as needed
+3. Query users to look up IDs or verify attribute state
+4. Remove users when offboarding
+5. Impersonate a user to start an embedded session
 
-## Typical workflow
+## Prerequisites
 
-For embedding, the standard flow is:
+- **GraphQL endpoint:** `https://{ACCOUNT}.askwisdom.ai/graphql`
+- **Access token:** A valid bearer token with `iam:write` permission — contact `support@askwisdom.ai` to obtain one
+- **Workspace ID** (optional): Required only for multi-workspace deployments
 
-1. **Create the user** — call `createUsers` with their email, role, and any persistent attributes
-2. **Update attributes if needed** — call `setUserAttributes` when the user's data access context changes
-3. **Impersonate to start a session** — call [`impersonateUser`](/integrations/graphql-api/queries/auth/impersonate-user) to get a short-lived JWT for the iframe embed URL
-4. **Look up users** — call `listUsers` to find user IDs or inspect current attribute state
-5. **Remove users** — call `deleteUsersFromWorkspace` when offboarding
+---
 
-## User attributes
+## Step 1: Create users
 
-User attributes are key-value pairs that control parameterized connections and row-level data access. They can be set at creation time, updated later, or passed transiently at impersonation time for session-only overrides.
+Use [`createUsers`](/integrations/graphql-api/mutations/user/create-users) to provision one or more users by email. You can assign roles, set initial attributes, add them to user groups, and optionally send a welcome email — all in a single call.
 
-See [User attributes](/integrations/embedding/user-attributes) for the full explanation of attribute sources (`DATABASE` vs `JWT`) and when to use each approach.
+If the user already exists, the call is safe to retry — check `status.code` in the response.
 
-## Authentication
+```bash
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <access_token>" \
+  -d '{
+    "query": "mutation CreateUsers($input: CreateUsersInput!) { createUsers(input: $input) { status { code message } } }",
+    "variables": {
+      "input": {
+        "emails": ["alice@yourcompany.com"],
+        "workspaceID": "workspace_123",
+        "roleAssignments": [{ "role": "VIEWER", "scopeId": "workspace_123" }],
+        "sendWelcomeEmail": false,
+        "userAttributes": [
+          { "key": "account_id", "value": "acct_456" },
+          { "key": "region", "value": "us-east" }
+        ]
+      }
+    }
+  }' \
+  https://{ACCOUNT}.askwisdom.ai/graphql
+```
 
-All user management operations require a permanent access token with `iam:write` permission in the `Authorization: Bearer` header. This token must be kept server-side — never expose it in client code.
+You can pass multiple emails in a single call. All users receive the same roles and attributes:
 
-Contact `support@askwisdom.ai` to obtain your access token.
+```bash
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <access_token>" \
+  -d '{
+    "query": "mutation CreateUsers($input: CreateUsersInput!) { createUsers(input: $input) { status { code message } } }",
+    "variables": {
+      "input": {
+        "emails": ["alice@yourcompany.com", "bob@yourcompany.com", "carol@yourcompany.com"],
+        "workspaceID": "workspace_123",
+        "roleAssignments": [{ "role": "VIEWER", "scopeId": "workspace_123" }],
+        "sendWelcomeEmail": false,
+        "userAttributes": [
+          { "key": "account_id", "value": "acct_456" }
+        ]
+      }
+    }
+  }' \
+  https://{ACCOUNT}.askwisdom.ai/graphql
+```
+
+<Note>
+  **Email uniqueness:** User matching is email-based. If your embedded users may share email addresses across tenants, append a unique identifier to the email prefix — for example, `alice+tenant123@yourcompany.com`. This prevents cross-tenant session collisions.
+</Note>
+
+For the full input schema, see [Create users](/integrations/graphql-api/mutations/user/create-users).
+
+---
+
+## Step 2: Update user attributes
+
+Use [`setUserAttributes`](/integrations/graphql-api/mutations/user/set-user-attributes) to replace the DATABASE-sourced attributes on an existing user at any time.
+
+<Warning>
+  `setUserAttributes` **replaces all DATABASE-sourced attributes**. Always include the full desired set — omitting an attribute removes it. JWT-sourced attributes (from SSO claims) are not affected.
+</Warning>
+
+```bash
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <access_token>" \
+  -d '{
+    "query": "mutation SetUserAttributes($input: SetUserAttributesInput!) { setUserAttributes(input: $input) { status { code message } } }",
+    "variables": {
+      "input": {
+        "userId": "user_abc123",
+        "userAttributes": [
+          { "key": "account_id", "value": "acct_456" },
+          { "key": "region", "value": "eu-west" },
+          { "key": "property_ids", "value": "prop_1,prop_2,prop_3" }
+        ]
+      }
+    }
+  }' \
+  https://{ACCOUNT}.askwisdom.ai/graphql
+```
+
+---
+
+## Step 3: Query users and their attributes
+
+Use [`listUsers`](/integrations/graphql-api/queries/user/list-users) to look up user IDs or verify current attribute state.
+
+```bash
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <access_token>" \
+  -d '{
+    "query": "query ListUsers($workspaceId: ID) { listUsers(workspaceId: $workspaceId) { id email name userAttributes { key value source } roleAssignments { role scopeId } } }",
+    "variables": {
+      "workspaceId": "workspace_123"
+    }
+  }' \
+  https://{ACCOUNT}.askwisdom.ai/graphql
+```
+
+Each attribute includes a `source` field:
+
+| Source | Set by | Mutable via API |
+|--------|--------|:---------------:|
+| `DATABASE` | `createUsers`, `setUserAttributes` | Yes |
+| `JWT` | SSO identity provider (SAML/OIDC claims) | No |
+
+---
+
+## Step 4: Delete users from a workspace
+
+Use [`deleteUsersFromWorkspace`](/integrations/graphql-api/mutations/user/delete-users-from-workspace) to remove one or more users from a workspace.
+
+<Warning>
+  This action is **irreversible**. Deleted users lose all role assignments, attributes, and access to the workspace. Verify the correct user IDs before calling this mutation.
+</Warning>
+
+```bash
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <access_token>" \
+  -d '{
+    "query": "mutation DeleteUsersFromWorkspace($input: DeleteUsersFromWorkspaceInput!) { deleteUsersFromWorkspace(input: $input) { status { code message } } }",
+    "variables": {
+      "input": {
+        "ids": ["user_abc123", "user_def456"],
+        "workspaceID": "workspace_123"
+      }
+    }
+  }' \
+  https://{ACCOUNT}.askwisdom.ai/graphql
+```
+
+---
+
+## Step 5: Impersonate a user to start an embedded session
+
+Use [`impersonateUser`](/integrations/graphql-api/queries/auth/impersonate-user) to generate a short-lived JWT for a user. Pass this JWT as the `token` query parameter in your iframe embed URL.
+
+This query is public and unauthenticated — no `Authorization` header is required. The access key is passed directly as an argument and must only be called from your server.
+
+```bash
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -d '{
+    "query": "query ImpersonateUser($accessToken: String!, $userEmail: String!) { impersonateUser(accessToken: $accessToken, userEmail: $userEmail) }",
+    "variables": {
+      "accessToken": "<your_access_key>",
+      "userEmail": "alice@yourcompany.com"
+    }
+  }' \
+  https://{ACCOUNT}.askwisdom.ai/graphql
+```
+
+To pass session-only attributes (transient overrides that are not persisted):
+
+```bash
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -d '{
+    "query": "query ImpersonateUser($accessToken: String!, $userEmail: String!, $attributes: [UserAttributeInput!]) { impersonateUser(accessToken: $accessToken, userEmail: $userEmail, attributes: $attributes) }",
+    "variables": {
+      "accessToken": "<your_access_key>",
+      "userEmail": "alice@yourcompany.com",
+      "attributes": [
+        { "key": "report_id", "value": "q3-sales-summary" }
+      ]
+    }
+  }' \
+  https://{ACCOUNT}.askwisdom.ai/graphql
+```
+
+The response is a raw JWT string:
+
+```json
+{
+  "data": {
+    "impersonateUser": "eyJhbGciOiJSUzI1NiIsInR5..."
+  }
+}
+```
+
+The token expires after **1 hour**. Use it in your iframe `src`:
+
+```html
+<iframe
+  src="https://{ACCOUNT}.askwisdom.ai/dashboards/embed/<dashboard-name-id>?token=<JWT>"
+  style="width: 100%; height: 100%; border: 0;" />
+```
+
+WisdomAI will request a new token automatically via `postMessage` before expiry. See [Impersonate user](/integrations/graphql-api/queries/auth/impersonate-user) for the full refresh flow.
+
+<Tip>
+  Attributes that are stable for a given user (such as `account_id`) should be set permanently via `createUsers` or `setUserAttributes`. Attributes that change per session (such as a selected view or context) can be passed transiently via `attributes` in `impersonateUser`.
+</Tip>
+
+---
 
 ## Next steps
 
 <CardGroup cols={2}>
   <Card title="Create users" icon="user-plus" href="/integrations/graphql-api/mutations/user/create-users">
-    Provision users with roles and attributes
+    Full input schema and examples
   </Card>
   <Card title="Set user attributes" icon="tag" href="/integrations/graphql-api/mutations/user/set-user-attributes">
     Update DATABASE-sourced attributes
@@ -48,12 +237,12 @@ Contact `support@askwisdom.ai` to obtain your access token.
     Query users and inspect their attributes
   </Card>
   <Card title="Impersonate user" icon="user-secret" href="/integrations/graphql-api/queries/auth/impersonate-user">
-    Generate a session JWT for embedding
-  </Card>
-  <Card title="Embedding overview" icon="code" href="/integrations/embedding/embedding">
-    Full server-side embedding flow
+    Full reference including the token refresh flow
   </Card>
   <Card title="User attributes" icon="list" href="/integrations/embedding/user-attributes">
     How attributes control data access
+  </Card>
+  <Card title="Embedding overview" icon="code" href="/integrations/embedding/embedding">
+    Full server-side embedding flow
   </Card>
 </CardGroup>

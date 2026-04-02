@@ -2,87 +2,62 @@
 title: "Impersonate User"
 ---
 
-The `impersonateUser` query exchanges a dedicated access key for a short-lived JWT token that authenticates subsequent requests as a specific user. This is the core of the embedded session flow — the returned JWT is passed as the `token` query parameter in iframe embed URLs.
+The `impersonateUser` query exchanges a permanent access key for a short-lived JWT token that authenticates subsequent requests as a specific user. This is the core of the embedded session flow — the returned JWT is passed as the `token` query parameter in iframe embed URLs.
+
+This query is public and unauthenticated — no `Authorization` header is required.
 
 ## Signature
 
 ```graphql
-impersonateUser(input: ImpersonateUserInput!): ImpersonateUserResponse!
+impersonateUser(accessToken: String!, userEmail: String!, attributes: [UserAttributeInput!]): String!
 ```
 
 ## Parameters
 
-<ParamField path="input" type="ImpersonateUserInput!" required>
-  Input object identifying the user to impersonate and optional transient attributes.
+<ParamField path="accessToken" type="String!" required>
+  Your permanent Descope access key. This is not a JWT or a prior session token — it is the long-lived key obtained from `support@askwisdom.ai`. Must be kept secret and only used server-side.
 </ParamField>
 
-### ImpersonateUserInput fields
-
-<ParamField path="userId" type="ID!" required>
-  The ID of the user to impersonate. The user must exist in the workspace. Use [listUsers](/integrations/graphql-api/queries/user/list-users) to find user IDs, or capture the ID returned when the user was created via [createUsers](/integrations/graphql-api/mutations/user/create-users).
+<ParamField path="userEmail" type="String!" required>
+  The email address of the user to impersonate. The user must already exist in Wisdom — call [`createUsers`](/integrations/graphql-api/mutations/user/create-users) first if needed.
 </ParamField>
 
-<ParamField path="workspaceId" type="ID!" required>
-  The ID of the workspace the session should be scoped to.
-</ParamField>
+<ParamField path="attributes" type="[UserAttributeInput!]">
+  Optional key-value pairs applied **only for this session**. These override DATABASE-sourced attributes for the duration of the session and are not persisted. Useful for passing context that should not be stored on the user (e.g., a specific report context or request-scoped filter).
 
-<ParamField path="transientAttributes" type="[UserAttributeInput!]">
-  Optional key-value pairs applied **only for this session**. Transient attributes override DATABASE-sourced attributes for the duration of the session and are not persisted. They are useful for passing context that should not be stored on the user (e.g., a specific report context or request-scoped filter).
+  <Warning>
+    The `impersonated_user_id` claim cannot be overridden via attributes.
+  </Warning>
 
   See [User attributes](/integrations/embedding/user-attributes) for how attribute sources are prioritized.
 </ParamField>
 
 ## Response
 
-<ParamField path="token" type="String!">
-  A short-lived JWT for use in the `Authorization: Bearer` header or as the `token` query parameter in embed URLs.
-</ParamField>
-
-<ParamField path="expiration" type="DateTime!">
-  The UTC timestamp at which the token expires.
-</ParamField>
-
-<ParamField path="status" type="ResponseStatus!">
-  Indicates whether the operation succeeded. See [ResponseStatus](/integrations/graphql-api/objects/response-status).
-</ParamField>
+Returns a raw `String!` — the short-lived JWT to use as the `token` query parameter in iframe embed URLs. The token expires after **1 hour**.
 
 <Warning>
-  **The returned JWT expires in 1 hour.** Your server must handle re-impersonation before the token expires — there is no refresh mechanism. For long-running embedded sessions, call `impersonateUser` again to obtain a new token.
-</Warning>
-
-<Warning>
-  Never expose your permanent access token in client-side code. Always call this query from your server. See the [embedding overview](/integrations/embedding/embedding) for the secure server-side flow.
+  Never expose your permanent access key in client-side code. Always call this query from your server. See the [embedding overview](/integrations/embedding/embedding) for the secure server-side flow.
 </Warning>
 
 ## Usage example
 
-### With transient attributes
-
 ```graphql
-query ImpersonateUser($input: ImpersonateUserInput!) {
-  impersonateUser(input: $input) {
-    token
-    expiration
-    status {
-      code
-      message
-    }
-  }
+query ImpersonateUser($accessToken: String!, $userEmail: String!) {
+  impersonateUser(accessToken: $accessToken, userEmail: $userEmail)
 }
 ```
 
 <RequestExample>
 
-```bash Without transient attributes
+```bash Without attributes
 curl -X POST \
   -H "Content-Type: application/json" \
   -d '{
-    "query": "query ImpersonateUser($input: ImpersonateUserInput!) { impersonateUser(input: $input) { token expiration status { code message } } }",
+    "query": "query ImpersonateUser($accessToken: String!, $userEmail: String!) { impersonateUser(accessToken: $accessToken, userEmail: $userEmail) }",
     "variables": {
-      "input": {
-        "userId": "user_abc123",
-        "workspaceId": "workspace_123"
-      }
+      "accessToken": "<your_access_key>",
+      "userEmail": "alice@yourcompany.com"
     }
   }' \
   https://{ACCOUNT}.askwisdom.ai/graphql
@@ -92,16 +67,14 @@ curl -X POST \
 curl -X POST \
   -H "Content-Type: application/json" \
   -d '{
-    "query": "query ImpersonateUser($input: ImpersonateUserInput!) { impersonateUser(input: $input) { token expiration status { code message } } }",
+    "query": "query ImpersonateUser($accessToken: String!, $userEmail: String!, $attributes: [UserAttributeInput!]) { impersonateUser(accessToken: $accessToken, userEmail: $userEmail, attributes: $attributes) }",
     "variables": {
-      "input": {
-        "userId": "user_abc123",
-        "workspaceId": "workspace_123",
-        "transientAttributes": [
-          { "key": "report_id", "value": "q3-sales-summary" },
-          { "key": "customer_id", "value": "cust_789" }
-        ]
-      }
+      "accessToken": "<your_access_key>",
+      "userEmail": "alice@yourcompany.com",
+      "attributes": [
+        { "key": "report_id", "value": "q3-sales-summary" },
+        { "key": "customer_id", "value": "cust_789" }
+      ]
     }
   }' \
   https://{ACCOUNT}.askwisdom.ai/graphql
@@ -114,14 +87,7 @@ curl -X POST \
 ```json Response
 {
   "data": {
-    "impersonateUser": {
-      "token": "eyJhbGciOiJSUzI1NiIsInR5...",
-      "expiration": "2024-01-15T14:30:00Z",
-      "status": {
-        "code": "OK",
-        "message": "Token issued successfully"
-      }
-    }
+    "impersonateUser": "eyJhbGciOiJSUzI1NiIsInR5..."
   }
 }
 ```
@@ -129,23 +95,77 @@ curl -X POST \
 </ResponseExample>
 
 <Tip>
-  Attributes that are stable for a given user (such as `account_id`) should be set permanently via [`createUsers`](/integrations/graphql-api/mutations/user/create-users) or [`setUserAttributes`](/integrations/graphql-api/mutations/user/set-user-attributes). Attributes that change per session (such as a selected view or context) can be passed transiently via `transientAttributes` here.
+  Attributes that are stable for a given user (such as `account_id`) should be set permanently via [`createUsers`](/integrations/graphql-api/mutations/user/create-users) or [`setUserAttributes`](/integrations/graphql-api/mutations/user/set-user-attributes). Attributes that change per session (such as a selected view or context) can be passed transiently via `attributes` here.
 </Tip>
 
-## Token lifecycle
+## Token lifecycle and refresh
 
 | Property | Value |
 |----------|-------|
 | Lifetime | 1 hour |
-| Refresh | Not supported — call `impersonateUser` again to get a new token |
-| Expiry error | HTTP 200 with an authentication error in the response body |
+| Refresh | Via `postMessage` (see below) |
+| Priority | `?token=` URL param always takes precedence over any cached token |
 
-To avoid session interruptions, re-impersonate the user before the token expires (e.g., after 50–55 minutes).
+### Built-in refresh via `postMessage`
+
+WisdomAI sends a `REQUEST_JWT_TOKEN` event to the parent window approximately 10 seconds before the embedded token expires. It is the **embedder's responsibility** to listen for this event, regenerate the token by calling `impersonateUser` from their backend, and post it back. WisdomAI then picks up the new token and continues the session seamlessly.
+
+**Flow:**
+
+1. WisdomAI iframe detects the token is about to expire
+2. WisdomAI sends `window.parent.postMessage({ type: 'REQUEST_JWT_TOKEN' }, '*')` to the host
+3. Host receives the event and validates `event.origin` matches the WisdomAI domain
+4. Host calls `impersonateUser` via its own backend to get a fresh JWT
+5. Host posts back `iframe.contentWindow.postMessage({ type: 'JWT_TOKEN_RESPONSE', token }, WISDOM_ORIGIN)`
+6. WisdomAI receives the new token and refreshes the session
+
+```html
+<iframe
+  id="wisdom-frame"
+  src="https://{ACCOUNT}.askwisdom.ai/dashboards/embed/<dashboard-name-id>?token=<JWT>"
+  style="width:100%;height:800px;border:0"
+></iframe>
+
+<script>
+  const iframe = document.getElementById('wisdom-frame');
+  const WISDOM_ORIGIN = 'https://{ACCOUNT}.askwisdom.ai';
+
+  async function getFreshWisdomToken() {
+    // Call your own backend, which calls impersonateUser with the access key
+    const response = await fetch('/api/wisdom-token');
+    const data = await response.json();
+    return data.token;
+  }
+
+  window.addEventListener('message', async (event) => {
+    if (event.origin !== WISDOM_ORIGIN) return;
+    if (event.source !== iframe.contentWindow) return;
+    if (event.data?.type !== 'REQUEST_JWT_TOKEN') return;
+
+    try {
+      const token = await getFreshWisdomToken();
+      iframe.contentWindow.postMessage(
+        { type: 'JWT_TOKEN_RESPONSE', token },
+        WISDOM_ORIGIN
+      );
+    } catch (error) {
+      console.error('Unable to provide WisdomAI token', error);
+    }
+  });
+</script>
+```
+
+**Implementation notes:**
+
+- WisdomAI sends with `'*'` as target origin — the host **must** validate `event.origin` on its side
+- If the host does not respond within **10 seconds**, the request times out and retries on the next render cycle
+- Only one refresh request is in-flight at a time (duplicate requests are suppressed)
+- The `?token=` URL param always takes priority over any cached token
 
 ## Next steps
 
 <CardGroup cols={2}>
-  <Card title="Embed a dashboard" icon="chart-bar" href="/integrations/embedding/story/embed-a-dashboard">
+  <Card title="Embed a dashboard" icon="chart-bar" href="/integrations/embedding/dashboard/embed-a-dashboard">
     Use the token in an iframe embed URL
   </Card>
   <Card title="Embed chat" icon="message" href="/integrations/embedding/chat/embed-chat">

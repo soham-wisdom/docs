@@ -66,24 +66,22 @@ Every embedded session follows this five-step flow on your server:
   </Step>
 
   <Step title="Impersonate the user to get a JWT" titleSize="h3">
-    Call `impersonateUser` from your server to generate a short-lived JWT for the user. This step must always be performed server-side to protect your permanent access token.
+    Call `impersonateUser` from your server to generate a short-lived JWT for the user. This step must always be performed server-side to protect your permanent access key. No `Authorization` header is required — the access key is passed as an argument.
 
     ```bash
     curl -X POST \
       -H "Content-Type: application/json" \
       -d '{
-        "query": "query ImpersonateUser($input: ImpersonateUserInput!) { impersonateUser(input: $input) { token expiration status { code message } } }",
+        "query": "query ImpersonateUser($accessToken: String!, $userEmail: String!) { impersonateUser(accessToken: $accessToken, userEmail: $userEmail) }",
         "variables": {
-          "input": {
-            "userId": "user_abc123",
-            "workspaceId": "workspace_123"
-          }
+          "accessToken": "<your_access_key>",
+          "userEmail": "alice@yourcompany.com"
         }
       }' \
       https://{ACCOUNT}.askwisdom.ai/graphql
     ```
 
-    The returned JWT expires in **1 hour**. Your server must re-impersonate the user before the token expires — there is no refresh mechanism.
+    The returned JWT expires in **1 hour**. WisdomAI will notify your page via a `postMessage` event when the token is about to expire — see [Impersonate user](/integrations/graphql-api/queries/auth/impersonate-user) for the full refresh flow.
 
     See [Impersonate user](/integrations/graphql-api/queries/auth/impersonate-user) for the full API reference, including how to pass transient attributes.
   </Step>
@@ -113,7 +111,7 @@ Every embedded session follows this five-step flow on your server:
   <Card title="Embed chat" icon="message" href="/integrations/embedding/chat/embed-chat">
     Embed the conversational AI chat interface
   </Card>
-  <Card title="Embed a dashboard" icon="chart-bar" href="/integrations/embedding/story/embed-a-dashboard">
+  <Card title="Embed a dashboard" icon="chart-bar" href="/integrations/embedding/dashboard/embed-a-dashboard">
     Embed interactive dashboards and visualizations
   </Card>
   <Card title="User attributes" icon="list" href="/integrations/embedding/user-attributes">
