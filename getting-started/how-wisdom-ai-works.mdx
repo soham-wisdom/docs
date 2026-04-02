@@ -1,5 +1,5 @@
 ---
-title: "How WisdomAI works"
+title: "How WisdomAI Works"
 ---
 
 WisdomAI is a platform that helps businesses analyze their data and make informed decisions. It allows users to ask questions in plain English and receive clear, data-driven answers and visualizations, without the need for coding or manual dashboard creation.
@@ -24,7 +24,7 @@ WisdomAI transforms your company's raw data into actionable insights through sev
   </Card>
 
   <Card title="Turns Answers into Dashboards" icon="chart-simple">
-    Instead of just giving you numbers, WisdomAI can create interactive **Dashboards** and dashboards with charts and text. These stories update automatically as your data changes, making it easy to share insights across your team.
+    Instead of just giving you numbers, WisdomAI can create interactive **Dashboards**  with charts and text. They are automatically updated as your data changes, making it easy to share insights across your team.
   </Card>
 </Columns>
 
@@ -46,16 +46,16 @@ WisdomAI is designed for businesses of all sizes, from small startups to large c
 
 <Columns cols={2}>
   <Card title="Admins" icon="screwdriver-wrench">
-    These are typically IT or BI directors who set up WisdomAI, connect it to your data sources, manage user access, and define the overall structure of your data in the platform.
+    These are typically IT or BI directors who set up WisdomAI, connect it to your data sources, manage user access, and define the overall data structure on the platform.
   </Card>
 
   <Card title="Explorers" icon="users">
-    This group comprises business users, executives, and other stakeholders who utilize WisdomAI to pose questions, view reports, run stories, execute playbooks, and export insights to support their daily work.
+    This group comprises business users, executives, and other stakeholders who utilize WisdomAI to pose questions, view reports, run dashboards, execute playbooks, and export insights to support their daily work.
   </Card>
 </Columns>
 
 <Tip>
-  This documentation is organized in a way that allows you to focus on what matters most to your role. For more information on each role, visit the [Where to Start](/getting-started/overview#where-to-start%3F) section.
+  This documentation is organized to help you focus on what matters most in your role. For more information on each role, visit the [Where to Start](/getting-started/overview#where-to-start%3F) section.
 </Tip>
 
 ## WisdomAI vs generic RAG systems
@@ -76,7 +76,7 @@ Unlike generic Retrieval-Augmented Generation (RAG) solutions that rely purely o
 
 ## Data flow & architecture overview
 
-WisdomAI transforms your business data into actionable insights using a multi-layered pipeline. The following components work together to deliver accurate, contextualized answers and auto-updating data stories.
+WisdomAI transforms your business data into actionable insights using a multi-layered pipeline. The following components work together to deliver accurate, contextualized answers and an auto-updating data dashboard.
 
 <Frame>
   <img
@@ -87,6 +87,7 @@ WisdomAI transforms your business data into actionable insights using a multi-la
     darkAlt="Data Sources Flow Connect "
     className="hidden dark:block"
   />
+
   <img
     src="/images/data-sources-flow-connect.png"
     alt="Data Sources Flow Connect Pn"
@@ -114,7 +115,7 @@ WisdomAI transforms your business data into actionable insights using a multi-la
     Dashboards and answers can be delivered via email or embedded within dashboards, helping teams stay informed with minimal effort.
   </Step>
   <Step title="User Feedback and Corrections" stepNumber={6} titleSize="h3">
-    Users can give feedback on story accuracy, suggest corrections, or add clarifying context to improve future results.
+    Users can give feedback on dashboard accuracy, suggest corrections, or add clarifying context to improve future results.
   </Step>
   <Step title="Knowledge Updates and Review Loop" stepNumber={7} titleSize="h3">
     Admins and Editors review user feedback and update the semantic layer accordingly, closing the loop and continuously improving answer quality and domain understanding.

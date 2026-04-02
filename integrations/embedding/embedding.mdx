@@ -8,7 +8,15 @@ The pages are loaded in an `iframe` and intentionally omit WisdomAI branding and
 
 ## Prerequisites
 
-Contact `support@askwisdom.ai` to obtain your permanent access token. This token authenticates your server to the WisdomAI API and grants impersonation permissions. It does not expire and must be kept secret. 
+## 1. Request an Access Token
+
+Your permanent access token authenticates your server to the WisdomAI API and grants impersonation permissions. This token does not expire and must be kept secret.
+
+Contact `support@askwisdom.ai` to obtain your access token. The access token will have impersonation permissions.
+
+## 2. Generate a JWT Token
+
+With your access token and the user email, you can now generate a temporary JWT that impersonates the specified user. This action must always be performed on your server to avoid leaking your permanent Access Token to the client's browser.
 
 <Warning>
   Never expose your permanent access token in client-side code. It provides long-term impersonation capabilities and must be protected on your backend. Store it only in secure server-side environment variables or a secret management system. Do not store, cache, or transmit this token to any client-side application, mobile app, or frontend code.

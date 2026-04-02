@@ -6,27 +6,34 @@ This page covers the data sources that can be connected to WisdomAI, including d
 
 WisdomAI works with the following data sources:
 
-## Warehouse sources
+## Warehouse & Database sources
 
 - PostgreSQL
 - Microsoft SQL Server
+- MySQL
+- Oracle
 - Databricks
 - Snowflake
 - Google BigQuery
+- Google Cloud Spanner
 - Amazon Redshift
-- ClickHouse _(Beta)_
-- Trino _(Beta)_
+- Amazon Athena
+- Teradata
+- Azure Synapse & Synapse Serverless
+- ClickHouse (Beta)
+- Trino (Beta)
 - CSV files
 
 <Warning>
   **Note on Syncing**: After successfully adding a connection, the initial sync may take a few minutes to complete before data is available for analysis.
 </Warning>
 
-## File sources
+## File & Repository sources
 
 - Amazon S3
 - Google Cloud Storage (GCS)
 - Azure Blob Storage
+- SharePoint
 - Direct upload
 
 Supported file types: PDFs, DOC/DOCX files, PowerPoint files, txt files, and images.
@@ -41,7 +48,6 @@ This section outlines common prerequisites for connecting to data sources. Speci
 - **Authentication Details:** You will need the correct credentials (username, password, keys, etc.) for your chosen data source.
 - **SSL/TLS Configuration:** For secure connections, ensure your database/data warehouse is configured to accept SSL/TLS connections, and configure WisdomAI accordingly (e.g., `SSL Mode: require` for PostgreSQL).
 - **Service Accounts (Google BigQuery):** For BigQuery, a Google Cloud service account with appropriate BigQuery permissions is required.
-
   <Info>
     For PostgreSQL and Amazon Redshift, you can optionally configure an SSH Tunnel to connect through a bastion host.
   </Info>
@@ -53,18 +59,19 @@ This section outlines common prerequisites for connecting to data sources. Speci
     <Info>
       SSH settings are optional.
     </Info>
-    | Requirement              | Description                                                              |
-    | :----------------------- | :----------------------------------------------------------------------- |
-    | Host                     | Server address or IP                                                     |
-    | Port                     | Typically `5432`                                                         |
-    | Database                 | Name of the database                                                     |
-    | Username                 | Database user with read access                                           |
-    | Password                 | User's password                                                          |
-    | SSH Host                 | Hostname or IP address of the bastion host (Optional)                    |
-    | SSH Port                 | Port number on the SSH host (Optional)                                   |
-    | SSH Username             | The username required to log in to the bastion host (Optional)           |
-    | Authentication Method    | You can authenticate using either a Private Key or a Password (Optional) |
-    | SSH Private Key/Password | The Private Key or Password used for the SSH authentication (Optional)   |
+
+    | Requirement | Description |
+    | :-- | :-- |
+    | Host | Server address or IP |
+    | Port | Typically `5432` |
+    | Database | Name of the database |
+    | Username | Database user with read access |
+    | Password | User's password |
+    | SSH Host | Hostname or IP address of the bastion host (Optional) |
+    | SSH Port | Port number on the SSH host (Optional) |
+    | SSH Username | The username required to log in to the bastion host (Optional) |
+    | Authentication Method | You can authenticate using either a Private Key or a Password (Optional) |
+    | SSH Private Key/Password | The Private Key or Password used for the SSH authentication (Optional) |
 
     Find below an example connection:
 
@@ -80,14 +87,14 @@ This section outlines common prerequisites for connecting to data sources. Speci
   <Tab title="Microsoft SQL Server">
     The following table lists the requirements you must provide when connecting to Microsoft SQL Server.
 
-    | Requirement              | Description                                   |
-    | :----------------------- | :-------------------------------------------- |
-    | Server                   | SQL Server address or instance name           |
-    | Port                     | Typically `1433`                              |
-    | Database                 | Name of the database                          |
-    | Authentication           | SQL Server or Windows Authentication          |
-    | Username                 | SQL Server login with read access             |
-    | Password                 | Login password                                |
+    | Requirement | Description |
+    | :-- | :-- |
+    | Server | SQL Server address or instance name |
+    | Port | Typically `1433` |
+    | Database | Name of the database |
+    | Authentication | SQL Server or Windows Authentication |
+    | Username | SQL Server login with read access |
+    | Password | Login password |
     | Trust Server Certificate | Whether to trust the server's SSL certificate |
 
     Here's an example connection:
@@ -105,14 +112,14 @@ This section outlines common prerequisites for connecting to data sources. Speci
   <Tab title="Databricks">
     The following table lists the requirements you must provide when connecting to Databricks.
 
-    | Requirement     | Description                      |
-    | :-------------- | :------------------------------- |
+    | Requirement | Description |
+    | :-- | :-- |
     | Server Hostname | Databricks SQL endpoint hostname |
-    | HTTP Path       | HTTP path for the SQL endpoint   |
-    | Username        | Databricks username              |
-    | Password        | Databricks password              |
-    | Catalog         | Optional Databricks catalog name |
-    | Schema          | Optional schema name             |
+    | HTTP Path | HTTP path for the SQL endpoint |
+    | Username | Databricks username |
+    | Password | Databricks password |
+    | Catalog | Optional Databricks catalog name |
+    | Schema | Optional schema name |
 
     Below is an example key pair connection:
 
@@ -128,15 +135,15 @@ This section outlines common prerequisites for connecting to data sources. Speci
   <Tab title="Snowflake">
     The following table lists the requirements you must provide when connecting to Snowflake.
 
-    | Requirement      | Description                           |
-    | :--------------- | :------------------------------------ |
-    | Account          | Snowflake account identifier          |
-    | Username         | Snowflake user with access privileges |
-    | Private Key File | Private Key File                      |
-    | Warehouse        | Compute warehouse to use              |
-    | Database         | Database name                         |
-    | Schema           | Schema name (optional)                |
-    | Role             | User role (optional)                  |
+    | Requirement | Description |
+    | :-- | :-- |
+    | Account | Snowflake account identifier |
+    | Username | Snowflake user with access privileges |
+    | Private Key File | Private Key File |
+    | Warehouse | Compute warehouse to use |
+    | Database | Database name |
+    | Schema | Schema name (optional) |
+    | Role | User role (optional) |
 
     To set up key pair authentication for Snowflake:
 
@@ -161,11 +168,11 @@ This section outlines common prerequisites for connecting to data sources. Speci
   <Tab title="Google BigQuery">
     The following table lists the requirements you must provide when connecting to Google BigQuery.
 
-    | Requirement    | Description                       |
-    | :------------- | :-------------------------------- |
-    | Project ID     | Google Cloud project identifier   |
+    | Requirement | Description |
+    | :-- | :-- |
+    | Project ID | Google Cloud project identifier |
     | Authentication | Service account key (JSON format) |
-    | Dataset        | Default dataset (optional)        |
+    | Dataset | Default dataset (optional) |
 
     Find below an example connection:
 
@@ -185,19 +192,20 @@ This section outlines common prerequisites for connecting to data sources. Speci
     <Info>
       SSH settings are optional.
     </Info>
-    | Requirement              | Description                                                              |
-    | :----------------------- | :----------------------------------------------------------------------- |
-    | Host                     | Redshift cluster endpoint                                                |
-    | Port                     | Typically `5439`                                                         |
-    | Database                 | Database name                                                            |
-    | Username                 | Database user with read access                                           |
-    | Password                 | User password                                                            |
-    | Schema                   | Schema name (Optional)                                                   |
-    | SSH Host                 | Hostname or IP address of the bastion host (Optional)                    |
-    | SSH Port                 | Port number on the SSH host (Optional)                                   |
-    | SSH Username             | The username required to log in to the bastion host (Optional)           |
-    | Authentication Method    | You can authenticate using either a Private Key or a Password (Optional) |
-    | SSH Private Key/Password | The Private Key or Password used for the SSH authentication (Optional)   |
+
+    | Requirement | Description |
+    | :-- | :-- |
+    | Host | Redshift cluster endpoint |
+    | Port | Typically `5439` |
+    | Database | Database name |
+    | Username | Database user with read access |
+    | Password | User password |
+    | Schema | Schema name (Optional) |
+    | SSH Host | Hostname or IP address of the bastion host (Optional) |
+    | SSH Port | Port number on the SSH host (Optional) |
+    | SSH Username | The username required to log in to the bastion host (Optional) |
+    | Authentication Method | You can authenticate using either a Private Key or a Password (Optional) |
+    | SSH Private Key/Password | The Private Key or Password used for the SSH authentication (Optional) |
   </Tab>
   <Tab title="CSV Files">
     You can also upload CSV files to a Domain. Here are the requirements for these files:
@@ -219,11 +227,11 @@ Connect to any server that implements the [Model Knowledge Protocol](https://mod
 
 To connect an MCP server, you must provide:
 
-| Requirement            | Description                                         |
-| :--------------------- | :-------------------------------------------------- |
-| **Transport Type**     | Streamable HTTP, Server-Sent Events (SSE), or STDIO |
-| **Server URL/Command** | The endpoint or command used to run the MCP server  |
-| **Auth Type**          | API Key, OAuth, or None                             |
+| Requirement | Description |
+| :-- | :-- |
+| **Transport Type** | Streamable HTTP, Server-Sent Events (SSE), or STDIO |
+| **Server URL/Command** | The endpoint or command used to run the MCP server |
+| **Auth Type** | API Key, OAuth, or None |
 
 <Info>
   For detailed setup instructions, see [Connect an MCP Server](/getting-started/connect-data-sources/connect-mcp-server).
@@ -276,11 +284,11 @@ Understand common problems and systematic troubleshooting techniques that can he
 
 ### Common connection issues
 
-| **Issue**             | **Possible Causes**                                                                 | **Resolution**                                                                                             |
-| --------------------- | ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| Connection Timeout    | - Network latency  <br /> - Firewall blocking  <br /> - Server overload             | - Check network connectivity  <br /> - Verify firewall rules  <br /> - Increase connection timeout setting |
-| Authentication Failed | - Incorrect credentials  <br /> - Expired API keys/tokens  <br /> - Account lockout | - Verify username/password  <br /> - Regenerate API keys  <br /> - Check account status                    |
-| Permission Denied     | - Insufficient privileges  <br /> - IP restriction  <br /> - Resource access limits | - Update user permissions  <br /> - Whitelist IP addresses  <br /> - Check resource quotas                 |
+| **Issue** | **Possible Causes** | **Resolution** |
+| --- | --- | --- |
+| Connection Timeout | - Network latency  <br /> - Firewall blocking  <br /> - Server overload | - Check network connectivity  <br /> - Verify firewall rules  <br /> - Increase connection timeout setting |
+| Authentication Failed | - Incorrect credentials  <br /> - Expired API keys/tokens  <br /> - Account lockout | - Verify username/password  <br /> - Regenerate API keys  <br /> - Check account status |
+| Permission Denied | - Insufficient privileges  <br /> - IP restriction  <br /> - Resource access limits | - Update user permissions  <br /> - Whitelist IP addresses  <br /> - Check resource quotas |
 
 For persistent connection issues, contact WisdomAI support at `support@askwisdom.ai` with the connection ID and error logs for assistance.
 
@@ -290,9 +298,11 @@ For persistent connection issues, contact WisdomAI support at `support@askwisdom
   <Card title="Connect Unstructured Repositories" icon="folder-plus" href="/improve-wisdom-ai-responses/connect-unstructed-repositories-datasets">
     Integrate unstructured data sources, such as documents or knowledge bases, to enrich your analysis.
   </Card>
+
   <Card title="Connect and Test Tutorial" icon="rocket" href="/setting-up-wisdom-ai/basic-tutorial-connect-and-test">
     Walk through the initial setup to connect a data source and run your first query.
   </Card>
+
   <Card title="Advanced Data Modeling" icon="sitemap" href="/setting-up-wisdom-ai/advanced-data-modeling-creating-knowledge">
     Define relationships and context in your data to enable more powerful analysis.
   </Card>
