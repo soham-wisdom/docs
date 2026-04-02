@@ -413,7 +413,11 @@
     },
     {
       "source": "/integrations/embedding/story/embed-a-story",
-      "destination": "/integrations/embedding/story/embed-a-dashboard"
+      "destination": "/integrations/embedding/dashboard/embed-a-dashboard"
+    },
+    {
+      "source": "/integrations/embedding/story/embed-a-dashboard",
+      "destination": "/integrations/embedding/dashboard/embed-a-dashboard"
     },
     {
       "source": "/using-wisdom-ai-everyday/turn-answers-into-stories",
