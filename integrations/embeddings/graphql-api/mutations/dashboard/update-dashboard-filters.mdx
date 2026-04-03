@@ -17,12 +17,12 @@ updateDashboardFilters(id: String!, version: String, filterMutations: FilterMuta
 </ParamField>
 
 <ParamField path="filterMutations" type="FilterMutationInput!" required>
-  Filter mutation configuration specifying the changes to apply. See [FilterMutationInput](/integrations/graphql-api/objects/filter-mutation-input).
+  Filter mutation configuration specifying the changes to apply. See [FilterMutationInput](/integrations/embeddings/graphql-api/objects/filter-mutation-input).
 </ParamField>
 
 ## Response
 
-Returns the updated `Dashboard` object with refreshed filter definitions. See [Dashboard](/integrations/graphql-api/objects/dashboard) for the schema.
+Returns the updated `Dashboard` object with refreshed filter definitions. See [Dashboard](/integrations/embeddings/graphql-api/objects/dashboard) for the schema.
 
 ## Usage example
 
@@ -98,10 +98,10 @@ curl -X POST \
 ## Next steps
 
 <CardGroup cols={2}>
-  <Card title="Dashboard Query" icon="magnifying-glass" href="/integrations/graphql-api/queries/dashboard/dashboard">
+  <Card title="Dashboard Query" icon="magnifying-glass" href="/integrations/embeddings/graphql-api/queries/dashboard/dashboard">
     Retrieve dashboard with updated filters
   </Card>
-  <Card title="DashboardFilterDefinition Object" icon="filter" href="/integrations/graphql-api/objects/dashboard-filter-definition">
+  <Card title="DashboardFilterDefinition Object" icon="filter" href="/integrations/embeddings/graphql-api/objects/dashboard-filter-definition">
     Filter definition schema
   </Card>
 </CardGroup>

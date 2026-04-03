@@ -7,7 +7,7 @@ This page describes the differences in streaming messages when working with real
 ## ChatMessageDiff
 
 <ParamField path="bodyDiff" type="Delta!" required>
-  The incremental content changes for the message. See [Delta](/integrations/graphql-api/objects/delta).
+  The incremental content changes for the message. See [Delta](/integrations/embeddings/graphql-api/objects/delta).
 </ParamField>
 
 <ParamField path="conversationId" type="String!" required>
@@ -19,7 +19,7 @@ This page describes the differences in streaming messages when working with real
 </ParamField>
 
 <ParamField path="sender" type="ChatMessageSender!" required>
-  The sender of the message. See [ChatMessageSender](/integrations/graphql-api/objects/chat-message-sender).
+  The sender of the message. See [ChatMessageSender](/integrations/embeddings/graphql-api/objects/chat-message-sender).
 </ParamField>
 
 <ParamField path="createdAt" type="DateTime!" required>
@@ -61,13 +61,13 @@ This page describes the differences in streaming messages when working with real
 ## Related operations
 
 <CardGroup cols={2}>
-  <Card title="Delta Schema" icon="layer-group" href="/integrations/graphql-api/objects/delta">
+  <Card title="Delta Schema" icon="layer-group" href="/integrations/embeddings/graphql-api/objects/delta">
     Learn about content diff structure
   </Card>
-  <Card title="ChatMessageSender Enum" icon="user" href="/integrations/graphql-api/objects/chat-message-sender">
+  <Card title="ChatMessageSender Enum" icon="user" href="/integrations/embeddings/graphql-api/objects/chat-message-sender">
     Message sender types
   </Card>
-  <Card title="Subscribe Conversation" icon="wifi" href="/integrations/graphql-api/subscriptions/subscribe-conversation">
+  <Card title="Subscribe Conversation" icon="wifi" href="/integrations/embeddings/graphql-api/subscriptions/subscribe-conversation">
     Receive real-time message diffs
   </Card>
 </CardGroup>

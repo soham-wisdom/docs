@@ -5,7 +5,7 @@ title: "Set User Attributes"
 The `setUserAttributes` mutation updates the DATABASE-sourced attributes for an existing user. Use this to update persistent key-value pairs that control parameterized connections and row-level data access.
 
 <Warning>
-  This mutation **replaces all DATABASE-sourced attributes** on the user. Any attributes not included in the new list will be removed. JWT-sourced attributes (from SSO claims) are not affected. See [User attributes](/integrations/embedding/user-attributes) for the difference between attribute sources.
+  This mutation **replaces all DATABASE-sourced attributes** on the user. Any attributes not included in the new list will be removed. JWT-sourced attributes (from SSO claims) are not affected. See [User attributes](/integrations/embeddings/user-attributes) for the difference between attribute sources.
 </Warning>
 
 ## Signature
@@ -23,7 +23,7 @@ setUserAttributes(input: SetUserAttributesInput!): SetUserAttributesResponse!
 ### SetUserAttributesInput fields
 
 <ParamField path="userId" type="ID!" required>
-  The ID of the user whose attributes should be updated. Use [listUsers](/integrations/graphql-api/queries/user/list-users) to find user IDs.
+  The ID of the user whose attributes should be updated. Use [listUsers](/integrations/embeddings/graphql-api/queries/user/list-users) to find user IDs.
 </ParamField>
 
 <ParamField path="userAttributes" type="[UserAttributeInput!]!" required>
@@ -33,7 +33,7 @@ setUserAttributes(input: SetUserAttributesInput!): SetUserAttributesResponse!
 ## Response
 
 <ParamField path="status" type="ResponseStatus!">
-  Indicates whether the operation succeeded. See [ResponseStatus](/integrations/graphql-api/objects/response-status).
+  Indicates whether the operation succeeded. See [ResponseStatus](/integrations/embeddings/graphql-api/objects/response-status).
 </ParamField>
 
 ## Usage example
@@ -90,19 +90,19 @@ curl -X POST \
 </ResponseExample>
 
 <Tip>
-  For attributes that are stable (e.g., `account_id`), set them once at creation via `userAttributes` in [createUsers](/integrations/graphql-api/mutations/user/create-users). For session-scoped overrides that should not be persisted, use `transientAttributes` in [impersonateUser](/integrations/graphql-api/queries/auth/impersonate-user) instead.
+  For attributes that are stable (e.g., `account_id`), set them once at creation via `userAttributes` in [createUsers](/integrations/embeddings/graphql-api/mutations/user/create-users). For session-scoped overrides that should not be persisted, use `transientAttributes` in [impersonateUser](/integrations/embeddings/graphql-api/queries/auth/impersonate-user) instead.
 </Tip>
 
 ## Next steps
 
 <CardGroup cols={2}>
-  <Card title="User attributes" icon="list" href="/integrations/embedding/user-attributes">
+  <Card title="User attributes" icon="list" href="/integrations/embeddings/user-attributes">
     Understand attribute sources and how they interact
   </Card>
-  <Card title="Impersonate user" icon="user-secret" href="/integrations/graphql-api/queries/auth/impersonate-user">
+  <Card title="Impersonate user" icon="user-secret" href="/integrations/embeddings/graphql-api/queries/auth/impersonate-user">
     Pass transient attributes at session time
   </Card>
-  <Card title="List users" icon="users" href="/integrations/graphql-api/queries/user/list-users">
+  <Card title="List users" icon="users" href="/integrations/embeddings/graphql-api/queries/user/list-users">
     Query users and inspect their current attributes
   </Card>
 </CardGroup>

@@ -62,7 +62,7 @@ Every embedded session follows this five-step flow on your server:
   <Step title="Set user attributes (optional)" titleSize="h3">
     User attributes are key-value pairs that control parameterized connections and row-level data access. Set them at creation time via `userAttributes` in `CreateUsersInput`, or update them later via `setUserAttributes`.
 
-    See [User attributes](/integrations/embedding/user-attributes) for details on how attributes work and how to set them.
+    See [User attributes](/integrations/embeddings/user-attributes) for details on how attributes work and how to set them.
   </Step>
 
   <Step title="Impersonate the user to get a JWT" titleSize="h3">
@@ -81,9 +81,9 @@ Every embedded session follows this five-step flow on your server:
       https://{ACCOUNT}.askwisdom.ai/graphql
     ```
 
-    The returned JWT expires in **1 hour**. WisdomAI will notify your page via a `postMessage` event when the token is about to expire — see [Impersonate user](/integrations/graphql-api/queries/auth/impersonate-user) for the full refresh flow.
+    The returned JWT expires in **1 hour**. WisdomAI will notify your page via a `postMessage` event when the token is about to expire — see [Impersonate user](/integrations/embeddings/graphql-api/queries/auth/impersonate-user) for the full refresh flow.
 
-    See [Impersonate user](/integrations/graphql-api/queries/auth/impersonate-user) for the full API reference, including how to pass transient attributes.
+    See [Impersonate user](/integrations/embeddings/graphql-api/queries/auth/impersonate-user) for the full API reference, including how to pass transient attributes.
   </Step>
 
   <Step title="Use the JWT in the iframe embed URL" titleSize="h3">
@@ -108,22 +108,22 @@ Every embedded session follows this five-step flow on your server:
 ## Next steps
 
 <CardGroup cols={2}>
-  <Card title="Embed chat" icon="message" href="/integrations/embedding/chat/embed-chat">
+  <Card title="Embed chat" icon="message" href="/integrations/embeddings/iframe/chat/embed-chat">
     Embed the conversational AI chat interface
   </Card>
-  <Card title="Embed a dashboard" icon="chart-bar" href="/integrations/embedding/dashboard/embed-a-dashboard">
+  <Card title="Embed a dashboard" icon="chart-bar" href="/integrations/embeddings/iframe/dashboard/embed-a-dashboard">
     Embed interactive dashboards and visualizations
   </Card>
-  <Card title="User attributes" icon="list" href="/integrations/embedding/user-attributes">
+  <Card title="User attributes" icon="list" href="/integrations/embeddings/user-attributes">
     Control data access with user attributes
   </Card>
-  <Card title="Impersonate user API" icon="user-secret" href="/integrations/graphql-api/queries/auth/impersonate-user">
+  <Card title="Impersonate user API" icon="user-secret" href="/integrations/embeddings/graphql-api/queries/auth/impersonate-user">
     Full reference for the impersonation query
   </Card>
-  <Card title="Create users API" icon="user-plus" href="/integrations/graphql-api/mutations/user/create-users">
+  <Card title="Create users API" icon="user-plus" href="/integrations/embeddings/graphql-api/mutations/user/create-users">
     Full reference for user provisioning
   </Card>
-  <Card title="GraphQL primer" icon="code" href="/integrations/graphql-api/graphql-primer">
+  <Card title="GraphQL primer" icon="code" href="/integrations/embeddings/graphql-api/graphql-primer">
     New to GraphQL? Start here
   </Card>
 </CardGroup>

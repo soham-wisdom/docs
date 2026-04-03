@@ -2,7 +2,7 @@
 title: "Embed a Dashboard"
 ---
 
-This guide outlines the process for embedding a WisdomAI Dashboard into your application. Before proceeding, make sure you've reviewed the [main embedding documentation](/integrations/embedding/embedding) for authentication setup and security requirements.
+This guide outlines the process for embedding a WisdomAI Dashboard into your application. Before proceeding, make sure you've reviewed the [main embedding documentation](/integrations/embeddings/embedding) for authentication setup and security requirements.
 
 ## Construct the embed URL
 
@@ -43,7 +43,7 @@ Set the role in `CreateUsersInput.roleAssignments` when provisioning the user:
 "roleAssignments": [{ "role": "VIEWER", "scopeId": "workspace_123" }]
 ```
 
-See [Create users](/integrations/graphql-api/mutations/user/create-users) for the full input schema.
+See [Create users](/integrations/embeddings/graphql-api/mutations/user/create-users) for the full input schema.
 
 ## Validation
 
@@ -52,10 +52,10 @@ To validate that the process worked, open the final embed URL in your browser. T
 ## Next steps
 
 <CardGroup cols={2}>
-  <Card icon="message" href="/integrations/embedding/chat/embed-chat" title="Embed Chat">
+  <Card icon="message" href="/integrations/embeddings/iframe/chat/embed-chat" title="Embed Chat">
     Discover how to embed conversational AI chat interfaces
   </Card>
-  <Card icon="user" href="/integrations/graphql-api/queries/auth/impersonate-user" title="Impersonate User API">
+  <Card icon="user" href="/integrations/embeddings/graphql-api/queries/auth/impersonate-user" title="Impersonate User API">
     Detailed documentation for the authentication API
   </Card>
 </CardGroup>

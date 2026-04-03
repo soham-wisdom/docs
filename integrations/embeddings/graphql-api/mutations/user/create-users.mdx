@@ -31,7 +31,7 @@ createUsers(input: CreateUsersInput!): CreateUsersResponse!
 </ParamField>
 
 <ParamField path="roleAssignments" type="[ScopeRoleAssignmentInput!]">
-  Role assignments for the new users. Each entry specifies a `role` and a `scopeId`. See [ScopeRoleAssignmentInput](/integrations/graphql-api/objects/scope-role-assignment-input).
+  Role assignments for the new users. Each entry specifies a `role` and a `scopeId`. See [ScopeRoleAssignmentInput](/integrations/embeddings/graphql-api/objects/scope-role-assignment-input).
 
   For embedded dashboards, assign `VIEWER` to hide edit controls:
   ```json
@@ -44,7 +44,7 @@ createUsers(input: CreateUsersInput!): CreateUsersResponse!
 </ParamField>
 
 <ParamField path="userAttributes" type="[UserAttributeInput!]">
-  Key-value pairs for parameterized connections and row-level data access. These are stored as DATABASE-sourced attributes. See [User attributes](/integrations/embedding/user-attributes).
+  Key-value pairs for parameterized connections and row-level data access. These are stored as DATABASE-sourced attributes. See [User attributes](/integrations/embeddings/user-attributes).
 </ParamField>
 
 <ParamField path="userGroupIds" type="[ID!]">
@@ -54,7 +54,7 @@ createUsers(input: CreateUsersInput!): CreateUsersResponse!
 ## Response
 
 <ParamField path="status" type="ResponseStatus!">
-  Indicates whether the operation succeeded. See [ResponseStatus](/integrations/graphql-api/objects/response-status).
+  Indicates whether the operation succeeded. See [ResponseStatus](/integrations/embeddings/graphql-api/objects/response-status).
 
   <Note>
     `status` here is a `ResponseStatus` object with `code` and `message` fields — it is **not** the `UserStatus` enum used in the `User` object.
@@ -173,16 +173,16 @@ curl -X POST \
 ## Next steps
 
 <CardGroup cols={2}>
-  <Card title="Set user attributes" icon="tag" href="/integrations/graphql-api/mutations/user/set-user-attributes">
+  <Card title="Set user attributes" icon="tag" href="/integrations/embeddings/graphql-api/mutations/user/set-user-attributes">
     Update attributes on existing users
   </Card>
-  <Card title="Impersonate user" icon="user-secret" href="/integrations/graphql-api/queries/auth/impersonate-user">
+  <Card title="Impersonate user" icon="user-secret" href="/integrations/embeddings/graphql-api/queries/auth/impersonate-user">
     Generate a session JWT for the created user
   </Card>
-  <Card title="User attributes" icon="list" href="/integrations/embedding/user-attributes">
+  <Card title="User attributes" icon="list" href="/integrations/embeddings/user-attributes">
     How attributes control data access
   </Card>
-  <Card title="Embedding overview" icon="code" href="/integrations/embedding/embedding">
+  <Card title="Embedding overview" icon="code" href="/integrations/embeddings/embedding">
     Full server-side embedding flow
   </Card>
 </CardGroup>

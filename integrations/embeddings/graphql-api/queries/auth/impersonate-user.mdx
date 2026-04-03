@@ -19,7 +19,7 @@ impersonateUser(accessToken: String!, userEmail: String!, attributes: [UserAttri
 </ParamField>
 
 <ParamField path="userEmail" type="String!" required>
-  The email address of the user to impersonate. The user must already exist in Wisdom — call [`createUsers`](/integrations/graphql-api/mutations/user/create-users) first if needed.
+  The email address of the user to impersonate. The user must already exist in Wisdom — call [`createUsers`](/integrations/embeddings/graphql-api/mutations/user/create-users) first if needed.
 </ParamField>
 
 <ParamField path="attributes" type="[UserAttributeInput!]">
@@ -29,7 +29,7 @@ impersonateUser(accessToken: String!, userEmail: String!, attributes: [UserAttri
     The `impersonated_user_id` claim cannot be overridden via attributes.
   </Warning>
 
-  See [User attributes](/integrations/embedding/user-attributes) for how attribute sources are prioritized.
+  See [User attributes](/integrations/embeddings/user-attributes) for how attribute sources are prioritized.
 </ParamField>
 
 ## Response
@@ -37,7 +37,7 @@ impersonateUser(accessToken: String!, userEmail: String!, attributes: [UserAttri
 Returns a raw `String!` — the short-lived JWT to use as the `token` query parameter in iframe embed URLs. The token expires after **1 hour**.
 
 <Warning>
-  Never expose your permanent access key in client-side code. Always call this query from your server. See the [embedding overview](/integrations/embedding/embedding) for the secure server-side flow.
+  Never expose your permanent access key in client-side code. Always call this query from your server. See the [embedding overview](/integrations/embeddings/embedding) for the secure server-side flow.
 </Warning>
 
 ## Usage example
@@ -95,7 +95,7 @@ curl -X POST \
 </ResponseExample>
 
 <Tip>
-  Attributes that are stable for a given user (such as `account_id`) should be set permanently via [`createUsers`](/integrations/graphql-api/mutations/user/create-users) or [`setUserAttributes`](/integrations/graphql-api/mutations/user/set-user-attributes). Attributes that change per session (such as a selected view or context) can be passed transiently via `attributes` here.
+  Attributes that are stable for a given user (such as `account_id`) should be set permanently via [`createUsers`](/integrations/embeddings/graphql-api/mutations/user/create-users) or [`setUserAttributes`](/integrations/embeddings/graphql-api/mutations/user/set-user-attributes). Attributes that change per session (such as a selected view or context) can be passed transiently via `attributes` here.
 </Tip>
 
 ## Token lifecycle and refresh
@@ -165,16 +165,16 @@ WisdomAI sends a `REQUEST_JWT_TOKEN` event to the parent window approximately 10
 ## Next steps
 
 <CardGroup cols={2}>
-  <Card title="Embed a dashboard" icon="chart-bar" href="/integrations/embedding/dashboard/embed-a-dashboard">
+  <Card title="Embed a dashboard" icon="chart-bar" href="/integrations/embeddings/iframe/dashboard/embed-a-dashboard">
     Use the token in an iframe embed URL
   </Card>
-  <Card title="Embed chat" icon="message" href="/integrations/embedding/chat/embed-chat">
+  <Card title="Embed chat" icon="message" href="/integrations/embeddings/iframe/chat/embed-chat">
     Use the token for embedded chat
   </Card>
-  <Card title="Create users" icon="user-plus" href="/integrations/graphql-api/mutations/user/create-users">
+  <Card title="Create users" icon="user-plus" href="/integrations/embeddings/graphql-api/mutations/user/create-users">
     Create users before impersonating them
   </Card>
-  <Card title="User attributes" icon="list" href="/integrations/embedding/user-attributes">
+  <Card title="User attributes" icon="list" href="/integrations/embeddings/user-attributes">
     Understand transient vs persistent attributes
   </Card>
 </CardGroup>

@@ -13,7 +13,7 @@ dashboards(scope: DashboardScope!, domainId: String, ownerId: String): Dashboard
 ## Arguments
 
 <ParamField path="scope" type="DashboardScope!" required>
-  The access level to filter dashboards by. See [DashboardScope](/integrations/graphql-api/objects/dashboard-scope).
+  The access level to filter dashboards by. See [DashboardScope](/integrations/embeddings/graphql-api/objects/dashboard-scope).
 </ParamField>
 
 <ParamField path="domainId" type="String">
@@ -26,7 +26,7 @@ dashboards(scope: DashboardScope!, domainId: String, ownerId: String): Dashboard
 
 ## Response
 
-Returns a `DashboardsResponse` object containing a list of accessible dashboards. See [DashboardsResponse](/integrations/graphql-api/objects/dashboards-response) for the schema.
+Returns a `DashboardsResponse` object containing a list of accessible dashboards. See [DashboardsResponse](/integrations/embeddings/graphql-api/objects/dashboards-response) for the schema.
 
 ## Usage example
 
@@ -104,13 +104,13 @@ curl -X POST \
 ## Next steps
 
 <CardGroup cols={2}>
-  <Card title="Dashboard Query" icon="search" href="/integrations/graphql-api/queries/dashboard/dashboard">
+  <Card title="Dashboard Query" icon="search" href="/integrations/embeddings/graphql-api/queries/dashboard/dashboard">
     Retrieve a specific dashboard
   </Card>
-  <Card title="Create Dashboard" icon="plus" href="/integrations/graphql-api/mutations/dashboard/create-dashboard">
+  <Card title="Create Dashboard" icon="plus" href="/integrations/embeddings/graphql-api/mutations/dashboard/create-dashboard">
     Create a new dashboard
   </Card>
-  <Card title="DashboardsResponse Object" icon="folder" href="/integrations/graphql-api/objects/dashboards-response">
+  <Card title="DashboardsResponse Object" icon="folder" href="/integrations/embeddings/graphql-api/objects/dashboards-response">
     Complete response schema
   </Card>
 </CardGroup>

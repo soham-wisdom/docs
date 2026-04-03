@@ -55,7 +55,7 @@ enum StatusCode {
 ```
 
 <Note>
-  GraphQL returns HTTP 200 even when `status.code` is not `"OK"`. Always check the `code` field in the response body to determine success or failure. See [Error handling](/integrations/graphql-api/GraphQL-API#error-handling).
+  GraphQL returns HTTP 200 even when `status.code` is not `"OK"`. Always check the `code` field in the response body to determine success or failure. See [Error handling](/integrations/embeddings/graphql-api/GraphQL-API#error-handling).
 </Note>
 
 <Note>
@@ -65,16 +65,16 @@ enum StatusCode {
 ## Operations that return ResponseStatus
 
 <CardGroup cols={2}>
-  <Card title="Create users" icon="user-plus" href="/integrations/graphql-api/mutations/user/create-users">
+  <Card title="Create users" icon="user-plus" href="/integrations/embeddings/graphql-api/mutations/user/create-users">
     Returns ResponseStatus
   </Card>
-  <Card title="Set user attributes" icon="tag" href="/integrations/graphql-api/mutations/user/set-user-attributes">
+  <Card title="Set user attributes" icon="tag" href="/integrations/embeddings/graphql-api/mutations/user/set-user-attributes">
     Returns ResponseStatus
   </Card>
-  <Card title="Delete users from workspace" icon="user-minus" href="/integrations/graphql-api/mutations/user/delete-users-from-workspace">
+  <Card title="Delete users from workspace" icon="user-minus" href="/integrations/embeddings/graphql-api/mutations/user/delete-users-from-workspace">
     Returns ResponseStatus
   </Card>
-  <Card title="Send user message" icon="message" href="/integrations/graphql-api/mutations/chat/send-user-message">
+  <Card title="Send user message" icon="message" href="/integrations/embeddings/graphql-api/mutations/chat/send-user-message">
     Returns ResponseStatus
   </Card>
 </CardGroup>

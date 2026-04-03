@@ -13,16 +13,16 @@ createDashboard(dashboard: DashboardInput!, widgets: [DashboardWidgetInput!]!): 
 ## Arguments
 
 <ParamField path="dashboard" type="DashboardInput!" required>
-  Input object containing the dashboard configuration. See [DashboardInput](/integrations/graphql-api/objects/dashboard-input).
+  Input object containing the dashboard configuration. See [DashboardInput](/integrations/embeddings/graphql-api/objects/dashboard-input).
 </ParamField>
 
 <ParamField path="widgets" type="[DashboardWidgetInput!]!" required>
-  Array of widget configurations to include in the new dashboard. See [DashboardWidgetInput](/integrations/graphql-api/objects/dashboard-widget-input).
+  Array of widget configurations to include in the new dashboard. See [DashboardWidgetInput](/integrations/embeddings/graphql-api/objects/dashboard-widget-input).
 </ParamField>
 
 ## Response
 
-Returns the newly created `Dashboard` object with all properties populated. See [Dashboard](/integrations/graphql-api/objects/dashboard) for the schema.
+Returns the newly created `Dashboard` object with all properties populated. See [Dashboard](/integrations/embeddings/graphql-api/objects/dashboard) for the schema.
 
 ## Usage example
 
@@ -112,13 +112,13 @@ curl -X POST \
 ## Next steps
 
 <CardGroup cols={2}>
-  <Card title="Update Dashboard" icon="pen-to-square" href="/integrations/graphql-api/mutations/dashboard/update-dashboard">
+  <Card title="Update Dashboard" icon="pen-to-square" href="/integrations/embeddings/graphql-api/mutations/dashboard/update-dashboard">
     Modify dashboard properties
   </Card>
-  <Card title="Add Widget to Dashboard" icon="plus" href="/integrations/graphql-api/mutations/dashboard/add-widget-to-dashboard">
+  <Card title="Add Widget to Dashboard" icon="plus" href="/integrations/embeddings/graphql-api/mutations/dashboard/add-widget-to-dashboard">
     Add widgets to existing dashboard
   </Card>
-  <Card title="DashboardInput Object" icon="folder" href="/integrations/graphql-api/objects/dashboard-input">
+  <Card title="DashboardInput Object" icon="folder" href="/integrations/embeddings/graphql-api/objects/dashboard-input">
     Dashboard creation input schema
   </Card>
 </CardGroup>

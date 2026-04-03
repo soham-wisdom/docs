@@ -34,7 +34,7 @@ sendUserMessage(
 </ParamField>
 
 <ParamField path="query" type="DeltaInput!" required>
-  The user's message content. See [DeltaInput](/integrations/graphql-api/objects/delta-input).
+  The user's message content. See [DeltaInput](/integrations/embeddings/graphql-api/objects/delta-input).
 </ParamField>
 
 <ParamField path="createHiddenConversation" type="Boolean">
@@ -56,7 +56,7 @@ sendUserMessage(
     }
   ```
 
-  See [ToolSelection](/integrations/graphql-api/objects/tool-selection).
+  See [ToolSelection](/integrations/embeddings/graphql-api/objects/tool-selection).
 </ParamField>
 
 <ParamField path="selectedModelName" type="String">
@@ -72,7 +72,7 @@ sendUserMessage(
 </ParamField>
 
 <ParamField path="chatThinkingEffort" type="ChatThinkingEffort">
-  The level of thinking effort to apply. See [ChatThinkingEffort](/integrations/graphql-api/objects/chat-thinking-effort).
+  The level of thinking effort to apply. See [ChatThinkingEffort](/integrations/embeddings/graphql-api/objects/chat-thinking-effort).
 </ParamField>
 
 <ParamField path="disableClarifications" type="Boolean">
@@ -89,7 +89,7 @@ sendUserMessage(
 
 ## Response
 
-Returns a `ResponseStatus` object indicating the success or failure of the operation. See [ResponseStatus](/integrations/graphql-api/objects/response-status) for the schema.
+Returns a `ResponseStatus` object indicating the success or failure of the operation. See [ResponseStatus](/integrations/embeddings/graphql-api/objects/response-status) for the schema.
 
 ## Usage example
 
@@ -157,7 +157,7 @@ curl -X POST \
 ## Related operation
 
 <CardGroup cols={2}>
-  <Card title="Subscribe Conversation" icon="wifi" href="/integrations/graphql-api/subscriptions/subscribe-conversation">
+  <Card title="Subscribe Conversation" icon="wifi" href="/integrations/embeddings/graphql-api/subscriptions/subscribe-conversation">
     Listen for real-time response updates
   </Card>
 </CardGroup>

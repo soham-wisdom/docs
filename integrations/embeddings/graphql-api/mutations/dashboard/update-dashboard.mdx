@@ -17,12 +17,12 @@ updateDashboard(id: String!, dashboard: DashboardInput): Dashboard!
 </ParamField>
 
 <ParamField path="dashboard" type="DashboardInput" required>
-  Input object containing the updated dashboard properties. See [DashboardInput](/integrations/graphql-api/objects/dashboard-input).
+  Input object containing the updated dashboard properties. See [DashboardInput](/integrations/embeddings/graphql-api/objects/dashboard-input).
 </ParamField>
 
 ## Response
 
-Returns the updated `Dashboard` object with all properties populated. See [Dashboard](/integrations/graphql-api/objects/dashboard) for the schema.
+Returns the updated `Dashboard` object with all properties populated. See [Dashboard](/integrations/embeddings/graphql-api/objects/dashboard) for the schema.
 
 ## Usage example
 
@@ -82,13 +82,13 @@ curl -X POST \
 ## Next steps
 
 <CardGroup cols={2}>
-  <Card title="Create Dashboard" icon="plus" href="/integrations/graphql-api/mutations/dashboard/create-dashboard">
+  <Card title="Create Dashboard" icon="plus" href="/integrations/embeddings/graphql-api/mutations/dashboard/create-dashboard">
     Create a new dashboard
   </Card>
-  <Card title="Update Dashboard Widgets" icon="pen-to-square" href="/integrations/graphql-api/mutations/dashboard/update-dashboard-widgets">
+  <Card title="Update Dashboard Widgets" icon="pen-to-square" href="/integrations/embeddings/graphql-api/mutations/dashboard/update-dashboard-widgets">
     Update dashboard widgets
   </Card>
-  <Card title="DashboardInput Object" icon="folder" href="/integrations/graphql-api/objects/dashboard-input">
+  <Card title="DashboardInput Object" icon="folder" href="/integrations/embeddings/graphql-api/objects/dashboard-input">
     Dashboard update input schema
   </Card>
 </CardGroup>
