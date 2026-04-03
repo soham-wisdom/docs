@@ -366,6 +366,7 @@
               "new-releases/february-2026/ghost-text-completion",
               "improve-wisdom-ai-responses/attach-files-to-chat",
               "explorers-feedback/provide-feedback-to-the-system",
+              "new-releases/february-2026/mcp-in-dashboards",
               "using-wisdom-ai-everyday/turn-answers-into-dashboards",
               "new-releases/february-2026/dual-axis-charts"
             ]
@@ -390,7 +391,6 @@
                 "expanded": false,
                 "pages": [
                   "new-releases/february-2026/02-26-release-overview",
-                  "new-releases/february-2026/mcp-in-dashboards",
                   "new-releases/february-2026/chat-with-dashboard"
                 ]
               }
