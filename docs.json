@@ -173,10 +173,13 @@
             "pages": [
               "integrations/connect-to-slack",
               {
-                "group": "Embedding",
+                "group": "Embeddings",
                 "pages": [
                   "integrations/embedding/embedding",
                   "integrations/embedding/user-attributes",
+                  {
+                "group": "iframe",
+                "pages": [
                   {
                     "group": "Chat",
                     "pages": [
@@ -339,7 +342,9 @@
                     ]
                   }
                 ]
-              },
+              }
+              ]
+            },
               {
                 "group": "MCP Server",
                 "pages": [
