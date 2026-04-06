@@ -308,7 +308,10 @@ This section outlines common prerequisites for connecting to data sources. Speci
     | Port | The port number used for the connection |
     | Username | The database user account with read access to the metadata |
     | Password | The password for the specified database user |
-    | Database filters | A list of specific databases to include during the metadata scan |
+
+    <Note>
+    Database filters are optional, but it is recommended to specify only the databases that you want to expose to Wisdom.
+    </Note>
 
     Here's an example connection:
 
@@ -332,7 +335,10 @@ This section outlines common prerequisites for connecting to data sources. Speci
     | Use SSL (HTTPS) | Toggle to enable secure communication via SSL |
     | Skip SSL Certificate Verification | If enabled, WisdomAI will not validate the SSL certificate (common for self-signed certs) |
     | Force HTTPS | Forces the connection to use HTTPS even if the endpoint suggests otherwise |
-    | Catalog Filters | Optional filters to include specific catalogs and their schemas |
+
+    <Note>
+      Catalog filters are optional, but it is recommended to specify only the catalogs and their schemas that you want to expose to Wisdom.
+    </Note>
 
     Here's an example connection:
 
@@ -356,7 +362,10 @@ This section outlines common prerequisites for connecting to data sources. Speci
     | Tenant ID | The Directory ID of your Azure Active Directory |
     | Client Secret | The client secret value generated for the Azure App registration |
     | Site URL | The full URL of the SharePoint site you want to crawl |
-    | Document Libraries | Optional filters to target specific libraries within the site |
+    
+    <Note>
+    By default, all document libraries are crawled. It is recommended to specify only the libraries that you want to expose to Wisdom.
+    </Note>
 
     Here's an example connection:
 
@@ -396,7 +405,10 @@ This section outlines common prerequisites for connecting to data sources. Speci
     | Port | The port number used for the connection, typically `1025` |
     | Username | The database user account with appropriate read permissions |
     | Password | The password for the specified database user |
-    | Database filters | A list of specific databases to include during the metadata scan |
+
+    <Note>
+    Database filters are optional, but it is recommended to specify only the databases that you want to expose to Wisdom.
+    </Note>
 
     Here's an example connection:
 
