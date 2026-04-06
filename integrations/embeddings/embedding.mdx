@@ -134,13 +134,13 @@ The flow:
 ```jsx
 <iframe
   id="wisdom-frame"
-  src="https://wisdom.example.com/embed/dashboards/123"
+  src="https://customer.wisdom.ai/embed/dashboards/123"
   style="width:100%;height:800px;border:0"
 ></iframe>
 
 <script>
   const iframe = document.getElementById('wisdom-frame');
-  const WISDOM_ORIGIN = 'https://wisdom.example.com';
+  const WISDOM_ORIGIN = 'https://customer.wisdom.ai';
 
   async function getFreshWisdomToken() {
     // Call your backend to invoke impersonateUser with your Descope access key.
