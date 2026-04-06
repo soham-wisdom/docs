@@ -1,0 +1,124 @@
+---
+title: "User Attributes"
+---
+
+User attributes are key-value pairs attached to a user that control how WisdomAI filters and personalizes data for their session. They are used for:
+
+- **Parameterized connections** — matching a user's attributes against `credentialMappings.attributeMatch` to resolve the right data source credentials
+- **Row-level authorization** — referencing attributes in filter rules to restrict which rows a user can see
+- **Personalized data access** — passing session-specific context (e.g., a selected account or region) at impersonation time
+
+## Attribute sources
+
+Every attribute has a `source` field that indicates where it came from:
+
+| Source | Set by | Mutable via API | Description |
+|--------|--------|:---------------:|-------------|
+| `DATABASE` | API (`createUsers`, `setUserAttributes`) | Yes | Persistent attributes stored against the user |
+| `JWT` | SSO identity provider (SAML/OIDC claims) | No | Read-only attributes from the user's login token |
+
+When the same key exists in both sources, the `DATABASE` value takes precedence — unless a transient attribute is passed at impersonation time, which overrides both.
+
+## Setting attributes
+
+### At creation time
+
+Pass `userAttributes` in `CreateUsersInput` when provisioning the user. This is the most efficient option when you know the attributes upfront:
+
+```bash
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <access_token>" \
+  -d '{
+    "query": "mutation CreateUsers($input: CreateUsersInput!) { createUsers(input: $input) { status { code message } } }",
+    "variables": {
+      "input": {
+        "emails": ["alice@yourcompany.com"],
+        "workspaceID": "workspace_123",
+        "roleAssignments": [{ "role": "VIEWER", "scopeId": "workspace_123" }],
+        "sendWelcomeEmail": false,
+        "userAttributes": [
+          { "key": "account_id", "value": "acct_456" },
+          { "key": "region", "value": "us-east" }
+        ]
+      }
+    }
+  }' \
+  https://{ACCOUNT}.askwisdom.ai/graphql
+```
+
+### Updating later
+
+Call `setUserAttributes` to replace the user's DATABASE-sourced attributes after they've been created:
+
+```bash
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <access_token>" \
+  -d '{
+    "query": "mutation SetUserAttributes($input: SetUserAttributesInput!) { setUserAttributes(input: $input) { status { code message } } }",
+    "variables": {
+      "input": {
+        "userId": "user_abc123",
+        "userAttributes": [
+          { "key": "account_id", "value": "acct_456" },
+          { "key": "region", "value": "us-west" }
+        ]
+      }
+    }
+  }' \
+  https://{ACCOUNT}.askwisdom.ai/graphql
+```
+
+<Warning>
+  `setUserAttributes` **replaces all DATABASE-sourced attributes**. Include every attribute the user should have after the call — omitting an attribute removes it.
+</Warning>
+
+### At impersonation time (transient)
+
+Pass `transientAttributes` in `ImpersonateUserInput` for session-only overrides. These are applied for the duration of the JWT only and are never persisted:
+
+```bash
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -d '{
+    "query": "query ImpersonateUser($input: ImpersonateUserInput!) { impersonateUser(input: $input) { token expiration status { code message } } }",
+    "variables": {
+      "input": {
+        "userId": "user_abc123",
+        "workspaceId": "workspace_123",
+        "transientAttributes": [
+          { "key": "report_context", "value": "q3-summary" }
+        ]
+      }
+    }
+  }' \
+  https://{ACCOUNT}.askwisdom.ai/graphql
+```
+
+Transient attributes override DATABASE-sourced values for that session. They are useful for passing request-scoped context that should not be stored on the user.
+
+## Choosing the right approach
+
+| Use case | Recommended approach |
+|----------|---------------------|
+| Attributes that are stable for the user (e.g., `account_id`) | Set at creation via `createUsers`, or update via `setUserAttributes` |
+| Attributes that change per request or should not be persisted | Pass as `transientAttributes` in `impersonateUser` |
+| Attributes sourced from SSO claims | Read automatically from the JWT — no action needed |
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Create users" icon="user-plus" href="/integrations/embeddings/graphql-api/mutations/user/create-users">
+    Set attributes at provisioning time
+  </Card>
+  <Card title="Set user attributes" icon="tag" href="/integrations/embeddings/graphql-api/mutations/user/set-user-attributes">
+    Update DATABASE-sourced attributes on existing users
+  </Card>
+  <Card title="Impersonate user" icon="user-secret" href="/integrations/embeddings/graphql-api/queries/auth/impersonate-user">
+    Pass transient attributes at session time
+  </Card>
+  <Card title="List users" icon="users" href="/integrations/embeddings/graphql-api/queries/user/list-users">
+    Inspect a user's current attributes and their source
+  </Card>
+</CardGroup>

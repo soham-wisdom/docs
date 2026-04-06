@@ -1,0 +1,102 @@
+---
+title: "Connection"
+---
+
+Retrieve detailed information about a specific data source connection, including its last job run and last successful job run.
+
+## Signature
+
+```graphql
+connection(id: ID!): Connection!
+```
+
+<Note>
+  This query can only be executed by an administrator or a data administrator of the specific connection ID.
+</Note>
+
+## Arguments
+
+<ParamField path="id" type="ID!" required>
+  The unique identifier of the connection to retrieve.
+</ParamField>
+
+## Response
+
+Returns a `Connection` object containing connection details and status information. See [Connection](/integrations/embeddings/graphql-api/objects/connection) schema.
+
+## Usage example
+
+```graphql
+query GetConnectionRefreshStatus($id: ID!) {
+  connection(id: $id) {
+    id
+    status {
+      lastRun {
+        status
+        startedAt
+        endedAt
+        conciseErrorMessage
+      }
+      lastSuccessfulRun {
+        status
+        endedAt
+      }
+    }
+  }
+}
+```
+
+<RequestExample>
+
+```bash Request
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <jwt_token>" \
+  -d '{
+    "query": "query GetConnection($id: ID!) { connection(id: $id) { id details { name connectionType } status { lastRun { status endedAt } } } }",
+    "variables": {
+      "id": "et-connection-id-here"
+    }
+  }' \
+  https://{ACCOUNT}.askwisdom.ai/graphql
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "data": {
+    "connection": {
+      "id": "et-connection-id-here",
+      "details": {
+        "name": "Snowflake Jan07",
+        "connectionType": "SNOWFLAKE"
+      },
+      "status": {
+        "lastRun": {
+          "status": "JOB_RUN_STATUS_SUCCESS",
+          "endedAt": "2025-07-21T21:45:54.931+00:00"
+        }
+      }
+    }
+  }
+}
+```
+
+</ResponseExample>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Refresh Connection" icon="arrows-rotate" href="/integrations/embeddings/graphql-api/mutations/connection/refresh-connection">
+    Trigger metadata refresh for connections
+  </Card>
+  <Card title="Connection Schema" icon="database" href="/integrations/embeddings/graphql-api/objects/connection">
+    Learn about connection object structure
+  </Card>
+  <Card title="JobStatus Schema" icon="clock" href="/integrations/embeddings/graphql-api/objects/job-status">
+    Understand job execution status tracking
+  </Card>
+</CardGroup>

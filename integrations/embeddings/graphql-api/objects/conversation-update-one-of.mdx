@@ -1,0 +1,33 @@
+---
+title: "ConversationUpdateOneOf"
+---
+
+This page outlines the union type for real-time conversation updates and the object types it can include.
+
+## ConversationUpdateOneOf
+
+<ParamField path="assistantMessageSent" type="ChatMessage">
+  A complete message sent by the assistant. See [ChatMessage](/integrations/embeddings/graphql-api/objects/chat-message).
+</ParamField>
+
+<ParamField path="assistantResponseDiff" type="ChatMessageDiff">
+  A streaming diff update for an assistant's response in progress. See [ChatMessageDiff](/integrations/embeddings/graphql-api/objects/chat-message-diff).
+</ParamField>
+
+<ParamField path="assistantResponseCancelled" type="Boolean">
+  Indicates whether the assistant's response was cancelled.
+</ParamField>
+
+## Related operations
+
+<CardGroup cols={2}>
+  <Card title="Subscribe Conversation" icon="wifi" href="/integrations/embeddings/graphql-api/subscriptions/subscribe-conversation">
+    Subscribe to conversation updates
+  </Card>
+  <Card title="ChatMessage Schema" icon="message" href="/integrations/embeddings/graphql-api/objects/chat-message">
+    Learn about the complete message structure
+  </Card>
+  <Card title="ChatMessageDiff Schema" icon="pen-to-square" href="/integrations/embeddings/graphql-api/objects/chat-message-diff">
+    Understand streaming message updates
+  </Card>
+</CardGroup>

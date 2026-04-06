@@ -1,0 +1,150 @@
+---
+title: "GraphQL Primer for REST Developers"
+---
+
+If you're used to REST APIs, GraphQL has a few key differences worth knowing before you start. This page covers the essentials so you can make your first request quickly.
+
+## One endpoint, one method
+
+Unlike REST, which uses many endpoints (`GET /users`, `POST /dashboards`, etc.), GraphQL uses a **single endpoint** for all operations:
+
+```
+https://{ACCOUNT}.askwisdom.ai/graphql
+```
+
+Every request is a **POST** with a JSON body containing two fields:
+
+| Field | Description |
+|-------|-------------|
+| `query` | The GraphQL operation (query or mutation) as a string |
+| `variables` | A JSON object with input values referenced in the query |
+
+```bash
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <token>" \
+  -d '{
+    "query": "query ListUsers($workspaceId: ID) { listUsers(workspaceId: $workspaceId) { id email } }",
+    "variables": {
+      "workspaceId": "workspace_123"
+    }
+  }' \
+  https://{ACCOUNT}.askwisdom.ai/graphql
+```
+
+## HTTP 200 does not mean success
+
+This is the most important difference from REST. **GraphQL always returns HTTP 200**, even when the operation fails. Do not check the HTTP status code to determine success — always inspect the response body.
+
+Errors appear in an `errors` array:
+
+```json
+{
+  "errors": [
+    {
+      "message": "Unauthorized",
+      "locations": [{ "line": 1, "column": 1 }]
+    }
+  ],
+  "data": null
+}
+```
+
+For mutations, also check the `status.code` field in the response data:
+
+```json
+{
+  "data": {
+    "createUsers": {
+      "status": {
+        "code": "ERROR",
+        "message": "User already exists"
+      }
+    }
+  }
+}
+```
+
+See [Error handling](/integrations/embeddings/graphql-api/GraphQL-API#error-handling) for details.
+
+## Queries vs mutations
+
+GraphQL operations are either **queries** (read) or **mutations** (write). The distinction is in the keyword, not the endpoint or method — both are POST requests to the same URL.
+
+```graphql
+# Read operation
+query ListUsers($workspaceId: ID) {
+  listUsers(workspaceId: $workspaceId) {
+    id
+    email
+  }
+}
+
+# Write operation
+mutation CreateUsers($input: CreateUsersInput!) {
+  createUsers(input: $input) {
+    status {
+      code
+      message
+    }
+  }
+}
+```
+
+## You request exactly what you need
+
+GraphQL responses only include the fields you ask for. If you don't request a field, it won't appear in the response. For example, to get just the user ID and email, request only those:
+
+```graphql
+listUsers {
+  id
+  email
+}
+```
+
+This applies to mutations too — you must explicitly request the `status` field (or any other return field) or it won't be returned.
+
+## Postman setup
+
+To call the WisdomAI GraphQL API from Postman:
+
+1. Set method to **POST**
+2. URL: `https://{ACCOUNT}.askwisdom.ai/graphql`
+3. Headers:
+   - `Content-Type: application/json`
+   - `Authorization: Bearer <your_token>`
+4. Body → **raw** → **JSON**:
+   ```json
+   {
+     "query": "query ListUsers($workspaceId: ID) { listUsers(workspaceId: $workspaceId) { id email } }",
+     "variables": {
+       "workspaceId": "workspace_123"
+     }
+   }
+   ```
+
+## Common mistakes
+
+| Mistake | Fix |
+|---------|-----|
+| Missing `Content-Type: application/json` | Always include this header — without it the server can't parse the body |
+| Sending the query as a URL parameter | GraphQL queries go in the POST body, not the URL |
+| Not requesting return fields on mutations | Include `status { code message }` (or other fields) in your mutation or they won't be returned |
+| Checking HTTP status for errors | Always read the response body — GraphQL returns HTTP 200 even on failure |
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="GraphQL API overview" icon="code" href="/integrations/embeddings/graphql-api/GraphQL-API">
+    Endpoint, authentication, and error handling
+  </Card>
+  <Card title="User management" icon="users" href="/integrations/embeddings/graphql-api/user-management">
+    Create, update, and manage users via API
+  </Card>
+  <Card title="Queries" icon="magnifying-glass" href="/integrations/embeddings/graphql-api/queries">
+    Available read operations
+  </Card>
+  <Card title="Mutations" icon="pen-to-square" href="/integrations/embeddings/graphql-api/mutations">
+    Available write operations
+  </Card>
+</CardGroup>

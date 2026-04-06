@@ -1,0 +1,188 @@
+---
+title: "Create Users"
+---
+
+The `createUsers` mutation provisions one or more users in a workspace. Call this before impersonating a user in the embedded flow — a user must exist before they can be impersonated.
+
+## Signature
+
+```graphql
+createUsers(input: CreateUsersInput!): CreateUsersResponse!
+```
+
+## Arguments
+
+<ParamField path="input" type="CreateUsersInput!" required>
+  Input object containing the details for the users to create.
+</ParamField>
+
+### CreateUsersInput fields
+
+<ParamField path="emails" type="[String!]!" required>
+  One or more email addresses to provision. User matching is email-based — each email must be unique within the workspace.
+
+  <Note>
+    If your embedded users may share email addresses across tenants (e.g., the same person is a customer of multiple clients), append a unique identifier to the email prefix: `alice+tenant123@yourcompany.com`. This prevents cross-tenant session collisions.
+  </Note>
+</ParamField>
+
+<ParamField path="workspaceID" type="ID!">
+  The workspace to create the users in. Required for multi-workspace deployments.
+</ParamField>
+
+<ParamField path="roleAssignments" type="[ScopeRoleAssignmentInput!]">
+  Role assignments for the new users. Each entry specifies a `role` and a `scopeId`. See [ScopeRoleAssignmentInput](/integrations/embeddings/graphql-api/objects/scope-role-assignment-input).
+
+  For embedded dashboards, assign `VIEWER` to hide edit controls:
+  ```json
+  [{ "role": "VIEWER", "scopeId": "workspace_123" }]
+  ```
+</ParamField>
+
+<ParamField path="sendWelcomeEmail" type="Boolean">
+  Whether to send a welcome email to the new users. Default: `false`. Set to `false` for programmatically provisioned embedded users.
+</ParamField>
+
+<ParamField path="userAttributes" type="[UserAttributeInput!]">
+  Key-value pairs for parameterized connections and row-level data access. These are stored as DATABASE-sourced attributes. See [User attributes](/integrations/embeddings/user-attributes).
+</ParamField>
+
+<ParamField path="userGroupIds" type="[ID!]">
+  Optional group IDs to assign the users to on creation.
+</ParamField>
+
+## Response
+
+<ParamField path="status" type="ResponseStatus!">
+  Indicates whether the operation succeeded. See [ResponseStatus](/integrations/embeddings/graphql-api/objects/response-status).
+
+  <Note>
+    `status` here is a `ResponseStatus` object with `code` and `message` fields — it is **not** the `UserStatus` enum used in the `User` object.
+  </Note>
+</ParamField>
+
+## Usage example
+
+```graphql
+mutation CreateUsers($input: CreateUsersInput!) {
+  createUsers(input: $input) {
+    status {
+      code
+      message
+    }
+  }
+}
+```
+
+<RequestExample>
+
+```bash Single user
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <access_token>" \
+  -d '{
+    "query": "mutation CreateUsers($input: CreateUsersInput!) { createUsers(input: $input) { status { code message } } }",
+    "variables": {
+      "input": {
+        "emails": ["alice@yourcompany.com"],
+        "workspaceID": "workspace_123",
+        "roleAssignments": [{ "role": "VIEWER", "scopeId": "workspace_123" }],
+        "sendWelcomeEmail": false
+      }
+    }
+  }' \
+  https://{ACCOUNT}.askwisdom.ai/graphql
+```
+
+```bash Multiple users
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <access_token>" \
+  -d '{
+    "query": "mutation CreateUsers($input: CreateUsersInput!) { createUsers(input: $input) { status { code message } } }",
+    "variables": {
+      "input": {
+        "emails": ["alice@yourcompany.com", "bob@yourcompany.com"],
+        "workspaceID": "workspace_123",
+        "roleAssignments": [{ "role": "VIEWER", "scopeId": "workspace_123" }],
+        "sendWelcomeEmail": false
+      }
+    }
+  }' \
+  https://{ACCOUNT}.askwisdom.ai/graphql
+```
+
+```bash With user attributes
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <access_token>" \
+  -d '{
+    "query": "mutation CreateUsers($input: CreateUsersInput!) { createUsers(input: $input) { status { code message } } }",
+    "variables": {
+      "input": {
+        "emails": ["alice@yourcompany.com"],
+        "workspaceID": "workspace_123",
+        "roleAssignments": [{ "role": "VIEWER", "scopeId": "workspace_123" }],
+        "sendWelcomeEmail": false,
+        "userAttributes": [
+          { "key": "account_id", "value": "acct_456" },
+          { "key": "region", "value": "us-east" }
+        ]
+      }
+    }
+  }' \
+  https://{ACCOUNT}.askwisdom.ai/graphql
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Success
+{
+  "data": {
+    "createUsers": {
+      "status": {
+        "code": "OK",
+        "message": "Users created successfully"
+      }
+    }
+  }
+}
+```
+
+```json Failure (HTTP 200)
+{
+  "data": {
+    "createUsers": {
+      "status": {
+        "code": "ERROR",
+        "message": "User with email alice@yourcompany.com already exists"
+      }
+    }
+  }
+}
+```
+
+</ResponseExample>
+
+<Tip>
+  If a user already exists, check `status.code` instead of treating it as a fatal error. You can safely skip creation for existing users and proceed directly to impersonation.
+</Tip>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Set user attributes" icon="tag" href="/integrations/embeddings/graphql-api/mutations/user/set-user-attributes">
+    Update attributes on existing users
+  </Card>
+  <Card title="Impersonate user" icon="user-secret" href="/integrations/embeddings/graphql-api/queries/auth/impersonate-user">
+    Generate a session JWT for the created user
+  </Card>
+  <Card title="User attributes" icon="list" href="/integrations/embeddings/user-attributes">
+    How attributes control data access
+  </Card>
+  <Card title="Embedding overview" icon="code" href="/integrations/embeddings/embedding">
+    Full server-side embedding flow
+  </Card>
+</CardGroup>

@@ -1,0 +1,66 @@
+---
+title: "JoinInput"
+---
+
+This page describes the schema for join input objects used to define table relationships.
+
+## JoinInput
+
+Input type for specifying join relationships between tables when updating data sources in a domain.
+
+<ParamField path="leftTable" type="TableInput!" required>
+  The left table in the join relationship. See [TableInput](/integrations/embeddings/graphql-api/objects/table-input).
+</ParamField>
+
+<ParamField path="rightTable" type="TableInput!" required>
+  The right table in the join relationship. See [TableInput](/integrations/embeddings/graphql-api/objects/table-input).
+</ParamField>
+
+<ParamField path="relationshipType" type="RelationshipType!" required>
+  The type of relationship between the tables. See [RelationshipType](#relationshiptype).
+</ParamField>
+
+<ParamField path="joinConditions" type="[JoinConditionInput!]!" required>
+  List of join conditions that define how the tables are connected. See [JoinConditionInput](#joinconditioninput).
+</ParamField>
+
+## JoinConditionInput
+
+Defines a single join condition between two table columns.
+
+<ParamField path="leftColumnName" type="String!" required>
+  The name of the column in the left table to join on.
+</ParamField>
+
+<ParamField path="rightColumnName" type="String!" required>
+  The name of the column in the right table to join on.
+</ParamField>
+
+## RelationshipType
+
+The `RelationshipType` enum defines the cardinality between joined tables and can be set to one of the following values:
+
+| Relationship Type           | Description                                                                       |
+| :-------------------------- | :-------------------------------------------------------------------------------- |
+| `RELATIONSHIP_TYPE_UNKNOWN` | Relationship type is not specified or unclear.                                    |
+| `ONE_TO_ONE`                | Each record in the left table matches exactly one record in the right table.      |
+| `ONE_TO_MANY`               | Each record in the left table can match multiple records in the right table.      |
+| `MANY_TO_ONE`               | Multiple records in the left table can match one record in the right table.       |
+| `MANY_TO_MANY`              | Multiple records in the left table can match multiple records in the right table. |
+
+## Related operations
+
+<CardGroup cols={2}>
+  <Card title="Update Data Sources" icon="arrows-rotate" href="/integrations/embeddings/graphql-api/mutations/domain/update-data-sources">
+    Use JoinInput to define table relationships
+  </Card>
+  <Card title="TableInput Schema" icon="table" href="/integrations/embeddings/graphql-api/objects/table-input">
+    Configure tables that participate in joins
+  </Card>
+  <Card title="DomainModel Schema" icon="folder" href="/integrations/embeddings/graphql-api/objects/domain-model">
+    Understand how joins fit within domain structure
+  </Card>
+  <Card title="Create Domain" icon="plus" href="/integrations/embeddings/graphql-api/mutations/domain/create-domain">
+    Start with domain creation before adding joins
+  </Card>
+</CardGroup>

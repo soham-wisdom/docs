@@ -1,0 +1,123 @@
+---
+title: "List Users"
+---
+
+The `listUsers` query returns users in a workspace along with their attributes and role assignments. Use it to look up user IDs before calling [impersonateUser](/integrations/embeddings/graphql-api/queries/auth/impersonate-user) or [setUserAttributes](/integrations/embeddings/graphql-api/mutations/user/set-user-attributes).
+
+## Signature
+
+```graphql
+listUsers(workspaceId: ID): [User!]!
+```
+
+## Parameters
+
+<ParamField path="workspaceId" type="ID">
+  Filters results to a specific workspace. Required for multi-workspace deployments.
+</ParamField>
+
+## Response
+
+Returns an array of `User` objects. See [User](/integrations/embeddings/graphql-api/objects/user) for the full schema. The fields most relevant to user management are:
+
+<ParamField path="id" type="ID!">
+  The user's unique ID. Pass this to `impersonateUser`, `setUserAttributes`, or `deleteUsersFromWorkspace`.
+</ParamField>
+
+<ParamField path="email" type="String!">
+  The user's email address.
+</ParamField>
+
+<ParamField path="name" type="String">
+  The user's display name.
+</ParamField>
+
+<ParamField path="userAttributes" type="[UserAttribute!]">
+  Key-value pairs associated with the user. Each entry includes:
+  - `key` — attribute name
+  - `value` — attribute value
+  - `source` — either `DATABASE` (set via API) or `JWT` (from SSO claims, read-only)
+
+  See [User attributes](/integrations/embeddings/user-attributes) for how these sources differ.
+</ParamField>
+
+<ParamField path="roleAssignments" type="[RoleAssignment!]">
+  The roles assigned to the user and their scope.
+</ParamField>
+
+## Usage example
+
+```graphql
+query ListUsers($workspaceId: ID) {
+  listUsers(workspaceId: $workspaceId) {
+    id
+    email
+    name
+    userAttributes {
+      key
+      value
+      source
+    }
+    roleAssignments {
+      role
+      scopeId
+    }
+  }
+}
+```
+
+<RequestExample>
+
+```bash Request
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <access_token>" \
+  -d '{
+    "query": "query ListUsers($workspaceId: ID) { listUsers(workspaceId: $workspaceId) { id email name userAttributes { key value source } roleAssignments { role scopeId } } }",
+    "variables": {
+      "workspaceId": "workspace_123"
+    }
+  }' \
+  https://{ACCOUNT}.askwisdom.ai/graphql
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "data": {
+    "listUsers": [
+      {
+        "id": "user_abc123",
+        "email": "alice@yourcompany.com",
+        "name": "Alice",
+        "userAttributes": [
+          { "key": "account_id", "value": "acct_456", "source": "DATABASE" },
+          { "key": "department", "value": "finance", "source": "JWT" }
+        ],
+        "roleAssignments": [
+          { "role": "VIEWER", "scopeId": "workspace_123" }
+        ]
+      }
+    ]
+  }
+}
+```
+
+</ResponseExample>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Impersonate user" icon="user-secret" href="/integrations/embeddings/graphql-api/queries/auth/impersonate-user">
+    Use the user ID to start an embedded session
+  </Card>
+  <Card title="Set user attributes" icon="tag" href="/integrations/embeddings/graphql-api/mutations/user/set-user-attributes">
+    Update DATABASE-sourced attributes on a user
+  </Card>
+  <Card title="Delete users from workspace" icon="user-minus" href="/integrations/embeddings/graphql-api/mutations/user/delete-users-from-workspace">
+    Remove users from a workspace
+  </Card>
+</CardGroup>

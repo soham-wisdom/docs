@@ -1,0 +1,80 @@
+---
+title: "ResponseStatus"
+---
+
+`ResponseStatus` is returned by mutations to indicate whether the operation succeeded. It is a distinct type from the `UserStatus` enum — mutation responses use this object, not the enum.
+
+## Fields
+
+<ParamField path="code" type="StatusCode!" required>
+  A code indicating the result of the operation. `OK` means the operation succeeded; any other value indicates failure.
+</ParamField>
+
+<ParamField path="message" type="String!" required>
+  A human-readable message describing the result. On failure, this field contains the error details.
+</ParamField>
+
+## StatusCode enum
+
+```graphql
+enum StatusCode {
+  NONE
+  OK
+  ERROR
+  NOT_FOUND
+}
+```
+
+## Example values
+
+```json Success
+{
+  "status": {
+    "code": "OK",
+    "message": "Operation completed successfully"
+  }
+}
+```
+
+```json Failure
+{
+  "status": {
+    "code": "ERROR",
+    "message": "User with email alice@yourcompany.com already exists"
+  }
+}
+```
+
+```json Not found
+{
+  "status": {
+    "code": "NOT_FOUND",
+    "message": "User not found"
+  }
+}
+```
+
+<Note>
+  GraphQL returns HTTP 200 even when `status.code` is not `"OK"`. Always check the `code` field in the response body to determine success or failure. See [Error handling](/integrations/embeddings/graphql-api/GraphQL-API#error-handling).
+</Note>
+
+<Note>
+  When querying mutations, you must explicitly request `{ status { code message } }` — requesting just `{ status }` returns nothing.
+</Note>
+
+## Operations that return ResponseStatus
+
+<CardGroup cols={2}>
+  <Card title="Create users" icon="user-plus" href="/integrations/embeddings/graphql-api/mutations/user/create-users">
+    Returns ResponseStatus
+  </Card>
+  <Card title="Set user attributes" icon="tag" href="/integrations/embeddings/graphql-api/mutations/user/set-user-attributes">
+    Returns ResponseStatus
+  </Card>
+  <Card title="Delete users from workspace" icon="user-minus" href="/integrations/embeddings/graphql-api/mutations/user/delete-users-from-workspace">
+    Returns ResponseStatus
+  </Card>
+  <Card title="Send user message" icon="message" href="/integrations/embeddings/graphql-api/mutations/chat/send-user-message">
+    Returns ResponseStatus
+  </Card>
+</CardGroup>

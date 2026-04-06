@@ -1,0 +1,118 @@
+---
+title: "GraphQL API"
+---
+
+Create seamless integrations with WisdomAI using our comprehensive GraphQL API. Access domains, tables, and analytics data programmatically to build custom applications and workflows.
+
+<Note>
+  The GraphQL API is designed for external integrations. All operations require proper authentication and respect your organization's access controls.
+</Note>
+
+## Get started
+
+The **Wisdom API** provides real-time access to structured data insights via a WebSocket-based subscription model. Users can ask questions related to business intelligence and receive structured responses, including tabular data and SQL queries.
+
+The WisdomAI GraphQL API provides a single endpoint for all operations:
+
+```
+https://{ACCOUNT}.askwisdom.ai/graphql
+```
+
+## WebSocket connection
+
+Use the following URL to establish the WebSocket connection:
+
+```
+wss://{ACCOUNT}.askwisdom.ai/graphql
+```
+
+## Authentication
+
+The APIs require authentication using a **JWT session token** obtained via the Descope authentication system.
+
+The authentication flow consists of the following steps:
+
+<Steps>
+  <Step title="Obtain access key" titleSize="h3">
+    Contact WisdomAI support at `support@askwisdom.ai` to obtain your dedicated access key.
+  </Step>
+  <Step title="Exchange access key for JWT token" titleSize="h3">
+    Use WisdomAI's GraphQL API `exchangeAccessToken` query to exchange your access key for a JWT token.
+    - GraphQL Query:
+
+      ```graphql
+      query ExchangeAccessToken($accessToken: String!) {
+        exchangeAccessToken(accessToken: $accessToken)
+      }
+      ```
+  </Step>
+  <Step title="Pass token in requests" titleSize="h3">
+    The session token is required in all API requests and WebSocket connection payload.
+
+    ```
+    Authorization: Bearer YOUR_SESSION_TOKEN
+    ```
+  </Step>
+</Steps>
+
+## Error handling
+
+<Warning>
+  The WisdomAI GraphQL API returns **HTTP 200 even when an operation fails**. Do not rely on the HTTP status code to detect errors — always inspect the response body. A failed response will contain an `errors` array, and mutations return a `status` object with a `code` field.
+
+  ```json Example error response (HTTP 200)
+  {
+    "errors": [
+      {
+        "message": "Unauthorized",
+        "locations": [{ "line": 1, "column": 1 }]
+      }
+    ],
+    "data": null
+  }
+  ```
+
+  For mutation responses, also check `status.code`:
+
+  ```json Mutation failure (HTTP 200)
+  {
+    "data": {
+      "createUsers": {
+        "status": {
+          "code": "ERROR",
+          "message": "User already exists"
+        }
+      }
+    }
+  }
+  ```
+</Warning>
+
+HTTP errors are only returned for transport-level failures:
+
+| HTTP status | Message               | Cause                                   |
+| ----------- | --------------------- | --------------------------------------- |
+| `401`       | Unauthorized          | Invalid or missing authentication token |
+| `400`       | Bad Request           | Malformed request payload               |
+| `500`       | Internal Server Error | Unexpected API failure                  |
+
+<Info>
+  For any queries or support, contact our API team at [**support@askwisdom.ai**](mailto:support@askwisdom.ai).
+</Info>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Exchange Access Token" icon="key" href="/integrations/embeddings/graphql-api/queries/auth/exchange-access-token">
+    Authenticate with the GraphQL API using access keys
+  </Card>
+  <Card title="Queries" icon="magnifying-glass" href="/integrations/embeddings/graphql-api/queries">
+    Learn about available queries for fetching data
+  </Card>
+  <Card title="Mutations" icon="pen-to-square" href="/integrations/embeddings/graphql-api/mutations">
+    Discover mutations for creating and updating resources
+  </Card>
+  <Card title="Subscriptions" icon="wifi" href="/integrations/embeddings/graphql-api/subscriptions">
+    Real-time data subscriptions and live updates
+  </Card>
+</CardGroup>

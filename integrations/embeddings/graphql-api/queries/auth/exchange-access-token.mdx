@@ -1,0 +1,61 @@
+---
+title: "Exchange Access Token"
+---
+
+The `exchangeAccessToken` query exchanges a dedicated access key for a JWT token that can be used to authenticate subsequent GraphQL API requests.
+
+<Warning>
+  **Deprecation Notice**\
+  For embedding use cases, use the [Impersonate User](/integrations/embeddings/graphql-api/queries/auth/impersonate-user) API instead, which provides better security and user context.
+</Warning>
+
+## Signature
+
+```graphql
+exchangeAccessToken(accessToken: String!): String!
+```
+
+## Parameters
+
+<ParamField path="accessToken" type="String!" required>
+  The dedicated access key provided by WisdomAI for your organization. Contact `support@askwisdom.ai` to obtain your access key.
+</ParamField>
+
+## Response
+
+Returns a JWT token as a string that should be used in the `Authorization` header for subsequent API requests.
+
+## Usage example
+
+```graphql
+query ExchangeAccessToken($accessToken: String!) {
+  exchangeAccessToken(accessToken: $accessToken)
+}
+```
+
+```bash
+curl -X POST https://{ACCOUNT}.askwisdom.ai/graphql \
+  -H "Content-Type: application/json" \
+  -d '{
+    "query": "query ExchangeAccessToken($accessToken: String!) { exchangeAccessToken(accessToken: $accessToken) }",
+    "variables": {
+      "accessToken": "your-access-key-here"
+    }
+  }'
+```
+
+<Info>
+  JWT tokens have a limited lifetime. You will need to exchange your access key for a new JWT token periodically.
+</Info>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="GraphQL API Overview" icon="code" href="/integrations/embeddings/graphql-api/GraphQL-API">
+    Complete GraphQL API authentication guide
+  </Card>
+
+  <Card title="Impersonate User" icon="user" href="/integrations/embeddings/graphql-api/queries/auth/impersonate-user">
+    Recommended API for embedding use cases
+  </Card>
+</CardGroup>

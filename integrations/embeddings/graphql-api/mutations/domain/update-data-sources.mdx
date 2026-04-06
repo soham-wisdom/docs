@@ -1,0 +1,142 @@
+---
+title: "Update Data Sources"
+---
+
+The `dataSourcesUpdate` mutation updates the data sources configuration for an existing domain by specifying tables and their relationships. This operation allows you to modify which tables are included in a domain and how they are connected through joins.
+
+<Note>
+  The input will overwrite any existing data sources that already existed. Treat the input as what the updated state of data sources should look like.
+</Note>
+
+## Signature
+
+```graphql
+dataSourcesUpdate(input: DataSourcesUpdateInput!): DataSourcesUpdatePayload!
+```
+
+<Note>
+  This mutation can only be executed by an administrator or a data administrator of the specific connection ID.
+</Note>
+
+## Arguments
+
+<ParamField path="input" type="DataSourcesUpdateInput!" required>
+  Input object containing data sources update parameters. See [DataSourcesUpdateInput](#datasourcesupdateinput).
+</ParamField>
+
+### DataSourcesUpdateInput
+
+<ParamField path="domainId" type="ID!" required>
+  The unique identifier of the domain to update.
+</ParamField>
+
+<ParamField path="tables" type="[TableInput!]!" required>
+  List of tables to include in the domain. See [TableInput](/integrations/embeddings/graphql-api/objects/table-input).
+</ParamField>
+
+<ParamField path="joins" type="[JoinInput!]">
+  List of join relationships between tables. See [JoinInput](/integrations/embeddings/graphql-api/objects/join-input).
+</ParamField>
+
+## Response
+
+Returns a `DataSourcesUpdatePayload` object containing:
+
+<ParamField path="error" type="String" required>
+  Error, if any occurred. `null` indicates success.
+</ParamField>
+
+<ParamField path="success" type="Boolean!" required>
+  Whether the update operation completed successfully.
+</ParamField>
+
+## Usage example
+
+Update a domain's data sources with tables and their relationships:
+
+```graphql
+mutation UpdateDataSources($input: DataSourcesUpdateInput!) {
+  dataSourcesUpdate(input: $input) {
+    success
+    error
+  }
+}
+```
+
+<RequestExample>
+
+```bash Request
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <jwt_token>" \
+  -d '{
+    "query": "mutation UpdateDataSources($input: DataSourcesUpdateInput!) { dataSourcesUpdate(input: $input) { success error } }",
+    "variables": {
+      "input": {
+        "domainId": "ET_DOMAIN_id-here",
+        "tables": [
+          {
+            "connection_id": "et-connection-id-here",
+            "database_name": "analytics_warehouse",
+            "schema_name": "customer_intelligence",
+            "table_name": "user_accounts"
+          },
+          {
+            "connection_id": "et-connection-id2-here",
+            "database_name": "analytics_warehouse",
+            "schema_name": "business_metrics",
+            "table_name": "subscription_events"
+          }
+        ],
+        "joins": [
+          {
+            "leftTable": "user_accounts",
+            "rightTable": "subscription_events",
+            "relationshipType": "ONE_TO_MANY",
+            "joinConditions": [
+              {
+                "leftColumnName": "account_id",
+                "rightColumnName": "account_id"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }' \
+  https://{ACCOUNT}.askwisdom.ai/graphql
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "data": {
+    "dataSourcesUpdate": {
+      "success": true,
+      "error": null
+    }
+  }
+}
+```
+
+</ResponseExample>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Create Domain" icon="plus" href="/integrations/embeddings/graphql-api/mutations/domain/create-domain">
+    Create new domains for organizing data sources
+  </Card>
+  <Card title="TableInput Schema" icon="table" href="/integrations/embeddings/graphql-api/objects/table-input">
+    Learn about table input structure and validation
+  </Card>
+  <Card title="JoinInput Schema" icon="link" href="/integrations/embeddings/graphql-api/objects/join-input">
+    Understand join configuration and relationship types
+  </Card>
+  <Card title="DomainModel Schema" icon="folder" href="/integrations/embeddings/graphql-api/objects/domain-model">
+    Explore domain structure and properties
+  </Card>
+</CardGroup>
