@@ -1,0 +1,70 @@
+---
+title: "RBAC for embedded users"
+---
+
+Embedded users inherit WisdomAI's role-based access control (RBAC) system. The role you assign when provisioning a user controls what they can see and do inside the embedded interface. There is no separate embed-specific permission layer.
+
+## How roles affect embedded views
+
+Edit controls, dashboard creation buttons, and AI workstream visibility are all determined by the user's role assignment. To hide edit controls in an embedded dashboard, assign the user the **Viewer** role. There is no embed-specific parameter for this.
+
+| Role | Edit controls | Dashboard creation | AI workstream |
+|------|:---:|:---:|:---:|
+| `VIEWER` | Hidden | No | No |
+| `BASIC_EXPLORER` | Visible | Yes | No |
+| `EXPLORER` | Visible | Yes | Yes |
+
+## Assigning a role at provisioning time
+
+Pass the role ID in `roleAssignments` when calling `createUsers`:
+
+```graphql
+mutation CreateUsers($input: CreateUsersInput!) {
+  createUsers(input: $input) {
+    status { code message }
+  }
+}
+```
+
+```json
+{
+  "input": {
+    "emails": ["alice@yourcompany.com"],
+    "workspaceID": "workspace_123",
+    "roleAssignments": [
+      {
+        "roleId": "00000000-0000-0000-0000-000000000003",
+        "scopes": ["domain_456"]
+      }
+    ]
+  }
+}
+```
+
+The `roleId` above is the **Viewer** role. See [Roles](/integrations/embeddings/graphql-api/objects/roles) for the full list of role IDs.
+
+## Scope requirements
+
+Roles in WisdomAI are scoped. The `scopes` field takes an array of resource IDs (workspace, domain, or specific resource) that the role applies to. Assigning a role without a valid scope has no effect.
+
+| Role | Scope level |
+|------|-------------|
+| `VIEWER` | Organization |
+| `BASIC_EXPLORER` | Domain |
+| `EXPLORER` | Domain |
+| `STORY_VIEWER` | Specific dashboard |
+| `STORY_WRITER` | Specific dashboard |
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Roles" icon="shield" href="/integrations/embeddings/graphql-api/objects/roles">
+    Full role reference with IDs and permission matrix
+  </Card>
+  <Card title="Create users" icon="user-plus" href="/integrations/embeddings/graphql-api/mutations/user/create-users">
+    Provision embedded users with role assignments
+  </Card>
+  <Card title="Embed a dashboard" icon="chart-bar" href="/integrations/embeddings/iframe/dashboard/embed-a-dashboard">
+    Use roles to control edit access in embedded dashboards
+  </Card>
+</CardGroup>

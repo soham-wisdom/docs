@@ -18,6 +18,10 @@ The WisdomAI GraphQL API provides a single endpoint for all operations:
 https://{ACCOUNT}.askwisdom.ai/graphql
 ```
 
+<Note>
+  Replace `{ACCOUNT}.askwisdom.ai` with the base URL of your WisdomAI tenant — the same domain you use to log in. Both `askwisdom.ai` and `wisdom.ai` are valid depending on your deployment.
+</Note>
+
 ## WebSocket connection
 
 Use the following URL to establish the WebSocket connection:
@@ -58,43 +62,8 @@ The authentication flow consists of the following steps:
 ## Error handling
 
 <Warning>
-  The WisdomAI GraphQL API returns **HTTP 200 even when an operation fails**. Do not rely on the HTTP status code to detect errors — always inspect the response body. A failed response will contain an `errors` array, and mutations return a `status` object with a `code` field.
-
-  ```json Example error response (HTTP 200)
-  {
-    "errors": [
-      {
-        "message": "Unauthorized",
-        "locations": [{ "line": 1, "column": 1 }]
-      }
-    ],
-    "data": null
-  }
-  ```
-
-  For mutation responses, also check `status.code`:
-
-  ```json Mutation failure (HTTP 200)
-  {
-    "data": {
-      "createUsers": {
-        "status": {
-          "code": "ERROR",
-          "message": "User already exists"
-        }
-      }
-    }
-  }
-  ```
+  The WisdomAI GraphQL API returns **HTTP 200 even when an operation fails**. Always inspect the response body, not the HTTP status code. See [Error handling](/integrations/embeddings/error-handling) for the full reference including response shapes and status codes.
 </Warning>
-
-HTTP errors are only returned for transport-level failures:
-
-| HTTP status | Message               | Cause                                   |
-| ----------- | --------------------- | --------------------------------------- |
-| `401`       | Unauthorized          | Invalid or missing authentication token |
-| `400`       | Bad Request           | Malformed request payload               |
-| `500`       | Internal Server Error | Unexpected API failure                  |
 
 <Info>
   For any queries or support, contact our API team at [**support@askwisdom.ai**](mailto:support@askwisdom.ai).

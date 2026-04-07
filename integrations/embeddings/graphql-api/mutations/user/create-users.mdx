@@ -51,6 +51,10 @@ createUsers(input: CreateUsersInput!): CreateUsersResponse!
   Optional group IDs to assign the users to on creation.
 </ParamField>
 
+<Note>
+  `CreateUsersInput` does not include a display name field. Users provisioned via this mutation appear as their email address in the WisdomAI admin screen. If a display name is needed, pass it as a `userAttributes` entry (for example, `{ "key": "display_name", "value": "Alice Smith" }`).
+</Note>
+
 ## Response
 
 <ParamField path="status" type="ResponseStatus!">

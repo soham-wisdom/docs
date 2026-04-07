@@ -1,0 +1,97 @@
+---
+title: "Error handling"
+---
+
+The WisdomAI GraphQL API always returns HTTP 200, even when a request fails. You must inspect the response body to determine whether an operation succeeded.
+
+## HTTP 200 on failure
+
+Do not use the HTTP status code to detect errors. A failed GraphQL response returns HTTP 200 with either an `errors` array (for request-level failures) or a `status` object with a non-OK `code` (for mutation-level failures).
+
+**Request-level error (HTTP 200)**
+
+```json
+{
+  "errors": [
+    {
+      "message": "Unauthorized",
+      "locations": [{ "line": 1, "column": 1 }]
+    }
+  ],
+  "data": null
+}
+```
+
+**Mutation failure (HTTP 200)**
+
+```json
+{
+  "data": {
+    "createUsers": {
+      "status": {
+        "code": "ERROR",
+        "message": "User with email already exists"
+      }
+    }
+  }
+}
+```
+
+## Mutation response status
+
+Mutations that affect users or resources return a `ResponseStatus` object:
+
+```graphql
+type ResponseStatus {
+  code: StatusCode!
+  message: String!
+}
+
+enum StatusCode {
+  NONE
+  OK
+  ERROR
+  NOT_FOUND
+}
+```
+
+Always request `status { code message }` in your mutation selection set:
+
+```graphql
+mutation CreateUsers($input: CreateUsersInput!) {
+  createUsers(input: $input) {
+    status {
+      code
+      message
+    }
+  }
+}
+```
+
+| Code | Meaning |
+|------|---------|
+| `OK` | Operation succeeded |
+| `ERROR` | Operation failed (see `message` for details) |
+| `NOT_FOUND` | The requested resource does not exist |
+| `NONE` | No status available |
+
+## Transport-level HTTP errors
+
+HTTP errors other than 200 indicate a transport or authentication problem, not an application failure:
+
+| HTTP status | Cause |
+|-------------|-------|
+| `401` | Invalid or missing authentication token |
+| `400` | Malformed request payload |
+| `500` | Unexpected API failure |
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="GraphQL API" icon="code" href="/integrations/embeddings/graphql-api/GraphQL-API">
+    Authentication and endpoint reference
+  </Card>
+  <Card title="ResponseStatus" icon="circle-info" href="/integrations/embeddings/graphql-api/objects/response-status">
+    Full reference for the ResponseStatus object
+  </Card>
+</CardGroup>

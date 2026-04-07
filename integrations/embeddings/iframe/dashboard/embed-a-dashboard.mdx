@@ -30,20 +30,9 @@ Construct the special embed URL for your Dashboard and append the newly generate
 
 ## Controlling edit permissions with RBAC
 
-Embedded dashboards reflect the user's RBAC role. To hide edit buttons and prevent modifications in your embedded view, assign the user the **Viewer** role when creating them.
+Embedded dashboards reflect the user's RBAC role. To hide edit buttons and prevent modifications in your embedded view, assign the user the **Viewer** role when creating them. There is no separate embed-specific parameter for this.
 
-There is no separate embed-specific parameter for this — edit access flows entirely from the user's role assignment:
-
-- **Viewer**: can view dashboards; edit controls are hidden
-- **Editor** or higher: edit controls are visible
-
-Set the role in `CreateUsersInput.roleAssignments` when provisioning the user:
-
-```json
-"roleAssignments": [{ "role": "VIEWER", "scopeId": "workspace_123" }]
-```
-
-See [Create users](/integrations/embeddings/graphql-api/mutations/user/create-users) for the full input schema.
+See [RBAC for embedded users](/integrations/embeddings/rbac) for how to assign roles and a full breakdown of what each role controls in the embedded interface.
 
 ## Validation
 
