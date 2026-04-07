@@ -28,10 +28,6 @@ Returns an array of `User` objects. See [User](/integrations/embeddings/graphql-
   The user's email address.
 </ParamField>
 
-<ParamField path="name" type="String">
-  The user's display name.
-</ParamField>
-
 <ParamField path="userAttributes" type="[UserAttribute!]">
   Key-value pairs associated with the user. Each entry includes:
   - `key` — attribute name
@@ -52,15 +48,14 @@ query ListUsers($workspaceId: ID) {
   listUsers(workspaceId: $workspaceId) {
     id
     email
-    name
     userAttributes {
       key
       value
       source
     }
     roleAssignments {
-      role
-      scopeId
+      roleId
+      scopes
     }
   }
 }
@@ -73,7 +68,7 @@ curl -X POST \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer <access_token>" \
   -d '{
-    "query": "query ListUsers($workspaceId: ID) { listUsers(workspaceId: $workspaceId) { id email name userAttributes { key value source } roleAssignments { role scopeId } } }",
+    "query": "query ListUsers($workspaceId: ID) { listUsers(workspaceId: $workspaceId) { id email userAttributes { key value source } roleAssignments { roleId scopes } } }",
     "variables": {
       "workspaceId": "workspace_123"
     }
@@ -92,13 +87,12 @@ curl -X POST \
       {
         "id": "user_abc123",
         "email": "alice@yourcompany.com",
-        "name": "Alice",
         "userAttributes": [
           { "key": "account_id", "value": "acct_456", "source": "DATABASE" },
           { "key": "department", "value": "finance", "source": "JWT" }
         ],
         "roleAssignments": [
-          { "role": "VIEWER", "scopeId": "workspace_123" }
+          { "roleId": "00000000-0000-0000-0000-000000000003", "scopes": ["{{DOMAIN_ID}}"] }
         ]
       }
     ]

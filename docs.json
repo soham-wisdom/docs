@@ -231,6 +231,7 @@
                       "integrations/embeddings/graphql-api/objects/llm-tool-calls",
                       "integrations/embeddings/graphql-api/objects/operation",
                       "integrations/embeddings/graphql-api/objects/response-status",
+                      "integrations/embeddings/graphql-api/objects/roles",
                       "integrations/embeddings/graphql-api/objects/scope-role-assignment-input",
                       "integrations/embeddings/graphql-api/objects/section",
                       "integrations/embeddings/graphql-api/objects/subscription-auth-input",

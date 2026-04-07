@@ -90,7 +90,7 @@ curl -X POST \
 </ResponseExample>
 
 <Tip>
-  For attributes that are stable (e.g., `account_id`), set them once at creation via `userAttributes` in [createUsers](/integrations/embeddings/graphql-api/mutations/user/create-users). For session-scoped overrides that should not be persisted, use `transientAttributes` in [impersonateUser](/integrations/embeddings/graphql-api/queries/auth/impersonate-user) instead.
+  For attributes that are stable (e.g., `account_id`), set them once at creation via `userAttributes` in [createUsers](/integrations/embeddings/graphql-api/mutations/user/create-users). For session-scoped overrides that should not be persisted, use `attributes` in [impersonateUser](/integrations/embeddings/graphql-api/queries/auth/impersonate-user) instead.
 </Tip>
 
 ## Next steps

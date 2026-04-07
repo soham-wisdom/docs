@@ -4,9 +4,9 @@ title: "User Attributes"
 
 User attributes are key-value pairs attached to a user that control how WisdomAI filters and personalizes data for their session. They are used for:
 
-- **Parameterized connections** — matching a user's attributes against `credentialMappings.attributeMatch` to resolve the right data source credentials
-- **Row-level authorization** — referencing attributes in filter rules to restrict which rows a user can see
-- **Personalized data access** — passing session-specific context (e.g., a selected account or region) at impersonation time
+- **Parameterized connections**: matching a user's attributes against `credentialMappings.attributeMatch` to resolve the right data source credentials.
+- **Row-level authorization**: referencing attributes in filter rules to restrict which rows a user can see.
+- **Personalized data access**: passing session-specific context (e.g., a selected account or region) at impersonation time.
 
 ## Attribute sources
 
@@ -17,9 +17,11 @@ Every attribute has a `source` field that indicates where it came from:
 | `DATABASE` | API (`createUsers`, `setUserAttributes`) | Yes | Persistent attributes stored against the user |
 | `JWT` | SSO identity provider (SAML/OIDC claims) | No | Read-only attributes from the user's login token |
 
-When the same key exists in both sources, the `DATABASE` value takes precedence — unless a transient attribute is passed at impersonation time, which overrides both.
+When the same key exists in both sources, the `DATABASE` value takes precedence — unless a transient attribute is passed at impersonation time, which overrides both for that session only.
 
 ## Setting attributes
+
+Attributes can be set at three points in a user's lifecycle: when the user is first provisioned, updated later via API, or passed transiently at impersonation time.
 
 ### At creation time
 
@@ -35,8 +37,8 @@ curl -X POST \
       "input": {
         "emails": ["alice@yourcompany.com"],
         "workspaceID": "workspace_123",
-        "roleAssignments": [{ "role": "VIEWER", "scopeId": "workspace_123" }],
-        "sendWelcomeEmail": false,
+        "roleAssignments": [{ "roleId": "00000000-0000-0000-0000-000000000003", "scopes": ["{{DOMAIN_ID}}"] }],
+        "sendWelcomeEmail": true,
         "userAttributes": [
           { "key": "account_id", "value": "acct_456" },
           { "key": "region", "value": "us-east" }
@@ -46,6 +48,8 @@ curl -X POST \
   }' \
   https://{ACCOUNT}.askwisdom.ai/graphql
 ```
+
+<Snippet file="role-ids-note.mdx" />
 
 ### Updating later
 
@@ -76,21 +80,19 @@ curl -X POST \
 
 ### At impersonation time (transient)
 
-Pass `transientAttributes` in `ImpersonateUserInput` for session-only overrides. These are applied for the duration of the JWT only and are never persisted:
+Pass `attributes` in `impersonateUser` for session-only overrides. These are applied for the duration of the JWT only and are never persisted:
 
 ```bash
 curl -X POST \
   -H "Content-Type: application/json" \
   -d '{
-    "query": "query ImpersonateUser($input: ImpersonateUserInput!) { impersonateUser(input: $input) { token expiration status { code message } } }",
+    "query": "query ImpersonateUser($accessToken: String!, $userEmail: String!, $attributes: [UserAttributeInput!]) { impersonateUser(accessToken: $accessToken, userEmail: $userEmail, attributes: $attributes) }",
     "variables": {
-      "input": {
-        "userId": "user_abc123",
-        "workspaceId": "workspace_123",
-        "transientAttributes": [
-          { "key": "report_context", "value": "q3-summary" }
-        ]
-      }
+      "accessToken": "<your_access_token>",
+      "userEmail": "alice@yourcompany.com",
+      "attributes": [
+        { "key": "report_context", "value": "q3-summary" }
+      ]
     }
   }' \
   https://{ACCOUNT}.askwisdom.ai/graphql

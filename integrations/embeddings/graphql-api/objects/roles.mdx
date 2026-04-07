@@ -1,0 +1,51 @@
+---
+title: "Roles"
+---
+
+WisdomAI roles control what a user can see and do within a workspace. When provisioning embedded users, you pass a role ID in `roleAssignments` to grant the appropriate level of access.
+
+## Role IDs
+
+| Role | ID |
+|------|----|
+| `ADMIN` | `00000000-0000-0000-0000-000000000001` |
+| `EXPLORER` | `00000000-0000-0000-0000-000000000002` |
+| `VIEWER` | `00000000-0000-0000-0000-000000000003` |
+| `DATA_ADMIN` | `00000000-0000-0000-0000-000000000004` |
+| `CONNECTION_ADMIN` | `00000000-0000-0000-0000-000000000005` |
+| `CREATOR` | `00000000-0000-0000-0000-000000000006` |
+| `OBSERVER` | `00000000-0000-0000-0000-000000000007` |
+| `STORY_VIEWER` | `00000000-0000-0000-0000-000000000008` |
+| `STORY_WRITER` | `00000000-0000-0000-0000-000000000009` |
+| `SCHEDULE_VIEWER` | `00000000-0000-0000-0000-000000000010` |
+| `SCHEDULE_WRITER` | `00000000-0000-0000-0000-000000000011` |
+| `AGENT_VIEWER` | `00000000-0000-0000-0000-000000000012` |
+| `AGENT_WRITER` | `00000000-0000-0000-0000-000000000013` |
+| `SITE_ADMIN` | `00000000-0000-0000-0000-000000000014` |
+| `BASIC_EXPLORER` | `00000000-0000-0000-0000-000000000015` |
+
+<Note>
+  Custom roles are not yet supported.
+</Note>
+
+## Permissions in the embedded context
+
+The matrix below shows what each role can do when accessing WisdomAI through an embedded session.
+
+| Role | Dashboard creation | CSV export | Add to dashboard | AI workstream visibility |
+|------|--------------------|------------|------------------|--------------------------|
+| `ADMIN` | ✅ | ✅ | ✅ | ✅ |
+| `EXPLORER` | ✅ | ✅ | ✅ | ✅ |
+| `VIEWER` | | | | |
+| `DATA_ADMIN` | ✅ | ✅ | ✅ | ✅ |
+| `CONNECTION_ADMIN` | | | | |
+| `CREATOR` | | | | |
+| `OBSERVER` | ❌ | ❌ | ❌ | ❌ |
+| `STORY_VIEWER` | | | | |
+| `STORY_WRITER` | | | | |
+| `SCHEDULE_VIEWER` | | | | |
+| `SCHEDULE_WRITER` | | | | |
+| `AGENT_VIEWER` | | | | |
+| `AGENT_WRITER` | | | | |
+| `SITE_ADMIN` | | | | |
+| `BASIC_EXPLORER` | | | | |

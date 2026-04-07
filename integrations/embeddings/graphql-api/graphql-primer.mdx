@@ -67,43 +67,6 @@ For mutations, also check the `status.code` field in the response data:
 
 See [Error handling](/integrations/embeddings/graphql-api/GraphQL-API#error-handling) for details.
 
-## Queries vs mutations
-
-GraphQL operations are either **queries** (read) or **mutations** (write). The distinction is in the keyword, not the endpoint or method — both are POST requests to the same URL.
-
-```graphql
-# Read operation
-query ListUsers($workspaceId: ID) {
-  listUsers(workspaceId: $workspaceId) {
-    id
-    email
-  }
-}
-
-# Write operation
-mutation CreateUsers($input: CreateUsersInput!) {
-  createUsers(input: $input) {
-    status {
-      code
-      message
-    }
-  }
-}
-```
-
-## You request exactly what you need
-
-GraphQL responses only include the fields you ask for. If you don't request a field, it won't appear in the response. For example, to get just the user ID and email, request only those:
-
-```graphql
-listUsers {
-  id
-  email
-}
-```
-
-This applies to mutations too — you must explicitly request the `status` field (or any other return field) or it won't be returned.
-
 ## Postman setup
 
 To call the WisdomAI GraphQL API from Postman:

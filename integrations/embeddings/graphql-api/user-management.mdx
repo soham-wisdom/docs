@@ -24,7 +24,7 @@ This guide walks through the full workflow for creating and managing users via t
 
 Use [`createUsers`](/integrations/embeddings/graphql-api/mutations/user/create-users) to provision one or more users by email. You can assign roles, set initial attributes, add them to user groups, and optionally send a welcome email — all in a single call.
 
-If the user already exists, the call is safe to retry — check `status.code` in the response.
+If the user already exists, the call succeeds but **re-applies the role assignments you pass in**, overwriting any manually assigned roles. To avoid resetting roles on existing users, check [`listUsers`](/integrations/embeddings/graphql-api/queries/user/list-users) first and skip `createUsers` for users already provisioned.
 
 ```bash
 curl -X POST \
@@ -36,8 +36,8 @@ curl -X POST \
       "input": {
         "emails": ["alice@yourcompany.com"],
         "workspaceID": "workspace_123",
-        "roleAssignments": [{ "role": "VIEWER", "scopeId": "workspace_123" }],
-        "sendWelcomeEmail": false,
+        "roleAssignments": [{ "roleId": "00000000-0000-0000-0000-000000000003", "scopes": ["{{DOMAIN_ID}}"] }],
+        "sendWelcomeEmail": true,
         "userAttributes": [
           { "key": "account_id", "value": "acct_456" },
           { "key": "region", "value": "us-east" }
@@ -60,8 +60,8 @@ curl -X POST \
       "input": {
         "emails": ["alice@yourcompany.com", "bob@yourcompany.com", "carol@yourcompany.com"],
         "workspaceID": "workspace_123",
-        "roleAssignments": [{ "role": "VIEWER", "scopeId": "workspace_123" }],
-        "sendWelcomeEmail": false,
+        "roleAssignments": [{ "roleId": "00000000-0000-0000-0000-000000000003", "scopes": ["{{DOMAIN_ID}}"] }],
+        "sendWelcomeEmail": true,
         "userAttributes": [
           { "key": "account_id", "value": "acct_456" }
         ]
@@ -212,7 +212,7 @@ The token expires after **1 hour**. Use it in your iframe `src`:
 
 ```html
 <iframe
-  src="https://{ACCOUNT}.askwisdom.ai/dashboards/embed/<dashboard-name-id>?token=<JWT>"
+  src="https://{ACCOUNT}.askwisdom.ai/embed/dashboards/<id>?token=<JWT>"
   style="width: 100%; height: 100%; border: 0;" />
 ```
 
