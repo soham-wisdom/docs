@@ -344,15 +344,21 @@
               ]
             },
               {
+                "group": "SDK",
+                "pages": [
+                  "integrations/embeddings/sdk/sdk-overview"
+                ]
+              },
+              {
                 "group": "MCP Server",
                 "pages": [
-                  "integrations/embeddings/mcp-server/MCP-Server",
+                  "integrations/mcp-server/MCP-Server",
                   {
                     "group": "Tools",
                     "pages": [
-                      "integrations/embeddings/mcp-server/tools/echo",
-                      "integrations/embeddings/mcp-server/tools/list-domains",
-                      "integrations/embeddings/mcp-server/tools/chat"
+                      "integrations/mcp-server/tools/echo",
+                      "integrations/mcp-server/tools/list-domains",
+                      "integrations/mcp-server/tools/chat"
                     ]
                   }
                 ]

@@ -1,51 +1,155 @@
 ---
 title: "Roles"
+description: "Reference for WisdomAI roles: role IDs to pass in roleAssignments, permission scopes, and what each role can access within a workspace."
 ---
 
-WisdomAI roles control what a user can see and do within a workspace. When provisioning embedded users, you pass a role ID in `roleAssignments` to grant the appropriate level of access.
+# Roles
 
-## Role IDs
+Roles control what a user can see and do within a WisdomAI workspace. When provisioning embedded users, you pass a role ID in `roleAssignments` to grant the appropriate level of access.
 
-| Role | ID |
-|------|----|
-| `ADMIN` | `00000000-0000-0000-0000-000000000001` |
-| `EXPLORER` | `00000000-0000-0000-0000-000000000002` |
-| `VIEWER` | `00000000-0000-0000-0000-000000000003` |
-| `DATA_ADMIN` | `00000000-0000-0000-0000-000000000004` |
-| `CONNECTION_ADMIN` | `00000000-0000-0000-0000-000000000005` |
-| `CREATOR` | `00000000-0000-0000-0000-000000000006` |
-| `OBSERVER` | `00000000-0000-0000-0000-000000000007` |
-| `STORY_VIEWER` | `00000000-0000-0000-0000-000000000008` |
-| `STORY_WRITER` | `00000000-0000-0000-0000-000000000009` |
-| `SCHEDULE_VIEWER` | `00000000-0000-0000-0000-000000000010` |
-| `SCHEDULE_WRITER` | `00000000-0000-0000-0000-000000000011` |
-| `AGENT_VIEWER` | `00000000-0000-0000-0000-000000000012` |
-| `AGENT_WRITER` | `00000000-0000-0000-0000-000000000013` |
-| `SITE_ADMIN` | `00000000-0000-0000-0000-000000000014` |
-| `BASIC_EXPLORER` | `00000000-0000-0000-0000-000000000015` |
+## Role reference
+
+| Role | ID | Scope | Description |
+|------|----|-------|-------------|
+| `SITE_ADMIN` | `00000000-0000-0000-0000-000000000014` | Global | Full access across all organizations. Can create and delete workspaces. |
+| `ADMIN` | `00000000-0000-0000-0000-000000000001` | Organization | Full org-level access. Cannot create or delete workspaces. |
+| `DATA_ADMIN` | `00000000-0000-0000-0000-000000000004` | Domain | Full domain access. No connection write or delete, no IAM write or delete. |
+| `CONNECTION_ADMIN` | `00000000-0000-0000-0000-000000000005` | Connection | Manage a specific connection (read, write, delete, refresh). Cannot create connections or list others. |
+| `CREATOR` | `00000000-0000-0000-0000-000000000006` | Any | Create domains and connections. No query or dashboard edit access. |
+| `EXPLORER` | `00000000-0000-0000-0000-000000000002` | Domain | Query a domain with SQL editing and AI workstream access. |
+| `BASIC_EXPLORER` | `00000000-0000-0000-0000-000000000015` | Domain | Query a domain. No SQL editing, no AI workstream. |
+| `VIEWER` | `00000000-0000-0000-0000-000000000003` | Organization | Read-only across agents, chats, dashboards, schedules, and evaluations. Cannot create or modify anything. |
+| `OBSERVER` | `00000000-0000-0000-0000-000000000007` | Organization | Read-only access to workspace, IAM, and data tables. Cannot view dashboards or chat history. |
+| `STORY_VIEWER` | `00000000-0000-0000-0000-000000000008` | Dashboard | View a specific dashboard. |
+| `STORY_WRITER` | `00000000-0000-0000-0000-000000000009` | Dashboard | Edit a specific dashboard (read, write, clone). Cannot create new dashboards. |
+| `SCHEDULE_VIEWER` | `00000000-0000-0000-0000-000000000010` | Schedule | View a specific schedule. |
+| `SCHEDULE_WRITER` | `00000000-0000-0000-0000-000000000011` | Schedule | Edit a specific schedule. Cannot create new schedules. |
+| `AGENT_VIEWER` | `00000000-0000-0000-0000-000000000012` | Agent | View a specific agent. |
+| `AGENT_WRITER` | `00000000-0000-0000-0000-000000000013` | Agent | Edit a specific agent. |
 
 <Note>
   Custom roles are not yet supported.
 </Note>
 
-## Permissions in the embedded context
+## Permission matrix
 
-The matrix below shows what each role can do when accessing WisdomAI through an embedded session.
+The tables below list the permissions assigned to each role, grouped by category.
 
-| Role | Dashboard creation | CSV export | Add to dashboard | AI workstream visibility |
-|------|--------------------|------------|------------------|--------------------------|
-| `ADMIN` | ✅ | ✅ | ✅ | ✅ |
-| `EXPLORER` | ✅ | ✅ | ✅ | ✅ |
-| `VIEWER` | | | | |
-| `DATA_ADMIN` | ✅ | ✅ | ✅ | ✅ |
-| `CONNECTION_ADMIN` | | | | |
-| `CREATOR` | | | | |
-| `OBSERVER` | ❌ | ❌ | ❌ | ❌ |
-| `STORY_VIEWER` | | | | |
-| `STORY_WRITER` | | | | |
-| `SCHEDULE_VIEWER` | | | | |
-| `SCHEDULE_WRITER` | | | | |
-| `AGENT_VIEWER` | | | | |
-| `AGENT_WRITER` | | | | |
-| `SITE_ADMIN` | | | | |
-| `BASIC_EXPLORER` | | | | |
+**Role abbreviations:** `SA`=SITE_ADMIN · `AD`=ADMIN · `DA`=DATA_ADMIN · `CA`=CONNECTION_ADMIN · `CR`=CREATOR · `EX`=EXPLORER · `BE`=BASIC_EXPLORER · `VI`=VIEWER · `OB`=OBSERVER · `SV`=STORY_VIEWER · `SW`=STORY_WRITER · `ScV`=SCHEDULE_VIEWER · `ScW`=SCHEDULE_WRITER · `AV`=AGENT_VIEWER · `AW`=AGENT_WRITER
+
+### Chat and AI
+
+| Permission | SA | AD | DA | CA | CR | EX | BE | VI | OB | SV | SW | ScV | ScW | AV | AW |
+|------------|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:---:|:---:|:--:|:--:|
+| `chat:create` | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `chat:read` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `chat:read-all` | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `chat:execute-sql` | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `chat:edit-sql` | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `chat:expand-workstream` | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `chat:admin-tools` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+
+`EXPLORER` has `chat:edit-sql` and `chat:expand-workstream`. `BASIC_EXPLORER` does not. Everything else for these two roles is identical.
+
+### Dashboard
+
+| Permission | SA | AD | DA | CA | CR | EX | BE | VI | OB | SV | SW | ScV | ScW | AV | AW |
+|------------|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:---:|:---:|:--:|:--:|
+| `dashboard:create` | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `dashboard:read` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
+| `dashboard:write` | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ |
+| `dashboard:clone` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ |
+
+`ADMIN` and `DATA_ADMIN` can create dashboards but cannot edit their content. Editing a specific dashboard requires assigning `STORY_WRITER` scoped to that dashboard.
+
+### Schedule
+
+| Permission | SA | AD | DA | CA | CR | EX | BE | VI | OB | SV | SW | ScV | ScW | AV | AW |
+|------------|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:---:|:---:|:--:|:--:|
+| `schedule:create` | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `schedule:read` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ✅ | ✅ | ❌ | ❌ |
+| `schedule:write` | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ |
+
+`ADMIN` can create schedules but cannot edit them. Editing a specific schedule requires assigning `SCHEDULE_WRITER` scoped to that schedule.
+
+### Agent
+
+| Permission | SA | AD | DA | CA | CR | EX | BE | VI | OB | SV | SW | ScV | ScW | AV | AW |
+|------------|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:---:|:---:|:--:|:--:|
+| `agent:read` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ |
+| `agent:write` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ |
+
+### Connection
+
+| Permission | SA | AD | DA | CA | CR | EX | BE | VI | OB | SV | SW | ScV | ScW | AV | AW |
+|------------|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:---:|:---:|:--:|:--:|
+| `connection:create` | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `connection:read` | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `connection:write` | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `connection:delete` | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `connection:refresh` | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `connection:list` | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+
+`CONNECTION_ADMIN` can manage an existing connection but cannot create new ones or list others.
+
+### Domain
+
+| Permission | SA | AD | DA | CA | CR | EX | BE | VI | OB | SV | SW | ScV | ScW | AV | AW |
+|------------|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:---:|:---:|:--:|:--:|
+| `domain:create` | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `domain:list` | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `domain:invite` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+
+### IAM
+
+| Permission | SA | AD | DA | CA | CR | EX | BE | VI | OB | SV | SW | ScV | ScW | AV | AW |
+|------------|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:---:|:---:|:--:|:--:|
+| `iam:read` | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
+| `iam:write` | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `iam:delete` | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `iam-scope:write` | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ | ✅ | ❌ | ❌ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
+
+### Data
+
+| Permission | SA | AD | DA | CA | CR | EX | BE | VI | OB | SV | SW | ScV | ScW | AV | AW |
+|------------|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:---:|:---:|:--:|:--:|
+| `zsheet:read` | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `zsheet:write` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `zsheet:delete` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `zsheet:refresh` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `data:read-all` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+
+### Workspace
+
+| Permission | SA | AD | DA | CA | CR | EX | BE | VI | OB | SV | SW | ScV | ScW | AV | AW |
+|------------|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:---:|:---:|:--:|:--:|
+| `workspace:read` | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `workspace:write` | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `workspace:create` | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `workspace:delete` | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+
+### Evaluation and admin
+
+| Permission | SA | AD | DA | CA | CR | EX | BE | VI | OB | SV | SW | ScV | ScW | AV | AW |
+|------------|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:---:|:---:|:--:|:--:|
+| `evaluation:read` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `evaluation:write` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `executed-sql:read` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `questions-log:read` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `codegen:unbounded` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `recommended-questions:write` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `question-bank:all` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `reviewed-questions:all` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `cache:read` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `cache:write` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `slack:connect` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `system:view` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+
+## Used by
+
+Role IDs are passed in the `roleAssignments` field of the following mutations:
+
+- [`createUsers`](/integrations/embeddings/graphql-api/mutations/user/create-users) — assign a role when provisioning a new embedded user
+- [`setUserAttributes`](/integrations/embeddings/graphql-api/mutations/user/set-user-attributes) — update the role of an existing embedded user
+- [`addScopeRoleAssignmentsForSharing`](/integrations/embeddings/graphql-api/mutations/dashboard/add-scope-role-assignments-for-sharing) — grant a scoped role on a specific dashboard
+- [`removeScopeRoleAssignmentsForSharing`](/integrations/embeddings/graphql-api/mutations/dashboard/remove-scope-role-assignments-for-sharing) — remove a scoped role from a specific dashboard
