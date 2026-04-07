@@ -338,7 +338,8 @@
                     ]
                   }
                 ]
-              }
+              },
+              "integrations/google-sheets"
             ]
           },
           {
