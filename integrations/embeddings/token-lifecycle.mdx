@@ -1,5 +1,5 @@
 ---
-title: "Token lifecycle and refresh"
+title: "Token Lifecycle and Refresh"
 ---
 
 Embedded session JWTs expire after one hour. WisdomAI provides a built-in `postMessage` mechanism that lets your application refresh the token before expiry without interrupting the user's session.
@@ -58,7 +58,7 @@ WisdomAI sends a `REQUEST_JWT_TOKEN` event to the parent window approximately 10
         WISDOM_ORIGIN
       );
     } catch (error) {
-      console.error('Unable to provide WisdomAI token', error);
+      console.error('Unable to provide Wisdom token', error);
     }
   });
 </script>

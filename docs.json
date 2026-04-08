@@ -177,7 +177,14 @@
                 "pages": [
                   "integrations/embeddings/embedding",
                   "integrations/embeddings/user-attributes",
-                  {
+                  "integrations/embeddings/error-handling",
+                  "integrations/embeddings/embedding-modes",
+                  "integrations/embeddings/rbac",
+                  "integrations/embeddings/token-lifecycle",
+                  "integrations/embeddings/user-attributes"
+                ]
+              },
+              {
                 "group": "iframe",
                 "pages": [
                   {
@@ -194,161 +201,159 @@
                   }
                 ]
               },
-              {
-                "group": "GraphQL API",
-                "pages": [
-                  "integrations/embeddings/graphql-api/GraphQL-API",
-                  "integrations/embeddings/graphql-api/graphql-primer",
-                  "integrations/embeddings/graphql-api/user-management",
-                  {
-                    "group": "Objects",
-                    "pages": [
-                      "integrations/embeddings/graphql-api/objects/ai-workstream",
-                      "integrations/embeddings/graphql-api/objects/attributes",
-                      "integrations/embeddings/graphql-api/objects/chat-message",
-                      "integrations/embeddings/graphql-api/objects/chat-message-diff",
-                      "integrations/embeddings/graphql-api/objects/chat-message-sender",
-                      "integrations/embeddings/graphql-api/objects/chat-thinking-effort",
-                      "integrations/embeddings/graphql-api/objects/connection",
-                      "integrations/embeddings/graphql-api/objects/conversation-update-one-of",
-                      "integrations/embeddings/graphql-api/objects/dashboard",
-                      "integrations/embeddings/graphql-api/objects/dashboard-filter-definition",
-                      "integrations/embeddings/graphql-api/objects/dashboard-input",
-                      "integrations/embeddings/graphql-api/objects/dashboard-scope",
-                      "integrations/embeddings/graphql-api/objects/dashboard-summary-diff",
-                      "integrations/embeddings/graphql-api/objects/dashboard-summary-type",
-                      "integrations/embeddings/graphql-api/objects/dashboard-widget",
-                      "integrations/embeddings/graphql-api/objects/dashboard-widget-input",
-                      "integrations/embeddings/graphql-api/objects/dashboards-response",
-                      "integrations/embeddings/graphql-api/objects/delta",
-                      "integrations/embeddings/graphql-api/objects/delta-element",
-                      "integrations/embeddings/graphql-api/objects/delta-input",
-                      "integrations/embeddings/graphql-api/objects/domain-model",
-                      "integrations/embeddings/graphql-api/objects/filter-applied-state",
-                      "integrations/embeddings/graphql-api/objects/job-status",
-                      "integrations/embeddings/graphql-api/objects/join-input",
-                      "integrations/embeddings/graphql-api/objects/llm-tool-call-results",
-                      "integrations/embeddings/graphql-api/objects/llm-tool-calls",
-                      "integrations/embeddings/graphql-api/objects/operation",
-                      "integrations/embeddings/graphql-api/objects/response-status",
-                      "integrations/embeddings/graphql-api/objects/roles",
-                      "integrations/embeddings/graphql-api/objects/scope-role-assignment-input",
-                      "integrations/embeddings/graphql-api/objects/section",
-                      "integrations/embeddings/graphql-api/objects/subscription-auth-input",
-                      "integrations/embeddings/graphql-api/objects/table-input",
-                      "integrations/embeddings/graphql-api/objects/text-artifact",
-                      "integrations/embeddings/graphql-api/objects/tool-selection",
-                      "integrations/embeddings/graphql-api/objects/user",
-                      "integrations/embeddings/graphql-api/objects/visualization",
-                      "integrations/embeddings/graphql-api/objects/visualization-type",
-                      "integrations/embeddings/graphql-api/objects/widget-layout",
-                      "integrations/embeddings/graphql-api/objects/widget-layout-input",
-                      "integrations/embeddings/graphql-api/objects/widget-type"
-                    ]
-                  },
-                  {
-                    "group": "Queries",
-                    "pages": [
-                      {
-                        "group": "Auth",
-                        "pages": [
-                          "integrations/embeddings/graphql-api/queries/auth/exchange-access-token",
-                          "integrations/embeddings/graphql-api/queries/auth/impersonate-user"
-                        ]
-                      },
-                      {
-                        "group": "Connection",
-                        "pages": [
-                          "integrations/embeddings/graphql-api/queries/connection/connection"
-                        ]
-                      },
-                      {
-                        "group": "Dashboard",
-                        "pages": [
-                          "integrations/embeddings/graphql-api/queries/dashboard/dashboard",
-                          "integrations/embeddings/graphql-api/queries/dashboard/dashboards"
-                        ]
-                      },
-                      {
-                        "group": "User",
-                        "pages": [
-                          "integrations/embeddings/graphql-api/queries/user/current-user",
-                          "integrations/embeddings/graphql-api/queries/user/list-users"
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "group": "Mutations",
-                    "pages": [
-                      {
-                        "group": "Chat",
-                        "pages": [
-                          "integrations/embeddings/graphql-api/mutations/chat/create-conversation",
-                          "integrations/embeddings/graphql-api/mutations/chat/send-user-message"
-                        ]
-                      },
-                      {
-                        "group": "Agent",
-                        "pages": [
-                          "integrations/embeddings/graphql-api/mutations/agent/trigger-agent"
-                        ]
-                      },
-                      {
-                        "group": "Connection",
-                        "pages": [
-                          "integrations/embeddings/graphql-api/mutations/connection/refresh-connection"
-                        ]
-                      },
-                      {
-                        "group": "Dashboard",
-                        "pages": [
-                          "integrations/embeddings/graphql-api/mutations/dashboard/create-dashboard",
-                          "integrations/embeddings/graphql-api/mutations/dashboard/update-dashboard",
-                          "integrations/embeddings/graphql-api/mutations/dashboard/update-dashboard-filters",
-                          "integrations/embeddings/graphql-api/mutations/dashboard/update-dashboard-widgets",
-                          "integrations/embeddings/graphql-api/mutations/dashboard/add-widget-to-dashboard",
-                          "integrations/embeddings/graphql-api/mutations/dashboard/delete-dashboard",
-                          "integrations/embeddings/graphql-api/mutations/dashboard/delete-widget-from-dashboard",
-                          "integrations/embeddings/graphql-api/mutations/dashboard/refresh-dashboard",
-                          "integrations/embeddings/graphql-api/mutations/dashboard/add-scope-role-assignments-for-sharing",
-                          "integrations/embeddings/graphql-api/mutations/dashboard/remove-scope-role-assignments-for-sharing"
-                        ]
-                      },
-                      {
-                        "group": "User",
-                        "pages": [
-                          "integrations/embeddings/graphql-api/mutations/user/create-users",
-                          "integrations/embeddings/graphql-api/mutations/user/set-user-attributes",
-                          "integrations/embeddings/graphql-api/mutations/user/delete-users-from-workspace"
-                        ]
-                      },
-                      {
-                        "group": "Domain",
-                        "pages": [
-                          "integrations/embeddings/graphql-api/mutations/domain/create-domain",
-                          "integrations/embeddings/graphql-api/mutations/domain/update-data-sources"
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "group": "Subscriptions",
-                    "pages": [
-                      "integrations/embeddings/graphql-api/subscriptions/dashboard-summary",
-                      "integrations/embeddings/graphql-api/subscriptions/subscribe-conversation"
-                    ]
-                  }
-                ]
-              }
+            {
+              "group": "GraphQL API",
+              "pages": [
+                "integrations/embeddings/graphql-api/GraphQL-API",
+                "integrations/embeddings/graphql-api/graphql-primer",
+                "integrations/embeddings/graphql-api/user-management",
+                {
+                  "group": "Objects",
+                  "pages": [
+                    "integrations/embeddings/graphql-api/objects/ai-workstream",
+                    "integrations/embeddings/graphql-api/objects/attributes",
+                    "integrations/embeddings/graphql-api/objects/chat-message",
+                    "integrations/embeddings/graphql-api/objects/chat-message-diff",
+                    "integrations/embeddings/graphql-api/objects/chat-message-sender",
+                    "integrations/embeddings/graphql-api/objects/chat-thinking-effort",
+                    "integrations/embeddings/graphql-api/objects/connection",
+                    "integrations/embeddings/graphql-api/objects/conversation-update-one-of",
+                    "integrations/embeddings/graphql-api/objects/dashboard",
+                    "integrations/embeddings/graphql-api/objects/dashboard-filter-definition",
+                    "integrations/embeddings/graphql-api/objects/dashboard-input",
+                    "integrations/embeddings/graphql-api/objects/dashboard-scope",
+                    "integrations/embeddings/graphql-api/objects/dashboard-summary-diff",
+                    "integrations/embeddings/graphql-api/objects/dashboard-summary-type",
+                    "integrations/embeddings/graphql-api/objects/dashboard-widget",
+                    "integrations/embeddings/graphql-api/objects/dashboard-widget-input",
+                    "integrations/embeddings/graphql-api/objects/dashboards-response",
+                    "integrations/embeddings/graphql-api/objects/delta",
+                    "integrations/embeddings/graphql-api/objects/delta-element",
+                    "integrations/embeddings/graphql-api/objects/delta-input",
+                    "integrations/embeddings/graphql-api/objects/domain-model",
+                    "integrations/embeddings/graphql-api/objects/filter-applied-state",
+                    "integrations/embeddings/graphql-api/objects/job-status",
+                    "integrations/embeddings/graphql-api/objects/join-input",
+                    "integrations/embeddings/graphql-api/objects/llm-tool-call-results",
+                    "integrations/embeddings/graphql-api/objects/llm-tool-calls",
+                    "integrations/embeddings/graphql-api/objects/operation",
+                    "integrations/embeddings/graphql-api/objects/response-status",
+                    "integrations/embeddings/graphql-api/objects/roles",
+                    "integrations/embeddings/graphql-api/objects/scope-role-assignment-input",
+                    "integrations/embeddings/graphql-api/objects/section",
+                    "integrations/embeddings/graphql-api/objects/subscription-auth-input",
+                    "integrations/embeddings/graphql-api/objects/table-input",
+                    "integrations/embeddings/graphql-api/objects/text-artifact",
+                    "integrations/embeddings/graphql-api/objects/tool-selection",
+                    "integrations/embeddings/graphql-api/objects/user",
+                    "integrations/embeddings/graphql-api/objects/visualization",
+                    "integrations/embeddings/graphql-api/objects/visualization-type",
+                    "integrations/embeddings/graphql-api/objects/widget-layout",
+                    "integrations/embeddings/graphql-api/objects/widget-layout-input",
+                    "integrations/embeddings/graphql-api/objects/widget-type"
+                  ]
+                },
+                {
+                  "group": "Queries",
+                  "pages": [
+                    {
+                      "group": "Auth",
+                      "pages": [
+                        "integrations/embeddings/graphql-api/queries/auth/exchange-access-token",
+                        "integrations/embeddings/graphql-api/queries/auth/impersonate-user"
+                      ]
+                    },
+                    {
+                      "group": "Connection",
+                      "pages": [
+                        "integrations/embeddings/graphql-api/queries/connection/connection"
+                      ]
+                    },
+                    {
+                      "group": "Dashboard",
+                      "pages": [
+                        "integrations/embeddings/graphql-api/queries/dashboard/dashboard",
+                        "integrations/embeddings/graphql-api/queries/dashboard/dashboards"
+                      ]
+                    },
+                    {
+                      "group": "User",
+                      "pages": [
+                        "integrations/embeddings/graphql-api/queries/user/current-user",
+                        "integrations/embeddings/graphql-api/queries/user/list-users"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "group": "Mutations",
+                  "pages": [
+                    {
+                      "group": "Chat",
+                      "pages": [
+                        "integrations/embeddings/graphql-api/mutations/chat/create-conversation",
+                        "integrations/embeddings/graphql-api/mutations/chat/send-user-message"
+                      ]
+                    },
+                    {
+                      "group": "Agent",
+                      "pages": [
+                        "integrations/embeddings/graphql-api/mutations/agent/trigger-agent"
+                      ]
+                    },
+                    {
+                      "group": "Connection",
+                      "pages": [
+                        "integrations/embeddings/graphql-api/mutations/connection/refresh-connection"
+                      ]
+                    },
+                    {
+                      "group": "Dashboard",
+                      "pages": [
+                        "integrations/embeddings/graphql-api/mutations/dashboard/create-dashboard",
+                        "integrations/embeddings/graphql-api/mutations/dashboard/update-dashboard",
+                        "integrations/embeddings/graphql-api/mutations/dashboard/update-dashboard-filters",
+                        "integrations/embeddings/graphql-api/mutations/dashboard/update-dashboard-widgets",
+                        "integrations/embeddings/graphql-api/mutations/dashboard/add-widget-to-dashboard",
+                        "integrations/embeddings/graphql-api/mutations/dashboard/delete-dashboard",
+                        "integrations/embeddings/graphql-api/mutations/dashboard/delete-widget-from-dashboard",
+                        "integrations/embeddings/graphql-api/mutations/dashboard/refresh-dashboard",
+                        "integrations/embeddings/graphql-api/mutations/dashboard/add-scope-role-assignments-for-sharing",
+                        "integrations/embeddings/graphql-api/mutations/dashboard/remove-scope-role-assignments-for-sharing"
+                      ]
+                    },
+                    {
+                      "group": "User",
+                      "pages": [
+                        "integrations/embeddings/graphql-api/mutations/user/create-users",
+                        "integrations/embeddings/graphql-api/mutations/user/set-user-attributes",
+                        "integrations/embeddings/graphql-api/mutations/user/delete-users-from-workspace"
+                      ]
+                    },
+                    {
+                      "group": "Domain",
+                      "pages": [
+                        "integrations/embeddings/graphql-api/mutations/domain/create-domain",
+                        "integrations/embeddings/graphql-api/mutations/domain/update-data-sources"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "group": "Subscriptions",
+                  "pages": [
+                    "integrations/embeddings/graphql-api/subscriptions/dashboard-summary",
+                    "integrations/embeddings/graphql-api/subscriptions/subscribe-conversation"
+                  ]
+                }
               ]
             },
-              {
-                "group": "SDK",
-                "pages": [
-                  "integrations/embeddings/sdk/sdk-overview"
-                ]
-              },
+            {
+              "group": "SDK",
+              "pages": [
+                "integrations/embeddings/sdk/sdk-overview"
+              ]
+            },
               {
                 "group": "MCP Server",
                 "pages": [

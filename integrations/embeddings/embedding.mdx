@@ -6,7 +6,7 @@ Embed a streamlined, white-label version of WisdomAI chat and dashboards directl
 
 The pages are loaded in an `iframe` and intentionally omit WisdomAI branding and navigation for a seamless integration experience. All core capabilities (natural-language Q&A, table generation, and chart rendering) remain intact.
 
-The section below describes the steps to configure your embedded chat/dashboard.
+The section below describes the steps to configure and test your embedded chat and dashboards.
 
 <Note>
   All API and embed URL examples use `{ACCOUNT}.askwisdom.ai` as a placeholder. Replace it with the base URL of your WisdomAI tenant — the same domain you use to log in. Both `askwisdom.ai` and `wisdom.ai` are valid depending on your deployment.
@@ -18,22 +18,22 @@ Every embedded session follows this five-step flow:
 
 <Steps>
   <Step title="Get your access token" titleSize="h3">
-    Contact `support@askwisdom.ai` to receive your permanent access token. This is a Descope access key, not a JWT and not a session token. It authenticates your server to the WisdomAI API and grants impersonation permissions. It does not expire and must be kept secret. You only need to do this once.
+    Contact `support@askwisdom.ai` to receive your Descope Access Key. This is a permanent credential, not a JWT or session token. It authenticates your server to the WisdomAI API and grants impersonation permissions. It does not expire and must be kept secret.
   </Step>
 
   <Step title="Create the end user" titleSize="h3">
-    Before you can impersonate a user, they must exist in WisdomAI. Call `createUsers` to provision them:
+    Call `createUsers` to provision the user in WisdomAI:
 
     <Note>
-      This call uses the same Descope access key from Step 1. The access key must have `iam:write` permission.
+      **Authentication:** This management mutation requires a valid Bearer JWT with `iam:write` permissions. Typically, your backend obtains this by exchanging your Access Key via your auth system.
     </Note>
 
-    #### Example Request (using cURL):
+    #### Example Request:
 
     ```bash
     curl -X POST \
       -H "Content-Type: application/json" \
-      -H "Authorization: Bearer $ACCESS_TOKEN" \
+      -H "Authorization: Bearer $JWT" \
       -d '{
         "query": "mutation CreateUsers($input: CreateUsersInput!) { createUsers(input: $input) { status { code message } } }",
         "variables": {
@@ -49,32 +49,40 @@ Every embedded session follows this five-step flow:
     ```
 
     <Note>
-      **Email uniqueness:** User matching is email-based. If your embedded users don't have globally unique emails (e.g., multiple customers share email addresses), append a unique identifier to the email prefix — for example, `alice+tenant123@yourcompany.com`. This prevents one user's session from accidentally matching another.
+          **Key considerations:**
+    * **Email uniqueness:** User matching is email-based. If your users share emails across tenants, append a unique identifier (e.g., `alice+123@company.com`) to the email prefix to prevent session collisions.
+    * **Role overwrites:** If a user already exists, `createUsers` succeeds but re-applies the provided roles, overwriting manual changes. Use `ListUsers` to check status first if you wish to avoid resets.
     </Note>
 
-    If the user already exists, the call succeeds but **re-applies the role assignments you pass in**, overwriting any manually assigned roles. To avoid resetting roles on existing users, check `ListUsers` first and skip `createUsers` for users already provisioned.
   </Step>
 
   <Step title="Set user attributes (optional)" titleSize="h3">
-    User attributes are key-value pairs that control parameterized connections and row-level data access. Set them at creation time via `userAttributes` in `CreateUsersInput`, or update them later via `setUserAttributes`.
+    User attributes are key-value pairs used for row-level authorization and personalized data access. 
+    
+    * **Sources:** Attributes can be stored in the Wisdom **DATABASE** (via API) or derived from **JWT** SSO claims (read-only).
+    * **Creation/Update:** Set them at creation time via `userAttributes` in `CreateUsersInput`, or update them later via `setUserAttributes`.
+
+    <Warning>
+      The `setUserAttributes` mutation replaces **all** DATABASE-sourced attributes for that user. You must provide the complete set of attributes you wish to persist, not just the changes.
+    </Warning>
 
     See [User attributes](/integrations/embeddings/user-attributes) for details on how attributes work and how to set them.
   </Step>
 
   <Step title="Impersonate the user to get a JWT" titleSize="h3">
-    Call `impersonateUser` from your server to generate a short-lived JWT for the user. This step must always be performed server-side to protect your permanent access key. No `Authorization` header is required, the access key is passed as an argument.
+    Call `impersonateUser` from your server to generate a 1-hour JWT for the user. This mutation is a public API member that uses your permanent Descope Access Key as an argument (`accessToken`) rather than a standard Authorization header. This step must always be performed server-side.
 
     <Warning>
-      Never expose your permanent access token in client-side code. It provides long-term impersonation capabilities and must be protected on your backend. The permanent access token grants impersonation privileges, if compromised, an attacker could impersonate any user in your organization. Store it only in secure server-side environment variables or a secret management system. Do not store, cache, or transmit this token to any client-side application, mobile app, or frontend code.
+      Never expose your permanent access token in client-side code. It provides long-term impersonation capabilities and must be protected on your backend. If compromised, an attacker could impersonate any user in your organization. Store it only in secure server-side environment variables or a secret management system.
     </Warning>
 
-    #### Example Request (using cURL):
+    #### Example Request:
 
     ```bash
     curl -X POST \
       -H "Content-Type: application/json" \
       -d '{
-        "query": "query ImpersonateUser($accessToken: String!, $userEmail: String!) { impersonateUser(accessToken: $accessToken, userEmail: $userEmail) }",
+        "query": "mutation ImpersonateUser($accessToken: String!, $userEmail: String!) { impersonateUser(accessToken: $accessToken, userEmail: $userEmail) }",
         "variables": {
           "accessToken": "<your_permanent_access_token>",
           "userEmail": "alice@yourcompany.com"
@@ -83,13 +91,13 @@ Every embedded session follows this five-step flow:
       https://{ACCOUNT}.askwisdom.ai/graphql
     ```
 
-    The API responds with a JWT that authenticates as the impersonated user. This token expires in **1 hour**. WisdomAI will notify your page via a `postMessage` event when the token is about to expire. See [Token lifetime and refresh](#token-lifetime-and-refresh) for the full refresh flow.
+    The API responds with a JWT that authenticates as the impersonated user. This token expires in **1 hour**. WisdomAI will notify your page via a `postMessage` event when the token is about to expire. See [Token lifetime and refresh](/integrations/embeddings/token-lifecycle) for the full refresh flow.
 
     See [Impersonate user](/integrations/embeddings/graphql-api/queries/auth/impersonate-user) for the full API reference, including how to pass transient attributes.
   </Step>
 
   <Step title="Use the JWT in the iframe embed URL" titleSize="h3">
-    Append the JWT as a `token` query parameter to the embed URL and set it as the `src` of an `<iframe>`:
+    Append the JWT as a `token` query parameter to the embed URL and set it as the `src` of an `<iframe>`. Ensure the `allow` attribute includes `microphone; camera`. 
 
     ```html
     <!-- Full-app embed (search + dashboards + chat) -->
@@ -117,79 +125,11 @@ Every embedded session follows this five-step flow:
       style="width: 100%; height: 100%; border: 0;" />
     ```
 
-    For long-running sessions, implement the token refresh flow described in [Token lifetime and refresh](#token-lifetime-and-refresh).
   </Step>
 </Steps>
 
-## Token lifetime and refresh
-
-Embedded session JWTs expire after **1 hour**. The WisdomAI frontend begins the refresh flow ~10 seconds before expiry.
-
-**Built-in refresh via `postMessage`**
-
-WisdomAI sends a `REQUEST_JWT_TOKEN` event to the parent window when the embedded token is close to expiry. It is the **embedder's responsibility** to listen for this event, regenerate the token (by calling `impersonateUser` with the access key), and post it back. WisdomAI then picks up the new token and continues the session seamlessly.
-
-The flow:
-
-1. WisdomAI iframe detects token is about to expire.
-2. WisdomAI sends `window.parent.postMessage({ type: 'REQUEST_JWT_TOKEN' }, '*')` to the host.
-3. Host receives the event, validates `event.origin` matches the WisdomAI domain.
-4. Host calls `impersonateUser` (via its own backend) to get a fresh JWT.
-5. Host posts back `iframe.contentWindow.postMessage({ type: 'JWT_TOKEN_RESPONSE', token }, WISDOM_ORIGIN)`.
-6. WisdomAI receives the new token and refreshes the session.
-
-#### Example implementation
-
-```jsx
-<iframe
-  id="wisdom-frame"
-  src="https://{ACCOUNT}.askwisdom.ai/embed/dashboards/123"
-  style="width:100%;height:800px;border:0"
-></iframe>
-
-<script>
-  const iframe = document.getElementById('wisdom-frame');
-  const WISDOM_ORIGIN = 'https://{ACCOUNT}.askwisdom.ai';
-
-  async function getFreshWisdomToken() {
-    // Call your backend to invoke impersonateUser with your Descope access key.
-    // Replace this with your actual implementation.
-    return data.token;
-  }
-
-  window.addEventListener('message', async (event) => {
-    if (event.origin !== WISDOM_ORIGIN) {
-      return;
-    }
-
-    if (event.source !== iframe.contentWindow) {
-      return;
-    }
-
-    if (event.data?.type !== 'REQUEST_JWT_TOKEN') {
-      return;
-    }
-
-    try {
-      const token = await getFreshWisdomToken();
-
-      iframe.contentWindow.postMessage(
-        { type: 'JWT_TOKEN_RESPONSE', token },
-        WISDOM_ORIGIN
-      );
-    } catch (error) {
-      console.error('Unable to provide Wisdom token', error);
-    }
-  });
-</script>
-```
-
-Implementation notes from the codebase (`useEmbeddedSessionToken.ts`):
-
-- WisdomAI sends with `'*'` as target origin, so the host **must** validate `event.origin` on its side.
-- If the host doesn't respond within **10 seconds**, the request times out and retries on the next render cycle.
-- Only one refresh request is in-flight at a time (singleton pattern prevents duplicates).
-- `?token=` URL param always takes priority over any cached token.
+## Manage the session
+Once you have the initial iframe rendered, you must manage the session lifecycle to prevent user timeouts or "sticky" sessions when switching users. Read [Token lifecycle and refresh](/integrations/embeddings/token-lifecycle) for best practices on handling token expiry, refreshing tokens without reloading the page, and switching between users.
 
 ## Next steps
 
@@ -200,9 +140,6 @@ Implementation notes from the codebase (`useEmbeddedSessionToken.ts`):
   <Card title="Embed a dashboard" icon="chart-bar" href="/integrations/embeddings/iframe/dashboard/embed-a-dashboard">
     Embed interactive dashboards and visualizations
   </Card>
-  <Card title="User attributes" icon="list" href="/integrations/embeddings/user-attributes">
-    Control data access with user attributes
-  </Card>
   <Card title="Impersonate user API" icon="user-secret" href="/integrations/embeddings/graphql-api/queries/auth/impersonate-user">
     Full reference for the impersonation query
   </Card>
@@ -212,7 +149,7 @@ Implementation notes from the codebase (`useEmbeddedSessionToken.ts`):
   <Card title="GraphQL primer" icon="code" href="/integrations/embeddings/graphql-api/graphql-primer">
     New to GraphQL? Start here
   </Card>
-  <Card title="Embedding modes" icon="layout" href="/integrations/embeddings/embedding-modes">
+  <Card title="Embedding modes" icon="list-alt" href="/integrations/embeddings/embedding-modes">
     All supported embed paths and iframe requirements
   </Card>
 </CardGroup>
