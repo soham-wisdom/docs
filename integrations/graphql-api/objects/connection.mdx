@@ -14,8 +14,12 @@ This page describes the schema used for data source connections, including all f
   Configuration and metadata for the connection. See [ConnectionDetails](#connectiondetails).
 </ParamField>
 
-<ParamField path="status" type="JobStatus!" required>
-  Job execution status for connection operations like metadata refresh. See [JobStatus](/integrations/graphql-api/objects/job-status).
+<ParamField path="status" type="JobHistory!" required>
+  Job execution history for connection operations like metadata refresh. See [JobStatus](/integrations/graphql-api/objects/job-status).
+</ParamField>
+
+<ParamField path="createdAt" type="DateTime!" required>
+  Timestamp when the connection was created.
 </ParamField>
 
 ## ConnectionDetails
@@ -36,6 +40,10 @@ This page describes the schema used for data source connections, including all f
   The specific type of data source connection. See [ConnectionType](#connectiontype).
 </ParamField>
 
+<ParamField path="dialect" type="String!" required>
+  The SQL dialect used by this connection.
+</ParamField>
+
 ## Enums
 
 ### DataSourceType
@@ -47,23 +55,36 @@ The category of data source. It accepts the following values:
 | `DATA_SOURCE_TYPE_UNSPECIFIED` | Type not specified                                   |
 | `WAREHOUSE`                    | Data warehouse (Snowflake, BigQuery, Redshift, etc.) |
 | `BI_TOOL`                      | Business intelligence tool (Tableau, etc.)           |
+| `FILE`                         | File-based data source (S3, Azure Blob Storage, etc.)|
+| `DATA_SOURCE_MCP_SERVER`       | MCP server data source                               |
 
 ### ConnectionType
 
 The specific type of data source connection. It accepts the following values:
 
-| Connection Type               | Description                            |
-| :---------------------------- | :------------------------------------- |
-| `CONNECTION_TYPE_UNSPECIFIED` | Type not specified                     |
-| `REDSHIFT`                    | Amazon Redshift data warehouse         |
-| `SNOWFLAKE`                   | Snowflake data warehouse               |
-| `TABLEAU`                     | Tableau business intelligence platform |
-| `BIGQUERY`                    | Google BigQuery data warehouse         |
-| `POSTGRES`                    | PostgreSQL database                    |
-| `SQL_SERVER`                  | Microsoft SQL Server database          |
-| `DATABRICKS`                  | Databricks analytics platform          |
-| `MYSQL`                       | MySQL database                         |
-| `CLICKHOUSE`                  | ClickHouse database                    |
+| Connection Type               | Description                                |
+| :---------------------------- | :----------------------------------------- |
+| `CONNECTION_TYPE_UNSPECIFIED` | Type not specified                         |
+| `REDSHIFT`                    | Amazon Redshift data warehouse             |
+| `SNOWFLAKE`                   | Snowflake data warehouse                   |
+| `TABLEAU`                     | Tableau business intelligence platform     |
+| `BIGQUERY`                    | Google BigQuery data warehouse             |
+| `POSTGRES`                    | PostgreSQL database                        |
+| `SQL_SERVER`                  | Microsoft SQL Server database              |
+| `DATABRICKS`                  | Databricks analytics platform              |
+| `MYSQL`                       | MySQL database                             |
+| `CLICKHOUSE`                  | ClickHouse database                        |
+| `ATHENA`                      | Amazon Athena query service                |
+| `S3`                          | Amazon S3 file storage                     |
+| `MCP_SERVER`                  | MCP server connection                      |
+| `AZURE_SYNAPSE`               | Azure Synapse Analytics                    |
+| `AZURE_BLOB_STORAGE`          | Azure Blob Storage                         |
+| `TRINO`                       | Trino distributed SQL query engine         |
+| `AZURE_SYNAPSE_SERVERLESS`    | Azure Synapse Analytics Serverless         |
+| `SHAREPOINT`                  | Microsoft SharePoint                       |
+| `SPANNER`                     | Google Cloud Spanner                       |
+| `TERADATA`                    | Teradata database                          |
+| `DUCKDB`                      | DuckDB embedded database                   |
 
 ## Related operations
 

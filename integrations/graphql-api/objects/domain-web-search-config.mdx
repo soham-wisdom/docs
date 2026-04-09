@@ -1,0 +1,27 @@
+---
+title: "DomainWebSearchConfig"
+---
+
+This page describes the DomainWebSearchConfig object that represents the schema for domain web search configuration.
+
+## DomainWebSearchConfig
+
+<ParamField path="enabled" type="Boolean!" required>
+  Whether web search is enabled for this domain.
+</ParamField>
+
+<ParamField path="includeDomains" type="[String!]!" required>
+  List of web domains to include in search results.
+</ParamField>
+
+<ParamField path="excludeDomains" type="[String!]!" required>
+  List of web domains to exclude from search results.
+</ParamField>
+
+## Related operations
+
+<CardGroup cols={2}>
+  <Card title="DomainModel Object" icon="folder" href="/integrations/graphql-api/objects/domain-model">
+    Parent domain structure
+  </Card>
+</CardGroup>
