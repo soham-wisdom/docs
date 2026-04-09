@@ -47,7 +47,7 @@ This section outlines common prerequisites for connecting to data sources. Speci
 - **Network Access:** Ensure WisdomAI has network access to your database or data warehouse host. This may involve configuring firewall rules or security groups.
 - **Authentication Details:** You will need the correct credentials (username, password, keys, etc.) for your chosen data source.
 - **SSL/TLS Configuration:** For secure connections, ensure your database/data warehouse is configured to accept SSL/TLS connections, and configure WisdomAI accordingly (e.g., `SSL Mode: require` for PostgreSQL).
-- **Service Accounts (Google BigQuery):** For BigQuery, a Google Cloud service account with appropriate BigQuery permissions is required.
+- **Service Accounts (Google BigQuery):** A Google Cloud service account with appropriate BigQuery permissions is required.
   <Info>
     For PostgreSQL and Amazon Redshift, you can optionally configure an SSH Tunnel to connect through a bastion host.
   </Info>
@@ -407,7 +407,7 @@ This section outlines common prerequisites for connecting to data sources. Speci
     | Password | The password for the specified database user |
 
     <Note>
-      Database filters are optional, but it is recommended to specify only the databases that you want to expose to Wisdom. <img src="/images/databasefilters.png" alt="databasefilters" />
+      **Database filters** are optional, but it is recommended to specify only the databases that you want to expose to Wisdom.
     </Note>
 
     Here's an example connection:
