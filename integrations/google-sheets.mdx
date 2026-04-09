@@ -2,26 +2,26 @@
 title: 'Google Sheets'
 ---
 
-The Wisdom AI integration for Google Sheets allows you to pull live data from your Wisdom AI dashboards directly into Google Sheets. You can import any widget from your stories and chats using custom formulas or a visual dialog, and extract the latest version of data, everything with a single click.
-
-## Prerequisites
-
-Before you begin, ensure you have the following:
-
-• **API Credentials**: Email support@askwisdom.ai to request API keys for the Google Sheets integration, along with the use-case. The Wisdom team will reply with **your API token** and **the wrapper script**.
-
+The WisdomAI integration for Google Sheets allows you to pull live data from your WisdomAI dashboards directly into Google Sheets. You can import any widget from your stories and chats using custom formulas or a visual dialog, and extract the latest version of data, everything with a single click.
 
 ## What you can do:
 
 With this integration, you can:
 
-• Import widget data from Wisdom dashboards into your spreadsheet.
+• Import widget data from WisdomAI dashboards into your spreadsheet.
 
 • Use formulas like `=WISDOM_WIDGET()` for dynamic data pulls.
 
-• Refresh all data in one click via the Wisdom AI menu.
+• Refresh all data in one click via the WisdomAI menu.
 
 • List all dashboards, widgets and columns.
+
+## Prerequisites
+
+Before you begin, ensure you have the following:
+
+• **API Credentials**: Email support@askwisdom.ai to request API keys for the Google Sheets integration, along with the use-case. The WisdomAI team will reply with **your API token** and **the wrapper script**.
+
 
 ## Set up the integration
 
@@ -31,13 +31,17 @@ Follow these steps to integrate your Google Sheets with WisdomAI:
 
 2. In the script editor, click the **+** icon next to Libraries.
 
+![](/images/gs-extension-app.png)
+
 3. Enter Script ID: `1fx_yQncdXWvARZH0TuBpy7-XECy5VWi2gJ3JPPa2kCfCVp9elsyHPZK8` and click **Look up**.
 
 4. Select the latest version and set the identifier as WisdomGoogleSheets.
 
+![](/images/add-library.png)
+
 5. Paste the wrapper script shared by support@askwisdom.ai into Code.gs, replacing any existing code.
 
-6. Save and reload your spreadsheet, once synced, a Wisdom AI menu will appear in the menu bar.
+6. Save and reload your spreadsheet, once synced, a WisdomAI menu will appear in the menu bar.
 
 ## Set up your account
 To configure your account follow these steps:
@@ -45,22 +49,23 @@ To configure your account follow these steps:
 1. In your Google Sheet, go to **Wisdom AI** > **Configure Account** from the menu bar.
 2. Enter your Account URL and the API Token you received.
 3. Click **Save Configuration**.
+
+![](/images/account-config.png)
+
 4. Go to **Wisdom AI** > **Test Connection** to verify everything works.
 
-![](/images/googleSheets1.png) 
-![](/images/googleSheets2.png)
+![](/images/test-connection.png)
 
-## Using the Integration
+## Visual widget
 To insert a visual widget follow these steps:
 
 1. Go to **Wisdom AI** > **Insert Widget**. 
 
+![](/images/insert-widget.png)
+
 2. Paste the widget URL from your Wisdom dashboard 
 
 3. On any widget, click the menu and select **Copy link to visualization**. You can choose which rows and columns to import and whether to include headers.
-
-![](/images/googleSheets3.png) 
-![](/images/googleSheets4.png)
 
 ## Custom formulas
 You can also use these formulas directly in cells:
@@ -69,6 +74,21 @@ You can also use these formulas directly in cells:
 |`=WISDOM_WIDGET`(dashboardId, widgetId)| Fetches data from a widget|
 |`=WISDOM_COLUMN`(dashboardId, widgetId, col)| Fetches a single column|
 
+![](/images/widget-formula.png) 
+
 ## Refreshing data
 
 To update everything, go to **Wisdom AI** > **Refresh All Data**. This re-fetches every Wisdom formula in the active sheet.
+
+![](/images/refreseh-data.png)
+
+## Next Steps
+
+   <CardGroup cols={2}>
+  <Card title="SharePoint" icon="chart-pie" href="/integrations/google-sheets">
+    Learn how to connect to SharePoint.
+  </Card>
+  <Card title="Connect to Slack" icon="slack" href="/integrations/connect-to-slack">
+    Learn how to connect WisdomAI to Slack.
+  </Card>
+</CardGroup>
