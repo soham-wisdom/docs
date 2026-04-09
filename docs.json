@@ -180,6 +180,7 @@
                   "integrations/embeddings/error-handling",
                   "integrations/embeddings/embedding-modes",
                   "integrations/embeddings/rbac",
+                  "integrations/embeddings/role-and-permission-matrix",
                   "integrations/embeddings/token-lifecycle",
                   "integrations/embeddings/user-attributes"
                 ]

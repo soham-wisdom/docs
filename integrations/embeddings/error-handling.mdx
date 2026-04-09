@@ -79,11 +79,13 @@ mutation CreateUsers($input: CreateUsersInput!) {
 
 HTTP errors other than 200 indicate a transport or authentication problem, not an application failure:
 
-| HTTP status | Cause |
-|-------------|-------|
-| `401` | Invalid or missing authentication token |
-| `400` | Malformed request payload |
-| `500` | Unexpected API failure |
+| HTTP status | Message | Cause |
+|-------------|---------|-------|
+| `401` | Unauthorized | Invalid or missing authentication token |
+| `400` | Bad Request | Malformed request payload |
+| `500` | Internal Server Error | Unexpected API failure |
+
+*Note: All application-level errors and mutation failures return **HTTP 200 OK**. Refer to the response body for error details.*
 
 ## Related articles
 

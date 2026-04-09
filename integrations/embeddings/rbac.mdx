@@ -6,56 +6,69 @@ Embedded users inherit WisdomAI's role-based access control (RBAC) system. The r
 
 ## How roles affect embedded views
 
-Edit controls, dashboard creation buttons, and AI workstream visibility are all determined by the user's role assignment. To hide edit controls in an embedded dashboard, assign the user the **Viewer** role. There is no embed-specific parameter for this.
+Visibility of edit controls, dashboard creation buttons, and AI workstreams is determined by the user's role assignment. To **hide edit controls in an embedded dashboard**, assign the user the **Viewer** role.
 
-| Role | Edit controls | Dashboard creation | AI workstream |
+| Role | Edit SQL | Dashboard creation | AI workstream |
 |------|:---:|:---:|:---:|
-| `VIEWER` | Hidden | No | No |
-| `BASIC_EXPLORER` | Visible | Yes | No |
-| `EXPLORER` | Visible | Yes | Yes |
+| `VIEWER` | No | No | No |
+| `BASIC_EXPLORER` | No | Yes | No |
+| `EXPLORER` | Yes | Yes | Yes |
+
+*Note: The **Viewer** role is pure read-only and cannot create or modify any resources.*
 
 ## Assigning a role at provisioning time
 
-Pass the role ID in `roleAssignments` when calling `createUsers`:
+Pass the specific `roleId` in the `roleAssignments` array when calling `createUsers`. Role IDs are unique UUIDs. You should fetch the current IDs for your environment via the `roles` query before provisioning.
 
-```graphql
-mutation CreateUsers($input: CreateUsersInput!) {
-  createUsers(input: $input) {
-    status { code message }
-  }
-}
-```
-
-```json
-{
-  "input": {
-    "emails": ["alice@yourcompany.com"],
-    "workspaceID": "workspace_123",
-    "roleAssignments": [
-      {
-        "roleId": "00000000-0000-0000-0000-000000000003",
-        "scopes": ["domain_456"]
+```bash
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <access_token>" \
+  -d '{
+    "query": "mutation CreateUsers($input: CreateUsersInput!) { createUsers(input: $input) { status { code message } } }",
+    "variables": {
+      "input": {
+        "emails": ["alice@yourcompany.com"],
+        "workspaceID": "workspace_123",
+        "roleAssignments": [
+          {
+            "roleId": "00000000-0000-0000-0000-000000000003",
+            "scopes": ["domain_456"]
+          }
+        ]
       }
-    ]
-  }
-}
+    }
+  }' \
+  https://{ACCOUNT}.askwisdom.ai/graphql
 ```
 
-The `roleId` above is the **Viewer** role. See [Roles](/integrations/embeddings/graphql-api/objects/roles) for the full list of role IDs.
+<Snippet file="role-ids-note.mdx" />
 
-## Scope requirements
+## Complete Role & Scope Reference
 
-Roles in WisdomAI are scoped. The `scopes` field takes an array of resource IDs (workspace, domain, or specific resource) that the role applies to. Assigning a role without a valid scope has no effect.
+Roles in WisdomAI must be scoped to specific resource IDs. A role assigned with an invalid or missing scope will result in the user having no active permissions.
 
-| Role | Scope level |
-|------|-------------|
-| `VIEWER` | Organization |
-| `BASIC_EXPLORER` | Domain |
-| `EXPLORER` | Domain |
-| `STORY_VIEWER` | Specific dashboard |
-| `STORY_WRITER` | Specific dashboard |
+| Role | Required Scope | Purpose |
+|------|----------------|---------|
+| `SITE_ADMIN` | Global | Full access across all organizations and workspaces |
+| `ADMIN` | Organization | Full organization-level management |
+| `DATA_ADMIN` | Domain | Full domain access (cannot manage IAM or Connections) |
+| `EXPLORER` | Domain | Full query access including SQL editing and AI workstreams |
+| `BASIC_EXPLORER` | Domain | Query data without SQL or AI workstream access |
+| `VIEWER` | Organization | Read-only access across dashboards, chats, and agents |
+| `OBSERVER` | Organization | Minimal read-only access (IAM/Workspace only; no dashboards) |
+| `CREATOR` | Any | Permission to create domains and connections only |
+| `CONNECTION_ADMIN`| Connection | Manage (Read/Write/Delete) one specific data connection |
+| `STORY_VIEWER` | Dashboard ID | View a specific dashboard |
+| `STORY_WRITER` | Dashboard ID | Edit/Clone a specific dashboard (cannot create new ones) |
+| `AGENT_VIEWER` | Agent ID | View a specific AI agent |
+| `AGENT_WRITER` | Agent ID | Edit a specific AI agent (cannot create new ones) |
+| `SCHEDULE_VIEWER` | Schedule ID | View a specific report schedule |
+| `SCHEDULE_WRITER` | Schedule ID | Edit a specific report schedule (cannot create new ones) |
 
-## Related articles
+*Note: In the API, **Story** refers to **Dashboards**. Roles labeled **Writer** grant edit access to existing resources but do not grant permission to create new ones.*
+
+## Next steps
 
 <CardGroup cols={2}>
   <Card title="Roles" icon="shield" href="/integrations/embeddings/graphql-api/objects/roles">
@@ -68,3 +81,4 @@ Roles in WisdomAI are scoped. The `scopes` field takes an array of resource IDs 
     Use roles to control edit access in embedded dashboards
   </Card>
 </CardGroup>
+```
