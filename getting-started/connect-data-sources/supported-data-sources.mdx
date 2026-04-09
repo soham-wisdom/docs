@@ -224,9 +224,9 @@ This section outlines common prerequisites for connecting to data sources. Speci
     | :-- | :-- |
     | AWS Access Key ID | The access key for an IAM user with permissions to access Athena and the underlying S3 data |
     | AWS Secret Access Key | The secret access key associated with the AWS Access Key ID |
-    | Region Name| The AWS region where your Athena service is hosted|
-    | S3 Staging Directory | The S3 bucket path where Athena stores query results|
-    | Work Group | The specific Athena workgroup used to run queries|
+    | Region Name | The AWS region where your Athena service is hosted |
+    | S3 Staging Directory | The S3 bucket path where Athena stores query results |
+    | Work Group | The specific Athena workgroup used to run queries |
 
     Here's an example connection:
 
@@ -243,7 +243,7 @@ This section outlines common prerequisites for connecting to data sources. Speci
 
     | Requirement | Description |
     | :-- | :-- |
-    | Workspace SQL endpoint | The SQL endpoint URL for your workspace  |
+    | Workspace SQL endpoint | The SQL endpoint URL for your workspace |
     | Subscription ID | The ID of your Azure subscription |
     | Resource Group ID | The name of the Azure resource group where the Synapse workspace is located |
     | Workspace ID | The ID for the Synapse Analytics workspace |
@@ -268,7 +268,7 @@ This section outlines common prerequisites for connecting to data sources. Speci
 
     | Requirement | Description |
     | :-- | :-- |
-    | Serverless SQL endpoint | The on-demand SQL endpoint for your Synapse workspace|
+    | Serverless SQL endpoint | The on-demand SQL endpoint for your Synapse workspace |
     | Client ID | The Application ID of the Azure Service Principal used for authentication |
     | Tenant ID | The Directory ID of your Azure Active Directory |
     | Client Secret | The client secret value generated for the Service Principal |
@@ -310,7 +310,7 @@ This section outlines common prerequisites for connecting to data sources. Speci
     | Password | The password for the specified database user |
 
     <Note>
-    Database filters are optional, but it is recommended to specify only the databases that you want to expose to Wisdom.
+      Database filters are optional, but it is recommended to specify only the databases that you want to expose to Wisdom.
     </Note>
 
     Here's an example connection:
@@ -362,9 +362,9 @@ This section outlines common prerequisites for connecting to data sources. Speci
     | Tenant ID | The Directory ID of your Azure Active Directory |
     | Client Secret | The client secret value generated for the Azure App registration |
     | Site URL | The full URL of the SharePoint site you want to crawl |
-    
+
     <Note>
-    By default, all document libraries are crawled. It is recommended to specify only the libraries that you want to expose to Wisdom.
+      By default, all document libraries are crawled. It is recommended to specify only the libraries that you want to expose to Wisdom in the **Document Libraries** field.
     </Note>
 
     Here's an example connection:
@@ -407,8 +407,7 @@ This section outlines common prerequisites for connecting to data sources. Speci
     | Password | The password for the specified database user |
 
     <Note>
-    Database filters are optional, but it is recommended to specify only the databases that you want to expose to Wisdom.
-    ![databasefilters](/images/databasefilters.png)
+      Database filters are optional, but it is recommended to specify only the databases that you want to expose to Wisdom. <img src="/images/databasefilters.png" alt="databasefilters" />
     </Note>
 
     Here's an example connection:
@@ -422,6 +421,8 @@ This section outlines common prerequisites for connecting to data sources. Speci
     ```
   </Tab>
 </Tabs>
+
+---
 
 ## Protocol-based source: MCP server
 
