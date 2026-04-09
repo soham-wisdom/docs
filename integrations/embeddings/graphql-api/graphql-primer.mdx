@@ -65,7 +65,7 @@ For mutations, also check the `status.code` field in the response data:
 }
 ```
 
-See [Error handling](/integrations/embeddings/graphql-api/GraphQL-API#error-handling) for details.
+See [Error handling](/integrations/embeddings/error-handling) for details.
 
 ## Postman setup
 
@@ -95,7 +95,7 @@ To call the WisdomAI GraphQL API from Postman:
 | Not requesting return fields on mutations | Include `status { code message }` (or other fields) in your mutation or they won't be returned |
 | Checking HTTP status for errors | Always read the response body — GraphQL returns HTTP 200 even on failure |
 
-## Next steps
+## Related articles
 
 <CardGroup cols={2}>
   <Card title="GraphQL API overview" icon="code" href="/integrations/embeddings/graphql-api/GraphQL-API">

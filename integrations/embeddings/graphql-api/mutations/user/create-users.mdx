@@ -26,12 +26,12 @@ createUsers(input: CreateUsersInput!): CreateUsersResponse!
   </Note>
 </ParamField>
 
-<ParamField path="workspaceID" type="ID!">
+<ParamField path="workspaceID" type="ID">
   The workspace to create the users in. Required for multi-workspace deployments.
 </ParamField>
 
-<ParamField path="roleAssignments" type="[ScopeRoleAssignmentInput!]">
-  Role assignments for the new users. Each entry specifies a `roleId` and `scopes`. See [ScopeRoleAssignmentInput](/integrations/embeddings/graphql-api/objects/scope-role-assignment-input).
+<ParamField path="roleAssignments" type="[RoleAssignmentInput!]">
+  Role assignments for the new users. Each entry specifies a `roleId` and `scopes`. See [RoleAssignmentInput](/integrations/embeddings/graphql-api/objects/role-assignment-input).
 
   For embedded dashboards, assign the Viewer role to hide edit controls:
   ```json
@@ -60,9 +60,9 @@ createUsers(input: CreateUsersInput!): CreateUsersResponse!
 <ParamField path="status" type="ResponseStatus!">
   Indicates whether the operation succeeded. See [ResponseStatus](/integrations/embeddings/graphql-api/objects/response-status).
 
-  <Note>
-    `status` here is a `ResponseStatus` object with `code` and `message` fields — it is **not** the `UserStatus` enum used in the `User` object.
-  </Note>
+  <Info>
+    The `status` field here returns a `ResponseStatus` object (with `code` and `message`). This is distinct from the `UserStatus` enum (e.g., `ACTIVE`) found on the `User` object.
+  </Info>
 </ParamField>
 
 ## Usage example
@@ -81,7 +81,7 @@ mutation CreateUsers($input: CreateUsersInput!) {
 <RequestExample>
 
 ```bash Single user
-curl -X POST \
+curl -s -X POST \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer <access_token>" \
   -d '{
@@ -91,7 +91,7 @@ curl -X POST \
         "emails": ["alice@yourcompany.com"],
         "workspaceID": "workspace_123",
         "roleAssignments": [{ "roleId": "00000000-0000-0000-0000-000000000003", "scopes": ["{{DOMAIN_ID}}"] }],
-        "sendWelcomeEmail": true
+        "sendWelcomeEmail": false
       }
     }
   }' \
@@ -99,7 +99,7 @@ curl -X POST \
 ```
 
 ```bash Multiple users
-curl -X POST \
+curl -s -X POST \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer <access_token>" \
   -d '{
@@ -109,7 +109,7 @@ curl -X POST \
         "emails": ["alice@yourcompany.com", "bob@yourcompany.com"],
         "workspaceID": "workspace_123",
         "roleAssignments": [{ "roleId": "00000000-0000-0000-0000-000000000003", "scopes": ["{{DOMAIN_ID}}"] }],
-        "sendWelcomeEmail": true
+        "sendWelcomeEmail": false
       }
     }
   }' \
@@ -117,7 +117,7 @@ curl -X POST \
 ```
 
 ```bash With user attributes
-curl -X POST \
+curl -s -X POST \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer <access_token>" \
   -d '{
@@ -127,7 +127,7 @@ curl -X POST \
         "emails": ["alice@yourcompany.com"],
         "workspaceID": "workspace_123",
         "roleAssignments": [{ "roleId": "00000000-0000-0000-0000-000000000003", "scopes": ["{{DOMAIN_ID}}"] }],
-        "sendWelcomeEmail": true,
+        "sendWelcomeEmail": false,
         "userAttributes": [
           { "key": "account_id", "value": "acct_456" },
           { "key": "region", "value": "us-east" }
@@ -155,32 +155,19 @@ curl -X POST \
 }
 ```
 
-```json Failure (HTTP 200)
-{
-  "data": {
-    "createUsers": {
-      "status": {
-        "code": "ERROR",
-        "message": "User with email alice@yourcompany.com already exists"
-      }
-    }
-  }
-}
-```
-
 </ResponseExample>
 
 <Warning>
-  If a user already exists, the call succeeds but **re-applies the role assignments you pass in**, overwriting any manually assigned roles. To avoid resetting roles on existing users, check [`listUsers`](/integrations/embeddings/graphql-api/queries/user/list-users) first and skip `createUsers` for users already provisioned.
+  If a user with the same email already exists, the call succeeds but re-applies the role assignments you pass in, overwriting any manually assigned roles. To avoid resetting roles on existing users, check [`listUsers`](/integrations/embeddings/graphql-api/queries/user/list-users) first and skip `createUsers` for users already provisioned.
 </Warning>
 
-## Next steps
+## Related articles
 
 <CardGroup cols={2}>
   <Card title="Set user attributes" icon="tag" href="/integrations/embeddings/graphql-api/mutations/user/set-user-attributes">
     Update attributes on existing users
   </Card>
-  <Card title="Impersonate user" icon="user-secret" href="/integrations/embeddings/graphql-api/queries/auth/impersonate-user">
+  <Card title="Impersonate user" icon="user-secret" href="/integrations/embeddings/graphql-api/mutations/auth/impersonate-user">
     Generate a session JWT for the created user
   </Card>
   <Card title="User attributes" icon="list" href="/integrations/embeddings/user-attributes">

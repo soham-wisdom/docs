@@ -52,7 +52,7 @@ mutation SetUserAttributes($input: SetUserAttributesInput!) {
 <RequestExample>
 
 ```bash Request
-curl -X POST \
+curl -s -X POST \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer <access_token>" \
   -d '{
@@ -90,16 +90,16 @@ curl -X POST \
 </ResponseExample>
 
 <Tip>
-  For attributes that are stable (e.g., `account_id`), set them once at creation via `userAttributes` in [createUsers](/integrations/embeddings/graphql-api/mutations/user/create-users). For session-scoped overrides that should not be persisted, use `attributes` in [impersonateUser](/integrations/embeddings/graphql-api/queries/auth/impersonate-user) instead.
+  For attributes that are stable (e.g., `account_id`), set them once at creation via `userAttributes` in [createUsers](/integrations/embeddings/graphql-api/mutations/user/create-users). For session-scoped overrides that should not be persisted, use `attributes` in [impersonateUser](/integrations/embeddings/graphql-api/mutations/auth/impersonate-user) instead.
 </Tip>
 
-## Next steps
+## Related articles
 
 <CardGroup cols={2}>
   <Card title="User attributes" icon="list" href="/integrations/embeddings/user-attributes">
     Understand attribute sources and how they interact
   </Card>
-  <Card title="Impersonate user" icon="user-secret" href="/integrations/embeddings/graphql-api/queries/auth/impersonate-user">
+  <Card title="Impersonate user" icon="user-secret" href="/integrations/embeddings/graphql-api/mutations/auth/impersonate-user">
     Pass transient attributes at session time
   </Card>
   <Card title="List users" icon="users" href="/integrations/embeddings/graphql-api/queries/user/list-users">

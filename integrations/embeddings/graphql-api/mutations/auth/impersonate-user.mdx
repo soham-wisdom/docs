@@ -2,9 +2,9 @@
 title: "Impersonate User"
 ---
 
-The `impersonateUser` query exchanges a permanent access key for a short-lived JWT token that authenticates subsequent requests as a specific user. This is the core of the embedded session flow — the returned JWT is passed as the `token` query parameter in iframe embed URLs.
+The `impersonateUser` mutation exchanges a permanent access key for a short-lived JWT token that authenticates subsequent requests as a specific user. This is the core of the embedded session flow — the returned JWT is passed as the `token` query parameter in iframe embed URLs.
 
-This query is public and unauthenticated — no `Authorization` header is required.
+This mutation is public and unauthenticated — no `Authorization` header is required.
 
 ## Signature
 
@@ -37,13 +37,13 @@ impersonateUser(accessToken: String!, userEmail: String!, attributes: [UserAttri
 Returns a raw `String!` — the short-lived JWT to use as the `token` query parameter in iframe embed URLs. The token expires after **1 hour**.
 
 <Warning>
-  Never expose your permanent access key in client-side code. Always call this query from your server. See the [embedding overview](/integrations/embeddings/embedding) for the secure server-side flow.
+  Never expose your permanent access key in client-side code. Always call this mutation from your server. See the [embedding overview](/integrations/embeddings/embedding) for the secure server-side flow.
 </Warning>
 
 ## Usage example
 
 ```graphql
-query ImpersonateUser($accessToken: String!, $userEmail: String!) {
+mutation ImpersonateUser($accessToken: String!, $userEmail: String!) {
   impersonateUser(accessToken: $accessToken, userEmail: $userEmail)
 }
 ```
@@ -54,7 +54,7 @@ query ImpersonateUser($accessToken: String!, $userEmail: String!) {
 curl -X POST \
   -H "Content-Type: application/json" \
   -d '{
-    "query": "query ImpersonateUser($accessToken: String!, $userEmail: String!) { impersonateUser(accessToken: $accessToken, userEmail: $userEmail) }",
+    "query": "mutation ImpersonateUser($accessToken: String!, $userEmail: String!) { impersonateUser(accessToken: $accessToken, userEmail: $userEmail) }",
     "variables": {
       "accessToken": "<your_access_key>",
       "userEmail": "alice@yourcompany.com"
@@ -67,7 +67,7 @@ curl -X POST \
 curl -X POST \
   -H "Content-Type: application/json" \
   -d '{
-    "query": "query ImpersonateUser($accessToken: String!, $userEmail: String!, $attributes: [UserAttributeInput!]) { impersonateUser(accessToken: $accessToken, userEmail: $userEmail, attributes: $attributes) }",
+    "query": "mutation ImpersonateUser($accessToken: String!, $userEmail: String!, $attributes: [UserAttributeInput!]) { impersonateUser(accessToken: $accessToken, userEmail: $userEmail, attributes: $attributes) }",
     "variables": {
       "accessToken": "<your_access_key>",
       "userEmail": "alice@yourcompany.com",
@@ -162,7 +162,7 @@ WisdomAI sends a `REQUEST_JWT_TOKEN` event to the parent window approximately 10
 - Only one refresh request is in-flight at a time (duplicate requests are suppressed)
 - The `?token=` URL param always takes priority over any cached token
 
-## Next steps
+## Related articles
 
 <CardGroup cols={2}>
   <Card title="Embed a dashboard" icon="chart-bar" href="/integrations/embeddings/iframe/dashboard/embed-a-dashboard">
@@ -176,5 +176,8 @@ WisdomAI sends a `REQUEST_JWT_TOKEN` event to the parent window approximately 10
   </Card>
   <Card title="User attributes" icon="list" href="/integrations/embeddings/user-attributes">
     Understand transient vs persistent attributes
+  </Card>
+  <Card title="Token lifecycle and refresh" icon="clock" href="/integrations/embeddings/token-lifecycle">
+    Full token lifecycle reference including switching users
   </Card>
 </CardGroup>

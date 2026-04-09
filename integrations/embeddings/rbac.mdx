@@ -1,25 +1,31 @@
 ---
 title: "RBAC for Embedded Users"
 ---
-
+ 
 Embedded users inherit WisdomAI's role-based access control (RBAC) system. The role you assign when provisioning a user controls what they can see and do inside the embedded interface. There is no separate embed-specific permission layer.
-
+ 
+<Note>
+  Custom roles are not yet supported. You must use one of the built-in roles listed below.
+</Note>
+ 
 ## How roles affect embedded views
-
+ 
 Visibility of edit controls, dashboard creation buttons, and AI workstreams is determined by the user's role assignment. To **hide edit controls in an embedded dashboard**, assign the user the **Viewer** role.
-
-| Role | Edit SQL | Dashboard creation | AI workstream |
-|------|:---:|:---:|:---:|
-| `VIEWER` | No | No | No |
-| `BASIC_EXPLORER` | No | Yes | No |
-| `EXPLORER` | Yes | Yes | Yes |
-
-*Note: The **Viewer** role is pure read-only and cannot create or modify any resources.*
-
+ 
+| Role | Dashboard read | Dashboard creation | Edit SQL | AI workstream |
+|------|:---:|:---:|:---:|:---:|
+| `VIEWER` | Yes | No | No | No |
+| `BASIC_EXPLORER` | No | Yes | No | No |
+| `EXPLORER` | No | Yes | Yes | Yes |
+ 
+<Note>
+  The **Viewer** role is pure read-only and cannot create or modify any resources.
+</Note>
+ 
 ## Assigning a role at provisioning time
-
+ 
 Pass the specific `roleId` in the `roleAssignments` array when calling `createUsers`. Role IDs are unique UUIDs. You should fetch the current IDs for your environment via the `roles` query before provisioning.
-
+ 
 ```bash
 curl -X POST \
   -H "Content-Type: application/json" \
@@ -41,13 +47,11 @@ curl -X POST \
   }' \
   https://{ACCOUNT}.askwisdom.ai/graphql
 ```
-
+ 
 <Snippet file="role-ids-note.mdx" />
-
+ 
 ## Complete Role & Scope Reference
-
-Roles in WisdomAI must be scoped to specific resource IDs. A role assigned with an invalid or missing scope will result in the user having no active permissions.
-
+ 
 | Role | Required Scope | Purpose |
 |------|----------------|---------|
 | `SITE_ADMIN` | Global | Full access across all organizations and workspaces |
@@ -58,21 +62,23 @@ Roles in WisdomAI must be scoped to specific resource IDs. A role assigned with 
 | `VIEWER` | Organization | Read-only access across dashboards, chats, and agents |
 | `OBSERVER` | Organization | Minimal read-only access (IAM/Workspace only; no dashboards) |
 | `CREATOR` | Any | Permission to create domains and connections only |
-| `CONNECTION_ADMIN`| Connection | Manage (Read/Write/Delete) one specific data connection |
+| `CONNECTION_ADMIN` | Connection | Manage (read/write/delete) one specific data connection |
 | `STORY_VIEWER` | Dashboard ID | View a specific dashboard |
-| `STORY_WRITER` | Dashboard ID | Edit/Clone a specific dashboard (cannot create new ones) |
+| `STORY_WRITER` | Dashboard ID | Edit/clone a specific dashboard (cannot create new ones) |
 | `AGENT_VIEWER` | Agent ID | View a specific AI agent |
 | `AGENT_WRITER` | Agent ID | Edit a specific AI agent (cannot create new ones) |
 | `SCHEDULE_VIEWER` | Schedule ID | View a specific report schedule |
 | `SCHEDULE_WRITER` | Schedule ID | Edit a specific report schedule (cannot create new ones) |
+ 
+<Note>
+  In the API, **Story** refers to **Dashboards**. Roles labeled **Writer** grant edit access to existing resources but do not grant permission to create new ones.
+</Note>
 
-*Note: In the API, **Story** refers to **Dashboards**. Roles labeled **Writer** grant edit access to existing resources but do not grant permission to create new ones.*
-
-## Next steps
+## Related articles
 
 <CardGroup cols={2}>
-  <Card title="Roles" icon="shield" href="/integrations/embeddings/graphql-api/objects/roles">
-    Full role reference with IDs and permission matrix
+  <Card title="Role & Permission Matrix" icon="shield" href="/integrations/embeddings/role-and-permission-matrix">
+    Full permission breakdown across all roles
   </Card>
   <Card title="Create users" icon="user-plus" href="/integrations/embeddings/graphql-api/mutations/user/create-users">
     Provision embedded users with role assignments

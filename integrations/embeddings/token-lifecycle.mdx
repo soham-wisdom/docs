@@ -84,12 +84,12 @@ There is no explicit logout mutation for embedded sessions.
 
 ## Expired or invalid tokens
 
-When an expired or invalid JWT is passed in the embed URL, WisdomAI redirects the iframe to the login page. To prevent this, implement the `postMessage` refresh listener described above so that tokens are refreshed before expiry.
+When an expired or invalid JWT is passed in the embed URL, users may be redirected to the login page instead of seeing a clear error. To prevent this, implement the `postMessage` refresh listener described above so that tokens are refreshed before expiry.
 
 ## Related articles
 
 <CardGroup cols={2}>
-  <Card title="Impersonate user" icon="user-secret" href="/integrations/embeddings/graphql-api/queries/auth/impersonate-user">
+  <Card title="Impersonate user" icon="user-secret" href="/integrations/embeddings/graphql-api/mutations/auth/impersonate-user">
     Generate a session JWT for an embedded user
   </Card>
   <Card title="Embedding overview" icon="code" href="/integrations/embeddings/embedding">

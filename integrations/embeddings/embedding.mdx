@@ -31,7 +31,7 @@ Every embedded session follows this five-step flow:
     #### Example Request:
 
     ```bash
-    curl -X POST \
+    curl -s -X POST \
       -H "Content-Type: application/json" \
       -H "Authorization: Bearer $JWT" \
       -d '{
@@ -41,7 +41,7 @@ Every embedded session follows this five-step flow:
             "emails": ["alice@yourcompany.com"],
             "workspaceID": "{{WORKSPACE_ID}}",
             "roleAssignments": [{ "roleId": "00000000-0000-0000-0000-000000000003", "scopes": ["{{DOMAIN_ID}}"] }],
-            "sendWelcomeEmail": true
+            "sendWelcomeEmail": false
           }
         }
       }' \
@@ -51,7 +51,7 @@ Every embedded session follows this five-step flow:
     <Note>
           **Key considerations:**
     * **Email uniqueness:** User matching is email-based. If your users share emails across tenants, append a unique identifier (e.g., `alice+123@company.com`) to the email prefix to prevent session collisions.
-    * **Role overwrites:** If a user already exists, `createUsers` succeeds but re-applies the provided roles, overwriting manual changes. Use `ListUsers` to check status first if you wish to avoid resets.
+    * **Role overwrites:** If a user already exists, `createUsers` succeeds but re-applies the provided roles, overwriting manual changes. Use `listUsers` to check status first if you wish to avoid resets.
     </Note>
 
   </Step>
@@ -79,7 +79,7 @@ Every embedded session follows this five-step flow:
     #### Example Request:
 
     ```bash
-    curl -X POST \
+    curl -s -X POST \
       -H "Content-Type: application/json" \
       -d '{
         "query": "mutation ImpersonateUser($accessToken: String!, $userEmail: String!) { impersonateUser(accessToken: $accessToken, userEmail: $userEmail) }",
@@ -93,7 +93,7 @@ Every embedded session follows this five-step flow:
 
     The API responds with a JWT that authenticates as the impersonated user. This token expires in **1 hour**. WisdomAI will notify your page via a `postMessage` event when the token is about to expire. See [Token lifetime and refresh](/integrations/embeddings/token-lifecycle) for the full refresh flow.
 
-    See [Impersonate user](/integrations/embeddings/graphql-api/queries/auth/impersonate-user) for the full API reference, including how to pass transient attributes.
+    See [Impersonate user](/integrations/embeddings/graphql-api/mutations/auth/impersonate-user) for the full API reference, including how to pass transient attributes.
   </Step>
 
   <Step title="Use the JWT in the iframe embed URL" titleSize="h3">
@@ -131,7 +131,7 @@ Every embedded session follows this five-step flow:
 ## Manage the session
 Once you have the initial iframe rendered, you must manage the session lifecycle to prevent user timeouts or "sticky" sessions when switching users. Read [Token lifecycle and refresh](/integrations/embeddings/token-lifecycle) for best practices on handling token expiry, refreshing tokens without reloading the page, and switching between users.
 
-## Next steps
+## Related articles
 
 <CardGroup cols={2}>
   <Card title="Embed chat" icon="message" href="/integrations/embeddings/iframe/chat/embed-chat">
@@ -140,8 +140,8 @@ Once you have the initial iframe rendered, you must manage the session lifecycle
   <Card title="Embed a dashboard" icon="chart-bar" href="/integrations/embeddings/iframe/dashboard/embed-a-dashboard">
     Embed interactive dashboards and visualizations
   </Card>
-  <Card title="Impersonate user API" icon="user-secret" href="/integrations/embeddings/graphql-api/queries/auth/impersonate-user">
-    Full reference for the impersonation query
+  <Card title="Impersonate user API" icon="user-secret" href="/integrations/embeddings/graphql-api/mutations/auth/impersonate-user">
+    Full reference for the impersonation mutation.
   </Card>
   <Card title="Create users API" icon="user-plus" href="/integrations/embeddings/graphql-api/mutations/user/create-users">
     Full reference for user provisioning

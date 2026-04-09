@@ -10,8 +10,6 @@ Create seamless integrations with WisdomAI using our comprehensive GraphQL API. 
 
 ## Get started
 
-The **Wisdom API** provides real-time access to structured data insights via a WebSocket-based subscription model. Users can ask questions related to business intelligence and receive structured responses, including tabular data and SQL queries.
-
 The WisdomAI GraphQL API provides a single endpoint for all operations:
 
 ```
@@ -19,12 +17,14 @@ https://{ACCOUNT}.askwisdom.ai/graphql
 ```
 
 <Note>
-  Replace `{ACCOUNT}.askwisdom.ai` with the base URL of your WisdomAI tenant — the same domain you use to log in. Both `askwisdom.ai` and `wisdom.ai` are valid depending on your deployment.
+  Replace `{ACCOUNT}.askwisdom.ai` with the base URL of your WisdomAI tenant, the same domain you use to log in. Both `askwisdom.ai` and `wisdom.ai` are valid depending on your deployment.
 </Note>
+
+The API supports queries, mutations, and real-time subscriptions. Subscriptions use a WebSocket-based model that lets users ask questions related to business intelligence and receive structured responses, including tabular data and SQL queries.
 
 ## WebSocket connection
 
-Use the following URL to establish the WebSocket connection:
+For real-time subscriptions, use the following WebSocket endpoint:
 
 ```
 wss://{ACCOUNT}.askwisdom.ai/graphql
@@ -32,9 +32,11 @@ wss://{ACCOUNT}.askwisdom.ai/graphql
 
 ## Authentication
 
-The APIs require authentication using a **JWT session token** obtained via the Descope authentication system.
+WisdomAI supports two authentication flows depending on your use case:
 
-The authentication flow consists of the following steps:
+### API authentication
+
+For direct API access, authenticate using a JWT session token obtained via the Descope authentication system.
 
 <Steps>
   <Step title="Obtain access key" titleSize="h3">
@@ -42,22 +44,27 @@ The authentication flow consists of the following steps:
   </Step>
   <Step title="Exchange access key for JWT token" titleSize="h3">
     Use WisdomAI's GraphQL API `exchangeAccessToken` query to exchange your access key for a JWT token.
-    - GraphQL Query:
 
-      ```graphql
-      query ExchangeAccessToken($accessToken: String!) {
-        exchangeAccessToken(accessToken: $accessToken)
-      }
-      ```
+    ```graphql
+    query ExchangeAccessToken($accessToken: String!) {
+      exchangeAccessToken(accessToken: $accessToken)
+    }
+    ```
   </Step>
   <Step title="Pass token in requests" titleSize="h3">
-    The session token is required in all API requests and WebSocket connection payload.
+    Include the session token in all API requests and WebSocket connection payloads.
 
     ```
     Authorization: Bearer YOUR_SESSION_TOKEN
     ```
   </Step>
 </Steps>
+
+### Embedded user authentication
+
+For embedding scenarios, the flow is different. Instead of `exchangeAccessToken`, you call `impersonateUser` with your Descope access key to obtain a short-lived JWT for the embedded user. That JWT is passed as the `token` query parameter in the iframe URL, not in an `Authorization` header.
+
+See the [Embedding overview](/integrations/embeddings/embedding) for the full end-to-end flow.
 
 ## Error handling
 
@@ -69,9 +76,12 @@ The authentication flow consists of the following steps:
   For any queries or support, contact our API team at [**support@askwisdom.ai**](mailto:support@askwisdom.ai).
 </Info>
 
-## Next steps
+## Related articles
 
 <CardGroup cols={2}>
+  <Card title="GraphQL primer" icon="book" href="/integrations/embeddings/graphql-api/graphql-primer">
+    New to GraphQL? Start here for a REST developer's introduction
+  </Card>
   <Card title="Exchange Access Token" icon="key" href="/integrations/embeddings/graphql-api/queries/auth/exchange-access-token">
     Authenticate with the GraphQL API using access keys
   </Card>
@@ -83,5 +93,8 @@ The authentication flow consists of the following steps:
   </Card>
   <Card title="Subscriptions" icon="wifi" href="/integrations/embeddings/graphql-api/subscriptions">
     Real-time data subscriptions and live updates
+  </Card>
+  <Card title="Error handling" icon="circle-exclamation" href="/integrations/embeddings/error-handling">
+    How to handle HTTP 200 failures and mutation status codes
   </Card>
 </CardGroup>

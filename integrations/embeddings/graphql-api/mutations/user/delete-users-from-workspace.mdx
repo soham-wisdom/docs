@@ -5,30 +5,28 @@ title: "Delete Users From Workspace"
 The `deleteUsersFromWorkspace` mutation removes one or more users from a workspace.
 
 <Warning>
-  This action is **irreversible**. Deleted users cannot be restored.
+  This action is **irreversible**. Deleted users lose all role assignments, attributes, and access to the workspace. Make sure you have the correct user IDs before calling this mutation.
 </Warning>
 
 ## Signature
 
 ```graphql
-deleteUsersFromWorkspace(input: DeleteUsersFromWorkspaceInput!): DeleteUsersFromWorkspaceResponse!
+deleteUsersFromWorkspace(ids: [ID!]!, workspaceID: ID!): DeleteUsersFromWorkspaceResponse!
 ```
 
 ## Arguments
-
-<ParamField path="input" type="DeleteUsersFromWorkspaceInput!" required>
-  Input object identifying the users to delete and the target workspace.
-</ParamField>
-
-### DeleteUsersFromWorkspaceInput fields
 
 <ParamField path="ids" type="[ID!]!" required>
   The IDs of the users to delete. Use [listUsers](/integrations/embeddings/graphql-api/queries/user/list-users) to find user IDs.
 </ParamField>
 
-<ParamField path="workspaceID" type="ID!">
-  The workspace to delete the users from. Required for multi-workspace deployments.
+<ParamField path="workspaceID" type="ID!" required>
+  The workspace to remove the users from.
 </ParamField>
+
+## Permissions
+
+Requires `iam:delete` scoped to the target workspace.
 
 ## Response
 
@@ -39,8 +37,8 @@ deleteUsersFromWorkspace(input: DeleteUsersFromWorkspaceInput!): DeleteUsersFrom
 ## Usage example
 
 ```graphql
-mutation DeleteUsersFromWorkspace($input: DeleteUsersFromWorkspaceInput!) {
-  deleteUsersFromWorkspace(input: $input) {
+mutation DeleteUsersFromWorkspace($ids: [ID!]!, $workspaceID: ID!) {
+  deleteUsersFromWorkspace(ids: $ids, workspaceID: $workspaceID) {
     status {
       code
       message
@@ -52,21 +50,18 @@ mutation DeleteUsersFromWorkspace($input: DeleteUsersFromWorkspaceInput!) {
 <RequestExample>
 
 ```bash Request
-curl -X POST \
+curl -s -X POST \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer <access_token>" \
   -d '{
-    "query": "mutation DeleteUsersFromWorkspace($input: DeleteUsersFromWorkspaceInput!) { deleteUsersFromWorkspace(input: $input) { status { code message } } }",
+    "query": "mutation DeleteUsersFromWorkspace($ids: [ID!]!, $workspaceID: ID!) { deleteUsersFromWorkspace(ids: $ids, workspaceID: $workspaceID) { status { code message } } }",
     "variables": {
-      "input": {
-        "ids": ["user_abc123", "user_def456"],
-        "workspaceID": "workspace_123"
-      }
+      "ids": ["user_abc123", "user_def456"],
+      "workspaceID": "workspace_123"
     }
   }' \
   https://{ACCOUNT}.askwisdom.ai/graphql
 ```
-
 </RequestExample>
 
 <ResponseExample>
@@ -86,7 +81,7 @@ curl -X POST \
 
 </ResponseExample>
 
-## Next steps
+## Related articles
 
 <CardGroup cols={2}>
   <Card title="List users" icon="users" href="/integrations/embeddings/graphql-api/queries/user/list-users">

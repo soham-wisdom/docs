@@ -2,8 +2,11 @@
 title: "Role & Permission Matrix"
 ---
 
+This page serves as the complete Role & Permission Matrix for WisdomAI, providing a definitive technical reference for the platform's granular access control.
 
-This page serves as the complete **Role & Permission Matrix** for WisdomAI, providing a definitive technical reference for the platform's granular access control. While the [RBAC for Embedded Users](/integrations/embeddings/rbac-for-embedded-users) guide offers a high-level overview of common embedding scenarios, this reference document breaks down every individual permission flag—from chat interactions to connection management—across all available roles. Use this matrix to verify specific capabilities, resolve authorization issues, or plan complex custom integrations where precise control over user actions is required.
+<Info>
+  While the [RBAC for Embedded Users](/integrations/embeddings/rbac) guide offers a high-level overview, this document breaks down every individual permission flag across all available roles.
+</Info>
 
 ## Role Overview
 
@@ -17,7 +20,7 @@ This page serves as the complete **Role & Permission Matrix** for WisdomAI, prov
 | `EXPLORER` | Domain | Query a domain with SQL editing and AI workstream access. |
 | `BASIC_EXPLORER` | Domain | Query a domain. No SQL editing, no AI workstream. |
 | `VIEWER` | Organization | Read-only across agents, chats, dashboards, schedules, evaluations. |
-| `OBSERVER` | Organization | Minimal read — workspace, IAM, and zsheet only. |
+| `OBSERVER` | Organization | Minimal read — workspace, IAM, and data tables only. |
 | `STORY_VIEWER` | Dashboard | View a specific dashboard. |
 | `STORY_WRITER` | Dashboard | Edit a specific dashboard (read, write, clone). Cannot create new ones. |
 | `SCHEDULE_VIEWER` | Schedule | View a specific schedule. |
@@ -27,12 +30,11 @@ This page serves as the complete **Role & Permission Matrix** for WisdomAI, prov
 
 ## Permission Matrix
 
-**Column key:** `SA`=SITE_ADMIN · `AD`=ADMIN · `DA`=DATA_ADMIN · `CA`=CONN_ADMIN · `CR`=CREATOR · `EX`=EXPLORER · `BE`=BASIC_EXPLORER · `VI`=VIEWER · `OB`=OBSERVER · `SV`=STORY_VIEWER · `SW`=STORY_WRITER · `ScV`=SCHED_VIEWER · `ScW`=SCHED_WRITER · `AV`=AGENT_VIEWER · `AW`=AGENT_WRITER
+**Column key:** `SA` (Site Admin) · `AD` (Admin) · `DA` (Data Admin) · `CA` (Conn Admin) · `CR` (Creator) · `EX` (Explorer) · `BE` (Basic Explorer) · `VI` (Viewer) · `OB` (Observer) · `SV` (Story Viewer) · `SW` (Story Writer) · `ScV` (Schedule Viewer) · `ScW` (Schedule Writer) · `AV` (Agent Viewer) · `AW` (Agent Writer)
 
 ### Chat / AI
 
 | Permission | SA | AD | DA | CA | CR | EX | BE | VI | OB | SV | SW | ScV | ScW | AV | AW |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | --- | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
 | `chat:create` | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
 | `chat:read` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
@@ -44,33 +46,36 @@ This page serves as the complete **Role & Permission Matrix** for WisdomAI, prov
 
 ### Dashboard
 
+<Note>
+  In the API and role IDs, **Story** refers to **Dashboards**. For example, `STORY_WRITER` provides write access to dashboard resources.
+</Note>
+
 | Permission | SA | AD | DA | CA | CR | EX | BE | VI | OB | SV | SW | ScV | ScW | AV | AW |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | --- | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
 | `dashboard:create` | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
 | `dashboard:read` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
 | `dashboard:write` | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ |
 | `dashboard:clone` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ |
 
-> ⚠️ `ADMIN` and `DATA_ADMIN` can **create** dashboards but **not edit their content** — editing requires `STORY_WRITER` scoped to that specific dashboard.
-> 
+<Warning>
+  `ADMIN` and `DATA_ADMIN` roles can **create** dashboards but **not edit their content**. Editing requires a `STORY_WRITER` role scoped specifically to that dashboard.
+</Warning>
 
 ### Schedule
 
 | Permission | SA | AD | DA | CA | CR | EX | BE | VI | OB | SV | SW | ScV | ScW | AV | AW |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | --- | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
 | `schedule:create` | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
 | `schedule:read` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ✅ | ✅ | ❌ | ❌ |
 | `schedule:write` | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ |
 
-> ⚠️ Same pattern as dashboards — `ADMIN` can create schedules but editing requires `SCHEDULE_WRITER` scoped to that schedule.
-> 
+<Warning>
+  Same pattern as dashboards — `ADMIN` can create schedules but editing requires a `SCHEDULE_WRITER` role scoped to that schedule.
+</Warning>
 
 ### Agent
 
 | Permission | SA | AD | DA | CA | CR | EX | BE | VI | OB | SV | SW | ScV | ScW | AV | AW |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | --- | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
 | `agent:read` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ |
 | `agent:write` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ |
@@ -78,7 +83,6 @@ This page serves as the complete **Role & Permission Matrix** for WisdomAI, prov
 ### Connection
 
 | Permission | SA | AD | DA | CA | CR | EX | BE | VI | OB | SV | SW | ScV | ScW | AV | AW |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | --- | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
 | `connection:create` | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
 | `connection:read` | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
@@ -87,13 +91,13 @@ This page serves as the complete **Role & Permission Matrix** for WisdomAI, prov
 | `connection:refresh` | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
 | `connection:list` | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
 
-> ⚠️ `CONNECTION_ADMIN` can manage an existing connection but **cannot create new ones** or list others.
-> 
+<Note>
+  `CONNECTION_ADMIN` can manage an existing connection but **cannot create new ones** or list other connections in the organization.
+</Note>
 
 ### Domain
 
 | Permission | SA | AD | DA | CA | CR | EX | BE | VI | OB | SV | SW | ScV | ScW | AV | AW |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | --- | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
 | `domain:create` | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
 | `domain:list` | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
@@ -102,7 +106,6 @@ This page serves as the complete **Role & Permission Matrix** for WisdomAI, prov
 ### IAM
 
 | Permission | SA | AD | DA | CA | CR | EX | BE | VI | OB | SV | SW | ScV | ScW | AV | AW |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | --- | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
 | `iam:read` | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
 | `iam:write` | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
@@ -112,7 +115,6 @@ This page serves as the complete **Role & Permission Matrix** for WisdomAI, prov
 ### ZSheet / Data
 
 | Permission | SA | AD | DA | CA | CR | EX | BE | VI | OB | SV | SW | ScV | ScW | AV | AW |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | --- | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
 | `zsheet:read` | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
 | `zsheet:write` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
@@ -123,7 +125,6 @@ This page serves as the complete **Role & Permission Matrix** for WisdomAI, prov
 ### Workspace
 
 | Permission | SA | AD | DA | CA | CR | EX | BE | VI | OB | SV | SW | ScV | ScW | AV | AW |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | --- | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
 | `workspace:read` | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
 | `workspace:write` | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
@@ -133,7 +134,6 @@ This page serves as the complete **Role & Permission Matrix** for WisdomAI, prov
 ### Evaluation & Misc Admin
 
 | Permission | SA | AD | DA | CA | CR | EX | BE | VI | OB | SV | SW | ScV | ScW | AV | AW |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | --- | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
 | `evaluation:read` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
 | `evaluation:write` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
@@ -150,11 +150,11 @@ This page serves as the complete **Role & Permission Matrix** for WisdomAI, prov
 
 ## Permissions assigned to no role
 
-These exist in the type definition but are not enforced anywhere and assigned to no role in `ROLE_PERMISSION_MAP`:
+These permissions exist in the type definition but are not enforced anywhere and are assigned to no role in the permission map.
 
 | Permission | Notes |
 | --- | --- |
-| `chat:write` | In `CHAT_WRITER_PERMISSIONS` but not in `ROLE_PERMISSION_MAP` — dead |
+| `chat:write` | In `CHAT_WRITER_PERMISSIONS` but not in `ROLE_PERMISSION_MAP` — effectively dead |
 | `chat:read:day0` | Defined, unused |
 | `chat:unstructured` | Defined, unused |
 | `chat:debug` | `DEBUG_PERMISSIONS` only — not in `ROLE_PERMISSION_MAP` |
