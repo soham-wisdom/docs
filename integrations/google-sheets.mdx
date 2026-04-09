@@ -4,7 +4,7 @@ title: "Google Sheets"
 
 The WisdomAI integration for Google Sheets allows you to pull live data from your WisdomAI dashboards directly into Google Sheets. You can import any widget from your stories and chats using custom formulas or a visual dialog, and extract the latest version of data, everything with a single click.
 
-## Get ready
+## Get started
 
 Before you begin, ensure you have the following:
 
@@ -16,45 +16,51 @@ Follow these steps to integrate your Google Sheets with WisdomAI:
 
 1. Open your Google Sheet and go to **Extensions** \> **Apps Script**.
 2. In the script editor, click the **\+** icon next to Libraries.
-  <Frame>
-    ![Add GS extension](/images/gs-extension-app.png)
-  </Frame>
-3. Enter the Script ID: `1fx_yQncdXWvARZH0TuBpy7-XECy5VWi2gJ3JPPa2kCfCVp9elsyHPZK8` and click **Look up**. 
-4. 4. Select the latest version and set the identifier as WisdomGoogleSheets.
-5. Set the identifier as WisdomGoogleSheets .
+
+<Frame>
+  ![Add GS extension](/images/gs-extension-app.png)
+</Frame>
+
+3. Enter the Script ID: `1fx_yQncdXWvARZH0TuBpy7-XECy5VWi2gJ3JPPa2kCfCVp9elsyHPZK8` and click **Look up**.
+4. Select the latest version.
+5. Set the identifier as **WisdomGoogleSheets**.
 6. Click **Add**.
    <Frame>
      ![Add Library](/images/add-library.png)
    </Frame>
 7. Paste the wrapper script shared by [support@askwisdom.ai](mailto:support@askwisdom.ai) into Code.gs, replacing any existing code.
-8. Save and reload your spreadsheet, once synced, a WisdomAI menu will appear in the menu bar.
+8. Save and reload your spreadsheet. Once synced, a WisdomAI menu will appear in the menu bar.
 
 ## Set up your account
 
-To configure your account follow these steps:
+To configure your account, follow these steps:
 
-1. In your Google Sheet, go to **Wisdom AI** \> **Configure Account** from the menu bar.
-   ![](/images/googleSheets1.png)
+1. In your Google Sheet, go to **Wisdom AI** \> **Configure Account** from the menu bar. <img src="/images/googleSheets1.png" />
 2. Enter your Account URL and the API Token you received.
-3. Click **Save Configuration**. 
-  <Frame>
-    ![account-config](/images/account-config.png)
-  </Frame>
-4. Go to **Wisdom AI** \> **Test Connection** to verify everything works.
-![](/images/googleSheets2.png)
+3. Click **Save Configuration**.
+
+<Frame>
+  ![account-config](/images/account-config.png)
+</Frame>
+
+4. Go to **Wisdom AI** \> **Test Connection** to verify everything works. <img src="/images/googleSheets2.png" />
 
 ![](/images/test-connection.png)
-  <Frame>
-    ![test-connection](/images/test-connection.png)
-  </Frame>
+
+<Frame>
+  ![test-connection](/images/test-connection.png)
+</Frame>
+
 ## Visual widget
 
 To insert a visual widget follow these steps:
 
 1. Go to **Wisdom AI** \> **Insert Widget**.
-  <Frame>
-    ![insert-widget](/images/insert-widget.png)
-  </Frame>
+
+<Frame>
+  ![insert-widget](/images/insert-widget.png)
+</Frame>
+
 2. Paste the widget URL from your Wisdom dashboard
 3. On any widget, click the menu and select **Copy link to visualization**. You can choose which rows and columns to import and whether to include headers.
 
@@ -70,9 +76,11 @@ You can also use these formulas directly in cells:
 ## Refreshing data
 
 To update everything, go to **Wisdom AI** \> **Refresh All Data**. This re-fetches every Wisdom formula in the active sheet.
-  <Frame>
-    ![refresh-data](/images/refreseh-data.png)
-  </Frame>
+
+<Frame>
+  ![refresh-data](/images/refreseh-data.png)
+</Frame>
+
 ## Next Steps
 
 <CardGroup cols={2}>
