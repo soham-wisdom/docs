@@ -310,9 +310,10 @@
                       {
                         "group": "Domain",
                         "pages": [
-                          "integrations/graphql-api/mutations/domain/create-domain",
-                          "integrations/graphql-api/mutations/domain/update-data-sources"
-                        ]
+                            "integrations/graphql-api/mutations/domain/create-domain",
+                            "integrations/graphql-api/mutations/domain/update-data-sources",
+                            "integrations/graphql-api/mutations/domain/duplicate-domain"
+                          ]
                       }
                     ]
                   },
