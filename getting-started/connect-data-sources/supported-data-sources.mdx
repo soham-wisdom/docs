@@ -47,7 +47,7 @@ This section outlines common prerequisites for connecting to data sources. Speci
 - **Network Access:** Ensure WisdomAI has network access to your database or data warehouse host. This may involve configuring firewall rules or security groups.
 - **Authentication Details:** You will need the correct credentials (username, password, keys, etc.) for your chosen data source.
 - **SSL/TLS Configuration:** For secure connections, ensure your database/data warehouse is configured to accept SSL/TLS connections, and configure WisdomAI accordingly (e.g., `SSL Mode: require` for PostgreSQL).
-- **Service Accounts (Google BigQuery):** For BigQuery, a Google Cloud service account with appropriate BigQuery permissions is required.
+- **Service Accounts (Google BigQuery):** A Google Cloud service account with appropriate BigQuery permissions is required.
   <Info>
     For PostgreSQL and Amazon Redshift, you can optionally configure an SSH Tunnel to connect through a bastion host.
   </Info>
@@ -217,7 +217,212 @@ This section outlines common prerequisites for connecting to data sources. Speci
 
     To learn how to upload them, read [Upload CSV files](/setting-up-wisdom-ai/basic-tutorial-connect-and-test#upload-csv-files).
   </Tab>
+  <Tab title="Amazon Athena">
+    The following table lists the requirements you must provide when connecting to Amazon Athena.
+
+    | Requirement | Description |
+    | :-- | :-- |
+    | AWS Access Key ID | The access key for an IAM user with permissions to access Athena and the underlying S3 data |
+    | AWS Secret Access Key | The secret access key associated with the AWS Access Key ID |
+    | Region Name | The AWS region where your Athena service is hosted |
+    | S3 Staging Directory | The S3 bucket path where Athena stores query results |
+    | Work Group | The specific Athena workgroup used to run queries |
+
+    Here's an example connection:
+
+    ```txt
+    AWS Access Key ID: AKIAIOSFODNN7EXAMPLE
+    AWS Secret Access Key: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+    Region Name: us-west-2
+    S3 Staging Directory: s3://wisdomai-athena-results-bucket/
+    Work Group: primary
+    ```
+  </Tab>
+  <Tab title="Azure Synapse">
+    The following table lists the requirements you must provide when connecting to Azure Synapse.
+
+    | Requirement | Description |
+    | :-- | :-- |
+    | Workspace SQL endpoint | The SQL endpoint URL for your workspace |
+    | Subscription ID | The ID of your Azure subscription |
+    | Resource Group ID | The name of the Azure resource group where the Synapse workspace is located |
+    | Workspace ID | The ID for the Synapse Analytics workspace |
+    | Client ID | The Application ID of the Azure Service Principal used for authentication |
+    | Tenant ID | The Directory ID of your Azure Active Directory |
+    | Client Secret | The secret value generated for the Service Principal |
+
+    Here's an example connection:
+
+    ```txt
+    Workspace SQL endpoint: synapse-prod-ondemand.sql.azuresynapse.net
+    Subscription ID: a1b2c3d4-e5f6-g7h8-i9j0-k1l2m3n4o5p6
+    Resource Group ID: rg-analytics-prod
+    Workspace ID: synapse-workspace-01
+    Client ID: 00000000-0000-0000-0000-000000000000
+    Tenant ID: ffffffff-ffff-ffff-ffff-ffffffffffff
+    Client Secret: ********
+    ```
+  </Tab>
+  <Tab title="Azure Synapse Serverless">
+    The following table lists the requirements you must provide when connecting to Azure Synapse Serverless.
+
+    | Requirement | Description |
+    | :-- | :-- |
+    | Serverless SQL endpoint | The on-demand SQL endpoint for your Synapse workspace |
+    | Client ID | The Application ID of the Azure Service Principal used for authentication |
+    | Tenant ID | The Directory ID of your Azure Active Directory |
+    | Client Secret | The client secret value generated for the Service Principal |
+
+    Here's an example connection:
+
+    ```txt
+    Serverless SQL endpoint: my-workspace-ondemand.sql.azuresynapse.net
+    Client ID: 00000000-0000-0000-0000-000000000000
+    Tenant ID: ffffffff-ffff-ffff-ffff-ffffffffffff
+    Client Secret: ********
+    ```
+  </Tab>
+  <Tab title="Azure Blob Storage">
+    The following table lists the requirements you must provide when connecting to Azure Blob Storage.
+
+    | Requirement | Description |
+    | :-- | :-- |
+    | Storage Account Name | The name of your Azure Storage account |
+    | Container Name | The specific blob container where your data is stored |
+    | Connection String | The Azure Storage connection string used for authentication |
+
+    Here's an example connection:
+
+    ```txt
+    Storage Account Name: wisdomstorageaccount
+    Container Name: customer-data
+    Connection String: DefaultEndpointsProtocol=https;AccountName=wisdomstorageaccount;AccountKey=xxxxxx...xxxxxx;EndpointSuffix=core.windows.net
+    ```
+  </Tab>
+  <Tab title="ClickHouse">
+    The following table lists the requirements you must provide when connecting to ClickHouse.
+
+    | Requirement | Description |
+    | :-- | :-- |
+    | Host | The hostname or IP address of your ClickHouse server |
+    | Port | The port number used for the connection |
+    | Username | The database user account with read access to the metadata |
+    | Password | The password for the specified database user |
+
+    <Note>
+      Database filters are optional, but it is recommended to specify only the databases that you want to expose to Wisdom.
+    </Note>
+
+    Here's an example connection:
+
+    ```txt
+    Host: ch-cluster.example.com
+    Port: 8123
+    Username: wisdom_scanner
+    Password: ********
+    Database filters: sales_data, inventory_records
+    ```
+  </Tab>
+  <Tab title="Trino">
+    The following table lists the requirements you must provide when connecting to Trino.
+
+    | Requirement | Description |
+    | :-- | :-- |
+    | Host | The hostname or IP address of your Trino coordinator node |
+    | Port | The port number used for the connection |
+    | Username | The user account with appropriate permissions to access the catalogs |
+    | Password | The password for the specified user account |
+    | Use SSL (HTTPS) | Toggle to enable secure communication via SSL |
+    | Skip SSL Certificate Verification | If enabled, WisdomAI will not validate the SSL certificate (common for self-signed certs) |
+    | Force HTTPS | Forces the connection to use HTTPS even if the endpoint suggests otherwise |
+
+    <Note>
+      Catalog filters are optional, but it is recommended to specify only the catalogs and their schemas that you want to expose to Wisdom.
+    </Note>
+
+    Here's an example connection:
+
+    ```txt
+    Host: trino.internal.company.com
+    Port: 8443
+    Username: query_service
+    Password: ********
+    Use SSL (HTTPS): True
+    Skip SSL Certificate Verification: False
+    Force HTTPS: True
+    Catalog Filters: snowflake_prod, glue_catalog
+    ```
+  </Tab>
+  <Tab title="SharePoint">
+    The following table lists the requirements you must provide when connecting to SharePoint.
+
+    | Requirement | Description |
+    | :-- | :-- |
+    | Client ID | The client ID of the Azure App registration used for authentication |
+    | Tenant ID | The Directory ID of your Azure Active Directory |
+    | Client Secret | The client secret value generated for the Azure App registration |
+    | Site URL | The full URL of the SharePoint site you want to crawl |
+
+    <Note>
+      By default, all document libraries are crawled. It is recommended to specify only the libraries that you want to expose to Wisdom in the **Document Libraries** field.
+    </Note>
+
+    Here's an example connection:
+
+    ```txt
+    Client ID: 00000000-0000-0000-0000-000000000000
+    Tenant ID: ffffffff-ffff-ffff-ffff-ffffffffffff
+    Client Secret: ********
+    Site URL: https://website.sharepoint.com/sites/internal-knowledge
+    Document Libraries: Policies, Procedures
+    ```
+  </Tab>
+  <Tab title="Google Cloud Spanner">
+    The following table lists the requirements you must provide when connecting to Google Cloud Spanner.
+
+    | Requirement | Description |
+    | :-- | :-- |
+    | Project ID | The unique identifier for your Google Cloud Project |
+    | Instance ID | The ID of the Cloud Spanner instance |
+    | Database ID | The ID of the specific database within the Spanner instance |
+    | Service Account Info JSON | The complete contents of your GCP service account JSON key file |
+
+    Here's an example connection:
+
+    ```txt
+    Project ID: majestic-project-12345
+    Instance ID: spanner-instance-main
+    Database ID: inventory_db
+    Service Account Info JSON: { "type": "service_account", "project_id": "majestic-project-12345", ... }
+    ```
+  </Tab>
+  <Tab title="Teradata">
+    The following table lists the requirements you must provide when connecting to Teradata.
+
+    | Requirement | Description |
+    | :-- | :-- |
+    | Host | The hostname or IP address of your Teradata server |
+    | Port | The port number used for the connection, typically `1025` |
+    | Username | The database user account with appropriate read permissions |
+    | Password | The password for the specified database user |
+
+    <Note>
+      **Database filters** are optional, but it is recommended to specify only the databases that you want to expose to Wisdom.
+    </Note>
+
+    Here's an example connection:
+
+    ```txt
+    Host: td-prod.example.com
+    Port: 1025
+    Username: wisdom_read_only
+    Password: ********
+    Database filters: sales_v, marketing_v
+    ```
+  </Tab>
 </Tabs>
+
+---
 
 ## Protocol-based source: MCP server
 

@@ -7,6 +7,7 @@
     "light": "#5b52ff",
     "dark": "#5b52ff"
   },
+
   "favicon": "/favicon.webp",
   "navigation": {
     "global": {
@@ -172,6 +173,7 @@
             "group": "Integrations",
             "pages": [
               "integrations/connect-to-slack",
+              "integrations/google-sheets",
               {
                 "group": "Embedding",
                 "pages": [
@@ -348,7 +350,8 @@
                     ]
                   }
                 ]
-              }
+              },
+              "integrations/google-sheets"
             ]
           },
           {
