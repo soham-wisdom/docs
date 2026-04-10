@@ -350,8 +350,7 @@
                     ]
                   }
                 ]
-              },
-              "integrations/google-sheets"
+              }
             ]
           },
           {
