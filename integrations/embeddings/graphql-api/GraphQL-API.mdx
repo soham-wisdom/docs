@@ -39,10 +39,10 @@ WisdomAI supports two authentication flows depending on your use case:
 For direct API access, authenticate using a JWT session token obtained via the Descope authentication system.
 
 <Steps>
-  <Step title="Obtain access key" titleSize="h3">
+  <Step title="Obtain access key" titleSize="h4">
     Contact WisdomAI support at `support@askwisdom.ai` to obtain your dedicated access key.
   </Step>
-  <Step title="Exchange access key for JWT token" titleSize="h3">
+  <Step title="Exchange access key for JWT token" titleSize="h4">
     Use WisdomAI's GraphQL API `exchangeAccessToken` query to exchange your access key for a JWT token.
 
     ```graphql
@@ -51,7 +51,7 @@ For direct API access, authenticate using a JWT session token obtained via the D
     }
     ```
   </Step>
-  <Step title="Pass token in requests" titleSize="h3">
+  <Step title="Pass token in requests" titleSize="h4">
     Include the session token in all API requests and WebSocket connection payloads.
 
     ```
