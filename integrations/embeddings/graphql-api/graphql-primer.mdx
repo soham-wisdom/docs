@@ -34,7 +34,7 @@ curl -X POST \
 
 ## HTTP 200 does not mean success
 
-This is the most important difference from REST. **GraphQL always returns HTTP 200**, even when the operation fails. Do not check the HTTP status code to determine success — always inspect the response body.
+This is the most important difference from REST. **GraphQL can return HTTP 200**, even **when the operation fails**. Do not check the HTTP status code to determine success, always inspect the response body.
 
 Errors appear in an `errors` array:
 
@@ -90,10 +90,10 @@ To call the WisdomAI GraphQL API from Postman:
 
 | Mistake | Fix |
 |---------|-----|
-| Missing `Content-Type: application/json` | Always include this header — without it the server can't parse the body |
+| Missing `Content-Type: application/json` | Always include this header — without it, the server can't parse the body |
 | Sending the query as a URL parameter | GraphQL queries go in the POST body, not the URL |
 | Not requesting return fields on mutations | Include `status { code message }` (or other fields) in your mutation or they won't be returned |
-| Checking HTTP status for errors | Always read the response body — GraphQL returns HTTP 200 even on failure |
+| Checking HTTP status for errors | Always read the response body. GraphQL returns HTTP 200 even on failure |
 
 ## Related articles
 
