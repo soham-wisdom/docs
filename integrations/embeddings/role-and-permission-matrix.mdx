@@ -148,19 +148,3 @@ This page serves as the complete Role & Permission Matrix for WisdomAI, providin
 | `slack:connect` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
 | `system:view` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
 
-## Permissions assigned to no role
-
-These permissions exist in the type definition but are not enforced anywhere and are assigned to no role in the permission map.
-
-| Permission | Notes |
-| --- | --- |
-| `chat:write` | In `CHAT_WRITER_PERMISSIONS` but not in `ROLE_PERMISSION_MAP` — effectively dead |
-| `chat:read:day0` | Defined, unused |
-| `chat:unstructured` | Defined, unused |
-| `chat:debug` | `DEBUG_PERMISSIONS` only — not in `ROLE_PERMISSION_MAP` |
-| `cache:delete` | `DEBUG_PERMISSIONS` only |
-| `chat:experimental-unstructured-search` | `DEBUG_PERMISSIONS` only |
-| `experimental` | Defined, unused |
-| `experimental:filters` | Defined, unused |
-| `experimental:entity-templates` | Defined, unused |
-| `experimental:canvas-ui` | Defined, unused |
