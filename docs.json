@@ -161,7 +161,8 @@
                   "advanced-features/agents/agents",
                   "advanced-features/agents/tutorial-create-agent",
                   "advanced-features/agents/manage-agents",
-                  "advanced-features/agents/reviewed-runs-in-agents"
+                  "advanced-features/agents/reviewed-runs-in-agents",
+                  "advanced-features/agents/agent-builder"
                 ]
               },
               "advanced-features/deep-analysis",
@@ -321,10 +322,10 @@
                       {
                         "group": "Domain",
                         "pages": [
-                            "integrations/graphql-api/mutations/domain/create-domain",
-                            "integrations/graphql-api/mutations/domain/update-data-sources",
-                            "integrations/graphql-api/mutations/domain/duplicate-domain"
-                          ]
+                          "integrations/graphql-api/mutations/domain/create-domain",
+                          "integrations/graphql-api/mutations/domain/update-data-sources",
+                          "integrations/graphql-api/mutations/domain/duplicate-domain"
+                        ]
                       }
                     ]
                   },

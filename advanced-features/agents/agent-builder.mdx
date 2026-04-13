@@ -1,0 +1,145 @@
+---
+title: "Agent Builder"
+---
+
+Intro
+
+## Prerequisites
+
+- Access to the **Agents** section in Wisdom AI
+- A delivery channel ready to configure (email, Slack, or webhook)
+
+## Step 1: Open the Agent Builder
+
+1. Navigate to **Agents** in the top navigation bar.
+2. Click **New Agent**.
+3. Select a build mode:
+   - **Visual Mode** — for multi-step, branching workflows built on a node canvas
+   - **Prompt Mode** — describe what you want in plain language and AI generates the agent
+
+## Step 2: Write the instruction
+
+The instruction defines what the agent analyzes, what conditions trigger a response, and how the output should look. Every instruction should answer three questions:
+
+- What data or metrics should the agent look at?
+- What thresholds or conditions matter?
+- What should the output include, and in what format?
+
+**Example — weak instruction:**
+
+> "Analyze the data for trends"
+
+**Example — strong instruction:**
+
+> "Compare this period's metrics against the prior period. Flag any category where the value changed by more than 20%. For flagged categories, note whether it is an increase or decrease and compute the exact percentage change. If no category exceeds the threshold, state that all metrics are stable."
+
+Keep these rules in mind when writing instructions:
+
+- Include time ranges, status filters, and exclusions
+- Specify how results should be grouped and sorted
+- Name the exact output fields or columns you need
+- State what to output when there is no data or nothing to flag
+
+## Step 3: Configure a trigger (optional)
+
+Triggers tell the agent when to act vs. stay silent. Skip this step if the agent should always produce output (for example, a daily summary report). Add a trigger if the agent should only notify you when a specific condition is met.
+
+1. Toggle **Trigger** on.
+2. Enter a condition using a concrete threshold — avoid vague language.
+
+| Avoid | Use instead |
+| :-- | :-- |
+| "If sales are low" | "If daily revenue drops by more than 10% compared to the previous 7-day average" |
+| "If there are problems" | "If the error rate exceeds 5% or if any orders are stuck in pending for more than 48 hours" |
+
+Start with one condition. Add more only after confirming the first fires as expected.
+
+## Step 4: Set a schedule
+
+1. Open the **Schedule** panel.
+2. Select a frequency.
+
+| Frequency | When to use |
+| :-- | :-- |
+| Hourly | Real-time monitoring only — production errors, critical SLA breaches |
+| Daily | Most agents (recommended default) |
+| Weekly | Trend analysis, team performance summaries |
+| Monthly | High-level business reviews, budget tracking |
+
+## Step 5: Define the output format
+
+Specify how results should be structured directly in the instruction. The agent will not infer formatting on its own.
+
+Include:
+
+- Section headings: "Section 1: Overview", "Section 2: Details"
+- Table columns: "Include columns: Deal Name, Stage, Days Stuck, Owner"
+- Number formats: "Show currency as \$X,XXX" and "Show percentages as X.X%"
+- Conditional sections: "Only include the Incidents section if incidents occurred"
+- Volume limits: "Limit to top 10 entries ranked by largest change"
+
+## Step 6: Configure Visual Mode nodes (Visual Mode only)
+
+If you are building in Visual Mode, apply these rules to each node.
+
+**Write self-contained node instructions.** Each node must make sense without referencing other nodes. Describe the input data the node should expect:
+
+> "Given the list of assignees from the incoming issues, fetch their last 10 resolved tickets."
+
+**Describe the outcome, not the procedure.** Tell the node what to produce, not how to produce it.
+
+**Assign one responsibility per node.** If a node instruction covers two unrelated concerns, split it into two nodes.
+
+**Use concrete If/Else conditions.**
+
+| Avoid | Use instead |
+| :-- | :-- |
+| "There are many errors" | "The total count of items with status 'error' is greater than 10" |
+| "Performance is poor" | "The average response time exceeds 500ms" |
+
+**Route data through Control Nodes.** If data is needed on both sides of an If/Else node, connect it through the node — do not wire around it. Bypassing the node causes both branches to activate regardless of the condition result.
+
+**Artifact Builder:** Connect data nodes directly to the Artifact Builder when the output requires tables or charts. Passing everything through a Summary node first strips the structured data the Artifact Builder needs. Split the Artifact Builder instruction into two parts: one for how to organize the data, one for how to format the final output.
+
+## Step 7: Configure the delivery channel
+
+1. Open the **Delivery** panel.
+2. Select **Email**, **Slack**, or **Webhook**.
+3. Enter the destination and save.
+
+## Step 8: Test the agent
+
+1. Click **Run** to trigger a manual test.
+2. Review the output in the **Run Visualiser**.
+3. Adjust the instruction, trigger, or format as needed.
+
+If you need deep cross-referenced analysis or comprehensive insights, enable **Deep Analysis** before running the test. For simple metric monitoring, leave it off.
+
+### Common fixes
+
+| Problem | Fix |
+| :-- | :-- |
+| Output is too broad | Add filtering criteria to the instruction |
+| Data is missing from output | Name the specific fields you need |
+| Formatting is inconsistent | Add explicit formatting instructions |
+| Trigger fires too often | Tighten the threshold |
+| Trigger never fires | Loosen the threshold |
+
+## Step 9: Activate the agent
+
+Once the test output looks correct:
+
+1. Click **Publish**.
+2. Click **Activate**.
+
+The agent will run on the schedule you configured and deliver output to the channel you set.
+
+## Pre-activation checklist
+
+- \[ \] Instruction covers what to analyze, conditions that matter, and how to format output
+- \[ \] Trigger uses concrete values (if applicable)
+- \[ \] Schedule matches how often the data changes
+- \[ \] Output format specifies sections, columns, and number formats
+- \[ \] Edge cases handled — output defined for when nothing is flagged
+- \[ \] Test run completed and output reviewed
+- \[ \] Delivery channel configured
