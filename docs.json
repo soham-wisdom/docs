@@ -124,7 +124,8 @@
               "using-wisdom-ai-everyday/schedule-dashboards-notifications",
               "using-wisdom-ai-everyday/auditing",
               "using-wisdom-ai-everyday/prompt-templates",
-              "using-wisdom-ai-everyday/knowledge-management-via-graph-ql-api"
+              "using-wisdom-ai-everyday/knowledge-management-via-graph-ql-api",
+              "using-wisdom-ai-everyday/untitled-page"
             ]
           },
           {
@@ -319,10 +320,10 @@
                       {
                         "group": "Domain",
                         "pages": [
-                            "integrations/graphql-api/mutations/domain/create-domain",
-                            "integrations/graphql-api/mutations/domain/update-data-sources",
-                            "integrations/graphql-api/mutations/domain/duplicate-domain"
-                          ]
+                          "integrations/graphql-api/mutations/domain/create-domain",
+                          "integrations/graphql-api/mutations/domain/update-data-sources",
+                          "integrations/graphql-api/mutations/domain/duplicate-domain"
+                        ]
                       }
                     ]
                   },

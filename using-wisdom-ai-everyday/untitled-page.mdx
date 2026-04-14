@@ -1,0 +1,41 @@
+---
+title: "Request Help from Admin"
+---
+
+The Request Help from Admin feature allows end-users to flag inadequate AI responses and request manual intervention from an administrator. When a user submits a request, the team receives a notification in a configured Slack channel containing the context needed to resolve the issue.
+
+## Before you begin
+
+Make sure you have the following:
+
+* A Slack workspace must be integrated with your account, see [how to connect to slack](/integrations/connect-to-slack) page.
+
+
+## Configure the Admin Help channel
+Configuration is managed at the Organization level. This allows you to route help requests from different workspaces to different Slack channels.
+
+1. In the sidebar, click the **Settings**.
+
+2. Select **Notifications** from the settings menu.
+
+3. In the text field, configure the Slack channel where you want to receive requests and click **Save**.
+
+4. A confirmation message, "Slack notification channel saved," will appear in the top-right corner of the user's screen.
+
+## How to Request Help
+If you recived an incorrect or incomplete response from the AI, you can trigger a help request directly from the chat interface.
+
+1. Below the AI response, you can click the "Ask for Help" **headset icon**.
+
+2. A modal titled "Ask Admin for Help" will appear. You can describe what went wrong (e.g., "This was answered incorrectly").
+
+3. Click **Send Help Request** and the admin will recive on the configured channel.
+
+4. A confirmation message, "Help request sent to admin," will appear in the top-right corner of the user's screen.
+
+## Admin notification
+Once submitted, the Slack notification appears in the configured channel as follows:
+
+
+`User Name` requires assistance on conversation: `Link to Conversation`
+User message: This was answered incorrectly.
