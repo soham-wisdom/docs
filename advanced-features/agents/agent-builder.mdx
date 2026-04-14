@@ -1,164 +1,187 @@
 ---
-title: "Build an Agent in Wisdom AI"
+title: "Build an Agent - Visual Mode"
 ---
 
-Agents in Wisdom AI are automated workflows that analyze your data on a schedule and deliver results to you, without requiring manual queries. This guide walks through every step of building an agent, from choosing a build mode to testing and deploying.
+This guide walks through building an agent using Visual Mode in WisdomAI, from selecting a trigger to activating your workflow for delivery. If you prefer to describe your agent in plain language and have WisdomAI generate the structure for you, see [Create an agent - Prompt Mode](/advanced-features/agents/tutorial-create-agent).
 
-## Before you start
+<Note>
+  The Agents feature is currently in beta.
+</Note>
 
-Agents are built inside the Agent Builder, accessible from the **Agents** section in the top navigation. Once inside, you'll choose between two build modes:
+## Before you begin
 
-- **Visual Mode**: a drag-and-drop node canvas for building multi-step, branching logic.
-- **Prompt Mode:** a natural language interface where you describe what you want, and AI generates the agent for you.
+Make sure you have the following:
 
-Both modes produce the same type of agent and share the same components: tools, skills, triggers, a variable store, a Run Visualizer, and a shared lifecycle (Draft → Test → Publish → Activate → Run).
+- An active WisdomAI account with access to the **Agents** tab.
+- A domain connected to the data you want the agent to work with.
+- A delivery channel ready to configure: email, Slack, or webhook.
 
-If you're new to agents, Prompt Mode is the fastest way to get started. Visual Mode gives you more control over branching and conditional logic.
+## Step 1: Open the Agent Builder
 
-This article covers the visual mode creation. Read Create an Agent to learn how to do it using the prompt mode.
+Visual Mode is the default view when you open the Agent Builder. The node canvas opens automatically and is ready for you to build.
 
-## Build your agent
+1. Navigate to the **Agents** tab in the left sidebar and click **Create Agent**.
+   <Frame>
+     ![Create Agent Builder](/images/create-agent-builder.png)
+   </Frame>
+2. Select the **domain** your agent will run in.
+   <Frame>
+     ![Select Domain](/images/select-domain.png)
+   </Frame>
+3. Edit your agent's name by clicking on the pencil icon. Add it in the **Agent Settings** modal and click **Save**.
+   <Frame>
+     ![Setup Agent Name](/images/setup-agent-name.png)
+   </Frame>
 
+### Use the WisdomAI Builder to generate your workflow
 
+Rather than placing nodes manually, you can describe your agent in plain language and let WisdomAI Builder generate the structure for you. The WisdomAI Builder is an AI-powered chat panel built into the canvas. Type what you want your agent to do in the **Describe your agent** bar at the bottom of the screen. WisdomAI Builder reads your connected domain and data sources, constructs the complete node structure, and renders it on the canvas for you to review, adjust, and publish.
 
-### Step 1: Write Your Instruction
+You can use WisdomAI Builder at any point, such as to create an agent from scratch or to modify an existing workflow. For example: "add a conditional branch that skips delivery if revenue is above target."
 
-The instruction is the most important part of your agent. It tells the agent what to analyze, when to flag something, and how to format the output.
+If you prefer to place and configure nodes manually, continue to Step 2.
 
-A strong instruction covers three things:
+## Step 2: Select a trigger
 
-1. **What to analyze** — the data, metrics, or entities to look at
-2. **What conditions matter** — thresholds, comparisons, or time ranges
-3. **What to include in the output** — format, sections, tables, and edge cases
+Every agent starts with a trigger node, which defines when the agent runs.
 
-#### Weak vs. strong instructions
+1. Click the trigger node on the canvas. The **Select trigger** panel opens on the right.
+2. Choose a trigger type.
 
-| Weak | Strong |
+| Trigger | When to use |
 | --- | --- |
-| "Fetch open issues from the tracker" | "Fetch all issues labeled 'urgent' created in the last 14 days. Exclude issues with status 'Closed' or 'Duplicate'. Group by assignee. For each assignee include: issue ID, title, creation date, and current status. Sort each group by creation date descending." |
-| "Analyze the data for trends" | "Compare this period's metrics against the prior period. Flag any category where the value changed by more than 20%. For flagged categories, note whether it is an increase or decrease and compute the exact percentage change. If no category exceeds the threshold, state that all metrics are stable." |
-| "Create a summary report" | "Create a report with the heading 'Weekly Service Health Report'. Section 1: Overview — a bulleted list with total services monitored, services with incidents, and overall uptime (X.XX% format). Section 2: Incidents (only if any occurred) — for each affected service, list incident ID, title, severity, and duration. Section 3: Summary — if no incidents, state 'All services healthy.'" |
+| **Manual trigger** | Starts when you run the agent manually. Use this during building and testing. |
+| **Schedule** | Starts on a recurring schedule you define. Use this for production agents. |
 
-Make sure your instruction also covers edge cases: what should the agent say when there's no data, no anomalies, or nothing to flag?
+3. If you want the agent to act only when a condition is met, enter it in the **Trigger Criteria** field. Leave it empty to run unconditionally every time the trigger fires.
 
-### Step 2: Set a Trigger (Optional)
+<Tip>
+  Start with a single condition. Once you confirm it fires correctly, add more. Debugging a multi-condition trigger from scratch is significantly harder than layering conditions one at a time.
+</Tip>
 
-Triggers control when your agent takes action vs. stays silent. If you only want to hear about problems — anomaly detection, threshold breaches, SLA violations — add a trigger. If you want regular reporting regardless of what the data shows (daily summaries, weekly reviews), skip the trigger and let the agent always run.
+4. Click **Done**.
 
-#### Use concrete thresholds
+## Step 3: Add and connect nodes
 
-| Vague | Concrete |
-| --- | --- |
-| "If sales are low" | "If daily revenue drops by more than 10% compared to the previous 7-day average" |
-| "If there are problems" | "If the error rate exceeds 5% or if any orders are stuck in pending status for more than 48 hours" |
-| "If something changed" | "If revenue falls outside the 4% monthly variance range" |
+Nodes are the building blocks of a Visual Mode agent. Each node has a single, focused responsibility. You connect them using edges — click the **\+** button on any node's output to add the next node in the flow.
 
-Start with a single condition. Once you confirm it fires correctly, add more. Debugging a multi-condition trigger from scratch is significantly harder than layering conditions one at a time.
+The table below shows the available node types and what each one does.
 
-### Step 3: Choose a Schedule
-
-Match the schedule to how often your data changes and how urgently you need to act on it.
-
-| Frequency | Best for | Examples |
+| Category | Node | What it does |
 | --- | --- | --- |
-| Hourly | Urgent, real-time monitoring only | Production error rate spikes, critical SLA breaches |
-| Daily | Most monitoring tasks (recommended default) | Sales metrics, pipeline health, support ticket volume |
-| Weekly | Trend analysis and summaries | Week-over-week performance, team productivity, campaign results |
-| Monthly | High-level reviews and strategic reporting | Monthly business review, quarterly forecasts, budget tracking |
+| Data | **Data** | Fetches a dataframe from your connected data lake via SQL or Python execution. |
+| Data | **Web Search** | Searches the web and brings results into the workflow as context. |
+| Data | **MCP** | Calls an MCP tool to act across connected surfaces. See [Connect an MCP server](/integrations/mcp) for setup. |
+| Reasoning | **Analysis** | Operates on a dataframe to perform filtering, aggregation, ordering, or scoring. |
+| Reasoning | **Summary** | Takes a dataframe or context as input and produces a textual summary. |
+| Control | **If/Else** | Evaluates a condition and routes the workflow down the matching branch. Inactive branches are skipped entirely. |
+| Artifact | **Artifact Builder** | Ingests dataframes and context from the workflow run to produce a formatted report for delivery. |
+| Delivery | **Email** | Sends the output to one or more email addresses. |
+| Delivery | **Slack** | Posts the output to a Slack channel. |
 
-A daily schedule is the right default for most agents. Only use hourly if you genuinely need to react within the hour — frequent runs add noise and make triggers harder to tune.
+<Note>
+  Every agent requires at least one Artifact Builder node and one delivery node before it can be published.
+</Note>
 
-### Step 4: Specify Output Format
+### Write effective node instructions
 
-If you don't tell the agent how to present its results, the output will be inconsistent. Be explicit.
+Each node's instruction tells it what to do with its input. A well-written instruction produces consistent, useful output — a vague one produces inconsistent results.
 
-- Name your section headings: "Section 1: Overview", "Section 2: Details"
-- Specify table columns: "Include columns: Deal Name, Stage, Days Stuck, Owner"
-- Define number formats: "Show currency as \$X,XXX" and "Show percentages as X.X%"
-- Handle conditional sections: "Only include the Incidents section if incidents occurred"
-- Limit volume: "Limit to top 10 entries ranked by largest change"
+Keep these rules in mind when writing instructions:
 
-For agents with personalization enabled, you can address the reader directly in the output:
+- Write each instruction so it makes sense on its own, without referencing other nodes by name. Describe the input data the node should expect: "Given the list of assignees from the incoming issues, fetch their last 10 resolved tickets."
+- Describe the outcome you want, not the procedure for producing it. Tell the node what to produce, not how.
+- Assign one responsibility per node. If an instruction covers two unrelated concerns, split it into two nodes.
+- For If/Else conditions, use concrete values — "the total count of items with status 'error' is greater than 10" rather than "there are many errors."
 
-> "Open with a 2-3 sentence summary addressing the reader, e.g.: 'This week your team handled X items averaging Y per day — up/down Z% vs. your 4-week average.'"
+### Route data correctly through If/Else nodes
 
-### Step 5: Build in Visual Mode (if applicable)
+If data is needed on both sides of an If/Else node, connect it through the node — do not wire directly around it. Bypassing the node causes both branches to activate regardless of which condition is met.
 
-If you're using Visual Mode, additional principles apply at the node level.
+### Connect data nodes directly to the Artifact Builder
 
-#### Node instructions should be self-contained
+If the artifact needs tables or charts, connect your Data or Analysis nodes directly to the Artifact Builder. Routing everything through a Summary node first strips the structured data the Artifact Builder needs to render tables and visualizations correctly.
 
-Each node's instruction must make sense on its own. Don't reference other nodes by name. Instead, describe the input data the node should expect:
+## Step 4: Configure the Artifact Builder
 
-> "Given the list of assignees from the incoming issues, fetch their last 10 resolved tickets."
+The Artifact Builder formats your workflow's output into a finished report for delivery.
 
-#### Describe outcomes, not procedures
+1. Click the **Artifact Builder** node on the canvas to open its settings.
+2. Write an instruction that covers two things separately: how to organize the data into sections, lists, and tables; and how to format the final output — headings, number formats, and layout.
 
-Tell the node what you want, not how to implement it.
+Be explicit about formatting. The Artifact Builder does not infer structure on its own. Include details like:
 
-| Procedural (avoid) | Outcome-focused (preferred) |
+- Section headings: "Section 1: Overview", "Section 2: Details"
+- Table columns: "Include columns: Deal Name, Stage, Days Stuck, Owner"
+- Number formats: "Show currency as \$X,XXX" and "Show percentages as X.X%"
+- Conditional sections: "Only include the Incidents section if incidents occurred"
+
+3. Click **Done**.
+
+## Step 5: Configure delivery
+
+The delivery node sends your artifact to its destination.
+
+1. Click **\+** after the Artifact Builder node and select **Email**, **Slack**, or **Webhook**.
+2. Enter the destination — an email address, Slack channel name, or webhook URL.
+3. Click **Done**.
+
+<Note>
+  To deliver to Slack, a workspace administrator must first connect your Slack workspace to WisdomAI. See [Connect to Slack](/integrations/connect-to-slack).
+</Note>
+
+## Step 6: Set a schedule
+
+If you selected **Schedule** as your trigger, define when the agent runs.
+
+1. Click the trigger node to reopen its settings.
+2. Set a start date and time.
+3. Select a frequency.
+
+Match the frequency to how often your data changes and how quickly you need to act on it.
+
+| Frequency | When to use |
 | --- | --- |
-| "SELECT \* FROM bugs WHERE severity = 'critical' AND created\_at \> NOW() - INTERVAL 7 DAY" | "Fetch all critical bugs from the last 7 days, grouped by component" |
-| "Use the EVALUATE\_CRITERIA tool to check if error count exceeds threshold" | "Check if the total number of errors exceeds 10" |
+| Hourly | Real-time monitoring only — production errors, critical SLA breaches |
+| Daily | Most agents — recommended default |
+| Weekly | Trend analysis, team performance summaries |
+| Monthly | High-level business reviews, budget tracking |
 
-#### One responsibility per node
+## Step 7: Preview and test
 
-A node can do complex work, but that work should be cohesive. If an instruction covers two unrelated concerns, split them into separate nodes.
+Before publishing, run the agent manually to verify the output is correct.
 
-#### Use concrete values in If/Else conditions
+1. Click **Preview** in the top right corner.
+2. Watch the canvas as each node executes. A green check confirms the node succeeded. A red X indicates a failure — click the node to see the error.
+3. After the run completes, open the **Run Visualiser** to review the data generated at each node, the analysis performed, and the SQL or Python used.
+4. Adjust node instructions, trigger criteria, or formatting as needed and preview again.
 
-| Vague | Concrete |
+### Common fixes
+
+| Problem | Fix |
 | --- | --- |
-| "There are many errors" | "The total count of items with status 'error' is greater than 10" |
-| "Performance is poor" | "The average response time exceeds 500ms" |
+| Output is too broad | Add filtering criteria and exclusions to the instruction |
+| Data is missing | Name the specific fields or columns you need |
+| Formatting is inconsistent | Add explicit section headings, column names, and number formats to the instruction |
+| Trigger fires too often | Tighten the threshold value |
+| Trigger never fires | Loosen the threshold value |
+| Node fails with "unsupported input" | Check that a Data node is connected and feeding into the failing node |
 
-#### Route data through Control Nodes
+## Step 8: Publish and activate
 
-If data is needed downstream after an If/Else node, connect it through the node rather than short-circuiting around it. Bypassing the If/Else node causes both branches to activate regardless of the condition.
+Once the preview output looks correct, make the agent live.
 
-**Incorrect — Data and Analysis nodes bypass the If/Else node:**
+1. Click **Publish**.
+2. Click **Activate**.
 
-![Incorrect: Data and Analysis nodes short-circuit the If/Else node, causing both paths to activate.](bad-routing.png)
+The agent will run on the schedule you configured and deliver output to the channel you set. You can monitor past runs, edit the agent, or adjust the schedule at any time from the **Agents** tab.
 
-_Both Artifact Builder nodes receive data regardless of which branch should run._
+<CardGroup cols={2}>
+  <Card title="Manage your agents" icon="sliders" href="/advanced-features/agents/manage-agents">
+    Learn how to edit, share, and view the run history of your agents.
+  </Card>
 
-**Correct — Data and Analysis nodes pass through the If/Else node:**
-
-![Correct: Data and Analysis nodes pass through the If/Else node, activating only the correct path.](good-routing.png)
-
-_Only the correct branch activates based on the condition._
-
-#### Artifact Builder tips
-
-- Connect data nodes directly to the Artifact Builder if the output needs tables or charts — don't route everything through a Summary node first
-- Split the Artifact Builder's instruction into two parts: one for how to structure the data (grouping, lists, tables), and one for how to format the final output (headings, layout, number formats)
-- Be explicit about the output format — specify headings, bullet patterns, and number formats exactly as you want them to appear
-
-### Step 6: Test Before Deploying
-
-Always test your agent before activating it. A Preview feature is coming soon that will let you test agent outputs directly from the editor. In the meantime, use test runs to validate behavior.
-
-#### Iterate based on results
-
-- Output too broad → add filtering criteria
-- Important data missing → name the specific fields you need
-- Inconsistent formatting → add explicit formatting instructions
-- Trigger fires too often → tighten the threshold
-- Trigger never fires → loosen the threshold
-
-#### Use Deep Analysis for complex tasks
-
-Enable Deep Analysis when the agent needs to explore multiple aspects of the data, cross-reference different metrics, or produce comprehensive insights. It takes longer but yields more thorough results. For simple metric monitoring, leave it off.
-
-### Deployment Checklist
-
-Before activating your agent, confirm:
-
-- Instruction covers what to analyze, what thresholds matter, and how to format the output
-- Trigger criteria use concrete values (if applicable)
-- Schedule matches how often the data changes
-- Output format specifies sections, columns, and number formats
-- Edge cases are handled (what to say when nothing is flagged)
-- Trigger tested independently before deploying
-- Full end-to-end test run completed
-- Delivery channel configured (email, Slack, or webhook)
+  <Card title="Node reference" icon="grid" href="/advanced-features/agents/node-reference">
+    Explore the full list of node types, inputs, and outputs.
+  </Card>
+</CardGroup>
