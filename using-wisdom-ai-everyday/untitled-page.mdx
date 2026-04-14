@@ -8,34 +8,92 @@ The Request Help from Admin feature allows end-users to flag inadequate AI respo
 
 Make sure you have the following:
 
-* A Slack workspace must be integrated with your account, see [how to connect to slack](/integrations/connect-to-slack) page.
-
+- A Slack workspace must be integrated with your account, see [how to connect to slack](/integrations/connect-to-slack) page.
 
 ## Configure the Admin Help channel
+
 Configuration is managed at the Organization level. This allows you to route help requests from different workspaces to different Slack channels.
 
-1. In the sidebar, click the **Settings**.
-
+1. In the sidebar, click **Settings**.
 2. Select **Notifications** from the settings menu.
-
 3. In the text field, configure the Slack channel where you want to receive requests and click **Save**.
 
-4. A confirmation message, "Slack notification channel saved," will appear in the top-right corner of the user's screen.
+<Frame>
+  <img
+    src="/images/settings-white.png"
+    alt="Image showing the Document Tables interface"
+    lightAlt="Image showing the Document Tables interface"
+    darkAlt="Image showing the Document Tables interface"
+    className="dark:hidden"
+  />
+  <img
+    src="/images/settings.png"
+    alt="Image showing the Document Tables interface"
+    lightAlt="Image showing the Document Tables interface"
+    darkAlt="Image showing the Document Tables interface"
+    className="hidden dark:block"
+  />
+</Frame>
+
+4. A confirmation message, "Slack notification channel saved," will appear in the top-right corner of the the screen.
 
 ## How to Request Help
-If you recived an incorrect or incomplete response from the AI, you can trigger a help request directly from the chat interface.
+
+If you received an incorrect or incomplete response from the AI, you can trigger a help request directly from the chat interface.
 
 1. Below the AI response, you can click the "Ask for Help" **headset icon**.
 
+<Frame>
+  <img
+    src="/images/help-icon.png"
+    alt="Image showing the help icon"
+    lightAlt="Image showing the help icon"
+    darkAlt="Image showing the help icon"
+    className="dark:hidden"
+  />
+  <img
+    src="/images/help-icon.png"
+    alt="Image showing the help icon"
+    lightAlt="Image showing the help icon"
+    darkAlt="Image showing the help icon"
+    className="hidden dark:block"
+  />
+</Frame>
 2. A modal titled "Ask Admin for Help" will appear. You can describe what went wrong (e.g., "This was answered incorrectly").
+3. Click **Send Help Request** and the admin receives it on the configured channel.
 
-3. Click **Send Help Request** and the admin will recive on the configured channel.
+<Frame>
+  <img
+    src="/images/ask-admin-white.png"
+    alt="Image showing how to ask admin"
+    lightAlt="Image showing how to ask admin"
+    darkAlt="Image showing how to ask admin"
+    className="dark:hidden"
+  />
+  <img
+    src="/images/ask-admin-white.png"
+    alt="Image showing how to ask admin"
+    lightAlt="Image showing how to ask admin"
+    darkAlt="Image showing how to ask admin"
+    className="hidden dark:block"
+  />
+</Frame>
 
-4. A confirmation message, "Help request sent to admin," will appear in the top-right corner of the user's screen.
+4. A confirmation message, "Help request sent to admin," will appear in the top-right corner of the the screen.
 
 ## Admin notification
+
 Once submitted, the Slack notification appears in the configured channel as follows:
 
+`User Name` requires assistance on conversation: `Link to Conversation` User message: This was answered incorrectly.
 
-`User Name` requires assistance on conversation: `Link to Conversation`
-User message: This was answered incorrectly.
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Connect to Slack" icon="slack" href="/integrations/connect-to-slack">
+    Learn how to connect WisdomAI to Slack.
+  </Card>
+  <Card title="Validate and Test Answers" icon="check" href="/improve-wisdom-ai-responses/validate-and-test-answers">
+    Learn how to improve WisdomAI responses.
+  </Card>
+</CardGroup>
