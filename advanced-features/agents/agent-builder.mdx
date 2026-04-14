@@ -1,145 +1,164 @@
 ---
-title: "Agent Builder"
+title: "Build an Agent in Wisdom AI"
 ---
 
-Intro
+Agents in Wisdom AI are automated workflows that analyze your data on a schedule and deliver results to you, without requiring manual queries. This guide walks through every step of building an agent, from choosing a build mode to testing and deploying.
 
-## Prerequisites
+## Before you start
 
-- Access to the **Agents** section in Wisdom AI
-- A delivery channel ready to configure (email, Slack, or webhook)
+Agents are built inside the Agent Builder, accessible from the **Agents** section in the top navigation. Once inside, you'll choose between two build modes:
 
-## Step 1: Open the Agent Builder
+- **Visual Mode**: a drag-and-drop node canvas for building multi-step, branching logic.
+- **Prompt Mode:** a natural language interface where you describe what you want, and AI generates the agent for you.
 
-1. Navigate to **Agents** in the top navigation bar.
-2. Click **New Agent**.
-3. Select a build mode:
-   - **Visual Mode** — for multi-step, branching workflows built on a node canvas
-   - **Prompt Mode** — describe what you want in plain language and AI generates the agent
+Both modes produce the same type of agent and share the same components: tools, skills, triggers, a variable store, a Run Visualizer, and a shared lifecycle (Draft → Test → Publish → Activate → Run).
 
-## Step 2: Write the instruction
+If you're new to agents, Prompt Mode is the fastest way to get started. Visual Mode gives you more control over branching and conditional logic.
 
-The instruction defines what the agent analyzes, what conditions trigger a response, and how the output should look. Every instruction should answer three questions:
+This article covers the visual mode creation. Read Create an Agent to learn how to do it using the prompt mode.
 
-- What data or metrics should the agent look at?
-- What thresholds or conditions matter?
-- What should the output include, and in what format?
+## Build your agent
 
-**Example — weak instruction:**
 
-> "Analyze the data for trends"
 
-**Example — strong instruction:**
+### Step 1: Write Your Instruction
 
-> "Compare this period's metrics against the prior period. Flag any category where the value changed by more than 20%. For flagged categories, note whether it is an increase or decrease and compute the exact percentage change. If no category exceeds the threshold, state that all metrics are stable."
+The instruction is the most important part of your agent. It tells the agent what to analyze, when to flag something, and how to format the output.
 
-Keep these rules in mind when writing instructions:
+A strong instruction covers three things:
 
-- Include time ranges, status filters, and exclusions
-- Specify how results should be grouped and sorted
-- Name the exact output fields or columns you need
-- State what to output when there is no data or nothing to flag
+1. **What to analyze** — the data, metrics, or entities to look at
+2. **What conditions matter** — thresholds, comparisons, or time ranges
+3. **What to include in the output** — format, sections, tables, and edge cases
 
-## Step 3: Configure a trigger (optional)
+#### Weak vs. strong instructions
 
-Triggers tell the agent when to act vs. stay silent. Skip this step if the agent should always produce output (for example, a daily summary report). Add a trigger if the agent should only notify you when a specific condition is met.
+| Weak | Strong |
+| --- | --- |
+| "Fetch open issues from the tracker" | "Fetch all issues labeled 'urgent' created in the last 14 days. Exclude issues with status 'Closed' or 'Duplicate'. Group by assignee. For each assignee include: issue ID, title, creation date, and current status. Sort each group by creation date descending." |
+| "Analyze the data for trends" | "Compare this period's metrics against the prior period. Flag any category where the value changed by more than 20%. For flagged categories, note whether it is an increase or decrease and compute the exact percentage change. If no category exceeds the threshold, state that all metrics are stable." |
+| "Create a summary report" | "Create a report with the heading 'Weekly Service Health Report'. Section 1: Overview — a bulleted list with total services monitored, services with incidents, and overall uptime (X.XX% format). Section 2: Incidents (only if any occurred) — for each affected service, list incident ID, title, severity, and duration. Section 3: Summary — if no incidents, state 'All services healthy.'" |
 
-1. Toggle **Trigger** on.
-2. Enter a condition using a concrete threshold — avoid vague language.
+Make sure your instruction also covers edge cases: what should the agent say when there's no data, no anomalies, or nothing to flag?
 
-| Avoid | Use instead |
-| :-- | :-- |
+### Step 2: Set a Trigger (Optional)
+
+Triggers control when your agent takes action vs. stays silent. If you only want to hear about problems — anomaly detection, threshold breaches, SLA violations — add a trigger. If you want regular reporting regardless of what the data shows (daily summaries, weekly reviews), skip the trigger and let the agent always run.
+
+#### Use concrete thresholds
+
+| Vague | Concrete |
+| --- | --- |
 | "If sales are low" | "If daily revenue drops by more than 10% compared to the previous 7-day average" |
-| "If there are problems" | "If the error rate exceeds 5% or if any orders are stuck in pending for more than 48 hours" |
+| "If there are problems" | "If the error rate exceeds 5% or if any orders are stuck in pending status for more than 48 hours" |
+| "If something changed" | "If revenue falls outside the 4% monthly variance range" |
 
-Start with one condition. Add more only after confirming the first fires as expected.
+Start with a single condition. Once you confirm it fires correctly, add more. Debugging a multi-condition trigger from scratch is significantly harder than layering conditions one at a time.
 
-## Step 4: Set a schedule
+### Step 3: Choose a Schedule
 
-1. Open the **Schedule** panel.
-2. Select a frequency.
+Match the schedule to how often your data changes and how urgently you need to act on it.
 
-| Frequency | When to use |
-| :-- | :-- |
-| Hourly | Real-time monitoring only — production errors, critical SLA breaches |
-| Daily | Most agents (recommended default) |
-| Weekly | Trend analysis, team performance summaries |
-| Monthly | High-level business reviews, budget tracking |
+| Frequency | Best for | Examples |
+| --- | --- | --- |
+| Hourly | Urgent, real-time monitoring only | Production error rate spikes, critical SLA breaches |
+| Daily | Most monitoring tasks (recommended default) | Sales metrics, pipeline health, support ticket volume |
+| Weekly | Trend analysis and summaries | Week-over-week performance, team productivity, campaign results |
+| Monthly | High-level reviews and strategic reporting | Monthly business review, quarterly forecasts, budget tracking |
 
-## Step 5: Define the output format
+A daily schedule is the right default for most agents. Only use hourly if you genuinely need to react within the hour — frequent runs add noise and make triggers harder to tune.
 
-Specify how results should be structured directly in the instruction. The agent will not infer formatting on its own.
+### Step 4: Specify Output Format
 
-Include:
+If you don't tell the agent how to present its results, the output will be inconsistent. Be explicit.
 
-- Section headings: "Section 1: Overview", "Section 2: Details"
-- Table columns: "Include columns: Deal Name, Stage, Days Stuck, Owner"
-- Number formats: "Show currency as \$X,XXX" and "Show percentages as X.X%"
-- Conditional sections: "Only include the Incidents section if incidents occurred"
-- Volume limits: "Limit to top 10 entries ranked by largest change"
+- Name your section headings: "Section 1: Overview", "Section 2: Details"
+- Specify table columns: "Include columns: Deal Name, Stage, Days Stuck, Owner"
+- Define number formats: "Show currency as \$X,XXX" and "Show percentages as X.X%"
+- Handle conditional sections: "Only include the Incidents section if incidents occurred"
+- Limit volume: "Limit to top 10 entries ranked by largest change"
 
-## Step 6: Configure Visual Mode nodes (Visual Mode only)
+For agents with personalization enabled, you can address the reader directly in the output:
 
-If you are building in Visual Mode, apply these rules to each node.
+> "Open with a 2-3 sentence summary addressing the reader, e.g.: 'This week your team handled X items averaging Y per day — up/down Z% vs. your 4-week average.'"
 
-**Write self-contained node instructions.** Each node must make sense without referencing other nodes. Describe the input data the node should expect:
+### Step 5: Build in Visual Mode (if applicable)
+
+If you're using Visual Mode, additional principles apply at the node level.
+
+#### Node instructions should be self-contained
+
+Each node's instruction must make sense on its own. Don't reference other nodes by name. Instead, describe the input data the node should expect:
 
 > "Given the list of assignees from the incoming issues, fetch their last 10 resolved tickets."
 
-**Describe the outcome, not the procedure.** Tell the node what to produce, not how to produce it.
+#### Describe outcomes, not procedures
 
-**Assign one responsibility per node.** If a node instruction covers two unrelated concerns, split it into two nodes.
+Tell the node what you want, not how to implement it.
 
-**Use concrete If/Else conditions.**
+| Procedural (avoid) | Outcome-focused (preferred) |
+| --- | --- |
+| "SELECT \* FROM bugs WHERE severity = 'critical' AND created\_at \> NOW() - INTERVAL 7 DAY" | "Fetch all critical bugs from the last 7 days, grouped by component" |
+| "Use the EVALUATE\_CRITERIA tool to check if error count exceeds threshold" | "Check if the total number of errors exceeds 10" |
 
-| Avoid | Use instead |
-| :-- | :-- |
+#### One responsibility per node
+
+A node can do complex work, but that work should be cohesive. If an instruction covers two unrelated concerns, split them into separate nodes.
+
+#### Use concrete values in If/Else conditions
+
+| Vague | Concrete |
+| --- | --- |
 | "There are many errors" | "The total count of items with status 'error' is greater than 10" |
 | "Performance is poor" | "The average response time exceeds 500ms" |
 
-**Route data through Control Nodes.** If data is needed on both sides of an If/Else node, connect it through the node — do not wire around it. Bypassing the node causes both branches to activate regardless of the condition result.
+#### Route data through Control Nodes
 
-**Artifact Builder:** Connect data nodes directly to the Artifact Builder when the output requires tables or charts. Passing everything through a Summary node first strips the structured data the Artifact Builder needs. Split the Artifact Builder instruction into two parts: one for how to organize the data, one for how to format the final output.
+If data is needed downstream after an If/Else node, connect it through the node rather than short-circuiting around it. Bypassing the If/Else node causes both branches to activate regardless of the condition.
 
-## Step 7: Configure the delivery channel
+**Incorrect — Data and Analysis nodes bypass the If/Else node:**
 
-1. Open the **Delivery** panel.
-2. Select **Email**, **Slack**, or **Webhook**.
-3. Enter the destination and save.
+![Incorrect: Data and Analysis nodes short-circuit the If/Else node, causing both paths to activate.](bad-routing.png)
 
-## Step 8: Test the agent
+_Both Artifact Builder nodes receive data regardless of which branch should run._
 
-1. Click **Run** to trigger a manual test.
-2. Review the output in the **Run Visualiser**.
-3. Adjust the instruction, trigger, or format as needed.
+**Correct — Data and Analysis nodes pass through the If/Else node:**
 
-If you need deep cross-referenced analysis or comprehensive insights, enable **Deep Analysis** before running the test. For simple metric monitoring, leave it off.
+![Correct: Data and Analysis nodes pass through the If/Else node, activating only the correct path.](good-routing.png)
 
-### Common fixes
+_Only the correct branch activates based on the condition._
 
-| Problem | Fix |
-| :-- | :-- |
-| Output is too broad | Add filtering criteria to the instruction |
-| Data is missing from output | Name the specific fields you need |
-| Formatting is inconsistent | Add explicit formatting instructions |
-| Trigger fires too often | Tighten the threshold |
-| Trigger never fires | Loosen the threshold |
+#### Artifact Builder tips
 
-## Step 9: Activate the agent
+- Connect data nodes directly to the Artifact Builder if the output needs tables or charts — don't route everything through a Summary node first
+- Split the Artifact Builder's instruction into two parts: one for how to structure the data (grouping, lists, tables), and one for how to format the final output (headings, layout, number formats)
+- Be explicit about the output format — specify headings, bullet patterns, and number formats exactly as you want them to appear
 
-Once the test output looks correct:
+### Step 6: Test Before Deploying
 
-1. Click **Publish**.
-2. Click **Activate**.
+Always test your agent before activating it. A Preview feature is coming soon that will let you test agent outputs directly from the editor. In the meantime, use test runs to validate behavior.
 
-The agent will run on the schedule you configured and deliver output to the channel you set.
+#### Iterate based on results
 
-## Pre-activation checklist
+- Output too broad → add filtering criteria
+- Important data missing → name the specific fields you need
+- Inconsistent formatting → add explicit formatting instructions
+- Trigger fires too often → tighten the threshold
+- Trigger never fires → loosen the threshold
 
-- \[ \] Instruction covers what to analyze, conditions that matter, and how to format output
-- \[ \] Trigger uses concrete values (if applicable)
-- \[ \] Schedule matches how often the data changes
-- \[ \] Output format specifies sections, columns, and number formats
-- \[ \] Edge cases handled — output defined for when nothing is flagged
-- \[ \] Test run completed and output reviewed
-- \[ \] Delivery channel configured
+#### Use Deep Analysis for complex tasks
+
+Enable Deep Analysis when the agent needs to explore multiple aspects of the data, cross-reference different metrics, or produce comprehensive insights. It takes longer but yields more thorough results. For simple metric monitoring, leave it off.
+
+### Deployment Checklist
+
+Before activating your agent, confirm:
+
+- Instruction covers what to analyze, what thresholds matter, and how to format the output
+- Trigger criteria use concrete values (if applicable)
+- Schedule matches how often the data changes
+- Output format specifies sections, columns, and number formats
+- Edge cases are handled (what to say when nothing is flagged)
+- Trigger tested independently before deploying
+- Full end-to-end test run completed
+- Delivery channel configured (email, Slack, or webhook)
