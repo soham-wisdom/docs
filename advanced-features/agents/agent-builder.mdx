@@ -75,42 +75,19 @@ Every agent starts with a trigger node, which defines when the agent runs.
 
 Nodes are the building blocks of a Visual Mode agent. Each node has a single, focused responsibility. You connect them using edges — click the **\+** button on any node's output to add the next node in the flow.
 
-The table below shows the available node types and what each one does.
+Each node performs a single, focused task. You connect them using edges to define the flow of data through your workflow.
 
-| Category | Node | What it does |
-| --- | --- | --- |
-| Data | **Data** | Fetches a dataframe from your connected data lake via SQL or Python execution. |
-| Data | **Web Search** | Searches the web and brings results into the workflow as context. |
-| Data | **MCP** | Calls an MCP tool to act across connected surfaces. See [Connect an MCP server](/integrations/mcp) for setup. |
-| Reasoning | **Analysis** | Operates on a dataframe to perform filtering, aggregation, ordering, or scoring. |
-| Reasoning | **Summary** | Takes a dataframe or context as input and produces a textual summary. |
-| Control | **If/Else** | Evaluates a condition and routes the workflow down the matching branch. Inactive branches are skipped entirely. |
-| Artifact | **Artifact Builder** | Ingests dataframes and context from the workflow run to produce a formatted report for delivery. |
-| Delivery | **Email** | Sends the output to one or more email addresses. |
-| Delivery | **Slack** | Posts the output to a Slack channel. |
+1. Click the **\+** button on any node's output to open the **Add node** menu.
+2. Select the node type you want to add.
+3. Write an instruction in the node's settings panel describing what it should do with its input.
+4. Click **Done**.
+5. Repeat until your workflow is complete.
 
 <Note>
   Every agent requires at least one Artifact Builder node and one delivery node before it can be published.
 </Note>
 
-### Write effective node instructions
-
-Each node's instruction tells it what to do with its input. A well-written instruction produces consistent, useful output — a vague one produces inconsistent results.
-
-Keep these rules in mind when writing instructions:
-
-- Write each instruction so it makes sense on its own, without referencing other nodes by name. Describe the input data the node should expect: "Given the list of assignees from the incoming issues, fetch their last 10 resolved tickets."
-- Describe the outcome you want, not the procedure for producing it. Tell the node what to produce, not how.
-- Assign one responsibility per node. If an instruction covers two unrelated concerns, split it into two nodes.
-- For If/Else conditions, use concrete values — "the total count of items with status 'error' is greater than 10" rather than "there are many errors."
-
-### Route data correctly through If/Else nodes
-
-If data is needed on both sides of an If/Else node, connect it through the node — do not wire directly around it. Bypassing the node causes both branches to activate regardless of which condition is met.
-
-### Connect data nodes directly to the Artifact Builder
-
-If the artifact needs tables or charts, connect your Data or Analysis nodes directly to the Artifact Builder. Routing everything through a Summary node first strips the structured data the Artifact Builder needs to render tables and visualizations correctly.
+For a full description of each node type and guidance on writing effective node instructions, see the [Node Reference](/advanced-features/agents/node-reference).
 
 ## Step 4: Configure the Artifact Builder
 
@@ -124,7 +101,7 @@ Be explicit about formatting. The Artifact Builder does not infer structure on i
 - Section headings: "Section 1: Overview", "Section 2: Details"
 - Table columns: "Include columns: Deal Name, Stage, Days Stuck, Owner"
 - Number formats: "Show currency as \$X,XXX" and "Show percentages as X.X%"
-- Conditional sections: "Only include the Incidents section if incidents occurred"
+- Conditional sections: "Only include the Incidents section if incidents occurred."
 
 3. Click **Done**.
 
