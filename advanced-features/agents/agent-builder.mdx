@@ -59,11 +59,11 @@ Every agent starts with a trigger node, which defines when the agent runs.
 | **Manual trigger** | Starts when you run the agent manually. Use this during building and testing. |
 | **Schedule** | Starts on a recurring schedule you define. Use this for production agents. |
 
-3. If you want the scheduled agent to act only when a condition is met, enter it in the **Trigger Criteria** field. Leave it empty to run unconditionally every time the trigger fires.
-
-<Tip>
-  Start with a single condition. Once you confirm it fires correctly, add more. Debugging a multi-condition trigger from scratch is significantly harder than layering conditions one at a time.
-</Tip>
+3. If you select the scheduled agent and want it to act only when a condition is met, enter it in the **Trigger Criteria** field. Leave it empty to run unconditionally every time the trigger fires.
+   <Tip>
+     Start with a single condition. Once you confirm it fires correctly, add more. Debugging a multi-condition trigger from scratch is significantly harder than layering conditions one at a time.
+   </Tip>
+   Here, also define when the agent runs: set a start date and time, and a frequency. Match the frequency to how often your data changes and how quickly you need to act on it.
 
 4. Click **Done**.
 
@@ -105,12 +105,8 @@ To add a node:
 
 The Artifact Builder formats your workflow's output into a finished report for delivery.
 
-1. Click the **Artifact Builder** node on the canvas to open its settings.
-2. Write an instruction that covers two things separately: how to organize the data into sections, lists, and tables; and how to format the final output — headings, number formats, and layout.
-
-<Note>
-  Every agent requires at least one Artifact Builder node and one delivery node before it can be published.
-</Note>
+1. Add the **Artifact Builder** node to the canvas, then click it to open its settings.
+2. Write an instruction that covers two things separately: how to organize the data into sections, lists, and tables; and how to format the final output: headings, number formats, and layout.
 
 Be explicit about formatting. The Artifact Builder does not infer structure on its own. Include details like:
 
@@ -121,43 +117,38 @@ Be explicit about formatting. The Artifact Builder does not infer structure on i
 
 3. Click **Done**.
 
+<video src="/videos/artifact.mp4" controls />
+
+<Note>
+  Every agent requires at least one Artifact Builder node and one Delivery node before it can be published.
+</Note>
+
 ## Step 5: Configure delivery
 
-The delivery node sends your artifact to its destination.
+The Delivery node sends your artifact to its destination.
 
 1. Click **\+** after the Artifact Builder node and select **Email**, **Slack**, or **Webhook**.
 2. Enter the destination — an email address, Slack channel name, or webhook URL.
 3. Click **Done**.
+   <Frame>
+     ![Agent Email Node](/images/agent-email-node.png)
+   </Frame>
 
 <Note>
   To deliver to Slack, a workspace administrator must first connect your Slack workspace to WisdomAI. See [Connect to Slack](/integrations/connect-to-slack).
 </Note>
 
-## Step 6: Set a schedule
-
-If you selected **Schedule** as your trigger, define when the agent runs.
-
-1. Click the trigger node to reopen its settings.
-2. Set a start date and time.
-3. Select a frequency.
-
-Match the frequency to how often your data changes and how quickly you need to act on it.
-
-| Frequency | When to use |
-| --- | --- |
-| Hourly | Real-time monitoring only — production errors, critical SLA breaches |
-| Daily | Most agents — recommended default |
-| Weekly | Trend analysis, team performance summaries |
-| Monthly | High-level business reviews, budget tracking |
-
 ## Step 7: Preview and test
 
-Before publishing, run the agent manually to verify the output is correct.
+Before publishing, run the agent manually to verify that the output is correct.
 
 1. Click **Preview** in the top right corner.
 2. Watch the canvas as each node executes. A green check confirms the node succeeded. A red X indicates a failure — click the node to see the error.
-3. After the run completes, open the **Run Visualiser** to review the data generated at each node, the analysis performed, and the SQL or Python used.
-4. Adjust node instructions, trigger criteria, or formatting as needed and preview again.
+3. After the run completes, open the **Run Visualiser** to review the data generated at each node, the analysis performed, and the SQL or Python used.
+   <Frame>
+     ![View Data](/images/view-data.png)
+   </Frame>
+4. Click **End Preview** to return to the edit mode and adjust node instructions, trigger criteria, or formatting as needed, then preview again.
 
 ### Common fixes
 
@@ -170,14 +161,17 @@ Before publishing, run the agent manually to verify the output is correct.
 | Trigger never fires | Loosen the threshold value |
 | Node fails with "unsupported input" | Check that a Data node is connected and feeding into the failing node |
 
-## Step 8: Publish and activate
+## Step 8: Publish your Agent
 
-Once the preview output looks correct, make the agent live.
+Once the preview output looks correct, make the agent live. To do that, click the **Publish** button. Your agent will become active instantly. 
 
-1. Click **Publish**.
-2. Click **Activate**.
+<Frame>
+  ![Publish Agent](/images/publish-agent.png)
+</Frame>
 
-The agent will run on the schedule you configured and deliver output to the channel you set. You can monitor past runs, edit the agent, or adjust the schedule at any time from the **Agents** tab.
+The agent will run on the schedule you configured (unless you have chosen the manual trigger) and deliver output to the method you set. You can monitor past runs, edit the agent, or adjust the schedule at any time from the **Agents** tab.
+
+## Next steps
 
 <CardGroup cols={2}>
   <Card title="Manage your agents" icon="sliders" href="/advanced-features/agents/manage-agents">
