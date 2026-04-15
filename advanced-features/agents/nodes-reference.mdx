@@ -1,0 +1,128 @@
+---
+title: "Nodes Reference"
+---
+
+Nodes are the building blocks of a [Visual Mode agent](/advanced-features/agents/agent-builder). Each node has a single, focused responsibility: it receives input, performs one operation, and passes its output to the next node. This page describes every available node type, what it does, and when to use it.
+
+## Trigger nodes
+
+Trigger nodes are the entry point of every agent. Every workflow starts with exactly one trigger node, which determines when the agent runs.
+
+### Manual trigger
+
+Starts the agent when you run it manually from the Agent Builder canvas. Use this trigger during building and testing. The agent only executes when you initiate a run.
+
+**Trigger criteria (optional):** Enter a condition that must be true for the agent to proceed. If the condition is not met, the agent stops after the trigger node, and no downstream nodes execute. Leave empty to always proceed.
+
+### Schedule
+
+Starts the agent on a recurring schedule you define. Use this trigger for production agents that need to run automatically: daily summaries, weekly reports, and real-time monitoring.
+
+**Trigger criteria (optional):** Same as Manual trigger. The agent evaluates the condition on each scheduled run and only proceeds if it is met.
+
+<Note>
+  External trigger and Webhook trigger types are coming soon.
+</Note>
+
+## Data nodes
+
+Data nodes bring information into the workflow. They are typically the first nodes connected after the trigger, and their output, a structured dataframe, flows into downstream Reasoning nodes.
+
+### Data
+
+Fetches a structured dataframe from your connected data sources by executing SQL or Python against them. The dataframe is passed to downstream nodes with its schema intact: column names, types, and relationships are preserved throughout the workflow.
+
+**When to use:** Any time your agent needs to query your connected data: sales records, support tickets, usage metrics, and financial data.
+
+### Web Search
+
+Searches the web and brings results into the workflow as context. Use this node when your agent needs information from outside your data lake: recent news, competitor activity, market events, or any external signal that your internal data does not capture.
+
+**When to use:** Correlation analysis (linking internal data spikes to external events), competitive monitoring, or any workflow that needs to reference current public information.
+
+### MCP
+
+Calls an MCP (Model Context Protocol) tool to perform actions or retrieve data across connected surfaces. Use this node when your workflow needs to interact with an external system, such as creating a task, querying a third-party API, or triggering an action in a connected tool.
+
+**When to use:** Any workflow that needs to act on an external system rather than just read from your data lake.
+
+For setup, see [Connect an MCP server](/integrations/mcp).
+
+## Reasoning nodes
+
+Reasoning nodes operate on the dataframes and context produced by Data nodes. They perform analysis, summarization, and derivation to transform raw data into insights.
+
+### Analysis
+
+Operates on a dataframe to derive new information by filtering, aggregating, ordering, scoring, enriching, or classifying rows. The output is a new or modified dataframe that can flow into further Reasoning nodes, an Artifact Builder, or a Control node.
+
+**When to use:** Any time you need to transform or analyze structured data before surfacing it: computing totals, flagging rows that meet a threshold, ranking results, or adding calculated fields.
+
+### Summary
+
+Takes a dataframe or context as input and produces a textual narrative. Unlike Analysis, which outputs structured data, Summary outputs prose: a paragraph or set of sentences describing what the data shows.
+
+**When to use:** When your artifact needs a written interpretation of the data rather than (or in addition to) a table. Summary nodes work well feeding into an Artifact Builder alongside raw dataframes.
+
+## Control nodes
+
+Control nodes direct the flow of execution through the workflow. They evaluate conditions and determine which downstream nodes to run and which to skip.
+
+### If/Else
+
+Evaluates a condition against the data in the workflow and routes execution down one of two branches — the IF branch if the condition is true, the ELSE branch if it is not. Nodes on the inactive branch receive a no-op signal and are skipped entirely — they neither execute nor produce output.
+
+**When to use:** Any time your workflow needs to behave differently depending on what the data shows: sending an alert only when a threshold is breached, routing to different delivery channels based on a metric, or skipping delivery when there is nothing to report.
+
+**Important:** If a downstream node needs data from before the If/Else node, connect that data through the If/Else node. Do not wire around it. Bypassing the node causes both branches to activate regardless of which condition is met.
+
+<Note>
+  The Loop, Switch, and Human-in-the-Loop node types are coming soon.
+</Note>
+
+## Artifact nodes
+
+Artifact nodes format the workflow's output into a finished deliverable, ready for delivery.
+
+### Artifact Builder
+
+Ingests dataframes and context produced during the workflow run and formats them into a structured report. The Artifact Builder does not infer formatting — you define the structure explicitly in its instructions.
+
+Split your Artifact Builder instruction into two parts:
+
+- **Organization:** How to group the data, which tables or lists to create, and what to include in each section.
+- **Format:** How the final output should look: section headings, column names, number formats, and conditional sections.
+
+**Supported output formats:** PDF, DOCX, PPTX, XLSX, and email with full table rows and fluid layout.
+
+**When to use:** Every agent that delivers a report, summary, or structured notification to an end recipient requires an Artifact Builder node. They are mandatory for every Agent.
+
+<Note>
+  Connect Data and Analysis nodes directly to the Artifact Builder when the output requires tables or charts. Routing everything through a Summary node first strips the structured data that the Artifact Builder needs.
+</Note>
+
+## Delivery nodes
+
+Delivery nodes send the artifact produced by the Artifact Builder to its destination. Every agent requires at least one delivery node to be published.
+
+### Email
+
+Sends the artifact to one or more email addresses. Supports full table rows at natural column widths, with no pagination or column truncation.
+
+### Slack
+
+Posts the artifact to a Slack channel. Requires a Slack workspace connected to WisdomAI by a workspace administrator. See [Connect to Slack](/integrations/connect-to-slack).
+
+### Webhook
+
+Sends the artifact to a webhook URL. Coming soon.
+
+<CardGroup cols={2}>
+  <Card title="Build an agent in Visual Mode" icon="diagram-project" href="/advanced-features/agents/build-an-agent">
+    Step-by-step guide to building your first Visual Mode agent.
+  </Card>
+
+  <Card title="Agent best practices" icon="star" href="/advanced-features/agents/best-practices">
+    Learn how to write effective node instructions, triggers, and output formatting.
+  </Card>
+</CardGroup>
