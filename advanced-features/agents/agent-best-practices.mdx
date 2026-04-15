@@ -1,0 +1,147 @@
+---
+title: "Agent Best Practices"
+---
+
+Building an agent that runs reliably in production requires more than just connecting nodes. The practices below are distilled from the patterns that consistently produce the highest-quality agent outputs across WisdomAI. They cover the decisions that most affect output quality: how you write instructions, set trigger conditions, choose a schedule, and format the output. Apply them when building a new agent and when debugging one that isn't behaving as expected.
+
+## Writing effective instructions
+
+The instruction is the most consequential part of any node. A vague instruction produces inconsistent results. A specific one produces reliable output.
+
+Every instruction should cover three things:
+
+1. What data or entities to look at.
+2. What conditions or thresholds matter.
+3. What the output should include and how it should be formatted.
+
+### Weak vs. strong instructions
+
+| Weak | Strong |
+| --- | --- |
+| "Fetch open issues from the tracker" | "Fetch all issues labeled 'urgent' created in the last 14 days. Exclude issues with status 'Closed' or 'Duplicate'. Group by assignee. For each assignee include: issue ID, title, creation date, and current status. Sort each group by creation date descending." |
+| "Analyze the data for trends" | "Compare this period's metrics against the prior period. Flag any category where the value changed by more than 20%. For flagged categories, note whether it is an increase or decrease and compute the exact percentage change. If no category exceeds the threshold, state that all metrics are stable." |
+| "Search the web for competitor info" | "Search for recent press releases and news articles about \[competitor\] from the past 30 days. Focus on product launches, partnerships, and pricing changes. Organize findings by topic with source URLs." |
+
+### What makes an instruction strong
+
+- Include time ranges, status filters, and exclusions so the node knows exactly what to include and what to ignore.
+- Specify how results should be grouped and sorted.
+- Name the exact output fields or columns you need.
+- Specify what to output when there is no data or nothing to flag — otherwise, the node will decide on its own.
+
+### Node-specific rules for Visual Mode
+
+Each node's instruction must make sense on its own. Do not reference other nodes by name. Describe the input data the node should expect instead: _Given the list of assignees from the incoming issues, fetch their last 10 resolved tickets_.
+
+Tell each node what to produce, not how to produce it. The node decides the implementation.
+
+| Procedural (avoid) | Outcome-focused (preferred) |
+| --- | --- |
+| "SELECT \* FROM bugs WHERE severity = 'critical' AND created\_at \> NOW() - INTERVAL 7 DAY" | "Fetch all critical bugs from the last 7 days, grouped by component" |
+| "Use the EVALUATE\_CRITERIA tool to check if error count exceeds threshold" | "Check if the total number of errors exceeds 10" |
+
+Assign one responsibility per node. If an instruction covers two unrelated concerns, split it into two nodes.
+
+## Writing trigger criteria
+
+Trigger criteria determine when your agent acts versus staying silent. Vague criteria produce unpredictable behavior. Concrete thresholds produce consistent ones.
+
+| Vague | Concrete |
+| --- | --- |
+| "If sales are low" | "If daily revenue drops by more than 10% compared to the previous 7-day average" |
+| "If there are problems" | "If the error rate exceeds 5% or if any orders are stuck in pending status for more than 48 hours" |
+| "If something changed" | "If revenue falls outside the 4% monthly variance range" |
+
+Start with a single condition. Once you confirm it fires correctly, add more. A multi-condition trigger that has never been tested independently is significantly harder to debug.
+
+### When to use trigger criteria
+
+Use trigger criteria when you only want output on specific conditions: anomaly detection, threshold breaches, or service level agreement violations. Leave the criteria field empty for regular reporting, such as daily summaries, weekly performance reviews, and monthly trend analysis, so the agent always delivers output when it runs.
+
+## Choosing the right schedule
+
+Match the schedule to how often your data changes and how quickly you need to act on it.
+
+| Frequency | When to use | Examples |
+| --- | --- | --- |
+| Hourly | Urgent, real-time monitoring only | Production error rate spikes, critical SLA breaches |
+| Daily | Most agents (recommended default) | Sales metrics, pipeline health, support ticket volume |
+| Weekly | Trend analysis and summaries | Week-over-week performance, team productivity |
+| Monthly | High-level reviews and strategic reporting | Monthly business review, budget tracking |
+
+A daily schedule is the right default for most agents. Hourly runs add noise and make triggers harder to tune unless you genuinely need to react within the hour.
+
+## Formatting output
+
+Telling the agent what to analyze without telling it how to present results produces inconsistent outputs. Be explicit about structure in every instruction that generates an output.
+
+- Name your section headings: "Section 1: Overview", "Section 2: Details"
+- Specify table columns: "Include columns: Deal Name, Stage, Days Stuck, Owner"
+- Define number formats: "Show currency as \$X,XXX" and "Show percentages as X.X%"
+- Handle conditional sections: "Only include the Incidents section if incidents occurred"
+- Set volume limits: "Limit to top 10 entries ranked by largest change"
+
+Always state what the output should say when there is nothing to report. If you don't, the agent will generate something on its own, and it may not match what you expect.
+
+## Routing data through If/Else nodes
+
+If data is needed on both sides of an If/Else node, connect it through the node. Do not wire around it. Bypassing the node causes both branches to activate regardless of which condition is met.
+
+Use concrete values in every If/Else condition.
+
+| Vague | Concrete |
+| --- | --- |
+| "There are many errors" | "The total count of items with status 'error' is greater than 10" |
+| "Performance is poor" | "The average response time exceeds 500ms" |
+
+## Using the Artifact Builder
+
+Connect Data and Analysis nodes directly to the Artifact Builder when the output requires tables or charts. Routing everything through a Summary node first strips the structured data the Artifact Builder needs.
+
+Split the Artifact Builder instruction into two parts:
+
+1. **Organization:** How to group the data, which tables or lists to create, and what to include in each section.
+2. **Format:** How the final output should look: section headings, column names, number formats, and conditional sections.
+
+## Testing before activating
+
+Run a preview before publishing any agent. Click **Preview** at any point during building, not just when the workflow is complete, to check what each node is producing and catch problems before they compound.
+
+### Iterating on results
+
+| Problem | Fix |
+| --- | --- |
+| Output is too broad | Add filtering criteria and exclusions to the instruction |
+| Data is missing | Name the specific fields or columns you need |
+| Formatting is inconsistent | Add explicit section headings, column names, and number formats |
+| Trigger fires too often | Tighten the threshold value |
+| Trigger never fires | Loosen the threshold value |
+
+### Deep Analysis
+
+Enable Deep Analysis when the agent needs to explore multiple aspects of the data, cross-reference metrics, or produce comprehensive insights. It takes longer to complete than a standard run. For simple metric monitoring, leave it off.
+
+## Pre-publishing checklist
+
+Before publishing any agent, confirm the following:
+
+- Instruction covers what to analyze, what conditions matter, and how to format the output.
+- Edge cases handled: output defined for when there is no data or nothing to flag.
+- Trigger criteria use concrete values (if applicable).
+- Trigger tested independently before full workflow test.
+- Schedule matches how often the data changes.
+- Output format specifies sections, columns, and number formats.
+- Full end-to-end preview completed and output reviewed.
+- Delivery channel configured.
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Build an Agent in Visual Mode" icon="diagram-project" href="/advanced-features/agents/build-an-agent">
+    Step-by-step guide to building your first Visual Mode agent.
+  </Card>
+
+  <Card title="Nodes Reference" icon="grid" href="/advanced-features/agents/node-reference">
+    Full description of every node type, its inputs, and when to use it.
+  </Card>
+</CardGroup>
