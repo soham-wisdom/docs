@@ -73,21 +73,33 @@ Every agent starts with a trigger node, which defines when the agent runs.
 
 ## Step 3: Add and connect nodes
 
-Nodes are the building blocks of a Visual Mode agent. Each node has a single, focused responsibility. You connect them using edges — click the **\+** button on any node's output to add the next node in the flow.
-
-Each node performs a single, focused task. You connect them using edges to define the flow of data through your workflow.
-
-1. Click the **\+** button on any node's output to open the **Add node** menu.
-2. Select the node type you want to add.
-3. Write an instruction in the node's settings panel describing what it should do with its input.
-4. Click **Done**.
-5. Repeat until your workflow is complete.
+Nodes are the building blocks of a Visual Mode agent. Each node performs a specific task.
 
 <Note>
-  Every agent requires at least one Artifact Builder node and one delivery node before it can be published.
+  For a full description of each node type, see the [Node Reference](/advanced-features/agents/node-reference).
 </Note>
 
-For a full description of each node type and guidance on writing effective node instructions, see the [Node Reference](/advanced-features/agents/node-reference).
+To add a node:
+
+1. Click the **\+** button on the trigger node to open the **Add node** menu.
+2. Select the node type you want to add.
+
+<Frame>
+  ![15 04 2026 09 08 10](/images/15-04-2026_09-08-10.PNG)
+</Frame>
+
+3. Click on it to write an instruction in the node's settings panel describing what it should do with its input.
+4. Click **Done**.
+   <Frame>
+     ![15 04 2026 09 20 41](/images/15-04-2026_09-20-41.PNG)
+   </Frame>
+5. To add another note, click the circular button on any node's output and extend the arrow to add the next node in the flow. Repeat until your workflow is complete.
+
+<Tip>
+  You don't have to finish the entire workflow before testing. Click **Preview** at any point to run the agent to its current state and see what each node produces. This makes it easier to catch problems early, before adding more nodes on top.
+
+  <video src="/videos/test-run.mp4" controls />
+</Tip>
 
 ## Step 4: Configure the Artifact Builder
 
@@ -95,6 +107,10 @@ The Artifact Builder formats your workflow's output into a finished report for d
 
 1. Click the **Artifact Builder** node on the canvas to open its settings.
 2. Write an instruction that covers two things separately: how to organize the data into sections, lists, and tables; and how to format the final output — headings, number formats, and layout.
+
+<Note>
+  Every agent requires at least one Artifact Builder node and one delivery node before it can be published.
+</Note>
 
 Be explicit about formatting. The Artifact Builder does not infer structure on its own. Include details like:
 
