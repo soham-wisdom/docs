@@ -63,12 +63,9 @@ The tables below show the full permission breakdown across all roles and resourc
   In the API, **Story** refers to **Dashboards**. Roles labeled **Writer** grant edit access to existing resources but do not grant permission to create new ones.
 </Note>
 
-**Column key:** `SA` (Site Admin) · `AD` (Admin) · `DA` (Data Admin) · `CA` (Conn Admin) · `CR` (Creator) · `EX` (Explorer) · `BE` (Basic Explorer) · `VI` (Viewer) · `OB` (Observer) · `SV` (Story Viewer) · `SW` (Story Writer) · `ScV` (Schedule Viewer) · `ScW` (Schedule Writer) · `AV` (Agent Viewer) · `AW` (Agent Writer)
-
-
 <Accordion title="Role scope & capabilities">
   | Role | Scope | Dashboards | Chat / Q&A | SQL editing | AI workstream | Create resources |
-  |------|-------|:---:|:---:|:---:|:---:|:---:|
+  | --- | --- | :-: | :-: | :-: | :-: | :-: |
   | `SITE_ADMIN` | Global | Read, create, clone | Create | Yes | Yes | Yes |
   | `ADMIN` | Organization | Read, create, clone | Create | Yes | Yes | Yes |
   | `DATA_ADMIN` | Domain | Read, create, clone | Create | Yes | Yes | Yes |
@@ -84,8 +81,9 @@ The tables below show the full permission breakdown across all roles and resourc
   | `SCHEDULE_VIEWER` | Schedule ID | No | No | No | No | No |
   | `SCHEDULE_WRITER` | Schedule ID | No | No | No | No | No |
   | `CONNECTION_ADMIN` | Connection | No | No | No | No | No |
-
 </Accordion>
+
+**Column key:** `SA` (Site Admin) · `AD` (Admin) · `DA` (Data Admin) · `CA` (Conn Admin) · `CR` (Creator) · `EX` (Explorer) · `BE` (Basic Explorer) · `VI` (Viewer) · `OB` (Observer) · `SV` (Story Viewer) · `SW` (Story Writer) · `ScV` (Schedule Viewer) · `ScW` (Schedule Writer) · `AV` (Agent Viewer) · `AW` (Agent Writer)
 
 <Accordion title="Granular permissions">
   | Permission | SA | AD | DA | CA | CR | EX | BE | VI | OB | SV | SW | ScV | ScW | AV | AW |
