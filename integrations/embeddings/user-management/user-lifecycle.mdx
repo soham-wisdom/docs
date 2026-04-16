@@ -18,6 +18,10 @@ This guide walks through the full workflow for creating and managing users via t
 - **Access token:** A valid bearer token with `iam:write` permission — contact `support@askwisdom.ai` to obtain one
 - **Workspace ID** (optional): Required only for multi-workspace deployments
 
+<Note>
+  Replace `{ACCOUNT}.wisdom.ai` with the base URL of your WisdomAI tenant — the same domain you use to log in. Both `wisdom.ai` and `askwisdom.ai` are valid depending on your deployment.
+</Note>
+
 ## Step 1: Create users
 
 Use [`createUsers`](/integrations/embeddings/graphql-api/mutations/user/create-users) to provision one or more users by email. You can assign roles, set initial attributes, add them to user groups, and optionally send a welcome email — all in a single call.
