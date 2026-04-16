@@ -45,12 +45,22 @@ curl -X POST \
       }
     }
   }' \
-  https://{ACCOUNT}.askwisdom.ai/graphql
+  https://{ACCOUNT}.wisdom.ai/graphql
 ```
+
  
-<Snippet file="role-ids-note.mdx" />
- 
-## Complete Role & Scope Reference
+## Roles & Permission Reference
+
+The tables below show the full permission breakdown across all roles and resource types. Use these as a reference when deciding which role to assign for a given use case.
+
+<Note>
+  In the API, **Story** refers to **Dashboards**. Roles labeled **Writer** grant edit access to existing resources but do not grant permission to create new ones.
+</Note>
+
+**Column key:** `SA` (Site Admin) · `AD` (Admin) · `DA` (Data Admin) · `CA` (Conn Admin) · `CR` (Creator) · `EX` (Explorer) · `BE` (Basic Explorer) · `VI` (Viewer) · `OB` (Observer) · `SV` (Story Viewer) · `SW` (Story Writer) · `ScV` (Schedule Viewer) · `ScW` (Schedule Writer) · `AV` (Agent Viewer) · `AW` (Agent Writer)
+
+
+<Accordion title="Roles scope">
  
 | Role | Required Scope | Purpose |
 |------|----------------|---------|
@@ -70,16 +80,79 @@ curl -X POST \
 | `SCHEDULE_VIEWER` | Schedule ID | View a specific report schedule |
 | `SCHEDULE_WRITER` | Schedule ID | Edit a specific report schedule (cannot create new ones) |
  
-<Note>
-  In the API, **Story** refers to **Dashboards**. Roles labeled **Writer** grant edit access to existing resources but do not grant permission to create new ones.
-</Note>
+
+
+</Accordion>
+
+<Accordion title="Roles capabilities">
+
+| Role | Dashboards | Chat / Q&A | SQL editing | AI workstream | Create resources |
+|------|:---:|:---:|:---:|:---:|:---:|
+| `SITE_ADMIN` | Read, create, clone | Create | Yes | Yes | Yes |
+| `ADMIN` | Read, create, clone | Create | Yes | Yes | Yes |
+| `DATA_ADMIN` | Read, create, clone | Create | Yes | Yes | Yes |
+| `CREATOR` | No | No | No | No | Domains, connections |
+| `EXPLORER` | No | Create | Yes | Yes | No |
+| `BASIC_EXPLORER` | No | Create | No | No | No |
+| `VIEWER` | Read only | Read only | No | No | No |
+| `OBSERVER` | No | No | No | No | No |
+| `STORY_VIEWER` | Read one | No | No | No | No |
+| `STORY_WRITER` | Edit/clone one | No | No | No | No |
+| `AGENT_VIEWER` | No | No | No | No | No |
+| `AGENT_WRITER` | No | No | No | No | No |
+| `SCHEDULE_VIEWER` | No | No | No | No | No |
+| `SCHEDULE_WRITER` | No | No | No | No | No |
+| `CONNECTION_ADMIN` | No | No | No | No | No |
+
+</Accordion>
+
+<Accordion title="Granular permissions">
+
+| Permission | SA | AD | DA | CA | CR | EX | BE | VI | OB | SV | SW | ScV | ScW | AV | AW |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| `chat:create` | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `chat:read` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `chat:read-all` | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `chat:execute-sql` | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `chat:edit-sql` | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `chat:expand-workstream` | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `chat:admin-tools` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `dashboard:create` | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `dashboard:read` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
+| `dashboard:write` | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ |
+| `dashboard:clone` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ |
+| `schedule:create` | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `schedule:read` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ✅ | ✅ | ❌ | ❌ |
+| `schedule:write` | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ |
+| `agent:read` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ |
+| `agent:write` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ |
+| `connection:create` | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `connection:read` | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `connection:write` | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `connection:delete` | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `connection:refresh` | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `connection:list` | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `domain:create` | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `domain:list` | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `domain:invite` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `iam:read` | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
+| `iam:write` | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `iam:delete` | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `iam-scope:write` | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ | ✅ | ❌ | ❌ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
+| `zsheet:read` | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `zsheet:write` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `zsheet:delete` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `zsheet:refresh` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `workspace:read` | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `workspace:write` | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `workspace:create` | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| `workspace:delete` | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+
+</Accordion>
 
 ## Related articles
 
 <CardGroup cols={2}>
-  <Card title="Role & Permission Matrix" icon="shield" href="/integrations/embeddings/role-and-permission-matrix">
-    Full permission breakdown across all roles
-  </Card>
   <Card title="Create users" icon="user-plus" href="/integrations/embeddings/graphql-api/mutations/user/create-users">
     Provision embedded users with role assignments
   </Card>
@@ -87,4 +160,3 @@ curl -X POST \
     Use roles to control edit access in embedded dashboards
   </Card>
 </CardGroup>
-```

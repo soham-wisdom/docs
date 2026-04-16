@@ -178,7 +178,6 @@
                   "integrations/embeddings/embedding",
                   "integrations/embeddings/user-attributes",
                   "integrations/embeddings/error-handling",
-                  "integrations/embeddings/embedding-modes",
                   "integrations/embeddings/rbac",
                   "integrations/embeddings/role-and-permission-matrix",
                   "integrations/embeddings/token-lifecycle",
@@ -196,7 +195,8 @@
                         "pages": [
                           "integrations/embeddings/iframe/dashboard/embed-a-dashboard"
                         ]
-                      }
+                      },
+                      "integrations/embeddings/embedding-modes"
                     ]
                   },
                   {

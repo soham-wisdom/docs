@@ -5,7 +5,7 @@ title: "Embedding Modes"
 WisdomAI supports four embed paths. Each path renders a different slice of the WisdomAI interface inside your iframe. All paths require a valid JWT passed as the `token` query parameter.
 
 <Note>
-  Replace `{ACCOUNT}.askwisdom.ai` with the base URL of your WisdomAI tenant — the same domain you use to log in. Both `askwisdom.ai` and `wisdom.ai` are valid depending on your deployment.
+  Replace `{ACCOUNT}.wisdom.ai` with the base URL of your WisdomAI tenant — the same domain you use to log in. Both `wisdom.ai` and `askwisdom.ai` are valid depending on your deployment.
 </Note>
 
 ## Supported paths
@@ -68,12 +68,15 @@ All embed paths require the `allow="microphone; camera"` attribute on the iframe
   <Card title="Embedding overview" icon="code" href="/integrations/embeddings/embedding">
     Full server-side embedding flow including authentication
   </Card>
+
   <Card title="Embed a dashboard" icon="chart-bar" href="/integrations/embeddings/iframe/dashboard/embed-a-dashboard">
     Step-by-step guide for embedding a specific dashboard
   </Card>
+
   <Card title="Embed chat" icon="message" href="/integrations/embeddings/iframe/chat/embed-chat">
     Step-by-step guide for embedding a chat interface
   </Card>
+
   <Card title="Token lifecycle and refresh" icon="clock" href="/integrations/embeddings/token-lifecycle">
     Token expiry, refresh flow, and switching users
   </Card>
