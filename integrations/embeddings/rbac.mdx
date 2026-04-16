@@ -1,31 +1,35 @@
 ---
 title: "RBAC for Embedded Users"
 ---
- 
+
 Embedded users inherit WisdomAI's role-based access control (RBAC) system. The role you assign when provisioning a user controls what they can see and do inside the embedded interface. There is no separate embed-specific permission layer.
- 
+
 <Note>
   Custom roles are not yet supported. You must use one of the built-in roles listed below.
 </Note>
- 
+
 ## How roles affect embedded views
- 
+
 Visibility of edit controls, dashboard creation buttons, and AI workstreams is determined by the user's role assignment. To **hide edit controls in an embedded dashboard**, assign the user the **Viewer** role.
- 
+
 | Role | Dashboard read | Dashboard creation | Edit SQL | AI workstream |
 |------|:---:|:---:|:---:|:---:|
 | `VIEWER` | Yes | No | No | No |
 | `BASIC_EXPLORER` | No | Yes | No | No |
 | `EXPLORER` | No | Yes | Yes | Yes |
- 
+
 <Note>
   The **Viewer** role is pure read-only and cannot create or modify any resources.
 </Note>
- 
+
 ## Assigning a role at provisioning time
- 
-Pass the specific `roleId` in the `roleAssignments` array when calling `createUsers`. Role IDs are unique UUIDs. You should fetch the current IDs for your environment via the `roles` query before provisioning.
- 
+
+Pass the specific `roleId` in the `roleAssignments` array when calling `createUsers`. Role IDs are unique UUIDs.
+
+<Note>
+  For a full list of role IDs to use in `roleAssignments`, see the [Roles reference](/integrations/embeddings/graphql-api/objects/roles).
+</Note>
+
 ```bash
 curl -X POST \
   -H "Content-Type: application/json" \
@@ -48,7 +52,6 @@ curl -X POST \
   https://{ACCOUNT}.wisdom.ai/graphql
 ```
 
- 
 ## Roles & Permission Reference
 
 The tables below show the full permission breakdown across all roles and resource types. Use these as a reference when deciding which role to assign for a given use case.
@@ -59,9 +62,8 @@ The tables below show the full permission breakdown across all roles and resourc
 
 **Column key:** `SA` (Site Admin) · `AD` (Admin) · `DA` (Data Admin) · `CA` (Conn Admin) · `CR` (Creator) · `EX` (Explorer) · `BE` (Basic Explorer) · `VI` (Viewer) · `OB` (Observer) · `SV` (Story Viewer) · `SW` (Story Writer) · `ScV` (Schedule Viewer) · `ScW` (Schedule Writer) · `AV` (Agent Viewer) · `AW` (Agent Writer)
 
+<Accordion title="Role scope">
 
-<Accordion title="Roles scope">
- 
 | Role | Required Scope | Purpose |
 |------|----------------|---------|
 | `SITE_ADMIN` | Global | Full access across all organizations and workspaces |
@@ -79,12 +81,10 @@ The tables below show the full permission breakdown across all roles and resourc
 | `AGENT_WRITER` | Agent ID | Edit a specific AI agent (cannot create new ones) |
 | `SCHEDULE_VIEWER` | Schedule ID | View a specific report schedule |
 | `SCHEDULE_WRITER` | Schedule ID | Edit a specific report schedule (cannot create new ones) |
- 
-
 
 </Accordion>
 
-<Accordion title="Roles capabilities">
+<Accordion title="Role capabilities">
 
 | Role | Dashboards | Chat / Q&A | SQL editing | AI workstream | Create resources |
 |------|:---:|:---:|:---:|:---:|:---:|
@@ -92,9 +92,6 @@ The tables below show the full permission breakdown across all roles and resourc
 | `ADMIN` | Read, create, clone | Create | Yes | Yes | Yes |
 | `DATA_ADMIN` | Read, create, clone | Create | Yes | Yes | Yes |
 | `CREATOR` | No | No | No | No | Domains, connections |
-| `EXPLORER` | No | Create | Yes | Yes | No |
-| `BASIC_EXPLORER` | No | Create | No | No | No |
-| `VIEWER` | Read only | Read only | No | No | No |
 | `OBSERVER` | No | No | No | No | No |
 | `STORY_VIEWER` | Read one | No | No | No | No |
 | `STORY_WRITER` | Edit/clone one | No | No | No | No |
@@ -153,6 +150,9 @@ The tables below show the full permission breakdown across all roles and resourc
 ## Related articles
 
 <CardGroup cols={2}>
+  <Card title="Roles" icon="shield" href="/integrations/embeddings/graphql-api/objects/roles">
+    Full list of role IDs for use in roleAssignments
+  </Card>
   <Card title="Create users" icon="user-plus" href="/integrations/embeddings/graphql-api/mutations/user/create-users">
     Provision embedded users with role assignments
   </Card>
