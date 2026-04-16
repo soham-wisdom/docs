@@ -88,7 +88,7 @@ Every embedded session follows this five-step flow:
       https://{ACCOUNT}.wisdom.ai/graphql
     ```
 
-    The API responds with a JWT that authenticates as the impersonated user. This token expires in **1 hour**. WisdomAI will notify your page via a `postMessage` event when the token is about to expire. See [Token lifetime and refresh](/integrations/embeddings/token-lifecycle) for the full refresh flow.
+    The API responds with a JWT that authenticates as the impersonated user. This token expires in **1 hour**. WisdomAI will notify your page via a `postMessage` event when the token is about to expire. See [Session management](/integrations/embeddings/session-management) for the full refresh flow.
 
     See [Impersonate user](/integrations/embeddings/graphql-api/mutations/auth/impersonate-user) for the full API reference, including how to pass transient attributes.
   </Step>
@@ -132,26 +132,21 @@ Once the initial iframe is rendered, you must manage the session lifecycle to pr
 ## Related articles
 
 <CardGroup cols={2}>
-  <Card title="Embed chat" icon="message" href="/integrations/embeddings/iframe/chat/embed-chat">
+  <Card title="Embed chat" icon="message" href="/integrations/embeddings/iframe/embed-chat">
     Embed the conversational AI chat interface
   </Card>
-
-  <Card title="Embed a dashboard" icon="chart-bar" href="/integrations/embeddings/iframe/dashboard/embed-a-dashboard">
+  <Card title="Embed a dashboard" icon="chart-bar" href="/integrations/embeddings/iframe/embed-a-dashboard">
     Embed interactive dashboards and visualizations
   </Card>
-
   <Card title="Impersonate user API" icon="user-secret" href="/integrations/embeddings/graphql-api/mutations/auth/impersonate-user">
-    Full reference for the impersonation mutation.
+    Full reference for the impersonation mutation
   </Card>
-
   <Card title="Create users API" icon="user-plus" href="/integrations/embeddings/graphql-api/mutations/user/create-users">
     Full reference for user provisioning
   </Card>
-
   <Card title="GraphQL primer" icon="code" href="/integrations/embeddings/graphql-api/graphql-primer">
     New to GraphQL? Start here
   </Card>
-
   <Card title="Embedding modes" icon="list-alt" href="/integrations/embeddings/embedding-modes">
     All supported embed paths and iframe requirements
   </Card>
