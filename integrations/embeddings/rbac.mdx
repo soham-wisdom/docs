@@ -65,41 +65,26 @@ The tables below show the full permission breakdown across all roles and resourc
 
 **Column key:** `SA` (Site Admin) · `AD` (Admin) · `DA` (Data Admin) · `CA` (Conn Admin) · `CR` (Creator) · `EX` (Explorer) · `BE` (Basic Explorer) · `VI` (Viewer) · `OB` (Observer) · `SV` (Story Viewer) · `SW` (Story Writer) · `ScV` (Schedule Viewer) · `ScW` (Schedule Writer) · `AV` (Agent Viewer) · `AW` (Agent Writer)
 
-<Accordion title="Role scope">
-  | Role | Required Scope | Purpose |
-  | --- | --- | --- |
-  | `SITE_ADMIN` | Global | Full access across all organizations and workspaces |
-  | `ADMIN` | Organization | Full organization-level management |
-  | `DATA_ADMIN` | Domain | Full domain access (cannot manage IAM or Connections) |
-  | `EXPLORER` | Domain | Full query access, including SQL editing and AI workstreams |
-  | `BASIC_EXPLORER` | Domain | Query data without SQL or AI workstream access |
-  | `VIEWER` | Organization | Read-only access across dashboards, chats, and agents |
-  | `OBSERVER` | Organization | Minimal read-only access (IAM/Workspace only; no dashboards) |
-  | `CREATOR` | Any | Permission to create domains and connections only |
-  | `CONNECTION_ADMIN` | Connection | Manage (read/write/delete) one specific data connection |
-  | `STORY_VIEWER` | Dashboard ID | View a specific dashboard |
-  | `STORY_WRITER` | Dashboard ID | Edit/clone a specific dashboard (cannot create new ones) |
-  | `AGENT_VIEWER` | Agent ID | View a specific AI agent |
-  | `AGENT_WRITER` | Agent ID | Edit a specific AI agent (cannot create new ones) |
-  | `SCHEDULE_VIEWER` | Schedule ID | View a specific report schedule |
-  | `SCHEDULE_WRITER` | Schedule ID | Edit a specific report schedule (cannot create new ones) |
-</Accordion>
 
-<Accordion title="Role capabilities">
-  | Role | Dashboards | Chat / Q&A | SQL editing | AI workstream | Create resources |
-  | --- | :-: | :-: | :-: | :-: | :-: |
-  | `SITE_ADMIN` | Read, create, clone | Create | Yes | Yes | Yes |
-  | `ADMIN` | Read, create, clone | Create | Yes | Yes | Yes |
-  | `DATA_ADMIN` | Read, create, clone | Create | Yes | Yes | Yes |
-  | `CREATOR` | No | No | No | No | Domains, connections |
-  | `OBSERVER` | No | No | No | No | No |
-  | `STORY_VIEWER` | Read one | No | No | No | No |
-  | `STORY_WRITER` | Edit/clone one | No | No | No | No |
-  | `AGENT_VIEWER` | No | No | No | No | No |
-  | `AGENT_WRITER` | No | No | No | No | No |
-  | `SCHEDULE_VIEWER` | No | No | No | No | No |
-  | `SCHEDULE_WRITER` | No | No | No | No | No |
-  | `CONNECTION_ADMIN` | No | No | No | No | No |
+<Accordion title="Role scope & capabilities">
+  | Role | Scope | Dashboards | Chat / Q&A | SQL editing | AI workstream | Create resources |
+  |------|-------|:---:|:---:|:---:|:---:|:---:|
+  | `SITE_ADMIN` | Global | Read, create, clone | Create | Yes | Yes | Yes |
+  | `ADMIN` | Organization | Read, create, clone | Create | Yes | Yes | Yes |
+  | `DATA_ADMIN` | Domain | Read, create, clone | Create | Yes | Yes | Yes |
+  | `CREATOR` | Any | No | No | No | No | Domains, connections |
+  | `EXPLORER` | Domain | No | Create | Yes | Yes | No |
+  | `BASIC_EXPLORER` | Domain | No | Create | No | No | No |
+  | `VIEWER` | Organization | Read only | Read only | No | No | No |
+  | `OBSERVER` | Organization | No | No | No | No | No |
+  | `STORY_VIEWER` | Dashboard ID | Read one | No | No | No | No |
+  | `STORY_WRITER` | Dashboard ID | Edit/clone one | No | No | No | No |
+  | `AGENT_VIEWER` | Agent ID | No | No | No | No | No |
+  | `AGENT_WRITER` | Agent ID | No | No | No | No | No |
+  | `SCHEDULE_VIEWER` | Schedule ID | No | No | No | No | No |
+  | `SCHEDULE_WRITER` | Schedule ID | No | No | No | No | No |
+  | `CONNECTION_ADMIN` | Connection | No | No | No | No | No |
+
 </Accordion>
 
 <Accordion title="Granular permissions">
