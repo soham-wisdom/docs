@@ -70,11 +70,11 @@ Control nodes direct the flow of execution through the workflow. They evaluate c
 
 ### If/Else
 
-Evaluates a condition against the data in the workflow and routes execution down one of two branches — the IF branch if the condition is true, the ELSE branch if it is not. Nodes on the inactive branch receive a no-op signal and are skipped entirely — they neither execute nor produce output.
+Evaluates a condition against the data in the workflow and routes execution down one of two or more branches — the IF branch if the condition is true, the ELSE branch if it is not. Nodes on the inactive branch receive a no-op signal and are skipped entirely — they neither execute nor produce output, but simply relay the inputs ahead.
 
 **When to use:** Any time your workflow needs to behave differently depending on what the data shows: sending an alert only when a threshold is breached, routing to different delivery channels based on a metric, or skipping delivery when there is nothing to report.
 
-**Important:** If a downstream node needs data from before the If/Else node, connect that data through the If/Else node. Do not wire around it. Bypassing the node causes both branches to activate regardless of which condition is met.
+**Important:** If a downstream node uses input conditionally, wire it through the If/Else node instead of using a direct edge. A direct edge bypasses the conditioning and always passes the data.
 
 <Note>
   The Loop, Switch, and Human-in-the-Loop node types are coming soon.
@@ -86,14 +86,14 @@ Artifact nodes format the workflow's output into a finished deliverable, ready f
 
 ### Artifact Builder
 
-Ingests dataframes and context produced during the workflow run and formats them into a structured report. The Artifact Builder does not infer formatting — you define the structure explicitly in its instructions.
+Ingests dataframes and text produced during the workflow run and formats them into a structured report. The Artifact Builder does not infer formatting — you define the structure explicitly in its instructions.
 
 Split your Artifact Builder instruction into two parts:
 
-- **Organization:** How to group the data, which tables or lists to create, and what to include in each section.
+- **Visual Organization:** How to group the data, which tables or lists to create, and what to include in each section.
 - **Format:** How the final output should look: section headings, column names, number formats, and conditional sections.
 
-**Supported output formats:** PDF, DOCX, PPTX, XLSX, and email with full table rows and fluid layout.
+**Supported output formats:** Email with full table rows and fluid layout and Slack. PDF, DOCX, PPTX, and XLSX are coming soon.
 
 **When to use:** Every agent that delivers a report, summary, or structured notification to an end recipient requires an Artifact Builder node. They are mandatory for every Agent.
 
