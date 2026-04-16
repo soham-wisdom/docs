@@ -10,20 +10,19 @@ Construct the special embed URL for your Dashboard and append the newly generate
 
 1. Take your original Dashboard URL and insert `/embed/` before the Dashboard's name and ID.
 2. Append the JWT as a `token` query parameter. The URL should look like the following:
-   - **Original URL**: `https://<customer>.askwisdom.ai/dashboards/name-id`
-   - **Final Embed URL**: `https://<customer>.askwisdom.ai/dashboards/embed/name-id?token=<JWT_FROM_STEP_1>`
+   - **Original URL**: `https://<customer>.wisdom.ai/dashboards/name-id`
+   - **Final Embed URL**: `https://<customer>.wisdom.ai/dashboards/embed/name-id?token=<JWT_FROM_STEP_1>`
 3. You can now use this URL as the `src` for an `<iframe>` in your application:
-
    ```html
    <iframe
-     src="https://<customer>.askwisdom.ai/dashboards/embed/name-id?token=<JWT_TOKEN>"
+     src="https://<customer>.wisdom.ai/dashboards/embed/name-id?token=<JWT_TOKEN>"
      style="width: 100%; height: 100%; border: 0;" />
    ```
 
 <Note>
   **URL Update: Story to Dashboard**
 
-  The embedding URL has been updated to use `/dashboards/` instead of `/stories/`. 
+  The embedding URL has been updated to use `/dashboards/` instead of `/stories/`.
 
   If you are currently using an older URL containing `/stories/`, it will continue to work and does not require immediate replacement.
 </Note>
@@ -32,7 +31,7 @@ Construct the special embed URL for your Dashboard and append the newly generate
 
 Embedded dashboards reflect the user's RBAC role. To hide edit buttons and prevent modifications in your embedded view, assign the user the **Viewer** role when creating them. There is no separate embed-specific parameter for this.
 
-See [RBAC for embedded users](/integrations/embeddings/rbac) for how to assign roles and a full breakdown of what each role controls in the embedded interface.
+See [RBAC for embedded users](/integrations/embeddings/user-management/rbac) for instructions on assigning roles and a full breakdown of what each role controls in the embedded interface.
 
 ## Validation
 
@@ -41,10 +40,11 @@ To validate that the process worked, open the final embed URL in your browser. T
 ## Next steps
 
 <CardGroup cols={2}>
-  <Card icon="message" href="/integrations/embeddings/iframe/chat/embed-chat" title="Embed Chat">
+  <Card title="Embed Chat" icon="message" href="/integrations/embeddings/iframe/embed-chat">
     Discover how to embed conversational AI chat interfaces
   </Card>
-  <Card icon="user" href="/integrations/embeddings/graphql-api/queries/auth/impersonate-user" title="Impersonate User API">
+
+  <Card title="Impersonate User API" icon="user" href="/integrations/embeddings/graphql-api/queries/auth/impersonate-user">
     Detailed documentation for the authentication API
   </Card>
 </CardGroup>
