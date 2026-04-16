@@ -190,8 +190,8 @@
                     "group": "User Management",
                     "pages": [
                       "integrations/embeddings/user-management/user-lifecycle",
-                      "integrations/embeddings/user-attributes",
-                      "integrations/embeddings/rbac",
+                      "integrations/embeddings/user-management/user-attributes",
+                      "integrations/embeddings/user-management/rbac",
                       "integrations/embeddings/user-management/roles"
                       
                     ]
