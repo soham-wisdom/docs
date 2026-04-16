@@ -1,5 +1,5 @@
 ---
-title: "User Management"
+title: "User Lifecycle"
 ---
 
 This guide walks through the full workflow for creating and managing users via the WisdomAI GraphQL API. User attributes are key-value pairs attached to a user that drive parameterized connection resolution, row-level authorization, and personalized data access.
@@ -123,7 +123,7 @@ curl -X POST \
 Each attribute includes a `source` field:
 
 | Source | Set by | Mutable via API |
-|--------|--------|:---------------:|
+| --- | --- | :-: |
 | `DATABASE` | `createUsers`, `setUserAttributes` | Yes |
 | `JWT` | SSO identity provider (SAML/OIDC claims) | No |
 
@@ -218,9 +218,11 @@ WisdomAI will request a new token automatically via `postMessage` before expiry.
   <Card title="Embedding overview" icon="code" href="/integrations/embeddings/embedding">
     Full server-side embedding flow
   </Card>
+
   <Card title="Delete users from workspace" icon="user-minus" href="/integrations/embeddings/graphql-api/mutations/user/delete-users-from-workspace">
     Remove users when offboarding
   </Card>
+
   <Card title="List users" icon="users" href="/integrations/embeddings/graphql-api/queries/user/list-users">
     Query users and inspect their attributes
   </Card>
