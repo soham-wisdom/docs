@@ -10,13 +10,15 @@ WisdomAI supports four embed paths. Each path renders a different slice of the W
 
 ## Supported paths
 
+The paths below map to different parts of the WisdomAI interface. Use the one that matches what you want to expose to your embedded users.
+
 ### Full-app embed
 
 `/embed/search` renders the full WisdomAI interface: search, dashboards, and chat in a single view.
 
 ```html
 <iframe
-  src="https://{ACCOUNT}.askwisdom.ai/embed/search?token=<JWT>"
+  src="https://{ACCOUNT}.wisdom.ai/embed/search?token=<JWT>"
   allow="microphone; camera"
   style="width: 100%; height: 100%; border: 0;"
 ></iframe>
@@ -28,7 +30,7 @@ WisdomAI supports four embed paths. Each path renders a different slice of the W
 
 ```html
 <iframe
-  src="https://{ACCOUNT}.askwisdom.ai/embed/dashboards?token=<JWT>"
+  src="https://{ACCOUNT}.wisdom.ai/embed/dashboards?token=<JWT>"
   allow="microphone; camera"
   style="width: 100%; height: 100%; border: 0;"
 ></iframe>
@@ -40,7 +42,7 @@ WisdomAI supports four embed paths. Each path renders a different slice of the W
 
 ```html
 <iframe
-  src="https://{ACCOUNT}.askwisdom.ai/embed/dashboards/<id>?token=<JWT>"
+  src="https://{ACCOUNT}.wisdom.ai/embed/dashboards/<id>?token=<JWT>"
   allow="microphone; camera"
   style="width: 100%; height: 100%; border: 0;"
 ></iframe>
@@ -52,7 +54,7 @@ WisdomAI supports four embed paths. Each path renders a different slice of the W
 
 ```html
 <iframe
-  src="https://{ACCOUNT}.askwisdom.ai/embed/chat/<conversationId>?token=<JWT>&messageid=<messageId>"
+  src="https://{ACCOUNT}.wisdom.ai/embed/chat/<conversationId>?token=<JWT>&messageid=<messageId>"
   allow="microphone; camera"
   style="width: 100%; height: 100%; border: 0;"
 ></iframe>
@@ -68,16 +70,13 @@ All embed paths require the `allow="microphone; camera"` attribute on the iframe
   <Card title="Embedding overview" icon="code" href="/integrations/embeddings/embedding">
     Full server-side embedding flow including authentication
   </Card>
-
-  <Card title="Embed a dashboard" icon="chart-bar" href="/integrations/embeddings/iframe/dashboard/embed-a-dashboard">
+  <Card title="Embed a dashboard" icon="chart-bar" href="/integrations/embeddings/iframe/embed-a-dashboard">
     Step-by-step guide for embedding a specific dashboard
   </Card>
-
-  <Card title="Embed chat" icon="message" href="/integrations/embeddings/iframe/chat/embed-chat">
+  <Card title="Embed chat" icon="message" href="/integrations/embeddings/iframe/embed-chat">
     Step-by-step guide for embedding a chat interface
   </Card>
-
-  <Card title="Token lifecycle and refresh" icon="clock" href="/integrations/embeddings/token-lifecycle">
+  <Card title="Session management" icon="clock" href="/integrations/embeddings/session-management">
     Token expiry, refresh flow, and switching users
   </Card>
 </CardGroup>
