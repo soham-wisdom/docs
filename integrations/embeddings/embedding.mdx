@@ -27,7 +27,7 @@ Every embedded session follows this five-step flow:
       **Authentication:** This management mutation requires a valid Bearer JWT with `iam:write` permissions. Typically, your backend obtains this by exchanging your Access Key via your auth system.
     </Note>
 
-    #### Example Request:
+    Example Request:
 
     ```bash
     curl -s -X POST \
@@ -73,7 +73,7 @@ Every embedded session follows this five-step flow:
       Never expose your permanent access token in client-side code. It provides long-term impersonation capabilities and must be protected on your backend. If compromised, an attacker could impersonate any user in your organization. Store it only in secure server-side environment variables or a secret management system.
     </Warning>
 
-    #### Example Request:
+    Example Request:
 
     ```bash
     curl -s -X POST \
