@@ -101,7 +101,7 @@ curl -X POST \
 ## Token lifecycle and refresh
 
 | Property | Value |
-|----------|-------|
+| --- | --- |
 | Lifetime | 1 hour |
 | Refresh | Via `postMessage` (see below) |
 | Priority | `?token=` URL param always takes precedence over any cached token |
@@ -165,19 +165,23 @@ WisdomAI sends a `REQUEST_JWT_TOKEN` event to the parent window approximately 10
 ## Related articles
 
 <CardGroup cols={2}>
-  <Card title="Embed a dashboard" icon="chart-bar" href="/integrations/embeddings/iframe/dashboard/embed-a-dashboard">
+  <Card title="Embed a Dashboard" icon="chart-bar" href="/integrations/embeddings/iframe/embed-a-dashboard">
     Use the token in an iframe embed URL
   </Card>
-  <Card title="Embed chat" icon="message" href="/integrations/embeddings/iframe/chat/embed-chat">
+
+  <Card title="Embed a Chat" icon="message" href="/integrations/embeddings/iframe/embed-chat">
     Use the token for embedded chat
   </Card>
-  <Card title="Create users" icon="user-plus" href="/integrations/embeddings/graphql-api/mutations/user/create-users">
+
+  <Card title="Create Users" icon="user-plus" href="/integrations/embeddings/graphql-api/mutations/user/create-users">
     Create users before impersonating them
   </Card>
-  <Card title="User attributes" icon="list" href="/integrations/embeddings/user-attributes">
+
+  <Card title="User Attributes" icon="list" href="/integrations/embeddings/user-management/user-attributes">
     Understand transient vs persistent attributes
   </Card>
-  <Card title="Token lifecycle and refresh" icon="clock" href="/integrations/embeddings/token-lifecycle">
-    Full token lifecycle reference including switching users
+
+  <Card title="Session Management" icon="clock" href="/integrations/embeddings/session-management">
+    Full token lifecycle reference, including switching users
   </Card>
 </CardGroup>
