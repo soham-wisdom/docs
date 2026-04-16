@@ -77,7 +77,7 @@ curl -X POST \
   **Email uniqueness:** User matching is email-based. If your embedded users may share email addresses across tenants, append a unique identifier to the email prefix — for example, `alice+tenant123@yourcompany.com`. This prevents cross-tenant session collisions.
 </Note>
 
-For the full input schema, see [Create users](/integrations/embeddings/graphql-api/mutations/user/create-users).
+For the full input schema, see [Create Users](/integrations/embeddings/graphql-api/mutations/user/create-users).
 
 ## Step 2: Update user attributes
 
@@ -219,15 +219,15 @@ WisdomAI will request a new token automatically via `postMessage` before expiry.
 ## Related articles
 
 <CardGroup cols={3}>
-  <Card title="Embedding overview" icon="code" href="/integrations/embeddings/embedding">
+  <Card title="Embed Chat and Dashboards" icon="code" href="/integrations/embeddings/embedding">
     Full server-side embedding flow
   </Card>
 
-  <Card title="Delete users from workspace" icon="user-minus" href="/integrations/embeddings/graphql-api/mutations/user/delete-users-from-workspace">
+  <Card title="Delete Users from Workspace" icon="user-minus" href="/integrations/embeddings/graphql-api/mutations/user/delete-users-from-workspace">
     Remove users when offboarding
   </Card>
 
-  <Card title="List users" icon="users" href="/integrations/embeddings/graphql-api/queries/user/list-users">
+  <Card title="List Users" icon="users" href="/integrations/embeddings/graphql-api/queries/user/list-users">
     Query users and inspect their attributes
   </Card>
 </CardGroup>
