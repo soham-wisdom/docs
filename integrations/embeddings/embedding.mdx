@@ -64,7 +64,7 @@ Every embedded session follows this five-step flow:
       The `setUserAttributes` mutation replaces **all** DATABASE-sourced attributes for that user. You must provide the complete set of attributes you wish to persist, not just the changes.
     </Warning>
 
-    See [User attributes](/integrations/embeddings/user-attributes) for details on how attributes work and how to set them.
+    See [User Attributes](/integrations/embeddings/user-management/user-attributes) for details on how attributes work and how to set them.
   </Step>
   <Step title="Impersonate the user to get a JWT" titleSize="h3">
     Call `impersonateUser` from your server to generate a 1-hour JWT for the user. This mutation is a public API member that uses your permanent Descope Access Key as an argument (`accessToken`) rather than a standard Authorization header. This step must always be performed server-side.
