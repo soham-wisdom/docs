@@ -44,7 +44,7 @@ Every embedded session follows this five-step flow:
           }
         }
       }' \
-      https://{ACCOUNT}.askwisdom.ai/graphql
+      https://{ACCOUNT}.wisdom.ai/graphql
     ```
 
     <Note>
@@ -85,38 +85,40 @@ Every embedded session follows this five-step flow:
           "userEmail": "alice@yourcompany.com"
         }
       }' \
-      https://{ACCOUNT}.askwisdom.ai/graphql
+      https://{ACCOUNT}.wisdom.ai/graphql
     ```
 
     The API responds with a JWT that authenticates as the impersonated user. This token expires in **1 hour**. WisdomAI will notify your page via a `postMessage` event when the token is about to expire. See [Token lifetime and refresh](/integrations/embeddings/token-lifecycle) for the full refresh flow.
 
     See [Impersonate user](/integrations/embeddings/graphql-api/mutations/auth/impersonate-user) for the full API reference, including how to pass transient attributes.
   </Step>
-  <Step title="Use the JWT in the iframe embed URL" titleSize="h3">
-    Append the JWT as a `token` query parameter to the embed URL and set it as the `src` of an `<iframe>`. Ensure the `allow` attribute includes `microphone; camera`.
+  <Step title="Use the JWT in the embed URL" titleSize="h3">
+    Append the JWT as a `token` query parameter to the embed URL and set it as the `src` of your embed. Ensure the `allow` attribute includes `microphone; camera`.\
+    \
+    The following examples use an `<iframe>`, but the same URL structure applies regardless of your integration method.
 
     ```html
     <!-- Full-app embed (search + dashboards + chat) -->
     <iframe
-      src="https://{ACCOUNT}.askwisdom.ai/embed/search?token=<JWT>"
+      src="https://{ACCOUNT}.wisdom.ai/embed/search?token=<JWT>"
       allow="microphone; camera"
       style="width: 100%; height: 100%; border: 0;" />
     
     <!-- Dashboards list view -->
     <iframe
-      src="https://{ACCOUNT}.askwisdom.ai/embed/dashboards?token=<JWT>"
+      src="https://{ACCOUNT}.wisdom.ai/embed/dashboards?token=<JWT>"
       allow="microphone; camera"
       style="width: 100%; height: 100%; border: 0;" />
     
     <!-- Embed a specific dashboard -->
     <iframe
-      src="https://{ACCOUNT}.askwisdom.ai/embed/dashboards/<id>?token=<JWT>"
+      src="https://{ACCOUNT}.wisdom.ai/embed/dashboards/<id>?token=<JWT>"
       allow="microphone; camera"
       style="width: 100%; height: 100%; border: 0;" />
     
     <!-- Embed a specific chat -->
     <iframe
-      src="https://{ACCOUNT}.askwisdom.ai/embed/chat/<conversationId>?token=<JWT>"
+      src="https://{ACCOUNT}.wisdom.ai/embed/chat/<conversationId>?token=<JWT>"
       allow="microphone; camera"
       style="width: 100%; height: 100%; border: 0;" />
     ```
@@ -125,7 +127,7 @@ Every embedded session follows this five-step flow:
 
 ## Manage the session
 
-Once you have the initial iframe rendered, you must manage the session lifecycle to prevent user timeouts or "sticky" sessions when switching users. Read [Token lifecycle and refresh](/integrations/embeddings/token-lifecycle) for best practices on handling token expiry, refreshing tokens without reloading the page, and switching between users.
+Once the initial iframe is rendered, you must manage the session lifecycle to prevent user timeouts or "sticky" sessions when switching users. Read [Token lifecycle and refresh](/integrations/embeddings/token-lifecycle) for best practices on handling token expiry, refreshing tokens without reloading the page, and switching between users.
 
 ## Related articles
 
