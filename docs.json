@@ -177,8 +177,8 @@
                 "pages": [
                   "integrations/embeddings/embedding",
                   "integrations/embeddings/embedding-modes",
-                  "integrations/embeddings/error-handling",
                   "integrations/embeddings/session-management",
+                  "integrations/embeddings/error-handling",
                   {
                     "group": "iframe",
                     "pages": [
