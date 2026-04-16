@@ -29,7 +29,7 @@ impersonateUser(accessToken: String!, userEmail: String!, attributes: [UserAttri
     The `impersonated_user_id` claim cannot be overridden via attributes.
   </Warning>
 
-  See [User attributes](/integrations/embeddings/user-attributes) for how attribute sources are prioritized.
+  See [User Attributes](/integrations/embeddings/user-management/user-attributes) for how attribute sources are prioritized.
 </ParamField>
 
 ## Response
@@ -37,7 +37,7 @@ impersonateUser(accessToken: String!, userEmail: String!, attributes: [UserAttri
 Returns a raw `String!` — the short-lived JWT to use as the `token` query parameter in iframe embed URLs. The token expires after **1 hour**.
 
 <Warning>
-  Never expose your permanent access key in client-side code. Always call this mutation from your server. See the [embedding overview](/integrations/embeddings/embedding) for the secure server-side flow.
+  Never expose your permanent access key in client-side code. Always call this mutation from your server. See [Embed a Chat and Dashboards](/integrations/embeddings/embedding) for the secure server-side flow.
 </Warning>
 
 ## Usage example
