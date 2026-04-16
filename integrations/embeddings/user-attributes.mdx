@@ -13,7 +13,7 @@ User attributes are key-value pairs attached to a user that control how WisdomAI
 Every attribute has a `source` field that indicates where it came from.
 
 | Source | Set by | Mutable via API | Description |
-|--------|--------|:---------------:|-------------|
+| --- | --- | :-: | --- |
 | `DATABASE` | API (`createUsers`, `setUserAttributes`) | Yes | Persistent attributes stored against the user |
 | `JWT` | SSO identity provider (SAML/OIDC claims) | No | Read-only attributes from the user's login token |
 
@@ -46,7 +46,7 @@ curl -X POST \
       }
     }
   }' \
-  https://{ACCOUNT}.askwisdom.ai/graphql
+  https://{ACCOUNT}.wisdom.ai/graphql
 ```
 
 <Snippet file="role-ids-note.mdx" />
@@ -71,7 +71,7 @@ curl -X POST \
       }
     }
   }' \
-  https://{ACCOUNT}.askwisdom.ai/graphql
+  https://{ACCOUNT}.wisdom.ai/graphql
 ```
 
 <Warning>
@@ -95,7 +95,7 @@ curl -X POST \
       ]
     }
   }' \
-  https://{ACCOUNT}.askwisdom.ai/graphql
+  https://{ACCOUNT}.wisdom.ai/graphql
 ```
 
 Transient attributes override DATABASE-sourced values for that session. They are useful for passing request-scoped context that should not be stored on the user.
@@ -103,7 +103,7 @@ Transient attributes override DATABASE-sourced values for that session. They are
 ## Choosing the right approach
 
 | Use case | Recommended approach |
-|----------|---------------------|
+| --- | --- |
 | Attributes that are stable for the user (e.g., `account_id`) | Set at creation via `createUsers`, or update via `setUserAttributes` |
 | Attributes that change per request or should not be persisted | Pass as Transient (Session) attributes in `impersonateUser` |
 | Attributes sourced from SSO claims | Read automatically from the JWT — no action needed |
@@ -114,12 +114,15 @@ Transient attributes override DATABASE-sourced values for that session. They are
   <Card title="Create users" icon="user-plus" href="/integrations/embeddings/graphql-api/mutations/user/create-users">
     Set attributes at provisioning time
   </Card>
+
   <Card title="Set user attributes" icon="tag" href="/integrations/embeddings/graphql-api/mutations/user/set-user-attributes">
     Update DATABASE-sourced attributes on existing users
   </Card>
+
   <Card title="Impersonate user" icon="user-secret" href="/integrations/embeddings/graphql-api/mutations/auth/impersonate-user">
     Pass transient attributes at session time
   </Card>
+
   <Card title="List users" icon="users" href="/integrations/embeddings/graphql-api/queries/user/list-users">
     Inspect a user's current attributes and their source
   </Card>
