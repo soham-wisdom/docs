@@ -4,7 +4,7 @@ title: "Embedding WisdomAI Chat and Dashboards"
 
 Embed a streamlined, white-label version of WisdomAI chat and dashboards directly into your application.
 
-The pages are loaded in an `iframe` and intentionally omit WisdomAI branding and navigation for a seamless integration experience. All core capabilities (natural-language Q&A, table generation, and chart rendering) remain intact.
+Embedded pages intentionally omit WisdomAI branding and navigation. All core capabilities (natural-language Q&A, table generation, and chart rendering) remain intact.
 
 The section below describes the steps to configure and test your embedded chat and dashboards.
 
@@ -20,7 +20,6 @@ Every embedded session follows this five-step flow:
   <Step title="Get your access token" titleSize="h3">
     Contact `support@askwisdom.ai` to receive your Descope Access Key. This is a permanent credential, not a JWT or session token. It authenticates your server to the WisdomAI API and grants impersonation permissions. It does not expire and must be kept secret.
   </Step>
-
   <Step title="Create the end user" titleSize="h3">
     Call `createUsers` to provision the user in WisdomAI:
 
@@ -49,18 +48,17 @@ Every embedded session follows this five-step flow:
     ```
 
     <Note>
-          **Key considerations:**
-    * **Email uniqueness:** User matching is email-based. If your users share emails across tenants, append a unique identifier (e.g., `alice+123@company.com`) to the email prefix to prevent session collisions.
-    * **Role overwrites:** If a user already exists, `createUsers` succeeds but re-applies the provided roles, overwriting manual changes. Use `listUsers` to check status first if you wish to avoid resets.
+      **Key considerations:**
+
+      - **Email uniqueness:** User matching is email-based. If your users share emails across tenants, append a unique identifier (e.g., `alice+123@company.com`) to the email prefix to prevent session collisions.
+      - **Role overwrites:** If a user already exists, `createUsers` succeeds but re-applies the provided roles, overwriting manual changes. Use `listUsers` to check status first if you wish to avoid resets.
     </Note>
-
   </Step>
-
   <Step title="Set user attributes (optional)" titleSize="h3">
-    User attributes are key-value pairs used for row-level authorization and personalized data access. 
-    
-    * **Sources:** Attributes can be stored in the Wisdom **DATABASE** (via API) or derived from **JWT** SSO claims (read-only).
-    * **Creation/Update:** Set them at creation time via `userAttributes` in `CreateUsersInput`, or update them later via `setUserAttributes`.
+    User attributes are key-value pairs used for row-level authorization and personalized data access.
+
+    - **Sources:** Attributes can be stored in the Wisdom **DATABASE** (via API) or derived from **JWT** SSO claims (read-only).
+    - **Creation/Update:** Set them at creation time via `userAttributes` in `CreateUsersInput`, or update them later via `setUserAttributes`.
 
     <Warning>
       The `setUserAttributes` mutation replaces **all** DATABASE-sourced attributes for that user. You must provide the complete set of attributes you wish to persist, not just the changes.
@@ -68,7 +66,6 @@ Every embedded session follows this five-step flow:
 
     See [User attributes](/integrations/embeddings/user-attributes) for details on how attributes work and how to set them.
   </Step>
-
   <Step title="Impersonate the user to get a JWT" titleSize="h3">
     Call `impersonateUser` from your server to generate a 1-hour JWT for the user. This mutation is a public API member that uses your permanent Descope Access Key as an argument (`accessToken`) rather than a standard Authorization header. This step must always be performed server-side.
 
@@ -95,9 +92,8 @@ Every embedded session follows this five-step flow:
 
     See [Impersonate user](/integrations/embeddings/graphql-api/mutations/auth/impersonate-user) for the full API reference, including how to pass transient attributes.
   </Step>
-
   <Step title="Use the JWT in the iframe embed URL" titleSize="h3">
-    Append the JWT as a `token` query parameter to the embed URL and set it as the `src` of an `<iframe>`. Ensure the `allow` attribute includes `microphone; camera`. 
+    Append the JWT as a `token` query parameter to the embed URL and set it as the `src` of an `<iframe>`. Ensure the `allow` attribute includes `microphone; camera`.
 
     ```html
     <!-- Full-app embed (search + dashboards + chat) -->
@@ -105,30 +101,30 @@ Every embedded session follows this five-step flow:
       src="https://{ACCOUNT}.askwisdom.ai/embed/search?token=<JWT>"
       allow="microphone; camera"
       style="width: 100%; height: 100%; border: 0;" />
-
+    
     <!-- Dashboards list view -->
     <iframe
       src="https://{ACCOUNT}.askwisdom.ai/embed/dashboards?token=<JWT>"
       allow="microphone; camera"
       style="width: 100%; height: 100%; border: 0;" />
-
+    
     <!-- Embed a specific dashboard -->
     <iframe
       src="https://{ACCOUNT}.askwisdom.ai/embed/dashboards/<id>?token=<JWT>"
       allow="microphone; camera"
       style="width: 100%; height: 100%; border: 0;" />
-
+    
     <!-- Embed a specific chat -->
     <iframe
       src="https://{ACCOUNT}.askwisdom.ai/embed/chat/<conversationId>?token=<JWT>"
       allow="microphone; camera"
       style="width: 100%; height: 100%; border: 0;" />
     ```
-
   </Step>
 </Steps>
 
 ## Manage the session
+
 Once you have the initial iframe rendered, you must manage the session lifecycle to prevent user timeouts or "sticky" sessions when switching users. Read [Token lifecycle and refresh](/integrations/embeddings/token-lifecycle) for best practices on handling token expiry, refreshing tokens without reloading the page, and switching between users.
 
 ## Related articles
@@ -137,18 +133,23 @@ Once you have the initial iframe rendered, you must manage the session lifecycle
   <Card title="Embed chat" icon="message" href="/integrations/embeddings/iframe/chat/embed-chat">
     Embed the conversational AI chat interface
   </Card>
+
   <Card title="Embed a dashboard" icon="chart-bar" href="/integrations/embeddings/iframe/dashboard/embed-a-dashboard">
     Embed interactive dashboards and visualizations
   </Card>
+
   <Card title="Impersonate user API" icon="user-secret" href="/integrations/embeddings/graphql-api/mutations/auth/impersonate-user">
     Full reference for the impersonation mutation.
   </Card>
+
   <Card title="Create users API" icon="user-plus" href="/integrations/embeddings/graphql-api/mutations/user/create-users">
     Full reference for user provisioning
   </Card>
+
   <Card title="GraphQL primer" icon="code" href="/integrations/embeddings/graphql-api/graphql-primer">
     New to GraphQL? Start here
   </Card>
+
   <Card title="Embedding modes" icon="list-alt" href="/integrations/embeddings/embedding-modes">
     All supported embed paths and iframe requirements
   </Card>
