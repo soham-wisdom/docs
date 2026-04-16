@@ -176,15 +176,24 @@
                 "group": "Embeddings",
                 "pages": [
                   "integrations/embeddings/embedding",
+                  "integrations/embeddings/embedding-modes",
                   "integrations/embeddings/error-handling",
-                  "integrations/embeddings/role-and-permission-matrix",
-                  "integrations/embeddings/token-lifecycle",
+                  "integrations/embeddings/session-management",
                   {
                     "group": "iframe",
                     "pages": [
-                      "integrations/embeddings/iframe/chat/embed-chat",
-                      "integrations/embeddings/embedding-modes",
-                      "integrations/embeddings/iframe/dashboard/embed-a-dashboard"
+                      "integrations/embeddings/iframe/embed-chat",
+                      "integrations/embeddings/iframe/embed-a-dashboard"
+                    ]
+                  },
+                  {
+                    "group": "User Management",
+                    "pages": [
+                      "integrations/embeddings/user-management/user-lifecycle",
+                      "integrations/embeddings/user-attributes",
+                      "integrations/embeddings/rbac",
+                      "integrations/embeddings/user-management/roles"
+                      
                     ]
                   },
                   {
@@ -343,16 +352,6 @@
                     "group": "SDK",
                     "pages": [
                       "integrations/embeddings/sdk/sdk-overview"
-                    ]
-                  },
-                  {
-                    "group": "User Management",
-                    "pages": [
-                      "integrations/embeddings/user-management/user-lifecycle",
-                      "integrations/embeddings/user-attributes",
-                      "integrations/embeddings/rbac",
-                      "integrations/embeddings/user-management/roles"
-                      
                     ]
                   }
                 ]
