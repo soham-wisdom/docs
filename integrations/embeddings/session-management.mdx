@@ -30,14 +30,14 @@ WisdomAI sends a `REQUEST_JWT_TOKEN` event to the parent window approximately 10
 ```html
 <iframe
   id="wisdom-frame"
-  src="https://{ACCOUNT}.askwisdom.ai/embed/dashboards/<id>?token=<JWT>"
+  src="https://{ACCOUNT}.wisdom.ai/embed/dashboards/<id>?token=<JWT>"
   allow="microphone; camera"
   style="width:100%;height:800px;border:0"
 ></iframe>
 
 <script>
   const iframe = document.getElementById('wisdom-frame');
-  const WISDOM_ORIGIN = 'https://{ACCOUNT}.askwisdom.ai';
+  const WISDOM_ORIGIN = 'https://{ACCOUNT}.wisdom.ai';
 
   async function getFreshWisdomToken() {
     // Call your own backend, which calls impersonateUser with the access key.
@@ -77,7 +77,7 @@ The WisdomAI frontend stores the active session token in `localStorage` as `wisd
 
 ```js
 // Switch to a different user by reloading the iframe src
-iframe.src = `https://{ACCOUNT}.askwisdom.ai/embed/search?token=${newJWT}`;
+iframe.src = `https://{ACCOUNT}.wisdom.ai/embed/search?token=${newJWT}`;
 ```
 
 There is no explicit logout mutation for embedded sessions.
@@ -96,4 +96,8 @@ When an expired or invalid JWT is passed in the embed URL, users may be redirect
   <Card title="Embedding overview" icon="code" href="/integrations/embeddings/embedding">
     Full server-side embedding flow
   </Card>
+  
+  <Card title="User lifecycle" icon="users" href="/integrations/embeddings/user-management/user-lifecycle">
+  Create, update, and remove embedded users
+</Card>
 </CardGroup>
