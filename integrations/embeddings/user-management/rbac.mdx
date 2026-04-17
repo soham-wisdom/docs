@@ -5,7 +5,7 @@ title: "RBAC for Embedded Users"
 Embedded users inherit WisdomAI's role-based access control (RBAC) system. The role you assign when provisioning a user controls what they can see and do inside the embedded interface. There is no separate embed-specific permission layer.
 
 <Note>
-  Custom roles are not yet supported. You must use one of the built-in roles listed below.
+  Custom roles are not yet supported. You must use one of the built-in roles listed in this article.
 </Note>
 
 ## How roles affect embedded views
@@ -29,10 +29,6 @@ The table below summarizes the most common roles used in embedded deployments.
 
 Pass the specific `roleId` in the `roleAssignments` array when calling `createUsers`. Role IDs are unique UUIDs.
 
-<Note>
-  For a full list of **role IDs** to use in `roleAssignments`, see the [Roles ID Reference](/integrations/embeddings/user-management/roles).
-</Note>
-
 ```bash
 curl -X POST \
   -H "Content-Type: application/json" \
@@ -55,118 +51,171 @@ curl -X POST \
   https://{ACCOUNT}.wisdom.ai/graphql
 ```
 
-## Roles & Permission Reference
+## Role IDs
+
+Role IDs are passed in the `roleAssignments` field when provisioning or updating users.
+
+| Role | ID |
+| --- | --- |
+| `SITE_ADMIN` | `00000000-0000-0000-0000-000000000014` |
+| `ADMIN` | `00000000-0000-0000-0000-000000000001` |
+| `DATA_ADMIN` | `00000000-0000-0000-0000-000000000004` |
+| `CONNECTION_ADMIN` | `00000000-0000-0000-0000-000000000005` |
+| `CREATOR` | `00000000-0000-0000-0000-000000000006` |
+| `EXPLORER` | `00000000-0000-0000-0000-000000000002` |
+| `BASIC_EXPLORER` | `00000000-0000-0000-0000-000000000015` |
+| `VIEWER` | `00000000-0000-0000-0000-000000000003` |
+| `OBSERVER` | `00000000-0000-0000-0000-000000000007` |
+| `STORY_VIEWER` | `00000000-0000-0000-0000-000000000008` |
+| `STORY_WRITER` | `00000000-0000-0000-0000-000000000009` |
+| `SCHEDULE_VIEWER` | `00000000-0000-0000-0000-000000000010` |
+| `SCHEDULE_WRITER` | `00000000-0000-0000-0000-000000000011` |
+| `AGENT_VIEWER` | `00000000-0000-0000-0000-000000000012` |
+| `AGENT_WRITER` | `00000000-0000-0000-0000-000000000013` |
+
+Role IDs are used in the `roleAssignments` field of the following mutations:
+
+- [`createUsers`](/integrations/embeddings/graphql-api/mutations/user/create-users) — assign a role when provisioning a new embedded user
+- [`setUserAttributes`](/integrations/embeddings/graphql-api/mutations/user/set-user-attributes) — update the role of an existing embedded user
+- [`addScopeRoleAssignmentsForSharing`](/integrations/embeddings/graphql-api/mutations/dashboard/add-scope-role-assignments-for-sharing) — grant a scoped role on a specific dashboard
+- [`removeScopeRoleAssignmentsForSharing`](/integrations/embeddings/graphql-api/mutations/dashboard/remove-scope-role-assignments-for-sharing) — remove a scoped role from a specific dashboard
+
+## Roles & permission reference
 
 The tables below show the full permission breakdown across all roles and resource types. Use these as a reference when deciding which role to assign for a given use case.
 
 <Note>
-  In the API, **Story** refers to **Dashboards**. Roles labeled **Writer** grant edit access to existing resources but do not grant permission to create new ones.
+  - In the API, **Story** refers to **Dashboards**. Roles labeled **Writer** grant edit access to existing resources but do not grant permission to create new ones.
+  - Users can always view, edit, and clone dashboards they created themselves or that have been shared with them. "View All", "Edit All", and "Clone" refer to dashboards created by other users.
 </Note>
 
 <Accordion title="Role scope & capabilities">
   | Role | Scope | Dashboards | Chat / Q&A | SQL editing | AI workstream | Create resources |
   | --- | --- | :-: | :-: | :-: | :-: | :-: |
-  | `SITE_ADMIN` | Global | Read, create, clone | Create | Yes | Yes | Yes |
   | `ADMIN` | Organization | Read, create, clone | Create | Yes | Yes | Yes |
   | `DATA_ADMIN` | Domain | Read, create, clone | Create | Yes | Yes | Yes |
-  | `CREATOR` | Any | No | No | No | No | Domains, connections |
   | `EXPLORER` | Domain | No | Create | Yes | Yes | No |
   | `BASIC_EXPLORER` | Domain | No | Create | No | No | No |
   | `VIEWER` | Organization | Read only | Read only | No | No | No |
   | `OBSERVER` | Organization | No | No | No | No | No |
-  | `STORY_VIEWER` | Dashboard ID | Read one | No | No | No | No |
-  | `STORY_WRITER` | Dashboard ID | Edit/clone one | No | No | No | No |
-  | `AGENT_VIEWER` | Agent ID | No | No | No | No | No |
-  | `AGENT_WRITER` | Agent ID | No | No | No | No | No |
-  | `SCHEDULE_VIEWER` | Schedule ID | No | No | No | No | No |
-  | `SCHEDULE_WRITER` | Schedule ID | No | No | No | No | No |
-  | `CONNECTION_ADMIN` | Connection | No | No | No | No | No |
 </Accordion>
 
-**Column key:** `SA` (Site Admin) · `AD` (Admin) · `DA` (Data Admin) · `CA` (Conn Admin) · `CR` (Creator) · `EX` (Explorer) · `BE` (Basic Explorer) · `VI` (Viewer) · `OB` (Observer) · `SV` (Story Viewer) · `SW` (Story Writer) · `ScV` (Schedule Viewer) · `ScW` (Schedule Writer) · `AV` (Agent Viewer) · `AW` (Agent Writer)
+**Column key:** `AD` (Admin) · `DA` (Data Admin) · `EX` (Explorer) · `BE` (Basic Explorer) · `VI` (Viewer) · `OB` (Observer)
 
 <Accordion title="Granular permissions">
-  <Accordion title="Chat / AI">
-    | Permission | SA | AD | DA | CA | CR | EX | BE | VI | OB | SV | SW | ScV | ScW | AV | AW |
-    | --- | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-    | `chat:create` | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
-    | `chat:read` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
-    | `chat:read-all` | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
-    | `chat:execute-sql` | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
-    | `chat:edit-sql` | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
-    | `chat:expand-workstream` | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
-    | `chat:admin-tools` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+  <Accordion title="Chat">
+    | Permission | AD | DA | EX | BE | VI | OB |
+    | --- | :-: | :-: | :-: | :-: | :-: | :-: |
+    | `chat:create` | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ |
+    | `chat:execute-sql` | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ |
+    | `chat:edit-sql` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ |
+    | `chat:expand-workstream` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ |
+    | `chat:read-all` | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
   </Accordion>
 
   <Accordion title="Dashboard">
-    | Permission | SA | AD | DA | CA | CR | EX | BE | VI | OB | SV | SW | ScV | ScW | AV | AW |
-    | --- | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-    | `dashboard:create` | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
-    | `dashboard:read` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
-    | `dashboard:write` | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ |
-    | `dashboard:clone` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ |
+    | Permission | AD | DA | EX | BE | VI | OB |
+    | --- | :-: | :-: | :-: | :-: | :-: | :-: |
+    | `dashboard:create` | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ |
+    | `dashboard:clone` | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
+    | `dashboard:read` | ✅ | ✅ | ❌ | ❌ | ✅ | ❌ |
+    | `dashboard:write` | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
   </Accordion>
 
   <Accordion title="Schedule">
-    | Permission | SA | AD | DA | CA | CR | EX | BE | VI | OB | SV | SW | ScV | ScW | AV | AW |
-    | --- | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-    | `schedule:create` | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
-    | `schedule:read` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ✅ | ✅ | ❌ | ❌ |
-    | `schedule:write` | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ |
+    | Permission | AD | DA | EX | BE | VI | OB |
+    | --- | :-: | :-: | :-: | :-: | :-: | :-: |
+    | `schedule:create` | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ |
+    | `schedule:read` | ✅ | ✅ | ❌ | ❌ | ✅ | ❌ |
+    | `schedule:write` | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
   </Accordion>
 
   <Accordion title="Agent">
-    | Permission | SA | AD | DA | CA | CR | EX | BE | VI | OB | SV | SW | ScV | ScW | AV | AW |
-    | --- | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-    | `agent:read` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ |
-    | `agent:write` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ |
+    | Permission | AD | DA | EX | BE | VI | OB |
+    | --- | :-: | :-: | :-: | :-: | :-: | :-: |
+    | `agent:read` | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ |
+    | `agent:write` | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
   </Accordion>
 
   <Accordion title="Connection">
-    | Permission | SA | AD | DA | CA | CR | EX | BE | VI | OB | SV | SW | ScV | ScW | AV | AW |
-    | --- | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-    | `connection:create` | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
-    | `connection:read` | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
-    | `connection:write` | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
-    | `connection:delete` | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
-    | `connection:refresh` | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
-    | `connection:list` | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+    | Permission | AD | DA | EX | BE | VI | OB |
+    | --- | :-: | :-: | :-: | :-: | :-: | :-: |
+    | `connection:create` | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
+    | `connection:read` | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
+    | `connection:write` | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
+    | `connection:delete` | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
+    | `connection:refresh` | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
+    | `connection:list` | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
   </Accordion>
 
   <Accordion title="Domain">
-    | Permission | SA | AD | DA | CA | CR | EX | BE | VI | OB | SV | SW | ScV | ScW | AV | AW |
-    | --- | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-    | `domain:create` | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
-    | `domain:list` | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
-    | `domain:invite` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+    | Permission | AD | DA | EX | BE | VI | OB |
+    | --- | :-: | :-: | :-: | :-: | :-: | :-: |
+    | `domain:create` | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
+    | `domain:list` | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
+    | `domain:invite` | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
   </Accordion>
 
   <Accordion title="IAM">
-    | Permission | SA | AD | DA | CA | CR | EX | BE | VI | OB | SV | SW | ScV | ScW | AV | AW |
-    | --- | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-    | `iam:read` | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
-    | `iam:write` | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
-    | `iam:delete` | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
-    | `iam-scope:write` | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ | ✅ | ❌ | ❌ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
+    | Permission | AD | DA | EX | BE | VI | OB |
+    | --- | :-: | :-: | :-: | :-: | :-: | :-: |
+    | `iam:read` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+    | `iam:write` | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
+    | `iam:delete` | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
+    | `iam-scope:write` | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ |
   </Accordion>
 
   <Accordion title="Workspace">
-    | Permission | SA | AD | DA | CA | CR | EX | BE | VI | OB | SV | SW | ScV | ScW | AV | AW |
-    | --- | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-    | `workspace:read` | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
-    | `workspace:write` | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
-    | `workspace:create` | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
-    | `workspace:delete` | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+    | Permission | AD | DA | EX | BE | VI | OB |
+    | --- | :-: | :-: | :-: | :-: | :-: | :-: |
+    | `workspace:read` | ✅ | ❌ | ❌ | ❌ | ✅ | ✅ |
+    | `workspace:write` | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
+    | `workspace:create` | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+    | `workspace:delete` | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
   </Accordion>
 </Accordion>
+
+### Permission reference
+
+The table below maps each API permission flag to its plain-English equivalent.
+
+| API permission | Feature |
+| --- | --- |
+| `chat:create` | Ask questions |
+| `chat:execute-sql` | Run SQL |
+| `chat:edit-sql` | Edit SQL |
+| `chat:expand-workstream` | AI workstream |
+| `chat:read-all` | View chat log |
+| `dashboard:create` | Create dashboards |
+| `dashboard:read` | View dashboards |
+| `dashboard:write` | Edit dashboards |
+| `dashboard:clone` | Clone dashboards |
+| `schedule:create` | Create schedules |
+| `schedule:read` | View schedules |
+| `schedule:write` | Edit schedules |
+| `agent:read` | View agents |
+| `agent:write` | Edit agents |
+| `connection:create` | Create connections |
+| `connection:read` | View connections |
+| `connection:write` | Edit connection configuration |
+| `connection:delete` | Delete connections |
+| `connection:refresh` | Refresh metadata |
+| `connection:list` | List connections |
+| `domain:create` | Create domains |
+| `domain:list` | List domains |
+| `domain:invite` | Invite users to a domain |
+| `iam:read` | View users and roles |
+| `iam:write` | Manage users and roles |
+| `iam:delete` | Remove users and roles |
+| `iam-scope:write` | Assign scoped roles |
+| `workspace:read` | View workspace |
+| `workspace:write` | Edit workspace |
+| `workspace:create` | Create workspaces |
+| `workspace:delete` | Delete workspaces |
 
 ## Related articles
 
 <CardGroup cols={2}>
-  <Card title="Roles" icon="shield" href="/integrations/embeddings/user-management/roles">
-    Full list of role IDs for use in roleAssignments
-  </Card>
-
   <Card title="Create Users" icon="user-plus" href="/integrations/embeddings/graphql-api/mutations/user/create-users">
     Provision embedded users with role assignments
   </Card>
