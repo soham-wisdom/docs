@@ -67,18 +67,32 @@ Follow these steps to establish the connection within WisdomAI:
 
 1. Navigate to the **Overview** tab in your WisdomAI domain and click **Add Data Source**.
 
-![sharepoint-add-data](/images/sharepoint-add-data.png)
+2. Select **Connect another source** from the **Add** **Data Source** selector and click **Add Data Source**.
 
-2. Select **Connect another source** from the **Data Source** selector and click **Add Data Source**.
-
-![sharepoint-connect-source](/images/sharepoint-connect-source.png)
+<img
+  src="/images/add-selector-ds.png"
+  alt="sharepoint-add-data"
+  lightAlt="sharepoint-add-data"
+  darkAlt="sharepoint-add-data"
+  className="dark:hidden"
+/>
+<img
+  src="images/add-selector-ds.png"
+  alt="sharepoint-add-data"
+  lightAlt="sharepoint-add-data"
+  darkAlt="sharepoint-add-data"
+  className="hidden dark:block"
+/>
 
 3. Select **Connect to Data store or MCP server**.
 4. Enter a descriptive **Connection name** (e.g., "Marketing SharePoint") and select **SharePoint** as the data source.
 
-![sharepoint-connect-name](/images/sharepoint-connect-name.png)
+![sharepoint-connect-source](/images/sharepoint-connect-source.png)
 
 5. **Configure Authentication:** Choose your preferred method (Service Principal or Dedicated Multitenant App) and enter the required credentials.
+   <Frame>
+     ![Sharepoint Cd](/images/sharepoint-cd.png)
+   </Frame>
 6. **Configure SharePoint Sites:**
    - Click **Add Site** and enter the full **Site URL** (e.g., `https://contoso.sharepoint.com/sites/teamsite`).
      <Note>
