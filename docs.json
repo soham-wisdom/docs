@@ -173,6 +173,7 @@
             "group": "Integrations",
             "pages": [
               "integrations/connect-to-slack",
+              "integrations/connect-to-sharepoint",
               {
                 "group": "Embedding",
                 "pages": [
