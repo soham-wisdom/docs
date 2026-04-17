@@ -93,7 +93,7 @@ Each connection can include one or more SharePoint sites. At least one site is r
 | **Site URL** | Yes | The full URL of the SharePoint site (e.g., `https://contoso.sharepoint.com/sites/teamsite`). |
 | **Document Libraries** | No | Optionally restrict which document libraries within the site are crawled. |
 
-### Document Libraries
+### Document libraries
 
 Within each site, you can optionally specify which document libraries to crawl. If none are specified, all document libraries in the site are included.
 
@@ -102,7 +102,7 @@ Within each site, you can optionally specify which document libraries to crawl. 
 | **Library Name** | Yes | The name of the document library (e.g., `Documents`). |
 | **Path Prefix Filters** | No | Optionally restrict which folders within the library are crawled. |
 
-### Path Prefix Filters
+### Path prefix filters
 
 Within each document library, you can optionally specify folder path prefixes to scope the crawl. If none are specified, all files in the library are included.
 
@@ -125,23 +125,23 @@ Site: <https://contoso.sharepoint.com/sites/marketing>
 ## Troubleshooting
 
 <AccordionGroup>
-  <Accordion title="Authentication Failed">
+  <Accordion title="Authentication failed">
     - Verify that the **Client ID**, **Tenant ID**, and **Client Secret** are correct and have not expired.
-    - For the Dedicated Multitenant App method, confirm that admin consent has been granted (status should show Granted in WisdomAI).
+    - For the Dedicated Multitenant App method, confirm that admin consent has been granted (the status should show "Granted" in WisdomAI).
   </Accordion>
 
-  <Accordion title="Connection validates, but No Files Crawled">
-    - **Check URLs:** Confirm the Site URL is correct and accessible. Ensure the **Site URL** points to a specific site, not the root SharePoint domain.
-    - **Library Names:** Verify the **Library Name** matches the SharePoint library exactly.
-    - **Pathing:** If using path prefix filters, verify the paths exist and do not start with `/`.
-    - **Permissions:** Ensure the Azure AD app's permissions (`Sites.Read.All`, `Files.Read.All`) have been granted admin consent.
+  <Accordion title="Connection validates, but no files were crawled">
+    - Confirm the Site URL is correct and accessible. Ensure the **Site URL** points to a specific site, not the root SharePoint domain.
+    - Verify the **Library Name** matches the SharePoint library exactly.
+    - If using path prefix filters, verify the paths exist and do not start with `/`.
+    - Ensure the Azure AD app's permissions (`Sites.Read.All`, `Files.Read.All`) have been granted admin consent.
   </Accordion>
 
-  <Accordion title="Specific Sites Inaccessible">
+  <Accordion title="Specific inaccessible sites">
     - The app may authenticate successfully but lack access to certain sites. Verify that your Azure AD app permissions are tenant-wide (admin-consented), not scoped to specific sites only.
   </Accordion>
 
-  <Accordion title="Admin Consent Cannot Be Granted">
+  <Accordion title="Admin consent cannot be granted">
     - The user granting consent must have the **Global Administrator** or **Privileged Role Administrator** role in Azure AD.
     - If your organization restricts app consent, contact your Azure AD administrator.
   </Accordion>
