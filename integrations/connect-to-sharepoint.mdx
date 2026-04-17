@@ -66,9 +66,18 @@ Choose the authentication method that best fits your organization's security req
 Follow these steps to establish the connection within WisdomAI:
 
 1. Navigate to the **Overview** tab in your WisdomAI domain and click **Add Data Source**.
+
+![sharepoint-add-data](/images/sharepoint-add-data.png)
+
 2. Select **Connect another source** from the **Data Source** selector and click **Add Data Source**.
+
+![sharepoint-connect-source](/images/sharepoint-connect-source.png)
+
 3. Select **Connect to Data store or MCP server**.
 4. Enter a descriptive **Connection name** (e.g., "Marketing SharePoint") and select **SharePoint** as the data source.
+
+![sharepoint-connect-name](/images/sharepoint-connect-name.png)
+
 5. **Configure Authentication:** Choose your preferred method (Service Principal or Dedicated Multitenant App) and enter the required credentials.
 6. **Configure SharePoint Sites:**
    - Click **Add Site** and enter the full **Site URL** (e.g., `https://contoso.sharepoint.com/sites/teamsite`).
@@ -78,6 +87,9 @@ Follow these steps to establish the connection within WisdomAI:
    - (Optional) Click **Add Library** to restrict crawling to specific document libraries. If left blank, all libraries on the site are crawled.
    - (Optional) Click **Add Path** to restrict crawling to specific folders within a library. Enter the path prefix (e.g., `Marketing/2024`) without a leading `/`.
 7. Click **Save**. WisdomAI will validate the credentials before saving.
+
+![sharepoint-sites](/images/sharepoint-sites.png)
+
 8. After the connection is created, add it as a data source to your domain. WisdomAI will begin crawling the configured SharePoint sites.
 
 ## Configuration reference
