@@ -26,7 +26,7 @@ Starts the agent on a recurring schedule you define. Use this trigger for produc
 
 ## Data nodes
 
-Data nodes bring information into the workflow. They are typically the first nodes connected after the trigger, and their output, a structured dataframe, flows into downstream Reasoning nodes.
+Data nodes bring information into the workflow. They are typically the first nodes connected after the trigger, and their output, a structured dataframe or freeform text, flows into downstream Reasoning nodes.
 
 ### Data
 
@@ -50,7 +50,7 @@ For setup, see [Connect an MCP server](/integrations/mcp-server/MCP-Server).
 
 ## Reasoning nodes
 
-Reasoning nodes operate on the dataframes and context produced by Data nodes. They perform analysis, summarization, and derivation to transform raw data into insights.
+Reasoning nodes operate on dataframes and text to produce AI analysis. They perform analysis, summarization, and derivation to transform raw data into insights.
 
 ### Analysis
 
@@ -60,7 +60,7 @@ Operates on a dataframe to derive new information by filtering, aggregating, ord
 
 ### Summary
 
-Takes a dataframe or context as input and produces a textual narrative. Unlike Analysis, which outputs structured data, Summary outputs prose: a paragraph or set of sentences describing what the data shows.
+Takes a dataframe or context as input and produces a textual narrative. Unlike Analysis, which outputs structured data, Summary outputs prose: a paragraph or set of sentences generating summary from inputs.
 
 **When to use:** When your artifact needs a written interpretation of the data rather than (or in addition to) a table. Summary nodes work well feeding into an Artifact Builder alongside raw dataframes.
 
