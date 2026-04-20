@@ -56,7 +56,7 @@ Every agent starts with a trigger node, which defines when the agent runs.
 
 | Trigger | When to use |
 | --- | --- |
-| **Manual trigger** | Starts when you run the agent manually. Use this during building and testing. |
+| **Manual trigger** | Starts when you run the agent manually. Use this when you need to run the analysis on demand. |
 | **Schedule** | Starts on a recurring schedule you define. Use this for production agents. |
 
 3. If you select the scheduled agent and want it to act only when a condition is met, enter it in the **Trigger Criteria** field. Leave it empty to run unconditionally every time the trigger fires.
@@ -142,8 +142,8 @@ The Delivery node sends your artifact to its destination.
 Before publishing, run the agent manually to verify that the output is correct.
 
 1. Click **Preview** in the top right corner.
-2. Watch the canvas as each node executes. A green check confirms the node succeeded. A red X indicates a failure — click the node to see the error.
-3. After the run completes, open the **Run Visualiser** to review the data generated at each node, the analysis performed, and the SQL or Python used.
+2. You don’t have to wait for the run to finish. As the agent executes, watch the canvas for progress. A green check confirms a node succeeded, a red X indicates a failure. — click the node to see the error.
+3. At any point during or after the run, click on a node to review the data generated, the analysis performed, and the underlying SQL or Python code used.
    <Frame>
      ![View Data](/images/view-data.png)
    </Frame>
@@ -156,9 +156,8 @@ Before publishing, run the agent manually to verify that the output is correct.
 | Output is too broad | Add filtering criteria and exclusions to the instruction |
 | Data is missing | Name the specific fields or columns you need |
 | Formatting is inconsistent | Add explicit section headings, column names, and number formats to the instruction |
-| Trigger fires too often | Tighten the threshold value |
+| Trigger mis-fires | Adjust the trigger threshold |
 | Trigger never fires | Loosen the threshold value |
-| Node fails with "unsupported input" | Check that a Data node is connected and feeding into the failing node |
 
 ## Step 8: Publish your Agent
 
