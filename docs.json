@@ -191,8 +191,7 @@
                     "pages": [
                       "integrations/embeddings/user-management/user-lifecycle",
                       "integrations/embeddings/user-management/user-attributes",
-                      "integrations/embeddings/user-management/rbac",
-                      "integrations/embeddings/user-management/roles"
+                      "integrations/embeddings/user-management/rbac"
                       
                     ]
                   },
