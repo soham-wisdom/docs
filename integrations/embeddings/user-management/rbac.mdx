@@ -1,5 +1,5 @@
 ---
-title: "RBAC for embedded users"
+title: "RBAC for Embedded Users"
 ---
 
 Embedded users inherit WisdomAI's role-based access control (RBAC) system. The role you assign when provisioning a user controls what they can see and do inside the embedded interface. There is no separate embed-specific permission layer.
@@ -10,19 +10,10 @@ Embedded users inherit WisdomAI's role-based access control (RBAC) system. The r
 
 ## How roles affect embedded views
 
-Visibility of edit controls, dashboard creation buttons, and AI workstreams is determined by the user's role assignment. To **hide edit controls in an embedded dashboard**, assign the user the **Viewer** role.
-
-The table below summarizes the most common roles used in embedded deployments.
-
-| Role | Dashboard read | Dashboard creation | Edit SQL | AI workstream |
-|------|:---:|:---:|:---:|:---:|
-| `ADMIN` | Yes | Yes | Yes | Yes |
-| `VIEWER` | Yes | No | No | No |
-| `BASIC_EXPLORER` | No | Yes | No | No |
-| `EXPLORER` | No | Yes | Yes | Yes |
+Visibility of edit controls, dashboard creation buttons, and AI workstreams is determined by the user's role assignment. To **hide edit controls in an embedded dashboard**, assign the user the **Viewer** role. This role is pure read-only and cannot create or modify any resources.
 
 <Note>
-  The **Viewer** role is pure read-only and cannot create or modify any resources.
+  For a full breakdown of what each role can access, see the [Roles & Permission Reference](#roles-&-permission-reference) below.
 </Note>
 
 ## Assigning a role at provisioning time
@@ -56,7 +47,7 @@ curl -X POST \
 Role IDs are passed in the `roleAssignments` field when provisioning or updating users.
 
 | Role | ID |
-|------|----|
+| --- | --- |
 | `SITE_ADMIN` | `00000000-0000-0000-0000-000000000014` |
 | `ADMIN` | `00000000-0000-0000-0000-000000000001` |
 | `DATA_ADMIN` | `00000000-0000-0000-0000-000000000004` |
@@ -89,158 +80,138 @@ The tables below show the full permission breakdown across all roles and resourc
 </Note>
 
 <Accordion title="Role scope & capabilities">
+  | Role | Scope | Dashboards | Chat / Q&A | SQL editing | AI workstream | Create resources |
+  | --- | --- | :-: | :-: | :-: | :-: | :-: |
+  | `ADMIN` | Organization | Create, Read, Clone | Create | Yes | Yes | Yes |
+  | `DATA_ADMIN` | Domain | Create, Read, Clone | Create | Yes | Yes | Yes |
+  | `EXPLORER` | Domain | Create, Read (owned or assigned) | Create | Yes | Yes | No |
+  | `BASIC_EXPLORER` | Domain | Create, Read (owned or assigned) | Create | No | No | No |
+  | `VIEWER` | Organization | Read only | Read only | No | No | No |
+  | `OBSERVER` | Organization | No | No | No | No | No |
 
-| Role | Scope | Dashboards | Chat / Q&A | SQL editing | AI workstream | Create resources |
-|------|-------|:---:|:---:|:---:|:---:|:---:|
-| `ADMIN` | Organization | Read, create, clone | Create | Yes | Yes | Yes |
-| `DATA_ADMIN` | Domain | Read, create, clone | Create | Yes | Yes | Yes |
-| `EXPLORER` | Domain | No | Create | Yes | Yes | No |
-| `BASIC_EXPLORER` | Domain | No | Create | No | No | No |
-| `VIEWER` | Organization | Read only | Read only | No | No | No |
-| `OBSERVER` | Organization | No | No | No | No | No |
-
+  **Column key:** `AD` (Admin) · `DA` (Data Admin) · `EX` (Explorer) · `BE` (Basic Explorer) · `VI` (Viewer) · `OB` (Observer)
 </Accordion>
 
-**Column key:** `AD` (Admin) · `DA` (Data Admin) · `EX` (Explorer) · `BE` (Basic Explorer) · `VI` (Viewer) · `OB` (Observer)
-
 <Accordion title="Granular permissions">
-
   <Accordion title="Chat">
-
-  | Permission | AD | DA | EX | BE | VI | OB |
-  |---|:---:|:---:|:---:|:---:|:---:|:---:|
-  | `chat:create` | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ |
-  | `chat:execute-sql` | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ |
-  | `chat:edit-sql` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ |
-  | `chat:expand-workstream` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ |
-  | `chat:read-all` | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
-
+    | Permission | AD | DA | EX | BE | VI | OB |
+    | --- | :-: | :-: | :-: | :-: | :-: | :-: |
+    | `chat:create` | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ |
+    | `chat:execute-sql` | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ |
+    | `chat:edit-sql` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ |
+    | `chat:expand-workstream` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ |
+    | `chat:read-all` | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
   </Accordion>
 
   <Accordion title="Dashboard">
+    | Permission | AD | DA | EX | BE | VI | OB |
+    | --- | :-: | :-: | :-: | :-: | :-: | :-: |
+    | `dashboard:create` | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ |
+    | `dashboard:clone` | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
+    | `dashboard:read` | ✅ | ✅ | ❌ | ❌ | ✅ | ❌ |
+    | `dashboard:write` | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
 
-  | Permission | AD | DA | EX | BE | VI | OB |
-  |---|:---:|:---:|:---:|:---:|:---:|:---:|
-  | `dashboard:create` | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ |
-  | `dashboard:clone` | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
-  | `dashboard:read` | ✅ | ✅ | ❌ | ❌ | ✅ | ❌ |
-  | `dashboard:write` | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
-
-  <Note>
-    Users can always view, edit, and clone dashboards they created themselves or that have been shared with them.
-  </Note>
-
+    <Note>
+      Users can always view, edit, and clone dashboards they created themselves or that have been shared with them.
+    </Note>
   </Accordion>
 
   <Accordion title="Schedule">
+    | Permission | AD | DA | EX | BE | VI | OB |
+    | --- | :-: | :-: | :-: | :-: | :-: | :-: |
+    | `schedule:create` | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ |
+    | `schedule:read` | ✅ | ✅ | ❌ | ❌ | ✅ | ❌ |
+    | `schedule:write` | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
 
-  | Permission | AD | DA | EX | BE | VI | OB |
-  |---|:---:|:---:|:---:|:---:|:---:|:---:|
-  | `schedule:create` | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ |
-  | `schedule:read` | ✅ | ✅ | ❌ | ❌ | ✅ | ❌ |
-  | `schedule:write` | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
-
-  <Note>
-    Users can always view and edit schedules they created themselves or that have been shared with them.
-  </Note>
-
+    <Note>
+      Users can always view and edit schedules they created themselves or that have been shared with them.
+    </Note>
   </Accordion>
 
   <Accordion title="Agent">
+    | Permission | AD | DA | EX | BE | VI | OB |
+    | --- | :-: | :-: | :-: | :-: | :-: | :-: |
+    | `agent:read` | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ |
+    | `agent:write` | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
 
-  | Permission | AD | DA | EX | BE | VI | OB |
-  |---|:---:|:---:|:---:|:---:|:---:|:---:|
-  | `agent:read` | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ |
-  | `agent:write` | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
-
-  <Note>
-    Users can always view and edit agents they created themselves or that have been shared with them.
-  </Note>
-
+    <Note>
+      Users can always view and edit agents they created themselves or that have been shared with them.
+    </Note>
   </Accordion>
 
   <Accordion title="Connection">
-
-  | Permission | AD | DA | EX | BE | VI | OB |
-  |---|:---:|:---:|:---:|:---:|:---:|:---:|
-  | `connection:create` | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
-  | `connection:read` | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
-  | `connection:write` | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
-  | `connection:delete` | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
-  | `connection:refresh` | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
-  | `connection:list` | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
-
+    | Permission | AD | DA | EX | BE | VI | OB |
+    | --- | :-: | :-: | :-: | :-: | :-: | :-: |
+    | `connection:create` | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
+    | `connection:read` | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
+    | `connection:write` | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
+    | `connection:delete` | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
+    | `connection:refresh` | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
+    | `connection:list` | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
   </Accordion>
 
   <Accordion title="Domain">
-
-  | Permission | AD | DA | EX | BE | VI | OB |
-  |---|:---:|:---:|:---:|:---:|:---:|:---:|
-  | `domain:create` | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
-  | `domain:list` | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
-  | `domain:invite` | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
-
+    | Permission | AD | DA | EX | BE | VI | OB |
+    | --- | :-: | :-: | :-: | :-: | :-: | :-: |
+    | `domain:create` | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
+    | `domain:list` | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
+    | `domain:invite` | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
   </Accordion>
 
   <Accordion title="IAM">
-
-  | Permission | AD | DA | EX | BE | VI | OB |
-  |---|:---:|:---:|:---:|:---:|:---:|:---:|
-  | `iam:read` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-  | `iam:write` | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
-  | `iam:delete` | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
-  | `iam-scope:write` | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ |
-
+    | Permission | AD | DA | EX | BE | VI | OB |
+    | --- | :-: | :-: | :-: | :-: | :-: | :-: |
+    | `iam:read` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+    | `iam:write` | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
+    | `iam:delete` | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
+    | `iam-scope:write` | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ |
   </Accordion>
 
   <Accordion title="Workspace">
-
-  | Permission | AD | DA | EX | BE | VI | OB |
-  |---|:---:|:---:|:---:|:---:|:---:|:---:|
-  | `workspace:read` | ✅ | ❌ | ❌ | ❌ | ✅ | ✅ |
-  | `workspace:write` | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
-  | `workspace:create` | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
-  | `workspace:delete` | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
-
+    | Permission | AD | DA | EX | BE | VI | OB |
+    | --- | :-: | :-: | :-: | :-: | :-: | :-: |
+    | `workspace:read` | ✅ | ❌ | ❌ | ❌ | ✅ | ✅ |
+    | `workspace:write` | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
+    | `workspace:create` | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+    | `workspace:delete` | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
   </Accordion>
-
 </Accordion>
 
-### Permission reference
+<Accordion title="Permission reference">
+  The table below describes what each API permission flag controls.
 
-The table below maps each API permission flag to its plain-English equivalent.
-
-| API permission | Feature |
-|----------------|---------|
-| `chat:create` | Ask questions |
-| `chat:execute-sql` | Run SQL |
-| `chat:edit-sql` | Edit SQL |
-| `chat:expand-workstream` | AI workstream |
-| `chat:read-all` | View chat log |
-| `dashboard:create` | Create dashboards |
-| `dashboard:read` | View dashboards |
-| `dashboard:write` | Edit dashboards |
-| `dashboard:clone` | Clone dashboards |
-| `schedule:create` | Create schedules |
-| `schedule:read` | View schedules |
-| `schedule:write` | Edit schedules |
-| `agent:read` | View agents |
-| `agent:write` | Edit agents |
-| `connection:create` | Create connections |
-| `connection:read` | View connections |
-| `connection:write` | Edit connection configuration |
-| `connection:delete` | Delete connections |
-| `connection:refresh` | Refresh metadata |
-| `connection:list` | List connections |
-| `domain:create` | Create domains |
-| `domain:list` | List domains |
-| `domain:invite` | Invite users to a domain |
-| `iam:read` | View users and roles |
-| `iam:write` | Manage users and roles |
-| `iam:delete` | Remove users and roles |
-| `iam-scope:write` | Assign scoped roles |
-| `workspace:read` | View workspace |
-| `workspace:write` | Edit workspace |
+  | API permission | Feature |
+  | --- | --- |
+  | `chat:create` | Ask questions |
+  | `chat:execute-sql` | Run SQL |
+  | `chat:edit-sql` | Edit SQL |
+  | `chat:expand-workstream` | AI workstream |
+  | `chat:read-all` | View chat log |
+  | `dashboard:create` | Create dashboards |
+  | `dashboard:read` | View dashboards |
+  | `dashboard:write` | Edit dashboards |
+  | `dashboard:clone` | Clone dashboards |
+  | `schedule:create` | Create schedules |
+  | `schedule:read` | View schedules |
+  | `schedule:write` | Edit schedules |
+  | `agent:read` | View agents |
+  | `agent:write` | Edit agents |
+  | `connection:create` | Create connections |
+  | `connection:read` | View connections |
+  | `connection:write` | Edit connection configuration |
+  | `connection:delete` | Delete connections |
+  | `connection:refresh` | Refresh metadata |
+  | `connection:list` | List connections |
+  | `domain:create` | Create domains |
+  | `domain:list` | List domains |
+  | `domain:invite` | Invite users to a domain |
+  | `iam:read` | View users and roles |
+  | `iam:write` | Manage users and roles |
+  | `iam:delete` | Remove users and roles |
+  | `iam-scope:write` | Assign scoped roles |
+  | `workspace:read` | View workspace |
+  | `workspace:write` | Edit workspace |
+</Accordion>
 
 ## Related articles
 
@@ -248,6 +219,7 @@ The table below maps each API permission flag to its plain-English equivalent.
   <Card title="Create Users" icon="user-plus" href="/integrations/embeddings/graphql-api/mutations/user/create-users">
     Provision embedded users with role assignments
   </Card>
+
   <Card title="Embed a Dashboard" icon="chart-bar" href="/integrations/embeddings/iframe/embed-a-dashboard">
     Use roles to control edit access in embedded dashboards
   </Card>
