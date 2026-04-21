@@ -16,15 +16,20 @@ An agent can:
 - **Deliver scheduled reports** via email or Slack.
 
 <Note>
-  WisdomAI offers two ways to build an agent: **Prompt Mode**, where you describe the agent in plain language, and **Visual Mode**, where you design the workflow on a canvas of connected nodes. Both are introduced in detail in the [Get started](#get-started) section at the end of this article.
+  WisdomAI offers two ways to build an agent:
+
+  - **Prompt Mode**, where you describe what you want, and the agent figures out the steps on every run
+  - **Visual Mode**, where the AI Builder generates a visual plan from your description that you review, freeze, and reuse on every run.
+
+  Both are introduced in detail in the [Get started](#get-started) section at the end of this article.
 </Note>
 
 ## Why use an agent
 
-Beyond saving time, agents offer solutions that are hard to get any other way:
+Beyond saving time, agents work at every scale, offering solutions from a single quick task to a full production workflow.
 
 - **Simple to create, capable of complex work:** You describe the goal in a sentence, and the agent does the kind of multi-step work that would otherwise take hours. In Prompt Mode, a one-sentence description creates an agent. In Visual Mode, the WisdomAI Builder turns a plain-language description into a multi-step workflow. The agent then handles the hard parts on your behalf: querying the right data sources, comparing results across time periods, applying conditional logic, generating natural-language summaries, and delivering the output through the right channel.
-- **Agency when you want it, determinism when you need it:**  Some work is best handled by letting the LLM figure out the right approach. Other work needs to produce the same result every run. Agents support both: Prompt Mode gives the LLM agency to handle a request in a single pass, and Visual Mode runs a deterministic workflow you can audit step by step. You pick the flavour that fits the work.
+- **Agency when you want it, determinism when you need it:**  Some work is best handled by letting the agent figure out the right approach as it runs. Other work needs to produce the same result every run. Prompt Mode builds a fresh plan each time the agent runs, leaving room for the LLM to explore and adapt. Visual Mode follows a plan you reviewed and locked in once, so the same inputs produce the same outputs every time. Pick the mode that fits the work.
 - **Personal workflows and production workflows:**  Agents work for one-off personal monitoring as well as shared, recurring production reports. Spin up a Prompt Mode agent in a minute to keep an eye on your own metrics. Build a Visual Mode workflow when other people depend on the result, and consistency matters. The same platform handles both ends.
 
 ## When to use an agent
@@ -62,16 +67,17 @@ The first three examples below show how agents can build on one another within a
   </Step>
 </Steps>
 
-Agents are not only reactive. They also handle proactive, recurring work.
+The steps above show how agents handle one scenario in depth. Agents also fit a wide range of recurring patterns, both reactive and proactive. Here are some typical examples.
 
-### Deliver scheduled reports
-
-Use an agent to produce and send the same analysis on a fixed cadence.
-
-- **Trigger:** Every Monday at 9 am.
-- **Work:** Pull last week's product usage by customer tier, generate a summary of the biggest movers, and email the report to the customer success team.
-
-This replaces the manual process of rebuilding and sending the same report each week.
+| Use Case | Example | Best mode |
+| --- | --- | --- |
+| **Pipeline check** | Flag deals stuck in the same stage for 7\+ days, post to Slack each morning. | Prompt |
+| **Anomaly monitoring** | If DAU drops 15% vs the 7-day average, post to a channel with context on what drove it. | Prompt |
+| **Team summary** | Summarise this week's support tickets — volume, top categories, resolution trends — and email it Friday. | Prompt |
+| **Scheduled report** | Pull last week's product usage by customer tier and email a summary of the biggest movers to the customer success team every Monday. | Both |
+| **Multi-source exec report** | Pull revenue, pipeline, and support data from three sources, include an incidents section only if P0/P1s occurred, format as a branded PDF, deliver Monday at 7am. | Visual |
+| **Tiered alerting** | Monitor app performance, billing, and support, route to different channels depending on which combination of signals fires. | Visual |
+| **Personalised reports at scale** | Generate weekly performance reports for 50 regional managers, each filtered to their region. | Visual |
 
 ## Get started
 
@@ -83,8 +89,8 @@ Prompt Mode is the fastest way to get started. You write a plain-language descri
 
 ### [Visual Mode](/advanced-features/agents/agent-builder)
 
-Visual Mode is for multi-step workflows that involve branching logic, conditional delivery, or multiple data sources. You build the agent on a canvas of connected nodes, where each node has a specific responsibility: fetching data, running analysis, applying conditions, delivering results, and routing flow from one node to the next.
+Visual Mode gives your agent a high-level plan to follow. Describe what you want in plain language, and the **WisdomAI Builder** generates the plan as a visual workflow of connected nodes — fetching data, running analysis, applying conditions, and delivering the result. You review the plan, refine it on the canvas if needed, and freeze it.
 
-The fastest way to build a Visual Mode agent is with the **WisdomAI Builder**. Describe what you want the agent to do in plain language, and the Builder assembles the nodes and connections for you. You can then refine the workflow directly on the canvas: add a step, change a condition, swap a data source, or adjust the delivery. You can also call on the Builder again at any point to modify an existing workflow.
+On every run, the agent refers back to this locked plan. Because the plan is explicit, execution stays consistent across runs, and you can model far more complex workflows than a single prompt could express. That makes Visual Mode the right choice for production workflows where both consistency and complexity matter.
 
-Because each step is explicit and constrained, the same inputs produce the same outputs every time, and you can observe every intermediate step. That makes Visual Mode the right choice for production workflows, where consistency, auditability, and reliability matter.
+You can also call on the Builder again at any point to modify an existing workflow, for example, to add a step, change a condition, or swap a data source.
