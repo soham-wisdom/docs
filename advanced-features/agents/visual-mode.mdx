@@ -2,7 +2,7 @@
 title: "Visual Mode"
 ---
 
-This guide walks through building an agent using Visual Mode in WisdomAI, from selecting a trigger to activating your workflow for delivery. If you prefer to describe your agent in plain language and have WisdomAI generate the structure for you, see [Create an agent - Prompt Mode](/advanced-features/agents/tutorial-create-agent).
+This guide walks through building an agent using Visual Mode in WisdomAI, from selecting a trigger to activating your workflow for delivery. If you prefer to describe what you want and let the agent figure out the steps on every run, see [Create an agent - Prompt Mode](/advanced-features/agents/tutorial-create-agent).
 
 <Note>
   The Agents feature is currently in beta.
@@ -14,7 +14,7 @@ Make sure you have the following:
 
 - An active WisdomAI account with access to the **Agents** tab.
 - A domain connected to the data you want the agent to work with.
-- A delivery channel ready to configure: email, Slack, or webhook.
+- A delivery channel ready to configure: email or Slack.
 
 ## Step 1: Open the Agent Builder
 
@@ -33,9 +33,10 @@ Visual Mode is the default view when you open the Agent Builder. The node canvas
      ![Setup Agent Name](/images/setup-agent-name.png)
    </Frame>
 
-### Use the WisdomAI Builder to generate your workflow
-
+## Step 2: Generate your workflow with the WisdomAI Builder (recommended)
+ 
 Rather than placing nodes manually, you can describe your agent in plain language and let the **WisdomAI Builder** generate the structure for you. The WisdomAI Builder is an AI-powered chat panel built into the canvas. Type what you want your agent to do in the **Describe your agent** bar at the bottom of the screen. WisdomAI Builder reads your connected domain and data sources, constructs the complete node structure, and renders it on the canvas for you to review, adjust, and publish.
+ 
 
 <video src="/videos/builder-ia.mp4" controls />
 
@@ -45,10 +46,12 @@ You can use the WisdomAI Builder at any point, such as to create an agent from s
   ![Add Node To Agent](/images/add-node-to-agent.png)
 </Frame>
 
-If you prefer to place and configure nodes manually, continue to Step 2.
+If you prefer to place and configure nodes yourself, or want to refine what the Builder generated, continue to Step 3.
 
-## Step 2: Select a trigger
-
+## Step 3: Build manually
+ 
+Use manual building when you want to refine the workflow the Builder generated — swap a data source, add a condition, change an instruction — or when you prefer to place and configure each node yourself. You can build manually from the start or at any time after the Builder generates your workflow.
+ 
 Every agent starts with a trigger node, which defines when the agent runs.
 
 1. Click the trigger node on the canvas. The **Select trigger** panel opens on the right.
@@ -70,12 +73,12 @@ Every agent starts with a trigger node, which defines when the agent runs.
   ![Select Trigger](/images/select-trigger.png)
 </Frame>
 
-## Step 3: Add and connect nodes
+### Add and connect nodes
 
-Nodes are the building blocks of a Visual Mode agent. Each node performs a specific task.
+Nodes are the building blocks of a Visual Mode agent. Each node performs a specific task. They are connected through Edges, and these also define both the order of execution and how data flows between them. 
 
 <Note>
-  For a full description of each node type, see the [Node Reference](/advanced-features/agents/node-reference).
+  For a full description of node types and how they behave, see the [Node Reference](/advanced-features/agents/node-reference).
 </Note>
 
 To add a node:
@@ -84,13 +87,13 @@ To add a node:
 2. Select the node type you want to add.
 
 <Frame>
-  ![15 04 2026 09 08 10](/images/15-04-2026_09-08-10.PNG)
+  ![Add node snippet](/images/15-04-2026_09-08-10.PNG)
 </Frame>
 
 3. Click on it to write an instruction in the node's settings panel describing what it should do with its input.
 4. Click **Done**.
    <Frame>
-     ![15 04 2026 09 20 41](/images/15-04-2026_09-20-41.PNG)
+     ![Snippet showing how instructions are written for the node](/images/15-04-2026_09-20-41.PNG)
    </Frame>
 5. To add another note, click the circular button on any node's output and extend the arrow to add the next node in the flow. Repeat until your workflow is complete.
 
@@ -127,12 +130,12 @@ Be explicit about formatting. The Artifact Builder does not infer structure on i
 <video src="/videos/artifact-1.mp4" controls />
 
 <Note>
-  Every agent requires at least one Artifact Builder node and one Delivery node before it can be published.
+  Every agent requires at least one Artifact Builder node and one delivery node before it can be published.
 </Note>
 
 ## Step 5: Configure delivery
 
-The Delivery node sends your artifact to its destination.
+The delivery node sends your artifact to its destination.
 
 1. Click **\+** after the Artifact Builder node and select **Email**, **Slack**, or **Webhook**.
 2. Enter the destination — an email address, Slack channel name, or webhook URL.
@@ -147,13 +150,13 @@ The Delivery node sends your artifact to its destination.
 
 ## Step 7: Preview and test
 
-Before publishing, run the agent manually to verify that the output is correct.
+At any point before publishing, you can run the agent manually to verify that the output is correct. To do this:
 
 1. Click **Preview** in the top right corner.
-2. You don’t have to wait for the run to finish. As the agent executes, watch the canvas for progress. A green check confirms a node succeeded, a red X indicates a failure. — click the node to see the error.
+2. You don’t have to wait for the run to finish. As the agent executes, watch the canvas for progress. A green check confirms a node succeeded, a red X indicates a failure. Click the node to see the error.
 3. At any point during or after the run, click on a node to review the data generated, the analysis performed, and the underlying SQL or Python code used.
    <Frame>
-     ![View Data](/images/view-data.png)
+     ![Snippet showing the data fetched by the node](/images/view-data.png)
    </Frame>
 4. Click **End Preview** to return to the edit mode and adjust node instructions, trigger criteria, or formatting as needed, then preview again.
 
@@ -172,7 +175,7 @@ Before publishing, run the agent manually to verify that the output is correct.
 Once the preview output looks correct, make the agent live. To do that, click the **Publish** button. Your agent will become active instantly.
 
 <Frame>
-  ![Publish Agent](/images/publish-agent.png)
+  ![Image showing the publish Agent button in the UI](/images/publish-agent.png)
 </Frame>
 
 The agent will run on the schedule you configured (unless you have chosen the manual trigger) and deliver output to the method you set. You can monitor past runs, edit the agent, or adjust the schedule at any time from the **Agents** tab.
