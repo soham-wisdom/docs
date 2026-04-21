@@ -74,7 +74,7 @@ Evaluates a condition against the data in the workflow and routes execution down
 
 **When to use:** Any time your workflow needs to behave differently depending on what the data shows: sending an alert only when a threshold is breached, routing to different delivery channels based on a metric, or skipping delivery when there is nothing to report.
 
-**Important:** If a downstream node uses input conditionally, wire it through the If/Else node instead of using a direct edge. A direct edge bypasses the conditioning and always passes the data.
+**Important:** If a downstream node needs data from before the If/Else node, connect that data through the If/Else node. Do not wire around it. Bypassing the node causes both branches to activate regardless of which condition is met.
 
 <Note>
   The Loop, Switch, and Human-in-the-Loop node types are coming soon.
