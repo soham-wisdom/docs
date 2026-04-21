@@ -160,7 +160,7 @@
                 "pages": [
                   "advanced-features/agents/agents",
                   "advanced-features/agents/tutorial-create-agent",
-                  "advanced-features/agents/agent-builder",
+                  "advanced-features/agents/visual-mode",
                   "advanced-features/agents/nodes-reference",
                   "advanced-features/agents/agent-best-practices",
                   "advanced-features/agents/manage-agents",
