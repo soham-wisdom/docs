@@ -2,50 +2,89 @@
 title: "Agents"
 ---
 
-Agents are automated workflows that monitor your data, run analyses, and deliver results on a schedule, without requiring manual queries. Instead of checking a dashboard every morning, you configure an agent once, and it runs on its own, notifying you only when it matters.
+Agents are automated workflows that perform intelligent analysis autonomously. Think of an agent as a digital worker you configure once and leave running: it takes on a goal you define, pulls the data it needs from your domain context, runs the analysis, and delivers the result, without waiting for you to ask.
 
-WisdomAI offers two ways to build an agent. Choose the one that fits how you work.
+<Frame>
+  ![Agent configuration screen in WisdomAI showing trigger and work description fields](/images/21-04-2026_09-07-30.PNG)
+</Frame>
 
-## Prompt Mode
+An agent can:
 
-Prompt Mode is the fastest way to get started. You describe what you want the agent to do in plain language, and WisdomAI builds it for you. This mode works well for straightforward monitoring tasks, such as tracking a metric, flagging a threshold, and sending a weekly summary.
+- **Monitor your data** continuously and alert you the moment a metric crosses a threshold.
+- **Run recurring analyses** on a fixed cadence, from daily summaries to weekly reports.
+- **Explain what changed** by breaking down the drivers behind a shift, not just flagging that one occurred.
+- **Deliver scheduled reports** via email or Slack.
 
-## Visual Mode
+<Note>
+  WisdomAI offers two ways to build an agent: **Prompt Mode**, where you describe the agent in plain language, and **Visual Mode**, where you design the workflow on a canvas of connected nodes. Both are introduced in detail in the [Get started](#get-started) section at the end of this article.
+</Note>
 
-Visual Mode gives you a drag-and-drop canvas where you connect nodes to define exactly how your agent fetches, analyzes, and delivers data. Each node has a focused responsibility, and outputs flow from one node to the next. This mode is suited to multi-step workflows that involve branching logic, conditional delivery, or multiple data sources.
+## Why use an agent
 
-Both modes share the same components: triggers, scheduling, a variable store, the Run Visualiser, and a lifecycle that takes your agent from draft to active — and both can use the AI Builder to generate or modify a workflow from a natural-language prompt at any point.
+Beyond saving time, agents offer solutions that are hard to get any other way:
+
+- **Simple to create, capable of complex work:** You describe the goal in a sentence, and the agent does the kind of multi-step work that would otherwise take hours. In Prompt Mode, a one-sentence description creates an agent. In Visual Mode, the WisdomAI Builder turns a plain-language description into a multi-step workflow. The agent then handles the hard parts on your behalf: querying the right data sources, comparing results across time periods, applying conditional logic, generating natural-language summaries, and delivering the output through the right channel.
+- **Agency when you want it, determinism when you need it:**  Some work is best handled by letting the LLM figure out the right approach. Other work needs to produce the same result every run. Agents support both: Prompt Mode gives the LLM agency to handle a request in a single pass, and Visual Mode runs a deterministic workflow you can audit step by step. You pick the flavour that fits the work.
+- **Personal workflows and production workflows:**  Agents work for one-off personal monitoring as well as shared, recurring production reports. Spin up a Prompt Mode agent in a minute to keep an eye on your own metrics. Build a Visual Mode workflow when other people depend on the result, and consistency matters. The same platform handles both ends.
 
 ## When to use an agent
 
-Agents are most useful when you need consistent, recurring analysis without manual effort. The scenarios below show two common patterns.
+Reach for an agent when work needs to happen on its own, when you want analysis delivered without you having to run it, alerts raised without you having to watch, and reports produced without you having to remember.
 
-### Monitor for problems
+### Common use cases
 
-Use an agent to watch a metric and alert you only when something goes wrong.
+The first three examples below show how agents can build on one another within a single scenario, escalating from a simple alert to a full root cause investigation.
 
-- **Trigger:** Sales fall below \$100,000 in the last day.
-- **Work:** Send a list of lost deals from the last day, including region, owner, and total value.
+<Steps>
+  <Step title="Monitor for problems">
+    Use an agent to watch a metric and alert you only when something goes wrong.
 
-This setup means a sales manager is alerted only when performance dips — no daily report to check, no threshold to remember.
+    - **Trigger:** Sales fall below \$100,000 in the last day.
+    - **Work:** Send a list of lost deals from the last day, including region, owner, and total value.
 
-### Track significant changes
+    A sales manager is alerted only when performance dips — no daily report to check, no threshold to remember.
+  </Step>
+  <Step title="Track significant changes">
+    Use an agent to detect meaningful fluctuations in either direction, then explain what drove them.
 
-Use an agent to detect meaningful fluctuations in either direction.
+    - **Trigger:** Daily sales move outside a 10% range compared to the same day last week.
+    - **Work:** Compare today's lost and won deals against last week's, segment the difference by region, deal size, and sales rep, and surface the segments contributing most to the change.
 
-- **Trigger:** Monthly revenue moves outside a 4% range compared to last month.
-- **Work:** Break down revenue by product category and compare it to the previous month.
+    The alert from the previous step becomes a starting point for action.
+  </Step>
+  <Step title="Root-cause analysis">
+    Use an agent to investigate why a metric changed, not just that it changed.
 
-This keeps the finance team aware of unusual volatility so they can act quickly, whether to replicate a spike or address a drop.
+    - **Trigger:** Daily sales drop more than 15% week-over-week.
+    - **Work:** Cross-reference the lost deals with recent product changes, support tickets from those accounts, sales rep activity logs, and pipeline movement to surface the most likely root causes.
+
+    The segmentation from the previous step is now connected to other systems to produce a working hypothesis, not just a breakdown.
+  </Step>
+</Steps>
+
+Agents are not only reactive. They also handle proactive, recurring work.
+
+### Deliver scheduled reports
+
+Use an agent to produce and send the same analysis on a fixed cadence.
+
+- **Trigger:** Every Monday at 9 am.
+- **Work:** Pull last week's product usage by customer tier, generate a summary of the biggest movers, and email the report to the customer success team.
+
+This replaces the manual process of rebuilding and sending the same report each week.
 
 ## Get started
 
-Choose a mode to begin building your first agent.
+WisdomAI offers two ways to build an agent. Choose the one that fits how you work.
 
-<Columns cols={2}>
-  <Card title="Prompt Mode" icon="1" horizontal href="/advanced-features/agents/tutorial-create-agent">
-  </Card>
+### [Prompt Mode](/advanced-features/agents/tutorial-create-agent)
 
-  <Card title="Visual Mode" icon="2" horizontal href="/advanced-features/agents/agent-builder">
-  </Card>
-</Columns>
+Prompt Mode is the fastest way to get started. You write a plain-language description of what the agent should do when it runs, test it, and the agent is ready. This mode works well for **straightforward monitoring tasks**, such as tracking a metric, flagging a threshold, or sending a weekly summary.
+
+### [Visual Mode](/advanced-features/agents/agent-builder)
+
+Visual Mode is for multi-step workflows that involve branching logic, conditional delivery, or multiple data sources. You build the agent on a canvas of connected nodes, where each node has a specific responsibility: fetching data, running analysis, applying conditions, delivering results, and routing flow from one node to the next.
+
+The fastest way to build a Visual Mode agent is with the **WisdomAI Builder**. Describe what you want the agent to do in plain language, and the Builder assembles the nodes and connections for you. You can then refine the workflow directly on the canvas: add a step, change a condition, swap a data source, or adjust the delivery. You can also call on the Builder again at any point to modify an existing workflow.
+
+Because each step is explicit and constrained, the same inputs produce the same outputs every time, and you can observe every intermediate step. That makes Visual Mode the right choice for production workflows, where consistency, auditability, and reliability matter.
