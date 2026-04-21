@@ -162,7 +162,8 @@
                   "advanced-features/agents/agents",
                   "advanced-features/agents/tutorial-create-agent",
                   "advanced-features/agents/manage-agents",
-                  "advanced-features/agents/reviewed-runs-in-agents"
+                  "advanced-features/agents/reviewed-runs-in-agents",
+                  "advanced-features/agents/prompt-mode"
                 ]
               },
               "advanced-features/deep-analysis",
