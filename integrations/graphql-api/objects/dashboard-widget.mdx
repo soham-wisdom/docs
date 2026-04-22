@@ -23,15 +23,15 @@ This page describes the DashboardWidget object that represents individual visual
 </ParamField>
 
 <ParamField path="visualization" type="Visualization">
-  Chart or table visualization data. Null if there was an error generating the visualization. See [Visualization](/integrations/embeddings/graphql-api/objects/visualization).
+  Chart or table visualization data. Null if there was an error generating the visualization. See [Visualization](/integrations/graphql-api/objects/visualization).
 </ParamField>
 
 <ParamField path="visualizationType" type="VisualizationType">
-  Type of visualization (chart, table, etc.). See [VisualizationType](/integrations/embeddings/graphql-api/objects/visualization-type).
+  Type of visualization (chart, table, etc.). See [VisualizationType](/integrations/graphql-api/objects/visualization-type).
 </ParamField>
 
 <ParamField path="layout" type="WidgetLayout!" required>
-  Positioning and sizing information for the widget. See [WidgetLayout](/integrations/embeddings/graphql-api/objects/widget-layout).
+  Positioning and sizing information for the widget. See [WidgetLayout](/integrations/graphql-api/objects/widget-layout).
 </ParamField>
 
 <ParamField path="dataRefreshedAt" type="DateTime!" required>
@@ -76,16 +76,16 @@ The type of content displayed in the widget. The possible values are:
 ## Related operations
 
 <CardGroup cols={2}>
-  <Card title="Dashboard Object" icon="folder" href="/integrations/embeddings/graphql-api/objects/dashboard">
+  <Card title="Dashboard Object" icon="folder" href="/integrations/graphql-api/objects/dashboard">
     Parent dashboard structure
   </Card>
-  <Card title="WidgetLayout Object" icon="table-layout" href="/integrations/embeddings/graphql-api/objects/widget-layout">
+  <Card title="WidgetLayout Object" icon="table-layout" href="/integrations/graphql-api/objects/widget-layout">
     Widget positioning and sizing
   </Card>
-  <Card title="Visualization Object" icon="chart-bar" href="/integrations/embeddings/graphql-api/objects/visualization">
+  <Card title="Visualization Object" icon="chart-bar" href="/integrations/graphql-api/objects/visualization">
     Chart and table data structure
   </Card>
-  <Card title="Update Dashboard Widgets" icon="pen-to-square" href="/integrations/embeddings/graphql-api/mutations/dashboard/update-dashboard-widgets">
+  <Card title="Update Dashboard Widgets" icon="pen-to-square" href="/integrations/graphql-api/mutations/dashboard/update-dashboard-widgets">
     Modify widget properties
   </Card>
 </CardGroup>

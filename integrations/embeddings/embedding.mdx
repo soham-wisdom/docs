@@ -64,7 +64,7 @@ Every embedded session follows this five-step flow:
       The `setUserAttributes` mutation replaces **all** DATABASE-sourced attributes for that user. You must provide the complete set of attributes you wish to persist, not just the changes.
     </Warning>
 
-    See [User Attributes](/integrations/embeddings/user-management/user-attributes) for details on how attributes work and how to set them.
+    See [User Attributes](/integrations/user-management/user-attributes) for details on how attributes work and how to set them.
   </Step>
   <Step title="Impersonate the user to get a JWT" titleSize="h3">
     Call `impersonateUser` from your server to generate a 1-hour JWT for the user. This mutation is a public API member that uses your permanent Descope Access Key as an argument (`accessToken`) rather than a standard Authorization header. This step must always be performed server-side.
@@ -90,7 +90,7 @@ Every embedded session follows this five-step flow:
 
     The API responds with a JWT that authenticates as the impersonated user. This token expires in **1 hour**. WisdomAI will notify your page via a `postMessage` event when the token is about to expire. See [Session Management](/integrations/embeddings/session-management) for the full refresh flow.
 
-    See [Impersonate User](/integrations/embeddings/graphql-api/mutations/auth/impersonate-user) for the full API reference, including information on passing transient attributes.
+    See [Impersonate User](/integrations/graphql-api/mutations/auth/impersonate-user) for the full API reference, including information on passing transient attributes.
   </Step>
   <Step title="Use the JWT in the embed URL" titleSize="h3">
     Append the JWT as a `token` query parameter to the embed URL and set it as the `src` of your embed. Ensure the `allow` attribute includes `microphone; camera`.\
@@ -140,15 +140,15 @@ Once the initial iframe is rendered, you must manage the session lifecycle to pr
     Embed interactive dashboards and visualizations
   </Card>
 
-  <Card title="Impersonate User API" icon="user-secret" href="/integrations/embeddings/graphql-api/mutations/auth/impersonate-user">
+  <Card title="Impersonate User API" icon="user-secret" href="/integrations/graphql-api/mutations/auth/impersonate-user">
     Full reference for the impersonation mutation
   </Card>
 
-  <Card title="Create Users API" icon="user-plus" href="/integrations/embeddings/graphql-api/mutations/user/create-users">
+  <Card title="Create Users API" icon="user-plus" href="/integrations/graphql-api/mutations/user/create-users">
     Full reference for user provisioning
   </Card>
 
-  <Card title="GraphQL Primer" icon="code" href="/integrations/embeddings/graphql-api/graphql-primer">
+  <Card title="GraphQL Primer" icon="code" href="/integrations/graphql-api/graphql-primer">
     New to GraphQL? Start here
   </Card>
 

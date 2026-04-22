@@ -2,7 +2,7 @@
 title: "List Users"
 ---
 
-The `listUsers` query returns users in a workspace along with their attributes and role assignments. Use it to look up user IDs before calling [impersonateUser](/integrations/embeddings/graphql-api/mutations/auth/impersonate-user) or [setUserAttributes](/integrations/embeddings/graphql-api/mutations/user/set-user-attributes).
+The `listUsers` query returns users in a workspace along with their attributes and role assignments. Use it to look up user IDs before calling [impersonateUser](/integrations/graphql-api/mutations/auth/impersonate-user) or [setUserAttributes](/integrations/graphql-api/mutations/user/set-user-attributes).
 
 ## Signature
 
@@ -18,7 +18,7 @@ listUsers(workspaceId: ID): [User!]!
 
 ## Response
 
-Returns an array of `User` objects. See [User](/integrations/embeddings/graphql-api/objects/user) for the full schema. The fields most relevant to user management are:
+Returns an array of `User` objects. See [User](/integrations/graphql-api/objects/user) for the full schema. The fields most relevant to user management are:
 
 <ParamField path="id" type="ID!">
   The user's unique ID. Pass this to `impersonateUser`, `setUserAttributes`, or `deleteUsersFromWorkspace`.
@@ -105,13 +105,13 @@ curl -X POST \
 ## Related articles
 
 <CardGroup cols={2}>
-  <Card title="Impersonate user" icon="user-secret" href="/integrations/embeddings/graphql-api/mutations/auth/impersonate-user">
+  <Card title="Impersonate user" icon="user-secret" href="/integrations/graphql-api/mutations/auth/impersonate-user">
     Use the user ID to start an embedded session
   </Card>
-  <Card title="Set user attributes" icon="tag" href="/integrations/embeddings/graphql-api/mutations/user/set-user-attributes">
+  <Card title="Set user attributes" icon="tag" href="/integrations/graphql-api/mutations/user/set-user-attributes">
     Update DATABASE-sourced attributes on a user
   </Card>
-  <Card title="Delete users from workspace" icon="user-minus" href="/integrations/embeddings/graphql-api/mutations/user/delete-users-from-workspace">
+  <Card title="Delete users from workspace" icon="user-minus" href="/integrations/graphql-api/mutations/user/delete-users-from-workspace">
     Remove users from a workspace
   </Card>
 </CardGroup>

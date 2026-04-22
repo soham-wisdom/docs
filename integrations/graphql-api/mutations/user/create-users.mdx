@@ -31,7 +31,7 @@ createUsers(input: CreateUsersInput!): CreateUsersResponse!
 </ParamField>
 
 <ParamField path="roleAssignments" type="[RoleAssignmentInput!]">
-  Role assignments for the new users. Each entry specifies a `roleId` and `scopes`. See [RoleAssignmentInput](/integrations/embeddings/graphql-api/objects/role-assignment-input).
+  Role assignments for the new users. Each entry specifies a `roleId` and `scopes`. See [RoleAssignmentInput](/integrations/graphql-api/objects/role-assignment-input).
 
   For embedded dashboards, assign the Viewer role to hide edit controls:
   ```json
@@ -58,7 +58,7 @@ createUsers(input: CreateUsersInput!): CreateUsersResponse!
 ## Response
 
 <ParamField path="status" type="ResponseStatus!">
-  Indicates whether the operation succeeded. See [ResponseStatus](/integrations/embeddings/graphql-api/objects/response-status).
+  Indicates whether the operation succeeded. See [ResponseStatus](/integrations/graphql-api/objects/response-status).
 
   <Info>
     The `status` field here returns a `ResponseStatus` object (with `code` and `message`). This is distinct from the `UserStatus` enum (e.g., `ACTIVE`) found on the `User` object.
@@ -158,16 +158,16 @@ curl -s -X POST \
 </ResponseExample>
 
 <Warning>
-  If a user with the same email already exists, the call succeeds but re-applies the role assignments you pass in, overwriting any manually assigned roles. To avoid resetting roles on existing users, check [`listUsers`](/integrations/embeddings/graphql-api/queries/user/list-users) first and skip `createUsers` for users already provisioned.
+  If a user with the same email already exists, the call succeeds but re-applies the role assignments you pass in, overwriting any manually assigned roles. To avoid resetting roles on existing users, check [`listUsers`](/integrations/graphql-api/queries/user/list-users) first and skip `createUsers` for users already provisioned.
 </Warning>
 
 ## Related articles
 
 <CardGroup cols={2}>
-  <Card title="Set user attributes" icon="tag" href="/integrations/embeddings/graphql-api/mutations/user/set-user-attributes">
+  <Card title="Set user attributes" icon="tag" href="/integrations/graphql-api/mutations/user/set-user-attributes">
     Update attributes on existing users
   </Card>
-  <Card title="Impersonate user" icon="user-secret" href="/integrations/embeddings/graphql-api/mutations/auth/impersonate-user">
+  <Card title="Impersonate user" icon="user-secret" href="/integrations/graphql-api/mutations/auth/impersonate-user">
     Generate a session JWT for the created user
   </Card>
   <Card title="User attributes" icon="list" href="/integrations/embeddings/user-attributes">

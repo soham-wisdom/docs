@@ -13,12 +13,12 @@ updateDashboardWidgets(widgets: [DashboardWidgetInput!]): Dashboard!
 ## Arguments
 
 <ParamField path="widgets" type="[DashboardWidgetInput!]!" required>
-  Array of widget input objects containing the updates to apply. Each widget must include an `id` field to identify which widget to update. See [DashboardWidgetInput](/integrations/embeddings/graphql-api/objects/dashboard-widget-input) for the complete schema.
+  Array of widget input objects containing the updates to apply. Each widget must include an `id` field to identify which widget to update. See [DashboardWidgetInput](/integrations/graphql-api/objects/dashboard-widget-input) for the complete schema.
 </ParamField>
 
 ## Response
 
-Returns the updated `Dashboard` object with all widgets populated, including the updated widget configurations. See [Dashboard](/integrations/embeddings/graphql-api/objects/dashboard) for the schema.
+Returns the updated `Dashboard` object with all widgets populated, including the updated widget configurations. See [Dashboard](/integrations/graphql-api/objects/dashboard) for the schema.
 
 ## Usage example
 
@@ -123,16 +123,16 @@ curl -X POST \
 ## Next steps
 
 <CardGroup cols={2}>
-  <Card title="Add Widget to Dashboard" icon="plus" href="/integrations/embeddings/graphql-api/mutations/dashboard/add-widget-to-dashboard">
+  <Card title="Add Widget to Dashboard" icon="plus" href="/integrations/graphql-api/mutations/dashboard/add-widget-to-dashboard">
     Add a new widget to dashboard
   </Card>
-  <Card title="Delete Widget from Dashboard" icon="trash" href="/integrations/embeddings/graphql-api/mutations/dashboard/delete-widget-from-dashboard">
+  <Card title="Delete Widget from Dashboard" icon="trash" href="/integrations/graphql-api/mutations/dashboard/delete-widget-from-dashboard">
     Remove widgets from dashboard
   </Card>
-  <Card title="Update Dashboard" icon="pen-to-square" href="/integrations/embeddings/graphql-api/mutations/dashboard/update-dashboard">
+  <Card title="Update Dashboard" icon="pen-to-square" href="/integrations/graphql-api/mutations/dashboard/update-dashboard">
     Update dashboard properties
   </Card>
-  <Card title="DashboardWidgetInput Object" icon="folder" href="/integrations/embeddings/graphql-api/objects/dashboard-widget-input">
+  <Card title="DashboardWidgetInput Object" icon="folder" href="/integrations/graphql-api/objects/dashboard-widget-input">
     Widget input schema
   </Card>
 </CardGroup>

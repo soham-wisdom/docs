@@ -17,7 +17,7 @@ dashboard(id: String!, scope: DashboardScope!, version: String): Dashboard!
 </ParamField>
 
 <ParamField path="scope" type="DashboardScope!" required>
-  The access level required for the dashboard. See [DashboardScope](/integrations/embeddings/graphql-api/objects/dashboard-scope).
+  The access level required for the dashboard. See [DashboardScope](/integrations/graphql-api/objects/dashboard-scope).
 </ParamField>
 
 <ParamField path="version" type="String">
@@ -26,7 +26,7 @@ dashboard(id: String!, scope: DashboardScope!, version: String): Dashboard!
 
 ## Response
 
-Returns a `Dashboard` object containing the complete dashboard configuration and metadata. See [Dashboard](/integrations/embeddings/graphql-api/objects/dashboard) for the schema.
+Returns a `Dashboard` object containing the complete dashboard configuration and metadata. See [Dashboard](/integrations/graphql-api/objects/dashboard) for the schema.
 
 ## Usage example
 
@@ -173,13 +173,13 @@ curl -X POST \
 ## Next steps
 
 <CardGroup cols={2}>
-  <Card title="Dashboards Query" icon="list" href="/integrations/embeddings/graphql-api/queries/dashboard/dashboards">
+  <Card title="Dashboards Query" icon="list" href="/integrations/graphql-api/queries/dashboard/dashboards">
     Retrieve multiple dashboards
   </Card>
-  <Card title="Update Dashboard" icon="pen-to-square" href="/integrations/embeddings/graphql-api/mutations/dashboard/update-dashboard">
+  <Card title="Update Dashboard" icon="pen-to-square" href="/integrations/graphql-api/mutations/dashboard/update-dashboard">
     Modify dashboard properties
   </Card>
-  <Card title="Dashboard Object" icon="folder" href="/integrations/embeddings/graphql-api/objects/dashboard">
+  <Card title="Dashboard Object" icon="folder" href="/integrations/graphql-api/objects/dashboard">
     Complete dashboard schema
   </Card>
 </CardGroup>

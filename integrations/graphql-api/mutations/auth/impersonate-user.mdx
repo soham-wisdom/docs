@@ -19,7 +19,7 @@ impersonateUser(accessToken: String!, userEmail: String!, attributes: [UserAttri
 </ParamField>
 
 <ParamField path="userEmail" type="String!" required>
-  The email address of the user to impersonate. The user must already exist in Wisdom — call [`createUsers`](/integrations/embeddings/graphql-api/mutations/user/create-users) first if needed.
+  The email address of the user to impersonate. The user must already exist in Wisdom — call [`createUsers`](/integrations/graphql-api/mutations/user/create-users) first if needed.
 </ParamField>
 
 <ParamField path="attributes" type="[UserAttributeInput!]">
@@ -29,7 +29,7 @@ impersonateUser(accessToken: String!, userEmail: String!, attributes: [UserAttri
     The `impersonated_user_id` claim cannot be overridden via attributes.
   </Warning>
 
-  See [User Attributes](/integrations/embeddings/user-management/user-attributes) for how attribute sources are prioritized.
+  See [User Attributes](/integrations/user-management/user-attributes) for how attribute sources are prioritized.
 </ParamField>
 
 ## Response
@@ -95,7 +95,7 @@ curl -X POST \
 </ResponseExample>
 
 <Tip>
-  Attributes that are stable for a given user (such as `account_id`) should be set permanently via [`createUsers`](/integrations/embeddings/graphql-api/mutations/user/create-users) or [`setUserAttributes`](/integrations/embeddings/graphql-api/mutations/user/set-user-attributes). Attributes that change per session (such as a selected view or context) can be passed transiently via `attributes` here.
+  Attributes that are stable for a given user (such as `account_id`) should be set permanently via [`createUsers`](/integrations/graphql-api/mutations/user/create-users) or [`setUserAttributes`](/integrations/graphql-api/mutations/user/set-user-attributes). Attributes that change per session (such as a selected view or context) can be passed transiently via `attributes` here.
 </Tip>
 
 ## Token lifecycle and refresh
@@ -173,11 +173,11 @@ WisdomAI sends a `REQUEST_JWT_TOKEN` event to the parent window approximately 10
     Use the token for embedded chat
   </Card>
 
-  <Card title="Create Users" icon="user-plus" href="/integrations/embeddings/graphql-api/mutations/user/create-users">
+  <Card title="Create Users" icon="user-plus" href="/integrations/graphql-api/mutations/user/create-users">
     Create users before impersonating them
   </Card>
 
-  <Card title="User Attributes" icon="list" href="/integrations/embeddings/user-management/user-attributes">
+  <Card title="User Attributes" icon="list" href="/integrations/user-management/user-attributes">
     Understand transient vs persistent attributes
   </Card>
 

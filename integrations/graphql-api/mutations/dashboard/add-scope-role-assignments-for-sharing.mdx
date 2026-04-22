@@ -22,7 +22,7 @@ addScopeRoleAssignmentsForSharing(
 </ParamField>
 
 <ParamField path="scopeRoleAssignments" type="[ScopeRoleAssignmentInput!]!" required>
-  Array of user-role assignments defining who gets access and what level of access they receive. See [ScopeRoleAssignmentInput](/integrations/embeddings/graphql-api/objects/scope-role-assignment-input) for the input structure.
+  Array of user-role assignments defining who gets access and what level of access they receive. See [ScopeRoleAssignmentInput](/integrations/graphql-api/objects/scope-role-assignment-input) for the input structure.
 </ParamField>
 
 <ParamField path="scopeType" type="ScopeType!" required>
@@ -105,13 +105,13 @@ curl -X POST \
 ## Next steps
 
 <CardGroup cols={2}>
-  <Card title="Remove Scope Role Assignments for Sharing" icon="user-minus" href="/integrations/embeddings/graphql-api/mutations/dashboard/remove-scope-role-assignments-for-sharing">
+  <Card title="Remove Scope Role Assignments for Sharing" icon="user-minus" href="/integrations/graphql-api/mutations/dashboard/remove-scope-role-assignments-for-sharing">
     Remove sharing access from users
   </Card>
-  <Card title="Create Dashboard" icon="plus" href="/integrations/embeddings/graphql-api/mutations/dashboard/create-dashboard">
+  <Card title="Create Dashboard" icon="plus" href="/integrations/graphql-api/mutations/dashboard/create-dashboard">
     Create a new Dashboard to share
   </Card>
-  <Card title="Dashboard Object" icon="folder" href="/integrations/embeddings/graphql-api/objects/dashboard">
+  <Card title="Dashboard Object" icon="folder" href="/integrations/graphql-api/objects/dashboard">
     Dashboard object schema and properties
   </Card>
 </CardGroup>

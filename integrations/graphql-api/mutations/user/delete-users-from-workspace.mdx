@@ -17,7 +17,7 @@ deleteUsersFromWorkspace(ids: [ID!]!, workspaceID: ID!): DeleteUsersFromWorkspac
 ## Arguments
 
 <ParamField path="ids" type="[ID!]!" required>
-  The IDs of the users to delete. Use [listUsers](/integrations/embeddings/graphql-api/queries/user/list-users) to find user IDs.
+  The IDs of the users to delete. Use [listUsers](/integrations/graphql-api/queries/user/list-users) to find user IDs.
 </ParamField>
 
 <ParamField path="workspaceID" type="ID!" required>
@@ -31,7 +31,7 @@ Requires `iam:delete` scoped to the target workspace.
 ## Response
 
 <ParamField path="status" type="ResponseStatus!">
-  Indicates whether the operation succeeded. See [ResponseStatus](/integrations/embeddings/graphql-api/objects/response-status).
+  Indicates whether the operation succeeded. See [ResponseStatus](/integrations/graphql-api/objects/response-status).
 </ParamField>
 
 ## Usage example
@@ -84,10 +84,10 @@ curl -s -X POST \
 ## Related articles
 
 <CardGroup cols={2}>
-  <Card title="List users" icon="users" href="/integrations/embeddings/graphql-api/queries/user/list-users">
+  <Card title="List users" icon="users" href="/integrations/graphql-api/queries/user/list-users">
     Query users before deleting them
   </Card>
-  <Card title="Create users" icon="user-plus" href="/integrations/embeddings/graphql-api/mutations/user/create-users">
+  <Card title="Create users" icon="user-plus" href="/integrations/graphql-api/mutations/user/create-users">
     Provision new users in a workspace
   </Card>
 </CardGroup>
