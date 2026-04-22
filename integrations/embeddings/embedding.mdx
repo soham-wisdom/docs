@@ -109,33 +109,33 @@ Every embedded session follows this five-step flow:
     See [Impersonate User](/integrations/graphql-api/mutations/auth/impersonate-user) for the full API reference, including information on passing transient attributes.
   </Step>
   <Step title="Use the JWT in the embed URL" titleSize="h3">
-    Append the JWT as a `token` query parameter to the embed URL and set it as the `src` of your embed. Ensure the `allow` attribute includes `microphone; camera`.\
-    \
+    Append the JWT as a `token` query parameter to the embed URL and set it as the `src` of your embed. 
+
+    <Note>
+      If your embed uses voice input or camera features, add `allow="microphone; camera"` to the `<iframe>` tag.
+    </Note>
+
     The following examples show how to use each embed path with an `<iframe>`, but the same URL structure applies regardless of your integration method.
 
     ```html
     <!-- Full-app embed (search + dashboards + chat) -->
     <iframe
       src="https://{ACCOUNT}.wisdom.ai/embed/search?token=<JWT>"
-      allow="microphone; camera"
       style="width: 100%; height: 100%; border: 0;" />
     
     <!-- Dashboards list view -->
     <iframe
       src="https://{ACCOUNT}.wisdom.ai/embed/dashboards?token=<JWT>"
-      allow="microphone; camera"
       style="width: 100%; height: 100%; border: 0;" />
     
     <!-- Embed a specific dashboard -->
     <iframe
       src="https://{ACCOUNT}.wisdom.ai/embed/dashboards/<id>?token=<JWT>"
-      allow="microphone; camera"
       style="width: 100%; height: 100%; border: 0;" />
     
     <!-- Embed a specific chat -->
     <iframe
       src="https://{ACCOUNT}.wisdom.ai/embed/chat/<conversationId>?token=<JWT>"
-      allow="microphone; camera"
       style="width: 100%; height: 100%; border: 0;" />
     ```
   </Step>
