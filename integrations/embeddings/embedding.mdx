@@ -34,7 +34,7 @@ Every embedded session follows this five-step flow:
 
 <Steps>
   <Step title="Get your access token" titleSize="h3">
-    Contact `support@askwisdom.ai` to receive your Descope Access Key. This is a permanent credential, not a JWT or session token. It authenticates your server to the WisdomAI API and grants impersonation permissions. It does not expire and must be kept secret.
+    Contact `support@wisdom.ai` to receive your Access Key. This is a permanent credential, not a JWT or session token. It authenticates your server to the WisdomAI API and grants impersonation permissions. It does not expire and must be kept secret.
   </Step>
   <Step title="Create the end user" titleSize="h3">
     Call `createUsers` to provision the user in WisdomAI:
@@ -109,7 +109,7 @@ Every embedded session follows this five-step flow:
     See [Impersonate User](/integrations/graphql-api/mutations/auth/impersonate-user) for the full API reference, including information on passing transient attributes.
   </Step>
   <Step title="Use the JWT in the embed URL" titleSize="h3">
-    Append the JWT as a `token` query parameter to the embed URL and set it as the `src` of your embed. 
+    Append the JWT as a `token` query parameter to the embed URL and set it as the `src` of your embed.
 
     <Note>
       If your embed uses voice input or camera features, add `allow="microphone; camera"` to the `<iframe>` tag.
