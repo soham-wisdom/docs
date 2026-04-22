@@ -2,11 +2,12 @@
 title: "Prompt Mode"
 ---
 
-Get started by creating your first Agent to keep track of important business metrics automatically. This tutorial will show you how to monitor a key metric, run a follow-up analysis when a condition is met, and send notifications to your team.
+Prompt Mode is the fastest way to build an agent in WisdomAI. Describe what you want the agent to do in plain language, test it, and the agent is ready. This tutorial walks through creating your first Prompt Mode agent end-to-end.
 
 <Note>
-  1. This guide uses sales monitoring scenarios, but you can apply these steps to any metric you need to watch.
+  1. This guide uses sales-monitoring scenarios, but you can apply these steps to any metric you need to track.
   2. The Agents feature is currently in beta.
+  3. If you need multi-step workflows with branching logic, see [Visual Mode](/advanced-features/agents/visual-mode) instead.
 </Note>
 
 ## Before you begin
@@ -35,12 +36,12 @@ To create a new agent, follow these steps:
    1. **Trigger Disabled (Scheduled Reporting)**: Leave the trigger disabled to use the Agent for scheduled reporting. In this mode, the analysis will always run and send out a notification according to the schedule you set.
    2. **Trigger Enabled (Conditional Monitoring)**: Enable the trigger to use the Agent as a monitor for specific conditions. In this mode, an analysis and notification are sent only if the trigger's conditions are satisfied.
       - In the text box, describe the condition. You can write complex criteria. For example: `If total sales in the last year fall below $100,000`.
-      - Click **Test** to check if your trigger condition is currently met. This helps you verify that the criteria work as expected. Learn more in the [Test an Agent During Configuration](#test-an-agent-during-configuration) section of this tutorial.
+      - Click **Test** to verify the condition works as expected. This helps you verify that the criteria work as expected.
         <Tip>
           Start with simple, single-condition triggers to ensure they work as expected before creating more complex ones.
         </Tip>
 
-![Screenshot showing how to configure the Agent](/images/agent-new-ui-02.png)
+![Agent configuration screen with trigger enabled](/images/agent-new-ui-02.png)
 
 6. Define the **Work Description**. This is the task the Agent will perform if the trigger condition is met.
    - In the work description text box, describe the analysis and action you want in natural language. For example: `Send me a list of all lost deals along with their region, their owner, and their total value`.
@@ -52,13 +53,9 @@ To create a new agent, follow these steps:
    - **Email**: Select this option and enter one or more email addresses. The notification will contain charts and tables from the analysis.
    - **Slack**: Select this option and specify the Slack channel names.
 
-<Note>
-  To use the Slack notification option, you must first have a Slack workspace connected. Read the [Connect to Slack](https://docs.askwisdom.ai/integrations/connect-to-slack) guide to learn how to do it.
-</Note>
-
 9. Click **Create Agent** to save and activate it.
 
-![Screenshot showing how to configure the Agent](/images/agent-new-ui-09.png)
+![Create Agent button to save and activate the agent](/images/agent-new-ui-09.png)
 
 10. You will receive a notification alerting you that you have been subscribed to that Agent. From there, you can directly access it using the **View Agent** button. This is what an email notification looks like:
 
@@ -75,7 +72,7 @@ While creating or editing an Agent, you can test its two main components, the **
 
 ## Use Deep Analysis with an Agent
 
-You can have an Agent run its analysis using the Deep Analysis feature. When you enable Deep Analysis for an Agent, it performs a more thorough analysis by exploring multiple aspects of the data and providing comprehensive insights. This process may take longer but yields more detailed results.
+You can have an Agent run its analysis using the Deep Analysis feature. When you enable Deep Analysis for an Agent, it performs a more thorough analysis by exploring multiple aspects of the data and providing comprehensive insights. Deep Analysis runs more thoroughly than a standard agent run, so it takes longer but produces more complete insights.
 
 1. When creating or editing an Agent, enable the **Deep Analysis** toggle.
 2. When the Agent runs, it will automatically generate and execute a multi-step analysis plan based on your work description. You will not be prompted to approve the plan; it will run automatically.
