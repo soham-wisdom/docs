@@ -58,7 +58,8 @@
                   "getting-started/connect-data-sources/connect-to-snowflake",
                   "getting-started/connect-data-sources/connect-mcp-server",
                   "improve-wisdom-ai-responses/connect-unstructed-repositories-datasets",
-                  "getting-started/connect-data-sources/search-the-web"
+                  "getting-started/connect-data-sources/search-the-web",
+                  "getting-started/connect-data-sources/connect-to-sharepoint"
                 ]
               }
             ]
@@ -175,7 +176,6 @@
             "group": "Integrations",
             "pages": [
               "integrations/connect-to-slack",
-              "integrations/connect-to-sharepoint",
               "integrations/google-sheets",
               {
                 "group": "Embedding",
