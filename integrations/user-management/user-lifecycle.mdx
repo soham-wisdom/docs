@@ -24,9 +24,9 @@ This guide walks through the full workflow for creating and managing users via t
 
 ## Step 1: Create users
 
-Use [`createUsers`](/integrations/embeddings/graphql-api/mutations/user/create-users) to provision one or more users by email. You can assign roles, set initial attributes, add them to user groups, and optionally send a welcome email — all in a single call.
+Use [`createUsers`](/integrations/graphql-api/mutations/user/create-users) to provision one or more users by email. You can assign roles, set initial attributes, add them to user groups, and optionally send a welcome email — all in a single call.
 
-If the user already exists, the call succeeds but **re-applies the role assignments you pass in**, overwriting any manually assigned roles. To avoid resetting roles on existing users, check [`listUsers`](/integrations/embeddings/graphql-api/queries/user/list-users) first and skip `createUsers` for users already provisioned.
+If the user already exists, the call succeeds but **re-applies the role assignments you pass in**, overwriting any manually assigned roles. To avoid resetting roles on existing users, check [`listUsers`](/integrations/graphql-api/queries/user/list-users) first and skip `createUsers` for users already provisioned.
 
 ```bash
 curl -X POST \
@@ -77,11 +77,11 @@ curl -X POST \
   **Email uniqueness:** User matching is email-based. If your embedded users may share email addresses across tenants, append a unique identifier to the email prefix — for example, `alice+tenant123@yourcompany.com`. This prevents cross-tenant session collisions.
 </Note>
 
-For the full input schema, see [Create Users](/integrations/embeddings/graphql-api/mutations/user/create-users).
+For the full input schema, see [Create Users](/integrations/graphql-api/mutations/user/create-users).
 
 ## Step 2: Update user attributes
 
-Use [`setUserAttributes`](/integrations/embeddings/graphql-api/mutations/user/set-user-attributes) to replace the DATABASE-sourced attributes on an existing user at any time.
+Use [`setUserAttributes`](/integrations/graphql-api/mutations/user/set-user-attributes) to replace the DATABASE-sourced attributes on an existing user at any time.
 
 <Warning>
   `setUserAttributes` **replaces all DATABASE-sourced attributes**. Always include the full desired set — omitting an attribute removes it. JWT-sourced attributes (from SSO claims) are not affected.
@@ -109,7 +109,7 @@ curl -X POST \
 
 ## Step 3: Query users and their attributes
 
-Use [`listUsers`](/integrations/embeddings/graphql-api/queries/user/list-users) to look up user IDs or verify current attribute state.
+Use [`listUsers`](/integrations/graphql-api/queries/user/list-users) to look up user IDs or verify current attribute state.
 
 ```bash
 curl -X POST \
@@ -133,7 +133,7 @@ Each attribute includes a `source` field:
 
 ## Step 4: Delete users from a workspace
 
-Use [`deleteUsersFromWorkspace`](/integrations/embeddings/graphql-api/mutations/user/delete-users-from-workspace) to remove one or more users from a workspace.
+Use [`deleteUsersFromWorkspace`](/integrations/graphql-api/mutations/user/delete-users-from-workspace) to remove one or more users from a workspace.
 
 <Warning>
   This action is **irreversible**. Deleted users lose all role assignments, attributes, and access to the workspace. Verify the correct user IDs before calling this mutation.
@@ -157,7 +157,7 @@ curl -X POST \
 
 ## Step 5: Impersonate a user to start an embedded session
 
-Use [`impersonateUser`](/integrations/embeddings/graphql-api/mutations/auth/impersonate-user) to generate a short-lived JWT for a user. Pass this JWT as the `token` query parameter in your iframe embed URL.
+Use [`impersonateUser`](/integrations/graphql-api/mutations/auth/impersonate-user) to generate a short-lived JWT for a user. Pass this JWT as the `token` query parameter in your iframe embed URL.
 
 This mutation is public and unauthenticated — no `Authorization` header is required. The access key is passed directly as an argument and must only be called from your server.
 
@@ -210,7 +210,7 @@ The token expires after **1 hour**. Use it in your iframe `src`:
   style="width: 100%; height: 100%; border: 0;" />
 ```
 
-WisdomAI will request a new token automatically via `postMessage` before expiry. See [Impersonate user](/integrations/embeddings/graphql-api/mutations/auth/impersonate-user) for the full refresh flow.
+WisdomAI will request a new token automatically via `postMessage` before expiry. See [Impersonate user](/integrations/graphql-api/mutations/auth/impersonate-user) for the full refresh flow.
 
 <Tip>
   Attributes that are stable for a given user (such as `account_id`) should be set permanently via `createUsers` or `setUserAttributes`. Attributes that change per session (such as a selected view or context) can be passed transiently via `attributes` in `impersonateUser`.
@@ -223,11 +223,11 @@ WisdomAI will request a new token automatically via `postMessage` before expiry.
     Full server-side embedding flow
   </Card>
 
-  <Card title="Delete Users from Workspace" icon="user-minus" href="/integrations/embeddings/graphql-api/mutations/user/delete-users-from-workspace">
+  <Card title="Delete Users from Workspace" icon="user-minus" href="/integrations/graphql-api/mutations/user/delete-users-from-workspace">
     Remove users when offboarding
   </Card>
 
-  <Card title="List Users" icon="users" href="/integrations/embeddings/graphql-api/queries/user/list-users">
+  <Card title="List Users" icon="users" href="/integrations/graphql-api/queries/user/list-users">
     Query users and inspect their attributes
   </Card>
 </CardGroup>
