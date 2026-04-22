@@ -1,0 +1,57 @@
+---
+title: "DatabaseModel"
+---
+
+This page describes the DatabaseModel object that represents the schema for database objects within a domain.
+
+## DatabaseModel
+
+<ParamField path="id" type="ID!" required>
+  Unique identifier for the database.
+</ParamField>
+
+<ParamField path="type" type="DatabaseType">
+  The type of database. See [DatabaseType](/integrations/graphql-api/objects/database-type).
+</ParamField>
+
+<ParamField path="version" type="Int">
+  Version number of the database for change tracking.
+</ParamField>
+
+<ParamField path="name" type="String!" required>
+  Name of the database.
+</ParamField>
+
+<ParamField path="displayName" type="String">
+  Optional display name for the database.
+</ParamField>
+
+<ParamField path="domainId" type="ID!" required>
+  Identifier of the domain this database belongs to.
+</ParamField>
+
+<ParamField path="connection" type="Connection">
+  Connection details for accessing this database. See [Connection](/integrations/graphql-api/objects/connection).
+</ParamField>
+
+<ParamField path="tables" type="[TableModel!]">
+  List of tables in this database.
+</ParamField>
+
+<ParamField path="isUserCSVDatabase" type="Boolean">
+  Whether this database was created from user-uploaded CSV files.
+</ParamField>
+
+## Related operations
+
+<CardGroup cols={2}>
+  <Card title="DomainModel Object" icon="folder" href="/integrations/graphql-api/objects/domain-model">
+    Parent domain structure
+  </Card>
+  <Card title="Connection Object" icon="link" href="/integrations/graphql-api/objects/connection">
+    Database connection details
+  </Card>
+  <Card title="DatabaseType Enum" icon="list" href="/integrations/graphql-api/objects/database-type">
+    Database type definitions
+  </Card>
+</CardGroup>

@@ -1,0 +1,34 @@
+---
+title: "Knowledge"
+---
+
+This page describes the Knowledge object that represents the schema for domain knowledge entries.
+
+## Knowledge
+
+<ParamField path="name" type="String">
+  Name or label for this knowledge entry.
+</ParamField>
+
+<ParamField path="description" type="String!" required>
+  The knowledge content or description.
+</ParamField>
+
+<ParamField path="updatedAt" type="DateTime">
+  Timestamp when this knowledge entry was last updated.
+</ParamField>
+
+<ParamField path="updatedBy" type="User">
+  The user who last updated this knowledge entry. See [User](/integrations/graphql-api/objects/user).
+</ParamField>
+
+## Related operations
+
+<CardGroup cols={2}>
+  <Card title="DomainModel Object" icon="folder" href="/integrations/graphql-api/objects/domain-model">
+    Parent domain structure
+  </Card>
+  <Card title="User Object" icon="user" href="/integrations/graphql-api/objects/user">
+    User who updated this entry
+  </Card>
+</CardGroup>

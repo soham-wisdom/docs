@@ -1,0 +1,46 @@
+---
+title: "VizConfig"
+---
+
+This page describes the VizConfig object that represents the schema for domain visualization configuration.
+
+## VizConfig
+
+<ParamField path="alwaysUseCompactNumberFormat" type="Boolean!" required>
+  Whether to always use compact number formatting in visualizations.
+</ParamField>
+
+<ParamField path="openShowDataPanelByDefault" type="Boolean!" required>
+  Whether to show the data panel by default in visualizations.
+</ParamField>
+
+<ParamField path="showDomainDescriptionOnSearch" type="Boolean!" required>
+  Whether to show the domain description on the search page.
+</ParamField>
+
+<ParamField path="disablePreviewsForExplorers" type="Boolean!" required>
+  Whether to disable data previews for explorer users.
+</ParamField>
+
+<ParamField path="enableFileDownloadForExplorers" type="Boolean!" required>
+  Whether to enable file download for explorer users.
+</ParamField>
+
+<ParamField path="alwaysShowFullNumberText" type="Boolean!" required>
+  Whether to always show full number text instead of abbreviated values.
+</ParamField>
+
+<ParamField path="defaultDataLabelMode" type="DataLabelMode">
+  Default data label mode for visualizations. See [DataLabelMode](/integrations/graphql-api/objects/data-label-mode).
+</ParamField>
+
+## Related operations
+
+<CardGroup cols={2}>
+  <Card title="DomainModel Object" icon="folder" href="/integrations/graphql-api/objects/domain-model">
+    Parent domain structure
+  </Card>
+  <Card title="DataLabelMode Enum" icon="list" href="/integrations/graphql-api/objects/data-label-mode">
+    Data label display modes
+  </Card>
+</CardGroup>

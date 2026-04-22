@@ -7,6 +7,7 @@
     "light": "#5b52ff",
     "dark": "#5b52ff"
   },
+
   "favicon": "/favicon.webp",
   "navigation": {
     "global": {
@@ -124,7 +125,8 @@
               "using-wisdom-ai-everyday/schedule-dashboards-notifications",
               "using-wisdom-ai-everyday/auditing",
               "using-wisdom-ai-everyday/prompt-templates",
-              "using-wisdom-ai-everyday/knowledge-management-via-graph-ql-api"
+              "using-wisdom-ai-everyday/knowledge-management-via-graph-ql-api",
+              "using-wisdom-ai-everyday/request-help-from-admins"
             ]
           },
           {
@@ -160,7 +162,8 @@
                   "advanced-features/agents/agents",
                   "advanced-features/agents/tutorial-create-agent",
                   "advanced-features/agents/manage-agents",
-                  "advanced-features/agents/reviewed-runs-in-agents"
+                  "advanced-features/agents/reviewed-runs-in-agents",
+                  "advanced-features/agents/visual-mode"
                 ]
               },
               "advanced-features/deep-analysis",
@@ -172,6 +175,8 @@
             "group": "Integrations",
             "pages": [
               "integrations/connect-to-slack",
+              "integrations/connect-to-sharepoint",
+              "integrations/google-sheets",
               {
                 "group": "Embeddings",
                 "pages": [
@@ -208,8 +213,10 @@
                           "integrations/embeddings/graphql-api/objects/chat-message",
                           "integrations/embeddings/graphql-api/objects/chat-message-diff",
                           "integrations/embeddings/graphql-api/objects/chat-message-sender",
-                          "integrations/embeddings/graphql-api/objects/chat-thinking-effort",
-                          "integrations/embeddings/graphql-api/objects/connection",
+                          "integrations/graphql-api/objects/canvas-config",
+                      "integrations/embeddings/graphql-api/objects/chat-thinking-effort",
+                          "integrations/graphql-api/objects/codegen-config",
+                      "integrations/embeddings/graphql-api/objects/connection",
                           "integrations/embeddings/graphql-api/objects/conversation-update-one-of",
                           "integrations/embeddings/graphql-api/objects/dashboard",
                           "integrations/embeddings/graphql-api/objects/dashboard-filter-definition",
@@ -220,14 +227,20 @@
                           "integrations/embeddings/graphql-api/objects/dashboard-widget",
                           "integrations/embeddings/graphql-api/objects/dashboard-widget-input",
                           "integrations/embeddings/graphql-api/objects/dashboards-response",
-                          "integrations/embeddings/graphql-api/objects/delta",
+                          "integrations/graphql-api/objects/data-label-mode",
+                      "integrations/graphql-api/objects/database-model",
+                      "integrations/graphql-api/objects/database-type",
+                      "integrations/embeddings/graphql-api/objects/delta",
                           "integrations/embeddings/graphql-api/objects/delta-element",
                           "integrations/embeddings/graphql-api/objects/delta-input",
                           "integrations/embeddings/graphql-api/objects/domain-model",
-                          "integrations/embeddings/graphql-api/objects/filter-applied-state",
+                          "integrations/graphql-api/objects/domain-rls-config",
+                      "integrations/graphql-api/objects/domain-web-search-config",
+                      "integrations/embeddings/graphql-api/objects/filter-applied-state",
                           "integrations/embeddings/graphql-api/objects/job-status",
                           "integrations/embeddings/graphql-api/objects/join-input",
-                          "integrations/embeddings/graphql-api/objects/llm-tool-call-results",
+                          "integrations/graphql-api/objects/knowledge",
+                      "integrations/embeddings/graphql-api/objects/llm-tool-call-results",
                           "integrations/embeddings/graphql-api/objects/llm-tool-calls",
                           "integrations/embeddings/graphql-api/objects/operation",
                           "integrations/embeddings/graphql-api/objects/response-status",
@@ -238,7 +251,8 @@
                           "integrations/embeddings/graphql-api/objects/text-artifact",
                           "integrations/embeddings/graphql-api/objects/tool-selection",
                           "integrations/embeddings/graphql-api/objects/user",
-                          "integrations/embeddings/graphql-api/objects/visualization",
+                          "integrations/graphql-api/objects/viz-config",
+                      "integrations/embeddings/graphql-api/objects/visualization",
                           "integrations/embeddings/graphql-api/objects/visualization-type",
                           "integrations/embeddings/graphql-api/objects/widget-layout",
                           "integrations/embeddings/graphql-api/objects/widget-layout-input",
@@ -340,7 +354,8 @@
                         "group": "Subscriptions",
                         "pages": [
                           "integrations/embeddings/graphql-api/subscriptions/dashboard-summary",
-                          "integrations/embeddings/graphql-api/subscriptions/subscribe-conversation"
+                          "integrations/embeddings/graphql-api/subscriptions/subscribe-conversation",
+                          "integrations/graphql-api/mutations/domain/duplicate-domain"
                         ]
                       }
                     ]
