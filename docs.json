@@ -471,6 +471,10 @@
       "destination": "/new-releases/february-2026/02-26-release-overview"
     },
     {
+      "source": "integrations/connect-to-sharepoint",
+      "destination": "getting-started/connect-data-sources/connect-to-sharepoint"
+    },
+    {
       "source":"/new-releases/february-2026/search-the-web",
       "destination": "/getting-started/connect-data-sources/search-the-web"
     }
