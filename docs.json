@@ -164,7 +164,8 @@
                   "advanced-features/agents/tutorial-create-agent",
                   "advanced-features/agents/manage-agents",
                   "advanced-features/agents/reviewed-runs-in-agents",
-                  "advanced-features/agents/visual-mode"
+                  "advanced-features/agents/visual-mode",
+                  "advanced-features/agents/nodes-reference"
                 ]
               },
               "advanced-features/deep-analysis",
