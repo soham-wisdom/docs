@@ -1,0 +1,43 @@
+---
+title: "Column-Level Security (CLS)"
+---
+
+This tutorial demonstrates how to protect sensitive information within your datasets while maintaining the ability to perform high-level analysis. You will learn how to configure Column-Level Security (CLS) to mask specific values based on user attributes.
+
+## Configure CLS
+
+Follow these steps to configure the CLS:
+
+1. Navigate to the **Data Sources** tab in your project.
+2. Select the table you wish to modify (e.g., `Customer_1`).
+
+<Frame>
+  ![cls-data-source](/images/cls-data-source.png)
+</Frame>
+
+3. Ensure **Show advanced options** is toggled on in the top right corner.
+4. Locate your sensitive column and click **Configure** under the **CLS Masking column**.
+
+<Frame>
+  ![cls-sensitive-column](/images/cls-sensitive-column.png)
+</Frame>
+
+5. In the Column-Level Security, provide a SQL expression that determines how the data is displayed at query time.
+
+![cls-sql-expression](/images/cls-sql-expression.png)
+
+6. Click **Save**. The status badge in the CLS Masking column will now show as Active
+
+![cls-active](/images/cls-active.png)
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Users Management" icon="users" href="/manage-account/users-management">
+    Manage user roles, permissions, and access to the platform.
+  </Card>
+
+  <Card title="Basic Tutorial: Connect and Test" icon="rocket" href="/setting-up-wisdom-ai/basic-tutorial-connect-and-test">
+    Walk through the initial setup to connect a data source and run your first query.
+  </Card>
+</CardGroup>
