@@ -481,7 +481,7 @@
     },
     {
       "source":"/advanced-features/agents/agent-builder",
-      "destination": "//advanced-features/agents/visual-mode"
+      "destination": "/advanced-features/agents/visual-mode"
     }
   ],
   "navbar": {
