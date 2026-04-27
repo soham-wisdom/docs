@@ -9,13 +9,13 @@ This tutorial demonstrates how to protect sensitive information in your datasets
 Follow these steps to configure CLS:
 
 1. Navigate to the **Data Sources** tab in your project.
-2. Select the table you wish to modify (e.g., `Customer_1`).
+2. Select the table you wish to modify (e.g., `Account`).
 
 <Frame>
   ![cls-data-source](/images/cls-data-source.png)
 </Frame>
 
-3. Ensure **that Show advanced options** is toggled on in the top-right corner.
+3. Ensure that **Show advanced options** is toggled on in the top-right corner.
 4. Locate your sensitive column and click **Configure** under the **CLS Masking** column.
 
 <Frame>
@@ -24,17 +24,35 @@ Follow these steps to configure CLS:
 
 5. In the **Column-Level Security** modal, provide a SQL expression that determines how the data is displayed at query time.
 
-![cls-sql-expression](/images/cls-sql-expression.png)
+<Frame>
+  ![cls-sql-expression](/images/cls-sql-expression.png)
+</Frame>
 
 6. Click **Save**. The status badge in the CLS Masking column will now show as Active.
 
-![cls-active](/images/cls-active.png)
+<Frame>
+  ![cls-active](/images/cls-active.png)
+</Frame>
 
 <Tip>
   If you enter an incorrect value, such as a column name that doesn't exist, the system will alert you to the error and will not let you save it.
 </Tip>
 
-## Next steps
+## Verifying the Implementation
+
+Once active, CLS functions as a global security layer. It automatically enforces your masking logic across **WisdomAI Chat**, **Dashboards**, the **SQL Playground**, and **Data Source Previews**.
+
+<Frame>
+  ![cls-chat](/images/cls-chat2.png)
+</Frame>
+
+For unauthorized users, protected data will appear as hashed values. It is important to remember that CLS is applied strictly at the column level.
+
+<Warning>
+  **Avoid Data Leakage**: If you protect a column (e.g., `Customer Name`) but leave a correlative column unprotected (e.g., `Customer Email`), an unauthorized user will see the hashed name but the clear-text email address. Ensure you apply masking to all columns that could potentially identify the sensitive entity.
+</Warning>
+
+## Next Steps
 
 <CardGroup cols={2}>
   <Card title="Users Management" icon="users" href="/manage-account/users-management">
