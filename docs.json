@@ -58,7 +58,8 @@
                   "getting-started/connect-data-sources/connect-to-snowflake",
                   "getting-started/connect-data-sources/connect-mcp-server",
                   "improve-wisdom-ai-responses/connect-unstructed-repositories-datasets",
-                  "getting-started/connect-data-sources/search-the-web"
+                  "getting-started/connect-data-sources/search-the-web",
+                  "getting-started/connect-data-sources/connect-to-sharepoint"
                 ]
               }
             ]
@@ -125,7 +126,8 @@
               "using-wisdom-ai-everyday/schedule-dashboards-notifications",
               "using-wisdom-ai-everyday/auditing",
               "using-wisdom-ai-everyday/prompt-templates",
-              "using-wisdom-ai-everyday/knowledge-management-via-graph-ql-api"
+              "using-wisdom-ai-everyday/knowledge-management-via-graph-ql-api",
+              "using-wisdom-ai-everyday/request-help-from-admins"
             ]
           },
           {
@@ -164,7 +166,9 @@
                   "advanced-features/agents/nodes-reference",
                   "advanced-features/agents/agent-best-practices",
                   "advanced-features/agents/manage-agents",
-                  "advanced-features/agents/reviewed-runs-in-agents"
+                  "advanced-features/agents/reviewed-runs-in-agents",
+                  "advanced-features/agents/visual-mode",
+                  "advanced-features/agents/nodes-reference"
                 ]
               },
               "advanced-features/deep-analysis",
@@ -471,8 +475,16 @@
       "destination": "/new-releases/february-2026/02-26-release-overview"
     },
     {
+      "source": "integrations/connect-to-sharepoint",
+      "destination": "getting-started/connect-data-sources/connect-to-sharepoint"
+    },
+    {
       "source":"/new-releases/february-2026/search-the-web",
       "destination": "/getting-started/connect-data-sources/search-the-web"
+    },
+    {
+      "source":"/advanced-features/agents/agent-builder",
+      "destination": "/advanced-features/agents/visual-mode"
     }
   ],
   "navbar": {

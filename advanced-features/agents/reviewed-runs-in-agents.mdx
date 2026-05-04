@@ -17,7 +17,7 @@ The process for using reviewed runs as a reference follows three main stages to 
   <Step title="Context Storage" icon="database">
     WisdomAI stores the full context of that validated run, including the specific steps taken, the generated SQL, and the exact output formatting used.
   </Step>
-  <Step title="Reference Injection" icon="reproducibility">
+  <Step title="Reference Injection" icon="rotate-right">
     On future executions, WisdomAI automatically retrieves up to 3 of the most recently reviewed runs. These are injected as historical reference examples before the agent begins its new task, guiding it to follow the established logic and style.
   </Step>
 </Steps>
@@ -63,7 +63,7 @@ The reviewed runs feature is specifically designed for:
   </Accordion>
 
   <Accordion title="How many references are used at once?">
-    WisdomAI uses a maximum of the 3 most-recent reviewed runs to provide context for a new execution.
+    WisdomAI uses up to the 3 most recent reviewed runs to provide context for a new execution.
   </Accordion>
 </AccordionGroup>
 
