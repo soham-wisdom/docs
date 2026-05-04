@@ -189,12 +189,12 @@
                 "group": "Embeddings",
                 "pages": [
                   "integrations/embeddings/embedding",
-                  "integrations/embeddings/embedding-modes",
                   "integrations/embeddings/session-management",
                   "integrations/embeddings/error-handling",
                   {
                     "group": "iframe",
                     "pages": [
+                      "integrations/embeddings/embedding-modes",
                       "integrations/embeddings/iframe/embed-chat",
                       "integrations/embeddings/iframe/embed-a-dashboard"
                     ]
