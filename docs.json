@@ -155,6 +155,12 @@
             ]
           },
           {
+            "group": "Settings",
+            "pages": [
+              "settings/email-access-control"
+            ]
+          },
+          {
             "group": "Advanced Features",
             "pages": [
               {

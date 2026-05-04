@@ -15,19 +15,43 @@ Make sure you have the following:
 
 Follow these steps to connect your WisdomAI account to Slack:
 
-1. Navigate to the Slack integration page in your WisdomAI account at `https://<your-account>.askwisdom.ai/slack`. Remember to replace `<your-account>` with your specific account name.
-2. Initiate the Connection by clicking the **Connect to Slack** button.
-3. Authorize the Application on the Slack page you are redirected to. After reviewing the permissions WisdomAI is requesting, click **Allow** to grant access and install the app in your workspace.
+1. In the left-hand navigation of WisdomAI, click the **Settings** icon, then select **Slack Integration**. You can also navigate directly to `https://<your-account>.askwisdom.ai/settings/slack`, replacing `<your-account>` with your account name.
+   <Frame>
+     ![Image](/images/image-14.png)
+   </Frame>
+2. The **Slack Integration** page introduces what the WisdomAI Slack app can do. Click **Connect to Slack** to start the install.
+   <Frame>
+     ![Image](/images/image-17.png)
+   </Frame>
+3. Authorize the application on the Slack page you are redirected to. After reviewing the permissions WisdomAI is requesting, click **Allow** to grant access and install the app in your workspace.
+   <Frame>
+     ![Image](/images/image-18.png)
+   </Frame>
+4. After authorization, you are returned to the **Slack Integration** page. The page now shows that the WisdomAI app is connected to your Slack workspace, with a green **Connected** indicator.
+   <Frame>
+     ![Image](/images/image-15.png)
+   </Frame>
+5. Look for the **@WisdomAI** app in your Slack workspace and start using it. When you open a direct message with the app, you'll see a welcome message and some suggested questions. You can now ask questions in natural language to get insights from your data directly within Slack.
+   <Frame>
+     ![WisdomAI app welcome message in Slack](/images/connect-to-slack05.png)
+   </Frame>
 
-![Snippet showing the Connect To Slack button](/images/connect-to-slack.png)
+## Disconnect the Slack app
 
-4. Verify the `https://<account>.askwisdom.ai/slack` page shows that WisdomAI app is connected to your workspace.
+To disconnect the WisdomAI app from your Slack workspace:
 
-![Snippet showing the Slack Integration ready](/images/connect-to-slack03.png)
+1. Open **Settings** \> **Slack Integration**.
+2. Click the **Connected** chip in the upper right of the connection card.
+3. Select **Disconnect Slack workspace** from the menu.
+4. In the confirmation dialog, click **Disconnect**.
 
-5. Look for `@WisdomAI` app on your slack workspace and start using it. When you open a direct message with the app, you will see a welcome message and some suggested questions. You can now ask questions in natural language to get insights from your data directly within Slack.
+<Frame>
+  ![Image](/images/image-16.png)
+</Frame>
 
-![Snippet showing the WisdomAI Integration on Slack](/images/connect-to-slack05.png)
+<Note>
+  Disconnecting does not uninstall the app from your Slack workspace. The app stops responding to questions and scheduled Slack notifications stop working until you reconnect.
+</Note>
 
 ## Permissions
 
@@ -35,18 +59,18 @@ When you connect WisdomAI to Slack, you will be asked to grant a set of permissi
 
 Here is a detailed breakdown of what each permission allows WisdomAI to do:
 
-| Permission          | Description                                                                                                        |
-| :------------------ | :----------------------------------------------------------------------------------------------------------------- |
-| `app_mentions:read` | Allows the app to see messages that directly mention `@WisdomAI` in conversations where the app is in.             |
-| `assistant:write`   | Allows WisdomAI to act as an AI Assistant, enabling it to provide intelligent responses and analysis within Slack. |
-| `channels:history`  | View messages and content in public channels that WisdomAI has been added to.                                      |
-| `chat:write`        | Allows WisdomAI to send messages and answers to your questions in channels and conversations.                      |
-| `chat:write.public` | Allows WisdomAI to send messages to public channels that it isn't a member of.                                     |
-| `files:write`       | Allows WisdomAI to upload, edit, and delete files.                                                                 |
-| `im:history`        | View messages and content in direct messages with the WisdomAI app.                                                |
-| `reactions:write`   | Allows WisdomAI to add emoji reactions to messages, for example, to acknowledge a command.                         |
-| `users:read`        | Allows WisdomAI to view basic information about users in your workspace, such as their names and user IDs.         |
-| `users:read.email`  | View email addresses of people in the workspace.                                                                   |
+| Permission | Description |
+| :-- | :-- |
+| `app_mentions:read` | Allows the app to see messages that directly mention `@WisdomAI` in conversations where the app is in. |
+| `assistant:write` | Allows WisdomAI to act as an AI Assistant, enabling it to provide intelligent responses and analysis within Slack. |
+| `channels:history` | View messages and content in public channels that WisdomAI has been added to. |
+| `chat:write` | Allows WisdomAI to send messages and answers to your questions in channels and conversations. |
+| `chat:write.public` | Allows WisdomAI to send messages to public channels that it isn't a member of. |
+| `files:write` | Allows WisdomAI to upload, edit, and delete files. |
+| `im:history` | View messages and content in direct messages with the WisdomAI app. |
+| `reactions:write` | Allows WisdomAI to add emoji reactions to messages, for example, to acknowledge a command. |
+| `users:read` | Allows WisdomAI to view basic information about users in your workspace, such as their names and user IDs. |
+| `users:read.email` | View email addresses of people in the workspace. |
 
 ## Query your data in Slack
 
@@ -57,7 +81,6 @@ After connecting the app, you can interact with WisdomAI directly from your Slac
    - A chart visualizing the data, such as a bar chart of AWS usage by service.
    - A set of suggested follow-up questions to guide your analysis.
    - Buttons to **Show data**, **Show SQL**, change the chart type, or **Export CSV**.
-
      <img
        src="/images/2025-08-25_16-30-52.png"
        alt="Snippet showing questions and answers in Slack"
@@ -65,21 +88,19 @@ After connecting the app, you can interact with WisdomAI directly from your Slac
        className="mx-auto"
        style={{ width:"90%" }}
      />
-3. **Interact with Results**: You can modify the visualization and explore the data without leaving Slack. For example, you can change the chart to an Area chart or expand the data table to see the specific values for each service.  See the example below:
-
-   ![Slack Example Pn](/images/slack-example.png)
-
-   You can also select **View in WisdomAI** to continue your analysis in the main web application.
+3. **Interact with Results**: You can modify the visualization and explore the data without leaving Slack. For example, you can change the chart to an Area chart or expand the data table to see the specific values for each service.  See the example below: <img src="/images/slack-example.png" alt="Slack Example Pn" /> You can also select **View in WisdomAI** to continue your analysis in the main web application.
 
 ## Next steps
 
-   <CardGroup cols={2}>
+<CardGroup cols={2}>
   <Card title="Embed Chat" icon="message" href="/integrations/embedding/chat/embed-chat">
     Discover how to embed conversational AI chat interfaces
   </Card>
+
   <Card title="Embed a Dashboard" icon="chart-bar" href="/integrations/embedding/story/embed-a-story">
     Learn how to embed interactive dashboards and visualizations
   </Card>
+
   <Card title="Impersonate User API" icon="user" href="/integrations/graphql-api/queries/auth/impersonate-user">
     Detailed documentation for the authentication API
   </Card>
