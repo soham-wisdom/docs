@@ -1,0 +1,138 @@
+---
+title: "Email Access Control"
+---
+
+Email Access Control lets administrators define an instance-wide allowlist and blocklist of email addresses and domains. WisdomAI checks these rules whenever a user is invited or attempts to sign in, blocking anyone who doesn't match.
+
+This setting applies to your entire WisdomAI tenant — every organization within it inherits the same rules.
+
+## Before you start
+
+To open this page, you need to be an **Administrator**. See [Access Management](/manage-account/access-management) for details on roles and permissions.
+
+## Open Email Access Control
+
+1. In the left-hand navigation, click the **Settings** icon.
+2. On the Settings page, select **Email Access Control**.
+
+<Frame>
+  ![Image](/images/image-19.png)
+</Frame>
+
+The page is split into two sections: **Allowlist** and **Blocklist**. Each section has separate controls for **domains** (for example, `company.com`) and individual **email addresses**.
+
+<Frame>
+  ![Image](/images/image-10.png)
+</Frame>
+
+## How rules are evaluated
+
+Rules are applied in this order:
+
+1. **Blocklist always wins.** If an email or its domain is on the blocklist, access is denied — even if it also matches an allowlist rule.
+2. **If both allowlists are empty, all emails are allowed** (open access). The page shows a warning when this is the case.
+3. **If either allowlist has entries**, an email is allowed only if its address or domain matches an allowlist entry.
+
+<Tip>
+  Blocked domains can be subdomains of allowed domains. For example, you can allow `company.com` while blocking `contractors.company.com` to grant access to your full-time team but not contractors who use a sub-domain mailbox.
+</Tip>
+
+## Manage the allowlist
+
+The allowlist defines who is permitted to access this instance. Leaving both fields empty means anyone can sign in.
+
+<Warning>
+  When the allowlist is empty, all email domains will be allowed. You will need to add at least one entry to restrict access.
+</Warning>
+
+<Frame>
+  ![Image](/images/image-13.png)
+</Frame>
+
+### Allowed Domains
+
+Use this list for domains whose users should all have access (for example, your company domain).
+
+1. In the **Allowed Domains** field, type a domain such as `company.com`.
+2. Press **Enter** to add it. The domain appears as a chip below the field.
+3. Repeat for each domain you want to allow.
+4. To remove a domain, click the **×** on its chip.
+
+### Allowed Email Addresses
+
+Use this list to grant access to specific people whose domains are _not_ in the **Allowed Domains** list — for example, an external auditor or partner.
+
+1. In the **Allowed Email Addresses** field, type a complete email such as `partner@external.com`.
+2. Press **Enter** to add it.
+3. Remove an entry by clicking the **×** on its chip.
+
+## Manage the blocklist
+
+The blocklist denies access to specific domains or addresses, even if they would otherwise be allowed.
+
+### Blocked Domains
+
+Add a domain here to deny access to every user with an email at that domain.
+
+1. In the **Blocked Domains** field, type a domain (for example, `contractors.company.com`).
+2. Press **Enter** to add it.
+3. Remove an entry by clicking the **×** on its chip.
+
+### Blocked Email Addresses
+
+Add an individual email address here to deny that single user, even if their domain is on the allowlist.
+
+1. In the **Blocked Email Addresses** field, type the full email address.
+2. Press **Enter** to add it.
+3. Remove an entry by clicking the **×** on its chip.
+
+## Save or discard your changes
+
+After editing the lists, the **Cancel** and **Save** buttons appear at the bottom of the page.
+
+- Click **Save** to apply your changes. New rules take effect immediately for sign-ins and invitations.
+- Click **Cancel** to discard unsaved changes and revert to the last saved configuration.
+
+<Note>
+  Invalid entries (malformed domains or email addresses) are rejected with an error toast. They are not added to the list and won't be saved.
+</Note>
+
+## Examples
+
+<AccordionGroup>
+  <Accordion title="Allow only your company's employees">
+    Add your corporate domain to **Allowed Domains** (for example, `company.com`). Leave the blocklist empty. Only users with `@company.com` email addresses can sign in.
+  </Accordion>
+
+  <Accordion title="Allow your company plus a few external collaborators">
+    Add `company.com` to **Allowed Domains** and add each external user's address (for example, `auditor@partner.io`) to **Allowed Email Addresses**.
+  </Accordion>
+
+  <Accordion title="Block contractors while allowing the rest of the company">
+    Add `company.com` to **Allowed Domains**, then add `contractors.company.com` to **Blocked Domains**. Full-time staff at `@company.com` retain access; contractors at the sub-domain are denied.
+  </Accordion>
+
+  <Accordion title="Revoke access for a single user">
+    Add the user's full email address to **Blocked Email Addresses**. The blocklist takes precedence over any allowlist match.
+  </Accordion>
+</AccordionGroup>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Access Management" icon="key" href="/manage-account/access-management">
+    Learn how WisdomAI roles and permissions work.
+  </Card>
+
+  <Card title="Manual User Management" icon="users" href="/manage-account/users-management">
+    Invite users and assign roles when SSO is not enabled.
+  </Card>
+
+  <Card title="Automated Provisioning" icon="user-gear" href="/manage-account/automated-provisioning">
+    Provision users automatically through SSO and SCIM.
+  </Card>
+
+  <Card title="Manage Organizations" icon="building" href="/access-management/manage-organizations">
+    Create isolated organizations within your WisdomAI tenant.
+  </Card>
+</CardGroup>
