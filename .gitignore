@@ -4,3 +4,6 @@ styles/
 Vale-MCP/
 title-to-sentence-case.js
 .vscode/
+.claude/
+.vale.ini/
+.vale.ini

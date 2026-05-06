@@ -187,19 +187,31 @@
               "integrations/connect-to-slack",
               "integrations/google-sheets",
               {
-                "group": "Embedding",
+                "group": "User Management",
                 "pages": [
-                  "integrations/embedding/embedding",
+                  "integrations/user-management/user-lifecycle",
+                  "integrations/user-management/user-attributes",
+                  "integrations/user-management/rbac"
+                ]
+              },
+              {
+                "group": "Embeddings",
+                "pages": [
+                  "integrations/embeddings/embedding",
+                  "integrations/embeddings/session-management",
+                  "integrations/embeddings/error-handling",
                   {
-                    "group": "Chat",
+                    "group": "iframe",
                     "pages": [
-                      "integrations/embedding/chat/embed-chat"
+                      "integrations/embeddings/embedding-modes",
+                      "integrations/embeddings/iframe/embed-chat",
+                      "integrations/embeddings/iframe/embed-a-dashboard"
                     ]
                   },
                   {
-                    "group": "Dashboard",
+                    "group": "SDK",
                     "pages": [
-                      "integrations/embedding/dashboard/embed-a-dashboard"
+                      "integrations/embeddings/sdk/sdk-overview"
                     ]
                   }
                 ]
@@ -208,15 +220,16 @@
                 "group": "GraphQL API",
                 "pages": [
                   "integrations/graphql-api/GraphQL-API",
+                  "integrations/graphql-api/graphql-primer",
                   {
                     "group": "Objects",
                     "pages": [
                       "integrations/graphql-api/objects/ai-workstream",
                       "integrations/graphql-api/objects/attributes",
+                      "integrations/graphql-api/objects/canvas-config",
                       "integrations/graphql-api/objects/chat-message",
                       "integrations/graphql-api/objects/chat-message-diff",
                       "integrations/graphql-api/objects/chat-message-sender",
-                      "integrations/graphql-api/objects/canvas-config",
                       "integrations/graphql-api/objects/chat-thinking-effort",
                       "integrations/graphql-api/objects/codegen-config",
                       "integrations/graphql-api/objects/connection",
@@ -254,9 +267,9 @@
                       "integrations/graphql-api/objects/text-artifact",
                       "integrations/graphql-api/objects/tool-selection",
                       "integrations/graphql-api/objects/user",
-                      "integrations/graphql-api/objects/viz-config",
                       "integrations/graphql-api/objects/visualization",
                       "integrations/graphql-api/objects/visualization-type",
+                      "integrations/graphql-api/objects/viz-config",
                       "integrations/graphql-api/objects/widget-layout",
                       "integrations/graphql-api/objects/widget-layout-input",
                       "integrations/graphql-api/objects/widget-type"
@@ -268,8 +281,7 @@
                       {
                         "group": "Auth",
                         "pages": [
-                          "integrations/graphql-api/queries/auth/exchange-access-token",
-                          "integrations/graphql-api/queries/auth/impersonate-user"
+                          "integrations/graphql-api/queries/auth/exchange-access-token"
                         ]
                       },
                       {
@@ -288,7 +300,8 @@
                       {
                         "group": "User",
                         "pages": [
-                          "integrations/graphql-api/queries/user/current-user"
+                          "integrations/graphql-api/queries/user/current-user",
+                          "integrations/graphql-api/queries/user/list-users"
                         ]
                       }
                     ]
@@ -296,6 +309,12 @@
                   {
                     "group": "Mutations",
                     "pages": [
+                      {
+                        "group": "Auth",
+                        "pages": [
+                          "integrations/graphql-api/mutations/auth/impersonate-user"
+                        ]
+                      },
                       {
                         "group": "Chat",
                         "pages": [
@@ -331,11 +350,19 @@
                         ]
                       },
                       {
+                        "group": "User",
+                        "pages": [
+                          "integrations/graphql-api/mutations/user/create-users",
+                          "integrations/graphql-api/mutations/user/set-user-attributes",
+                          "integrations/graphql-api/mutations/user/delete-users-from-workspace"
+                        ]
+                      },
+                      {
                         "group": "Domain",
                         "pages": [
                           "integrations/graphql-api/mutations/domain/create-domain",
-                          "integrations/graphql-api/mutations/domain/update-data-sources",
-                          "integrations/graphql-api/mutations/domain/duplicate-domain"
+                          "integrations/graphql-api/mutations/domain/duplicate-domain",
+                          "integrations/graphql-api/mutations/domain/update-data-sources"
                         ]
                       }
                     ]
@@ -438,15 +465,16 @@
     },
     {
       "source": "/integrations/embedding/story/embed-a-story",
-      "destination": "/integrations/embedding/dashboard/embed-a-dashboard"
+      "destination": "/integrations/embeddings/iframe/dashboard/embed-a-dashboard"
     },
     {
       "source": "/integrations/embedding/story/embed-a-dashboard",
-      "destination": "/integrations/embedding/dashboard/embed-a-dashboard"
+      "destination": "/integrations/embeddings/iframe/dashboard/embed-a-dashboard"
     },
     {
       "source": "/using-wisdom-ai-everyday/turn-answers-into-stories",
-      "destination": "/using-wisdom-ai-everyday/turn-answers-into-dashboards"
+      "destination": "/using-wisdom-ai-everyday/turn-answers-into-dashboards",
+      "permanent": true
     },
     {
       "source": "/improve-wisdom-ai-responses/setting-up-wisdom-ai/manage-domains/understand-domains",
@@ -462,7 +490,8 @@
     },
     {
       "source": "/using-wisdom-ai-everyday/schedule-story-notifications",
-      "destination": "/using-wisdom-ai-everyday/schedule-dashboards-notifications"
+      "destination": "/using-wisdom-ai-everyday/schedule-dashboards-notifications",
+      "permanent": true
     },
      {
       "source": "/setting-up-wisdom-ai/document-tables-and-columns",
@@ -474,7 +503,8 @@
     },
     {
       "source": "/using-wisdom-ai-everyday/share-stories-and-set-access-control",
-      "destination": "/using-wisdom-ai-everyday/share-dashboards-and-set-access-control"
+      "destination": "/using-wisdom-ai-everyday/share-dashboards-and-set-access-control",
+      "permanent": true
     },
     {
       "source": "/new-features",
@@ -487,6 +517,10 @@
     {
       "source":"/new-releases/february-2026/search-the-web",
       "destination": "/getting-started/connect-data-sources/search-the-web"
+    },
+    {
+      "source": "/integrations/graphql-api/queries/auth/impersonate-user",
+      "destination": "/integrations/graphql-api/mutations/auth/impersonate-user"
     },
     {
       "source":"/advanced-features/agents/agent-builder",

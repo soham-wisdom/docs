@@ -1,0 +1,174 @@
+---
+title: "Overview"
+---
+
+Embed a streamlined, white-label version of WisdomAI's chat and dashboards directly into your application.
+
+Embedded pages intentionally omit WisdomAI branding and navigation. All core capabilities (natural-language Q&A, table generation, and chart rendering) remain intact.
+
+The section below describes the steps to configure and test your embedded chat and dashboards.
+
+<Note>
+  All API and embed URL examples use `{ACCOUNT}.wisdom.ai` as a placeholder. Replace it with the base URL of your WisdomAI tenant — the same domain you use to log in. Both `wisdom.ai` and `askwisdom.ai` are valid depending on your deployment.
+</Note>
+
+## Before start
+
+This overview walks through iframe embedding, the fastest path to a working embed. Depending on your use case, you may also want to reference:
+
+<CardGroup cols={2}>
+  <Card title="GraphQL API" icon="code" href="/integrations/graphql-api/graphql-api">
+    Build a fully custom, API-based integration. Covers authentication, mutations, queries, and error handling for developers who need more control than an iframe provides.
+  </Card>
+
+  <Card title="User Management" icon="users" href="integrations/user-management/user-lifecycle">
+    Create and manage end users on the WisdomAI platform, including role assignment, user attributes, and impersonation. Applies to every integration path.
+  </Card>
+</CardGroup>
+
+User management is shared across all integration paths: whether you embed via iframe, call the GraphQL API directly, or use the SDK, end users must first be provisioned in WisdomAI before they can be impersonated into a session.
+
+## Embedding flow
+
+Every embedded session follows this five-step flow:
+
+<Steps>
+  <Step title="Get your access token" titleSize="h3">
+    Contact `support@wisdom.ai` to receive your Access Key. This is a permanent credential, not a JWT or session token. It authenticates your server to the WisdomAI API and grants impersonation permissions. It does not expire and must be kept secret.
+  </Step>
+  <Step title="Create the end user" titleSize="h3">
+    Call `createUsers` to provision the user in WisdomAI:
+
+    <Note>
+      **Authentication:** This management mutation requires a valid Bearer JWT with `iam:write` permissions. Typically, your backend obtains this by exchanging your Access Key via your auth system.
+    </Note>
+
+    Example Request:
+
+    ```bash
+    curl -s -X POST \
+      -H "Content-Type: application/json" \
+      -H "Authorization: Bearer $JWT" \
+      -d '{
+        "query": "mutation CreateUsers($input: CreateUsersInput!) { createUsers(input: $input) { status { code message } } }",
+        "variables": {
+          "input": {
+            "emails": ["alice@yourcompany.com"],
+            "workspaceID": "{{WORKSPACE_ID}}",
+            "roleAssignments": [{ "roleId": "00000000-0000-0000-0000-000000000003", "scopes": ["{{DOMAIN_ID}}"] }],
+            "sendWelcomeEmail": false
+          }
+        }
+      }' \
+      https://{ACCOUNT}.wisdom.ai/graphql
+    ```
+
+    <Note>
+      **Key considerations:**
+
+      - **Email uniqueness:** User matching is email-based. If your users share emails across tenants, append a unique identifier (e.g., `alice+123@company.com`) to the email prefix to prevent session collisions.
+      - **Role overwrites:** If a user already exists, `createUsers` succeeds but re-applies the provided roles, overwriting manual changes. Use `listUsers` to check status first if you wish to avoid resets.
+    </Note>
+  </Step>
+  <Step title="Set user attributes (optional)" titleSize="h3">
+    User attributes are key-value pairs used for row-level authorization and personalized data access.
+
+    - **Sources:** Attributes can be stored in the Wisdom **DATABASE** (via API) or derived from **JWT** SSO claims (read-only).
+    - **Creation/Update:** Set them at creation time via `userAttributes` in `CreateUsersInput`, or update them later via `setUserAttributes`.
+
+    <Warning>
+      The `setUserAttributes` mutation replaces **all** DATABASE-sourced attributes for that user. You must provide the complete set of attributes you wish to persist, not just the changes.
+    </Warning>
+
+    See [User Attributes](/integrations/user-management/user-attributes) for details on how attributes work and how to set them.
+  </Step>
+  <Step title="Impersonate the user to get a JWT" titleSize="h3">
+    Call `impersonateUser` from your server to generate a 1-hour JWT for the user. This mutation is a public API member that uses your permanent Descope Access Key as an argument (`accessToken`) rather than a standard Authorization header. This step must always be performed server-side.
+
+    <Warning>
+      Never expose your permanent access token in client-side code. It provides long-term impersonation capabilities and must be protected on your backend. If compromised, an attacker could impersonate any user in your organization. Store it only in secure server-side environment variables or a secret management system.
+    </Warning>
+
+    Example Request:
+
+    ```bash
+    curl -s -X POST \
+      -H "Content-Type: application/json" \
+      -d '{
+        "query": "mutation ImpersonateUser($accessToken: String!, $userEmail: String!) { impersonateUser(accessToken: $accessToken, userEmail: $userEmail) }",
+        "variables": {
+          "accessToken": "<your_permanent_access_token>",
+          "userEmail": "alice@yourcompany.com"
+        }
+      }' \
+      https://{ACCOUNT}.wisdom.ai/graphql
+    ```
+
+    The API responds with a JWT that authenticates as the impersonated user. This token expires in **1 hour**. WisdomAI will notify your page via a `postMessage` event when the token is about to expire. See [Session Management](/integrations/embeddings/session-management) for the full refresh flow.
+
+    See [Impersonate User](/integrations/graphql-api/mutations/auth/impersonate-user) for the full API reference, including information on passing transient attributes.
+  </Step>
+  <Step title="Use the JWT in the embed URL" titleSize="h3">
+    Append the JWT as a `token` query parameter to the embed URL and set it as the `src` of your embed.
+
+    <Note>
+      If your embed uses voice input or camera features, add `allow="microphone; camera"` to the `<iframe>` tag.
+    </Note>
+
+    The following examples show how to use each embed path with an `<iframe>`, but the same URL structure applies regardless of your integration method.
+
+    ```html
+    <!-- Full-app embed (search + dashboards + chat) -->
+    <iframe
+      src="https://{ACCOUNT}.wisdom.ai/embed/search?token=<JWT>"
+      style="width: 100%; height: 100%; border: 0;" />
+    
+    <!-- Dashboards list view -->
+    <iframe
+      src="https://{ACCOUNT}.wisdom.ai/embed/dashboards?token=<JWT>"
+      style="width: 100%; height: 100%; border: 0;" />
+    
+    <!-- Embed a specific dashboard -->
+    <iframe
+      src="https://{ACCOUNT}.wisdom.ai/embed/dashboards/<id>?token=<JWT>"
+      style="width: 100%; height: 100%; border: 0;" />
+    
+    <!-- Embed a specific chat -->
+    <iframe
+      src="https://{ACCOUNT}.wisdom.ai/embed/chat/<conversationId>?token=<JWT>"
+      style="width: 100%; height: 100%; border: 0;" />
+    ```
+  </Step>
+</Steps>
+
+## Manage the session
+
+Once the initial iframe is rendered, you must manage the session lifecycle to prevent user timeouts or "sticky" sessions when switching users. Read [Session Management](/integrations/embeddings/session-management) for best practices on handling token expiry, refreshing tokens without reloading the page, and switching between users.
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Embed a Chat" icon="message" href="/integrations/embeddings/iframe/embed-chat">
+    Embed the conversational AI chat interface
+  </Card>
+
+  <Card title="Embed a Dashboard" icon="chart-bar" href="/integrations/embeddings/iframe/embed-a-dashboard">
+    Embed interactive dashboards and visualizations
+  </Card>
+
+  <Card title="Impersonate User API" icon="user-secret" href="/integrations/graphql-api/mutations/auth/impersonate-user">
+    Full reference for the impersonation mutation
+  </Card>
+
+  <Card title="Create Users API" icon="user-plus" href="/integrations/graphql-api/mutations/user/create-users">
+    Full reference for user provisioning
+  </Card>
+
+  <Card title="GraphQL Primer" icon="code" href="/integrations/graphql-api/graphql-primer">
+    New to GraphQL? Start here
+  </Card>
+
+  <Card title="Embedding Modes" icon="list-alt" href="/integrations/embeddings/embedding-modes">
+    All supported embed paths and iframe requirements
+  </Card>
+</CardGroup>

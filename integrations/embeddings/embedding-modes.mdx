@@ -1,0 +1,82 @@
+---
+title: "Embedding Modes"
+---
+
+WisdomAI supports four embed paths. Each path renders a different slice of the WisdomAI interface inside your iframe. All paths require a valid JWT passed as the `token` query parameter.
+
+<Note>
+  Replace `{ACCOUNT}.wisdom.ai` with the base URL of your WisdomAI tenant — the same domain you use to log in. Both `wisdom.ai` and `askwisdom.ai` are valid depending on your deployment.
+</Note>
+
+## Supported paths
+
+The paths below map to different parts of the WisdomAI interface. Use the one that matches what you want to expose to your embedded users.
+
+### Full-app embed
+
+`/embed/search` renders the full WisdomAI interface: search, dashboards, and chat in a single view.
+
+```html
+<iframe
+  src="https://{ACCOUNT}.wisdom.ai/embed/search?token=<JWT>"
+  allow="microphone; camera"
+  style="width: 100%; height: 100%; border: 0;"
+></iframe>
+```
+
+### Dashboards list view
+
+`/embed/dashboards` renders the list of all dashboards the impersonated user has access to.
+
+```html
+<iframe
+  src="https://{ACCOUNT}.wisdom.ai/embed/dashboards?token=<JWT>"
+  allow="microphone; camera"
+  style="width: 100%; height: 100%; border: 0;"
+></iframe>
+```
+
+### Specific dashboard
+
+`/embed/dashboards/[id]` renders a single dashboard by ID.
+
+```html
+<iframe
+  src="https://{ACCOUNT}.wisdom.ai/embed/dashboards/<id>?token=<JWT>"
+  allow="microphone; camera"
+  style="width: 100%; height: 100%; border: 0;"
+></iframe>
+```
+
+### Specific chat
+
+`/embed/chat/[conversationId]` renders a specific chat conversation. You can optionally pass a `messageid` parameter to automatically scroll to a specific response.
+
+```html
+<iframe
+  src="https://{ACCOUNT}.wisdom.ai/embed/chat/<conversationId>?token=<JWT>&messageid=<messageId>"
+  allow="microphone; camera"
+  style="width: 100%; height: 100%; border: 0;"
+></iframe>
+```
+
+## iframe requirements
+
+All embed paths require the `allow="microphone; camera"` attribute on the iframe element. Omitting it disables voice input and camera features within the embedded interface.
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Embedding Chat and Dashbards" icon="code" href="/integrations/embeddings/embedding">
+    Full server-side embedding flow including authentication
+  </Card>
+  <Card title="Embed a Dashboard" icon="chart-bar" href="/integrations/embeddings/iframe/embed-a-dashboard">
+    Step-by-step guide for embedding a specific dashboard
+  </Card>
+  <Card title="Embed Chat" icon="message" href="/integrations/embeddings/iframe/embed-chat">
+    Step-by-step guide for embedding a chat interface
+  </Card>
+  <Card title="Session Management" icon="clock" href="/integrations/embeddings/session-management">
+    Token expiry, refresh flow, and switching users
+  </Card>
+</CardGroup>
