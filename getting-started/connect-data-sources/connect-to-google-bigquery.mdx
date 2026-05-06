@@ -62,7 +62,6 @@ WisdomAl will use a JSON key file for authenticating with BigQuery.
 5. Select **JSON** as the key type.
 6. Click **CREATE**.
 7. A JSON key file will be downloaded to your computer.
-
    <Warning>
      This file contains sensitive credentials.
    </Warning>
@@ -80,7 +79,20 @@ Once you have gathered the required information, you can configure the connectio
    - **Dataset Filters (Optional):** Specify any Dataset Filters if you want to further restrict the datasets WisdomAl crawls.
 4. Click **Save and Sync metadata**. WisdomAl will use the provided credentials to connect to BigQuery, scan the metadata of the specified datasets, and tables.
 
-![image.png](/images/bigquery.png)
+<img
+  src="/dark-img/bigquery-dark.png"
+  alt="image.png"
+  lightAlt="image.png"
+  darkAlt="image.png"
+  className="hidden dark:block"
+/>
+<img
+  src="/images/bigquery.png"
+  alt="image.png"
+  lightAlt="image.png"
+  darkAlt="image.png"
+  className="dark:hidden"
+/>
 
 ## Security Considerations and Best Practices
 
@@ -113,9 +125,11 @@ Facing issues? Here are solutions to some frequently encountered problems.
   <Card title="Connect to Snowflake" icon="snowflake" href="/getting-started/connect-data-sources/connect-to-snowflake">
     Connect to Snowflake directly or via a proxy using key-pair authentication and a Snowflake virtual warehouse.
   </Card>
-   <Card title="Connect to an MCP Server" icon="server" href="/getting-started/connect-data-sources/connect-mcp-server">
+
+  <Card title="Connect to an MCP Server" icon="server" href="/getting-started/connect-data-sources/connect-mcp-server">
     Connect WisdomAI to any server implementing the Model Context Protocol (MCP) to scan metadata, build a knowledge graph, and retrieve real-time data for natural language queries.
-   </Card>
+  </Card>
+
   <Card title="Connect and Test Tutorial" icon="rocket" href="/setting-up-wisdom-ai/basic-tutorial-connect-and-test">
     Walk through the initial setup to connect a data source and run your first query.
   </Card>

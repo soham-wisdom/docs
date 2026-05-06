@@ -27,10 +27,21 @@ Follow these steps to register your MCP server as a data source in WisdomAI.
    - **API Key**: Uses a static key for all requests.
    - **OAuth**: Uses user-based authentication.
 7. (Optional) Click **\+ Add Header** to include custom headers required by your environment.
-
-   ![MCP Server connection settings showing Transport Type and Authentication options](/mcp-01.png)
+   <img
+     src="/dark-img/mcp-server.png"
+     alt="MCP Server connection settings showing Transport Type and Authentication options"
+     lightAlt="MCP Server connection settings showing Transport Type and Authentication options"
+     darkAlt="MCP Server connection settings showing Transport Type and Authentication options"
+     className="hidden dark:block"
+   />
+   <img
+     src="/mcp-01.png"
+     alt="MCP Server connection settings showing Transport Type and Authentication options"
+     lightAlt="MCP Server connection settings showing Transport Type and Authentication options"
+     darkAlt="MCP Server connection settings showing Transport Type and Authentication options"
+     className="dark:hidden"
+   />
 8. Click **Connect**. You may be prompted to authorize the connection to validate the setup.
-
    ![Chat interface prompting the user to authenticate with the MCP tool](/images/mcp-03-access-request.png)
 
 <Info>
@@ -56,9 +67,11 @@ Once connected, you can verify the integration by asking a natural language ques
   <Card title="Connect to Databricks" icon="layer-group" href="/getting-started/connect-data-sources/connect-to-databricks">
     Connect to Databricks using a Client ID and Client Secret for authentication, enabling secure and controlled access to your data.
   </Card>
+
   <Card title="Connect to Google BigQuery" icon="google" href="/getting-started/connect-data-sources/connect-to-google-bigquery">
     Connect to Google BigQuery using a Google Cloud Platform Service Account for secure and granular access to your data.
   </Card>
+
   <Card title="Connect to Amazon Redshift" icon="aws" href="/getting-started/connect-data-sources/connect-to-amazon-redshift">
     Connect to Amazon Redshift using three methods: Direct Connection, SSH Tunnel, or VPC Peering, according to your network architecture.
   </Card>

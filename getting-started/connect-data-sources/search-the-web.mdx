@@ -34,7 +34,20 @@ You can enable Web Search when creating a new domain or by adding it as a data s
 Once enabled, a **Web Search** card will appear on the Domain Overview tab, and a **Web Search** sub-tab will be available under the **Data Sources** tab.
 
 <Frame>
-  ![Image](/images/image-7.png)
+  <img
+    src="/dark-img/allowlist.png"
+    alt="Image"
+    lightAlt="Image"
+    darkAlt="Image"
+    className="hidden dark:block"
+  />
+  <img
+    src="/images/image-7.png"
+    alt="Image"
+    lightAlt="Image"
+    darkAlt="Image"
+    className="dark:hidden"
+  />
 </Frame>
 
 ## 2. Configure the Source Policy
@@ -44,11 +57,11 @@ After enabling Web Search, you can control which websites WisdomAI is allowed to
 1. Go to your **Domain** \> **Data Sources** tab \> **Web Search** sub-tab.
 2. Under **Source Policy**, select one of the three options:
 
-| Policy                            | Description                                                                       |
-| :-------------------------------- | :-------------------------------------------------------------------------------- |
-| **Include all domains**           | WisdomAI can search any website. This is the default.                             |
-| **Include only specific domains** | WisdomAI will only return results from the listed domains (allowlist).            |
-| **Exclude specific domains**      | WisdomAI will return results from all domains except the listed ones (blocklist). |
+| Policy | Description |
+| :-- | :-- |
+| **Include all domains** | WisdomAI can search any website. This is the default. |
+| **Include only specific domains** | WisdomAI will only return results from the listed domains (allowlist). |
+| **Exclude specific domains** | WisdomAI will return results from all domains except the listed ones (blocklist). |
 
 <Warning>
   **Include only specific domains** and **Exclude specific domains** are mutually exclusive — you can only use one at a time.
@@ -61,7 +74,21 @@ After enabling Web Search, you can control which websites WisdomAI is allowed to
 4. Click **Save Configuration**.
 
 <Frame>
-  ![Image](/images/image-8.png)
+  <img
+    src="/dark-img/web-search.png"
+    alt="Image"
+    lightAlt="Image"
+    darkAlt="Image"
+    className="hidden dark:block"
+  />
+
+  <img
+    src="/images/image-8.png"
+    alt="Image"
+    lightAlt="Image"
+    darkAlt="Image"
+    className="dark:hidden"
+  />
 </Frame>
 
 ### Domain Format Guidelines
@@ -103,9 +130,11 @@ When WisdomAI decides to use the web:
   <Card title="Connect Unstructured Repositories" icon="folder-plus" href="/improve-wisdom-ai-responses/connect-unstructed-repositories-datasets">
     Integrate unstructured data sources, such as documents or knowledge bases, to enrich your analysis.
   </Card>
+
   <Card title="Connect and Test Tutorial" icon="rocket" href="/setting-up-wisdom-ai/basic-tutorial-connect-and-test">
     Walk through the initial setup to connect a data source and run your first query.
   </Card>
+
   <Card title="Advanced Data Modeling" icon="sitemap" href="/setting-up-wisdom-ai/advanced-data-modeling-creating-knowledge">
     Define relationships and context in your data to enable more powerful analysis.
   </Card>
