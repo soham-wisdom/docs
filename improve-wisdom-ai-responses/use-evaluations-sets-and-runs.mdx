@@ -39,17 +39,17 @@ To create an Evaluation Set:
 5. Click on **Save**. The new Evaluation set will appear listed.
 
 <img
-  src="/images/add-evaluation-form.png"
   alt="Image showing the Add Evaluations form"
   lightAlt="Image showing the Add Evaluations form"
   darkAlt="Image showing the Add Evaluations form"
+  src="/images/add-evaluation-form.png"
   className="dark:hidden"
 />
 <img
-  src="/dark-img/add-evaluation-form.png"
   alt="Image showing the Add Evaluations form"
   lightAlt="Image showing the Add Evaluations form"
   darkAlt="Image showing the Add Evaluations form"
+  src="/dark-img/add-evaluation-form.png"
   className="hidden dark:block"
 />
 
@@ -59,7 +59,20 @@ Evaluation Runs are where the AI processes your defined Evaluation Sets. After r
 
 To run an Evaluation, go to the **Evaluations Set** tab, select an evaluation, and click on **Run**. You will see the results in the Evaluation Runs tab.
 
-![Run Evaluation Pn](/images/run-evaluation.png)
+<img
+  alt="Run Evaluation Pn"
+  lightAlt="Run Evaluation Pn"
+  darkAlt="Run Evaluation Pn"
+  src="/images/run-evaluation.png"
+  className="dark:hidden"
+/>
+<img
+  alt="Run Evaluation Pn"
+  lightAlt="Run Evaluation Pn"
+  darkAlt="Run Evaluation Pn"
+  src="/dark-img/run-evaluation.png"
+  className="hidden dark:block"
+/>
 
 ### Evaluation Run Indicators
 
@@ -74,7 +87,20 @@ Evaluation Run Indicators provide a concise overview of the Run's progress and o
   The Score evaluation criteria refer to how much the generated answer matches the expected SQL result defined previously.
 </Tip>
 
-![Evaluation Runs Indicatorsv2 Pn](/images/evaluation-runs-indicatorsv2.png)
+<img
+  alt="Evaluation Runs Indicatorsv2 Pn"
+  lightAlt="Evaluation Runs Indicatorsv2 Pn"
+  darkAlt="Evaluation Runs Indicatorsv2 Pn"
+  src="/images/evaluation-runs-indicatorsv2.png"
+  className="dark:hidden"
+/>
+<img
+  alt="Evaluation Runs Indicatorsv2 Pn"
+  lightAlt="Evaluation Runs Indicatorsv2 Pn"
+  darkAlt="Evaluation Runs Indicatorsv2 Pn"
+  src="/dark-img/evaluation-runs-indicatorsv2.png"
+  className="hidden dark:block"
+/>
 
 ### Evaluation Run Report
 
@@ -84,7 +110,20 @@ When you click the **View Report** option, you will see comprehensive details ab
 - **Soft Match:** This **Score** indicates the overall performance of the Evaluation. It shows how many of the evaluation criteria were successfully met out of the total. It is named as Soft Match since results may be considered a match even if they are not the same as the expected (provided) SQL.
 - **Individual Session Details**: The report organizes the evaluation results by individual sessions or queries (e.g., Session 1, Session 2).
 
-![View Report 01v2 Gi](/images/view-report-01v2.gif)
+<img
+  alt="View Report 01v2 Gi"
+  lightAlt="View Report 01v2 Gi"
+  darkAlt="View Report 01v2 Gi"
+  src="/images/view-report-01v2.gif"
+  className="dark:hidden"
+/>
+<img
+  alt="View Report 01v2 Gi"
+  lightAlt="View Report 01v2 Gi"
+  darkAlt="View Report 01v2 Gi"
+  src="/dark-img/view-report-01v2.gif"
+  className="hidden dark:block"
+/>
 
 For each session, the report is broken down into several components, allowing you to analyze the AI's performance thoroughly.
 
@@ -99,19 +138,58 @@ For each session, the report is broken down into several components, allowing yo
 | **Ground Truth** | The expected or correct outcome, typically the ideal SQL query (`SELECT SUM(amount) FROM Opportunity`). |
 | **Generated Result** | The output produced by the system, including the generated SQL query and the final result (e.g., `"$137.55M"`). |
 
-![Gif showing the Session Details](/images/session-details.gif)
+<img
+  alt="Gif showing the Session Details"
+  lightAlt="Gif showing the Session Details"
+  darkAlt="Gif showing the Session Details"
+  src="/images/session-details.gif"
+  className="dark:hidden"
+/>
+<img
+  alt="Gif showing the Session Details"
+  lightAlt="Gif showing the Session Details"
+  darkAlt="Gif showing the Session Details"
+  src="/dark-img/session-details.gif"
+  className="hidden dark:block"
+/>
 
 <Warning>
   Providing an incorrect SQL code will lead to a syntax or semantic error. The system will display a red message detailing the nature of the error, often including the location within the query where the problem occurred, to aid in correction.
 
-  ![Example showing an Incorrect Sql in Red](/images/incorrect-sql-example.png)
+  <img
+    alt="Example showing an Incorrect Sql in Red"
+    lightAlt="Example showing an Incorrect Sql in Red"
+    darkAlt="Example showing an Incorrect Sql in Red"
+    src="/images/incorrect-sql-example.png"
+    className="dark:hidden"
+  />
+  <img
+    alt="Example showing an Incorrect Sql in Red"
+    lightAlt="Example showing an Incorrect Sql in Red"
+    darkAlt="Example showing an Incorrect Sql in Red"
+    src="/dark-img/incorrect-sql-example.png"
+    className="hidden dark:block"
+  />
 </Warning>
 
 - **Conversation:** You can expand this section to review the entire conversational exchange related to that specific session. This includes:
   - **AI Workstream:** Offers a look into the AI's process, showing the tool it selected, the examples it referenced, and the step-by-step plan it followed to generate the response.
   - **Reviewed Status**: Confirms whether the response has been reviewed and summarizes the outcome (e.g., "The user received a complete response... so no further action or information is needed.").
 
-![Gif showing the Conversation in Detail](/images/conversation-detailed.gif)
+<img
+  src="/images/conversation-detailed.gif"
+  alt="Gif showing the Conversation in Detail"
+  lightAlt="Gif showing the Conversation in Detail"
+  darkAlt="Gif showing the Conversation in Detail"
+  className="dark:hidden"
+/>
+<img
+  src="/dark-img/conversation-detailed.gif"
+  alt="Gif showing the Conversation in Detail"
+  lightAlt="Gif showing the Conversation in Detail"
+  darkAlt="Gif showing the Conversation in Detail"
+  className="hidden dark:block"
+/>
 
 Navigating the report helps you understand the system's processing, verify generated results, and review the underlying conversational logic.
 
