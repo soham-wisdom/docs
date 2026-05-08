@@ -519,6 +519,14 @@
       "source": "/integrations/graphql-api/queries/auth/impersonate-user",
       "destination": "/integrations/graphql-api/mutations/auth/impersonate-user"
     },
+     {
+      "source": "/new-features",
+      "destination": "/new-releases/march-2026/03-26"
+    },
+     {
+      "source": "/new-releases",
+      "destination": "/new-releases/march-2026/03-26"
+    },
     {
       "source":"/advanced-features/agents/agent-builder",
       "destination": "/advanced-features/agents/visual-mode"
