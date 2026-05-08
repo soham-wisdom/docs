@@ -508,10 +508,6 @@
       "permanent": true
     },
     {
-      "source": "/new-features",
-      "destination": "/new-releases/february-2026/02-26-release-overview"
-    },
-    {
       "source": "integrations/connect-to-sharepoint",
       "destination": "getting-started/connect-data-sources/connect-to-sharepoint"
     },
