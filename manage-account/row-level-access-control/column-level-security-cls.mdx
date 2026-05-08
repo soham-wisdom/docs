@@ -49,7 +49,7 @@ Once active, CLS functions as a global security layer. It automatically enforces
 For unauthorized users, protected data will appear as hashed values. It is important to remember that CLS is applied strictly at the column level.
 
 <Warning>
-  **Avoid Data Leakage**: If you protect a column (e.g., `Customer Name`) but leave a correlative column unprotected (e.g., `Customer Email`), an unauthorized user will see the hashed name but the clear-text email address. Ensure you apply masking to all columns that could potentially identify the sensitive entity.
+  **Avoid Data Leakage**: If you protect a column (e.g., `Customer Name`) but leave a correlative column unprotected (e.g., `Customer Email`), an unauthorized user will see the hashed name, but the clear-text email address. Ensure you apply masking to all columns that could potentially identify the sensitive entity.
 </Warning>
 
 ## Next Steps
