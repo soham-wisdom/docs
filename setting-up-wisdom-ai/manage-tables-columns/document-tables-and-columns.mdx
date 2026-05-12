@@ -8,10 +8,10 @@ Proper documentation of tables and columns provides the foundational context req
 
 For each table in your data model, you can configure the following fields:
 
-| **Field**        | **Description**                                                                                                                                                                                                                                       | **Example**                                                                                                                                                                                                                                                                                                                                             |
-| :--------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Display Name** | A business-friendly alias that replaces technical or system-generated table names. You can assign unique display names to the same table across different domains. If left blank, the system defaults to the technical table name for SQL generation. | The table named "contact" can be displayed as "B2B Contact Details" to clarify the type of contact data it represents.                                                                                                                                                                                                                                  |
-| **Description**  | In this field, you should provide a clear explanation of what the table represents, focusing on a concise, plain-English description of each row’s purpose and content.                                                                               | This table stores detailed records of business accounts that have monthly revenue exceeding \$10,000. Each row represents a single account and includes fields such as account ID, account name, industry classification, account creation date, current status (active, inactive, suspended), monthly revenue amount, and primary contact information. |
+| **Field** | **Description** | **Example** |
+| :-- | :-- | :-- |
+| **Display Name** | A business-friendly alias that replaces technical or system-generated table names. You can assign unique display names to the same table across different domains. If left blank, the system defaults to the technical table name for SQL generation. | The table named "contact" can be displayed as "B2B Contact Details" to clarify the type of contact data it represents. |
+| **Description** | In this field, you should provide a clear explanation of what the table represents, focusing on a concise, plain-English description of each row’s purpose and content. | This table stores detailed records of business accounts that have monthly revenue exceeding \$10,000. Each row represents a single account and includes fields such as account ID, account name, industry classification, account creation date, current status (active, inactive, suspended), monthly revenue amount, and primary contact information. |
 
 <Tip>
   Always specify the granularity of each row in your table description. This helps analysts understand the level of detail in the data and prevents misinterpretation during analysis.
@@ -20,33 +20,61 @@ For each table in your data model, you can configure the following fields:
 To Document tables, go to **Domains** \> **Select a Domain** \> **Data Sources** \> **Tables**.
 
 <Frame>
-  ![The table is listed with the Display name and Description highlighted](/images/new-ui-document-tables-description.png)
+  <img
+    alt="The table is listed with the Display name and Description highlighted"
+    lightAlt="The table is listed with the Display name and Description highlighted"
+    darkAlt="The table is listed with the Display name and Description highlighted"
+    src="/images/new-ui-document-tables-description.png"
+    className="dark:hidden"
+  />
+  <img
+    alt="The table is listed with the Display name and Description highlighted"
+    lightAlt="The table is listed with the Display name and Description highlighted"
+    darkAlt="The table is listed with the Display name and Description highlighted"
+    src="/dark-img/new-ui-document-tables-description.png"
+    className="hidden dark:block"
+  />
 </Frame>
 
 ## Document columns
 
 To document columns, click on the table's name. A new page will open, displaying a list of all the columns in the table. You can configure the following fields:
 
-| **Field**          | **Description**                                                                                                                                                                                                                                                  |
-| :----------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Display Name**   | User-friendly name shown in the interface replaces technical or system-generated table names. You can assign unique display names to the same table across different domains. If left blank, the system defaults to the technical table name for SQL generation. |
-| **Description**    | Clear explanation of what the column represents in business terms.                                                                                                                                                                                               |
-| **Display Format** | A dropdown menu used to specify how data is presented to users. You can choose from options such as **Date, Fiscal Year, Currency, Percentage, or Time** to ensure the AI renders results in the most readable format.                                           |
+| **Field** | **Description** |
+| :-- | :-- |
+| **Display Name** | User-friendly name shown in the interface replaces technical or system-generated table names. You can assign unique display names to the same table across different domains. If left blank, the system defaults to the technical table name for SQL generation. |
+| **Description** | Clear explanation of what the column represents in business terms. |
+| **Display Format** | A dropdown menu used to specify how data is presented to users. You can choose from options such as **Date, Fiscal Year, Currency, Percentage, or Time** to ensure the AI renders results in the most readable format. |
 
 <Frame>
-  ![The column is listed with the Display name and the Descrption highlighted](/images/new-ui-document-a-table-description.png)
+  <img
+    src="/images/new-ui-document-a-table-description.png"
+    alt="The column is listed with the Display name and the Descrption highlighted"
+    lightAlt="The column is listed with the Display name and the Descrption highlighted"
+    darkAlt="The column is listed with the Display name and the Descrption highlighted"
+    className="dark:hidden"
+  />
+  <img
+    src="/dark-img/new-ui-document-a-table-description.png"
+    alt="The column is listed with the Display name and the Descrption highlighted"
+    lightAlt="The column is listed with the Display name and the Descrption highlighted"
+    darkAlt="The column is listed with the Display name and the Descrption highlighted"
+    className="hidden dark:block"
+  />
 </Frame>
 
 ## Next steps
 
 <CardGroup cols={3}>
-  <Card icon="sitemap" href="/setting-up-wisdom-ai/advanced-data-modeling-creating-knowledge" title="Advanced Data Modeling">
+  <Card title="Advanced Data Modeling" icon="sitemap" href="/setting-up-wisdom-ai/advanced-data-modeling-creating-knowledge">
     Define relationships and context in your data to enable more powerful analysis.
   </Card>
-  <Card icon="thumbs-up" href="/setting-up-wisdom-ai/feedback-mechanisms/provide-feedback-to-the-system" title="Provide Feedback to the System">
+
+  <Card title="Provide Feedback to the System" icon="thumbs-up" href="/setting-up-wisdom-ai/feedback-mechanisms/provide-feedback-to-the-system">
     Learn how to rate answers and provide corrections to improve the system's accuracy.
   </Card>
-  <Card icon="sliders" href="/setting-up-wisdom-ai/manage-domains/understand-domains" title="Understand Domains">
+
+  <Card title="Understand Domains" icon="sliders" href="/setting-up-wisdom-ai/manage-domains/understand-domains">
     Manage and customize your data domains to refine context and improve query results.
   </Card>
 </CardGroup>

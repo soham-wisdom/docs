@@ -14,11 +14,22 @@ To configure RAG for a table, follow these steps:
 2. Click the **three vertical dots** icon, then click **RAG Settings**.
 
 <img
-  src="/images/new-ui-rag-configuration-columns.png"
   alt="Snippet showing the RAG Settings option selected in a table menu."
   title="Snippet showing how to open the RAG Settings"
-  className="rounded-image"
+  className="rounded-image dark:hidden"
   style={{ borderRadius:"10px" }}
+  lightAlt="Snippet showing the RAG Settings option selected in a table menu."
+  darkAlt="Snippet showing the RAG Settings option selected in a table menu."
+  src="/images/new-ui-rag-configuration-columns.png"
+/>
+<img
+  alt="Snippet showing the RAG Settings option selected in a table menu."
+  title="Snippet showing how to open the RAG Settings"
+  className="rounded-image hidden dark:block"
+  style={{ borderRadius:"10px" }}
+  lightAlt="Snippet showing the RAG Settings option selected in a table menu."
+  darkAlt="Snippet showing the RAG Settings option selected in a table menu."
+  src="/dark-img/new-ui-rag-configuration-columns.png"
 />
 
 3. In the **RAG Configuration for Textual Columns** window that opens, complete the following:
@@ -33,19 +44,30 @@ To configure RAG for a table, follow these steps:
   src="/images/RAG-Configuration-columns02.png"
   alt="RAG Configuration Columns 01 Pn"
   title="Snippet showing the RAG Configuration Modal"
-  className="rounded-image"
+  className="rounded-image dark:hidden"
   style={{ borderRadius:"10px" }}
+  lightAlt="RAG Configuration Columns 01 Pn"
+  darkAlt="RAG Configuration Columns 01 Pn"
+/>
+<img
+  src="/dark-img/RAG-Configuration-columns02.png"
+  alt="RAG Configuration Columns 01 Pn"
+  title="Snippet showing the RAG Configuration Modal"
+  className="rounded-image hidden dark:block"
+  style={{ borderRadius:"10px" }}
+  lightAlt="RAG Configuration Columns 01 Pn"
+  darkAlt="RAG Configuration Columns 01 Pn"
 />
 
 ## Use case example: Analyzing product reviews
 
 Imagine a table containing Amazon product reviews with the following columns: `Review ID`, `Product Name`, `Date`, and `Feedback` (the open-ended field that contains long user-generated texts). To enable thematic analysis, you would configure the table as follows:
 
-| **Configuration Field**     | **Selected Column**    | **Purpose**                                                         |
-| :-------------------------- | :--------------------- | :------------------------------------------------------------------ |
-| **Text content for search** | `Feedback`             | Contains the long texts that the AI will summarize.                 |
-| **Filters for queries**     | `Product Name`, `Date` | Allows Wisdom to narrow the search to specific items or timeframes. |
-| **Primary Key**             | `Review ID`            | Uniquely identifies each row to aid in accurate data retrieval.     |
+| **Configuration Field** | **Selected Column** | **Purpose** |
+| :-- | :-- | :-- |
+| **Text content for search** | `Feedback` | Contains the long texts that the AI will summarize. |
+| **Filters for queries** | `Product Name`, `Date` | Allows Wisdom to narrow the search to specific items or timeframes. |
+| **Primary Key** | `Review ID` | Uniquely identifies each row to aid in accurate data retrieval. |
 
 **This setup would enable WisdomAI to answer these kinds of questions:**
 
@@ -60,13 +82,15 @@ Imagine a table containing Amazon product reviews with the following columns: `R
 </Warning>
 
 <CardGroup cols={3}>
-  <Card icon="sitemap" href="/setting-up-wisdom-ai/advanced-data-modeling-creating-knowledge" title="Advanced Data Modeling">
+  <Card title="Advanced Data Modeling" icon="sitemap" href="/setting-up-wisdom-ai/advanced-data-modeling-creating-knowledge">
     Define relationships and context in your data to enable more powerful analysis.
   </Card>
-  <Card icon="thumbs-up" href="/setting-up-wisdom-ai/feedback-mechanisms/provide-feedback-to-the-system" title="Provide Feedback to the System">
+
+  <Card title="Provide Feedback to the System" icon="thumbs-up" href="/setting-up-wisdom-ai/feedback-mechanisms/provide-feedback-to-the-system">
     Learn how to rate answers and provide corrections to improve the system's accuracy.
   </Card>
-  <Card icon="sliders" href="/setting-up-wisdom-ai/manage-domains/understand-domains" title="Understand Domains">
+
+  <Card title="Understand Domains" icon="sliders" href="/setting-up-wisdom-ai/manage-domains/understand-domains">
     Manage and customize your data domains to refine context and improve query results.
   </Card>
 </CardGroup>

@@ -21,7 +21,21 @@ Properly documenting tables and columns provides foundational context to enable 
 </Note>
 
 <Frame>
-  ![Image showing the Document Tables interface](/images/new-ui-document-table.png)
+  <img
+    src="/dark-img/dark-new-ui-document-table.png"
+    alt="Image showing the Document Tables interface"
+    lightAlt="Image showing the Document Tables interface"
+    darkAlt="Image showing the Document Tables interface"
+    className="hidden dark:block"
+  />
+
+  <img
+    src="/images/new-ui-document-table.png"
+    alt="Image showing the Document Tables interface"
+    lightAlt="Image showing the Document Tables interface"
+    darkAlt="Image showing the Document Tables interface"
+    className="dark:hidden"
+  />
 </Frame>
 
 ### Defining Entities
@@ -38,7 +52,20 @@ When an entity is defined, WisdomAI automatically improves the chat response by:
 Creating an entity involves grouping columns from one or more data source tables into a logical business object that mirrors a real-world concept. This process includes naming the entity, mapping it to its underlying data tables, and configuring its properties, such as its primary key and the field that will serve as its default display name.
 
 <Frame>
-  ![Image showing the Entity Mapping option](/images/entity-mapping.png)
+  <img
+    src="/dark-img/entity-mapping.png"
+    alt="Image showing the Entity Mapping option"
+    lightAlt="Image showing the Entity Mapping option"
+    darkAlt="Image showing the Entity Mapping option"
+    className="hidden dark:block"
+  />
+  <img
+    src="/images/entity-mapping.png"
+    alt="Image showing the Entity Mapping option"
+    lightAlt="Image showing the Entity Mapping option"
+    darkAlt="Image showing the Entity Mapping option"
+    className="dark:hidden"
+  />
 </Frame>
 
 ### Establishing relationships
@@ -50,7 +77,21 @@ Define the connections between entities to enable precise data-model navigation.
 </Warning>
 
 <Frame>
-  ![Image showing the Create Relationship modal](/images/create-relationship.png)
+  <img
+    src="/dark-img/create-relationship.png"
+    alt="Image showing the Create Relationship modal"
+    lightAlt="Image showing the Create Relationship modal"
+    darkAlt="Image showing the Create Relationship modal"
+    className="hidden dark:block"
+  />
+
+  <img
+    src="/images/create-relationship.png"
+    alt="Image showing the Create Relationship modal"
+    lightAlt="Image showing the Create Relationship modal"
+    darkAlt="Image showing the Create Relationship modal"
+    className="dark:hidden"
+  />
 </Frame>
 
 ### Creating Metrics
@@ -62,7 +103,21 @@ Define standard calculations to enforce consistent business logic and simplify a
 </Note>
 
 <Frame>
-  ![Image showing the Metrics Tab](/images/new-ui-metrics.png)
+  <img
+    src="/dark-img/dark-new-ui-metrics.png"
+    alt="Image showing the Metrics Tab"
+    lightAlt="Image showing the Metrics Tab"
+    darkAlt="Image showing the Metrics Tab"
+    className="hidden dark:block"
+  />
+
+  <img
+    src="/images/new-ui-metrics.png"
+    alt="Image showing the Metrics Tab"
+    lightAlt="Image showing the Metrics Tab"
+    darkAlt="Image showing the Metrics Tab"
+    className="dark:hidden"
+  />
 </Frame>
 
 ### Data model augmentation
@@ -73,7 +128,21 @@ Augment your data model with derived tables and columns using standard SQL synta
 - **Enrich Data:** Add business context, derive new metrics, categorize values.
 - **Simplify Analysis:** Create business-friendly views of complex underlying data.
 
-![Image showing the Derived Table](/images/derived-table.png)
+<img
+  src="/dark-img/customer-order-summary.png"
+  alt="Image showing the Derived Table"
+  lightAlt="Image showing the Derived Table"
+  darkAlt="Image showing the Derived Table"
+  className="hidden dark:block"
+/>
+
+<img
+  src="/images/derived-table.png"
+  alt="Image showing the Derived Table"
+  lightAlt="Image showing the Derived Table"
+  darkAlt="Image showing the Derived Table"
+  className="dark:hidden"
+/>
 
 ## Natural language Knowledge
 
@@ -88,7 +157,21 @@ Add domain-specific knowledge, rules, or naming conventions in natural language 
 </Note>
 
 <Frame>
-  ![Image showing the Knowledge Tab](/images/NEW-knowledge-tab.png)
+  <img
+    src="/dark-img/knowledge-tab.png"
+    alt="Image showing the Knowledge Tab"
+    lightAlt="Image showing the Knowledge Tab"
+    darkAlt="Image showing the Knowledge Tab"
+    className="hidden dark:block"
+  />
+
+  <img
+    src="/images/NEW-knowledge-tab.png"
+    alt="Image showing the Knowledge Tab"
+    lightAlt="Image showing the Knowledge Tab"
+    darkAlt="Image showing the Knowledge Tab"
+    className="dark:hidden"
+  />
 </Frame>
 
 ### Importing unstructured Context (beta)
@@ -118,7 +201,21 @@ Create a library of pre-vetted queries by pairing a natural language question wi
   To learn more about validating your queries, refer to the [Reviewed Queries](/setting-up-wisdom-ai/feedback-mechanisms/reviewed-queries) article.
 </Note>
 
-![Image showing the Reviewed Queries tab](/images/new-ui-reviewed-queries.png)
+<img
+  src="/dark-img/new-ui-reviewed-queries.png"
+  alt="Image showing the Reviewed Queries tab"
+  lightAlt="Image showing the Reviewed Queries tab"
+  darkAlt="Image showing the Reviewed Queries tab"
+  className="hidden dark:block"
+/>
+
+<img
+  src="/images/new-ui-reviewed-queries.png"
+  alt="Image showing the Reviewed Queries tab"
+  lightAlt="Image showing the Reviewed Queries tab"
+  darkAlt="Image showing the Reviewed Queries tab"
+  className="dark:hidden"
+/>
 
 ### Advanced feedback and corrections
 
@@ -132,13 +229,15 @@ Provide direct feedback to correct the AI and allow power users to refine the un
 ## **Next steps**
 
 <CardGroup cols={3}>
-  <Card icon="clipboard-list" href="/using-wisdom-ai-everyday/auditing" title="Auditing">
+  <Card title="Auditing" icon="clipboard-list" href="/using-wisdom-ai-everyday/auditing">
     Review query history and system activity to ensure compliance and accuracy.
   </Card>
-  <Card icon="thumbs-up" href="/setting-up-wisdom-ai/feedback-mechanisms/provide-feedback-to-the-system" title="Provide Feedback to the System">
+
+  <Card title="Provide Feedback to the System" icon="thumbs-up" href="/setting-up-wisdom-ai/feedback-mechanisms/provide-feedback-to-the-system">
     Learn how to rate answers and provide corrections to improve the system's accuracy.
   </Card>
-  <Card icon="check-double" href="/improve-wisdom-ai-responses/validate-and-test-answers" title="Validate and Test Answers">
+
+  <Card title="Validate and Test Answers" icon="check-double" href="/improve-wisdom-ai-responses/validate-and-test-answers">
     Understand the methods for verifying the correctness and reliability of generated answers.
   </Card>
 </CardGroup>

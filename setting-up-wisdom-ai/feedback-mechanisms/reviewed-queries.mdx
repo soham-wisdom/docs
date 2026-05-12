@@ -105,7 +105,21 @@ For adding many validated queries at once, you can use the CSV upload option in 
 To bulk upload, create a CSV file that contains two column headers: `Query` and `SQL`. Populate the rows with the natural language questions and their corresponding SQL code.
 
 <Frame>
-  ![Import CSV File button shown](/images/new-ui-import-csv.png)
+  <img
+    src="/dark-img/new-ui-import-csv.png"
+    alt="Import CSV File button shown"
+    lightAlt="Import CSV File button shown"
+    darkAlt="Import CSV File button shown"
+    className="hidden dark:block"
+  />
+
+  <img
+    src="/images/new-ui-import-csv.png"
+    alt="Import CSV File button shown"
+    lightAlt="Import CSV File button shown"
+    darkAlt="Import CSV File button shown"
+    className="dark:hidden"
+  />
 </Frame>
 
 ## Best practices for well-formed SQL
@@ -137,22 +151,38 @@ As a Domain Data Admin, you can edit a reviewed query or reopen the conversation
 - To reopen the original query workflow, click the **Open conversation** icon. This opens the conversation where the query was validated, allowing you to re-ask the question, modify the visualization, refine the query, edit its SQL, or regenerate the results.
 
 <Frame>
-  ![Edit Reviewed Queries Chat](/images/edit-reviewed-queries-chat.png)
+  <img
+    src="/dark-img/edit-reviewed-queries-chat.png"
+    alt="Edit Reviewed Queries Chat"
+    lightAlt="Edit Reviewed Queries Chat"
+    darkAlt="Edit Reviewed Queries Chat"
+    className="hidden dark:block"
+  />
+  <img
+    src="/images/edit-reviewed-queries-chat.png"
+    alt="Edit Reviewed Queries Chat"
+    lightAlt="Edit Reviewed Queries Chat"
+    darkAlt="Edit Reviewed Queries Chat"
+    className="dark:hidden"
+  />
 </Frame>
 
 ## Next steps
 
 <CardGroup cols={2}>
-  <Card icon="puzzle-piece" href="/setting-up-wisdom-ai/feedback-mechanisms/limited-context" title="Limited Knowledge">
+  <Card title="Limited Knowledge" icon="puzzle-piece" href="/setting-up-wisdom-ai/feedback-mechanisms/limited-context">
     Understand how to identify and flag when the system's answers lack necessary context.
   </Card>
-  <Card icon="thumbs-up" href="/setting-up-wisdom-ai/feedback-mechanisms/provide-feedback-to-the-system" title="Provide Feedback to the System">
+
+  <Card title="Provide Feedback to the System" icon="thumbs-up" href="/setting-up-wisdom-ai/feedback-mechanisms/provide-feedback-to-the-system">
     Learn how to rate answers and provide corrections to improve the system's accuracy.
   </Card>
-  <Card icon="thumbs-down" href="/setting-up-wisdom-ai/feedback-mechanisms/monitor-negative-feedback" title="Monitor Negative Feedback">
+
+  <Card title="Monitor Negative Feedback" icon="thumbs-down" href="/setting-up-wisdom-ai/feedback-mechanisms/monitor-negative-feedback">
     Track and analyze negative user feedback to identify areas for system improvement.
   </Card>
-  <Card icon="book-open" href="/using-wisdom-ai-everyday/turn-answers-into-stories" title="Turn Answers into Dashboards">
+
+  <Card title="Turn Answers into Dashboards" icon="book-open" href="/using-wisdom-ai-everyday/turn-answers-into-stories">
     Compile key insights and visualizations into a shareable, narrative-driven report.
   </Card>
 </CardGroup>
