@@ -18,11 +18,9 @@ An easy workflow to define reviewed queries is to ask the question in the chat, 
 
 1. Ask a question and review the generated answer.
 2. If the answer is correct, click the **thumbs-up** icon.
-
-    <Note>
-      Currently, feedback icons (thumbs-up and thumbs-down) appear only for responses containing charts or structured data. Feedback for text-only responses is not yet supported but will be available in a future update.
-    </Note>
-
+   <Note>
+     Currently, feedback icons (thumbs-up and thumbs-down) appear only for responses containing charts or structured data. Feedback for text-only responses is not yet supported but will be available in a future update.
+   </Note>
 3. In the **Review a Question** modal that appears, confirm or edit the natural language question that the SQL code answers.
 4. After confirmation, the query will be saved and listed in the **Context \> Reviewed Queries** tab.
 
@@ -39,7 +37,20 @@ WHERE `stage_label` IN ('Evaluation', 'Negotiation', 'Closed Loss', 'Closed Won'
 ```
 
 <Frame>
-  ![Image showing the Review a Question modal](/images/review-question-v02-em.png)
+  <img
+    src="/images/review-question-v02-em.png"
+    alt="Image showing the Review a Question modal"
+    lightAlt="Image showing the Review a Question modal"
+    darkAlt="Image showing the Review a Question modal"
+    className="dark:hidden"
+  />
+  <img
+    src="/dark-img/review-question-v02.png"
+    alt="Image showing the Review a Question modal"
+    lightAlt="Image showing the Review a Question modal"
+    darkAlt="Image showing the Review a Question modal"
+    className="hidden dark:block"
+  />
 </Frame>
 
 5. If the answer needs changes, click the **Edit** button (pencil icon) to modify the SQL. Once you are satisfied, click **Mark as reviewed**.
@@ -67,7 +78,20 @@ ORDER BY
 The chart shows a clear year-over-year trend. However, you decide that a **quarterly view** would be more insightful for tracking seasonal performance. To do this, click the **Edit** button (the pencil icon) to modify the SQL directly.
 
 <Frame>
-  ![Image showing the Edit Sql option in chat](/images/Edit-sql-0925.png)
+  <img
+    alt="Image showing the Edit Sql option in chat"
+    lightAlt="Image showing the Edit Sql option in chat"
+    darkAlt="Image showing the Edit Sql option in chat"
+    src="/images/Edit-sql-0925.png"
+    className="dark:hidden"
+  />
+  <img
+    alt="Image showing the Edit Sql option in chat"
+    lightAlt="Image showing the Edit Sql option in chat"
+    darkAlt="Image showing the Edit Sql option in chat"
+    src="/dark-img/Edit-sql-0925.png"
+    className="hidden dark:block"
+  />
 </Frame>
 
 The only change needed is to adjust the `DATE_TRUNC` function from `YEAR` to `QUARTER`.
@@ -89,13 +113,39 @@ ORDER BY
 ```
 
 <Frame>
-  ![Image showing the Edited SQL](/images/sql-edited-0925.png)
+  <img
+    alt="Image showing the Edited SQL"
+    lightAlt="Image showing the Edited SQL"
+    darkAlt="Image showing the Edited SQL"
+    src="/images/sql-edited-0925.png"
+    className="dark:hidden"
+  />
+  <img
+    alt="Image showing the Edited SQL"
+    lightAlt="Image showing the Edited SQL"
+    darkAlt="Image showing the Edited SQL"
+    src="/dark-img/sql-edited-0925.png"
+    className="hidden dark:block"
+  />
 </Frame>
 
 After applying the change and seeing the updated quarterly chart, you can save this improved version. You would click **Mark as reviewed** and update the question to **“Show me the quarterly ARR trend”** to save it as a new, more specific Validated Query for future use.
 
 <Frame>
-  ![Image showing the Review a Question modal](/images/review-question-sql-0925.png)
+  <img
+    alt="Image showing the Review a Question modal"
+    lightAlt="Image showing the Review a Question modal"
+    darkAlt="Image showing the Review a Question modal"
+    src="/images/review-question-sql-0925.png"
+    className="dark:hidden"
+  />
+  <img
+    alt="Image showing the Review a Question modal"
+    lightAlt="Image showing the Review a Question modal"
+    darkAlt="Image showing the Review a Question modal"
+    src="/dark-img/review-question-sql-0925.png"
+    className="hidden dark:block"
+  />
 </Frame>
 
 ### Bulk upload with CSV
@@ -106,19 +156,18 @@ To bulk upload, create a CSV file that contains two column headers: `Query` and 
 
 <Frame>
   <img
-    src="/dark-img/new-ui-import-csv.png"
     alt="Import CSV File button shown"
     lightAlt="Import CSV File button shown"
     darkAlt="Import CSV File button shown"
-    className="hidden dark:block"
-  />
-
-  <img
     src="/images/new-ui-import-csv.png"
+    className="dark:hidden"
+  />
+  <img
     alt="Import CSV File button shown"
     lightAlt="Import CSV File button shown"
     darkAlt="Import CSV File button shown"
-    className="dark:hidden"
+    src="/dark-img/new-ui-import-csv.png"
+    className="hidden dark:block"
   />
 </Frame>
 
@@ -152,18 +201,18 @@ As a Domain Data Admin, you can edit a reviewed query or reopen the conversation
 
 <Frame>
   <img
-    src="/dark-img/edit-reviewed-queries-chat.png"
     alt="Edit Reviewed Queries Chat"
     lightAlt="Edit Reviewed Queries Chat"
     darkAlt="Edit Reviewed Queries Chat"
-    className="hidden dark:block"
+    src="/images/edit-reviewed-queries-chat.png"
+    className="dark:hidden"
   />
   <img
-    src="/images/edit-reviewed-queries-chat.png"
     alt="Edit Reviewed Queries Chat"
     lightAlt="Edit Reviewed Queries Chat"
     darkAlt="Edit Reviewed Queries Chat"
-    className="dark:hidden"
+    src="/dark-img/edit-reviewed-queries-chat.png"
+    className="hidden dark:block"
   />
 </Frame>
 
