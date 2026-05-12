@@ -25,7 +25,7 @@ exchangeAccessToken(accessToken: String!): String!
 
 Returns a JWT token as a string that should be used in the `Authorization` header for subsequent API requests.
 
-## Usage Example
+## Usage example
 
 ```graphql
 query ExchangeAccessToken($accessToken: String!) {
@@ -48,12 +48,13 @@ curl -X POST https://{ACCOUNT}.askwisdom.ai/graphql \
   JWT tokens have a limited lifetime. You will need to exchange your access key for a new JWT token periodically.
 </Info>
 
-## Related Operations
+## Next steps
 
 <CardGroup cols={2}>
   <Card title="GraphQL API Overview" icon="code" href="/integrations/graphql-api/GraphQL-API">
     Complete GraphQL API authentication guide
   </Card>
+
   <Card title="Impersonate User" icon="user" href="/integrations/graphql-api/queries/auth/impersonate-user">
     Recommended API for embedding use cases
   </Card>

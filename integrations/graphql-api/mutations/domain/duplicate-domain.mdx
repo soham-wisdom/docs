@@ -1,0 +1,90 @@
+---
+title: "Duplicate Domain"
+---
+
+The `duplicateDomain` mutation duplicates (clones) an existing domain, creating an independent copy.
+
+## Signature
+
+```graphql
+duplicateDomain(id: ID!, workspaceID: ID): DomainModel!
+```
+
+<Note>
+  This mutation requires write permission (`zsheet:write`) on the source domain.
+</Note>
+
+## Arguments
+
+<ParamField path="id" type="ID!" required>
+  The ID of the source domain to duplicate.
+</ParamField>
+
+<ParamField path="workspaceID" type="ID">
+  The target workspace ID where the duplicate domain will be created. Defaults to the current workspace if not specified.
+</ParamField>
+
+## Response
+
+Returns a `DomainModel` object representing the newly created duplicate domain. See [DomainModel](/integrations/graphql-api/objects/domain-model) for the schema.
+
+## Usage example
+
+Duplicate a domain into the current workspace:
+
+```graphql
+mutation DuplicateDomain($id: ID!, $workspaceID: ID) {
+  duplicateDomain(id: $id, workspaceID: $workspaceID) {
+    id
+    version
+    name
+    description
+  }
+}
+```
+
+<RequestExample>
+
+```bash Request
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <jwt_token>" \
+  -d '{
+    "query": "mutation DuplicateDomain($id: ID!, $workspaceID: ID) { duplicateDomain(id: $id, workspaceID: $workspaceID) { id name description } }",
+    "variables": {
+      "id": "ET_DOMAIN_id-here",
+      "workspaceID": "ET_WORKSPACE_id-here"
+    }
+  }' \
+  https://{ACCOUNT}.askwisdom.ai/graphql
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "data": {
+    "duplicateDomain": {
+      "id": "ET_DOMAIN_new-id-here",
+      "name": "Sales Analytics (Copy)",
+      "description": "Customer data, transactions, and sales performance metrics"
+    }
+  }
+}
+```
+
+</ResponseExample>
+
+## Related operation
+
+<CardGroup cols={2}>
+  <Card title="DomainModel Schema" icon="folder" href="/integrations/graphql-api/objects/domain-model">
+    Learn about domain structure and properties
+  </Card>
+
+  <Card title="Create Domain" icon="plus" href="/integrations/graphql-api/mutations/domain/create-domain">
+    Create a new domain from scratch
+  </Card>
+</CardGroup>

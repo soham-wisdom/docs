@@ -1,0 +1,108 @@
+---
+title: "Session Management"
+---
+
+Embedded session JWTs expire after one hour. WisdomAI provides a built-in `postMessage` mechanism that lets your application refresh the token before expiry without interrupting the user's session.
+
+## Token lifetime
+
+| Property | Value |
+| --- | --- |
+| Lifetime | 1 hour |
+| Storage | `localStorage` as `wisdom.jwt` |
+| Override | `?token=` URL param always takes priority over any cached token |
+
+## Built-in refresh via postMessage
+
+WisdomAI sends a `REQUEST_JWT_TOKEN` event to the parent window approximately 10 seconds before the embedded token expires. It is your responsibility to listen for this event, generate a fresh token by calling `impersonateUser` from your backend, and post it back. WisdomAI picks up the new token and continues the session without interruption.
+
+### Flow
+
+1. WisdomAI iframe detects the token is about to expire.
+2. WisdomAI sends `window.parent.postMessage({ type: 'REQUEST_JWT_TOKEN' }, '*')` to the host.
+3. Your host receives the event and validates `event.origin` matches the WisdomAI domain.
+4. Your host calls `impersonateUser` via your own backend to get a fresh JWT.
+5. Your host posts back `iframe.contentWindow.postMessage({ type: 'JWT_TOKEN_RESPONSE', token }, WISDOM_ORIGIN)`.
+6. WisdomAI receives the new token and refreshes the session.
+
+### Implementation example
+
+<Note>
+  Replace `{ACCOUNT}.wisdom.ai` with the base URL of your WisdomAI tenant — the same domain you use to log in. Both `wisdom.ai` and `askwisdom.ai` are valid depending on your deployment.
+</Note>
+
+```html
+<iframe
+  id="wisdom-frame"
+  src="https://{ACCOUNT}.wisdom.ai/embed/dashboards/<id>?token=<JWT>"
+  allow="microphone; camera"
+  style="width:100%;height:800px;border:0"
+></iframe>
+
+<script>
+  const iframe = document.getElementById('wisdom-frame');
+  // Replace with your actual WisdomAI tenant domain
+  const WISDOM_ORIGIN = 'https://{ACCOUNT}.wisdom.ai';
+
+  async function getFreshWisdomToken() {
+    // Call your own backend, which calls impersonateUser with the access key.
+    const response = await fetch('/api/wisdom-token');
+    const data = await response.json();
+    return data.token;
+  }
+
+  window.addEventListener('message', async (event) => {
+    if (event.origin !== WISDOM_ORIGIN) return;
+    if (event.source !== iframe.contentWindow) return;
+    if (event.data?.type !== 'REQUEST_JWT_TOKEN') return;
+
+    try {
+      const token = await getFreshWisdomToken();
+      iframe.contentWindow.postMessage(
+        { type: 'JWT_TOKEN_RESPONSE', token },
+        WISDOM_ORIGIN
+      );
+    } catch (error) {
+      console.error('Unable to provide Wisdom token', error);
+    }
+  });
+</script>
+```
+
+### Implementation notes
+
+- WisdomAI sends the request with `'*'` as the target origin. You must validate `event.origin` on your side before handling the message.
+- If your host does not respond within 10 seconds, the request times out and retries on the next render cycle.
+- Only one refresh request is in-flight at a time. Duplicate requests are suppressed automatically.
+- The `?token=` URL param always takes priority over any cached token in `localStorage`.
+
+## Switching users
+
+The WisdomAI frontend stores the active session token in `localStorage` as `wisdom.jwt`. To switch the impersonated user in the same iframe, reload the iframe with a new JWT in the `?token=` URL param rather than attempting to swap the token in place.
+
+```js
+// Switch to a different user by reloading the iframe src
+iframe.src = `https://{ACCOUNT}.wisdom.ai/embed/search?token=${newJWT}`;
+```
+
+There is no explicit logout mutation for embedded sessions.
+
+## Expired or invalid tokens
+
+When an expired or invalid JWT is passed in the embed URL, users may be redirected to the login page instead of seeing a clear error. To prevent this, implement the `postMessage` refresh listener described above so that tokens are refreshed before expiry.
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Impersonate User" icon="user-secret" href="/integrations/graphql-api/mutations/auth/impersonate-user">
+    Generate a session JWT for an embedded user
+  </Card>
+
+  <Card title="Embedding Overview" icon="code" href="/integrations/embeddings/embedding">
+    Full server-side embedding flow
+  </Card>
+
+  <Card title="User Lifecycle" icon="users" href="/integrations/user-management/user-lifecycle">
+    Create, update, and remove embedded users
+  </Card>
+</CardGroup>

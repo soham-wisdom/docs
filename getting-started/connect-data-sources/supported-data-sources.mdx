@@ -6,42 +6,48 @@ This page covers the data sources that can be connected to WisdomAI, including d
 
 WisdomAI works with the following data sources:
 
-## Warehouse sources
+## Warehouse & Database sources
 
 - PostgreSQL
 - Microsoft SQL Server
+- MySQL
+- Oracle
 - Databricks
 - Snowflake
 - Google BigQuery
+- Google Cloud Spanner
 - Amazon Redshift
-- ClickHouse _(Beta)_
-- Trino _(Beta)_
+- Amazon Athena
+- Teradata
+- Azure Synapse & Synapse Serverless
+- ClickHouse (Beta)
+- Trino (Beta)
 - CSV files
 
 <Warning>
   **Note on Syncing**: After successfully adding a connection, the initial sync may take a few minutes to complete before data is available for analysis.
 </Warning>
 
-## File sources
+## File & Repository sources
 
 - Amazon S3
 - Google Cloud Storage (GCS)
 - Azure Blob Storage
+- SharePoint
 - Direct upload
 
 Supported file types: PDFs, DOC/DOCX files, PowerPoint files, txt files, and images.
 
 To learn how to connect to your Data Sources, read the [Basic Tutorial: Connect and Test](/setting-up-wisdom-ai/basic-tutorial-connect-and-test).
 
-### Connection Requirements
+### Connection requirements
 
 This section outlines common prerequisites for connecting to data sources. Specific requirements are detailed under each data source.
 
 - **Network Access:** Ensure WisdomAI has network access to your database or data warehouse host. This may involve configuring firewall rules or security groups.
 - **Authentication Details:** You will need the correct credentials (username, password, keys, etc.) for your chosen data source.
 - **SSL/TLS Configuration:** For secure connections, ensure your database/data warehouse is configured to accept SSL/TLS connections, and configure WisdomAI accordingly (e.g., `SSL Mode: require` for PostgreSQL).
-- **Service Accounts (Google BigQuery):** For BigQuery, a Google Cloud service account with appropriate BigQuery permissions is required.
-
+- **Service Accounts (Google BigQuery):** A Google Cloud service account with appropriate BigQuery permissions is required.
   <Info>
     For PostgreSQL and Amazon Redshift, you can optionally configure an SSH Tunnel to connect through a bastion host.
   </Info>
@@ -53,18 +59,19 @@ This section outlines common prerequisites for connecting to data sources. Speci
     <Info>
       SSH settings are optional.
     </Info>
-    | Requirement              | Description                                                              |
-    | :----------------------- | :----------------------------------------------------------------------- |
-    | Host                     | Server address or IP                                                     |
-    | Port                     | Typically `5432`                                                         |
-    | Database                 | Name of the database                                                     |
-    | Username                 | Database user with read access                                           |
-    | Password                 | User's password                                                          |
-    | SSH Host                 | Hostname or IP address of the bastion host (Optional)                    |
-    | SSH Port                 | Port number on the SSH host (Optional)                                   |
-    | SSH Username             | The username required to log in to the bastion host (Optional)           |
-    | Authentication Method    | You can authenticate using either a Private Key or a Password (Optional) |
-    | SSH Private Key/Password | The Private Key or Password used for the SSH authentication (Optional)   |
+
+    | Requirement | Description |
+    | :-- | :-- |
+    | Host | Server address or IP |
+    | Port | Typically `5432` |
+    | Database | Name of the database |
+    | Username | Database user with read access |
+    | Password | User's password |
+    | SSH Host | Hostname or IP address of the bastion host (Optional) |
+    | SSH Port | Port number on the SSH host (Optional) |
+    | SSH Username | The username required to log in to the bastion host (Optional) |
+    | Authentication Method | You can authenticate using either a Private Key or a Password (Optional) |
+    | SSH Private Key/Password | The Private Key or Password used for the SSH authentication (Optional) |
 
     Find below an example connection:
 
@@ -80,14 +87,14 @@ This section outlines common prerequisites for connecting to data sources. Speci
   <Tab title="Microsoft SQL Server">
     The following table lists the requirements you must provide when connecting to Microsoft SQL Server.
 
-    | Requirement              | Description                                   |
-    | :----------------------- | :-------------------------------------------- |
-    | Server                   | SQL Server address or instance name           |
-    | Port                     | Typically `1433`                              |
-    | Database                 | Name of the database                          |
-    | Authentication           | SQL Server or Windows Authentication          |
-    | Username                 | SQL Server login with read access             |
-    | Password                 | Login password                                |
+    | Requirement | Description |
+    | :-- | :-- |
+    | Server | SQL Server address or instance name |
+    | Port | Typically `1433` |
+    | Database | Name of the database |
+    | Authentication | SQL Server or Windows Authentication |
+    | Username | SQL Server login with read access |
+    | Password | Login password |
     | Trust Server Certificate | Whether to trust the server's SSL certificate |
 
     Here's an example connection:
@@ -105,14 +112,14 @@ This section outlines common prerequisites for connecting to data sources. Speci
   <Tab title="Databricks">
     The following table lists the requirements you must provide when connecting to Databricks.
 
-    | Requirement     | Description                      |
-    | :-------------- | :------------------------------- |
+    | Requirement | Description |
+    | :-- | :-- |
     | Server Hostname | Databricks SQL endpoint hostname |
-    | HTTP Path       | HTTP path for the SQL endpoint   |
-    | Username        | Databricks username              |
-    | Password        | Databricks password              |
-    | Catalog         | Optional Databricks catalog name |
-    | Schema          | Optional schema name             |
+    | HTTP Path | HTTP path for the SQL endpoint |
+    | Username | Databricks username |
+    | Password | Databricks password |
+    | Catalog | Optional Databricks catalog name |
+    | Schema | Optional schema name |
 
     Below is an example key pair connection:
 
@@ -128,15 +135,15 @@ This section outlines common prerequisites for connecting to data sources. Speci
   <Tab title="Snowflake">
     The following table lists the requirements you must provide when connecting to Snowflake.
 
-    | Requirement      | Description                           |
-    | :--------------- | :------------------------------------ |
-    | Account          | Snowflake account identifier          |
-    | Username         | Snowflake user with access privileges |
-    | Private Key File | Private Key File                      |
-    | Warehouse        | Compute warehouse to use              |
-    | Database         | Database name                         |
-    | Schema           | Schema name (optional)                |
-    | Role             | User role (optional)                  |
+    | Requirement | Description |
+    | :-- | :-- |
+    | Account | Snowflake account identifier |
+    | Username | Snowflake user with access privileges |
+    | Private Key File | Private Key File |
+    | Warehouse | Compute warehouse to use |
+    | Database | Database name |
+    | Schema | Schema name (optional) |
+    | Role | User role (optional) |
 
     To set up key pair authentication for Snowflake:
 
@@ -161,11 +168,11 @@ This section outlines common prerequisites for connecting to data sources. Speci
   <Tab title="Google BigQuery">
     The following table lists the requirements you must provide when connecting to Google BigQuery.
 
-    | Requirement    | Description                       |
-    | :------------- | :-------------------------------- |
-    | Project ID     | Google Cloud project identifier   |
+    | Requirement | Description |
+    | :-- | :-- |
+    | Project ID | Google Cloud project identifier |
     | Authentication | Service account key (JSON format) |
-    | Dataset        | Default dataset (optional)        |
+    | Dataset | Default dataset (optional) |
 
     Find below an example connection:
 
@@ -185,19 +192,20 @@ This section outlines common prerequisites for connecting to data sources. Speci
     <Info>
       SSH settings are optional.
     </Info>
-    | Requirement              | Description                                                              |
-    | :----------------------- | :----------------------------------------------------------------------- |
-    | Host                     | Redshift cluster endpoint                                                |
-    | Port                     | Typically `5439`                                                         |
-    | Database                 | Database name                                                            |
-    | Username                 | Database user with read access                                           |
-    | Password                 | User password                                                            |
-    | Schema                   | Schema name (Optional)                                                   |
-    | SSH Host                 | Hostname or IP address of the bastion host (Optional)                    |
-    | SSH Port                 | Port number on the SSH host (Optional)                                   |
-    | SSH Username             | The username required to log in to the bastion host (Optional)           |
-    | Authentication Method    | You can authenticate using either a Private Key or a Password (Optional) |
-    | SSH Private Key/Password | The Private Key or Password used for the SSH authentication (Optional)   |
+
+    | Requirement | Description |
+    | :-- | :-- |
+    | Host | Redshift cluster endpoint |
+    | Port | Typically `5439` |
+    | Database | Database name |
+    | Username | Database user with read access |
+    | Password | User password |
+    | Schema | Schema name (Optional) |
+    | SSH Host | Hostname or IP address of the bastion host (Optional) |
+    | SSH Port | Port number on the SSH host (Optional) |
+    | SSH Username | The username required to log in to the bastion host (Optional) |
+    | Authentication Method | You can authenticate using either a Private Key or a Password (Optional) |
+    | SSH Private Key/Password | The Private Key or Password used for the SSH authentication (Optional) |
   </Tab>
   <Tab title="CSV Files">
     You can also upload CSV files to a Domain. Here are the requirements for these files:
@@ -209,27 +217,232 @@ This section outlines common prerequisites for connecting to data sources. Speci
 
     To learn how to upload them, read [Upload CSV files](/setting-up-wisdom-ai/basic-tutorial-connect-and-test#upload-csv-files).
   </Tab>
+  <Tab title="Amazon Athena">
+    The following table lists the requirements you must provide when connecting to Amazon Athena.
+
+    | Requirement | Description |
+    | :-- | :-- |
+    | AWS Access Key ID | The access key for an IAM user with permissions to access Athena and the underlying S3 data |
+    | AWS Secret Access Key | The secret access key associated with the AWS Access Key ID |
+    | Region Name | The AWS region where your Athena service is hosted |
+    | S3 Staging Directory | The S3 bucket path where Athena stores query results |
+    | Work Group | The specific Athena workgroup used to run queries |
+
+    Here's an example connection:
+
+    ```txt
+    AWS Access Key ID: AKIAIOSFODNN7EXAMPLE
+    AWS Secret Access Key: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+    Region Name: us-west-2
+    S3 Staging Directory: s3://wisdomai-athena-results-bucket/
+    Work Group: primary
+    ```
+  </Tab>
+  <Tab title="Azure Synapse">
+    The following table lists the requirements you must provide when connecting to Azure Synapse.
+
+    | Requirement | Description |
+    | :-- | :-- |
+    | Workspace SQL endpoint | The SQL endpoint URL for your workspace |
+    | Subscription ID | The ID of your Azure subscription |
+    | Resource Group ID | The name of the Azure resource group where the Synapse workspace is located |
+    | Workspace ID | The ID for the Synapse Analytics workspace |
+    | Client ID | The Application ID of the Azure Service Principal used for authentication |
+    | Tenant ID | The Directory ID of your Azure Active Directory |
+    | Client Secret | The secret value generated for the Service Principal |
+
+    Here's an example connection:
+
+    ```txt
+    Workspace SQL endpoint: synapse-prod-ondemand.sql.azuresynapse.net
+    Subscription ID: a1b2c3d4-e5f6-g7h8-i9j0-k1l2m3n4o5p6
+    Resource Group ID: rg-analytics-prod
+    Workspace ID: synapse-workspace-01
+    Client ID: 00000000-0000-0000-0000-000000000000
+    Tenant ID: ffffffff-ffff-ffff-ffff-ffffffffffff
+    Client Secret: ********
+    ```
+  </Tab>
+  <Tab title="Azure Synapse Serverless">
+    The following table lists the requirements you must provide when connecting to Azure Synapse Serverless.
+
+    | Requirement | Description |
+    | :-- | :-- |
+    | Serverless SQL endpoint | The on-demand SQL endpoint for your Synapse workspace |
+    | Client ID | The Application ID of the Azure Service Principal used for authentication |
+    | Tenant ID | The Directory ID of your Azure Active Directory |
+    | Client Secret | The client secret value generated for the Service Principal |
+
+    Here's an example connection:
+
+    ```txt
+    Serverless SQL endpoint: my-workspace-ondemand.sql.azuresynapse.net
+    Client ID: 00000000-0000-0000-0000-000000000000
+    Tenant ID: ffffffff-ffff-ffff-ffff-ffffffffffff
+    Client Secret: ********
+    ```
+  </Tab>
+  <Tab title="Azure Blob Storage">
+    The following table lists the requirements you must provide when connecting to Azure Blob Storage.
+
+    | Requirement | Description |
+    | :-- | :-- |
+    | Storage Account Name | The name of your Azure Storage account |
+    | Container Name | The specific blob container where your data is stored |
+    | Connection String | The Azure Storage connection string used for authentication |
+
+    Here's an example connection:
+
+    ```txt
+    Storage Account Name: wisdomstorageaccount
+    Container Name: customer-data
+    Connection String: DefaultEndpointsProtocol=https;AccountName=wisdomstorageaccount;AccountKey=xxxxxx...xxxxxx;EndpointSuffix=core.windows.net
+    ```
+  </Tab>
+  <Tab title="ClickHouse">
+    The following table lists the requirements you must provide when connecting to ClickHouse.
+
+    | Requirement | Description |
+    | :-- | :-- |
+    | Host | The hostname or IP address of your ClickHouse server |
+    | Port | The port number used for the connection |
+    | Username | The database user account with read access to the metadata |
+    | Password | The password for the specified database user |
+
+    <Note>
+      Database filters are optional, but it is recommended to specify only the databases that you want to expose to Wisdom.
+    </Note>
+
+    Here's an example connection:
+
+    ```txt
+    Host: ch-cluster.example.com
+    Port: 8123
+    Username: wisdom_scanner
+    Password: ********
+    Database filters: sales_data, inventory_records
+    ```
+  </Tab>
+  <Tab title="Trino">
+    The following table lists the requirements you must provide when connecting to Trino.
+
+    | Requirement | Description |
+    | :-- | :-- |
+    | Host | The hostname or IP address of your Trino coordinator node |
+    | Port | The port number used for the connection |
+    | Username | The user account with appropriate permissions to access the catalogs |
+    | Password | The password for the specified user account |
+    | Use SSL (HTTPS) | Toggle to enable secure communication via SSL |
+    | Skip SSL Certificate Verification | If enabled, WisdomAI will not validate the SSL certificate (common for self-signed certs) |
+    | Force HTTPS | Forces the connection to use HTTPS even if the endpoint suggests otherwise |
+
+    <Note>
+      Catalog filters are optional, but it is recommended to specify only the catalogs and their schemas that you want to expose to Wisdom.
+    </Note>
+
+    Here's an example connection:
+
+    ```txt
+    Host: trino.internal.company.com
+    Port: 8443
+    Username: query_service
+    Password: ********
+    Use SSL (HTTPS): True
+    Skip SSL Certificate Verification: False
+    Force HTTPS: True
+    Catalog Filters: snowflake_prod, glue_catalog
+    ```
+  </Tab>
+  <Tab title="SharePoint">
+    The following table lists the requirements you must provide when connecting to SharePoint.
+
+    | Requirement | Description |
+    | :-- | :-- |
+    | Client ID | The client ID of the Azure App registration used for authentication |
+    | Tenant ID | The Directory ID of your Azure Active Directory |
+    | Client Secret | The client secret value generated for the Azure App registration |
+    | Site URL | The full URL of the SharePoint site you want to crawl |
+
+    <Note>
+      By default, all document libraries are crawled. It is recommended to specify only the libraries that you want to expose to Wisdom in the **Document Libraries** field.
+    </Note>
+
+    Here's an example connection:
+
+    ```txt
+    Client ID: 00000000-0000-0000-0000-000000000000
+    Tenant ID: ffffffff-ffff-ffff-ffff-ffffffffffff
+    Client Secret: ********
+    Site URL: https://website.sharepoint.com/sites/internal-knowledge
+    Document Libraries: Policies, Procedures
+    ```
+  </Tab>
+  <Tab title="Google Cloud Spanner">
+    The following table lists the requirements you must provide when connecting to Google Cloud Spanner.
+
+    | Requirement | Description |
+    | :-- | :-- |
+    | Project ID | The unique identifier for your Google Cloud Project |
+    | Instance ID | The ID of the Cloud Spanner instance |
+    | Database ID | The ID of the specific database within the Spanner instance |
+    | Service Account Info JSON | The complete contents of your GCP service account JSON key file |
+
+    Here's an example connection:
+
+    ```txt
+    Project ID: majestic-project-12345
+    Instance ID: spanner-instance-main
+    Database ID: inventory_db
+    Service Account Info JSON: { "type": "service_account", "project_id": "majestic-project-12345", ... }
+    ```
+  </Tab>
+  <Tab title="Teradata">
+    The following table lists the requirements you must provide when connecting to Teradata.
+
+    | Requirement | Description |
+    | :-- | :-- |
+    | Host | The hostname or IP address of your Teradata server |
+    | Port | The port number used for the connection, typically `1025` |
+    | Username | The database user account with appropriate read permissions |
+    | Password | The password for the specified database user |
+
+    <Note>
+      **Database filters** are optional, but it is recommended to specify only the databases that you want to expose to Wisdom.
+    </Note>
+
+    Here's an example connection:
+
+    ```txt
+    Host: td-prod.example.com
+    Port: 1025
+    Username: wisdom_read_only
+    Password: ********
+    Database filters: sales_v, marketing_v
+    ```
+  </Tab>
 </Tabs>
 
-## Protocol-based source: MCP Server
+---
+
+## Protocol-based source: MCP server
 
 Connect to any server that implements the [Model Knowledge Protocol](https://modelcontextprotocol.io). MCP enables WisdomAI to fetch real-time data and scan metadata from external systems through a standardized protocol.
 
-### MCP Server Requirements
+### MCP server requirements
 
 To connect an MCP server, you must provide:
 
-| Requirement            | Description                                         |
-| :--------------------- | :-------------------------------------------------- |
-| **Transport Type**     | Streamable HTTP, Server-Sent Events (SSE), or STDIO |
-| **Server URL/Command** | The endpoint or command used to run the MCP server  |
-| **Auth Type**          | API Key, OAuth, or None                             |
+| Requirement | Description |
+| :-- | :-- |
+| **Transport Type** | Streamable HTTP, Server-Sent Events (SSE), or STDIO |
+| **Server URL/Command** | The endpoint or command used to run the MCP server |
+| **Auth Type** | API Key, OAuth, or None |
 
 <Info>
   For detailed setup instructions, see [Connect an MCP Server](/getting-started/connect-data-sources/connect-mcp-server).
 </Info>
 
-## Web Search
+## Web search
 
 WisdomAI can search the internet and fetch content from public web pages as a data source. When enabled on a domain, the AI automatically supplements its answers with real-time web information — such as industry benchmarks, market trends, or publicly available reference material.
 
@@ -243,13 +456,13 @@ Web Search is configured per domain with an optional **source policy** that cont
 
 Connect WisdomAI to your essential business applications and services to unlock deeper insights from all your data.
 
-### ETL Integration for SaaS Applications
+### ETL integration for SaaS applications
 
 WisdomAI works with leading (Extract, Transform, and Load) ETL partners to provide data integration from various SaaS applications.
 
 WisdomAI leverages **Fivetran** or **Airbyte** to ETL data from SaaS applications into a customer-owned data warehouse or, alternatively, into a WisdomAI-managed **BigQuery**-based analytics environment.
 
-### Supported SaaS Data Sources
+### Supported SaaS data sources
 
 A non-exhaustive list of SaaS Sources includes:
 
@@ -258,7 +471,7 @@ A non-exhaustive list of SaaS Sources includes:
 - Ticketing systems (Jira, Zendesk)
 - Marketing platforms (Google Analytics, Facebook Ads)
 
-### Setting Up SaaS Integration
+### Setting up SaaS integration
 
 To integrate data from SaaS applications, please contact WisdomAI support at `support@askwisdom.ai`. Our team will work with you to set up the appropriate ETL pipelines using our partner technologies.
 
@@ -274,25 +487,27 @@ This section details any known limitations or restrictions when connecting to da
 
 Understand common problems and systematic troubleshooting techniques that can help you quickly identify and resolve connectivity issues.
 
-### Common Connection Issues
+### Common connection issues
 
-| **Issue**             | **Possible Causes**                                                                 | **Resolution**                                                                                             |
-| --------------------- | ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| Connection Timeout    | - Network latency  <br /> - Firewall blocking  <br /> - Server overload             | - Check network connectivity  <br /> - Verify firewall rules  <br /> - Increase connection timeout setting |
-| Authentication Failed | - Incorrect credentials  <br /> - Expired API keys/tokens  <br /> - Account lockout | - Verify username/password  <br /> - Regenerate API keys  <br /> - Check account status                    |
-| Permission Denied     | - Insufficient privileges  <br /> - IP restriction  <br /> - Resource access limits | - Update user permissions  <br /> - Whitelist IP addresses  <br /> - Check resource quotas                 |
+| **Issue** | **Possible Causes** | **Resolution** |
+| --- | --- | --- |
+| Connection Timeout | - Network latency  <br /> - Firewall blocking  <br /> - Server overload | - Check network connectivity  <br /> - Verify firewall rules  <br /> - Increase connection timeout setting |
+| Authentication Failed | - Incorrect credentials  <br /> - Expired API keys/tokens  <br /> - Account lockout | - Verify username/password  <br /> - Regenerate API keys  <br /> - Check account status |
+| Permission Denied | - Insufficient privileges  <br /> - IP restriction  <br /> - Resource access limits | - Update user permissions  <br /> - Whitelist IP addresses  <br /> - Check resource quotas |
 
 For persistent connection issues, contact WisdomAI support at `support@askwisdom.ai` with the connection ID and error logs for assistance.
 
-## Next Steps
+## Next steps
 
 <CardGroup cols={3}>
   <Card title="Connect Unstructured Repositories" icon="folder-plus" href="/improve-wisdom-ai-responses/connect-unstructed-repositories-datasets">
     Integrate unstructured data sources, such as documents or knowledge bases, to enrich your analysis.
   </Card>
+
   <Card title="Connect and Test Tutorial" icon="rocket" href="/setting-up-wisdom-ai/basic-tutorial-connect-and-test">
     Walk through the initial setup to connect a data source and run your first query.
   </Card>
+
   <Card title="Advanced Data Modeling" icon="sitemap" href="/setting-up-wisdom-ai/advanced-data-modeling-creating-knowledge">
     Define relationships and context in your data to enable more powerful analysis.
   </Card>

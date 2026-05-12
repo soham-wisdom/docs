@@ -19,7 +19,7 @@ Before you begin, ensure you have the following:
   - Accept VPC peering requests.
   - Modify VPC route tables and security groups.
 
-## Supported Data Sources
+## Supported data sources
 
 This connection method is applicable to any supported data source you have deployed within an AWS VPC, including but not limited to:
 
@@ -27,7 +27,7 @@ This connection method is applicable to any supported data source you have deplo
 - Databricks (when deployed on AWS)
 - ClickHouse (when deployed on AWS)
 
-## Configuration Steps
+## Configuration steps
 
 1. Collect the following details from your AWS account:
    - AWS Account ID and Region of the VPC
@@ -37,7 +37,7 @@ This connection method is applicable to any supported data source you have deplo
 3. The WisdomAI team will initiate a VPC peering request. You will receive an email with the request details and instructions to accept it within your AWS Management Console.
 4. After accepting the request, you must update your VPC's route tables to direct traffic destined for the WisdomAI VPC through the peering connection. You also need to configure your security group rules to allow inbound traffic from WisdomAI's VPC CIDR. The support team will provide all necessary information for these steps.
 
-## Next Steps
+## Next steps
 
 <CardGroup cols={3}>
   <Card title="Connect to Amazon Redshift" icon="aws" href="/getting-started/connect-data-sources/connect-to-amazon-redshift">

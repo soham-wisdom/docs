@@ -30,11 +30,15 @@ createDomain(input: CreateDomainInput!): DomainModel!
   Optional description explaining the purpose and contents of the domain.
 </ParamField>
 
+<ParamField path="workspaceID" type="ID">
+  The workspace ID in which to create the domain. Defaults to the current workspace if not specified.
+</ParamField>
+
 ## Response
 
 Returns a `DomainModel` object representing the newly created domain. See [DomainModel](/integrations/graphql-api/objects/domain-model) for the schema.
 
-## Usage Example
+## Usage example
 
 Create a domain for organizing sales-related data sources:
 
@@ -85,7 +89,7 @@ curl -X POST \
 
 </ResponseExample>
 
-## Related Operation
+## Related operation
 
 <CardGroup cols={2}>
   <Card title="DomainModel Schema" icon="folder" href="/integrations/graphql-api/objects/domain-model">

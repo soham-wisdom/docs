@@ -1,0 +1,43 @@
+---
+title: "Roles"
+hidden: true
+---
+
+Roles control what a user can see and do within a WisdomAI workspace. When provisioning embedded users, pass a role ID in `roleAssignments` to grant the appropriate level of access.
+
+<Note>
+  Custom roles are not yet supported.
+</Note>
+
+## Role IDs
+
+| Role | ID |
+|------|----|
+| `SITE_ADMIN` | `00000000-0000-0000-0000-000000000014` |
+| `ADMIN` | `00000000-0000-0000-0000-000000000001` |
+| `DATA_ADMIN` | `00000000-0000-0000-0000-000000000004` |
+| `CONNECTION_ADMIN` | `00000000-0000-0000-0000-000000000005` |
+| `CREATOR` | `00000000-0000-0000-0000-000000000006` |
+| `EXPLORER` | `00000000-0000-0000-0000-000000000002` |
+| `BASIC_EXPLORER` | `00000000-0000-0000-0000-000000000015` |
+| `VIEWER` | `00000000-0000-0000-0000-000000000003` |
+| `OBSERVER` | `00000000-0000-0000-0000-000000000007` |
+| `STORY_VIEWER` | `00000000-0000-0000-0000-000000000008` |
+| `STORY_WRITER` | `00000000-0000-0000-0000-000000000009` |
+| `SCHEDULE_VIEWER` | `00000000-0000-0000-0000-000000000010` |
+| `SCHEDULE_WRITER` | `00000000-0000-0000-0000-000000000011` |
+| `AGENT_VIEWER` | `00000000-0000-0000-0000-000000000012` |
+| `AGENT_WRITER` | `00000000-0000-0000-0000-000000000013` |
+
+<Note>
+  For the full permission breakdown across all roles, see [RBAC for Embedded Users](/integrations/embeddings/rbac).
+</Note>
+
+## Used by
+
+Role IDs are passed in the `roleAssignments` field of the following mutations:
+
+- [`createUsers`](/integrations/graphql-api/mutations/user/create-users) — assign a role when provisioning a new embedded user
+- [`setUserAttributes`](/integrations/graphql-api/mutations/user/set-user-attributes) — update the role of an existing embedded user
+- [`addScopeRoleAssignmentsForSharing`](/integrations/graphql-api/mutations/dashboard/add-scope-role-assignments-for-sharing) — grant a scoped role on a specific dashboard
+- [`removeScopeRoleAssignmentsForSharing`](/integrations/graphql-api/mutations/dashboard/remove-scope-role-assignments-for-sharing) — remove a scoped role from a specific dashboard

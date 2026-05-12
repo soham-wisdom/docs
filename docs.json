@@ -7,6 +7,7 @@
     "light": "#5b52ff",
     "dark": "#5b52ff"
   },
+
   "favicon": "/favicon.webp",
   "navigation": {
     "global": {
@@ -57,7 +58,8 @@
                   "getting-started/connect-data-sources/connect-to-snowflake",
                   "getting-started/connect-data-sources/connect-mcp-server",
                   "improve-wisdom-ai-responses/connect-unstructed-repositories-datasets",
-                  "getting-started/connect-data-sources/search-the-web"
+                  "getting-started/connect-data-sources/search-the-web",
+                  "getting-started/connect-data-sources/connect-to-sharepoint"
                 ]
               }
             ]
@@ -119,22 +121,25 @@
           {
             "group": "Admin Operations",
             "pages": [
+              "using-wisdom-ai-everyday/command-palette",
               "using-wisdom-ai-everyday/work-with-csv-files",
               "using-wisdom-ai-everyday/share-dashboards-and-set-access-control",
               "using-wisdom-ai-everyday/schedule-dashboards-notifications",
               "using-wisdom-ai-everyday/auditing",
               "using-wisdom-ai-everyday/prompt-templates",
-              "using-wisdom-ai-everyday/knowledge-management-via-graph-ql-api"
+              "using-wisdom-ai-everyday/knowledge-management-via-graph-ql-api",
+              "using-wisdom-ai-everyday/request-help-from-admins"
             ]
           },
           {
             "group": "Access Management",
             "pages": [
               {
-                "group": "Row Level Access Control",
+                "group": "Data Access Control",
                 "pages": [
                   "manage-account/row-level-access-control/row-level-access-control",
-                  "manage-account/row-level-access-control/understanding-row-level-security"
+                  "manage-account/row-level-access-control/understanding-row-level-security",
+                  "manage-account/row-level-access-control/column-level-security-cls"
                 ]
               },
               "manage-account/access-management",
@@ -152,6 +157,12 @@
             ]
           },
           {
+            "group": "Settings",
+            "pages": [
+              "settings/email-access-control"
+            ]
+          },
+          {
             "group": "Advanced Features",
             "pages": [
               {
@@ -159,6 +170,9 @@
                 "pages": [
                   "advanced-features/agents/agents",
                   "advanced-features/agents/tutorial-create-agent",
+                  "advanced-features/agents/visual-mode",
+                  "advanced-features/agents/nodes-reference",
+                  "advanced-features/agents/agent-best-practices",
                   "advanced-features/agents/manage-agents",
                   "advanced-features/agents/reviewed-runs-in-agents"
                 ]
@@ -172,20 +186,33 @@
             "group": "Integrations",
             "pages": [
               "integrations/connect-to-slack",
+              "integrations/google-sheets",
               {
-                "group": "Embedding",
+                "group": "User Management",
                 "pages": [
-                  "integrations/embedding/embedding",
+                  "integrations/user-management/user-lifecycle",
+                  "integrations/user-management/user-attributes",
+                  "integrations/user-management/rbac"
+                ]
+              },
+              {
+                "group": "Embeddings",
+                "pages": [
+                  "integrations/embeddings/embedding",
+                  "integrations/embeddings/session-management",
+                  "integrations/embeddings/error-handling",
                   {
-                    "group": "Chat",
+                    "group": "iframe",
                     "pages": [
-                      "integrations/embedding/chat/embed-chat"
+                      "integrations/embeddings/embedding-modes",
+                      "integrations/embeddings/iframe/embed-chat",
+                      "integrations/embeddings/iframe/embed-a-dashboard"
                     ]
                   },
                   {
-                    "group": "Dashboard",
+                    "group": "SDK",
                     "pages": [
-                      "integrations/embedding/story/embed-a-dashboard"
+                      "integrations/embeddings/sdk/sdk-overview"
                     ]
                   }
                 ]
@@ -194,15 +221,18 @@
                 "group": "GraphQL API",
                 "pages": [
                   "integrations/graphql-api/GraphQL-API",
+                  "integrations/graphql-api/graphql-primer",
                   {
                     "group": "Objects",
                     "pages": [
                       "integrations/graphql-api/objects/ai-workstream",
                       "integrations/graphql-api/objects/attributes",
+                      "integrations/graphql-api/objects/canvas-config",
                       "integrations/graphql-api/objects/chat-message",
                       "integrations/graphql-api/objects/chat-message-diff",
                       "integrations/graphql-api/objects/chat-message-sender",
                       "integrations/graphql-api/objects/chat-thinking-effort",
+                      "integrations/graphql-api/objects/codegen-config",
                       "integrations/graphql-api/objects/connection",
                       "integrations/graphql-api/objects/conversation-update-one-of",
                       "integrations/graphql-api/objects/dashboard",
@@ -214,13 +244,19 @@
                       "integrations/graphql-api/objects/dashboard-widget",
                       "integrations/graphql-api/objects/dashboard-widget-input",
                       "integrations/graphql-api/objects/dashboards-response",
+                      "integrations/graphql-api/objects/data-label-mode",
+                      "integrations/graphql-api/objects/database-model",
+                      "integrations/graphql-api/objects/database-type",
                       "integrations/graphql-api/objects/delta",
                       "integrations/graphql-api/objects/delta-element",
                       "integrations/graphql-api/objects/delta-input",
                       "integrations/graphql-api/objects/domain-model",
+                      "integrations/graphql-api/objects/domain-rls-config",
+                      "integrations/graphql-api/objects/domain-web-search-config",
                       "integrations/graphql-api/objects/filter-applied-state",
                       "integrations/graphql-api/objects/job-status",
                       "integrations/graphql-api/objects/join-input",
+                      "integrations/graphql-api/objects/knowledge",
                       "integrations/graphql-api/objects/llm-tool-call-results",
                       "integrations/graphql-api/objects/llm-tool-calls",
                       "integrations/graphql-api/objects/operation",
@@ -234,6 +270,7 @@
                       "integrations/graphql-api/objects/user",
                       "integrations/graphql-api/objects/visualization",
                       "integrations/graphql-api/objects/visualization-type",
+                      "integrations/graphql-api/objects/viz-config",
                       "integrations/graphql-api/objects/widget-layout",
                       "integrations/graphql-api/objects/widget-layout-input",
                       "integrations/graphql-api/objects/widget-type"
@@ -245,8 +282,7 @@
                       {
                         "group": "Auth",
                         "pages": [
-                          "integrations/graphql-api/queries/auth/exchange-access-token",
-                          "integrations/graphql-api/queries/auth/impersonate-user"
+                          "integrations/graphql-api/queries/auth/exchange-access-token"
                         ]
                       },
                       {
@@ -265,7 +301,8 @@
                       {
                         "group": "User",
                         "pages": [
-                          "integrations/graphql-api/queries/user/current-user"
+                          "integrations/graphql-api/queries/user/current-user",
+                          "integrations/graphql-api/queries/user/list-users"
                         ]
                       }
                     ]
@@ -273,6 +310,12 @@
                   {
                     "group": "Mutations",
                     "pages": [
+                      {
+                        "group": "Auth",
+                        "pages": [
+                          "integrations/graphql-api/mutations/auth/impersonate-user"
+                        ]
+                      },
                       {
                         "group": "Chat",
                         "pages": [
@@ -308,9 +351,18 @@
                         ]
                       },
                       {
+                        "group": "User",
+                        "pages": [
+                          "integrations/graphql-api/mutations/user/create-users",
+                          "integrations/graphql-api/mutations/user/set-user-attributes",
+                          "integrations/graphql-api/mutations/user/delete-users-from-workspace"
+                        ]
+                      },
+                      {
                         "group": "Domain",
                         "pages": [
                           "integrations/graphql-api/mutations/domain/create-domain",
+                          "integrations/graphql-api/mutations/domain/duplicate-domain",
                           "integrations/graphql-api/mutations/domain/update-data-sources"
                         ]
                       }
@@ -363,9 +415,11 @@
             "group": "Daily Usage",
             "pages": [
               "using-wisdom-ai-everyday/ask-better-questions",
+              "using-wisdom-ai-everyday/command-palette",
               "new-releases/february-2026/ghost-text-completion",
               "improve-wisdom-ai-responses/attach-files-to-chat",
               "explorers-feedback/provide-feedback-to-the-system",
+              "new-releases/february-2026/mcp-in-dashboards",
               "using-wisdom-ai-everyday/turn-answers-into-dashboards",
               "new-releases/february-2026/dual-axis-charts"
             ]
@@ -390,7 +444,6 @@
                 "expanded": false,
                 "pages": [
                   "new-releases/february-2026/02-26-release-overview",
-                  "new-releases/february-2026/mcp-in-dashboards",
                   "new-releases/february-2026/chat-with-dashboard"
                 ]
               }
@@ -413,11 +466,16 @@
     },
     {
       "source": "/integrations/embedding/story/embed-a-story",
-      "destination": "/integrations/embedding/story/embed-a-dashboard"
+      "destination": "/integrations/embeddings/iframe/dashboard/embed-a-dashboard"
+    },
+    {
+      "source": "/integrations/embedding/story/embed-a-dashboard",
+      "destination": "/integrations/embeddings/iframe/dashboard/embed-a-dashboard"
     },
     {
       "source": "/using-wisdom-ai-everyday/turn-answers-into-stories",
-      "destination": "/using-wisdom-ai-everyday/turn-answers-into-dashboards"
+      "destination": "/using-wisdom-ai-everyday/turn-answers-into-dashboards",
+      "permanent": true
     },
     {
       "source": "/improve-wisdom-ai-responses/setting-up-wisdom-ai/manage-domains/understand-domains",
@@ -433,7 +491,8 @@
     },
     {
       "source": "/using-wisdom-ai-everyday/schedule-story-notifications",
-      "destination": "/using-wisdom-ai-everyday/schedule-dashboards-notifications"
+      "destination": "/using-wisdom-ai-everyday/schedule-dashboards-notifications",
+      "permanent": true
     },
      {
       "source": "/setting-up-wisdom-ai/document-tables-and-columns",
@@ -445,15 +504,32 @@
     },
     {
       "source": "/using-wisdom-ai-everyday/share-stories-and-set-access-control",
-      "destination": "/using-wisdom-ai-everyday/share-dashboards-and-set-access-control"
+      "destination": "/using-wisdom-ai-everyday/share-dashboards-and-set-access-control",
+      "permanent": true
     },
     {
-      "source": "/new-features",
-      "destination": "/new-releases/february-2026/02-26-release-overview"
+      "source": "integrations/connect-to-sharepoint",
+      "destination": "getting-started/connect-data-sources/connect-to-sharepoint"
     },
     {
       "source":"/new-releases/february-2026/search-the-web",
       "destination": "/getting-started/connect-data-sources/search-the-web"
+    },
+    {
+      "source": "/integrations/graphql-api/queries/auth/impersonate-user",
+      "destination": "/integrations/graphql-api/mutations/auth/impersonate-user"
+    },
+     {
+      "source": "/new-features",
+      "destination": "/new-releases/march-2026/03-26"
+    },
+     {
+      "source": "/new-releases",
+      "destination": "/new-releases/march-2026/03-26"
+    },
+    {
+      "source":"/advanced-features/agents/agent-builder",
+      "destination": "/advanced-features/agents/visual-mode"
     }
   ],
   "navbar": {

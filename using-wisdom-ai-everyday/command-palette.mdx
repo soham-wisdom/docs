@@ -1,0 +1,170 @@
+---
+title: "Command Palette"
+---
+
+The command palette is a keyboard-first launcher for WisdomAI. Open it with a single shortcut to jump to any chat, dashboard, domain, connection, or settings page, search across your workspace, or trigger actions like inviting a user or adding a new connection — without leaving the page you're on.
+
+The palette only ever shows entries you have permission to use, so the items in your palette may differ from a teammate's.
+
+## Open the command palette
+
+Press the keyboard shortcut from anywhere in WisdomAI:
+
+- **macOS:** <kbd>⌘</kbd> \+ <kbd>K</kbd>
+- **Windows / Linux:** <kbd>Ctrl</kbd> \+ <kbd>K</kbd>
+
+Press the same shortcut again, click outside the dialog, or press <kbd>Esc</kbd> to close it.
+
+<Frame>
+  ![Image](/images/image-21.png)
+</Frame>
+
+<Tip>
+  The shortcut works on every authenticated page. If nothing happens, make sure WisdomAI is the focused tab and that you don't have a system-level shortcut bound to <kbd>⌘</kbd>\+<kbd>K</kbd>.
+</Tip>
+
+## Layout
+
+When you open the palette, you see:
+
+- A **search input** at the top with the placeholder _Ask or jump to anything..._
+- A **list of items** grouped by section. The home view shows: **Quick Actions**, **Browse**, **Users**, **Profile**, and **Help**.
+- A **footer** that shows the available keyboard shortcuts for the current view.
+
+After you select a category, a **breadcrumb bar** appears above the search input with a **Back** button so you can return to the home view.
+
+## Search anything
+
+Start typing in the search input to filter across every entry in the palette — chats, dashboards, domains, connections, agents, subscriptions, settings pages, and built-in actions.
+
+WisdomAI uses fuzzy matching, so typos and partial words still surface relevant results. Each entry is also indexed by its keywords; typing `sso` finds **Single Sign-On (SSO)**, `embed` finds **Embedded Mode**, and so on.
+
+Results are ordered by relevance:
+
+1. **Exact name matches** appear first.
+2. **Quick Actions** (such as **New Chat**) and **direct navigation** entries (such as **Dashboards** or **Domains**) come next.
+3. **Action items** (entries marked with the **Action** badge) follow.
+4. **Items whose names start with your query** are then prioritized over partial matches.
+5. **Other fuzzy matches** appear at the bottom.
+
+When a result lives inside a category — for example, a specific dashboard — the palette shows a small _in \<Category\>_ hint below its name so you know where it came from.
+
+<Frame>
+  ![Image](/images/image-22.png)
+</Frame>
+
+## Navigate with the keyboard
+
+The footer always shows the shortcuts available in the current view:
+
+| Key | What it does |
+| :-- | :-- |
+| <kbd>↑</kbd> / <kbd>↓</kbd> | Move the selection up or down. |
+| <kbd>Enter</kbd> | Open the highlighted item or run the highlighted action. |
+| <kbd>Backspace</kbd> | Return to the previous view (only shown when you're inside a category and the search box is empty). |
+| <kbd>Esc</kbd> | Close the palette. |
+
+You can also click any entry with the mouse.
+
+## Browse by category
+
+The **Browse** section on the home view lists the major areas of WisdomAI. Selecting one opens its submenu, which contains the actions you can run there plus a live list of items you have access to.
+
+The categories the palette can show are:
+
+| Category | What you'll find |
+| :-- | :-- |
+| **Chats** | Your recent conversations. Selecting one opens the chat. |
+| **Agents** | The **Add Agent** and **View All Logs** actions, plus your existing agents. |
+| **Dashboards** | The **Add Dashboard** action, plus dashboards you can view. |
+| **Domains** | The **Add Domain** action, plus domains you have access to. |
+| **Connections** | The **Add Connection** action, plus your data source connections. |
+| **Playground** | Opens the SQL Playground directly. |
+| **Chat Log** | Opens the Chat Log directly. |
+| **Subscriptions** | Your scheduled dashboard and notification subscriptions. |
+| **Settings** | All settings pages, listed below. |
+| **Organizations** | The **Add Organization** action, plus organizations you can switch into. |
+
+<Note>
+  Categories whose pages don't have a submenu — such as **Playground** and **Chat Log** — navigate directly when you select them. Categories that you don't have permission for, or that aren't enabled for your instance, are hidden from the home view entirely.
+</Note>
+
+<Frame>
+  ![Image](/images/image-23.png)
+</Frame>
+
+## Run actions
+
+Some entries are **actions** rather than destinations — they are tagged with an **Action** badge in the list. Selecting an action triggers it immediately. Examples include:
+
+- **New Chat**: start a fresh conversation.
+- **Add Dashboard**, **Add Domain**, **Add Connection**, **Add Agent**, **Add Organization**: open the relevant create flow.
+- **View All Logs** (under **Agents**): jump to the agent run log.
+- **Invite Users** (under **Users**): open the invite flow.
+- **Sign out** (under **Profile**): sign out of WisdomAI.
+- **Customer Portal** (under **Profile**): open the support portal in a new tab.
+
+## Jump to settings
+
+Selecting **Settings** in the **Browse** section reveals every settings page in a single submenu, so you don't have to navigate through the sidebar to reach them. The submenu can include:
+
+- **Single Sign-On (SSO)**
+- **API Keys**
+- **Chart Colors**
+- **Embedded Mode**
+- **Slack Integration**
+- **Notifications**
+- **Email Access Control**
+
+You can also type a setting's name into the search input from the home view to jump straight to it — for example, typing `email access` highlights the [Email Access Control](/settings/email-access-control) page.
+
+<Tip>
+  The palette respects your permissions: each entry only appears if you have access to it. If a setting isn't listed, ask your administrator to grant the relevant role.
+</Tip>
+
+## Switch organizations
+
+If your WisdomAI tenant has multiple organizations and you have access to more than one, the **Organizations** category lets you switch contexts without leaving the page. Selecting an organization in the submenu loads it as your active organization and takes you to the search page in that organization.
+
+## Profile and help shortcuts
+
+Two sections at the bottom of the home view give you fast access to account-level actions:
+
+- **Profile** — Open **Profile settings**, jump to the **Customer Portal**, or **Sign out**.
+- **Help** — Open the [WisdomAI Documentation](https://docs.wisdom.ai) in a new tab.
+
+## Tips for working faster
+
+<AccordionGroup>
+  <Accordion title="Use keywords, not exact names">
+    Every entry has a list of keywords attached to it. Typing a related term — `auth` instead of `Single Sign-On`, `iframe` instead of `Embedded Mode`, `add user` instead of `Invite Users` — surfaces the right entry without you having to remember its exact label.
+  </Accordion>
+
+  <Accordion title="Stay in a category to narrow your search">
+    Open a category first (for example, **Dashboards**), then type your query. The palette restricts results to that category, which is faster than scanning a global search.
+  </Accordion>
+
+  <Accordion title="Use the palette to launch creation flows">
+    Instead of clicking **\+** buttons across multiple pages, type the entity you want to create — `add dashboard`, `add agent`, `add connection` — and run the matching action straight from the palette.
+  </Accordion>
+</AccordionGroup>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Ask Better Questions" icon="question" href="/using-wisdom-ai-everyday/ask-better-questions">
+    Build sharper natural-language questions to get more accurate answers.
+  </Card>
+
+  <Card title="Email Access Control" icon="envelope" href="/settings/email-access-control">
+    Configure who can sign in to your WisdomAI instance.
+  </Card>
+
+  <Card title="Slack" icon="slack" href="/integrations/connect-to-slack">
+    Connect WisdomAI to your Slack workspace.
+  </Card>
+
+  <Card title="Schedule Dashboards & Notifications" icon="bell" href="/using-wisdom-ai-everyday/schedule-dashboards-notifications">
+    Set up recurring dashboard updates and alerts for your team.
+  </Card>
+</CardGroup>

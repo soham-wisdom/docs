@@ -9,7 +9,7 @@ This guide provides a step-by-step walkthrough for using an entitlements table i
 - You should understand the concept of an entitlements table. See [**Understanding Row-Level Security**](understanding-row-level-access-control).
 - You should be familiar with the basic RLS configuration screen. See [**How to Configure Row-Level Security**](/row-level-access-control).
 
-## Step-by-Step Instructions
+## Step-by-step instructions
 Follow the steps below to configure an entitlements table properly.
 
 1. Navigate to your Domain and Create the Entitlements Table
@@ -32,7 +32,7 @@ CREATE TABLE user_permissions (
 - `resource_type`: Defines the category of data being restricted (e.g., 'Territory', 'Department').
 - `resource_value`: Defines the specific value the user can see (e.g., 'USA', 'Finance', or `'*'` for a wildcard).
 
-### Step 2: Populate the Table with Permissions
+### Step 2: Populate the table with permissions
 
 Once the table is created, populate it with rows that map users to the resources they are allowed to access.
 
@@ -45,7 +45,7 @@ For example:
 | john@askwisdom.ai | Department    | \*             |
 | jane@askwisdom.ai | Territory     | Germany        |
 
-### Step 3: Apply a Subquery Filter
+### Step 3: Apply a subquery filter
 
 Navigate to the RLS configuration screen for the data table you want to restrict (e.g., `sales_records`). In the SQL text box, write a `WHERE` clause that uses a subquery to look up permissions from your `user_permissions` table.
 
@@ -68,7 +68,7 @@ territory IN (
 )
 ```
 
-### Step 4: Preview and Save
+### Step 4: Preview and save
 
 Follow the standard workflow to preview and save your configuration.
 

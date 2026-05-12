@@ -1,0 +1,26 @@
+---
+title: "CodegenConfig"
+---
+
+This page describes the CodegenConfig object that represents the schema for domain code generation configuration.
+
+## CodegenConfig
+
+<ParamField path="chatThinkingEffort" type="ChatThinkingEffort!" required>
+  Level of thinking effort for AI code generation. See [ChatThinkingEffort](/integrations/graphql-api/objects/chat-thinking-effort).
+</ParamField>
+
+<ParamField path="includeTodayDateReference" type="Boolean!" required>
+  Whether to include today's date as a reference in generated queries.
+</ParamField>
+
+## Related operations
+
+<CardGroup cols={2}>
+  <Card title="DomainModel Object" icon="folder" href="/integrations/graphql-api/objects/domain-model">
+    Parent domain structure
+  </Card>
+  <Card title="ChatThinkingEffort Enum" icon="list" href="/integrations/graphql-api/objects/chat-thinking-effort">
+    AI thinking effort levels
+  </Card>
+</CardGroup>
