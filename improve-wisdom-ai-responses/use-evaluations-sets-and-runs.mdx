@@ -16,31 +16,18 @@ To create an Evaluation Set:
 
 ![Image showing the Evaluations tab](/images/add-evaluation.png)
 
-4. Fill out the **Add Evaluation** Form, providing a set **Name** and an array of prompts in JSON format, optionally including the expected SQL.
+4. Fill out the **Add Evaluation** Form, providing a set **Name** and presenting a natural language query. Optionally, you can import CSV and also ground truth SQL.
+5. Click on **Create Evaluation Set**. The new Evaluation set will appear listed.
 
-   <Tip>
-     The array you provide defines how many conversations will be created. Each _top-level element_ in the array represents a conversation:
-
-     ✔ If it's a string or an object → You get a single-message conversation\
-     ✔ If it's an array → You create a multi-message conversation
-
-     For example, this input:\
-     `["prompt1", ["prompt2.1", "prompt2.2"], "prompt3"]`\
-     creates **3 conversations**: the first and third with one message each, and the second with two messages.
-
-     You can structure the arrays in any way, mixing single and multi-message conversations as required.
-   </Tip>
-5. Click on **Save**. The new Evaluation set will appear listed.
-
-![Image showing the Add Evaluations form](/images/add-evaluation-form.png)
+![new-ui-evaluetion-set](/images/new-ui-evaluetion-set.png)
 
 ## Evaluation Runs
 
 Evaluation Runs are where the AI processes your defined Evaluation Sets. After running these evaluations, you can review the results to identify areas for improvement.
 
-To run an Evaluation, go to the **Evaluations Set** tab, select an evaluation, and click on **Run**. You will see the results in the Evaluation Runs tab.
+To run an Evaluation, go to the **Evaluations Set** tab, select an evaluation, and click on the **run icon**. You will see the results in the Evaluation Runs tab.
 
-![Run Evaluation Pn](/images/run-evaluation.png)
+![run-action-icon](/images/run-action-icon.png)
 
 ### Evaluation Run indicators
 
@@ -49,7 +36,7 @@ Evaluation Run Indicators provide a concise overview of the Run's progress and o
 - **Status:** Signals its progress or completion.
   - Running: The evaluation run is currently in progress.
   - Completed: The evaluation run has finished successfully.
-- **Score:** Reflects the result of the completed Evaluation. It tells you how many conversations passed based on the predefined **evaluation criteria** (i.e., Prompt + Expected SQL result added in the Evaluation set modal).
+- **Score:** Reflects the result of the completed Evaluation. It tells you how many conversations passed based on the predefined **evaluation criteria** (i.e., Prompt \+ Expected SQL result added in the Evaluation set modal).
 
 <Tip>
   The Score evaluation criteria refer to how much the generated answer matches the expected SQL result defined previously.
@@ -72,12 +59,12 @@ For each session, the report is broken down into several components, allowing yo
 - **Session Title:** This states the query or task that was evaluated for that particular session (e.g., "Calculate total revenue for closed won opportunities using ACV.").
 - **Evaluation Details:** This expandable section provides specific insights into the session's outcome. The core components are detailed in the table below.
 
-| Component            | Description                                                                                                     |
-| :------------------- | :-------------------------------------------------------------------------------------------------------------- |
-| **Prompt**           | The specific input prompt that was used for the session.                                                        |
-| **Manual Score**     | An option for you to manually score the Evaluation (✅ or ❌), which overrides the automated score.               |
-| **Automated Score**  | The system automatically assigns the score. This corresponds to the **Soft Match**.                             |
-| **Ground Truth**     | The expected or correct outcome, typically the ideal SQL query (`SELECT SUM(amount) FROM Opportunity`).         |
+| Component | Description |
+| :-- | :-- |
+| **Prompt** | The specific input prompt that was used for the session. |
+| **Manual Score** | An option for you to manually score the Evaluation (✅ or ❌), which overrides the automated score. |
+| **Automated Score** | The system automatically assigns the score. This corresponds to the **Soft Match**. |
+| **Ground Truth** | The expected or correct outcome, typically the ideal SQL query (`SELECT SUM(amount) FROM Opportunity`). |
 | **Generated Result** | The output produced by the system, including the generated SQL query and the final result (e.g., `"$137.55M"`). |
 
 ![Gif showing the Session Details](/images/session-details.gif)
@@ -102,12 +89,15 @@ Navigating the report helps you understand the system's processing, verify gener
   <Card title="Manage Domains" icon="sliders" href="setting-up-wisdom-ai/manage-domains/understand-domains">
     Manage and customize your data domains to refine context and improve query results.
   </Card>
+
   <Card title="Auditing" icon="clipboard-list" href="/using-wisdom-ai-everyday/auditing">
     Organize insights by tagging chats, navigating history, and sharing vetted answers with your team.
   </Card>
+
   <Card title="Basic Tutorial: Connect and Test" icon="rocket" href="/setting-up-wisdom-ai/basic-tutorial-connect-and-test">
     Walk through the initial setup to connect a data source and run your first query.
   </Card>
+
   <Card title="Advanced Data Modeling" icon="sitemap" href="/setting-up-wisdom-ai/advanced-data-modeling-creating-knowledge">
     Define relationships and context in your data to enable more powerful analysis.
   </Card>
