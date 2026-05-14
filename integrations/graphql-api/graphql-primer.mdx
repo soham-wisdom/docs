@@ -8,14 +8,14 @@ If you're used to REST APIs, GraphQL has a few key differences worth knowing bef
 
 Unlike REST, which uses many endpoints (`GET /users`, `POST /dashboards`, etc.), GraphQL uses a **single endpoint** for all operations:
 
-```
+```text
 https://{ACCOUNT}.askwisdom.ai/graphql
 ```
 
 Every request is a **POST** with a JSON body containing two fields:
 
 | Field | Description |
-|-------|-------------|
+| --- | --- |
 | `query` | The GraphQL operation (query or mutation) as a string |
 | `variables` | A JSON object with input values referenced in the query |
 
@@ -89,7 +89,7 @@ To call the WisdomAI GraphQL API from Postman:
 ## Common mistakes
 
 | Mistake | Fix |
-|---------|-----|
+| --- | --- |
 | Missing `Content-Type: application/json` | Always include this header — without it, the server can't parse the body |
 | Sending the query as a URL parameter | GraphQL queries go in the POST body, not the URL |
 | Not requesting return fields on mutations | Include `status { code message }` (or other fields) in your mutation or they won't be returned |
@@ -101,12 +101,15 @@ To call the WisdomAI GraphQL API from Postman:
   <Card title="GraphQL API overview" icon="code" href="/integrations/graphql-api/GraphQL-API">
     Endpoint, authentication, and error handling
   </Card>
+
   <Card title="User management" icon="users" href="/integrations/graphql-api/user-management">
     Create, update, and manage users via API
   </Card>
+
   <Card title="Queries" icon="magnifying-glass" href="/integrations/graphql-api/queries">
     Available read operations
   </Card>
+
   <Card title="Mutations" icon="pen-to-square" href="/integrations/graphql-api/mutations">
     Available write operations
   </Card>

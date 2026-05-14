@@ -11,9 +11,21 @@ Follow the steps below to connect your Amazon S3 bucket as a data source.
 1. Access your domain and, in the **Overview** tab, click **Add Data Source**.
 2. In the modal that opens, select **Connect another source** from the **Data Source** selector.
 3. Click **Add Data Source** to continue.
-
    <Frame>
-     ![Domain Add Data Source](/images/domain-add-data-source.png)
+     <img
+       src="/dark-img/add-data-source.png"
+       alt="Domain Add Data Source"
+       lightAlt="Domain Add Data Source"
+       darkAlt="Domain Add Data Source"
+       className="hidden dark:block"
+     />
+     <img
+       src="/images/domain-add-data-source.png"
+       alt="Domain Add Data Source"
+       lightAlt="Domain Add Data Source"
+       darkAlt="Domain Add Data Source"
+       className="dark:hidden"
+     />
    </Frame>
 4. Select **Connect to Data store or MCP server**, then provide the following **Connection Details**:
    - **Connection name**
@@ -24,7 +36,6 @@ Follow the steps below to connect your Amazon S3 bucket as a data source.
      - **Access Key & Secret Key**: Provide the **Region**, **AWS Access Key ID**, and **AWS Secret Access Key**.
      - **Cross-Account Role**: Provide the **AWS Account ID** that has access to the bucket and the **AWS Role Name**.
 6. Click **Select Data** to continue.
-
    <Frame>
      ![Domain Add Data Source Select Data](/images/domain-add-data-source-select-data.png)
    </Frame>
@@ -34,16 +45,19 @@ Follow the steps below to connect your Amazon S3 bucket as a data source.
 ## Next steps
 
 <CardGroup cols={2}>
-  <Card icon="sliders" href="/setting-up-wisdom-ai/manage-domains/understand-domains" title="Manage Domains">
+  <Card title="Manage Domains" icon="sliders" href="/setting-up-wisdom-ai/manage-domains/understand-domains">
     Manage and customize your data domains to refine context and improve query results.
   </Card>
-  <Card icon="clipboard-list" href="/using-wisdom-ai-everyday/auditing" title="Auditing">
+
+  <Card title="Auditing" icon="clipboard-list" href="/using-wisdom-ai-everyday/auditing">
     Organize insights by tagging chats, navigating history, and sharing vetted answers with your team.
   </Card>
-  <Card icon="rocket" href="/setting-up-wisdom-ai/basic-tutorial-connect-and-test" title="Basic Tutorial: Connect and Test">
+
+  <Card title="Basic Tutorial: Connect and Test" icon="rocket" href="/setting-up-wisdom-ai/basic-tutorial-connect-and-test">
     Walk through the initial setup to connect a data source and run your first query.
   </Card>
-  <Card icon="sitemap" href="/setting-up-wisdom-ai/advanced-data-modeling-creating-knowledge" title="Advanced Data Modeling">
+
+  <Card title="Advanced Data Modeling" icon="sitemap" href="/setting-up-wisdom-ai/advanced-data-modeling-creating-knowledge">
     Define relationships and context in your data to enable more powerful analysis.
   </Card>
 </CardGroup>

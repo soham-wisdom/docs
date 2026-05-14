@@ -135,10 +135,11 @@
             "group": "Access Management",
             "pages": [
               {
-                "group": "Row Level Access Control",
+                "group": "Data Access Control",
                 "pages": [
                   "manage-account/row-level-access-control/row-level-access-control",
-                  "manage-account/row-level-access-control/understanding-row-level-security"
+                  "manage-account/row-level-access-control/understanding-row-level-security",
+                  "manage-account/row-level-access-control/column-level-security-cls"
                 ]
               },
               "manage-account/access-management",
@@ -507,10 +508,6 @@
       "permanent": true
     },
     {
-      "source": "/new-features",
-      "destination": "/new-releases/february-2026/02-26-release-overview"
-    },
-    {
       "source": "integrations/connect-to-sharepoint",
       "destination": "getting-started/connect-data-sources/connect-to-sharepoint"
     },
@@ -521,6 +518,14 @@
     {
       "source": "/integrations/graphql-api/queries/auth/impersonate-user",
       "destination": "/integrations/graphql-api/mutations/auth/impersonate-user"
+    },
+     {
+      "source": "/new-features",
+      "destination": "/new-releases/march-2026/03-26"
+    },
+     {
+      "source": "/new-releases",
+      "destination": "/new-releases/march-2026/03-26"
     },
     {
       "source":"/advanced-features/agents/agent-builder",
