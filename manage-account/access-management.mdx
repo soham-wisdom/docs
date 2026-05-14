@@ -20,8 +20,9 @@ The Administrator is the superuser of the WisdomAI platform with full system-wid
 - **Manage users and roles**: Invite or remove users, assign or modify roles, and oversee access permissions.
 - **Manage Domains**: Configure and maintain organizational Domains within WisdomAI.
 - **Connect and organize data**: Link external data sources, manage schemas (i.e., the structure of tables and relationships), and context import, which ingests business rules and data dictionaries.
-- **Oversee your organization's content**: Review, publish, or unpublish key assets, such as dashboards and models, to control visibility and access.
-- **Monitor and audit activity**: Track system usage, access logs, and platform health metrics to ensure smooth operation.
+- **Oversee your organization's content**: Review, publish, or unpublish key assets, such as dashboards and models, to control visibility and access. Edit and manage all dashboards and schedules.
+- **Monitor and audit activity**: Track system usage, access logs, and platform health metrics to ensure smooth operation. View all conversations from all users in the workspace.
+- **Manage integrations**: Connect Slack and configure workspace-level integrations and settings.
 
 <Info>
   Every WisdomAI instance must have at least one Administrator.
@@ -29,12 +30,15 @@ The Administrator is the superuser of the WisdomAI platform with full system-wid
 
 ### Data Administrator
 
-The Data Administrator manages and prepares data assets within specific Domains. They do not have global system permissions, but can:
+The Data Administrator manages and prepares data assets within specific Domains they have been assigned to. They do not have global system permissions, but can:
 
 - **Connect Domain-level data**: Set up and configure data sources for their assigned Domains.
 - **Model business context**: Define metrics, entities, and relationships relevant to their Domain.
 - **Manage content**: Create and maintain Dashboards and Domain-specific assets, as well as manage access to Dashboards and Reports.
-- **Apply data policies**: Set row-level and column-level access rules and validation policies.
+- **Apply data policies**: Set row-level and column-level access rules and validation policies. Bypass row-level security to view all underlying data when needed.
+- **Manage AI agents**: Create, edit, and manage AI agents for automated data workflows within the Domain.
+- **Run evaluations**: Create and run evaluation sets to assess domain quality, and view the questions log and SQL execution history.
+- **Administer the Domain**: Manage recommended questions, invite users to the Domain, and access the SQL playground and system monitoring.
 - **Collaborate with Explorers**: Ensure data is usable, discoverable, and tailored to user needs.
 
 <Info>
@@ -43,14 +47,13 @@ The Data Administrator manages and prepares data assets within specific Domains.
 
 ### Explorer
 
-Explorers are data consumers. They use WisdomAI to explore, analyze, and interact with data through dashboards and chat. They can:
+Explorers are data consumers. They use WisdomAI to explore, analyze, and interact with data through dashboards and chat — within the Domains they have been given access to. They can:
 
 - **Ask questions**: Use natural language chat to query data.
 - **Leverage enterprise context**: Access and utilize organizational knowledge directly within the chat to ground responses in business-specific logic.
-- **Explore Dashboards**: View and interact with published Dashboards and Dashboards.
-- **Share insights**: Export results to Slack or email and share findings with others.
-- **Save views**: Bookmark visualizations or findings for later use.
-- **Access Reports**: View and interact with published reports (Access to Reports).
+- **Work with SQL**: Execute and edit the SQL powering any chart or visualization in chat, and expand AI workstream details to inspect the reasoning behind a result.
+- **Create dashboards and reports**: Build new dashboards and set up scheduled reports to share findings with the team. Can also view dashboards that have been shared with all users in the organization, or that have been shared directly with them.
+- **Share insights**: Export results to Slack or email, share content with specific users, and save views for later use.
 
 <Info>
   Explorers cannot manage data sources, users, or settings.
@@ -60,7 +63,7 @@ Explorers are data consumers. They use WisdomAI to explore, analyze, and interac
 
 The Observer role provides "read-only" access to the platform. This role is ideal for stakeholders who need to see high-level results without interacting with the underlying data or creating new content.
 
-- **Read-only access**: View published Dashboards and Reports.
+- **Read-only access**: View dashboards that have been shared with all users in the organization, or that have been shared directly with them.
 - **No Resource Creation**: Cannot create dashboards or data models.
 - **No Chat Interaction**: Cannot use the natural language chat to query data.
 

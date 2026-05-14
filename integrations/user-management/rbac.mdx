@@ -13,7 +13,7 @@ Embedded users inherit WisdomAI's role-based access control (RBAC) system. The r
 Visibility of edit controls, dashboard creation buttons, and AI workstreams is determined by the user's role assignment. To **hide edit controls in an embedded dashboard**, assign the user the **Viewer** role. This role is pure read-only and cannot create or modify any resources.
 
 <Note>
-  For a full breakdown of what each role can access, see the [Roles & Permission Reference](#roles-&-permission-reference) below.
+  For a full breakdown of what each role can access, see [Roles & permission reference](#roles-&-permission-reference) below.
 </Note>
 
 ## Assigning a role at provisioning time
@@ -64,24 +64,11 @@ Role IDs are used in the `roleAssignments` field of the following mutations:
 
 ## Roles & permission reference
 
-The tables below show the full permission breakdown across all roles and resource types. Use these as a reference when deciding which role to assign for a given use case.
+The tables below show the full permission breakdown across all roles and resource types. Use these as a reference when deciding which role to assign for a given use case. For a description of what each role can do, see [Access Management](/manage-account/access-management).
 
 <Note>
   In the API, **Story** refers to **Dashboards**. Roles labeled **Writer** grant edit access to existing resources but do not grant permission to create new ones.
 </Note>
-
-<Accordion title="Role scope & capabilities">
-  | Role | Scope | Dashboards | Chat / Q&A | SQL editing | AI workstream | Create resources |
-  | --- | --- | :-: | :-: | :-: | :-: | :-: |
-  | `ADMIN` | Organization | Create, Read, Clone | Create | Yes | Yes | Yes |
-  | `DATA_ADMIN` | Domain | Create, Read, Clone | Create | Yes | Yes | Yes |
-  | `EXPLORER` | Domain | Create, Read (owned or assigned) | Create | Yes | Yes | No |
-  | `BASIC_EXPLORER` | Domain | Create, Read (owned or assigned) | Create | No | No | No |
-  | `VIEWER` | Organization | Read only | Read only | No | No | No |
-  | `OBSERVER` | Organization | No | No | No | No | No |
-
-  **Column key:** `AD` (Admin) · `DA` (Data Admin) · `EX` (Explorer) · `BE` (Basic Explorer) · `VI` (Viewer) · `OB` (Observer)
-</Accordion>
 
 <Accordion title="Granular permissions">
   <Accordion title="Chat">
