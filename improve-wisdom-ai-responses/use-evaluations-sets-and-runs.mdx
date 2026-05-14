@@ -18,7 +18,7 @@ To create an Evaluation Set:
   alt="Image showing the Evaluations tab"
   lightAlt="Image showing the Evaluations tab"
   darkAlt="Image showing the Evaluations tab"
-  src="/images/add-evaluation.png"
+  src="/images/add-evaluation-set-01.png"
   className="dark:hidden"
 />
 <img
@@ -29,20 +29,20 @@ To create an Evaluation Set:
   className="hidden dark:block"
 />
 
-4. Fill out the **Add Evaluation** Form, providing a set **Name** and an array of prompts in JSON format, optionally including the expected SQL.
+4. Fill out the **Add Evaluation** Form, providing a set **Name** and presenting a natural language query. Optionally, you can import CSV and also ground truth SQL.
    <Tip>
      The array you provide defines how many conversations will be created. Each _top-level element_ in the array represents a conversation: ✔ If it's a string or an object → You get a single-message conversation\
      ✔ If it's an array → You create a multi-message conversation For example, this input:\
      `["prompt1", ["prompt2.1", "prompt2.2"], "prompt3"]`\
      creates **3 conversations**: the first and third with one message each, and the second with two messages. You can structure the arrays in any way, mixing single and multi-message conversations as required.
    </Tip>
-5. Click on **Save**. The new Evaluation set will appear listed.
+5. Click on **Create Evaluation Set**. The new Evaluation set will appear listed.
 
 <img
   alt="Image showing the Add Evaluations form"
   lightAlt="Image showing the Add Evaluations form"
   darkAlt="Image showing the Add Evaluations form"
-  src="/images/add-evaluation-form.png"
+  src="/images/new-ui-evaluetion-set.png"
   className="dark:hidden"
 />
 <img
@@ -63,7 +63,7 @@ To run an Evaluation, go to the **Evaluations Set** tab, select an evaluation, a
   alt="Run Evaluation Pn"
   lightAlt="Run Evaluation Pn"
   darkAlt="Run Evaluation Pn"
-  src="/images/run-evaluation.png"
+  src="/images/run-action-icon.png"
   className="dark:hidden"
 />
 <img
@@ -177,17 +177,17 @@ For each session, the report is broken down into several components, allowing yo
   - **Reviewed Status**: Confirms whether the response has been reviewed and summarizes the outcome (e.g., "The user received a complete response... so no further action or information is needed.").
 
 <img
-  src="/images/conversation-detailed.gif"
   alt="Gif showing the Conversation in Detail"
   lightAlt="Gif showing the Conversation in Detail"
   darkAlt="Gif showing the Conversation in Detail"
+  src="/images/conversation-detailed.gif"
   className="dark:hidden"
 />
 <img
-  src="/dark-img/conversation-detailed.gif"
   alt="Gif showing the Conversation in Detail"
   lightAlt="Gif showing the Conversation in Detail"
   darkAlt="Gif showing the Conversation in Detail"
+  src="/dark-img/conversation-detailed.gif"
   className="hidden dark:block"
 />
 
