@@ -159,6 +159,7 @@
           {
             "group": "Settings",
             "pages": [
+              "settings/api-keys",
               "settings/email-access-control"
             ]
           },
