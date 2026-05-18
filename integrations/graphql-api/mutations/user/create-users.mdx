@@ -31,7 +31,7 @@ createUsers(input: CreateUsersInput!): CreateUsersResponse!
 </ParamField>
 
 <ParamField path="roleAssignments" type="[RoleAssignmentInput!]">
-  Role assignments for the new users. Each entry specifies a `roleId` and `scopes`. See [RoleAssignmentInput](/integrations/graphql-api/objects/role-assignment-input).
+  Role assignments for the new users. Each entry specifies a `roleId` and `scopes` (`RoleAssignmentInput`).
 
   For embedded dashboards, assign the Viewer role to hide edit controls:
   ```json
@@ -44,7 +44,7 @@ createUsers(input: CreateUsersInput!): CreateUsersResponse!
 </ParamField>
 
 <ParamField path="userAttributes" type="[UserAttributeInput!]">
-  Key-value pairs for parameterized connections and row-level data access. These are stored as DATABASE-sourced attributes. See [User attributes](/integrations/embeddings/user-attributes).
+  Key-value pairs for parameterized connections and row-level data access. These are stored as DATABASE-sourced attributes. See [User attributes](/integrations/user-management/user-attributes).
 </ParamField>
 
 <ParamField path="userGroupIds" type="[ID!]">
@@ -170,7 +170,7 @@ curl -s -X POST \
   <Card title="Impersonate user" icon="user-secret" href="/integrations/graphql-api/mutations/auth/impersonate-user">
     Generate a session JWT for the created user
   </Card>
-  <Card title="User attributes" icon="list" href="/integrations/embeddings/user-attributes">
+  <Card title="User attributes" icon="list" href="/integrations/user-management/user-attributes">
     How attributes control data access
   </Card>
   <Card title="Embedding overview" icon="code" href="/integrations/embeddings/embedding">
