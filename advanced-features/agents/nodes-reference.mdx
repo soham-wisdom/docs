@@ -1,8 +1,8 @@
----
+﻿---
 title: "Nodes Reference"
 ---
 
-Nodes are the building blocks of a [Visual Mode agent](/advanced-features/agents/agent-builder). Each node is a modular instruction that performs one focused task: fetching data, running analysis, applying a condition, or delivering a result.
+Nodes are the building blocks of a [Visual Mode agent](/advanced-features/agents/visual-mode). Each node is a modular instruction that performs one focused task: fetching data, running analysis, applying a condition, or delivering a result.
 
 <Note>
   **How nodes connect:** **Edges** connect nodes and define two things: the order of execution and the flow of data. Nodes connected in sequence run one after another. Nodes connected in parallel run at the same time. A node can only access data from the nodes that feed directly into it, but during execution, each node is automatically aware of the upstream context it depends on, so the workflow stays coherent end-to-end.
@@ -156,7 +156,7 @@ The delivery node types are:
 ## Next steps
 
 <CardGroup cols={2}>
-  <Card title="Build an Agent in Visual Mode" icon="diagram-project" href="/advanced-features/agents/agent-builder">
+  <Card title="Build an Agent in Visual Mode" icon="diagram-project" href="/advanced-features/agents/visual-mode">
     Step-by-step guide to building your first Visual Mode agent.
   </Card>
 

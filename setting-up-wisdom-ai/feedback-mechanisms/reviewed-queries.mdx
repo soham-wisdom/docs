@@ -1,4 +1,4 @@
----
+﻿---
 title: "Reviewed Queries"
 ---
 
@@ -186,7 +186,7 @@ While reviewed queries are powerful, some complex business rules are best enforc
 
 For instance, imagine you have a `statewise_population` table with a pre-aggregated `country_population` column. Summing this column across multiple states from the same country would lead to massive double-counting.
 
-While a validated query can show the correct way to get the population, adding a clear instruction in [language knowledge](/setting-up-wisdom-ai/advanced-data-modeling-creating-knowledge#natural-language-context) provides an extra layer of protection against mistakes:
+While a validated query can show the correct way to get the population, adding a clear instruction in [language knowledge](/setting-up-wisdom-ai/advanced-data-modeling-creating-context#natural-language-context) provides an extra layer of protection against mistakes:
 
 **Instruction Example:** “Never sum up the `country_population` column across different rows for the same country.”
 
@@ -231,7 +231,7 @@ As a Domain Data Admin, you can edit a reviewed query or reopen the conversation
     Track and analyze negative user feedback to identify areas for system improvement.
   </Card>
 
-  <Card title="Turn Answers into Dashboards" icon="book-open" href="/using-wisdom-ai-everyday/turn-answers-into-stories">
+  <Card title="Turn Answers into Dashboards" icon="book-open" href="/using-wisdom-ai-everyday/turn-answers-into-dashboards">
     Compile key insights and visualizations into a shareable, narrative-driven report.
   </Card>
 </CardGroup>
