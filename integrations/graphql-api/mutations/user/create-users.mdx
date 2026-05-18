@@ -31,7 +31,7 @@ createUsers(input: CreateUsersInput!): CreateUsersResponse!
 </ParamField>
 
 <ParamField path="roleAssignments" type="[RoleAssignmentInput!]">
-  Role assignments for the new users. Each entry specifies a `roleId` and `scopes`. See [RoleAssignmentInput](/integrations/graphql-api/objects/role-assignment-input).
+  Role assignments for the new users. Each entry specifies a `roleId` and `scopes` (`RoleAssignmentInput`).
 
   For embedded dashboards, assign the Viewer role to hide edit controls:
   ```json

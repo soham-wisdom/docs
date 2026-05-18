@@ -18,7 +18,7 @@ To create an Evaluation Set:
   alt="Image showing the Evaluations tab"
   lightAlt="Image showing the Evaluations tab"
   darkAlt="Image showing the Evaluations tab"
-  src="/images/add-evaluation.png"
+  src="/images/add-evaluation-set-01.png"
   className="dark:hidden"
 />
 <img
@@ -29,20 +29,14 @@ To create an Evaluation Set:
   className="hidden dark:block"
 />
 
-4. Fill out the **Add Evaluation** Form, providing a set **Name** and an array of prompts in JSON format, optionally including the expected SQL.
-   <Tip>
-     The array you provide defines how many conversations will be created. Each _top-level element_ in the array represents a conversation: ✔ If it's a string or an object → You get a single-message conversation\
-     ✔ If it's an array → You create a multi-message conversation For example, this input:\
-     `["prompt1", ["prompt2.1", "prompt2.2"], "prompt3"]`\
-     creates **3 conversations**: the first and third with one message each, and the second with two messages. You can structure the arrays in any way, mixing single and multi-message conversations as required.
-   </Tip>
-5. Click on **Save**. The new Evaluation set will appear listed.
+4. Fill out the **Create Evaluation Set** Form, providing a set **Name** and presenting a natural language query. Optionally, you can import CSV and also ground truth SQL.
+5. Click on **Create Evaluation Set**. The new Evaluation set will appear listed.
 
 <img
   alt="Image showing the Add Evaluations form"
   lightAlt="Image showing the Add Evaluations form"
   darkAlt="Image showing the Add Evaluations form"
-  src="/images/add-evaluation-form.png"
+  src="/images/new-ui-evaluetion-set.png"
   className="dark:hidden"
 />
 <img
@@ -63,7 +57,7 @@ To run an Evaluation, go to the **Evaluations Set** tab, select an evaluation, a
   alt="Run Evaluation Pn"
   lightAlt="Run Evaluation Pn"
   darkAlt="Run Evaluation Pn"
-  src="/images/run-evaluation.png"
+  src="/images/run-action-icon.png"
   className="dark:hidden"
 />
 <img
@@ -114,14 +108,14 @@ When you click the **View Report** option, you will see comprehensive details ab
   alt="View Report 01v2 Gi"
   lightAlt="View Report 01v2 Gi"
   darkAlt="View Report 01v2 Gi"
-  src="/images/view-report-01v2.gif"
+  src="/images/view-report-01v2-1.gif"
   className="dark:hidden"
 />
 <img
   alt="View Report 01v2 Gi"
   lightAlt="View Report 01v2 Gi"
   darkAlt="View Report 01v2 Gi"
-  src="/dark-img/view-report-01v2.gif"
+  src="/images/view-report-dk.gif"
   className="hidden dark:block"
 />
 
@@ -142,14 +136,14 @@ For each session, the report is broken down into several components, allowing yo
   alt="Gif showing the Session Details"
   lightAlt="Gif showing the Session Details"
   darkAlt="Gif showing the Session Details"
-  src="/images/session-details.gif"
+  src="/images/evaluation-inspec-1.gif"
   className="dark:hidden"
 />
 <img
   alt="Gif showing the Session Details"
   lightAlt="Gif showing the Session Details"
   darkAlt="Gif showing the Session Details"
-  src="/dark-img/session-details.gif"
+  src="/images/evaluation-inspec-v2.gif"
   className="hidden dark:block"
 />
 
@@ -177,17 +171,19 @@ For each session, the report is broken down into several components, allowing yo
   - **Reviewed Status**: Confirms whether the response has been reviewed and summarizes the outcome (e.g., "The user received a complete response... so no further action or information is needed.").
 
 <img
-  src="/images/conversation-detailed.gif"
-  alt="Gif showing the Conversation in Detail"
+  alt="Show Chat V2"
   lightAlt="Gif showing the Conversation in Detail"
   darkAlt="Gif showing the Conversation in Detail"
+  title="Show Chat V2"
+  src="/images/show-chat-1f.gif"
   className="dark:hidden"
 />
 <img
-  src="/dark-img/conversation-detailed.gif"
-  alt="Gif showing the Conversation in Detail"
+  alt="Show Chat V2"
   lightAlt="Gif showing the Conversation in Detail"
   darkAlt="Gif showing the Conversation in Detail"
+  title="Show Chat V2"
+  src="/images/show-chat-v3.gif"
   className="hidden dark:block"
 />
 
