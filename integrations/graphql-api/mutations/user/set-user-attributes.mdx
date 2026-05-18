@@ -5,7 +5,7 @@ title: "Set User Attributes"
 The `setUserAttributes` mutation updates the DATABASE-sourced attributes for an existing user. Use this to update persistent key-value pairs that control parameterized connections and row-level data access.
 
 <Warning>
-  This mutation **replaces all DATABASE-sourced attributes** on the user. Any attributes not included in the new list will be removed. JWT-sourced attributes (from SSO claims) are not affected. See [User attributes](/integrations/embeddings/user-attributes) for the difference between attribute sources.
+  This mutation **replaces all DATABASE-sourced attributes** on the user. Any attributes not included in the new list will be removed. JWT-sourced attributes (from SSO claims) are not affected. See [User attributes](/integrations/user-management/user-attributes) for the difference between attribute sources.
 </Warning>
 
 ## Signature
@@ -96,7 +96,7 @@ curl -s -X POST \
 ## Related articles
 
 <CardGroup cols={2}>
-  <Card title="User attributes" icon="list" href="/integrations/embeddings/user-attributes">
+  <Card title="User attributes" icon="list" href="/integrations/user-management/user-attributes">
     Understand attribute sources and how they interact
   </Card>
   <Card title="Impersonate user" icon="user-secret" href="/integrations/graphql-api/mutations/auth/impersonate-user">
