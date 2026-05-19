@@ -72,7 +72,7 @@ Follow the steps below to:
 
 ## Connect WisdomAI to BigQuery
 
-Once you have gathered the required information, you can configure the connection in WisdomAl:
+Once you have set up the prerequisites, you can configure the connection in WisdomAl:
 
 1. In WisdomAl, navigate to the **Connections** section and click **Add Connection**.
 2. Select **BigQuery** as the data source type.
@@ -80,8 +80,8 @@ Once you have gathered the required information, you can configure the connectio
    - **Connection Name:** Choose a descriptive name for your connection (e.g., "BigQuery Prod").
    - **Project Id:** Provide your Google Cloud Project ID (this is usually found on your GCP console dashboard).
    - **Service Account Info JSON:** Paste the contents of the JSON key file.
-   - **Dataset Filters (Optional):** Specify any Dataset Filters if you want to further restrict the datasets WisdomAl crawls.
-4. Click **Save and Sync metadata**. WisdomAl will use the provided credentials to connect to BigQuery, scan the metadata of the specified datasets, and tables.
+   - **Dataset Filters (Optional):** Specify any Dataset Filters to further restrict the datasets WisdomAl crawls.
+4. Click **Save and Sync metadata**. WisdomAl will use the provided credentials to connect to BigQuery, scan the metadata of the specified datasets and tables.
 
 <img
   alt="image.png"
@@ -186,6 +186,7 @@ To save the connection, follow these steps:
 ## Troubleshooting common issues
 
 Facing issues? Here are solutions to some frequently encountered problems.
+
 <AccordionGroup>
   <Accordion title="Authentication failed or invalid credentials.">
     If you're facing this issue, try:
@@ -193,12 +194,14 @@ Facing issues? Here are solutions to some frequently encountered problems.
     - Ensure the JSON key file you pasted is complete and correct. No extra characters, spaces, or missing lines.
     - Verify that the `project_id` in the JSON key matches the project ID you're trying to connect to.
   </Accordion>
+
   <Accordion title="Permission denied errors">
     If you're facing this issue, try:
 
     - Double-check that the service account has all three required roles (**BigQuery Data Viewer**, **BigQuery Job User**, **BigQuery Read Session User**) assigned correctly at either the project or dataset level.
     - Confirm that the BigQuery API is enabled in your Google Cloud Project.
   </Accordion>
+
   <Accordion title="Dataset not found or table not found">
     If you're facing this issue, try:
 
@@ -209,6 +212,24 @@ Facing issues? Here are solutions to some frequently encountered problems.
 </AccordionGroup>
 
 ## Next steps
+
+<img
+  src="/images/create-client-oauth.png"
+  className="dark:hidden"
+/>
+<img
+  src="dark-img/bigquery-dark.png"
+  className="hidden dark:block"
+/>
+
+<img
+  src="/images/create-client-oauth.png"
+  className="dark:hidden"
+/>
+<img
+  src="dark-img/bigquery-dark.png"
+  className="hidden dark:block"
+/>
 
 <CardGroup cols={3}>
   <Card title="Connect to Snowflake" icon="snowflake" href="/getting-started/connect-data-sources/connect-to-snowflake">
