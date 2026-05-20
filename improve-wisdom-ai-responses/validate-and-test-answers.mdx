@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Validate and Test Answers"
 ---
 
@@ -19,13 +19,23 @@ When an answer is incorrect, you can directly edit the underlying SQL query.
 <img
   src="/images/chat-workstream-edit.png"
   alt="Chat workstream showing the edit button"
-  className="mx-auto"
+  className="mx-auto dark:hidden"
   style={{ width:"95%" }}
+  lightAlt="Chat workstream showing the edit button"
+  darkAlt="Chat workstream showing the edit button"
+/>
+<img
+  src="/dark-img/chat-workstream-edit.png"
+  alt="Chat workstream showing the edit button"
+  className="mx-auto hidden dark:block"
+  style={{ width:"95%" }}
+  lightAlt="Chat workstream showing the edit button"
+  darkAlt="Chat workstream showing the edit button"
 />
 
 2. The **Editor** window will open. Go to the **SQL Code** tab.
-4. Modify the SQL statement to fix inaccuracies, add joins, or correct filters.
-5. Click **Update response** to run the revised query and refresh the data.
+3. Modify the SQL statement to fix inaccuracies, add joins, or correct filters.
+4. Click **Update response** to run the revised query and refresh the data.
 5. (Optional) Switch back to the **Editor** tab to configure chart types, add filters, or drag-and-drop columns for visualization.
 
 ![Update response option](/images/update-response.png)
@@ -43,12 +53,12 @@ After editing the query, you must test the new response.
 If the system consistently misunderstands terms, you can add explicit context. This helps the system formulate more precise queries.
 
 1. Navigate to **Domains** \> (Select your Domain)
-1. Navigate to the **Context** tab.
+2. Navigate to the **Context** tab.
 3. Select the **Knowledge** tab inside the Context section.
 4. Click the **\+ Add Knowledge** button to begin a new entry and add natural language context. Add natural language sentences to define business terms.
    - _Example 1:_ `Regions are the same as Territories.`
    - _Example 2:_ `My sales stages are: Prospect, Negotiation, Closed.`
-4. Click **SAVE**.
+5. Click **SAVE**.
 
 <Frame>
   ![NEW Add Knowledge Steps](/images/NEW-add-knowledge-steps.png)
@@ -83,10 +93,11 @@ These features help you iterate efficiently and build confidence in the outputs 
 ## Next steps
 
 <CardGroup cols={2}>
-  <Card icon="clipboard-list" href="/using-wisdom-ai-everyday/auditing" title="Auditing">
+  <Card title="Auditing" icon="clipboard-list" href="/using-wisdom-ai-everyday/auditing">
     Organize insights by tagging chats, navigating history, and sharing vetted answers with your team.
   </Card>
-  <Card icon="sitemap" href="/setting-up-wisdom-ai/advanced-data-modeling-creating-context" title="Advanced Data Modeling">
+
+  <Card title="Advanced Data Modeling" icon="sitemap" href="/setting-up-wisdom-ai/advanced-data-modeling-creating-context">
     Define relationships and Knowledge in your data to enable more powerful analysis.
   </Card>
 </CardGroup>
