@@ -7,8 +7,11 @@
     "light": "#5b52ff",
     "dark": "#5b52ff"
   },
-
   "favicon": "/favicon.webp",
+  "logo": {
+    "light": "/logo/wisdom-logo-light.png",
+    "dark": "/logo/wisdom-logo-dark.png"
+  },
   "navigation": {
     "global": {
       "anchors": [
