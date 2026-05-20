@@ -551,5 +551,9 @@
     "socials": {
       "linkedin": "https://www.linkedin.com/company/wisdomai-inc"
     }
+  },
+  "logo": {
+    "light": "/images/wisdom-logo-light.png",
+    "dark": "/images/wisdom-logo-dark.png"
   }
 }
