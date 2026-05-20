@@ -42,12 +42,18 @@ Context Extraction identifies the following categories of information:
 
 ## Supported file types
 
-You can use various files to provide context, including:
+The following file types are supported when uploading files to the Context Extractor:
 
-- **YAML Files:** Such as dbt-style configurations.
-- **LookML:** Looker modeling files.
-- **Unstructured Documents:** PDFs and text files.
-- **Query Logs:** Historical SQL records.
+| Category | Extensions |
+| :--- | :--- |
+| Text & documents | `.txt`, `.md`, `.pdf`, `.doc`, `.docx`, `.rtf` |
+| Data & query files | `.sql`, `.json`, `.csv` |
+| Configuration | `.yml`, `.yaml` |
+| Looker | `.lkml`, `.lookml` |
+| Power BI | `.pbix`, `.pbit` |
+| Tableau | `.twb`, `.twbx`, `.tds`, `.tdsx`, `.tfl`, `.tflx` |
+
+Excel files (`.xlsx`) are not directly supported. To include spreadsheet data, export each tab as a separate `.csv` file before uploading.
 
 ## Target users
 
