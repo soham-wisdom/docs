@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Context Extractor"
 ---
 
@@ -11,13 +11,13 @@ This guide will walk you through the steps to upload your files, extract metadat
 The process follows three stages to ensure all metadata is verified before it is added to your Domain.
 
 <Steps>
-  <Step icon="upload" title="Upload">
+  <Step title="Upload" icon="upload">
     Upload files directly from your **Domain** page. You can optionally provide a short prompt to steer what the system should focus on during the context extraction.
   </Step>
-  <Step icon="wand-magic-sparkles" title="Extract">
+  <Step title="Extract" icon="wand-magic-sparkles">
     WisdomAI analyzes the content and proposes structured items like descriptions, metrics, joins, and business context. When possible, WisdomAI validates these suggestions, for example, by utilizing a test SQL execution.
   </Step>
-  <Step icon="check-double" title="Review and Publish">
+  <Step title="Review and Publish" icon="check-double">
     Review all proposed changes in the **Suggestions** experience. Compare the suggestion side-by-side with the source file to ensure accuracy. You can choose to **Accept**, **Reject**, or **Edit** any item before publishing it to your knowledge base.
   </Step>
 </Steps>
@@ -32,12 +32,12 @@ The process follows three stages to ensure all metadata is verified before it is
 
 Context Extraction identifies the following categories of information:
 
-| Item Type        | Description                                       |
-| :--------------- | :------------------------------------------------ |
-| Descriptions     | Table and column definitions.                     |
-| Metrics          | Metric definitions and associated SQL.            |
-| Joins            | Relationships and join logic between tables.      |
-| Business Context | Rules, definitions, conventions, and SQL hints.   |
+| Item Type | Description |
+| :-- | :-- |
+| Descriptions | Table and column definitions. |
+| Metrics | Metric definitions and associated SQL. |
+| Joins | Relationships and join logic between tables. |
+| Business Context | Rules, definitions, conventions, and SQL hints. |
 | Reviewed Queries | Example question-to-SQL pairs for model training. |
 
 ## Supported file types
@@ -45,7 +45,7 @@ Context Extraction identifies the following categories of information:
 The following file types are supported when uploading files to the Context Extractor:
 
 | Category | Extensions |
-| :--- | :--- |
+| :-- | :-- |
 | Text & documents | `.txt`, `.md`, `.pdf`, `.doc`, `.docx`, `.rtf` |
 | Data & query files | `.sql`, `.json`, `.csv` |
 | Configuration | `.yml`, `.yaml` |
@@ -53,7 +53,9 @@ The following file types are supported when uploading files to the Context Extra
 | Power BI | `.pbix`, `.pbit` |
 | Tableau | `.twb`, `.twbx`, `.tds`, `.tdsx`, `.tfl`, `.tflx` |
 
-Excel files (`.xlsx`) are not directly supported. To include spreadsheet data, export each tab as a separate `.csv` file before uploading.
+<Info>
+  Excel files (`.xlsx`) are not directly supported. To include spreadsheet data, export each tab as a separate `.csv` file before uploading.
+</Info>
 
 ## Target users
 
@@ -68,9 +70,11 @@ The context extractor feature is available to:
   <Accordion title="Does anything get published automatically?">
     No. Extracted items remain as suggestions until an admin clicks **Accept** in the Suggestions experience.
   </Accordion>
+
   <Accordion title="Where do I review suggestions?">
     Suggestions are located in the **Knowledge** tab of your Domain. Each entry shows the specific source content used for the extraction.
   </Accordion>
+
   <Accordion title="Can I guide the extraction?">
     Yes. During the upload step, you can use the prompt field to tell Wisdom exactly what metadata to look for.
   </Accordion>
@@ -79,10 +83,11 @@ The context extractor feature is available to:
 ## Next steps
 
 <CardGroup cols={2}>
-  <Card icon="sitemap" href="/setting-up-wisdom-ai/advanced-data-modeling-creating-context" title="Advanced Data Modeling">
+  <Card title="Advanced Data Modeling" icon="sitemap" href="/setting-up-wisdom-ai/advanced-data-modeling-creating-context">
     Learn how to manually create relationships and context.
   </Card>
-  <Card icon="layer-group" href="/setting-up-wisdom-ai/manage-domains/understand-domains"  title="Understand Domains">
+
+  <Card title="Understand Domains" icon="layer-group" href="/setting-up-wisdom-ai/manage-domains/understand-domains">
     Explore how to organize your data logic using Domains.
   </Card>
 </CardGroup>
