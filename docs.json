@@ -61,7 +61,7 @@
                   "getting-started/connect-data-sources/search-the-web",
                   "getting-started/connect-data-sources/connect-to-sharepoint",
                   "getting-started/connect-data-sources/big-query",
-                  "getting-started/connect-data-sources/untitled-page"
+                  "getting-started/connect-data-sources/set-up-gcp-service-account"
                 ]
               }
             ]
