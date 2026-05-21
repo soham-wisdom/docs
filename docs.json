@@ -59,7 +59,8 @@
                   "getting-started/connect-data-sources/connect-mcp-server",
                   "improve-wisdom-ai-responses/connect-unstructed-repositories-datasets",
                   "getting-started/connect-data-sources/search-the-web",
-                  "getting-started/connect-data-sources/connect-to-sharepoint"
+                  "getting-started/connect-data-sources/connect-to-sharepoint",
+                  "getting-started/connect-data-sources/big-query"
                 ]
               }
             ]
