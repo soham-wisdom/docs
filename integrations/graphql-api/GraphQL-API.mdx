@@ -1,4 +1,4 @@
-﻿---
+---
 title: "GraphQL API"
 ---
 
@@ -12,7 +12,7 @@ Create seamless integrations with WisdomAI using our comprehensive GraphQL API. 
 
 The WisdomAI GraphQL API provides a single endpoint for all operations:
 
-```
+```text
 https://{ACCOUNT}.askwisdom.ai/graphql
 ```
 
@@ -26,7 +26,7 @@ The API supports queries, mutations, and real-time subscriptions. Subscriptions 
 
 For real-time subscriptions, use the following WebSocket endpoint:
 
-```
+```text
 wss://{ACCOUNT}.askwisdom.ai/graphql
 ```
 
@@ -40,7 +40,7 @@ For direct API access, authenticate using a JWT session token obtained via the D
 
 <Steps>
   <Step title="Obtain access key" titleSize="h4">
-    Contact WisdomAI support at `support@askwisdom.ai` to obtain your dedicated access key.
+    Every WisdomAI user can create and manage their own API keys. To obtain your dedicated access key, follow the steps in [this article](/settings/api-keys#api-keys).
   </Step>
   <Step title="Exchange access key for JWT token" titleSize="h4">
     Use WisdomAI's GraphQL API `exchangeAccessToken` query to exchange your access key for a JWT token.
@@ -54,7 +54,7 @@ For direct API access, authenticate using a JWT session token obtained via the D
   <Step title="Pass token in requests" titleSize="h4">
     Include the session token in all API requests and WebSocket connection payloads.
 
-    ```
+    ```text
     Authorization: Bearer YOUR_SESSION_TOKEN
     ```
   </Step>
@@ -82,18 +82,23 @@ See the [Embedding overview](/integrations/embeddings/embedding) for the full en
   <Card title="GraphQL primer" icon="book" href="/integrations/graphql-api/graphql-primer">
     New to GraphQL? Start here for a REST developer's introduction
   </Card>
+
   <Card title="Exchange Access Token" icon="key" href="/integrations/graphql-api/queries/auth/exchange-access-token">
     Authenticate with the GraphQL API using access keys
   </Card>
+
   <Card title="Queries" icon="magnifying-glass" href="/integrations/graphql-api/GraphQL-API">
     Learn about available queries for fetching data
   </Card>
+
   <Card title="Mutations" icon="pen-to-square" href="/integrations/graphql-api/GraphQL-API">
     Discover mutations for creating and updating resources
   </Card>
+
   <Card title="Subscriptions" icon="wifi" href="/integrations/graphql-api/GraphQL-API">
     Real-time data subscriptions and live updates
   </Card>
+
   <Card title="Error handling" icon="circle-exclamation" href="/integrations/embeddings/error-handling">
     How to handle HTTP 200 failures and mutation status codes
   </Card>
