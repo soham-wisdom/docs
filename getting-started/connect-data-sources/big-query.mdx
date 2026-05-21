@@ -2,7 +2,7 @@
 title: "Connect to Google BigQuery"
 ---
 
-WisdomAl connects to Google BigQuery using a Google Cloud Platform (GCP) Service Account. This method ensures secure and granular control over the data WisdomAl can access.
+WisdomAI connects to Google BigQuery via a Google Cloud Platform (GCP) Service Account to perform background system operations such as data crawling and metadata discovery. To execute end-user queries, administrators can either continue using the shared service account or enable Google OAuth to authenticate individual users with their own Google accounts.
 
 ## Prerequisites
 
@@ -11,7 +11,7 @@ Before connecting WisdomAl to BigQuery, make sure to have:
 - An active Google Cloud Project.
 - The BigQuery API enabled within your Google Cloud Project.
 
-Follow the steps below to:
+Find below the steps to activate and configure a Google Cloud Platform (GCP) Service Account:
 
 <AccordionGroup>
   <Accordion title="Create a GCP service account.">
@@ -72,9 +72,11 @@ Follow the steps below to:
 
 ## Connect WisdomAI to BigQuery
 
-Once you have set up the prerequisites, you can configure the connection in WisdomAl:
+BigQuery OAuth allows individual WisdomAI users to authenticate with their own Google account when running queries, rather than relying on a shared service account. This provides granular access control and a per-user audit trail.
 
-1. In WisdomAl, navigate to the **Connections** section and click **Add Connection**.
+Once you have set up the prerequisites, you can configure the connection in WisdomAI:
+
+1. In WisdomAI, navigate to the **Connections** section and click **Add Connection**.
 2. Select **BigQuery** as the data source type.
 3. Fill in the connection details in the "BigQuery connection details" section:
    - **Connection Name:** Choose a descriptive name for your connection (e.g., "BigQuery Prod").
