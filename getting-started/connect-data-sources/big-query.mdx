@@ -1,7 +1,3 @@
----
-title: "Connect to Google BigQuery"
----
-
 WisdomAI connects to Google BigQuery via a Google Cloud Platform (GCP) Service Account to perform background system operations such as data crawling and metadata discovery. To execute end-user queries, administrators can either continue using the shared service account or enable Google OAuth to authenticate individual users with their own Google accounts.
 
 ## Prerequisites
@@ -71,8 +67,6 @@ Find below the steps to activate and configure a Google Cloud Platform (GCP) Ser
 </AccordionGroup>
 
 ## Connect WisdomAI to BigQuery
-
-BigQuery OAuth allows individual WisdomAI users to authenticate with their own Google account when running queries, rather than relying on a shared service account. This provides granular access control and a per-user audit trail.
 
 Once you have set up the prerequisites, you can configure the connection in WisdomAI:
 
