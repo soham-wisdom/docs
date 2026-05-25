@@ -1,104 +1,36 @@
 ---
-title: "Connected Apps"
-description: "Sign in to OAuth-secured apps so WisdomAI chat agents can act on your behalf."
+title: "WisdomAI Docs"
+mode: "custom"
 ---
 
-Connected Apps is where you sign in to the OAuth-secured apps your administrator has set up, so WisdomAI's chat agents can call those tools on your behalf when answering your questions.
+import {HomeBanner, PageWrapper, HomeCard} from "/snippets/home.jsx"
 
-Your connections are personal to you. Signing in to — or out of — an app only affects your own access; other users in the workspace are unaffected.
+<HomeBanner />
 
-## Before you start
+<PageWrapper>
+  <Columns cols={3}>
+    <HomeCard href="/getting-started/overview" src="/images/home/light/card1.svg" darkSrc="/images/home/dark/card1.png" title="Getting started" description="Start utilizing the platform’s features effectively" />
 
-Every user can manage their own connected apps — no special role is required.
+    <HomeCard href="/setting-up-wisdom-ai/basic-tutorial-connect-and-test" src="/images/home/light/card2.svg" darkSrc="/images/home/dark/card2.png" title="Setting Up WisdomAI" description="Connect data sources and start creating knowledge" />
 
-The apps you can sign in to are the OAuth-secured [MCP server](/getting-started/connect-data-sources/connect-mcp-server) connections that an administrator has added on the **Connections** page. If no apps are listed, ask your workspace admin to add one.
+    <HomeCard href="/improve-wisdom-ai-responses/enhancing-data-analysis-with-custom-business-context" src="/images/home/light/card3.svg" darkSrc="/images/home/dark/card3.png" title="Improve WisdomAI Responses" description="Explore the available tools to enhance your responses" />
+  </Columns>
 
-## How connected apps work
+  <Columns cols={3}>
+    <HomeCard href="/using-wisdom-ai-everyday/ask-better-questions" src="/images/home/light/card-4-01.png" darkSrc="/images/home/dark/card4.png" title="Using WisdomAI Everyday" description="Craft effective queries to get the best possible information" />
 
-When an administrator adds an MCP server connection that uses **OAuth** authentication, each user must individually authorize WisdomAI to access it. WisdomAI never stores a single shared credential for these apps.
+    <HomeCard href="/integrations/embeddings/embedding" src="/images/home/light/card5-1.png" darkSrc="/images/home/dark/card5.png" title="Integrations" description="Learn how to perform external integrations such as GraphQL and Slack" />
 
-The Connected Apps page is where you grant that authorization ahead of time. Once you sign in, your chat agents can use the app's tools during chat without interrupting you to authenticate. You can also sign in on demand — if you ask a question that needs an app you haven't connected, WisdomAI prompts you to connect during the chat session.
+    <HomeCard href="/new-releases/march-2026/03-26" src="/images/home/light/card6-01.png" darkSrc="/images/home/dark/card6.png" title="New Releases" description="Stay up-to-date with the latest features and improvements" badge />
+  </Columns>
+</PageWrapper>
 
-## Open Connected Apps
+<br />
 
-1. In the left-hand navigation, click the **Settings** icon.
-2. On the Settings page, select **Connected Apps**.
+<br />
 
-<Frame>
-  ![Image](/images/image-29.png)
-</Frame>
+<br />
 
-The page groups apps into two collapsible sections, each showing a count:
+<br />
 
-- **Connected** — apps you have signed in to.
-- **Available to connect** — apps you can sign in to but haven't yet.
-
-<Frame>
-  ![Screenshot 2026 05 25 At 4 19 08 PM](/images/Screenshot-2026-05-25-at-4.19.08-PM.png)
-</Frame>
-
-Each row shows the app's name and the domains it belongs to (for example, _in Sales, Marketing_). Use the **Search apps or domains** box to filter the list.
-
-## Connect an app
-
-1. Find the app under **Available to connect**.
-2. Click **Connect**.
-3. A secure popup opens. Authorize WisdomAI to access the app.
-4. On success, the app moves to the **Connected** section.
-
-<Tip>
-  You don't have to connect everything in advance. When a chat question needs an app you haven't signed in to, WisdomAI shows a **Connect** prompt right in the conversation. See [Validate the connection](/getting-started/connect-data-sources/connect-mcp-server#validate-the-connection).
-</Tip>
-
-## Reconnect an app
-
-Use **Reconnect** if your access has stopped working or you need to authorize again — for example, to approve updated permissions or if you accidentally authenticated via a different account.
-
-1. In the **Connected** section, open the **⋮** (more) menu on the app's row.
-2. Select **Reconnect**.
-3. Authorize WisdomAI again in the popup.
-
-<Note>
-  Reconnecting first revokes your existing access token for the app, then runs the sign-in flow again.
-</Note>
-
-## Disconnect an app
-
-1. In the **Connected** section, open the **⋮** (more) menu on the app's row.
-2. Select **Disconnect**.
-3. In the **Disconnect from \<app\>?** dialog, click **Disconnect**.
-
-<Frame>
-  ![Screenshot 2026 05 25 At 4 24 37 PM](/images/Screenshot-2026-05-25-at-4.24.37-PM.png)
-</Frame>
-
-<Warning>
-  Disconnecting revokes your OAuth access token for that app. Any queries or tool calls that depend on the connection will require you to sign in again. This only affects your access — other users in the workspace are unaffected.
-</Warning>
-
-## No apps available
-
-If the page shows **Nothing to sign in to yet**, no OAuth-secured apps have been set up for your workspace.
-
-- If you can add connections, add an OAuth-secured MCP server from the [Connections page](/getting-started/connect-data-sources/connect-mcp-server) so your chat agents can act on your behalf.
-- Otherwise, ask your workspace admin to add one.
-
-## Next steps
-
-<CardGroup cols={2}>
-  <Card title="Connect to an MCP Server" icon="plug" href="/getting-started/connect-data-sources/connect-mcp-server">
-    Add an OAuth-secured MCP server that users can sign in to.
-  </Card>
-
-  <Card title="MCP Server" icon="server" href="/integrations/mcp-server/MCP-Server">
-    Learn how WisdomAI works with the Model Context Protocol.
-  </Card>
-
-  <Card title="API Keys" icon="key" href="/settings/api-keys">
-    Create personal bearer tokens for programmatic access.
-  </Card>
-
-  <Card title="Command Palette" icon="terminal" href="/using-wisdom-ai-everyday/command-palette">
-    Jump to any page or action with a single shortcut.
-  </Card>
-</CardGroup>
+<br />
