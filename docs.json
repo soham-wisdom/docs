@@ -161,6 +161,7 @@
             "group": "Settings",
             "pages": [
               "settings/api-keys",
+              "settings/connected-apps",
               "settings/email-access-control"
             ]
           },
