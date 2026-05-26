@@ -1,0 +1,151 @@
+You can now extract knowledge from your chat conversations and promote it directly into your domain knowledge base. This means your domain learns continuously from real interactions, keeping answers accurate as your business context evolves.
+
+<Note>
+  Knowledge Signals from Chat is currently in **Alpha** and available to Domain Admins.
+</Note>
+
+## What's new
+
+Until now, every clarification, correction, and business rule that surfaced in a chat session was disposable. Knowledge Signals from Chat changes that. It gives Domain Admins two tools to capture institutional knowledge and improve domain quality over time:
+
+- A **Knowledge Suggestions** button that analyzes any conversation and returns a ranked list of knowledge entries you can accept, edit, or decline.
+- A **Context used** panel on every query response that shows which knowledge entries contributed to that answer, turning each response into a quality signal.
+
+## How it works
+
+<Steps>
+  <Step title="Open the Knowledge Suggestions panel" icon="brain">
+    While reviewing any conversation in your domain, click the brain icon in the chat controls bar. This is the **Knowledge Suggestions** button.
+  </Step>
+  <Step title="Review and refine suggestions" icon="list-check">
+    An AI analysis pipeline scans the conversation for knowledge claims, business rules, and domain context not yet in your knowledge base. Results appear in the **Alpha** popover as a ranked list. Click into any suggestion to edit it inline before accepting.
+  </Step>
+  <Step title="Accept or decline each entry" icon="check">
+    For each suggestion, select **Accept** to add it to your domain knowledge base immediately, **Decline** to remove it from the list, or edit the text first and then select **Accept** to save your revised version. A confirmation notification includes a direct link to the **Domain Knowledge** tab where the new entry lives.
+  </Step>
+</Steps>
+
+\[SCREENSHOT: The Knowledge Suggestions popover open on a chat conversation, showing the brain icon in the chat controls bar, the Alpha-labeled panel, and several ranked suggestion entries with Accept and Decline buttons visible\]
+
+<Note>
+  Accepted entries take effect immediately on the next query. There is no staging or pending state in the current release.
+</Note>
+
+## Inspect answers with Context used
+
+Every query response includes an information icon `ⓘ`). Clicking it opens the **Query Explanation** popover, which shows:
+
+- **What we did:** a natural-language explanation of how the system interpreted your question and constructed the answer.
+- **Context used:** the specific knowledge entries retrieved and applied to produce that answer.
+
+Use this view as a diagnostic signal. If an answer is wrong and you see a stale or incorrect knowledge entry listed under **Context used**, that is your indicator to edit or replace it in the **Domain Knowledge** tab.
+
+\[SCREENSHOT: The Query Explanation popover open on a query response, showing the "What we did" and "Context used" sections with knowledge entries listed\]
+
+## Key capabilities
+
+- **Knowledge Suggestions button:** Trigger AI analysis on any conversation to surface knowledge claims, corrections, and business rules not yet in your domain.
+- **Inline editing:** Refine any suggestion before accepting it, so the exact wording that enters your knowledge base is yours to control.
+- **Immediate effect:** Accepted entries are available for retrieval on the next query. No staging required.
+- **Context used transparency:** See which knowledge entries drove any answer, giving you a lightweight audit trail for domain health.
+- **Decline without consequence:** Declining a suggestion removes it from the popover for that session without writing anything to the domain.
+
+## Target users
+
+Knowledge Signals from Chat is designed for:
+
+- **Domain Admins** who want to keep the domain knowledge base current as business logic evolves through real conversations.
+- **Data teams** that need to capture tribal knowledge from power users and analysts before it is lost.
+
+<Note>
+  In the current release, only users with write access to the domain can accept knowledge suggestions. Viewers and analysts can see the **Context used** panel on any answer.
+</Note>
+
+## User Stories
+
+See real stories of how WisdomAI improvements are helping solve real user problems:
+
+### Story 1: Capturing a Definition from a Clarification Exchange
+
+**Domain admin:** "Why is our ARR lower than what the finance team reports?"
+
+**Agent:** "I'm using contracted monthly revenue × 12. If finance uses recognized revenue, that would explain the gap."
+
+**Domain Admin:** "Got it — use contracted revenue only."
+
+A domain lead opens Knowledge Suggestions on this conversation. The system surfaces: _"ARR should be calculated as contracted monthly revenue × 12, not recognized revenue."_ The domain lead accepts it. From that point on, every ARR question is answered consistently.
+
+### Story 2: Promoting an Analyst's Tribal Knowledge
+
+A senior analyst uses chat regularly. Over six months, their conversations contain dozens of corrections, clarifications, and edge cases — but none of it is in the domain.
+
+A domain lead reviews several of the analyst's conversations and runs Knowledge Suggestions on each. In one pass, they surface and accept 15–20 entries that represent years of domain expertise. The knowledge base effectively absorbs a person's institutional memory.
+
+## What's coming
+
+The current release is a manual, single-conversation workflow. The roadmap extends this into a fully autonomous, conflict-aware knowledge refinement system.
+
+| Feature | What it does |
+| --- | --- |
+| **Updating Existing Knowledge** | Detects when a chat signal should refine an existing entry rather than create a new one, and surfaces it as an edit rather than a duplicate. |
+| **Conflict Handling** | When a suggestion contradicts existing domain knowledge, flags the conflict so you choose which version takes precedence. |
+| **Duplicate Detection** | Checks for semantically equivalent knowledge already in the domain before surfacing a suggestion, even if the wording differs. |
+| **Provenance Tracking** | Every accepted entry carries a trail back to the source conversation, making entries easy to audit or retire. |
+| **Fully Automated Iterative Refinement** | Removes the manual trigger. The system continuously identifies high-confidence signals and surfaces a batched, prioritized review queue. |
+| **Explorer Access** | Rolls the feature out to end users once quality is validated in alpha. |
+
+## FAQs
+
+<AccordionGroup>
+  <Accordion title="Who can use the Knowledge Suggestions button?">
+    Only users with write access to the domain. Viewers and analysts can see the **Context used** explanation on any answer, but only Domain Admins can accept knowledge suggestions.
+  </Accordion>
+
+  <Accordion title="Does accepting a suggestion take effect immediately?">
+    Yes. Once you accept a suggestion, it is written to the domain knowledge base and is available for retrieval on the next query. There is no staging or pending state in the current release.
+  </Accordion>
+
+  <Accordion title="Can I edit a suggestion before accepting it?">
+    Yes. Every suggestion in the popover has an inline text editor. Click into the text, revise it, and then click **Accept**. The edited version is what gets saved.
+  </Accordion>
+
+  <Accordion title="What if I accept something incorrect?">
+    Navigate to the **Domain Knowledge** tab using the direct link in the confirmation notification. You can edit or delete the entry there. In a future release, provenance tracking will make it easier to find and remove entries that originated from a specific conversation.
+  </Accordion>
+
+  <Accordion title="How does the system decide what to suggest from a conversation?">
+    The conversation is analyzed by an LLM that looks for factual clarifications you gave the agent, corrections to incorrect answers, business rules stated as part of answering a question, and domain terminology defined mid-conversation. It does not suggest generic conversational content.
+  </Accordion>
+
+  <Accordion title="Can I reopen suggestions I previously declined?">
+    Not in the current release. Declined suggestions are removed from the session. To re-generate them, close and reopen the **Knowledge Suggestions** popover on the same conversation.
+  </Accordion>
+
+  <Accordion title="Can I run Knowledge Suggestions across multiple conversations at once?">
+    Not in the current release. The feature is per-conversation. Batch processing and automated refinement are on the roadmap under Fully Automated Iterative Refinement.
+  </Accordion>
+
+  <Accordion title="How is this different from the Extract from query logs feature?">
+    Query history mining analyzes SQL query logs from your connected warehouses in bulk. It is designed to bootstrap a domain from scratch or fill large structural gaps. Knowledge Signals from Chat is designed for incremental, conversational refinement, capturing the nuanced business logic and corrections that emerge from actual user interactions, which query logs do not contain.
+  </Accordion>
+
+  <Accordion title="Why is the feature labeled Alpha?">
+    The suggestion quality and recall are still being tuned. Suggestions may occasionally be too broad, too narrow, or mis-worded for your domain. Review and edit before accepting. As duplicate detection, conflict handling, and provenance tracking are added, the Alpha label will be removed.
+  </Accordion>
+
+  <Accordion title="How many suggestions will I typically see per conversation?">
+    It varies by conversation length and density. Short factual exchanges might yield 1 to 3 suggestions. Long analytical sessions with several corrections could yield 8 to 15. The system filters for high-signal content and will not suggest every sentence.
+  </Accordion>
+</AccordionGroup>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Domain Knowledge" icon="book" href="/advanced-features/domain-knowledge">
+    Learn how to manage, edit, and review entries in the Domain Knowledge tab.
+  </Card>
+
+  <Card title="Chat Overview" icon="message" href="/features/chat">
+    Explore how to use chat to interact with your domain data and surface new knowledge signals.
+  </Card>
+</CardGroup>

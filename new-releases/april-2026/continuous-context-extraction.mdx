@@ -51,6 +51,8 @@ Explorers and analysts are not required to take any action, they benefit through
 
 ## User Stories
 
+See real stories of how WisdomAI improvements are helping solve real user problems:
+
 ### Story 1: Keeping Metrics Aligned After a dbt Model Refactor
 
 A data engineering team refactors their `revenue` model in dbt, changing the grain and updating metric definitions across three YAML files. Previously, a domain lead would only discover the discrepancy after getting a wrong answer in chat. With Continuous Context Extraction, the next morning's incremental extraction picks up the dbt changes. The domain admin receives a notification: "3 conflicts detected. ARR definition differs between dbt and existing domain." They open the side-by-side diff, accept the updated dbt definition for ARR, write a custom merged definition for one edge case, and publish. The domain reflects the new business logic before analysts start their day.
