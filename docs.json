@@ -441,19 +441,19 @@
                 ]
               },
               {
-                "group": "April 2026",
-                "pages": [
-                  "new-releases/april-2026/05-26-overview",
-                  "new-releases/april-2026/continuous-context-extration",
-                  "new-releases/april-2026/knowledges-signals"
-                ]
-              },
-              {
                 "group": "February 2026",
                 "expanded": false,
                 "pages": [
                   "new-releases/february-2026/02-26-release-overview",
                   "new-releases/february-2026/chat-with-dashboard"
+                ]
+              },
+              {
+                "group": "April 2026",
+                "pages": [
+                  "new-releases/april-2026/05-26-overview",
+                  "new-releases/april-2026/continuous-context-extration",
+                  "new-releases/april-2026/knowledges-signals"
                 ]
               }
             ]
