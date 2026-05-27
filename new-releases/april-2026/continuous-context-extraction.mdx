@@ -1,4 +1,4 @@
-Domain knowledge doesn't stay accurate on its own. Metric definitions, business rules, and table descriptions live across GitHub repositories, dbt YAML files, Looker models, and data catalogs, the moment any of those sources changes, your domain starts falling behind.
+Domain knowledge doesn't stay accurate on its own. Metric definitions, business rules, and table descriptions live across GitHub repositories, dbt YAML files, Looker models, and data catalogs. The moment any of those sources changes, your domain starts falling behind.
 
 Continuous Context Extraction (ACE) closes that gap. You can now connect your domain directly to the systems where your business logic lives. ACE runs extraction on a scheduled or on-demand basis, detects what changed since the last run, and surfaces only new signals for your review. This means your domain stays perpetually aligned with the source of truth without requiring you to manually export or upload a file.
 
@@ -8,16 +8,16 @@ Continuous Context Extraction follows four stages from connection to a published
 
 <Steps>
   <Step title="Connect a source" icon="plug">
-    On your domain's **Context Extractor** page, select the **Connections** tab and click **Add Connection. A five-step wizard walks you through choosing a source type, authenticating (API key, OAuth, or Personal Access Token), scoping the extraction (a specific repository or org-wide), setting a schedule, and confirming. Credentials are validated immediately and the connection appears with PENDING** status.
+    On your domain's **Context Extractor** page, select the **Connections** tab and click **Add Connection**. A five-step wizard walks you through choosing a source type, authenticating (API key, OAuth, or Personal Access Token), scoping the extraction (a specific repository or org-wide), setting a schedule, and confirming. Credentials are validated immediately and the connection appears with **PENDING** status.
   </Step>
   <Step title="Run extraction" icon="arrows-rotate">
-    Once connected, ACE runs extraction automatically on your configured schedule. The first run is a full scan of the connected source. Subsequent incremental runs process only changes since the last extraction staing lightweight and focused. You can trigger a manual extraction at any time using **Extract Now. The connection status updates in real time: EXTRACTING** while the job runs, **AWAITING REVIEW** when it completes.
+    Once connected, ACE runs extraction automatically on your configured schedule. The first run is a full scan of the connected source. Subsequent incremental runs process only changes since the last extraction, staying lightweight and focused. You can trigger a manual extraction at any time using **Extract Now**. The connection status updates in real time: **EXTRACTING** while the job runs, **AWAITING REVIEW** when it completes with items for your review, **ACTIVE** once all review items are resolved and the domain is updated, and **ERROR** if something goes wrong (previous context is retained and a manual re-run is available). When extraction completes and review is needed, you receive an in-app notification with the count of items requiring attention and a direct link to the review screen.
   </Step>
   <Step title="Review conflicts and duplicates" icon="list-check">
     When extraction completes, ACE compares every incoming context object against your existing domain. Conflicting entries surface as update recommendations, suggested changes for your review before anything is applied. After conflict resolution, an embedding-based similarity pass flags semantically equivalent entries as duplicate candidates. You resolve each item in the review queue: accept, decline, merge, keep both, or defer. No changes are published until you explicitly approve.
   </Step>
   <Step title="Publish and version your domain" icon="rocket">
-    After clearing the review queue, click **Publish. ACE increments your domain version number, stores a full snapshot, and updates chat and dashboards immediately. Every published version is retained in the Version History** panel. If a published version introduces issues, select any prior version and restore it in a single confirmation step. Rollback is append-only and nothing is permanently deleted.
+    After clearing the review queue, click **Publish**. ACE increments your domain version number, stores a full snapshot, and updates chat and dashboards immediately. Every published version is retained in the **Version History** panel. If a published version introduces issues, select any prior version and restore it in a single confirmation step. Rollback is append-only and nothing is permanently deleted.
   </Step>
 </Steps>
 
@@ -31,11 +31,13 @@ Continuous Context Extraction follows four stages from connection to a published
 
 • **Scheduled and on-demand extraction**: Extraction runs daily at 2:00 AM local time by default; adjust the time during connection wizard setup. **Extract Now** triggers an immediate incremental run at any time, independent of the schedule. The first run is a full scan of the connected source; subsequent runs process only changes since the last extraction. Jobs run as persistent background processes; you can close your browser mid-extraction and return later, as status is saved every 60 seconds.
 
-• **Conflict resolution**: After each extraction, ACE compares incoming context objects against existing domain entries by name. Definition mismatches are flagged as conflicts and surfaced as update recommendations in the review queue. The domain is not updated until every conflict is resolved or deferred. All resolution decisions are logged with user ID and timestamp. A dedicated side-by-side diff view with options to accept either source, write a merged definition, or defer is on the near-term roadmap.
+• **Query history extraction** (gated): For enabled domains, ACE reads recently executed SQL from your connected warehouse and extracts metric definitions, JOIN patterns, business conventions, and reviewed query pairs. These signals feed the same review queue as source-based extractions. Contact your Solutions Engineer to confirm whether query history extraction is enabled for your environment.
+
+• **Conflict resolution**: After each extraction, ACE compares incoming context objects against existing domain entries by name. Definition mismatches are flagged as conflicts and surfaced as update recommendations in the review queue. The domain is not updated until every conflict is resolved or deferred. All resolution decisions are logged with user ID and timestamp. A dedicated side-by-side diff view with options to accept either source, write a custom merged definition, or defer is on the near-term roadmap.
 
 • **Semantic duplicate detection**: After conflict resolution, ACE runs an embedding-based similarity pass across all context objects in the domain. Entries that mean the same thing, even if worded differently across sources, are flagged as duplicate candidates. Each candidate pair shows a similarity score and a suggested canonical definition; you can accept a merge, keep both entries, or defer. The dedup queue must be cleared before publishing a new domain version. No merges happen automatically.
 
-• **Version history and rollback**: Each published extraction increments the domain version number and stores a full snapshot. The **Version History** panel shows version number, publish timestamp, author, change count, and a one-line summary; diffs between any two versions are available on demand. To roll back, select a prior version and confirm in a single step; rollback creates a new version entry rather than overwriting history. History is append-only; nothing is permanently deleted. Chat and dashboards reflect the rolled-back domain immediatel.
+• **Version history and rollback**: Each published extraction increments the domain version number and stores a full snapshot. The **Version History** panel shows version number, publish timestamp, author, change count, and a one-line summary; diffs between any two versions are available on demand. To roll back, select a prior version and confirm in a single step; rollback creates a new version entry rather than overwriting history. History is append-only; nothing is permanently deleted. Chat and dashboards reflect the rolled-back domain immediately.
 
 ## Target users
 
@@ -45,7 +47,7 @@ Continuous Context Extraction is designed for:
 
 • **Data and analytics teams** that maintain metric definitions, JOIN logic, and business rules in GitHub, dbt, or Looker and want domain updates to flow automatically from source changes rather than manual uploads.
 
-Explorers and analysts are not required to take any action, they benefit through improved answer quality and richer **Context used** explanations on query responses.
+Explorers and analysts are not required to take any action; they benefit through improved answer quality and richer **Context used** explanations on query responses.
 
 ## User Stories
 
@@ -55,11 +57,11 @@ See real stories of how WisdomAI improvements are helping solve real user proble
 
 A data engineering team refactors their `revenue` model in dbt, changing the grain and updating metric definitions across three YAML files. Previously, a domain lead would only discover the discrepancy after getting a wrong answer in chat. With Continuous Context Extraction, the next morning's incremental extraction picks up the dbt changes. The domain admin receives a notification: "3 conflicts detected. ARR definition differs between dbt and existing domain." They open the side-by-side diff, accept the updated dbt definition for ARR, write a custom merged definition for one edge case, and publish. The domain reflects the new business logic before analysts start their day.
 
-### Story 2: Bootstrapping a New Domain from a GitHub Monorepo
+### Story 2: Catching a Knowledge Regression with Rollback
 
-A new domain is being stood up for a fintech product team. Their entire metric layer lives in a GitHub monorepo: dbt YAML files, SQL pipeline configs, README documentation, and metric definitions.
+After a scheduled extraction from Looker, a domain admin approves and publishes a new version. The next day, analysts report that revenue calculations are returning unexpected values. The admin opens the version history, diffs the new version against the previous one, and spots that an updated Looker dimension description inadvertently overrode a carefully tuned business rule.
 
-Instead of manually exporting and uploading files, the domain admin connects ACE to the GitHub org, scopes to the relevant repositories, and triggers an initial extraction. Within the hour, 200\+ context objects (metric definitions, JOIN patterns, business glossary entries, and table descriptions) surface for review. The admin bulk-approves the high-confidence entries, edits a handful of edge cases, and publishes. A domain that would have taken days of manual entry is operational by afternoon.
+They roll back to the prior version in one confirmation step. The domain reverts immediately. They then re-run the extraction, this time declining the problematic Looker entry and preserving the existing business rule. No data is lost; every version is retained in the history log, and the rollback itself is recorded as a new version.
 
 ## FAQs
 
@@ -69,7 +71,7 @@ Instead of manually exporting and uploading files, the domain admin connects ACE
   </Accordion>
 
   <Accordion title="Does anything get published to my domain automatically?">
-    No. Every extraction goes through a human-in-the-loop review. Conflicts must be resolved and the dedup queue cleared before any version is published.
+    No. Every extraction goes through a human-in-the-loop review. Conflicts must be resolved and the dedup queue cleared before any version is published. There is no auto-merge in the current release.
   </Accordion>
 
   <Accordion title="What happens if I close my browser mid-extraction?">
@@ -77,7 +79,7 @@ Instead of manually exporting and uploading files, the domain admin connects ACE
   </Accordion>
 
   <Accordion title="What is the difference between a conflict and a duplicate?">
-    A conflict is when the same named term has different definitions across sources, it's  detected by name match. A duplicate is when two differently-named entries are semantically equivalent it's detected by embedding similarity. Both require your review before a new version is published.
+    A conflict is when the same named term has different definitions across sources, detected by name match. A duplicate is when two differently-named entries are semantically equivalent, detected by embedding similarity. Both require your review before a new version is published.
   </Accordion>
 
   <Accordion title="What if I publish something and later realize it was wrong?">
@@ -85,7 +87,7 @@ Instead of manually exporting and uploading files, the domain admin connects ACE
   </Accordion>
 
   <Accordion title="Can I have multiple sources connected at once?">
-    Yes. You can have multiple active connections simultaneously. For example, GitHub and Looker at the same time. Each runs its own extraction job. All extracted suggestions enter the same conflict and dedup review queue, which spans across sources.
+    Yes. You can have multiple active connections simultaneously. For example, GitHub and Looker at the same time. Each runs its own daily extraction job. All extracted suggestions enter the same conflict and dedup review queue, which spans across sources.
   </Accordion>
 
   <Accordion title="What permissions does ACE need for a GitHub connection?">
@@ -93,7 +95,19 @@ Instead of manually exporting and uploading files, the domain admin connects ACE
   </Accordion>
 
   <Accordion title="How is this different from the file upload Context Extractor?">
-    The original Context Extractor is a one-time, file-based flow: export a file, upload it, review suggestions, and publish. Continuous Context Extraction connects ACE directly to the live source system, extracts automatically on a schedule, and keeps the domain continuously aligned, no manual export or file handling required.
+    The original Context Extractor is a one-time, file-based flow: export a file, upload it, review suggestions, and publish. Continuous Context Extraction connects ACE directly to the live source system, extracts automatically on a schedule, and keeps the domain continuously aligned; no manual export or file handling required.
+  </Accordion>
+
+  <Accordion title="What happens if I disconnect a source?">
+    The connection is removed and credentials are revoked immediately. Any in-progress extraction job is cancelled. Context that was already extracted and published to your domain remains by default; it is not removed automatically. You can manually delete any entries you no longer want to keep.
+  </Accordion>
+
+  <Accordion title="Is there a limit on how many connections I can have?">
+    There is no hard cap in the current release. Any per-organization limits will be communicated before they apply as usage scales.
+  </Accordion>
+
+  <Accordion title="How does this relate to Query History Mining?">
+    Query History Mining reads historical SQL from your warehouse to infer metric definitions, JOIN patterns, and business conventions from how analysts already query your data. It is a bottom-up signal derived from usage patterns. Continuous Context Extraction reads authoritative source-of-truth artifacts such as your dbt models, Looker explores, and governance catalog entries from the top down. Both are complementary and both feed the same review queue. Query history extraction is available today but gated to specific customers and domains; contact your Solutions Engineer to confirm whether it is enabled for your environment.
   </Accordion>
 </AccordionGroup>
 
@@ -106,13 +120,5 @@ Instead of manually exporting and uploading files, the domain admin connects ACE
 
   <Card title="Review Queue Guide" icon="list-check" href="/features/continuous-context-extraction/review-queue">
     Learn how to resolve conflicts, clear duplicate candidates, and publish a new domain version.
-  </Card>
-
-  <Card title="Version History and Rollback" icon="clock-rotate-left" href="/features/continuous-context-extraction/version-history">
-    Understand how domain versioning works and how to restore a prior state.
-  </Card>
-
-  <Card title="Knowledge Signals from Chat" icon="brain" href="/features/knowledge-signals-from-chat">
-    Capture institutional knowledge from chat conversations and promote it directly into your domain.
   </Card>
 </CardGroup>
