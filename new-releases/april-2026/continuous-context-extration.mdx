@@ -55,15 +55,16 @@ Explorers and analysts are not required to take any action, they benefit through
 
 See real stories of how WisdomAI improvements are helping solve real user problems:
 
-### Story 1: Keeping Metrics Aligned After a dbt Model Refactor
+<Tabs>
+  <Tab title="Story 1: Keeping Metrics Aligned After a dbt Model Refactor">
+    A data engineering team refactors their `revenue` model in dbt, changing the grain and updating metric definitions across three YAML files. Previously, a domain lead would only discover the discrepancy after getting a wrong answer in chat. With Continuous Context Extraction, the next morning's incremental extraction picks up the dbt changes. The domain admin receives a notification: "3 conflicts detected. ARR definition differs between dbt and existing domain." They open the side-by-side diff, accept the updated dbt definition for ARR, write a custom merged definition for one edge case, and publish. The domain reflects the new business logic before analysts start their day.
+  </Tab>
+  <Tab title="Story 2: Bootstrapping a New Domain from a GitHub Monorepo">
+    A new domain is being stood up for a fintech product team. Their entire metric layer lives in a GitHub monorepo: dbt YAML files, SQL pipeline configs, README documentation, and metric definitions.
 
-A data engineering team refactors their `revenue` model in dbt, changing the grain and updating metric definitions across three YAML files. Previously, a domain lead would only discover the discrepancy after getting a wrong answer in chat. With Continuous Context Extraction, the next morning's incremental extraction picks up the dbt changes. The domain admin receives a notification: "3 conflicts detected. ARR definition differs between dbt and existing domain." They open the side-by-side diff, accept the updated dbt definition for ARR, write a custom merged definition for one edge case, and publish. The domain reflects the new business logic before analysts start their day.
-
-### Story 2: Bootstrapping a New Domain from a GitHub Monorepo
-
-A new domain is being stood up for a fintech product team. Their entire metric layer lives in a GitHub monorepo: dbt YAML files, SQL pipeline configs, README documentation, and metric definitions.
-
-Instead of manually exporting and uploading files, the domain admin connects ACE to the GitHub org, scopes to the relevant repositories, and triggers an initial extraction. Within the hour, 200\+ context objects (metric definitions, JOIN patterns, business glossary entries, and table descriptions) surface for review. The admin bulk-approves the high-confidence entries, edits a handful of edge cases, and publishes. A domain that would have taken days of manual entry is operational by afternoon.
+    Instead of manually exporting and uploading files, the domain admin connects ACE to the GitHub org, scopes to the relevant repositories, and triggers an initial extraction. Within the hour, 200\+ context objects (metric definitions, JOIN patterns, business glossary entries, and table descriptions) surface for review. The admin bulk-approves the high-confidence entries, edits a handful of edge cases, and publishes. A domain that would have taken days of manual entry is operational by afternoon.
+  </Tab>
+</Tabs>
 
 ## FAQs
 
