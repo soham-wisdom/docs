@@ -73,28 +73,12 @@ See real stories of how WisdomAI improvements are helping solve real user proble
     GitHub is live in the current release. Looker and dbt are available via the GitHub connector since they are typically stored in customer Git environments. Atlan, Glean, and Collibra are shipping in the same sprint cycle and will appear in the connection wizard as they go live.
   </Accordion>
 
-  <Accordion title="Does anything get published to my domain automatically?">
-    No. Every extraction goes through a human-in-the-loop review. Conflicts must be resolved and the dedup queue cleared before any version is published.
-  </Accordion>
-
-  <Accordion title="What happens if I close my browser mid-extraction?">
-    Nothing is interrupted. Extraction jobs run as persistent background processes. Status is persisted every 60 seconds. You can close your browser, come back later, and the job will still be running or waiting for your review when you return.
-  </Accordion>
-
-  <Accordion title="What is the difference between a conflict and a duplicate?">
-    A conflict is when the same named term has different definitions across sources, it's  detected by name match. A duplicate is when two differently-named entries are semantically equivalent it's detected by embedding similarity. Both require your review before a new version is published.
-  </Accordion>
-
   <Accordion title="What if I publish something and later realize it was wrong?">
     Use the rollback feature. Open the **Version History** panel, find the prior version you want, and restore it with a single confirmation step. Rollback creates a new version entry. History is append-only, so nothing is ever permanently deleted.
   </Accordion>
 
   <Accordion title="Can I have multiple sources connected at once?">
     Yes. You can have multiple active connections simultaneously. For example, GitHub and Looker at the same time. Each runs its own extraction job. All extracted suggestions enter the same conflict and dedup review queue, which spans across sources.
-  </Accordion>
-
-  <Accordion title="What permissions does ACE need for a GitHub connection?">
-    A Personal Access Token with read access to the repositories you want to extract from. For org-wide extraction, a token with `repo` scope on the organization. No write permissions are required at any point.
   </Accordion>
 
   <Accordion title="How is this different from the file upload Context Extractor?">
