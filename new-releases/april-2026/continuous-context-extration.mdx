@@ -66,25 +66,25 @@ See real stories of how WisdomAI improvements are helping solve real user proble
   </Tab>
 </Tabs>
 
-## FAQs
+<Accordion title="FAQs">
+  <AccordionGroup>
+    <Accordion title="What sources are supported today?">
+      GitHub is live in the current release. Looker and dbt are available via the GitHub connector since they are typically stored in customer Git environments. Atlan, Glean, and Collibra are shipping in the same sprint cycle and will appear in the connection wizard as they go live.
+    </Accordion>
 
-<AccordionGroup>
-  <Accordion title="What sources are supported today?">
-    GitHub is live in the current release. Looker and dbt are available via the GitHub connector since they are typically stored in customer Git environments. Atlan, Glean, and Collibra are shipping in the same sprint cycle and will appear in the connection wizard as they go live.
-  </Accordion>
+    <Accordion title="What if I publish something and later realize it was wrong?">
+      Use the rollback feature. Open the **Version History** panel, find the prior version you want, and restore it with a single confirmation step. Rollback creates a new version entry. History is append-only, so nothing is ever permanently deleted.
+    </Accordion>
 
-  <Accordion title="What if I publish something and later realize it was wrong?">
-    Use the rollback feature. Open the **Version History** panel, find the prior version you want, and restore it with a single confirmation step. Rollback creates a new version entry. History is append-only, so nothing is ever permanently deleted.
-  </Accordion>
+    <Accordion title="Can I have multiple sources connected at once?">
+      Yes. You can have multiple active connections simultaneously. For example, GitHub and Looker at the same time. Each runs its own extraction job. All extracted suggestions enter the same conflict and dedup review queue, which spans across sources.
+    </Accordion>
 
-  <Accordion title="Can I have multiple sources connected at once?">
-    Yes. You can have multiple active connections simultaneously. For example, GitHub and Looker at the same time. Each runs its own extraction job. All extracted suggestions enter the same conflict and dedup review queue, which spans across sources.
-  </Accordion>
-
-  <Accordion title="How is this different from the file upload Context Extractor?">
-    The original Context Extractor is a one-time, file-based flow: export a file, upload it, review suggestions, and publish. Continuous Context Extraction connects ACE directly to the live source system, extracts automatically on a schedule, and keeps the domain continuously aligned, no manual export or file handling required.
-  </Accordion>
-</AccordionGroup>
+    <Accordion title="How is this different from the file upload Context Extractor?">
+      The original Context Extractor is a one-time, file-based flow: export a file, upload it, review suggestions, and publish. Continuous Context Extraction connects ACE directly to the live source system, extracts automatically on a schedule, and keeps the domain continuously aligned, no manual export or file handling required.
+    </Accordion>
+  </AccordionGroup>
+</Accordion>
 
 ## Next steps
 
