@@ -1,0 +1,84 @@
+---
+title: "Embedded Analytics SDK"
+---
+
+The WisdomAI Embedded SDK ships a React component library that lets customer engineering teams embed WisdomAI dashboards natively inside their own products. It provides three primary building blocks — `WisdomProvider`, `WisdomDashboard`, and `WisdomGlobalFilters` — with a minimal integration surface, progressive customization, and support for theming and host-owned layout. This guide walks you through the core components, the minimal integration pattern, and the key improvements in this release.
+
+## How it works
+
+### Core components
+
+**`WisdomProvider`** wraps your application and handles authentication and GraphQL transport. It accepts a `graphqlUrl` and a `tokenProvider` function that returns a JWT. All other SDK components must be descendants of this provider.
+
+**`WisdomDashboard`** renders the embedded dashboard surface. It accepts a `dashboardId` prop and handles widget rendering, data fetching, and reactive filter updates automatically.
+
+**`WisdomGlobalFilters`** is a decoupled filter control surface that can be placed anywhere in the host layout — above, beside, or inside a sidebar — independent of the dashboard component itself.
+
+### Minimal integration
+
+The following example produces a working embedded dashboard with filters:
+
+```jsx
+import { WisdomProvider, WisdomDashboard, WisdomGlobalFilters } from 'react-dashboard-sdk-wisdom';
+
+export function CustomerDashboardPage({ dashboardId }) {
+  const dashboardRef = useRef(null);
+
+  return (
+    <WisdomProvider graphqlUrl="https://your-host/graphql" tokenProvider={() => 'your-jwt-token'}>
+      <WisdomGlobalFilters dashboardId={dashboardId} dashboardRef={dashboardRef} />
+      <WisdomDashboard ref={dashboardRef} dashboardId={dashboardId} />
+    </WisdomProvider>
+  );
+}
+```
+
+Customer developers do not need to manage transport, auth wiring, or widget rendering. For deeper customization, refs and callbacks are available but not required.
+
+### Theming and layout
+
+The SDK supports theme switching — the same integration can serve multiple visual identities. Wrap the embed in your own layout and controls to make it feel native to your product.
+
+## Key improvements in this release
+
+- **Decoupled global filters** — `WisdomGlobalFilters` can now live anywhere in the host layout, independent of the dashboard component
+- **Improved widget surfaces** — table readability, scrolling, and pagination work correctly in embedded contexts
+- **Better auth handling** — token refresh and auth expiry are handled reliably for long-running embedded sessions
+
+## Target users
+
+The Embedded Analytics SDK is available to:
+
+- **Customer engineering teams** — developers at WisdomAI customer companies building embedded analytics experiences in their own products.
+- **Solutions Engineers** — evaluating and demonstrating SDK integration capabilities to prospects.
+
+## FAQs
+
+<AccordionGroup>
+  <Accordion title="Is this a React-only SDK?">
+    The current release is React. Web component and framework-agnostic support is on the roadmap.
+  </Accordion>
+  <Accordion title="How does authentication work?">
+    `WisdomProvider` accepts a `tokenProvider` function that returns a JWT. Your backend controls token generation and expiry. No WisdomAI credentials are exposed in the browser.
+  </Accordion>
+  <Accordion title="Does the SDK support multi-tenant isolation with row-level security?">
+    Yes. JWT-based authentication carries the user's identity, which WisdomAI uses to enforce row-level security. Each embedded user sees only their own data.
+  </Accordion>
+  <Accordion title="What happens when the JWT expires?">
+    A `tokenProvider` that returns a fresh token on each call is the recommended pattern for long-lived sessions.
+  </Accordion>
+  <Accordion title="Is the iframe embedding approach still supported?">
+    Yes. The iframe path remains available and unchanged. The SDK is an additive option for teams that need composability, theming, or programmatic filter control beyond what iframes support.
+  </Accordion>
+</AccordionGroup>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Embedding overview" icon="window-restore" href="/integrations/embeddings/embedding">
+    Understand the full embedding architecture and choose the right integration path for your use case.
+  </Card>
+  <Card title="GraphQL API" icon="brackets-curly" href="/integrations/embeddings/graphql-api/GraphQL-API">
+    Explore the GraphQL API available to embedded integrations for user management and data access.
+  </Card>
+</CardGroup>

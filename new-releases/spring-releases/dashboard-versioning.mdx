@@ -1,0 +1,75 @@
+---
+title: "Dashboard Versioning"
+---
+
+Dashboard Versioning introduces a draft/publish model for dashboards and their widgets. Every change you make creates a draft that does not affect the version users are viewing. Saving promotes the draft to a new published version and preserves the previous version in history. Admins can revert to any prior version at any time. This guide walks you through the draft and publish flow, version states, and how to restore a prior version.
+
+## How it works
+
+### Draft and publish
+
+When you make any change to a dashboard, a draft is created automatically — an isolated copy based on the current published version. The published version remains unchanged and users continue viewing it normally.
+
+- For changes that affect widget data (SQL, filters, visualization config), a widget draft is created for the affected widget only. Other widgets on the same dashboard are not touched.
+- For layout-only changes (repositioning widgets), only a dashboard draft is created — no widget rows are cloned.
+
+Click **Save** to promote the draft to the new published version. The previous published version moves to history.
+
+### Version states
+
+| State | Description |
+| :-- | :-- |
+| **Latest (Published)** | The current version all users see. |
+| **Draft** | Work in progress, based on the current published version. Not visible to end users. |
+| **History** | All previous published versions, retained permanently for audit and rollback. |
+
+### Reverting to a prior version
+
+Open the version history panel for the dashboard, find the version you want to restore, and confirm. The selected version becomes the new published version. Reverting creates a new version entry — history is append-only. Widget membership is restored exactly as it was in the selected version.
+
+### Multiple concurrent editors
+
+Multiple admins can maintain separate drafts simultaneously. If two admins try to publish from drafts based on the same version, the second publish is blocked with a conflict notice until the conflict is resolved.
+
+### Viewer sessions
+
+When viewers apply temporary filter changes, a session-only draft is created scoped to that session. These changes are never published and are cleaned up automatically.
+
+## Target users
+
+Dashboard Versioning is available to:
+
+- **Dashboard Admins** — create, edit, publish, and revert dashboard versions.
+- **Support and Operations teams** — use version history to diagnose what changed and when without reconstructing issues from memory.
+- **Viewers and Explorers** — can apply temporary filters without creating permanent versions or disrupting the published dashboard.
+
+## FAQs
+
+<AccordionGroup>
+  <Accordion title="Does versioning apply to individual widgets as well as dashboards?">
+    Yes. Widgets are independently versioned. A change to one widget creates a new widget version for that widget only — other widgets on the same dashboard are unaffected.
+  </Accordion>
+  <Accordion title="Will existing dashboards automatically get version history?">
+    Dashboards gain versioning from the point this feature is enabled. Historical state prior to the release is not retroactively captured.
+  </Accordion>
+  <Accordion title="What happens when multiple admins edit the same dashboard?">
+    Each admin works in their own draft. The first to publish wins. The second admin's draft is flagged as a conflict and they must resolve it before publishing.
+  </Accordion>
+  <Accordion title="Can viewers accidentally overwrite dashboard changes?">
+    No. Viewer filter changes create a temporary session-only draft that is never published.
+  </Accordion>
+  <Accordion title="How far back does version history go?">
+    All published versions are retained. There is no automatic pruning in the current release.
+  </Accordion>
+</AccordionGroup>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Understand domains" icon="layer-group" href="/setting-up-wisdom-ai/manage-domains/understand-domains">
+    Explore how domains organize the data logic that powers your dashboards.
+  </Card>
+  <Card title="Domain Health" icon="heart-pulse" href="/new-releases/spring-releases/domain-health">
+    Monitor the readiness and accuracy of the domain your dashboards query against.
+  </Card>
+</CardGroup>

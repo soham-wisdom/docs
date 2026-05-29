@@ -3,6 +3,122 @@ title: "Product Updates"
 tag: "new"
 ---
 
+<Update label="Spring 2026">
+  ### 🗂️ Agent version control
+
+  Agent edits no longer modify the live version in place. Every change creates a draft, leaving the published version running undisturbed until you're ready. Publishing locks the draft as the new version and increments the version number. Run logs are permanently tied to the version that executed them, so reviewing a past run always shows the correct graph and configuration.
+
+  **⚙️ How it works:**
+
+  1. Edit the agent — a draft is created automatically and the published version continues running
+  2. Test using **Preview** before committing any changes
+  3. Click **Publish** — the draft is locked as the new published version and the version number increments
+  4. Open any past run in the **Run Visualizer** to see the exact version used for that run
+
+  <Accordion title="FAQs">
+    <AccordionGroup>
+      <Accordion title="Does publishing affect runs currently in progress?">
+        No. In-progress runs complete against the version they were dispatched on. Publishing only affects runs triggered after the publish.
+      </Accordion>
+      <Accordion title="Can I roll back to a previous published version?">
+        Version history is retained and viewable. One-click rollback is on the near-term roadmap.
+      </Accordion>
+    </AccordionGroup>
+  </Accordion>
+
+  ### 🔌 Dremio connector
+
+  WisdomAI now connects natively to Dremio Cloud and Dremio Software via Apache Arrow Flight, enabling natural-language queries against your data lakehouse without manual dialect configuration or JDBC workarounds. Schema crawling, view detection, and Dremio-specific SQL generation are handled automatically. Enterprise deployments using internal CA certificates are supported via custom certificate upload during setup.
+
+  **⚙️ How it works:**
+
+  1. Go to **Connections** > **Add connection** and select **Dremio**
+  2. Enter the Flight endpoint host and port
+  3. Provide authentication credentials — Personal Access Token for Dremio Cloud; username/password or PAT for Dremio Software
+  4. Configure TLS and optionally upload a custom root certificate for internal CA environments
+  5. WisdomAI crawls the schema and makes the domain available for natural-language queries
+
+  <Accordion title="FAQs">
+    <AccordionGroup>
+      <Accordion title="Are both Dremio Cloud and Dremio Software supported?">
+        Yes. Dremio Cloud uses a Personal Access Token. Dremio Software supports username/password via Flight handshake or a PAT.
+      </Accordion>
+      <Accordion title="What SQL dialect does WisdomAI generate for Dremio?">
+        WisdomAI generates SQL in Dremio's dialect automatically. No manual configuration is required.
+      </Accordion>
+    </AccordionGroup>
+  </Accordion>
+
+  ### 🧠 Knowledge signals from chat
+
+  Every conversation where a user corrects an answer, clarifies a metric, or states a business rule is a potential source of domain knowledge — and until now, that signal was lost after the chat ended. Knowledge Signals from Chat lets domain admins surface those insights from any conversation and promote them directly to the domain knowledge base with a single review step.
+
+  **⚙️ How it works:**
+
+  1. Open any conversation in your domain
+  2. Click the brain icon (**Knowledge Suggestions**) in the chat controls bar
+  3. Review the suggested entries — each one is editable before accepting
+  4. **Accept**, **Decline**, or edit inline, then accept — nothing is published automatically
+
+  <Note>
+    The Knowledge Suggestions panel is currently in Alpha while quality tuning is ongoing. Review and edit suggestions before accepting.
+  </Note>
+
+  <Accordion title="FAQs">
+    <AccordionGroup>
+      <Accordion title="Who can accept knowledge suggestions?">
+        Only users with write access to the domain. Explorers and analysts can view the "Context Used" explanation on any answer but cannot manage knowledge entries.
+      </Accordion>
+      <Accordion title="Does accepting a suggestion take effect immediately?">
+        Yes. The entry is written to the domain knowledge base and available for retrieval on the next query.
+      </Accordion>
+    </AccordionGroup>
+  </Accordion>
+
+  ### ✅ Reviewed runs
+
+  Reduce agent non-determinism by marking successful runs as golden examples. When a run is marked Reviewed, its full execution history — LLM interactions, tool calls, and outputs — is injected into future runs of the same prompt as historical context. This anchors SQL patterns, output formatting, and decision logic to a run you've confirmed is correct.
+
+  **⚙️ How it works:**
+
+  1. Open an agent and go to **Previous Runs**
+  2. Click **Mark as reviewed** on a successful run — a green Reviewed chip appears on the run header
+  3. On future runs, WisdomAI fetches up to 3 matching reviewed conversations and injects them as context before generating a response
+
+  <Accordion title="FAQs">
+    <AccordionGroup>
+      <Accordion title="How many reviewed runs does the system use at once?">
+        Up to 3, selected by most-recently-reviewed first.
+      </Accordion>
+      <Accordion title="Can I un-review a run?">
+        Yes. The action can be toggled. Removing reviewed status removes the run from the reference pool immediately.
+      </Accordion>
+    </AccordionGroup>
+  </Accordion>
+
+  ### 🔍 Run visualizer
+
+  The Run Visualizer renders a full execution trace of any past or live agent run directly on the agent graph — every node color-coded by status, with a detail panel showing inputs, outputs, tool calls, and timing. Because the graph displayed is always the version used for that specific run, it serves as a reliable audit trail even after the agent has been updated.
+
+  **⚙️ How it works:**
+
+  - Go to **Agents**, open an agent, and navigate to **Previous Runs**
+  - Click any run to open its Run Visualizer
+  - Click any node to see its input, output, tool calls, and execution duration
+  - For live runs, nodes update in real time as the execution progresses
+
+  <Accordion title="FAQs">
+    <AccordionGroup>
+      <Accordion title="Does the visualizer show the current agent version or the version that ran?">
+        Always the version used for that run. If the agent has been edited and republished since, historical runs still show the original version.
+      </Accordion>
+      <Accordion title="Does this work for both Visual Mode and Prompt Mode agents?">
+        Yes. Visual Mode agents show the full node graph. Prompt Mode agents show a structured timeline of LLM calls, tool invocations, and outputs.
+      </Accordion>
+    </AccordionGroup>
+  </Accordion>
+</Update>
+
 <Update label="March 2026">
   ### 🤖 Metrics & Derived Column Copilots
 
