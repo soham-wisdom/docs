@@ -437,6 +437,17 @@
             "group": "Release Notes",
             "pages": [
               {
+                "group": "Spring 2026",
+                "pages": [
+                  "new-releases/spring-releases/spring-release-overview",
+                  "new-releases/spring-releases/parameterized-agents",
+                  "new-releases/spring-releases/continuous-context-extraction",
+                  "new-releases/spring-releases/dashboard-versioning",
+                  "new-releases/spring-releases/domain-health",
+                  "new-releases/spring-releases/embedded-sdk-updates"
+                ]
+              },
+              {
                 "group": "March 2026",
                 "pages": [
                   "new-releases/march-2026/03-26"
@@ -528,7 +539,7 @@
     },
      {
       "source": "/new-releases",
-      "destination": "/new-releases/march-2026/03-26"
+      "destination": "/new-releases/spring-releases/spring-release-overview"
     },
     {
       "source":"/advanced-features/agents/agent-builder",
