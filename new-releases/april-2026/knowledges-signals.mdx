@@ -105,31 +105,33 @@ The current release is a manual, single-conversation workflow. The roadmap exten
 
 ## FAQs
 
-<AccordionGroup>
-  <Accordion title="What if I accept something incorrect?">
-    Navigate to the **Domain Knowledge** tab using the direct link in the confirmation notification. You can edit or delete the entry there. In a future release, provenance tracking will make it easier to find and remove entries that originated from a specific conversation.
-  </Accordion>
+<Accordion title="FAQs">
+  <AccordionGroup>
+    <Accordion title="What if I accept something incorrect?">
+      Navigate to the **Domain Knowledge** tab using the direct link in the confirmation notification. You can edit or delete the entry there. In a future release, provenance tracking will make it easier to find and remove entries that originated from a specific conversation.
+    </Accordion>
 
-  <Accordion title="How does the system decide what to suggest from a conversation?">
-    The conversation is analyzed by an LLM that looks for factual clarifications you gave the agent, corrections to incorrect answers, business rules stated as part of answering a question, and domain terminology defined mid-conversation. It does not suggest generic conversational content.
-  </Accordion>
+    <Accordion title="How does the system decide what to suggest from a conversation?">
+      The conversation is analyzed by an LLM that looks for factual clarifications you gave the agent, corrections to incorrect answers, business rules stated as part of answering a question, and domain terminology defined mid-conversation. It does not suggest generic conversational content.
+    </Accordion>
 
-  <Accordion title="Can I reopen suggestions I previously declined?">
-    Not in the current release. Declined suggestions are removed from the session. To re-generate them, close and reopen the **Knowledge Suggestions** popover on the same conversation.
-  </Accordion>
+    <Accordion title="Can I reopen suggestions I previously declined?">
+      Not in the current release. Declined suggestions are removed from the session. To re-generate them, close and reopen the **Knowledge Suggestions** popover on the same conversation.
+    </Accordion>
 
-  <Accordion title="Can I run Knowledge Suggestions across multiple conversations at once?">
-    Not in the current release. The feature is per-conversation. Batch processing and automated refinement are on the roadmap under Fully Automated Iterative Refinement.
-  </Accordion>
+    <Accordion title="Can I run Knowledge Suggestions across multiple conversations at once?">
+      Not in the current release. The feature is per-conversation. Batch processing and automated refinement are on the roadmap under Fully Automated Iterative Refinement.
+    </Accordion>
 
-  <Accordion title="How is this different from the Extract from query logs feature?">
-    Query history mining analyzes SQL query logs from your connected warehouses in bulk. It is designed to bootstrap a domain from scratch or fill large structural gaps. Knowledge Signals from Chat is designed for incremental, conversational refinement, capturing the nuanced business logic and corrections that emerge from actual user interactions, which query logs do not contain.
-  </Accordion>
+    <Accordion title="How is this different from the Extract from query logs feature?">
+      Query history mining analyzes SQL query logs from your connected warehouses in bulk. It is designed to bootstrap a domain from scratch or fill large structural gaps. Knowledge Signals from Chat is designed for incremental, conversational refinement, capturing the nuanced business logic and corrections that emerge from actual user interactions, which query logs do not contain.
+    </Accordion>
 
-  <Accordion title="How many suggestions will I typically see per conversation?">
-    It varies by conversation length and density. Short factual exchanges might yield 1 to 3 suggestions. Long analytical sessions with several corrections could yield 8 to 15. The system filters for high-signal content and will not suggest every sentence.
-  </Accordion>
-</AccordionGroup>
+    <Accordion title="How many suggestions will I typically see per conversation?">
+      It varies by conversation length and density. Short factual exchanges might yield 1 to 3 suggestions. Long analytical sessions with several corrections could yield 8 to 15. The system filters for high-signal content and will not suggest every sentence.
+    </Accordion>
+  </AccordionGroup>
+</Accordion>
 
 ## Next steps
 
