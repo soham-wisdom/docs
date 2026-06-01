@@ -12,7 +12,7 @@ Domain Health gives domain administrators a clear, scored signal of whether a do
 
     **Schema quality** assesses whether the domain's table and column definitions are clear and usable. It flags cryptic or ambiguous names, overlapping names that lack descriptions, and missing join relationships between tables that are commonly queried together.
 
-    **Context quality** re-runs your Reviewed Queries through the system and evaluates whether the generated SQL matches expected output. An LLM agent diagnoses root causes — knowledge conflicts, stale definitions, contradictions — and proposes specific fixes. A verify-fix loop confirms each suggestion improves the result before surfacing it.
+    **Context quality** re-runs your Reviewed Queries through the system and evaluates whether the generated SQL matches expected output. An LLM agent diagnoses root causes: knowledge conflicts, stale definitions, contradictions, and proposes specific fixes. A verify-fix loop confirms each suggestion improves the result before surfacing it.
 
     **Usage signals** tracks conversation volume, negative feedback rate, and limited-context rate, classifying domain usage health as LOW, MEDIUM, or HIGH.
 
@@ -44,8 +44,8 @@ Domain Health gives domain administrators a clear, scored signal of whether a do
 
 Domain Health is available to:
 
-- **Domain Admins** — run analyses, review recommendations, and monitor scores over time.
-- **Explorers and Analysts** — see the readiness banner and Learning chip when a domain is below threshold. No action required.
+- **Domain Admins**: Run analyses, review recommendations, and monitor scores over time.
+- **Explorers and Analysts**: See the readiness banner and Learning chip when a domain is below threshold. No action required.
 
 ## FAQs
 
@@ -63,7 +63,7 @@ Domain Health is available to:
   </Accordion>
 
   <Accordion title="What's the difference between schema quality and context quality?">
-    Schema quality evaluates the structural layer — whether names are clear, joins are defined, and tables are accessible. Context quality evaluates the knowledge layer — whether the domain's curated content produces correct answers on queries it has been taught.
+    Schema quality evaluates the structural layer, whether names are clear, joins are defined, and tables are accessible. Context quality evaluates the knowledge layer, whether the domain's curated content produces correct answers on queries it has been taught.
   </Accordion>
 
   <Accordion title="Does Domain Health work for MCP data sources?">
