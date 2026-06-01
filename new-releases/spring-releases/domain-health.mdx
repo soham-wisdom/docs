@@ -18,6 +18,17 @@ Domain Health gives domain administrators a clear, scored signal of whether a do
       The combined score weights context quality at 70% and schema quality at 30%. Usage signals are displayed separately and do not affect the numeric score.
     </Note>
   </Step>
+  <Step title="Health dimensions">
+    Domain Health evaluates three dimensions and combines them into a single score.
+
+    - **Schema quality**: Assesses whether the domain's table and column definitions are clear and usable. It flags cryptic or ambiguous names, overlapping names that lack descriptions, and missing join relationships between tables that are commonly queried together.
+    - **Context quality**: Re-runs your Reviewed Queries through the system and evaluates whether the generated SQL matches expected output. An LLM agent diagnoses root causes: knowledge conflicts, stale definitions, contradictions, and proposes specific fixes. A verify-fix loop confirms each suggestion improves the result before surfacing it.
+    - **Usage signals**: Tracks conversation volume, negative feedback rate, and limited-context rate, classifying domain usage health as LOW, MEDIUM, or HIGH.
+
+    <Note>
+      The combined score weights context quality at 70% and schema quality at 30%. Usage signals are displayed separately and do not affect the numeric score.
+    </Note>
+  </Step>
   <Step title="Running an analysis">
     - **On-demand:** Click **Run Analysis** in the Domain Health tab. Use this before a planned rollout or after a significant domain change.
     - **Automated:** A weekly overnight job runs automatically and updates the health score. You receive a notification when the job completes.
