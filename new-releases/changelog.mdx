@@ -63,7 +63,7 @@ tag: "new"
       </Accordion>
 
       <Accordion title="What SQL dialect does WisdomAI generate for Dremio?">
-        WisdomAI generates SQL in Dremio's dialect automatically. No manual configuration is required.
+        WisdomAI automatically generates SQL in Dremio's dialect. No manual configuration is required.
       </Accordion>
 
       <Accordion title="Is there a row limit on queries executed against Dremio?">
@@ -80,7 +80,7 @@ tag: "new"
 
   1. Open any conversation in your domain
   2. Click the brain icon (**Knowledge Suggestions**) in the chat controls bar
-  3. Review the suggested entries, each one is editable before accepting
+  3. Review the suggested entries; each one is editable before accepting
   4. **Accept**, **Decline**, or edit inline, then accept. Nothing is published automatically
 
   <Accordion title="FAQs">
@@ -100,7 +100,7 @@ tag: "new"
   </Accordion>
 
   <Note>
-    The Knowledge Suggestions panel is currently available under early access while we refine performance and quality. Review and edit suggestions before accepting.
+    The Knowledge Suggestions panel is currently in early access while we refine its performance and quality. Review and edit suggestions before accepting.
   </Note>
 
   ### ✅ Reviewed runs
@@ -109,9 +109,13 @@ tag: "new"
 
   **⚙️ How it works:**
 
-  1. Open an agent and go to **Previous Runs**
-  2. Click **Mark as reviewed** on a successful run, a green Reviewed chip appears on the run header
+  1. Open an agent and click **View Runs** to access its **Previous Runs**
+  2. Click **Mark as reviewed** on a successful run, a green **Reviewed** chip appears on the run header
   3. On future runs, WisdomAI fetches up to 3 matching reviewed conversations and injects them as context before generating a response
+
+  <Frame>
+    ![Reviewed Run](/images/reviewed-run.png)
+  </Frame>
 
   | Color/Status | Meaning |
   | --- | --- |
@@ -142,6 +146,10 @@ tag: "new"
   - Click any run to open its Run Visualizer
   - Click any node to see its input, output, tool calls, and execution duration
   - For live runs, nodes update in real time as the execution progresses
+
+  <Frame>
+    ![Run Visualizer](/images/run-visualizer.png)
+  </Frame>
 
   <Accordion title="FAQs">
     <AccordionGroup>
