@@ -6,14 +6,18 @@ tag: "new"
 <Update label="Spring 2026">
   ### 🗂️ Agent version control
 
-  Agent edits no longer modify the live version in place. Every change creates a draft, leaving the published version running undisturbed until you're ready. Publishing a new version increments the version number and locks that version. Run logs are permanently tied to the version that executed them, so reviewing a past run always shows the correct graph and configuration.
+  Agent edits no longer modify the live version. Every change creates a draft, leaving the published version running undisturbed until you're ready. Publishing a new version increments the version number and locks that version. Run logs are permanently tied to the version that executed them, so reviewing a past run always shows the correct graph and configuration.
 
   **⚙️ How it works:**
 
-  1. Edit the agent. A draft is created automatically and the published version continues running
+  1. Edit the agent. A draft is created automatically, and the published version continues running
   2. Test using **Preview** before committing any changes
-  3. Click **Publish**. The draft is locked as the new published version and the version number increments
+  3. Click **Publish**. The draft is locked as the new published version, and the version number increments
   4. Open any past run in the **Run Visualizer** to see the exact version used for that run
+
+  <Frame>
+    ![Agent Versioning 01](/images/agent-versioning-01.png)
+  </Frame>
 
   <Accordion title="FAQs">
     <AccordionGroup>
@@ -75,21 +79,20 @@ tag: "new"
   3. Review the suggested entries, each one is editable before accepting
   4. **Accept**, **Decline**, or edit inline, then accept. Nothing is published automatically
 
-<Accordion title="FAQs">
-  <AccordionGroup>
-    <Accordion title="Does accepting a suggestion take effect immediately?">
-    Yes. Once accepted, the entry is written to the domain knowledge base and available for retrieval on the next query.
+  <Accordion title="FAQs">
+    <AccordionGroup>
+      <Accordion title="Does accepting a suggestion take effect immediately?">
+        Yes. Once accepted, the entry is written to the domain knowledge base and available for retrieval on the next query.
 
-    <Tip>
-    To edit a suggestion, use the inline text editor. Click into the text, make your changes, and then click **Accept**. The edited version is the one that gets saved.
-    </Tip>
+        <Tip>
+          To edit a suggestion, use the inline text editor. Click into the text, make your changes, and then click **Accept**. The edited version is the one that gets saved.
+        </Tip>
+      </Accordion>
 
-    </Accordion>
-    
-    <Accordion title="What if I accept something that's wrong?">
-    Navigate to the Domain Knowledge tab. The confirmation notification after acceptance includes a direct link. You can edit or delete the entry there.
-    </Accordion>
-  </AccordionGroup>
+      <Accordion title="What if I accept something that's wrong?">
+        Navigate to the Domain Knowledge tab. The confirmation notification after acceptance includes a direct link. You can edit or delete the entry there.
+      </Accordion>
+    </AccordionGroup>
   </Accordion>
 
   <Note>
@@ -107,7 +110,7 @@ tag: "new"
   3. On future runs, WisdomAI fetches up to 3 matching reviewed conversations and injects them as context before generating a response
 
   | Color/Status | Meaning |
-  |-------|---------|
+  | --- | --- |
   | `green` | Completed successfully |
   | `red` | Failed or errored |
   | `gray` | Did not execute (branch not taken) |
@@ -149,7 +152,7 @@ tag: "new"
   </Accordion>
 
   <Tip>
-  You can share a specific run’s visualizer link with colleagues using the direct URL included in email and Slack delivery notifications. Access is still subject to the agent’s permissions.
+    You can share a specific run’s visualizer link with colleagues using the direct URL included in email and Slack delivery notifications. Access is still subject to the agent’s permissions.
   </Tip>
 </Update>
 
