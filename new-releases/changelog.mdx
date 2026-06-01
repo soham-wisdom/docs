@@ -79,18 +79,6 @@ tag: "new"
     The Knowledge Suggestions panel is currently in Alpha while quality tuning is ongoing. Review and edit suggestions before accepting.
   </Note>
 
-  <Accordion title="FAQs">
-    <AccordionGroup>
-      <Accordion title="Who can accept knowledge suggestions?">
-        Only users with write access to the domain. Explorers and analysts can view the "Context Used" explanation on any answer but cannot manage knowledge entries.
-      </Accordion>
-
-      <Accordion title="Does accepting a suggestion take effect immediately?">
-        Yes. The entry is written to the domain knowledge base and available for retrieval on the next query.
-      </Accordion>
-    </AccordionGroup>
-  </Accordion>
-
   ### ✅ Reviewed runs
 
   Reduce agent non-determinism by marking successful runs as golden examples. When a run is marked Reviewed, its full execution history — LLM interactions, tool calls, and outputs — is injected into future runs of the same prompt as historical context. This anchors SQL patterns, output formatting, and decision logic to a run you've confirmed is correct.
