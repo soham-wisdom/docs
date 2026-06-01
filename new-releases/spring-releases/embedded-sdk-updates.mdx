@@ -10,7 +10,7 @@ The WisdomAI Embedded SDK ships a React component library that lets customer eng
   <Step title="Core components">
     - **`WisdomProvider`** wraps your application and handles authentication and GraphQL transport. It accepts a `graphqlUrl` and a `tokenProvider` function that returns a JWT. All other SDK components must be descendants of this provider.
     - **`WisdomDashboard`** renders the embedded dashboard surface. It accepts a `dashboardId` prop and handles widget rendering, data fetching, and reactive filter updates automatically.
-    - **`WisdomGlobalFilters`** is a decoupled filter control surface that can be placed anywhere in the host layout — above, beside, or inside a sidebar — independent of the dashboard component itself.
+    - **`WisdomGlobalFilters`** is a decoupled filter control surface that can be placed anywhere in the host layout (above, beside, or inside a sidebar) independent of the dashboard component itself.
   </Step>
   <Step title="Minimal integration">
     The following example produces a working embedded dashboard with filters:
@@ -33,7 +33,7 @@ The WisdomAI Embedded SDK ships a React component library that lets customer eng
     Customer developers do not need to manage transport, auth wiring, or widget rendering. For deeper customization, refs and callbacks are available but not required.
   </Step>
   <Step title="Theming and layout">
-    The SDK supports theme switching — the same integration can serve multiple visual identities. Wrap the embed in your own layout and controls to make it feel native to your product.
+    The SDK supports theme switching, the same integration can serve multiple visual identities. Wrap the embed in your own layout and controls to make it feel native to your product.
   </Step>
 </Steps>
 
