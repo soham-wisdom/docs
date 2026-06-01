@@ -6,7 +6,7 @@ Domain knowledge doesn't stay accurate on its own. Metric definitions, business 
 
 Continuous Context Extraction closes that gap by automating the maintenance phase of WisdomAI's Adaptive Context Engine (ACE).
 
-While ACE automatically builds and governs your overarching Enterprise Context Layer, Continuous Context Extraction allows you to connect your domain directly to the live systems where your business logic lives. ACE monitors these systems on a scheduled or on-demand basis, detects changes since the last run, and surfaces only new or conflicting signals for human review. This ensures your domain stays perpetually aligned with your organization's true semantics without requiring manual file exports or uploads.
+While ACE automatically builds and governs your overarching Enterprise Context Layer, Continuous Context Extraction allows you to connect your domain directly to the live systems where your business logic lives. ACE monitors these systems on a scheduled or on-demand basis, detects what has changed since the last run, and surfaces only new or conflicting signals for human review. This ensures your domain stays perpetually aligned with your organization's true semantics without requiring manual file exports or uploads.
 
 ## How it works
 
@@ -16,15 +16,12 @@ Continuous Context Extraction follows a continuous synchronization lifecycle tha
   <Step title="Connect a source" icon="plug">
     Navigate to your domain's Context Extractor page and open the **Connections** tab. A five-step wizard guides you through: choosing a source type, authenticating, scoping the extraction to a repository or branch, setting a schedule, and validating credentials. The connection appears in your list with a **PENDING** status.
   </Step>
-
   <Step title="Extract" icon="wand-magic-sparkles">
     The first run performs a full scan of the connected source. Subsequent runs are incremental, processing only changes since the last extraction. When a run completes, you receive an in-app notification with the count of items requiring attention and a direct link to the review screen.
   </Step>
-
   <Step title="Resolve conflicts and duplicates" icon="code-merge">
     The Adaptive Context Engine (ACE) compares every incoming context object against what already exists in your domain. Conflicting entries surface side-by-side so you can accept either version, write a custom merged definition, or defer. After conflict resolution, an embedding-based similarity pass flags semantically equivalent entries as duplicate candidates, you can accept a merge, keep both, or defer. No automatic merges ever occur.
   </Step>
-
   <Step title="Publish" icon="check-double">
     Publishing a resolved extraction increments your domain version number and stores a full snapshot. You can view a diff between any two versions or restore any prior version from the version history panel. Rollback creates a new version entry. History is append-only.
   </Step>
@@ -78,7 +75,7 @@ See real stories of how WisdomAI improvements are helping solve real user proble
 
     A new domain is being stood up for a fintech product team. Their entire metric layer lives in a GitHub monorepo: dbt YAML files, SQL pipeline configs, README documentation, and metric definitions.
 
-    Instead of manually exporting and uploading files, the domain admin connects their GitHub org via Continuous Context Extraction, scopes to the relevant repositories, and triggers an initial extraction. Within the hour, 200+ context objects (metric definitions, JOIN patterns, business glossary entries, and table descriptions) surface for review. The admin bulk-approves the high-confidence entries, edits a handful of edge cases, and publishes. A domain that would have taken days of manual entry is operational by afternoon.
+    Instead of manually exporting and uploading files, the domain admin connects their GitHub org via Continuous Context Extraction, scopes to the relevant repositories, and triggers an initial extraction. Within the hour, 200\+ context objects (metric definitions, JOIN patterns, business glossary entries, and table descriptions) surface for review. The admin bulk-approves the high-confidence entries, edits a handful of edge cases, and publishes. A domain that would have taken days of manual entry is operational by afternoon.
   </Tab>
 </Tabs>
 
