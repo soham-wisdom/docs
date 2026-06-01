@@ -37,14 +37,14 @@ tag: "new"
 
   ### 🔌 Dremio connector
 
-  WisdomAI now connects natively to Dremio Cloud and Dremio Software via Apache Arrow Flight, enabling natural-language queries against your data lakehouse without manual dialect configuration or JDBC workarounds. Schema crawling, view detection, and Dremio-specific SQL generation are handled automatically. Enterprise deployments using internal CA certificates are supported via custom certificate upload during setup.
+  WisdomAI now connects natively to Dremio Cloud and Dremio Software via Apache Arrow Flight, enabling natural-language queries against your data lakehouse without manual dialect configuration or JDBC workarounds. WisdomAI handles schema crawling, view detection, and Dremio-specific SQL generation are handled automatically. Enterprise deployments using internal CA certificates are supported via custom certificate upload during setup.
 
   **⚙️ How it works:**
 
   1. Go to **Connections** \> **Add connection** and select **Dremio**
   2. Enter the Flight endpoint host and port
-  3. Provide authentication credentials — Personal Access Token for Dremio Cloud; username/password or PAT for Dremio Software
-  4. Configure TLS and optionally upload a custom root certificate for internal CA environments
+  3. Provide authentication credentials: Personal Access Token for Dremio Cloud; username/password or PAT for Dremio Software
+  4. Configure TLS/SSL and optionally upload a custom root certificate for internal CA environments
   5. WisdomAI crawls the schema and makes the domain available for natural-language queries
 
   <Accordion title="FAQs">
@@ -55,6 +55,10 @@ tag: "new"
 
       <Accordion title="What SQL dialect does WisdomAI generate for Dremio?">
         WisdomAI generates SQL in Dremio's dialect automatically. No manual configuration is required.
+      </Accordion>
+
+      <Accordion title="Is there a row limit on queries executed against Dremio?">
+        Wisdom applies its standard query result limits. Dremio's own resource controls also apply.
       </Accordion>
     </AccordionGroup>
   </Accordion>
