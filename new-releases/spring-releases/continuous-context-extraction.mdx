@@ -18,10 +18,10 @@ Continuous Context Extraction follows four stages from connection to a published
     The first run performs a full scan of the connected source. Subsequent runs are incremental, processing only changes since the last extraction. When a run completes, you receive an in-app notification with the count of items requiring attention and a direct link to the review screen.
   </Step>
   <Step title="Resolve conflicts and duplicates" icon="code-merge">
-    ACE compares every incoming context object against what already exists in your domain. Conflicting entries surface side-by-side so you can accept either version, write a custom merged definition, or defer. After conflict resolution, an embedding-based similarity pass flags semantically equivalent entries as duplicate candidates — you can accept a merge, keep both, or defer. No automatic merges ever occur.
+    ACE compares every incoming context object against what already exists in your domain. Conflicting entries surface side-by-side so you can accept either version, write a custom merged definition, or defer. After conflict resolution, an embedding-based similarity pass flags semantically equivalent entries as duplicate candidates, you can accept a merge, keep both, or defer. No automatic merges ever occur.
   </Step>
   <Step title="Publish" icon="check-double">
-    Publishing a resolved extraction increments your domain version number and stores a full snapshot. You can view a diff between any two versions or restore any prior version from the version history panel. Rollback creates a new version entry — history is append-only.
+    Publishing a resolved extraction increments your domain version number and stores a full snapshot. You can view a diff between any two versions or restore any prior version from the version history panel. Rollback creates a new version entry. History is append-only.
   </Step>
 </Steps>
 
@@ -85,7 +85,7 @@ See real stories of how WisdomAI improvements are helping solve real user proble
   </Accordion>
 
   <Accordion title="What if I publish something and realize it was wrong?">
-    Open the version history panel, find the prior version, and restore it with a single confirmation step. History is append-only — nothing is ever permanently deleted.
+    Open the version history panel, find the prior version, and restore it with a single confirmation step. History is append-only, nothing is ever permanently deleted.
   </Accordion>
 
   <Accordion title="What's the difference between a conflict and a duplicate?">
@@ -93,7 +93,7 @@ See real stories of how WisdomAI improvements are helping solve real user proble
   </Accordion>
 
   <Accordion title="How is this different from the original file-upload Context Extractor?">
-    The file-upload extractor is a one-time, manual flow designed for bootstrapping. Continuous Context Extraction connects to live source systems, extracts on a schedule, and keeps the domain continuously aligned — no manual export or file handling required.
+    The file-upload extractor is a one-time, manual flow designed for bootstrapping. Continuous Context Extraction connects to live source systems, extracts on a schedule, and keeps the domain continuously aligned. No manual export or file handling required.
   </Accordion>
 </AccordionGroup>
 
