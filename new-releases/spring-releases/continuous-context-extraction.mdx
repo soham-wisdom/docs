@@ -2,7 +2,9 @@
 title: "Continuous Context Extraction"
 ---
 
-Continuous Context Extraction (ACE) connects your domain directly to the systems where your business logic lives — GitHub repositories, dbt models, Looker explores, query logs — and keeps your domain's knowledge layer synchronized on a schedule. Instead of one-time file uploads, ACE monitors for changes, surfaces only new or conflicting signals for review, and never publishes anything to your domain without explicit human approval. This guide walks you through connecting a source, understanding how extractions run, and resolving conflicts before publishing.
+Domain knowledge doesn't stay accurate on its own. Metric definitions, business rules, and table descriptions live across GitHub repositories, dbt YAML files, Looker models, and data catalogs. The moment any of those sources changes, your domain starts falling behind.\
+\
+Continuous Context Extraction (ACE) closes that gap. You can now connect your domain directly to the systems where your business logic lives. ACE runs extraction on a scheduled or on-demand basis, detects what changed since the last run, and surfaces only new signals for your review. This means your domain stays perpetually aligned with the source of truth without requiring you to manually export or upload a file.
 
 ## How it works
 
@@ -56,15 +58,19 @@ Continuous Context Extraction is available to:
   <Accordion title="Does anything get published to my domain automatically?">
     No. Every extraction goes through a human-in-the-loop review. There are no auto-merges in the current release.
   </Accordion>
+
   <Accordion title="What if I close my browser mid-extraction?">
     Nothing is interrupted. Extraction jobs run as persistent background processes. You can return at any time and the job will still be running or waiting for review.
   </Accordion>
+
   <Accordion title="What if I publish something and realize it was wrong?">
     Open the version history panel, find the prior version, and restore it with a single confirmation step. History is append-only — nothing is ever permanently deleted.
   </Accordion>
+
   <Accordion title="What's the difference between a conflict and a duplicate?">
     A conflict is when the same named term has different definitions across sources, detected by name match. A duplicate is when two differently-named entries are semantically equivalent, detected by embedding similarity. Both require your review before a new version is published.
   </Accordion>
+
   <Accordion title="How is this different from the original file-upload Context Extractor?">
     The file-upload extractor is a one-time, manual flow designed for bootstrapping. Continuous Context Extraction connects to live source systems, extracts on a schedule, and keeps the domain continuously aligned — no manual export or file handling required.
   </Accordion>
@@ -76,6 +82,7 @@ Continuous Context Extraction is available to:
   <Card title="Advanced data modeling" icon="sitemap" href="/setting-up-wisdom-ai/advanced-data-modeling-creating-context">
     Learn how to manually create relationships, metrics, and context in your domain.
   </Card>
+
   <Card title="Domain Health" icon="heart-pulse" href="/new-releases/spring-releases/domain-health">
     Measure how effectively your domain's knowledge layer is producing correct answers.
   </Card>
