@@ -20,6 +20,9 @@ Continuous Context Extraction follows four stages from connection to a published
     The first run performs a full scan of the connected source. Subsequent runs are incremental, processing only changes since the last extraction. When a run completes, you receive an in-app notification with the count of items requiring attention and a direct link to the review screen.
   </Step>
   <Step title="Resolve conflicts and duplicates" icon="code-merge">
+    ACE compares every incoming context object against what already exists in your domain. Conflicting entries surface side-by-side so you can accept either version, write a custom merged definition, or defer. After conflict resolution, an embedding-based similarity pass flags semantically equivalent entries as duplicate candidates, you can accept a merge, keep both, or defer. No automatic merges ever occur.
+  </Step>
+  <Step title="Resolve conflicts and duplicates" icon="code-merge">
     The Adaptive Context Engine (ACE) compares every incoming context object against what already exists in your domain. Conflicting entries surface side-by-side so you can accept either version, write a custom merged definition, or defer. After conflict resolution, an embedding-based similarity pass flags semantically equivalent entries as duplicate candidates, you can accept a merge, keep both, or defer. No automatic merges ever occur.
   </Step>
   <Step title="Publish" icon="check-double">
