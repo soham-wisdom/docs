@@ -6,8 +6,10 @@ Domain Health gives domain administrators a clear, scored signal of whether a do
 
 ## How it works
 
+A combination of deep data evaluations with actionable workflows across four progressive stages to ensure your data models are production-ready.
+
 <Steps>
-  <Step title="Health dimensions">
+  <Step title="Health dimensions" icon="chart-network">
     Domain Health evaluates three dimensions and combines them into a single score.
 
     - **Schema quality** assesses whether the domain's table and column definitions are clear and usable. It flags cryptic or ambiguous names, overlapping names that lack descriptions, and missing join relationships between tables that are commonly queried together.
@@ -18,22 +20,11 @@ Domain Health gives domain administrators a clear, scored signal of whether a do
       The combined score weights context quality at 70% and schema quality at 30%. Usage signals are displayed separately and do not affect the numeric score.
     </Note>
   </Step>
-  <Step title="Health dimensions">
-    Domain Health evaluates three dimensions and combines them into a single score.
-
-    - **Schema quality**: Assesses whether the domain's table and column definitions are clear and usable. It flags cryptic or ambiguous names, overlapping names that lack descriptions, and missing join relationships between tables that are commonly queried together.
-    - **Context quality**: Re-runs your Reviewed Queries through the system and evaluates whether the generated SQL matches expected output. An LLM agent diagnoses root causes: knowledge conflicts, stale definitions, contradictions, and proposes specific fixes. A verify-fix loop confirms each suggestion improves the result before surfacing it.
-    - **Usage signals**: Tracks conversation volume, negative feedback rate, and limited-context rate, classifying domain usage health as LOW, MEDIUM, or HIGH.
-
-    <Note>
-      The combined score weights context quality at 70% and schema quality at 30%. Usage signals are displayed separately and do not affect the numeric score.
-    </Note>
-  </Step>
-  <Step title="Running an analysis">
+  <Step title="Running an analysis" icon="play">
     - **On-demand:** Click **Run Analysis** in the Domain Health tab. Use this before a planned rollout or after a significant domain change.
     - **Automated:** A weekly overnight job runs automatically and updates the health score. You receive a notification when the job completes.
   </Step>
-  <Step title="Recommendations">
+  <Step title="Recommendations" icon="lightbulb">
     After each analysis, WisdomAI surfaces a prioritized list of specific actions:
 
     | Priority | What it covers |
@@ -44,7 +35,7 @@ Domain Health gives domain administrators a clear, scored signal of whether a do
 
     Each recommendation can be accepted (applied immediately) or declined (dismissed for 90 days).
   </Step>
-  <Step title="End-user readiness signals">
+  <Step title="End-user readiness signals" icon="user-check">
     When a domain's health score falls below the production-ready threshold, a persistent banner appears in chat and explorer interfaces. Lower-health domains also display a **Learning** chip next to the domain name in the selector dropdown, visible to all users.
   </Step>
 </Steps>
@@ -77,6 +68,10 @@ Domain Health is available to:
 
   <Accordion title="Does Domain Health work for MCP data sources?">
     Support for MCP sources is on the near-term roadmap. The current release covers SQL-based domains.
+  </Accordion>
+
+  <Accordion title="What is the Learning chip?">
+    A small chip displayed next to a domain name in the selector dropdown when the domain's health score is below the production-ready threshold.
   </Accordion>
 </AccordionGroup>
 

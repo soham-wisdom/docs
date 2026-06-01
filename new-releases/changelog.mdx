@@ -6,13 +6,13 @@ tag: "new"
 <Update label="Spring 2026">
   ### 🗂️ Agent version control
 
-  Agent edits no longer modify the live version in place. Every change creates a draft, leaving the published version running undisturbed until you're ready. Publishing a new version increments the version number and locks the published version. Run logs are permanently tied to the version that executed them, so reviewing a past run always shows the correct graph and configuration.
+  Agent edits no longer modify the live version in place. Every change creates a draft, leaving the published version running undisturbed until you're ready. Publishing a new version increments the version number and locks that version. Run logs are permanently tied to the version that executed them, so reviewing a past run always shows the correct graph and configuration.
 
   **⚙️ How it works:**
 
-  1. Edit the agent: A draft is created automatically and the published version continues running
+  1. Edit the agent. A draft is created automatically and the published version continues running
   2. Test using **Preview** before committing any changes
-  3. Click **Publish**: The draft is locked as the new published version and the version number increments
+  3. Click **Publish**. The draft is locked as the new published version and the version number increments
   4. Open any past run in the **Run Visualizer** to see the exact version used for that run
 
   <Accordion title="FAQs">
@@ -59,7 +59,7 @@ tag: "new"
       </Accordion>
 
       <Accordion title="Is there a row limit on queries executed against Dremio?">
-        Wisdom applies its standard query result limits. Dremio's own resource controls also apply.
+        WisdomAI applies its standard query result limits. Dremio's own resource controls also apply.
       </Accordion>
     </AccordionGroup>
   </Accordion>
@@ -75,33 +75,43 @@ tag: "new"
   3. Review the suggested entries, each one is editable before accepting
   4. **Accept**, **Decline**, or edit inline, then accept. Nothing is published automatically
 
-  FAQs
+<Accordion title="FAQs">
+  <AccordionGroup>
+    <Accordion title="Does accepting a suggestion take effect immediately?">
+    Yes. Once accepted, the entry is written to the domain knowledge base and available for retrieval on the next query.
 
-  Where do I find the Warehouse Observability dashboard?
+    <Tip>
+    To edit a suggestion, use the inline text editor. Click into the text, make your changes, and then click **Accept**. The edited version is the one that gets saved.
+    </Tip>
 
-  It appears in your dashboards list with a "System-generated" badge and is visible only to users with Data Admin or Admin roles.
-
-  How often is the data updated?
-
-  Query execution logs are written in real time. Enrichment data is updated every 2 hours for Snowflake and Databricks connections.
-
-  Is this domain visible to all users?
-
-  No. It is restricted to Data Admin and Admin roles. Regular users do not see it in the domain list.
+    </Accordion>
+    
+    <Accordion title="What if I accept something that's wrong?">
+    Navigate to the Domain Knowledge tab. The confirmation notification after acceptance includes a direct link. You can edit or delete the entry there.
+    </Accordion>
+  </AccordionGroup>
+  </Accordion>
 
   <Note>
-    The Knowledge Suggestions panel is currently in Alpha while quality tuning is ongoing. Review and edit suggestions before accepting.
+    The Knowledge Suggestions panel is currently available under early access while we refine performance and quality. Review and edit suggestions before accepting.
   </Note>
 
   ### ✅ Reviewed runs
 
-  Reduce agent non-determinism by marking successful runs as golden examples. When a run is marked Reviewed, its full execution history — LLM interactions, tool calls, and outputs — is injected into future runs of the same prompt as historical context. This anchors SQL patterns, output formatting, and decision logic to a run you've confirmed is correct.
+  Reduce agent non-determinism by marking successful runs as golden examples. When a run is marked as Reviewed, its full execution history (LLM interactions, tool calls, and outputs) is injected into future runs of the same prompt as historical context. This anchors SQL patterns, output formatting, and decision logic to a run you've confirmed is correct.
 
   **⚙️ How it works:**
 
   1. Open an agent and go to **Previous Runs**
-  2. Click **Mark as reviewed** on a successful run — a green Reviewed chip appears on the run header
+  2. Click **Mark as reviewed** on a successful run, a green Reviewed chip appears on the run header
   3. On future runs, WisdomAI fetches up to 3 matching reviewed conversations and injects them as context before generating a response
+
+  | Color/Status | Meaning |
+  |-------|---------|
+  | `green` | Completed successfully |
+  | `red` | Failed or errored |
+  | `gray` | Did not execute (branch not taken) |
+  | `spinning` | Currently in progress (for live runs) |
 
   <Accordion title="FAQs">
     <AccordionGroup>
@@ -117,7 +127,7 @@ tag: "new"
 
   ### 🔍 Run visualizer
 
-  The Run Visualizer renders a full execution trace of any past or live agent run directly on the agent graph — every node color-coded by status, with a detail panel showing inputs, outputs, tool calls, and timing. Because the graph displayed is always the version used for that specific run, it serves as a reliable audit trail even after the agent has been updated.
+  The Run Visualizer renders a full execution trace of any past or live agent run directly on the agent graph: every node color-coded by status, with a detail panel showing inputs, outputs, tool calls, and timing. Because the graph displayed is always the version used for that specific run, it serves as a reliable audit trail even after the agent has been updated.
 
   **⚙️ How it works:**
 
@@ -137,6 +147,10 @@ tag: "new"
       </Accordion>
     </AccordionGroup>
   </Accordion>
+
+  <Tip>
+  You can share a specific run’s visualizer link with colleagues using the direct URL included in email and Slack delivery notifications. Access is still subject to the agent’s permissions.
+  </Tip>
 </Update>
 
 <Update label="March 2026">

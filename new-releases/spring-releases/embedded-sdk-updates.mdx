@@ -6,13 +6,15 @@ The WisdomAI Embedded SDK ships a React component library that lets customer eng
 
 ## How it works
 
+A code-first integration path across three fundamental operational phases to help your developers easily embed custom analytics.
+
 <Steps>
-  <Step title="Core components">
+  <Step title="Core components" icon="cubes">
     - **`WisdomProvider`** wraps your application and handles authentication and GraphQL transport. It accepts a `graphqlUrl` and a `tokenProvider` function that returns a JWT. All other SDK components must be descendants of this provider.
     - **`WisdomDashboard`** renders the embedded dashboard surface. It accepts a `dashboardId` prop and handles widget rendering, data fetching, and reactive filter updates automatically.
     - **`WisdomGlobalFilters`** is a decoupled filter control surface that can be placed anywhere in the host layout (above, beside, or inside a sidebar) independent of the dashboard component itself.
   </Step>
-  <Step title="Minimal integration">
+  <Step title="Minimal integration" icon="code">
     The following example produces a working embedded dashboard with filters:
 
     ```jsx
@@ -32,7 +34,7 @@ The WisdomAI Embedded SDK ships a React component library that lets customer eng
 
     Customer developers do not need to manage transport, auth wiring, or widget rendering. For deeper customization, refs and callbacks are available but not required.
   </Step>
-  <Step title="Theming and layout">
+  <Step title="Theming and layout" icon="palette">
     The SDK supports theme switching, the same integration can serve multiple visual identities. Wrap the embed in your own layout and controls to make it feel native to your product.
   </Step>
 </Steps>
@@ -71,6 +73,9 @@ The Embedded Analytics SDK is available to:
 
   <Accordion title="Is the iframe embedding approach still supported?">
     Yes. The iframe path remains available and unchanged. The SDK is an additive option for teams that need composability, theming, or programmatic filter control beyond what iframes support.
+  </Accordion>
+  <Accordion title="Can we customize which dashboard filters are shown?">
+    `WisdomGlobalFilters` renders the filters configured on the dashboard. Refs and callbacks give your application programmatic control over the filter state for tighter native integration.
   </Accordion>
 </AccordionGroup>
 

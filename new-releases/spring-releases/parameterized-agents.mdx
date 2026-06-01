@@ -6,29 +6,35 @@ Parameterized Agents let you define an input schema on any agent so it accepts r
 
 ## How it works
 
-### Defining input parameters
+An adaptable execution workflow that maps central logic templates to individual subscriber environments through a four-stage process.
 
-Open your agent in edit mode and define an input schema: variable name, type, description, and an optional default value. Supported types are text, number, list, email, and enum. Parameters can also bind automatically to user identity attributes (name, email, and role) resolved from the subscriber's profile at run time.
+<Steps>
+  <Step title="Define input parameters" icon="sliders">
+    Open your agent in edit mode and define an input schema: variable name, type, description, and an optional default value. Supported types are text, number, list, email, and enum. Parameters can also bind automatically to user identity attributes (name, email, and role) resolved from the subscriber's profile at run time.
+  </Step>
 
-### Runtime parameter collection
+  <Step title="Collect runtime parameters" icon="input-text">
+    When a user triggers a parameterized agent manually, a generated input form collects their values. Submitted values are injected throughout the agent's prompts and node configurations using `{{variable_name}}` interpolation.
+  </Step>
 
-When a user triggers a parameterized agent manually, a generated input form collects their values. Submitted values are injected throughout the agent's prompts and node configurations using `{{variable_name}}` interpolation.
+  <Step title="Iterate over lists" icon="arrows-repeat">
+    For list-type parameters, the agent loops over each item and produces per-item outputs. Each iteration runs in an independent execution context, meaning one iteration's failure does not affect others.
+  </Step>
 
-### Iterating over lists
+  <Step title="Manage subscriptions and templates" icon="users-gear">
+    Admins can publish an agent as a template and push-enroll users as subscribers. Each subscriber has their own parameter bindings. When the agent runs:
 
-For list-type parameters, the agent loops over each item and produces per-item outputs. Each iteration runs in an independent execution context, meaning one iteration's failure does not affect others.
+    - Each subscriber receives a run scoped to their identity and parameters.
+    - Row-level security and parameterized data source connections are enforced per subscriber. The creator's permissions are never applied to a subscriber's run.
+    - Failures are isolated: one subscriber's error does not affect any other subscriber's run.
 
-### Subscriptions and templates
-
-Admins can publish an agent as a template and push-enroll users as subscribers. Each subscriber has their own parameter bindings. When the agent runs:
-
-- Each subscriber receives a run scoped to their identity and parameters
-- Row-level security and parameterized data source connections are enforced per subscriber. The creator's permissions are never applied to a subscriber's run
-- Failures are isolated: one subscriber's error does not affect any other subscriber's run
-
-Users can also self-subscribe from the **Templates** tab in the Agents surface.
+    Users can also self-subscribe from the **Templates** tab in the Agents surface.
+  </Step>
+</Steps>
 
 ### Subscription visibility
+
+Depending on your subscription status, agents will appear in one of two distinct tabs within your workspace:
 
 | Tab | What it shows |
 | :-- | :-- |
@@ -64,6 +70,9 @@ Parameterized Agents are available to:
 
   <Accordion title="Can an admin update a template after users have subscribed?">
     Yes. Template updates propagate to all subscribers on the next run. Existing subscriber parameter bindings remain valid unless the input schema changes in a breaking way.
+  </Accordion>
+  <Accordion title="What is the difference between a subscriber and a viewer?">
+    Viewer access (IAM) controls who can see that the agent exists at all. Subscription controls who runs the agent and receives its output. These operate independently—an admin can push-enroll a subscriber, which implicitly grants viewer access if it isn't already present.
   </Accordion>
 </AccordionGroup>
 

@@ -2,21 +2,23 @@
 title: "Dashboard Versioning"
 ---
 
-Dashboard Versioning introduces a draft/publish model for dashboards and their widgets. Every change you make creates a draft that does not affect the version users are viewing. Saving promotes the draft to a new published version and preserves the previous version in history. Admins can revert to any prior version at any time. This guide walks you through the draft and publish flow, version states, and how to restore a prior version.
+Dashboard Versioning introduces a draft/publish model for dashboards and their widgets. Every change you make creates a draft that does not affect the version users are viewing. Saving promotes the draft to a new published version and preserves the previous version in history. Admins can revert to any prior version at any time. This guide walks you through the draft and publish flow, version statuses, and how to restore a prior version.
 
 ## How it works
 
+A continuous lifecycle process that lets admins safely modify analytics interfaces without impacting what users see in production until changes are published.
+
 <Steps>
   <Step title="Create a draft" icon="pen-to-square">
-    When you make any change to a dashboard, a draft is created automatically as an isolated copy based on the current published version. The published version remains unchanged and users continue viewing it normally. For changes that affect widget data (SQL, filters, visualization config), a widget draft is created for the affected widget only. Other widgets on the same dashboard are not touched. For layout-only changes (repositioning widgets), only a dashboard draft is created with no widget rows cloned.
+    When you make any change to a dashboard, a draft is created automatically as an isolated copy based on the current published version. The published version remains unchanged and users continue viewing it normally. For changes that affect widget data (SQL, filters, visualization config), a widget draft is created for the affected widget only. Other widgets on the same dashboard are not touched. For layout-only changes (repositioning widgets), only a dashboard draft is created without modifying the individual widgets themselves.
   </Step>
   <Step title="Save and publish" icon="rocket">
     Click **Save** to promote the draft to the new published version. The previous published version moves to history.
   </Step>
-  <Step title="Manage version states" icon="layer-group">
-    Every dashboard version exists in one of three states.
+  <Step title="Manage version statuses" icon="layer-group">
+    Every dashboard version exists in one of three statuses.
 
-    | State | Description |
+    | Status | Description |
     | :-- | :-- |
     | **Latest (Published)** | The current version all users see. |
     | **Draft** | Work in progress, based on the current published version. Not visible to end users. |
@@ -47,11 +49,11 @@ Dashboard Versioning is available to:
   </Accordion>
 
   <Accordion title="Will existing dashboards automatically get version history?">
-    Dashboards gain versioning from the point this feature is enabled. Historical state prior to the release is not retroactively captured.
+    Dashboards gain versioning from the point this feature is enabled. Historical status prior to the release is not retroactively captured.
   </Accordion>
 
   <Accordion title="What happens when multiple admins edit the same dashboard?">
-    Each admin works in their own draft. The first to publish wins. The second admin's draft is flagged as a conflict and they must resolve it before publishing.
+    Each admin works in their own draft. The first to publish goes through. The second admin's draft is flagged as a conflict and they must resolve it before publishing.
   </Accordion>
 
   <Accordion title="Can viewers accidentally overwrite dashboard changes?">
