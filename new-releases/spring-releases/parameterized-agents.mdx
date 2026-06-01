@@ -2,13 +2,13 @@
 title: "Parameterized Agents"
 ---
 
-Parameterized Agents let you define an input schema on any agent so it accepts runtime variables — an org ID, a department name, a list of assets to analyze, or a recipient email. One agent definition can then run for multiple subscribers, with each run scoped to that person's data permissions and parameter values. This guide walks you through defining input parameters, configuring subscriptions, and managing templates.
+Parameterized Agents let you define an input schema on any agent so it accepts runtime variables, an org ID, a department name, a list of assets to analyze, or a recipient email. One agent definition can then run for multiple subscribers, with each run scoped to that person's data permissions and parameter values. This guide walks you through defining input parameters, configuring subscriptions, and managing templates.
 
 ## How it works
 
 ### Defining input parameters
 
-Open your agent in edit mode and define an input schema: variable name, type, description, and an optional default value. Supported types are text, number, list, email, and enum. Parameters can also bind automatically to user identity attributes — name, email, and role — resolved from the subscriber's profile at run time.
+Open your agent in edit mode and define an input schema: variable name, type, description, and an optional default value. Supported types are text, number, list, email, and enum. Parameters can also bind automatically to user identity attributes (name, email, and role) resolved from the subscriber's profile at run time.
 
 ### Runtime parameter collection
 
@@ -16,14 +16,14 @@ When a user triggers a parameterized agent manually, a generated input form coll
 
 ### Iterating over lists
 
-For list-type parameters, the agent loops over each item and produces per-item outputs. Each iteration runs in an independent execution context — one iteration's failure does not affect others.
+For list-type parameters, the agent loops over each item and produces per-item outputs. Each iteration runs in an independent execution context, meaning one iteration's failure does not affect others.
 
 ### Subscriptions and templates
 
 Admins can publish an agent as a template and push-enroll users as subscribers. Each subscriber has their own parameter bindings. When the agent runs:
 
 - Each subscriber receives a run scoped to their identity and parameters
-- Row-level security and parameterized data source connections are enforced per subscriber — the creator's permissions are never applied to a subscriber's run
+- Row-level security and parameterized data source connections are enforced per subscriber. The creator's permissions are never applied to a subscriber's run
 - Failures are isolated: one subscriber's error does not affect any other subscriber's run
 
 Users can also self-subscribe from the **Templates** tab in the Agents surface.
@@ -39,9 +39,9 @@ Users can also self-subscribe from the **Templates** tab in the Agents surface.
 
 Parameterized Agents are available to:
 
-- **Admins** — define input schemas, publish templates, and push-enroll subscribers.
-- **Agent Builders** — build parameterized workflows and test with different input values.
-- **All users** — subscribe to published templates and trigger agents with their own parameters via the input form.
+- **Admins**: Define input schemas, publish templates, and push-enroll subscribers.
+- **Agent Builders**: Build parameterized workflows and test with different input values.
+- **All users**: Subscribe to published templates and trigger agents with their own parameters via the input form.
 
 ## FAQs
 
@@ -49,15 +49,19 @@ Parameterized Agents are available to:
   <Accordion title="What parameter types are supported?">
     Text, number, list, email, and enum. File and attachment input support is on the roadmap.
   </Accordion>
+
   <Accordion title="Is scheduled fan-out supported?">
     Not in the current release. V1 supports manual triggers only. Scheduled fan-out is on the roadmap as an additive follow-up.
   </Accordion>
+
   <Accordion title="Does each subscriber's run use their own row-level security?">
     Yes. The subscriber's RLS and parameterized data source connection are always used. The creator's permissions are never applied to a subscriber's run.
   </Accordion>
+
   <Accordion title="Can subscribers see each other's run logs or outputs?">
     No. Each subscriber can only view their own run logs and outputs.
   </Accordion>
+
   <Accordion title="Can an admin update a template after users have subscribed?">
     Yes. Template updates propagate to all subscribers on the next run. Existing subscriber parameter bindings remain valid unless the input schema changes in a breaking way.
   </Accordion>
@@ -69,6 +73,7 @@ Parameterized Agents are available to:
   <Card title="Understand domains" icon="layer-group" href="/setting-up-wisdom-ai/manage-domains/understand-domains">
     Learn how domains organize the data logic and permissions your agents run against.
   </Card>
+
   <Card title="Domain Health" icon="heart-pulse" href="/new-releases/spring-releases/domain-health">
     Measure and improve your domain's readiness before opening it to subscribers.
   </Card>
