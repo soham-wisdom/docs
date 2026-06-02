@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Enhancing Data Analysis with Custom Business Knowledge"
 ---
 
@@ -18,7 +18,7 @@ The Knowledge feature enables the system to execute complex queries autonomously
 
 As an example, let's consider that you want to empower the system to identify "At-Risk Strategic Accounts". To accomplish this, you need to provide the following definitions via the Knowledge feature:
 
-```
+```text
 1. Geographical Sales Territories: 
 - NA-West (North America West): Includes [Account Names] 
 _ NA-East (North America East): Includes [Account Names] 
@@ -30,7 +30,20 @@ _ NA-East (North America East): Includes [Account Names]
 - A "Secure Strategic Account" is a Strategic Account where Auto Renewal is set to True.
 ```
 
-![Snippet showing the Knowledge page completed with business-specific data](/images/new-ui-context-knowledge.png)
+<img
+  src="/images/new-ui-context-knowledge.png"
+  alt="Snippet showing the Knowledge page completed with business-specific data"
+  lightAlt="Snippet showing the Knowledge page completed with business-specific data"
+  darkAlt="Snippet showing the Knowledge page completed with business-specific data"
+  className="dark:hidden"
+/>
+<img
+  src="/dark-img/new-ui-context-knowledge.png"
+  alt="Snippet showing the Knowledge page completed with business-specific data"
+  lightAlt="Snippet showing the Knowledge page completed with business-specific data"
+  darkAlt="Snippet showing the Knowledge page completed with business-specific data"
+  className="hidden dark:block"
+/>
 
 ## 3. Executing multi-layered strategic analysis
 
@@ -38,7 +51,7 @@ With the business Knowledge supplied, the system no longer needs to prompt for c
 
 When presented with the same query:
 
-```
+```text
 Generate a list of all 'At-Risk Strategic Accounts' and show me which sales region they belong to.
 ```
 
@@ -56,7 +69,7 @@ The Knowledge feature resolves this by allowing users to define parsing logic wi
 
 The following code snippet shows an example of using JSON context ~~was provided ~~to teach the system how to parse the `Skus` column:
 
-```
+```text
 {
   "example_for_skus_column": {
     "comment": "Parse the 'Skus' column into a structured list.",
@@ -73,7 +86,7 @@ The following code snippet shows an example of using JSON context ~~was provided
 
 With this parsing logic supplied, it is now possible to execute precise queries, like the following example:
 
-```
+```text
 What is the total quantity of 'Ultimate' tier licenses sold for the 'Sales' product line?
 ```
 
@@ -84,16 +97,19 @@ The system can now deconstruct the `Skus` field for every contract in real-time.
 ## Next steps
 
 <CardGroup cols={2}>
-  <Card icon="sitemap" href="/setting-up-wisdom-ai/advanced-data-modeling-creating-context" title="Advanced Data Modeling">
+  <Card title="Advanced Data Modeling" icon="sitemap" href="/setting-up-wisdom-ai/advanced-data-modeling-creating-context">
     Define relationships and context in your data to enable more powerful analysis.
   </Card>
-  <Card icon="check-double" href="/improve-wisdom-ai-responses/validate-and-test-answers" title="Validate and Test Answers">
+
+  <Card title="Validate and Test Answers" icon="check-double" href="/improve-wisdom-ai-responses/validate-and-test-answers">
     Understand the methods for verifying the correctness and reliability of generated answers.
   </Card>
-  <Card icon="thumbs-up" href="/setting-up-wisdom-ai/feedback-mechanisms/provide-feedback-to-the-system" title="Provide Feedback to the System">
+
+  <Card title="Provide Feedback to the System" icon="thumbs-up" href="/setting-up-wisdom-ai/feedback-mechanisms/provide-feedback-to-the-system">
     Learn how to rate answers and provide corrections to improve the system's accuracy.
   </Card>
-  <Card icon="book-open" href="/using-wisdom-ai-everyday/turn-answers-into-dashboards" title="Turn Answers into Dashboards">
+
+  <Card title="Turn Answers into Dashboards" icon="book-open" href="/using-wisdom-ai-everyday/turn-answers-into-dashboards">
     Compile key insights and visualizations into a shareable, narrative-driven report.
   </Card>
 </CardGroup>
