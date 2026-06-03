@@ -93,7 +93,9 @@
                   "setting-up-wisdom-ai/manage-domains/advanced-tab",
                   "setting-up-wisdom-ai/manage-domains/evaluation-tab",
                   "setting-up-wisdom-ai/manage-domains/sql-playground-tab",
-                  "new-releases/february-2026/content-extraction"
+                  "new-releases/spring-releases/domain-health",
+                  "new-releases/february-2026/content-extraction",
+                  "new-releases/spring-releases/continuous-context-extraction"
                 ]
               },
               {
@@ -176,7 +178,8 @@
                   "advanced-features/agents/nodes-reference",
                   "advanced-features/agents/agent-best-practices",
                   "advanced-features/agents/manage-agents",
-                  "advanced-features/agents/reviewed-runs-in-agents"
+                  "advanced-features/agents/reviewed-runs-in-agents",
+                  "new-releases/spring-releases/parameterized-agents"
                 ]
               },
               "advanced-features/deep-analysis",
@@ -214,7 +217,8 @@
                   {
                     "group": "SDK",
                     "pages": [
-                      "integrations/embeddings/sdk/sdk-overview"
+                      "integrations/embeddings/sdk/sdk-overview",
+                      "new-releases/spring-releases/embedded-sdk-updates"
                     ]
                   }
                 ]
@@ -424,7 +428,8 @@
               "new-releases/february-2026/mcp-in-dashboards",
               "using-wisdom-ai-everyday/turn-answers-into-dashboards",
               "explorers/chat-dashboard",
-              "new-releases/february-2026/dual-axis-charts"
+              "new-releases/february-2026/dual-axis-charts",
+              "new-releases/spring-releases/dashboard-versioning"
             ]
           }
         ]
@@ -439,12 +444,7 @@
               {
                 "group": "Spring 2026",
                 "pages": [
-                  "new-releases/spring-releases/spring-release-overview",
-                  "new-releases/spring-releases/parameterized-agents",
-                  "new-releases/spring-releases/continuous-context-extraction",
-                  "new-releases/spring-releases/dashboard-versioning",
-                  "new-releases/spring-releases/domain-health",
-                  "new-releases/spring-releases/embedded-sdk-updates"
+                  "new-releases/spring-releases/spring-release-overview"
                 ]
               },
               {
