@@ -13,16 +13,11 @@ A combination of deep data evaluations with actionable workflows across four pro
     Domain Health evaluates three dimensions and combines them into a single score.
 
     - **Schema quality** assesses whether the domain's table and column definitions are clear and usable. It flags cryptic or ambiguous names, overlapping names that lack descriptions, and missing join relationships between tables that are commonly queried together.
-    - **Context quality** re-runs your Reviewed Queries through the system and evaluates whether the generated SQL matches expected output. An LLM agent diagnoses root causes: knowledge conflicts, stale definitions, contradictions, and proposes specific fixes. A verify-fix loop confirms each suggestion improves the result before surfacing it.
+    - **Context quality** re-runs your Reviewed Queries through the system and evaluates whether the generated SQL matches expected output. The Context Quality Agent diagnoses root causes — knowledge conflicts, stale definitions, contradictions — and proposes specific fixes.
     - **Usage signals** tracks conversation volume, negative feedback rate, and limited-context rate, classifying domain usage health as LOW, MEDIUM, or HIGH.
-
-    <Note>
-      The combined score weights context quality at 70% and schema quality at 30%. Usage signals are displayed separately and do not affect the numeric score.
-    </Note>
   </Step>
   <Step title="Running an analysis" icon="play">
-    - **On-demand:** Click **Run Analysis** in the Domain Health tab. Use this before a planned rollout or after a significant domain change.
-    - **Automated:** A weekly overnight job runs automatically and updates the health score. You receive a notification when the job completes.
+    Click **Run Analysis** in the Domain Health tab. Use this before a planned rollout or after a significant domain change.
   </Step>
   <Step title="Recommendations" icon="lightbulb">
     After each analysis, WisdomAI surfaces a prioritized list of specific actions:
@@ -51,7 +46,7 @@ Domain Health is available to:
 
 <AccordionGroup>
   <Accordion title="How often does the automated health check run?">
-    Weekly, during overnight hours. You can also trigger an on-demand analysis at any time from the Domain Health tab.
+    Analysis runs are currently triggered manually from the Domain Health tab. Automated weekly runs are on the near-term roadmap.
   </Accordion>
 
   <Accordion title="Does accepting a recommendation apply changes immediately?">
