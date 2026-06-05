@@ -4,9 +4,9 @@ title: "Continuous Context Extraction"
 
 Domain knowledge doesn't stay accurate on its own. Metric definitions, business rules, and table descriptions live across GitHub repositories, dbt YAML files, Looker models, and data catalogs. The moment any of those sources changes, your domain starts falling behind.
 
-Continuous Context Extraction closes that gap by automating the maintenance phase of WisdomAI's Adaptive Context Engine (ACE).
+Continuous Context Extraction closes that gap by connecting your domain directly to the systems where your business logic lives, powered by WisdomAI's Adaptive Context Engine (referred to here as the context engine).
 
-While ACE automatically builds and governs your overarching Enterprise Context Layer, Continuous Context Extraction allows you to connect your domain directly to the live systems where your business logic lives. ACE monitors these systems on a scheduled or on-demand basis, detects what has changed since the last run, and surfaces only new or conflicting signals for human review. This ensures your domain stays perpetually aligned with your organization's true semantics without requiring manual file exports or uploads.
+Instead of one-time file uploads, the context engine monitors your connected sources on a scheduled or on-demand basis, detects what has changed since the last run, and surfaces only new or conflicting signals for human review. Nothing is ever published to your domain without explicit human approval.
 
 ## How it works
 
@@ -19,11 +19,11 @@ Continuous Context Extraction follows a continuous synchronization lifecycle tha
   <Step title="Extract" icon="wand-magic-sparkles">
     The first run performs a full scan of the connected source. Subsequent runs are incremental, processing only changes since the last extraction. When a run completes, you receive an in-app notification with the count of items requiring attention and a direct link to the review screen.
   </Step>
-  <Step title="Resolve conflicts and duplicates" icon="code-merge">
-    The Adaptive Context Engine (ACE) compares every incoming context object against what already exists in your domain. Conflicting entries surface side-by-side so you can accept either version, write a custom merged definition, or defer. After conflict resolution, an embedding-based similarity pass flags semantically equivalent entries as duplicate candidates, you can accept a merge, keep both, or defer. No automatic merges ever occur.
+  <Step title="Resolve conflicts" icon="code-merge">
+    The context engine compares every incoming context object against what already exists in your domain. Conflicting entries surface side-by-side so you can accept either version, write a custom merged definition, or defer. No automatic merges ever occur.
   </Step>
   <Step title="Publish" icon="check-double">
-    Publishing a resolved extraction increments your domain version number and stores a full snapshot. You can view a diff between any two versions or restore any prior version from the version history panel. Rollback creates a new version entry. History is append-only.
+    Publishing a resolved extraction increments your domain version number and makes your updated knowledge layer available immediately across chat and dashboards.
   </Step>
 </Steps>
 
@@ -68,7 +68,7 @@ See real stories of how WisdomAI improvements are helping solve real user proble
   <Tab title="Story 1">
     **Keeping Metrics Aligned After a dbt Model Refactor**
 
-    A data engineering team refactors their `revenue` model in dbt, changing the grain and updating metric definitions across three YAML files. Previously, a domain lead would only discover the discrepancy after getting a wrong answer in chat. With Continuous Context Extraction, the next morning's incremental extraction picks up the dbt changes. The domain admin receives a notification: "3 conflicts detected. ARR definition differs between dbt and existing domain." They open the side-by-side diff, accept the updated dbt definition for ARR, write a custom merged definition for one edge case, and publish. The domain reflects the new business logic before analysts start their day.
+    A data engineering team refactors their `revenue` model in dbt, changing the grain and updating metric definitions across three YAML files. Previously, a domain lead would only discover the discrepancy after getting a wrong answer in chat. With Continuous Context Extraction, the latest incremental extraction picks up the dbt changes automatically. The domain admin receives a notification: "3 conflicts detected. ARR definition differs between dbt and existing domain." They open the side-by-side diff, accept the updated dbt definition for ARR, write a custom merged definition for one edge case, and publish. The domain reflects the new business logic before analysts start their day.
   </Tab>
   <Tab title="Story 2">
     **Bootstrapping a New Domain from a GitHub Monorepo**
@@ -83,7 +83,7 @@ See real stories of how WisdomAI improvements are helping solve real user proble
 
 <AccordionGroup>
   <Accordion title="Does anything get published to my domain automatically?">
-    No. Every extraction goes through a human-in-the-loop review. There are no auto-merges in the current release.
+    No. Every extraction goes through a human-in-the-loop review. An auto-accept option is available if you want to approve all suggestions at once, but nothing publishes without your explicit action.
   </Accordion>
 
   <Accordion title="What if I close my browser mid-extraction?">
@@ -94,12 +94,12 @@ See real stories of how WisdomAI improvements are helping solve real user proble
     Open the version history panel, find the prior version, and restore it with a single confirmation step. History is append-only, nothing is ever permanently deleted.
   </Accordion>
 
-  <Accordion title="What's the difference between a conflict and a duplicate?">
-    A conflict is when the same named term has different definitions across sources, detected by name match. A duplicate is when two differently-named entries are semantically equivalent, detected by embedding similarity. Both require your review before a new version is published.
+  <Accordion title="How is this different from the original file-upload Context Extractor?">
+    The file-upload extractor is a one-time, manual flow designed for bootstrapping. Continuous Context Extraction connects to the live source system, extracts automatically on a schedule, and keeps the domain continuously aligned without manual export or file handling.
   </Accordion>
 
-  <Accordion title="How is this different from the original file-upload Context Extractor?">
-    The original file-upload extractor was a manual flow designed for initial baseline bootstrapping. Continuous Context Extraction is an evolution of ACE that keeps the domain continuously aligned.
+  <Accordion title="What happens if I disconnect a source?">
+    The connection is removed and credentials are revoked immediately. Context already published to your domain remains in place and is not removed automatically.
   </Accordion>
 </AccordionGroup>
 
