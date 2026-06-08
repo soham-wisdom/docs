@@ -134,9 +134,8 @@ tag: "new"
   <Tip>
     You can share a specific run’s visualizer link with colleagues using the direct URL included in email and Slack delivery notifications. Access is still subject to the agent’s permissions.
   </Tip>
-</Update>
 
-### 🔌 Dremio connector
+  ### 🔌 Dremio connector
 
 WisdomAI now connects natively to Dremio Cloud and Dremio Software via Apache Arrow Flight, enabling natural-language queries against your data lakehouse without manual dialect configuration or JDBC workarounds. WisdomAI handles schema crawling, view detection, and Dremio-specific SQL generation are handled automatically. Enterprise deployments using internal CA certificates are supported via custom certificate upload during setup.
 
@@ -168,6 +167,38 @@ WisdomAI now connects natively to Dremio Cloud and Dremio Software via Apache Ar
     </Accordion>
   </AccordionGroup>
 </Accordion>
+
+  ### 📊 Dashboard improvements
+
+  Three updates make editing, exporting, and working with dashboard tiles faster and more reliable.
+
+  - **Inline tile renaming**: Rename a dashboard tile by hovering over the title and clicking to edit it directly, without navigating through the overflow menu. Viewers see a plain title with no edit option, keeping the interface clean for non-editors.
+  - **Tile export and copy**: Exporting and copying dashboard tiles now includes a reorganized menu, live progress tracking for CSV exports, and image exports that exclude UI chrome.
+  - **SQL widget trajectory**: The **Add SQL Tile** flow now creates a trajectory at widget creation time, matching the behavior of chat-created widgets. All dashboard widgets now carry trajectory lineage, supporting trajectory-based editing going forward.
+
+  ### 🔌 BigQuery OAuth available for all users
+
+  BigQuery OAuth is now available on all deployments without requiring a per-environment feature flag. When setting up a BigQuery connection, the "Enable OAuth for user queries" checkbox appears in the connection form for all users.
+
+  ### 🔐 Streamlined email domain allowlist enforcement
+
+  The email domain allowlist is now enforced only at account-creation time, improving response times for all requests. A notice in the settings clarifies that changes to the allowlist are not retroactive: existing users are unaffected by updates to the list.
+
+  ### ⌨️ Cmd+Enter shortcut for SQL generation in Playground
+
+  Press Cmd+Enter (or Ctrl+Enter on Windows and Linux) in the Playground to trigger SQL generation without reaching for the **Generate SQL** button.
+
+  ### 📄 10× faster chat exports
+
+  Exporting large chat histories is now significantly faster and less likely to cause system interruptions, with a 10× reduction in memory usage during the export process.
+
+  ### 🧠 Domain Health replaces the Suggestions tab
+
+  For admins and superusers, **Domain Health** is now the single place to review and act on modeling suggestions. The **Suggestions** tab is no longer shown for these roles, and any existing bookmarks to the Suggestions page redirect to the domain Overview.
+
+</Update>
+
+
 
 
 

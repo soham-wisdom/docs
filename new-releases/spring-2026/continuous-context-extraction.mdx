@@ -2,11 +2,7 @@
 title: "Continuous Context Extraction"
 ---
 
-Domain knowledge doesn't stay accurate on its own. Metric definitions, business rules, and table descriptions live across GitHub repositories, dbt YAML files, Looker models, and data catalogs. The moment any of those sources changes, your domain starts falling behind.
-
-Continuous Context Extraction closes that gap by connecting your domain directly to the systems where your business logic lives, powered by WisdomAI's Adaptive Context Engine (referred to here as the context engine).
-
-Instead of one-time file uploads, the context engine monitors your connected sources on a scheduled or on-demand basis, detects what has changed since the last run, and surfaces only new or conflicting signals for human review. Nothing is ever published to your domain without explicit human approval.
+Metric definitions, business rules, and table descriptions live across GitHub repositories, dbt YAML files, Looker models, and data catalogs — and the moment any of those sources changes, your domain starts falling behind. Continuous Context Extraction closes that gap by connecting your domain directly to the systems where your business logic lives, powered by WisdomAI's Adaptive Context Engine, and keeps your domain's knowledge layer automatically synchronized.
 
 ## How it works
 
@@ -30,6 +26,10 @@ Continuous Context Extraction follows a continuous synchronization lifecycle tha
 <Note>
   Looker and dbt projects stored in GitHub are available immediately via the GitHub connection. Atlan, Glean, and Collibra are in active development and will appear in the connection wizard as they go live.
 </Note>
+
+<Frame caption="Product demo">
+  <video autoPlay src="/videos/WisdomContexExtrac.mp4" />
+</Frame>
 
 ## Connection statuses
 
@@ -110,7 +110,7 @@ See real stories of how WisdomAI improvements are helping solve real user proble
     Learn how to manually create relationships, metrics, and context in your domain.
   </Card>
 
-  <Card title="Domain Health" icon="heart-pulse" href="/new-releases/spring-releases/domain-health">
+  <Card title="Domain Health" icon="heart-pulse" href="/new-releases/spring-2026/domain-health">
     Measure how effectively your domain's knowledge layer is producing correct answers.
   </Card>
 </CardGroup>
