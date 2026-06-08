@@ -4,6 +4,37 @@ tag: "new"
 ---
 
 <Update label="Spring 2026">
+  ### 🧠 Knowledge signals from chat
+
+  Every conversation where a user corrects an answer, clarifies a metric, or states a business rule is a potential source of domain knowledge. Until now, that signal was lost after the chat ended. Knowledge Signals from Chat lets domain admins surface those insights from any conversation and promote them directly to the domain knowledge base with a single review step.
+
+  **⚙️ How it works:**
+
+  1. Open any conversation in your domain
+  2. Click the brain icon (**Knowledge Suggestions**) in the chat controls bar
+  3. Review the suggested entries; each one is editable before accepting
+  4. **Accept**, **Decline**, or edit inline, then accept. Nothing is published automatically
+
+  <Accordion title="FAQs">
+    <AccordionGroup>
+      <Accordion title="Does accepting a suggestion take effect immediately?">
+        Yes. Once accepted, the entry is written to the domain knowledge base and available for retrieval on the next query.
+
+        <Tip>
+          To edit a suggestion, use the inline text editor. Click into the text, make your changes, and then click **Accept**. The edited version is the one that gets saved.
+        </Tip>
+      </Accordion>
+
+      <Accordion title="What if I accept something that's wrong?">
+        Navigate to the Domain Knowledge tab. The confirmation notification after acceptance includes a direct link. You can edit or delete the entry there.
+      </Accordion>
+    </AccordionGroup>
+  </Accordion>
+
+  <Note>
+    The Knowledge Suggestions panel is currently in early access while we refine its performance and quality. Review and edit suggestions before accepting.
+  </Note>
+
   ### 🗂️ Agent version control
 
   Agent edits no longer modify the live version. Every change creates a draft, leaving the published version running undisturbed until you're ready. Publishing a new version increments the version number and locks that version. Run logs are permanently tied to the version that executed them, so reviewing a past run always shows the correct graph and configuration.
@@ -71,37 +102,6 @@ tag: "new"
       </Accordion>
     </AccordionGroup>
   </Accordion>
-
-  ### 🧠 Knowledge signals from chat
-
-  Every conversation where a user corrects an answer, clarifies a metric, or states a business rule is a potential source of domain knowledge. Until now, that signal was lost after the chat ended. Knowledge Signals from Chat lets domain admins surface those insights from any conversation and promote them directly to the domain knowledge base with a single review step.
-
-  **⚙️ How it works:**
-
-  1. Open any conversation in your domain
-  2. Click the brain icon (**Knowledge Suggestions**) in the chat controls bar
-  3. Review the suggested entries; each one is editable before accepting
-  4. **Accept**, **Decline**, or edit inline, then accept. Nothing is published automatically
-
-  <Accordion title="FAQs">
-    <AccordionGroup>
-      <Accordion title="Does accepting a suggestion take effect immediately?">
-        Yes. Once accepted, the entry is written to the domain knowledge base and available for retrieval on the next query.
-
-        <Tip>
-          To edit a suggestion, use the inline text editor. Click into the text, make your changes, and then click **Accept**. The edited version is the one that gets saved.
-        </Tip>
-      </Accordion>
-
-      <Accordion title="What if I accept something that's wrong?">
-        Navigate to the Domain Knowledge tab. The confirmation notification after acceptance includes a direct link. You can edit or delete the entry there.
-      </Accordion>
-    </AccordionGroup>
-  </Accordion>
-
-  <Note>
-    The Knowledge Suggestions panel is currently in early access while we refine its performance and quality. Review and edit suggestions before accepting.
-  </Note>
 
   ### ✅ Agent Reviewed runs
 
