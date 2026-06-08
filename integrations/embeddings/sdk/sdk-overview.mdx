@@ -39,6 +39,41 @@ Your developers do not need to manage transport, auth wiring, or widget renderin
 
 The SDK supports theme switching, and the same integration can serve multiple visual identities. Wrap the embed in your own layout and controls to make it feel native to your product.
 
+## Core components
+
+The SDK exposes three primary building blocks.
+
+**`WisdomProvider`** wraps your application and handles authentication and GraphQL transport. It accepts a `graphqlUrl` and a `tokenProvider` function that returns a JWT. All other SDK components must be descendants of this provider.
+
+**`WisdomDashboard`** renders the embedded dashboard surface. It accepts a `dashboardId` prop and handles widget rendering, data fetching, and reactive filter updates automatically.
+
+**`WisdomGlobalFilters`** is a decoupled filter control surface that can be placed anywhere in the host layout (above, beside, or inside a sidebar), independent of the dashboard component itself.
+
+## Minimal integration
+
+The following example produces a working embedded dashboard with filters:
+
+```jsx
+import { WisdomProvider, WisdomDashboard, WisdomGlobalFilters } from 'react-dashboard-sdk-wisdom';
+
+export function CustomerDashboardPage({ dashboardId }) {
+  const dashboardRef = useRef(null);
+
+  return (
+    <WisdomProvider graphqlUrl="https://your-host/graphql" tokenProvider={() => 'your-jwt-token'}>
+      <WisdomGlobalFilters dashboardId={dashboardId} dashboardRef={dashboardRef} />
+      <WisdomDashboard ref={dashboardRef} dashboardId={dashboardId} />
+    </WisdomProvider>
+  );
+}
+```
+
+Your developers do not need to manage transport, auth wiring, or widget rendering. Refs and callbacks are available for deeper customization but are not required.
+
+## Theming and layout
+
+The SDK supports theme switching, and the same integration can serve multiple visual identities. Wrap the embed in your own layout and controls to make it feel native to your product.
+
 ## FAQs
 
 <AccordionGroup>
