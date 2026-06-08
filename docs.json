@@ -94,8 +94,8 @@
                   "setting-up-wisdom-ai/manage-domains/evaluation-tab",
                   "setting-up-wisdom-ai/manage-domains/sql-playground-tab",
                   "product-updates/spring-2026/domain-health",
-                  "product-updates/february-2026/content-extraction",
-                  "product-updates/spring-2026/context-builder"
+                  "product-updates/february-2026/context-builder-file-uploads",
+                  "product-updates/spring-2026/context-builder-connections"
                 ]
               },
               {
@@ -542,7 +542,7 @@
     },
     {
       "source": "/product-updates/spring-2026/continuous-context-extraction",
-      "destination": "/product-updates/spring-2026/context-builder"
+      "destination": "/product-updates/spring-2026/context-builder-connections"
     },
     {
       "source": "/product-updates/march-2026/march-release-overview",
@@ -559,12 +559,12 @@
     { "source": "/new-releases", "destination": "/product-updates/spring-2026/spring-features" },
     { "source": "/new-releases/february-2026/search-the-web", "destination": "/getting-started/connect-data-sources/search-the-web" },
     { "source": "/new-releases/spring-2026/spring-release-overview", "destination": "/product-updates/spring-2026/spring-features" },
-    { "source": "/new-releases/spring-2026/continuous-context-extraction", "destination": "/product-updates/spring-2026/context-builder" },
+    { "source": "/new-releases/spring-2026/continuous-context-extraction", "destination": "/product-updates/spring-2026/context-builder-connections" },
     { "source": "/new-releases/march-2026/march-release-overview", "destination": "/product-updates/march-2026/march-features" },
     { "source": "/new-releases/february-2026/february-release-overview", "destination": "/product-updates/february-2026/february-features" },
     { "source": "/new-releases/spring-2026/spring-features", "destination": "/product-updates/spring-2026/spring-features" },
     { "source": "/new-releases/spring-2026/spring-changelog", "destination": "/product-updates/spring-2026/spring-changelog" },
-    { "source": "/new-releases/spring-2026/context-builder", "destination": "/product-updates/spring-2026/context-builder" },
+    { "source": "/new-releases/spring-2026/context-builder", "destination": "/product-updates/spring-2026/context-builder-connections" },
     { "source": "/new-releases/spring-2026/parameterized-agents", "destination": "/product-updates/spring-2026/parameterized-agents" },
     { "source": "/new-releases/spring-2026/dashboard-versioning", "destination": "/product-updates/spring-2026/dashboard-versioning" },
     { "source": "/new-releases/spring-2026/domain-health", "destination": "/product-updates/spring-2026/domain-health" },
@@ -573,12 +573,14 @@
     { "source": "/new-releases/february-2026/february-features", "destination": "/product-updates/february-2026/february-features" },
     { "source": "/new-releases/february-2026/february-changelog", "destination": "/product-updates/february-2026/february-changelog" },
     { "source": "/new-releases/february-2026/mcp-reviewed-queries", "destination": "/product-updates/february-2026/mcp-reviewed-queries" },
-    { "source": "/new-releases/february-2026/content-extraction", "destination": "/product-updates/february-2026/content-extraction" },
+    { "source": "/new-releases/february-2026/content-extraction", "destination": "/product-updates/february-2026/context-builder-file-uploads" },
     { "source": "/new-releases/february-2026/data-query-on-slack", "destination": "/product-updates/february-2026/data-query-on-slack" },
     { "source": "/new-releases/february-2026/knowledge-playground", "destination": "/product-updates/february-2026/knowledge-playground" },
     { "source": "/new-releases/february-2026/ghost-text-completion", "destination": "/product-updates/february-2026/ghost-text-completion" },
     { "source": "/new-releases/february-2026/mcp-in-dashboards", "destination": "/product-updates/february-2026/mcp-in-dashboards" },
-    { "source": "/new-releases/february-2026/dual-axis-charts", "destination": "/product-updates/february-2026/dual-axis-charts" }
+    { "source": "/new-releases/february-2026/dual-axis-charts", "destination": "/product-updates/february-2026/dual-axis-charts" },
+    { "source": "/product-updates/february-2026/content-extraction", "destination": "/product-updates/february-2026/context-builder-file-uploads" },
+    { "source": "/product-updates/spring-2026/context-builder", "destination": "/product-updates/spring-2026/context-builder-connections" }
   ],
   "navbar": {
     "primary": {
