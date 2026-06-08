@@ -70,39 +70,6 @@ tag: "new"
     We always recommend testing your drafts before publishing. Once published, the draft becomes the locked published version. Testing beforehand is especially important for agents with scheduled runs or production recipients.
   </Tip>
 
-  ### 🔌 Dremio connector
-
-  WisdomAI now connects natively to Dremio Cloud and Dremio Software via Apache Arrow Flight, enabling natural-language queries against your data lakehouse without manual dialect configuration or JDBC workarounds. WisdomAI handles schema crawling, view detection, and Dremio-specific SQL generation are handled automatically. Enterprise deployments using internal CA certificates are supported via custom certificate upload during setup.
-
-  **⚙️ How it works:**
-
-  1. Go to **Connections** \> **Add connection** and select **Dremio**
-  2. Enter the Flight endpoint host and port
-  3. Provide authentication credentials: Personal Access Token for Dremio Cloud; username/password or PAT for Dremio Software
-  4. Configure TLS and optionally upload a custom root certificate for internal CA environments
-  5. WisdomAI crawls the schema and makes the domain available for natural-language queries
-  6. Define the source path scope (Dremio's multi-level namespace paths are supported)
-
-  <Frame>
-    ![Dremio](/images/dremio.png)
-  </Frame>
-
-  <Accordion title="FAQs">
-    <AccordionGroup>
-      <Accordion title="Are both Dremio Cloud and Dremio Software supported?">
-        Yes. Dremio Cloud uses a Personal Access Token. Dremio Software supports username/password via Flight handshake or a PAT.
-      </Accordion>
-
-      <Accordion title="What SQL dialect does WisdomAI generate for Dremio?">
-        WisdomAI automatically generates SQL in Dremio's dialect. No manual configuration is required.
-      </Accordion>
-
-      <Accordion title="Is there a row limit on queries executed against Dremio?">
-        WisdomAI applies its standard query result limits. Dremio's own resource controls also apply.
-      </Accordion>
-    </AccordionGroup>
-  </Accordion>
-
   ### ✅ Agent Reviewed runs
 
   Reduce agent non-determinism by marking successful runs as golden examples. When a run is marked as Reviewed, its full execution history (LLM interactions, tool calls, and outputs) is injected into future runs of the same prompt as historical context. This anchors SQL patterns, output formatting, and decision logic to a run you've confirmed is correct.
@@ -167,6 +134,39 @@ tag: "new"
     You can share a specific run’s visualizer link with colleagues using the direct URL included in email and Slack delivery notifications. Access is still subject to the agent’s permissions.
   </Tip>
 </Update>
+
+### 🔌 Dremio connector
+
+WisdomAI now connects natively to Dremio Cloud and Dremio Software via Apache Arrow Flight, enabling natural-language queries against your data lakehouse without manual dialect configuration or JDBC workarounds. WisdomAI handles schema crawling, view detection, and Dremio-specific SQL generation are handled automatically. Enterprise deployments using internal CA certificates are supported via custom certificate upload during setup.
+
+**⚙️ How it works:**
+
+1. Go to **Connections** \> **Add connection** and select **Dremio**
+2. Enter the Flight endpoint host and port
+3. Provide authentication credentials: Personal Access Token for Dremio Cloud; username/password or PAT for Dremio Software
+4. Configure TLS and optionally upload a custom root certificate for internal CA environments
+5. WisdomAI crawls the schema and makes the domain available for natural-language queries
+6. Define the source path scope (Dremio's multi-level namespace paths are supported)
+
+<Frame>
+  ![Dremio](/images/dremio.png)
+</Frame>
+
+<Accordion title="FAQs">
+  <AccordionGroup>
+    <Accordion title="Are both Dremio Cloud and Dremio Software supported?">
+      Yes. Dremio Cloud uses a Personal Access Token. Dremio Software supports username/password via Flight handshake or a PAT.
+    </Accordion>
+
+    <Accordion title="What SQL dialect does WisdomAI generate for Dremio?">
+      WisdomAI automatically generates SQL in Dremio's dialect. No manual configuration is required.
+    </Accordion>
+
+    <Accordion title="Is there a row limit on queries executed against Dremio?">
+      WisdomAI applies its standard query result limits. Dremio's own resource controls also apply.
+    </Accordion>
+  </AccordionGroup>
+</Accordion>
 
 <Update label="March 2026">
   ### 🤖 Metrics & Derived Column Copilots
