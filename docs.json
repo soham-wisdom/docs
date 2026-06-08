@@ -443,7 +443,7 @@
               {
                 "group": "Spring 2026",
                 "pages": [
-                  "new-releases/spring-releases/spring-release-overview",
+                  "new-releases/spring-2026/spring-release-overview",
                   "new-releases/spring-2026/spring-changelog"
                 ]
               },
@@ -462,12 +462,6 @@
                   "new-releases/february-2026/february-changelog"
                 ]
               }
-            ]
-          },
-          {
-            "group": "Changelog",
-            "pages": [
-              "new-releases/changelog"
             ]
           }
         ]
