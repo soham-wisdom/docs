@@ -443,14 +443,14 @@
               {
                 "group": "Spring 2026",
                 "pages": [
-                  "new-releases/spring-2026/spring-release-overview",
+                  "new-releases/spring-2026/spring-features",
                   "new-releases/spring-2026/spring-changelog"
                 ]
               },
               {
                 "group": "March 2026",
                 "pages": [
-                  "new-releases/march-2026/march-release-overview",
+                  "new-releases/march-2026/march-features",
                   "new-releases/march-2026/march-changelog"
                 ]
               },
@@ -458,7 +458,7 @@
                 "group": "February 2026",
                 "expanded": false,
                 "pages": [
-                  "new-releases/february-2026/february-release-overview",
+                  "new-releases/february-2026/february-features",
                   "new-releases/february-2026/february-changelog"
                 ]
               }
@@ -534,7 +534,19 @@
     },
      {
       "source": "/new-releases",
-      "destination": "/new-releases/spring-2026/spring-release-overview"
+      "destination": "/new-releases/spring-2026/spring-features"
+    },
+    {
+      "source": "/new-releases/spring-2026/spring-release-overview",
+      "destination": "/new-releases/spring-2026/spring-features"
+    },
+    {
+      "source": "/new-releases/march-2026/march-release-overview",
+      "destination": "/new-releases/march-2026/march-features"
+    },
+    {
+      "source": "/new-releases/february-2026/february-release-overview",
+      "destination": "/new-releases/february-2026/february-features"
     },
     {
       "source":"/advanced-features/agents/agent-builder",

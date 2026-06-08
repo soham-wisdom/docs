@@ -1,16 +1,16 @@
 ---
-title: "Continuous Context Extraction"
+title: "Context Builder"
 ---
 
-Metric definitions, business rules, and table descriptions live across GitHub repositories, dbt YAML files, Looker models, and data catalogs — and the moment any of those sources changes, your domain starts falling behind. Continuous Context Extraction closes that gap by connecting your domain directly to the systems where your business logic lives, powered by WisdomAI's Adaptive Context Engine, and keeps your domain's knowledge layer automatically synchronized.
+Metric definitions, business rules, and table descriptions live across GitHub repositories, dbt YAML files, Looker models, and data catalogs — and the moment any of those sources changes, your domain starts falling behind. Context Builder closes that gap by connecting your domain directly to the systems where your business logic lives, powered by WisdomAI's Adaptive Context Engine (referred to here as the context engine), and keeps your domain's knowledge layer automatically synchronized.
 
 ## How it works
 
-Continuous Context Extraction follows a continuous synchronization lifecycle that maps external logic updates to your active domain across four functional stages.
+Context Builder follows a continuous synchronization lifecycle that maps external logic updates to your active domain across four functional stages.
 
 <Steps>
   <Step title="Connect a source" icon="plug">
-    Navigate to your domain's Context Extractor page and open the **Connections** tab. A five-step wizard guides you through: choosing a source type, authenticating, scoping the extraction to a repository or branch, setting a schedule, and validating credentials. The connection appears in your list with a **PENDING** status.
+    Navigate to your domain's Context Builder page and open the **Connections** tab. A five-step wizard guides you through: choosing a source type, authenticating, scoping the extraction to a repository or branch, setting a schedule, and validating credentials. The connection appears in your list with a **PENDING** status.
   </Step>
   <Step title="Extract" icon="wand-magic-sparkles">
     The first run performs a full scan of the connected source. Subsequent runs are incremental, processing only changes since the last extraction. When a run completes, you receive an in-app notification with the count of items requiring attention and a direct link to the review screen.
@@ -26,9 +26,6 @@ Continuous Context Extraction follows a continuous synchronization lifecycle tha
 <Note>
   Looker and dbt projects stored in GitHub are available immediately via the GitHub connection. Atlan, Glean, and Collibra are in active development and will appear in the connection wizard as they go live.
 </Note>
-
-
-<video className="block dark:hidden w-full aspect-video" src="/videos/content-extractor-light.mp4" autoPlay muted loop playsInline />
 
 ## Connection statuses
 
@@ -54,7 +51,7 @@ Currently supports the following source types, with more integrations on the way
 
 ## Target users
 
-Continuous Context Extraction is available to:
+Context Builder is available to:
 
 - **Domain Admins**: Connect sources, configure schedules, review extractions, and publish changes.
 - **Explorers and Analysts**: Benefit through improved answer accuracy and richer "Context Used" explanations on query responses. No action required.
@@ -67,14 +64,14 @@ See real stories of how WisdomAI improvements are helping solve real user proble
   <Tab title="Story 1">
     **Keeping Metrics Aligned After a dbt Model Refactor**
 
-    A data engineering team refactors their `revenue` model in dbt, changing the grain and updating metric definitions across three YAML files. Previously, a domain lead would only discover the discrepancy after getting a wrong answer in chat. With Continuous Context Extraction, the latest incremental extraction picks up the dbt changes automatically. The domain admin receives a notification: "3 conflicts detected. ARR definition differs between dbt and existing domain." They open the side-by-side diff, accept the updated dbt definition for ARR, write a custom merged definition for one edge case, and publish. The domain reflects the new business logic before analysts start their day.
+    A data engineering team refactors their `revenue` model in dbt, changing the grain and updating metric definitions across three YAML files. Previously, a domain lead would only discover the discrepancy after getting a wrong answer in chat. With Context Builder, the latest incremental extraction picks up the dbt changes automatically. The domain admin receives a notification: "3 conflicts detected. ARR definition differs between dbt and existing domain." They open the side-by-side diff, accept the updated dbt definition for ARR, write a custom merged definition for one edge case, and publish. The domain reflects the new business logic before analysts start their day.
   </Tab>
   <Tab title="Story 2">
     **Bootstrapping a New Domain from a GitHub Monorepo**
 
     A new domain is being stood up for a fintech product team. Their entire metric layer lives in a GitHub monorepo: dbt YAML files, SQL pipeline configs, README documentation, and metric definitions.
 
-    Instead of manually exporting and uploading files, the domain admin connects their GitHub org via Continuous Context Extraction, scopes to the relevant repositories, and triggers an initial extraction. Within the hour, 200\+ context objects (metric definitions, JOIN patterns, business glossary entries, and table descriptions) surface for review. The admin bulk-approves the high-confidence entries, edits a handful of edge cases, and publishes. A domain that would have taken days of manual entry is operational by afternoon.
+    Instead of manually exporting and uploading files, the domain admin connects their GitHub org via Context Builder, scopes to the relevant repositories, and triggers an initial extraction. Within the hour, 200\+ context objects (metric definitions, JOIN patterns, business glossary entries, and table descriptions) surface for review. The admin bulk-approves the high-confidence entries, edits a handful of edge cases, and publishes. A domain that would have taken days of manual entry is operational by afternoon.
   </Tab>
 </Tabs>
 
@@ -94,7 +91,7 @@ See real stories of how WisdomAI improvements are helping solve real user proble
   </Accordion>
 
   <Accordion title="How is this different from the original file-upload Context Extractor?">
-    The file-upload extractor is a one-time, manual flow designed for bootstrapping. Continuous Context Extraction connects to the live source system, extracts automatically on a schedule, and keeps the domain continuously aligned without manual export or file handling.
+    The file-upload extractor is a one-time, manual flow designed for bootstrapping. Context Builder connects to the live source system, extracts automatically on a schedule, and keeps the domain continuously aligned without manual export or file handling.
   </Accordion>
 
   <Accordion title="What happens if I disconnect a source?">
