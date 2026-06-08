@@ -10,11 +10,11 @@ A combination of deep data evaluations with actionable workflows across four pro
 
 <Steps>
   <Step title="Health dimensions" icon="chart-network">
-    Domain Health evaluates three dimensions and combines them into a single score.
+    Domain Health evaluates three dimensions:
 
     - **Schema quality** assesses whether the domain's table and column definitions are clear and usable. It flags cryptic or ambiguous names, overlapping names that lack descriptions, and missing join relationships between tables that are commonly queried together.
     - **Context quality** re-runs your Reviewed Queries through the system and evaluates whether the generated SQL matches expected output. The Context Quality Agent diagnoses root causes, knowledge conflicts, stale definitions, contradictions  and proposes specific fixes.
-    - **Usage signals** tracks conversation volume, negative feedback rate, and limited-context rate, classifying domain usage health as LOW, MEDIUM, or HIGH.
+    - **Usage signals** track conversation volume, negative feedback rate, and limited-context rate.
   </Step>
   <Step title="Running an analysis" icon="play">
     Click **Run Analysis** in the Domain Health tab. Use this before a planned rollout or after a significant domain change.
