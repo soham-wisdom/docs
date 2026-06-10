@@ -64,7 +64,9 @@ sequenceDiagram
 
 ## Quickstart
 
-### 1. Install
+Follow these steps to start running in your app:
+
+1. Run the following commands to install:
 
 ```bash
 npm install @wisdomai/react
@@ -81,7 +83,7 @@ npm install react react-dom \
   graphql@^16 luxon@^3
 ```
 
-### 2. Add the token-exchange endpoint (backend)
+2. Add the token-exchange endpoint (backend)
 
 ```jsx
 import express from 'express';
@@ -101,7 +103,7 @@ app.listen(3000);
 
 Serve `/auth-token` from the **same origin** as your frontend (or proxy it), so the browser request needs no extra CORS or credentials handling.
 
-### 3. Render a dashboard (frontend)
+3. Render a dashboard (frontend)
 
 ```tsx
 import { WisdomProvider, Dashboard } from '@wisdomai/react';
@@ -135,8 +137,6 @@ import { WisdomProvider, DashboardWidget } from '@wisdomai/react';
   <DashboardWidget dashboardId="<your-dashboard-id>" widgetId="<widget-id>" />
 </WisdomProvider>
 ```
-
----
 
 ## Theming
 
