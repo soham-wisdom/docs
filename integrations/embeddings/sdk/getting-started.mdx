@@ -1,3 +1,7 @@
+---
+title: "getting-started"
+---
+
 Embed WisdomAI dashboards: charts, metrics, tables, and filters, directly in your React app as native components. No iframes, they flow with your layout and respect your theming.
 
 This guide covers installation, authentication, and theming.
@@ -31,7 +35,7 @@ The SDK is published publicly on the **npm registry** under the `@wisdomai` scop
 
 | Package | Registry | Use |
 | --- | --- | --- |
-| `@wisdomai/react` | [npmjs.com/package/@wisdomai/react](http://npmjs.com/package/@wisdomai/react) | React component library — providers, `Dashboard`, widgets, hooks. Runs in the browser. |
+| `@wisdomai/react` | [npmjs.com/package/@wisdomai/react](http://npmjs.com/package/@wisdomai/react) | React component library: providers, `Dashboard`, widgets, hooks. Runs in the browser. |
 | `@wisdomai/node` | [npmjs.com/package/@wisdomai/node](http://npmjs.com/package/@wisdomai/node) | Server-side helper that exchanges your long-lived access token for a short-lived JWT the browser can safely use. Runs on your backend only. |
 
 Both packages are MIT-licensed and ESM-first.
@@ -54,7 +58,7 @@ sequenceDiagram
 
 1. Your **backend** holds the access token and uses `@wisdomai/node` to exchange it for a short-lived JWT.
 2. Your **frontend** calls a same-origin endpoint (e.g. `POST /auth-token`) to fetch that JWT.
-3. `WisdomProvider` automatically fetches the JWT on load and **refreshes it before it expires** — you don't manage token lifecycle yourself.
+3. `WisdomProvider` automatically fetches the JWT on load and **refreshes it before it expires**. You don't manage token lifecycle yourself.
 
 ---
 
