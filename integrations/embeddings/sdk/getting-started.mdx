@@ -1,5 +1,5 @@
 ---
-title: "getting-started"
+title: "Getting-started"
 ---
 
 Embed WisdomAI dashboards: charts, metrics, tables, and filters, directly in your React app as native components. No iframes, they flow with your layout and respect your theming.
@@ -67,64 +67,55 @@ sequenceDiagram
 Follow these steps to start running in your app:
 
 1. Run the following commands to install:
-
-```bash
-npm install @wisdomai/react
-npm install @wisdomai/node   # backend only
-```
-
-The React SDK relies on a few peer dependencies your app must also have installed (see [Requirements](#requirements)):
-
-```bash
-npm install react react-dom \
-  @mui/material@^7 @mui/x-date-pickers@^7 \
-  @emotion/react@^11 @emotion/styled@^11 \
-  highcharts@^12 highcharts-react-official@^3 \
-  graphql@^16 luxon@^3
-```
-
+   ```bash
+   npm install @wisdomai/react
+   npm install @wisdomai/node   # backend only
+   ```
+   The React SDK relies on a few peer dependencies your app must also have installed (see [Requirements](#requirements)):
+   ```bash
+   npm install react react-dom \
+     @mui/material@^7 @mui/x-date-pickers@^7 \
+     @emotion/react@^11 @emotion/styled@^11 \
+     highcharts@^12 highcharts-react-official@^3 \
+     graphql@^16 luxon@^3
+   ```
 2. Add the token-exchange endpoint (backend)
-
-```jsx
-import express from 'express';
-import { WisdomAI } from '@wisdomai/node';
- 
-const wisdom = new WisdomAI({
-  accessToken: process.env.WISDOM_ACCESS_TOKEN, // keep this server-side
-  baseUrl: process.env.WISDOM_BASE_URL,         // e.g. https://your-org.gowisdom.ai
-});
- 
-const app = express();
-app.post('/auth-token', async (_req, res) => {
-  res.json(await wisdom.getAuthToken());
-});
-app.listen(3000);
-```
-
-Serve `/auth-token` from the **same origin** as your frontend (or proxy it), so the browser request needs no extra CORS or credentials handling.
-
+   ```jsx
+   import express from 'express';
+   import { WisdomAI } from '@wisdomai/node';
+    
+   const wisdom = new WisdomAI({
+     accessToken: process.env.WISDOM_ACCESS_TOKEN, // keep this server-side
+     baseUrl: process.env.WISDOM_BASE_URL,         // e.g. https://your-org.gowisdom.ai
+   });
+    
+   const app = express();
+   app.post('/auth-token', async (_req, res) => {
+     res.json(await wisdom.getAuthToken());
+   });
+   app.listen(3000);
+   ```
+   Serve `/auth-token` from the **same origin** as your frontend (or proxy it), so the browser request needs no extra CORS or credentials handling.
 3. Render a dashboard (frontend)
-
-```tsx
-import { WisdomProvider, Dashboard } from '@wisdomai/react';
- 
-export default function App() {
-  return (
-    <WisdomProvider
-      theme={{
-        primaryTextColor: '#111827',
-        secondaryTextColor: '#6b7280',
-        background: '#ffffff',
-        border: '#e5e7eb',
-      }}
-    >
-      <Dashboard dashboardId="<your-dashboard-id>" />
-    </WisdomProvider>
-  );
-}
-```
-
-By default `WisdomProvider` fetches the JWT from `/auth-token`. That's all you need to render a live, interactive dashboard.
+   ```tsx
+   import { WisdomProvider, Dashboard } from '@wisdomai/react';
+    
+   export default function App() {
+     return (
+       <WisdomProvider
+         theme={{
+           primaryTextColor: '#111827',
+           secondaryTextColor: '#6b7280',
+           background: '#ffffff',
+           border: '#e5e7eb',
+         }}
+       >
+         <Dashboard dashboardId="<your-dashboard-id>" />
+       </WisdomProvider>
+     );
+   }
+   ```
+   By default `WisdomProvider` fetches the JWT from `/auth-token`. That's all you need to render a live, interactive dashboard.
 
 ### Embed a single widget
 
