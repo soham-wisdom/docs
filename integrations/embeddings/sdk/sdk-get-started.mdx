@@ -2,9 +2,7 @@
 title: "Quickstart"
 ---
 
-Embed WisdomAI dashboards: charts, metrics, tables, and filters, directly in your React app as native components. No iframes, they flow with your layout and respect your theming.
-
-This guide covers integration, authentication, and theming.
+Get a live, interactive WisdomAI dashboard rendering in your React app. You'll install the packages, add a small backend endpoint that mints a short-lived token, and drop in a `<Dashboard>` component.
 
 ## Requirements
 
@@ -35,7 +33,8 @@ Follow these steps to start running in your app:
      highcharts@^12 highcharts-react-official@^3 \
      graphql@^16 luxon@^3
    ```
-2. Add the token-exchange endpoint (backend)
+2. Add the token-exchange endpoint (backend):
+   Your long-lived access token is a secret and must never reach the browser. Add a small backend endpoint that exchanges it for a short-lived JWT:
    ```jsx
    import express from 'express';
    import { WisdomAI } from '@wisdomai/node';
@@ -73,18 +72,6 @@ Follow these steps to start running in your app:
    ```
    By default `WisdomProvider` fetches the JWT from `/auth-token`. That's all you need to render a live, interactive dashboard.
 
-### Embed a single widget
-
-Prefer to place one chart or metric on its own? Render a single widget instead of the whole dashboard:
-
-```tsx
-import { WisdomProvider, DashboardWidget } from '@wisdomai/react';
- 
-<WisdomProvider theme={/* ... */}>
-  <DashboardWidget dashboardId="<your-dashboard-id>" widgetId="<widget-id>" />
-</WisdomProvider>
-```
-
 ## Theming
 
 Pass a `theme` object to `WisdomProvider` to match the embedded content to your product. Four keys are required; the rest are optional.
@@ -101,17 +88,6 @@ Pass a `theme` object to `WisdomProvider` to match the embedded content to your 
 <Note>
   Always pass an explicit `theme`. Supplying the four required keys ensures the embedded components render with your brand rather than defaults.
 </Note>
-
-## Multi-tenant data isolation
-
-If you serve multiple customers (or want each end user to see only their own data), have your backend issue a **per-user** JWT when exchanging the token. Wisdom applies row-level security based on that user identity, so each viewer only sees the rows they're entitled to, without you building separate dashboards per tenant.
-
-## Coming soon
-
-Dashboard consumption is available today. On the near-term roadmap:
-
-- **Embedded chat & dashboard chat**: Ask questions in natural language against your data, inline.
-- **Authoring & app creation**: Build and customize dashboards and analytics apps directly from the SDK.
 
 ## Next steps
 
