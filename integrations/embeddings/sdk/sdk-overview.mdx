@@ -2,19 +2,7 @@
 title: "SDK Overview"
 ---
 
-The WisdomAI Embedded SDK is a React component library for embedding WisdomAI dashboards natively inside your product. Instead of embedding the entire WisdomAI surface as an external add-on, you can compose individual components directly into your existing UI, with support for theming, host-controlled layout, and programmatic filter control.
-
-## Core components
-
-The SDK exposes three primary building blocks.
-
-**`WisdomProvider`** wraps your application and handles authentication and GraphQL transport. It accepts a `graphqlUrl` and a `tokenProvider` function that returns a JWT. All other SDK components must be descendants of this provider.
-
-**`WisdomDashboard`** renders the embedded dashboard surface. It accepts a `dashboardId` prop and handles widget rendering, data fetching, and reactive filter updates automatically.
-
-**`WisdomGlobalFilters`** is a decoupled filter control surface that can be placed anywhere in the host layout (above, beside, or inside a sidebar), independent of the dashboard component itself.
-
-Your developers do not need to manage transport, auth wiring, or widget rendering. Refs and callbacks are available for deeper customization but are not required.
+Embed live WisdomAI dashboards directly inside your own React application. The SDK renders Wisdom's interactive analytics: charts, metrics, tables and filters as native React components in your DOM (no iframe). They flow with your layout and inherit your theming, placed inside your own pages like any other component.
 
 ## What you can do today
 
