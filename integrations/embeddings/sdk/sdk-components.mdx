@@ -1,16 +1,16 @@
 ---
-title: "sdk-components"
+title: "Components"
 ---
 
 The `@wisdomai/react` package gives you several ways to embed analytics, from a whole dashboard down to a single visualization you wrap in your own card. All of them live inside a `WisdomProvider` (see [Quickstart](integrations/embeddings/sdk/sdk-quickstart)).
 
 ## Embed a full dashboard
 
-The `<Dashboard>` component renders an entire Wisdom dashboard — header, filter bar, and widget grid:
+The `<Dashboard>` component renders an entire Wisdom dashboard, including the header, filter bar, and widget grid:
 
 ```tsx
 import { WisdomProvider, Dashboard } from '@wisdomai/react';
-
+ 
 <WisdomProvider theme={/* ... */}>
   <Dashboard dashboardId="<your-dashboard-id>" />
 </WisdomProvider>
@@ -22,7 +22,7 @@ Prefer to place one chart or metric on its own? Render a single widget instead o
 
 ```tsx
 import { WisdomProvider, DashboardWidget } from '@wisdomai/react';
-
+ 
 <WisdomProvider theme={/* ... */}>
   <DashboardWidget dashboardId="<your-dashboard-id>" widgetId="<widget-id>" />
 </WisdomProvider>
@@ -30,7 +30,7 @@ import { WisdomProvider, DashboardWidget } from '@wisdomai/react';
 
 ## Composable widgets (advanced)
 
-When you want full control over the card `_around_` a widget — your own container, header, spacing, menus, and empty/loading states — drop down to the composable layer. Instead of Wisdom's pre-built widget card, you render just the visualization and wrap it in your own markup.
+When you want full control over the card _around_ a widget, including your own container, header, spacing, menus, and empty/loading states, drop down to the composable layer. Instead of Wisdom's pre-built widget card, you render just the visualization and wrap it in your own markup.
 
 ```tsx
 import {
@@ -39,13 +39,13 @@ import {
   useDashboardWidget,
   WisdomVisualization,
 } from '@wisdomai/react';
-
+ 
 function BrandCard({ widgetId }: { widgetId: string }) {
   const { widget, status, error, fetchMore } = useDashboardWidget(widgetId);
-
+ 
   if (status === 'loading') return <YourSkeleton />;
   if (error || !widget) return <YourError message={error} />;
-
+ 
   return (
     <section className="your-card">
       <h3>{widget.title}</h3>
@@ -53,7 +53,7 @@ function BrandCard({ widgetId }: { widgetId: string }) {
     </section>
   );
 }
-
+ 
 export default function App() {
   return (
     <WisdomProvider theme={/* ... */}>
@@ -65,10 +65,10 @@ export default function App() {
 }
 ```
 
-`DashboardProvider` loads the dashboard once; each `useDashboardWidget(widgetId)` reads a widget from it and returns the live `visualization` plus a `fetchMore` callback for paginating large series. `WisdomVisualization` renders the chart, metric, or table itself — with no Wisdom-supplied title bar or kebab menu — so the surrounding card is entirely yours.
+`DashboardProvider` loads the dashboard once; each `useDashboardWidget(widgetId)` reads a widget from it and returns the live `visualization` plus a `fetchMore` callback for paginating large series. `WisdomVisualization` renders the chart, metric, or table itself, with no Wisdom-supplied title bar or kebab menu, so the surrounding card is entirely yours.
 
 <Note>
-  The composable layer (`DashboardProvider`, `useDashboardWidget`, `WisdomVisualization`) is the lower-level building block beneath `Dashboard` and `DashboardWidget` — reach for it whenever you want full control over the UI around a widget. As the SDK is still pre-1.0 (`0.0.x`), these APIs may see small changes between releases; let your Wisdom contact know what you're building and we'll give you a heads-up on anything that affects you.
+  The composable layer (`DashboardProvider`, `useDashboardWidget`, `WisdomVisualization`) is the lower-level building block beneath `Dashboard` and `DashboardWidget`. Reach for it whenever you want full control over the UI around a widget. As the SDK is still pre-1.0 (`0.0.x`), these APIs may see small changes between releases. Let your Wisdom contact know what you're building and we'll give you a heads-up on anything that affects you.
 </Note>
 
 ## Filters
@@ -77,7 +77,7 @@ Wisdom dashboards can be filtered three ways, from zero-effort to fully custom.
 
 **1. Built-in filter bar (default).** `<Dashboard>` already renders a filter bar above its widgets, so your end users can filter without any extra work on your side.
 
-**2. Decoupled filters — place the filter UI anywhere.** To move the filter controls out of the dashboard and into your own layout (a sidebar, a toolbar, a drawer), compose the pieces under a single `DashboardProvider`. The filters and the widgets share that provider's state, so controls placed anywhere drive the same dashboard:
+**2. Decoupled filters: place the filter UI anywhere.** To move the filter controls out of the dashboard and into your own layout, such as a sidebar, a toolbar, or a drawer, compose the pieces under a single `DashboardProvider`. The filters and the widgets share that provider's state, so controls placed anywhere drive the same dashboard:
 
 ```tsx
 import {
@@ -86,7 +86,7 @@ import {
   DashboardFilters,
   DashboardWidgets,
 } from '@wisdomai/react';
-
+ 
 <WisdomProvider theme={/* ... */}>
   <DashboardProvider dashboardId="<your-dashboard-id>">
     <aside className="your-sidebar">
@@ -99,10 +99,10 @@ import {
 </WisdomProvider>
 ```
 
-`DashboardFilters` takes a `direction` of `'row'` (default) or `'column'`. Because `DashboardFilters` and `DashboardWidgets` read the **same** `DashboardProvider`, the filter controls drive the widgets no matter where you place them in your layout. The controls must share a provider with the widgets — a `DashboardFilters` placed next to a self-contained `<Dashboard>` (which creates its own provider internally) will not drive it.
+`DashboardFilters` takes a `direction` of `'row'` (default) or `'column'`. Because `DashboardFilters` and `DashboardWidgets` read the **same** `DashboardProvider`, the filter controls drive the widgets no matter where you place them in your layout. The controls must share a provider with the widgets. A `DashboardFilters` placed next to a self-contained `<Dashboard>` (which creates its own provider internally) will not drive it.
 
 <Note>
   Decoupled filters use the composable layer (`DashboardProvider` \+ `DashboardWidgets`) described above. The all-in-one `<Dashboard>` already includes the built-in filter bar, so use this approach when you want to place the filter controls somewhere `<Dashboard>` won't put them.
 </Note>
 
-**3. Headless — drive filters from your own state.** For full control, `useDashboardFilters()` (called inside a `DashboardProvider`) returns the live filter specs plus a `setFilterValue(filterId, value)` mutator, so you can build your own filter inputs and apply them programmatically.
+**3. Headless: drive filters from your own state.** For full control, `useDashboardFilters()` (called inside a `DashboardProvider`) returns the live filter specs plus a `setFilterValue(filterId, value)` mutator, so you can build your own filter inputs and apply them programmatically.
