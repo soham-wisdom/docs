@@ -22,6 +22,7 @@ The SDK exposes the following embedding capabilities:
 
 - **Embed a full dashboard**: Drop an entire Wisdom dashboard into a page with a single component.
 - **Embed a single widget**: Render one chart, metric, or table on its own and place it anywhere in your UI.
+- **Brand-native widget cards (advanced)**: Render a widget's visualization without Wisdom's built-in card chrome and wrap it in your own container (see Components).
 - **Interactive analytics**: Charts, time series, stacked breakdowns, data tables, and KPI metrics, all fully interactive (zoom, tooltips, export-to-data).
 - **Filtering**: Show Wisdom's built-in filter bar, or drive filters from your own application state.
 - **Theming**: Match the embedded content to your product's colors, typography, and chart palette.
@@ -40,62 +41,18 @@ The SDK is published publicly on the **npm registry** under the `@wisdomai` scop
   Both packages are MIT-licensed and ESM-first.
 </Note>
 
-## How authentication works
+## How the docs are organized
 
-Your long-lived access token is a secret and must **never** reach the browser. The flow is:
+- [**Quickstart**](): Install, wire up auth, and render your first dashboard.
+- [**Components**](): Embed dashboards, single widgets, custom widget cards, and filters.
+- [**Authentication**](): The `@wisdomai/node` token exchange, `WisdomProvider`, and per-user (multi-tenant) tokens.
 
-```txt
-sequenceDiagram
-  participant Browser as Your React app
-  participant Backend as Your backend
-  participant Wisdom as WisdomAI API
-  Browser->>Backend: POST /auth-token
-  Backend->>Wisdom: exchange access token (via @wisdomai/node)
-  Wisdom-->>Backend: short-lived JWT
-  Backend-->>Browser: { jwt, baseUrl }
-  Browser->>Wisdom: load dashboard data with JWT
-```
+## What's coming
 
-```mermaid
-sequenceDiagram
-  participant Browser as Your React app
-  participant Backend as Your backend
-  participant Wisdom as WisdomAI API
-  Browser->>Backend: POST /auth-token
-  Backend->>Wisdom: exchange access token (via @wisdomai/node)
-  Wisdom-->>Backend: short-lived JWT
-  Backend-->>Browser: { jwt, baseUrl }
-  Browser->>Wisdom: load dashboard data with JWT
-```
+Dashboard consumption is available today. On the near-term roadmap:
 
-1. Your **backend** holds the access token and uses `@wisdomai/node` to exchange it for a short-lived JWT.
-2. Your **frontend** calls a same-origin endpoint (e.g. `POST /auth-token`) to fetch that JWT.
-3. `WisdomProvider` automatically fetches the JWT on load and **refreshes it before it expires**. You don't manage token lifecycle yourself.
-
-## Minimal integration
-
-The following example produces a working embedded dashboard with filters:
-
-```jsx
-import { WisdomProvider, WisdomDashboard, WisdomGlobalFilters } from 'react-dashboard-sdk-wisdom';
-
-export function CustomerDashboardPage({ dashboardId }) {
-  const dashboardRef = useRef(null);
-
-  return (
-    <WisdomProvider graphqlUrl="https://your-host/graphql" tokenProvider={() => 'your-jwt-token'}>
-      <WisdomGlobalFilters dashboardId={dashboardId} dashboardRef={dashboardRef} />
-      <WisdomDashboard ref={dashboardRef} dashboardId={dashboardId} />
-    </WisdomProvider>
-  );
-}
-```
-
-Your developers do not need to manage transport, auth wiring, or widget rendering. Refs and callbacks are available for deeper customization but are not required.
-
-<Tip>
-  The SDK supports theme switching , and the same integration can serve multiple visual identities. Wrap the embed in your own layout and controls to make it feel native to your product.
-</Tip>
+- **Embedded chat & dashboard chat**: Ask questions in natural language against your data, inline.
+- **Authoring & app creation**: Build and customize dashboards and analytics apps directly from the SDK.
 
 ## FAQs
 
