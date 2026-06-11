@@ -33,8 +33,7 @@ Follow these steps to start running in your app:
      highcharts@^12 highcharts-react-official@^3 \
      graphql@^16 luxon@^3
    ```
-2. Add the token-exchange endpoint (backend).
-   Your long-lived access token is a secret and must never reach the browser. Add a small backend endpoint that exchanges it for a short-lived JWT:
+2. Add the token-exchange endpoint (backend). Your long-lived access token is a secret and must never reach the browser. Add a small backend endpoint that exchanges it for a short-lived JWT:
    ```jsx
    import express from 'express';
    import { WisdomAI } from '@wisdomai/node';
@@ -69,8 +68,7 @@ Follow these steps to start running in your app:
      );
    }
    ```
-   By default `WisdomProvider` fetches the JWT from `/auth-token`. That's all you need to render a live, interactive dashboard.
-   Your long-lived access token is a secret and must never reach the browser. Add a small backend endpoint that exchanges it for a short-lived JWT:
+   By default `WisdomProvider` fetches the JWT from `/auth-token`. That's all you need to render a live, interactive dashboard. Your long-lived access token is a secret and must never reach the browser. Add a small backend endpoint that exchanges it for a short-lived JWT:
    ```jsx
    import express from 'express';
    import { WisdomAI } from '@wisdomai/node';
@@ -127,8 +125,8 @@ Pass a `theme` object to `WisdomProvider` to match the embedded content to your 
 ## Next steps
 
 <CardGroup cols={2}>
-  <Card title="Embedding overview" icon="window-restore" href="/integrations/embeddings/embedding">
-    Understand the full embedding architecture and choose the right integration path for your use case.
+  <Card title="Authentication" icon="Key" href="/integrations/embeddings/embedding">
+    Secure your integration that keeps your access token on the server and out of the browser.
   </Card>
 
   <Card title="Embedding modes" icon="diagram-project" href="integrations/embeddings/embedding-modes">
