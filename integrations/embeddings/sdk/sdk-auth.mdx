@@ -38,21 +38,21 @@ sequenceDiagram
 
 ## Backend: exchange the token (`@wisdomai/node`)
 
-Construct a `WisdomAI` client with your access token and base URL, then call `getAuthToken()` to mint a short-lived JWT. It returns `{ jwt, baseUrl }` — exactly the shape the frontend provider expects.
+Construct a `WisdomAI` client with your access token and base URL, then call `getAuthToken()` to mint a short-lived JWT. It returns `{ jwt, baseUrl }`, which is exactly the shape the frontend provider expects.
 
 ```jsx
 import { WisdomAI } from '@wisdomai/node';
-
 const wisdom = new WisdomAI({
   accessToken: process.env.WISDOM_ACCESS_TOKEN, // server-side secret
   baseUrl: process.env.WISDOM_BASE_URL,         // https://your-org.wisdom.ai
 });
-
 // inside your route handler:
 const token = await wisdom.getAuthToken(); // -> { jwt, baseUrl }
 ```
 
-See [Quickstart](integrations/embeddings/sdk/sdk-quickstart) for the full Express endpoint example.
+<Tip>
+  See [Quickstart](integrations/embeddings/sdk/sdk-quickstart) for the full Express endpoint example.
+</Tip>
 
 ## Frontend: `WisdomProvider`
 
@@ -72,7 +72,7 @@ By default, `WisdomProvider` fetches the token from a same-origin `POST /auth-to
 
 ## Multi-tenant data isolation
 
-If you serve multiple customers (or want each end user to see only their own data), have your backend issue a **per-user** JWT when exchanging the token. Wisdom applies row-level security based on that user identity, so each viewer only sees the rows they're entitled to — without you building separate dashboards per tenant.
+If you serve multiple customers (or want each end user to see only their own data), have your backend issue a **per-user** JWT when exchanging the token. Wisdom applies row-level security based on that user identity, so each viewer only sees the rows they're entitled to, without you building separate dashboards per tenant.
 
 ## Token lifecycle
 
