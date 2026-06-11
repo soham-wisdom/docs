@@ -16,6 +16,60 @@ The SDK exposes three primary building blocks.
 
 Your developers do not need to manage transport, auth wiring, or widget rendering. Refs and callbacks are available for deeper customization but are not required.
 
+## What you can do today
+
+The SDK exposes the following embedding capabilities:
+
+- **Embed a full dashboard**: Drop an entire Wisdom dashboard into a page with a single component.
+- **Embed a single widget**: Render one chart, metric, or table on its own and place it anywhere in your UI.
+- **Interactive analytics**: Charts, time series, stacked breakdowns, data tables, and KPI metrics, all fully interactive (zoom, tooltips, export-to-data).
+- **Filtering**: Show Wisdom's built-in filter bar, or drive filters from your own application state.
+- **Theming**: Match the embedded content to your product's colors, typography, and chart palette.
+- **Multi-tenant ready**: Issue per-user tokens so each of your end users only sees the data they're entitled to.
+
+## Packages
+
+The SDK is published publicly on the **npm registry** under the `@wisdomai` scope:
+
+| Package | Registry | Use |
+| --- | --- | --- |
+| `@wisdomai/react` | [npmjs.com/package/@wisdomai/react](http://npmjs.com/package/@wisdomai/react) | React component library: providers, `Dashboard`, widgets, hooks. Runs in the browser. |
+| `@wisdomai/node` | [npmjs.com/package/@wisdomai/node](http://npmjs.com/package/@wisdomai/node) | Server-side helper that exchanges your long-lived access token for a short-lived JWT the browser can safely use. Runs on your backend only. |
+
+Both packages are MIT-licensed and ESM-first.
+
+## How authentication works
+
+Your long-lived access token is a secret and must **never** reach the browser. The flow is:
+
+```txt
+sequenceDiagram
+  participant Browser as Your React app
+  participant Backend as Your backend
+  participant Wisdom as WisdomAI API
+  Browser->>Backend: POST /auth-token
+  Backend->>Wisdom: exchange access token (via @wisdomai/node)
+  Wisdom-->>Backend: short-lived JWT
+  Backend-->>Browser: { jwt, baseUrl }
+  Browser->>Wisdom: load dashboard data with JWT
+```
+
+```mermaid
+sequenceDiagram
+  participant Browser as Your React app
+  participant Backend as Your backend
+  participant Wisdom as WisdomAI API
+  Browser->>Backend: POST /auth-token
+  Backend->>Wisdom: exchange access token (via @wisdomai/node)
+  Wisdom-->>Backend: short-lived JWT
+  Backend-->>Browser: { jwt, baseUrl }
+  Browser->>Wisdom: load dashboard data with JWT
+```
+
+1. Your **backend** holds the access token and uses `@wisdomai/node` to exchange it for a short-lived JWT.
+2. Your **frontend** calls a same-origin endpoint (e.g. `POST /auth-token`) to fetch that JWT.
+3. `WisdomProvider` automatically fetches the JWT on load and **refreshes it before it expires**. You don't manage token lifecycle yourself.
+
 ## Minimal integration
 
 The following example produces a working embedded dashboard with filters:
