@@ -33,8 +33,7 @@ Follow these steps to start running in your app:
      highcharts@^12 highcharts-react-official@^3 \
      graphql@^16 luxon@^3
    ```
-2. Add the token-exchange endpoint (backend):
-   Your long-lived access token is a secret and must never reach the browser. Add a small backend endpoint that exchanges it for a short-lived JWT:
+2. Add the token-exchange endpoint (backend): Your long-lived access token is a secret and must never reach the browser. Add a small backend endpoint that exchanges it for a short-lived JWT:
    ```jsx
    import express from 'express';
    import { WisdomAI } from '@wisdomai/node';
