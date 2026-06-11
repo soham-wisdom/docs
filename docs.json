@@ -216,7 +216,9 @@
                     "group": "SDK",
                     "pages": [
                       "integrations/embeddings/sdk/sdk-overview",
-                      "integrations/embeddings/sdk/sdk-get-started"
+                      "integrations/embeddings/sdk/sdk-get-started",
+                      "integrations/embeddings/sdk/sdk-components",
+                      "integrations/embeddings/sdk/sdk-auth"
                     ]
                   }
                 ]
