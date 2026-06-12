@@ -2,18 +2,90 @@
 title: "SDK Overview"
 ---
 
+Embed live WisdomAI dashboards directly inside your own React application. The SDK renders Wisdom's interactive analytics: charts, metrics, tables and filters as native React components in your DOM (no iframe). They flow with your layout and inherit your theming, placed inside your own pages like any other component.
+
+## What you can do today
+
+- **Embed a full dashboard**: Drop an entire Wisdom dashboard into a page with a single component.
+- **Embed a single widget**: Render one chart, metric, or table on its own and place it anywhere in your UI.
+- **Brand-native widget cards (advanced)**: Render a widget's visualization without Wisdom's built-in card chrome and wrap it in your own container (see Components).
+- **Interactive analytics**: Charts, time series, stacked breakdowns, data tables, and KPI metrics, all fully interactive (zoom, tooltips, export-to-data).
+- **Filtering**: Show Wisdom's built-in filter bar, or drive filters from your own application state.
+- **Theming**: Match the embedded content to your product's colors, typography, and chart palette.
+- **Multi-tenant ready**: Issue per-user tokens so each of your end users only sees the data they're entitled to.
+
+## Packages
+
+The SDK is published publicly on the **npm registry** under the `@wisdomai` scope:
+
+| Package | Registry | Use |
+| --- | --- | --- |
+| `@wisdomai/react` | [npmjs.com/package/@wisdomai/react](http://npmjs.com/package/@wisdomai/react) | React component library: providers, `Dashboard`, widgets, hooks. Runs in the browser. |
+| `@wisdomai/node` | [npmjs.com/package/@wisdomai/node](http://npmjs.com/package/@wisdomai/node) | Server-side helper that exchanges your long-lived access token for a short-lived JWT the browser can safely use. Runs on your backend only. |
+
 <Note>
-  🚧 **The WisdomAI SDK is coming soon.** Full guides, references, and code examples will be available here when it launches. In the meantime, you can embed WisdomAI using the iframe path or the GraphQL API directly.
+  Both packages are MIT-licensed and ESM-first.
 </Note>
 
-## Related articles
+## How the docs are organized
 
-<CardGroup cols={2}>
-  <Card title="Embedding Overview" icon="code" href="/integrations/embeddings/embedding">
-    Get started with iframe embedding
+<CardGroup cols={3}>
+  <Card title="Quickstart" icon="rocket" href="/integrations/embeddings/sdk/sdk-quickstart">
+    Install, wire up auth, and render your first dashboard.
   </Card>
 
-  <Card title="GraphQL API" icon="brackets-curly" href="/integrations/graphql-api/GraphQL-API">
-    Build directly against the GraphQL API
+  <Card title="Components" icon="react" href="/integrations/embeddings/sdk/sdk-components">
+    Embed dashboards, single widgets, custom widget cards, and filters.
+  </Card>
+
+  <Card title="Authentication" icon="key" href="/integrations/embeddings/sdk/sdk-auth">
+    The `@wisdomai/node` token exchange, `WisdomProvider`, and per-user (multi-tenant) tokens.
+  </Card>
+</CardGroup>
+
+## What's coming
+
+Dashboard consumption is available today. On the near-term roadmap:
+
+- **Embedded chat & dashboard chat**: Ask questions in natural language against your data, inline.
+- **Authoring & app creation**: Build and customize dashboards and analytics apps directly from the SDK.
+
+## FAQs
+
+<AccordionGroup>
+  <Accordion title="Is this a React-only SDK?">
+    The current release is React. Web component and framework-agnostic support is on the roadmap.
+  </Accordion>
+
+  <Accordion title="How does authentication work?">
+    `WisdomProvider` accepts a `tokenProvider` function that returns a JWT. Your backend controls token generation and expiry. No WisdomAI credentials are exposed in the browser.
+  </Accordion>
+
+  <Accordion title="Does the SDK support multi-tenant isolation with row-level security?">
+    Yes. JWT-based authentication carries the user's identity, which WisdomAI uses to enforce row-level security. Each embedded user sees only their own data.
+  </Accordion>
+
+  <Accordion title="What happens when the JWT expires?">
+    A `tokenProvider` that returns a fresh token on each call is the recommended pattern for long-lived sessions.
+  </Accordion>
+
+  <Accordion title="Is the iframe embedding approach still supported?">
+    Yes. The iframe path remains available and unchanged. The SDK is an additive option for teams that need composability, theming, or programmatic filter control beyond what iframes support.
+  </Accordion>
+
+  <Accordion title="Can we customize which dashboard filters are shown?">
+    `WisdomGlobalFilters` renders the filters configured on the dashboard. Refs and callbacks give your application programmatic control over the filter state for tighter native integration.
+  </Accordion>
+</AccordionGroup>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Quickstart" icon="rocket" href="integrations/embeddings/sdk/sdk-quickstart">
+    Set up the SDK and embed your first dashboard in minutes.
+  </Card>
+
+  <Card title="Components" icon="react" href="integrations/embeddings/sdk/sdk-components">
+    Browse the React components available for embed a full dashboard, composable widgets, and filters.
   </Card>
 </CardGroup>

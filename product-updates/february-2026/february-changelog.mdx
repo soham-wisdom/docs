@@ -1,0 +1,216 @@
+---
+title: "Changelog"
+---
+
+<Update label="Updates">
+  ### 🧠 Smarter Data Crawling
+
+  WisdomAI has improved its warehouse data crawling to populate filter dropdowns, autocomplete suggestions, and data exploration features by identifying columns that contain meaningful categorical values and prioritizing them during scheduled runs. Other columns are fetched on demand, reducing unnecessary queries and improving performance for large schemas.
+
+  **⚙️ How it works:**
+
+  - Scheduled crawls scan selected columns with named entities (customer names, status values)
+  - Adding a filter or enabling "lookup" triggers a targeted crawl for that column
+  - Values appear shortly after the crawl completes
+
+  <Accordion title="FAQs">
+    <AccordionGroup>
+      <Accordion title="What if a filter dropdown shows no values?">
+        When you add a new filter, the dropdown may initially be empty. Within 3-4 minutes, the on-demand crawl will complete, and values will appear. Reload the page to see them.
+      </Accordion>
+
+      <Accordion title="Can I force a column to always be crawled?">
+        Yes. In your domain's column settings, you can manually enable value crawling for any column. Manual settings take the highest priority and are never overridden by automatic detection.
+      </Accordion>
+    </AccordionGroup>
+  </Accordion>
+
+  ### 🧩 Partition & View Awareness
+
+  WisdomAI now detects partition columns and distinguishes between base tables, views, and materialized views during schema crawling. This information is used to generate more efficient SQL queries with appropriate partition filters and optimized query strategies. This results in fewer query failures, faster performance on large datasets, and reduced warehouse costs.
+
+  <Note>
+    **Supported warehouses**: BigQuery, ClickHouse, Databricks, and Redshift.
+  </Note>
+
+  **⚙️ How it works:**
+
+  1. Schema crawl identifies partition columns and table types
+  2. Generated SQL includes partition filters to avoid full-table scans
+  3. Query strategy adapts based on whether the table is a base table, view, or materialized view
+  4. Background crawling prioritizes recent partitions to improve efficiency
+
+  <Accordion title="FAQs">
+    <AccordionGroup>
+      <Accordion title="Do I need to configure anything?">
+        No. Partition and view awareness are enabled automatically. WisdomAI detects everything during its regular schema crawl.
+      </Accordion>
+
+      <Accordion title="How does this reduce BigQuery costs?">
+        BigQuery bills based on bytes scanned and will reject queries that are missing partition filters. WisdomAI handles this automatically by adding the correct filters, avoiding failed queries and costly full-table scans.
+      </Accordion>
+    </AccordionGroup>
+  </Accordion>
+
+  ### 🔌 Teradata Connector
+
+  WisdomAI now connects natively to Teradata Vantage, enabling natural-language querying, AI-powered analytics, and interactive dashboards without requiring data replication. It automatically discovers schemas across databases and generates Teradata-specific SQL, while executing all queries in read-only mode to ensure data safety and compliance.
+
+  **⚙️ How it works:**
+
+  1. Access **Connections** \> **Add connection** and select **Teradata**
+  2. Enter credentials and validate access
+  3. Optionally limit access using database filters
+  4. WisdomAI crawls the schema and enables querying
+
+  <Frame>
+    ![Teradata](/images/teradata-1.png)
+  </Frame>
+
+  <Accordion title="FAQs">
+    <AccordionGroup>
+      <Accordion title="Which Teradata products are supported?">
+        WisdomAI connects to Teradata Vantage, supporting both on-premises and cloud (VantageCloud) deployments. The only requirement is that your host is network-accessible from WisdomAI.
+      </Accordion>
+
+      <Accordion title="Can WisdomAI modify data in Teradata?">
+        No. WisdomAI operates in read-only mode and never writes, updates, or deletes data in your Teradata warehouse.
+      </Accordion>
+    </AccordionGroup>
+  </Accordion>
+
+  ### ☁️ Google Cloud Spanner Support
+
+  WisdomAI connects directly to Google Cloud Spanner, automatically detecting whether your database uses Google Standard SQL or PostgreSQL and handling both without additional configuration. It also performs full schema discovery and executes all queries in read-only mode for safety.
+
+  **⚙️ How it works:**
+
+  1. Access **Connections** \> **Add connection** and select **Google Cloud Spanner**
+  2. Provide project details and Service Account credentials
+  3. WisdomAI validates access, detects the SQL dialect, and crawls the schema
+
+  <Frame>
+    ![Spanner](/images/spanner.png)
+  </Frame>
+
+  <Accordion title="FAQs">
+    <AccordionGroup>
+      <Accordion title="How does WisdomAI detect my Spanner SQL dialect?">
+        WisdomAI automatically detects the dialect when you create the connection by querying the Spanner Admin API — no manual configuration needed.
+      </Accordion>
+
+      <Accordion title="Can WisdomAI modify data in Spanner?">
+        No. WisdomAI operates in read-only mode and executes all queries as read-only snapshots, ensuring your data is never modified.
+      </Accordion>
+    </AccordionGroup>
+  </Accordion>
+
+  ### 🔗 AI-Powered Join Suggestions
+
+  WisdomAI analyzes your schema to detect missing relationships between tables and validates them against actual data to ensure meaningful joins. These are surfaced as one-click suggestions that can be reviewed and applied to improve query accuracy.
+
+  **⚙️ How it works:**
+
+  1. WisdomAI analyzes table schemas to identify potential foreign key relationships
+  2. Candidate joins are validated using real data overlap
+  3. Suggestions appear in the domain for review
+  4. Accept or decline each join and define the relationship type
+
+  <Tip>
+    Join suggestions are also automatically populated from Looker and Tableau imports.
+  </Tip>
+
+  <Frame>
+    ![Suggestions](/images/suggestions.png)
+  </Frame>
+
+  <Accordion title="FAQs">
+    <AccordionGroup>
+      <Accordion title="How does WisdomAI know which joins to suggest?">
+        WisdomAI uses an LLM to identify columns that are likely foreign keys, then validates each candidate against your actual warehouse data by checking for value overlap between columns.
+      </Accordion>
+
+      <Accordion title="Why does this matter for query accuracy?">
+        Table relationships are essential for correct SQL generation. In internal testing, adding the right joins improved multi-table query accuracy from 30% to 86.7%.
+      </Accordion>
+    </AccordionGroup>
+  </Accordion>
+
+  ### 🔔 Notify when Completed
+
+  WisdomAI can now notify you when long-running queries finish, even if you switch tabs. After a few seconds, you can opt in to receive a browser alert, sound, and tab update when results are ready.
+
+  **⚙️ How it works:**
+
+  1. After a few seconds, a **"Notify me when complete"** prompt appears
+  2. Click it and grant browser notification permission if prompted
+  3. Switch to any other tab or app and keep working
+  4. When the response is ready, you'll receive a browser notification, an audio chime, and a tab title update simultaneously
+
+  <Accordion title="FAQs">
+    <AccordionGroup>
+      <Accordion title="Do I need to install anything?">
+        No. Notifications use your browser's native notification system. The first time you opt in, your browser will ask for permission, and once granted, it works automatically going forward.
+      </Accordion>
+
+      <Accordion title="What if my browser blocks notifications?">
+        A message will appear in the prompt indicating notifications are blocked. You can re-enable them in your browser's site permissions settings.
+      </Accordion>
+
+      <Accordion title="Will I be notified if I close the tab?">
+        Not currently. The tab must remain open, even in the background, for notifications to fire.
+      </Accordion>
+    </AccordionGroup>
+  </Accordion>
+
+  ### 🌍 World Map Visualization
+
+  WisdomAI includes a choropleth world map visualization for country-level data, automatically detecting geographic dimensions and using color gradients to highlight differences in metric values. Tooltips provide exact figures for each country. Supports both country names and ISO country codes, and is available in chat and dashboards.
+
+  **⚙️ How it works:**
+
+  1. Queries with country-level data automatically trigger a world map visualization suggestion
+  2. Countries are colored based on metric values (darker = higher)
+  3. Hovering over a country displays its name and exact metric value
+
+  <Frame>
+    ![World Map Visualization](/images/world-map-visualization.png)
+  </Frame>
+
+  <Accordion title="FAQs">
+    <AccordionGroup>
+      <Accordion title="What data does my query need to produce a world map?">
+        Your data must include a column with country names or ISO country codes, and at least one numeric metric. WisdomAI will detect the country column and automatically suggest the world map.
+      </Accordion>
+
+      <Accordion title="Can I add a world map to a dashboard?">
+        Yes. World map visualizations can be pinned to any dashboard, just like other chart types.
+      </Accordion>
+    </AccordionGroup>
+  </Accordion>
+</Update>
+
+<Update label="January 2026">
+  ### 💬 Slack Link Previews
+
+  Sharing a WisdomAI link in Slack now generates a rich preview that displays charts or data tables directly in the conversation, with no clicks or context-switching required.
+
+  **⚙️ How it works:**
+
+  1. Paste a WisdomAI link in any Slack channel or DM
+  2. Slack requests a preview from WisdomAI in the background
+  3. WisdomAI verifies the poster's identity and data access
+  4. A rich preview appears inline below the message
+
+  <Accordion title="FAQs">
+    <AccordionGroup>
+      <Accordion title="Do I need to do anything to enable this?">
+        Yes. Your organization needs to reinstall the WisdomAI app in Slack, as updated permissions are required for previews to work.
+      </Accordion>
+
+      <Accordion title="Will everyone in the channel see the preview?">
+        Yes. WisdomAI checks the permissions of the user who shared the link. If they have access to the data, the preview is visible to everyone in the channel.
+      </Accordion>
+    </AccordionGroup>
+  </Accordion>
+</Update>

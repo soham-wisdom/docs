@@ -1,0 +1,87 @@
+---
+title: "Parameterized Agents"
+---
+
+Parameterized Agents let you define an input schema on any agent so it accepts runtime variables, an org ID, a department name, a list of assets to analyze, or a recipient email. One agent definition can then run for multiple subscribers, with each run scoped to that person's data permissions and parameter values. This guide walks you through defining input parameters, configuring subscriptions, and managing templates.
+
+## How it works
+
+An adaptable execution workflow that maps central logic templates to individual subscriber environments through a four-stage process.
+
+<Steps>
+  <Step title="Define input parameters" icon="sliders">
+    Open your agent in edit mode and define an input schema: variable name, type, description, and an optional default value. Supported types are text, number, list, email, and enum. Parameters can also bind automatically to user identity attributes (name, email, and role) resolved from the subscriber's profile at runtime.
+  </Step>
+  <Step title="Collect runtime parameters" icon="input-text">
+    When a user manually triggers a parameterized agent, a generated input form collects their values. Submitted values are injected throughout the agent's prompts and node configurations using `{{variable_name}}` interpolation.
+  </Step>
+  <Step title="Iterate over lists" icon="arrows-repeat">
+    For list-type parameters, the agent loops over each item and produces per-item outputs. Each iteration runs in an independent execution context, meaning one iteration's failure does not affect others.
+  </Step>
+  <Step title="Manage subscriptions and templates" icon="users-gear">
+    Admins can publish an agent as a template and push-enroll users as subscribers. Each subscriber has their own parameter bindings. When the agent runs:
+
+    - Each subscriber receives a run scoped to their identity and parameters.
+    - Row-level security and parameterized data source connections are enforced per subscriber. The creator's permissions are never applied to a subscriber's run.
+    - Failures are isolated: one subscriber's error does not affect any other subscriber's run.
+
+    Users can also self-subscribe from the **Templates** tab in the Agents surface.
+  </Step>
+</Steps>
+
+### Subscription visibility
+
+Depending on your subscription status, agents will appear in one of two distinct tabs within your workspace:
+
+| Tab | What it shows |
+| :-- | :-- |
+| **My Agents** | Agents you created and agents you are subscribed to. Subscribed agents display a Subscribed pill. |
+| **Templates** | Published agent templates available to you that you have not yet subscribed to. |
+
+## Target users
+
+Parameterized Agents are available to:
+
+- **Admins**: Define input schemas, publish templates, and push-enroll subscribers.
+- **Agent Builders**: Build parameterized workflows and test with different input values.
+- **All users**: Subscribe to published templates and trigger agents with their own parameters via the input form.
+
+## FAQs
+
+<AccordionGroup>
+  <Accordion title="What parameter types are supported?">
+    Text, number, list, email, and enum. File and attachment input support is on the roadmap.
+  </Accordion>
+
+  <Accordion title="Is scheduled fan-out supported?">
+    Yes. Scheduled fan-out is supported in the latest version.
+  </Accordion>
+
+  <Accordion title="Does each subscriber's run use their own row-level security?">
+    Yes. The subscriber's RLS and parameterized data source connection are always used. The creator's permissions are never applied to a subscriber's run.
+  </Accordion>
+
+  <Accordion title="Can subscribers see each other's run logs or outputs?">
+    There is no distinct subscriber role currently. Admins set up the agent and define parameters. Users with editor access can trigger the agent based on their own parameters and can see all runs of that parameterized agent.
+  </Accordion>
+
+  <Accordion title="Can an admin update a template after users have subscribed?">
+    Yes. Template updates propagate to all subscribers on the next run. Existing subscriber parameter bindings remain valid unless the input schema changes in a breaking way.
+  </Accordion>
+
+  <Accordion title="What is the difference between a subscriber and a viewer?">
+    Viewer access (IAM) controls who can see that the agent exists at all. Subscription controls who runs the agent and receives its output. These operate independently—an admin can push-enroll a subscriber, which implicitly grants viewer access if it isn't already present.
+  </Accordion>
+</AccordionGroup>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Understand domains" icon="layer-group" href="/setting-up-wisdom-ai/manage-domains/understand-domains">
+    Learn how domains organize the data logic and permissions your agents run against.
+  </Card>
+
+  <Card title="Domain Health" icon="heart-pulse" href="/product-updates/spring-2026/domain-health">
+    Measure and improve your domain's readiness before opening it to subscribers.
+  </Card>
+</CardGroup>

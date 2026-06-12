@@ -77,7 +77,7 @@
                 "pages": [
                   "setting-up-wisdom-ai/feedback-mechanisms/provide-feedback-to-the-system",
                   "setting-up-wisdom-ai/feedback-mechanisms/reviewed-queries",
-                  "new-releases/february-2026/mcp-reviewed-queries",
+                  "product-updates/february-2026/mcp-reviewed-queries",
                   "setting-up-wisdom-ai/feedback-mechanisms/limited-context",
                   "setting-up-wisdom-ai/feedback-mechanisms/monitor-negative-feedback"
                 ]
@@ -93,7 +93,9 @@
                   "setting-up-wisdom-ai/manage-domains/advanced-tab",
                   "setting-up-wisdom-ai/manage-domains/evaluation-tab",
                   "setting-up-wisdom-ai/manage-domains/sql-playground-tab",
-                  "new-releases/february-2026/content-extraction"
+                  "product-updates/spring-2026/domain-health",
+                  "product-updates/february-2026/context-builder-file-uploads",
+                  "product-updates/spring-2026/context-builder-connections"
                 ]
               },
               {
@@ -115,8 +117,8 @@
               "improve-wisdom-ai-responses/how-to-create-metrics",
               "improve-wisdom-ai-responses/use-evaluations-sets-and-runs",
               "improve-wisdom-ai-responses/build-dashboards",
-              "new-releases/february-2026/data-query-on-slack",
-              "new-releases/february-2026/knowledge-playground"
+              "product-updates/february-2026/data-query-on-slack",
+              "product-updates/february-2026/knowledge-playground"
             ]
           },
           {
@@ -177,7 +179,8 @@
                   "advanced-features/agents/nodes-reference",
                   "advanced-features/agents/agent-best-practices",
                   "advanced-features/agents/manage-agents",
-                  "advanced-features/agents/reviewed-runs-in-agents"
+                  "advanced-features/agents/reviewed-runs-in-agents",
+                  "product-updates/spring-2026/parameterized-agents"
                 ]
               },
               "advanced-features/deep-analysis",
@@ -215,7 +218,10 @@
                   {
                     "group": "SDK",
                     "pages": [
-                      "integrations/embeddings/sdk/sdk-overview"
+                      "integrations/embeddings/sdk/sdk-overview",
+                      "integrations/embeddings/sdk/sdk-quickstart",
+                      "integrations/embeddings/sdk/sdk-components",
+                      "integrations/embeddings/sdk/sdk-auth"
                     ]
                   }
                 ]
@@ -419,44 +425,47 @@
             "pages": [
               "using-wisdom-ai-everyday/ask-better-questions",
               "using-wisdom-ai-everyday/command-palette",
-              "new-releases/february-2026/ghost-text-completion",
+              "product-updates/february-2026/ghost-text-completion",
               "improve-wisdom-ai-responses/attach-files-to-chat",
               "explorers-feedback/provide-feedback-to-the-system",
-              "new-releases/february-2026/mcp-in-dashboards",
+              "product-updates/february-2026/mcp-in-dashboards",
               "using-wisdom-ai-everyday/turn-answers-into-dashboards",
               "explorers/chat-dashboard",
-              "new-releases/february-2026/dual-axis-charts"
+              "product-updates/february-2026/dual-axis-charts",
+              "product-updates/spring-2026/dashboard-versioning"
             ]
           }
         ]
       },
       {
-        "tab": "New Releases",
+        "tab": "Product Updates",
         "icon": "circle-arrow-up-right",
         "groups": [
           {
-            "group": "Release Notes",
+            "group": "Product Updates",
             "pages": [
+              {
+                "group": "Spring 2026",
+                "pages": [
+                  "product-updates/spring-2026/spring-features",
+                  "product-updates/spring-2026/spring-changelog"
+                ]
+              },
               {
                 "group": "March 2026",
                 "pages": [
-                  "new-releases/march-2026/03-26"
+                  "product-updates/march-2026/march-features",
+                  "product-updates/march-2026/march-changelog"
                 ]
               },
               {
                 "group": "February 2026",
                 "expanded": false,
                 "pages": [
-                  "new-releases/february-2026/02-26-release-overview",
-                  "new-releases/february-2026/chat-with-dashboard"
+                  "product-updates/february-2026/february-features",
+                  "product-updates/february-2026/february-changelog"
                 ]
               }
-            ]
-          },
-          {
-            "group": "Changelog",
-            "pages": [
-              "new-releases/changelog"
             ]
           }
         ]
@@ -516,7 +525,7 @@
       "destination": "getting-started/connect-data-sources/connect-to-sharepoint"
     },
     {
-      "source":"/new-releases/february-2026/search-the-web",
+      "source":"/product-updates/february-2026/search-the-web",
       "destination": "/getting-started/connect-data-sources/search-the-web"
     },
     {
@@ -525,16 +534,57 @@
     },
      {
       "source": "/new-features",
-      "destination": "/new-releases/march-2026/03-26"
+      "destination": "/product-updates/march-2026/03-26"
     },
      {
-      "source": "/new-releases",
-      "destination": "/new-releases/march-2026/03-26"
+      "source": "/product-updates",
+      "destination": "/product-updates/spring-2026/spring-features"
+    },
+    {
+      "source": "/product-updates/spring-2026/spring-release-overview",
+      "destination": "/product-updates/spring-2026/spring-features"
+    },
+    {
+      "source": "/product-updates/spring-2026/continuous-context-extraction",
+      "destination": "/product-updates/spring-2026/context-builder-connections"
+    },
+    {
+      "source": "/product-updates/march-2026/march-release-overview",
+      "destination": "/product-updates/march-2026/march-features"
+    },
+    {
+      "source": "/product-updates/february-2026/february-release-overview",
+      "destination": "/product-updates/february-2026/february-features"
     },
     {
       "source":"/advanced-features/agents/agent-builder",
       "destination": "/advanced-features/agents/visual-mode"
-    }
+    },
+    { "source": "/new-releases", "destination": "/product-updates/spring-2026/spring-features" },
+    { "source": "/new-releases/february-2026/search-the-web", "destination": "/getting-started/connect-data-sources/search-the-web" },
+    { "source": "/new-releases/spring-2026/spring-release-overview", "destination": "/product-updates/spring-2026/spring-features" },
+    { "source": "/new-releases/spring-2026/continuous-context-extraction", "destination": "/product-updates/spring-2026/context-builder-connections" },
+    { "source": "/new-releases/march-2026/march-release-overview", "destination": "/product-updates/march-2026/march-features" },
+    { "source": "/new-releases/february-2026/february-release-overview", "destination": "/product-updates/february-2026/february-features" },
+    { "source": "/new-releases/spring-2026/spring-features", "destination": "/product-updates/spring-2026/spring-features" },
+    { "source": "/new-releases/spring-2026/spring-changelog", "destination": "/product-updates/spring-2026/spring-changelog" },
+    { "source": "/new-releases/spring-2026/context-builder", "destination": "/product-updates/spring-2026/context-builder-connections" },
+    { "source": "/new-releases/spring-2026/parameterized-agents", "destination": "/product-updates/spring-2026/parameterized-agents" },
+    { "source": "/new-releases/spring-2026/dashboard-versioning", "destination": "/product-updates/spring-2026/dashboard-versioning" },
+    { "source": "/new-releases/spring-2026/domain-health", "destination": "/product-updates/spring-2026/domain-health" },
+    { "source": "/new-releases/march-2026/march-features", "destination": "/product-updates/march-2026/march-features" },
+    { "source": "/new-releases/march-2026/march-changelog", "destination": "/product-updates/march-2026/march-changelog" },
+    { "source": "/new-releases/february-2026/february-features", "destination": "/product-updates/february-2026/february-features" },
+    { "source": "/new-releases/february-2026/february-changelog", "destination": "/product-updates/february-2026/february-changelog" },
+    { "source": "/new-releases/february-2026/mcp-reviewed-queries", "destination": "/product-updates/february-2026/mcp-reviewed-queries" },
+    { "source": "/new-releases/february-2026/content-extraction", "destination": "/product-updates/february-2026/context-builder-file-uploads" },
+    { "source": "/new-releases/february-2026/data-query-on-slack", "destination": "/product-updates/february-2026/data-query-on-slack" },
+    { "source": "/new-releases/february-2026/knowledge-playground", "destination": "/product-updates/february-2026/knowledge-playground" },
+    { "source": "/new-releases/february-2026/ghost-text-completion", "destination": "/product-updates/february-2026/ghost-text-completion" },
+    { "source": "/new-releases/february-2026/mcp-in-dashboards", "destination": "/product-updates/february-2026/mcp-in-dashboards" },
+    { "source": "/new-releases/february-2026/dual-axis-charts", "destination": "/product-updates/february-2026/dual-axis-charts" },
+    { "source": "/product-updates/february-2026/content-extraction", "destination": "/product-updates/february-2026/context-builder-file-uploads" },
+    { "source": "/product-updates/spring-2026/context-builder", "destination": "/product-updates/spring-2026/context-builder-connections" }
   ],
   "navbar": {
     "primary": {
