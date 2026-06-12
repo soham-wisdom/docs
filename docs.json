@@ -163,8 +163,8 @@
             "group": "Settings",
             "pages": [
               "settings/api-keys",
-              "settings/email-access-control",
-              "settings/connected-apps"
+              "settings/connected-apps",
+              "settings/email-access-control"
             ]
           },
           {
@@ -603,5 +603,9 @@
     "socials": {
       "linkedin": "https://www.linkedin.com/company/wisdomai-inc"
     }
+  },
+  "logo": {
+    "light": "/images/wisdom-logo-light.png",
+    "dark": "/images/wisdom-logo-dark.png"
   }
 }

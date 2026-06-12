@@ -17,27 +17,29 @@ If you toggle the **Show advanced options** switch on, the following additional 
 
 Enabling lookups on textual columns powers Name-Entity Recognition (NER). This helps Wisdom build more accurate SQL queries by mapping user intent to specific database values. The key benefits of enabling this feature are:
 
-* **Token matching**: WisdomAI identifies the right column to query based on tokens in the question string. For example, "Show me total usage for compute services" will match `service_category = compute`, whereas "total usage for EC2 services" will match `service_name = compute`.
-* **Typo correction**: Fixes minor typos in user questions. For example, "Show me total usage for computer services" will be auto-corrected to `service_category = compute`.
+- **Token matching**: WisdomAI identifies the right column to query based on tokens in the question string. For example, "Show me total usage for compute services" will match `service_category = compute`, whereas "total usage for EC2 services" will match `service_name = compute`.
+- **Typo correction**: Fixes minor typos in user questions. For example, "Show me total usage for computer services" will be auto-corrected to `service_category = compute`.
 
 <Tip>
   Enable lookups on **VARCHAR** type columns that contain categorical dimensions, such as region names, customer names, or category types.
 </Tip>
 
 <img
-  src="/images/advanced-config-columns.png"
   alt='A table view of database columns showing advanced configuration options, such as Primary Key and Allowed Values, enabled by the "Show advanced options" toggle.'
   lightAlt='A table view of database columns showing advanced configuration options, such as Primary Key and Allowed Values, enabled by the "Show advanced options" toggle.'
   darkAlt='A table view of database columns showing advanced configuration options, such as Primary Key and Allowed Values, enabled by the "Show advanced options" toggle.'
+  src="/images/advanced-config-columns.png"
   className="dark:hidden"
 />
 <img
-  src="/dark-img/advanced-config-columns.png"
   alt='A table view of database columns showing advanced configuration options, such as Primary Key and Allowed Values, enabled by the "Show advanced options" toggle.'
   lightAlt='A table view of database columns showing advanced configuration options, such as Primary Key and Allowed Values, enabled by the "Show advanced options" toggle.'
   darkAlt='A table view of database columns showing advanced configuration options, such as Primary Key and Allowed Values, enabled by the "Show advanced options" toggle.'
+  src="/dark-img/advanced-config-columns.png"
   className="hidden dark:block"
 />
+
+## Next Steps
 
 <CardGroup cols={3}>
   <Card title="Advanced Data Modeling" icon="sitemap" href="/setting-up-wisdom-ai/advanced-data-modeling-creating-context">
