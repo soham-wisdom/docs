@@ -163,7 +163,8 @@
             "group": "Settings",
             "pages": [
               "settings/api-keys",
-              "settings/email-access-control"
+              "settings/email-access-control",
+              "settings/connected-apps"
             ]
           },
           {
@@ -217,7 +218,10 @@
                   {
                     "group": "SDK",
                     "pages": [
-                      "integrations/embeddings/sdk/sdk-overview"
+                      "integrations/embeddings/sdk/sdk-overview",
+                      "integrations/embeddings/sdk/sdk-quickstart",
+                      "integrations/embeddings/sdk/sdk-components",
+                      "integrations/embeddings/sdk/sdk-auth"
                     ]
                   }
                 ]

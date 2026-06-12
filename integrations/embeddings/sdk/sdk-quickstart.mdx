@@ -1,0 +1,124 @@
+---
+title: "Quickstart"
+---
+
+Get a live, interactive WisdomAI dashboard rendering in your React app. You'll install the packages, add a small backend endpoint that mints a short-lived token, and drop in a `<Dashboard>` component.
+
+## Requirements
+
+Before you begin, ensure you have:
+
+- **React 18\+** and **react-dom 18\+**
+- **MUI v7** (`@mui/material`, `@mui/x-date-pickers`) — note the major version
+- **Emotion 11** (`@emotion/react`, `@emotion/styled`)
+- **Highcharts 12** \+ `highcharts-react-official` 3
+- **GraphQL 16**, **Luxon 3**
+- ESM-only: use a modern bundler (Vite, Next.js, etc.)
+- A reachable Wisdom `baseUrl` over **HTTPS**
+
+## Integration
+
+Follow these steps to get the SDK running in your app:
+
+### 1. Install
+
+Run the following commands:
+
+```bash
+npm install @wisdomai/react
+npm install @wisdomai/node   # backend only
+```
+
+The React SDK relies on a few peer dependencies your app must also have installed (see [Requirements](#requirements)):
+
+```bash
+npm install react react-dom \
+  @mui/material@^7 @mui/x-date-pickers@^7 \
+  @emotion/react@^11 @emotion/styled@^11 \
+  highcharts@^12 highcharts-react-official@^3 \
+  graphql@^16 luxon@^3
+```
+
+### 2. Add the token-exchange endpoint
+
+Your long-lived access token is a secret and must never reach the browser. Add a small backend endpoint that exchanges it for a short-lived JWT:
+
+```jsx
+import express from 'express';
+import { WisdomAI } from '@wisdomai/node';
+ 
+const wisdom = new WisdomAI({
+  accessToken: process.env.WISDOM_ACCESS_TOKEN, // keep this server-side
+  baseUrl: process.env.WISDOM_BASE_URL,         // e.g. https://your-org.gowisdom.ai
+});
+ 
+const app = express();
+app.post('/auth-token', async (_req, res) => {
+  res.json(await wisdom.getAuthToken());
+});
+app.listen(3000);
+```
+
+Serve `/auth-token` from the **same origin** as your frontend (or proxy it), so the browser request needs no extra CORS or credentials handling.
+
+<Note>
+  This is the minimum to get a token. For how the exchange works, per-user (multi-tenant) tokens, and token refresh, see [Authentication](/integrations/embeddings/sdk/sdk-auth).
+</Note>
+
+### 3. Render a dashboard
+
+Drop `<Dashboard>` inside `WisdomProvider` and pass your dashboard ID:
+
+```tsx
+import { WisdomProvider, Dashboard } from '@wisdomai/react';
+ 
+export default function App() {
+  return (
+    <WisdomProvider
+      theme={{
+        primaryTextColor: '#111827',
+        secondaryTextColor: '#6b7280',
+        background: '#ffffff',
+        border: '#e5e7eb',
+      }}
+    >
+      <Dashboard dashboardId="<your-dashboard-id>" />
+    </WisdomProvider>
+  );
+}
+```
+
+By default `WisdomProvider` fetches the JWT from `/auth-token`. That's all you need to render a live, interactive dashboard.
+
+<Note>
+  For more ways to embed (single widgets, custom cards, filters), see [Components](/integrations/embeddings/sdk/sdk-components).
+</Note>
+
+## Theming
+
+Pass a `theme` object to `WisdomProvider` to match the embedded content to your product. Four keys are required; the rest are optional.
+
+| Key | Required | Description |
+| --- | --- | --- |
+| `primaryTextColor` | Yes | Main text color (titles, values). |
+| `secondaryTextColor` | Yes | Muted text (axis labels, captions). |
+| `background` | Yes | Surface/background color. |
+| `border` | Yes | Border and divider color. |
+| `fontFamily` | No | Font stack for embedded content. |
+| `chartColors` | No | Array of colors used for chart series. |
+
+<Note>
+  Always pass an explicit `theme`. Supplying the four required keys ensures the embedded components render with your brand rather than defaults.
+</Note>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Authentication" icon="Key" href="/integrations/embeddings/sdk/sdk-auth">
+    Secure your integration that keeps your access token on the server and out of the browser.
+  </Card>
+
+  <Card title="Components" icon="react" href="/integrations/embeddings/sdk/sdk-components">
+    Browse the React components available for embed a full dashboard, composable widgets, and filters.
+  </Card>
+</CardGroup>

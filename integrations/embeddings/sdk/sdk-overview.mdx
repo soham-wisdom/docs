@@ -2,77 +2,53 @@
 title: "SDK Overview"
 ---
 
-The WisdomAI Embedded SDK is a React component library for embedding WisdomAI dashboards natively inside your product. Instead of embedding the entire WisdomAI surface as an external add-on, you can compose individual components directly into your existing UI, with support for theming, host-controlled layout, and programmatic filter control.
+Embed live WisdomAI dashboards directly inside your own React application. The SDK renders Wisdom's interactive analytics: charts, metrics, tables and filters as native React components in your DOM (no iframe). They flow with your layout and inherit your theming, placed inside your own pages like any other component.
 
-## Core components
+## What you can do today
 
-The SDK exposes three primary building blocks.
+- **Embed a full dashboard**: Drop an entire Wisdom dashboard into a page with a single component.
+- **Embed a single widget**: Render one chart, metric, or table on its own and place it anywhere in your UI.
+- **Brand-native widget cards (advanced)**: Render a widget's visualization without Wisdom's built-in card chrome and wrap it in your own container (see Components).
+- **Interactive analytics**: Charts, time series, stacked breakdowns, data tables, and KPI metrics, all fully interactive (zoom, tooltips, export-to-data).
+- **Filtering**: Show Wisdom's built-in filter bar, or drive filters from your own application state.
+- **Theming**: Match the embedded content to your product's colors, typography, and chart palette.
+- **Multi-tenant ready**: Issue per-user tokens so each of your end users only sees the data they're entitled to.
 
-**`WisdomProvider`** wraps your application and handles authentication and GraphQL transport. It accepts a `graphqlUrl` and a `tokenProvider` function that returns a JWT. All other SDK components must be descendants of this provider.
+## Packages
 
-**`WisdomDashboard`** renders the embedded dashboard surface. It accepts a `dashboardId` prop and handles widget rendering, data fetching, and reactive filter updates automatically.
+The SDK is published publicly on the **npm registry** under the `@wisdomai` scope:
 
-**`WisdomGlobalFilters`** is a decoupled filter control surface that can be placed anywhere in the host layout (above, beside, or inside a sidebar), independent of the dashboard component itself.
+| Package | Registry | Use |
+| --- | --- | --- |
+| `@wisdomai/react` | [npmjs.com/package/@wisdomai/react](http://npmjs.com/package/@wisdomai/react) | React component library: providers, `Dashboard`, widgets, hooks. Runs in the browser. |
+| `@wisdomai/node` | [npmjs.com/package/@wisdomai/node](http://npmjs.com/package/@wisdomai/node) | Server-side helper that exchanges your long-lived access token for a short-lived JWT the browser can safely use. Runs on your backend only. |
 
-## Minimal integration
+<Note>
+  Both packages are MIT-licensed and ESM-first.
+</Note>
 
-The following example produces a working embedded dashboard with filters:
+## How the docs are organized
 
-```jsx
-import { WisdomProvider, WisdomDashboard, WisdomGlobalFilters } from 'react-dashboard-sdk-wisdom';
+<CardGroup cols={3}>
+  <Card title="Quickstart" icon="rocket" href="/integrations/embeddings/sdk/sdk-quickstart">
+    Install, wire up auth, and render your first dashboard.
+  </Card>
 
-export function CustomerDashboardPage({ dashboardId }) {
-  const dashboardRef = useRef(null);
+  <Card title="Components" icon="react" href="/integrations/embeddings/sdk/sdk-components">
+    Embed dashboards, single widgets, custom widget cards, and filters.
+  </Card>
 
-  return (
-    <WisdomProvider graphqlUrl="https://your-host/graphql" tokenProvider={() => 'your-jwt-token'}>
-      <WisdomGlobalFilters dashboardId={dashboardId} dashboardRef={dashboardRef} />
-      <WisdomDashboard ref={dashboardRef} dashboardId={dashboardId} />
-    </WisdomProvider>
-  );
-}
-```
+  <Card title="Authentication" icon="key" href="/integrations/embeddings/sdk/sdk-auth">
+    The `@wisdomai/node` token exchange, `WisdomProvider`, and per-user (multi-tenant) tokens.
+  </Card>
+</CardGroup>
 
-Your developers do not need to manage transport, auth wiring, or widget rendering. Refs and callbacks are available for deeper customization but are not required.
+## What's coming
 
-## Theming and layout
+Dashboard consumption is available today. On the near-term roadmap:
 
-The SDK supports theme switching, and the same integration can serve multiple visual identities. Wrap the embed in your own layout and controls to make it feel native to your product.
-
-## Core components
-
-The SDK exposes three primary building blocks.
-
-**`WisdomProvider`** wraps your application and handles authentication and GraphQL transport. It accepts a `graphqlUrl` and a `tokenProvider` function that returns a JWT. All other SDK components must be descendants of this provider.
-
-**`WisdomDashboard`** renders the embedded dashboard surface. It accepts a `dashboardId` prop and handles widget rendering, data fetching, and reactive filter updates automatically.
-
-**`WisdomGlobalFilters`** is a decoupled filter control surface that can be placed anywhere in the host layout (above, beside, or inside a sidebar), independent of the dashboard component itself.
-
-## Minimal integration
-
-The following example produces a working embedded dashboard with filters:
-
-```jsx
-import { WisdomProvider, WisdomDashboard, WisdomGlobalFilters } from 'react-dashboard-sdk-wisdom';
-
-export function CustomerDashboardPage({ dashboardId }) {
-  const dashboardRef = useRef(null);
-
-  return (
-    <WisdomProvider graphqlUrl="https://your-host/graphql" tokenProvider={() => 'your-jwt-token'}>
-      <WisdomGlobalFilters dashboardId={dashboardId} dashboardRef={dashboardRef} />
-      <WisdomDashboard ref={dashboardRef} dashboardId={dashboardId} />
-    </WisdomProvider>
-  );
-}
-```
-
-Your developers do not need to manage transport, auth wiring, or widget rendering. Refs and callbacks are available for deeper customization but are not required.
-
-## Theming and layout
-
-The SDK supports theme switching, and the same integration can serve multiple visual identities. Wrap the embed in your own layout and controls to make it feel native to your product.
+- **Embedded chat & dashboard chat**: Ask questions in natural language against your data, inline.
+- **Authoring & app creation**: Build and customize dashboards and analytics apps directly from the SDK.
 
 ## FAQs
 
@@ -105,11 +81,11 @@ The SDK supports theme switching, and the same integration can serve multiple vi
 ## Next steps
 
 <CardGroup cols={2}>
-  <Card title="Embedding overview" icon="window-restore" href="/integrations/embeddings/embedding">
-    Understand the full embedding architecture and choose the right integration path for your use case.
+  <Card title="Quickstart" icon="rocket" href="integrations/embeddings/sdk/sdk-quickstart">
+    Set up the SDK and embed your first dashboard in minutes.
   </Card>
 
-  <Card title="GraphQL API" icon="brackets-curly" href="/integrations/embeddings/graphql-api/GraphQL-API">
-    Explore the GraphQL API available to embedded integrations for user management and data access.
+  <Card title="Components" icon="react" href="integrations/embeddings/sdk/sdk-components">
+    Browse the React components available for embed a full dashboard, composable widgets, and filters.
   </Card>
 </CardGroup>
