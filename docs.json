@@ -149,6 +149,7 @@
               "access-management/manage-organizations",
               "manage-account/monitor-performance-and-usage",
               "manage-account/compliance-and-best-practices",
+              "manage-account/privacy-policy",
               {
                 "group": "User Management",
                 "pages": [

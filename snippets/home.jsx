@@ -1,13 +1,13 @@
 export const HomeBanner = () => {
   return (
-    <section className="w-full flex justify-center py-16">
+    <section className="w-full flex justify-center py-6">
       <div className="max-w-[1376px] w-full flex flex-col items-center text-center px-4">
         {/* Logo */}
-        <img noZoom src="/images/home/light/logo.svg" alt="WisdomAI Logo" className=" dark:hidden" />
-        <img noZoom src="/images/home/dark/logo.svg" alt="WisdomAI Logo Dark" className=" hidden dark:block" />
+        <img noZoom src="/images/home/light/logo.svg" alt="WisdomAI Logo" className="h-16 w-auto dark:hidden" />
+        <img noZoom src="/images/home/dark/logo.svg" alt="WisdomAI Logo Dark" className="h-16 w-auto hidden dark:block" />
 
         {/* Subtitle */}
-        <p className="mt-4 text-lg text-gray-600 dark:text-gray-300 max-w-2xl">
+        <p className="mt-3 text-base text-gray-600 dark:text-gray-300 max-w-2xl">
           Dive into Our Docs and Start Building with Trusted, <br />
           AI-Powered Business Logic
         </p>
@@ -32,20 +32,21 @@ export const HomeCard = ({
   href = "#",
   children,
   badge,
+  objectPosition = "top",
 }) => {
   return (
     <a
       href={href}
-      className="mt-4 group flex flex-col overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 dark:border-zinc-800 dark:bg-zinc-900"
+      className="mt-2 group flex flex-col overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 dark:border-zinc-800 dark:bg-zinc-900"
     >
       {/* Image (light/dark swap) */}
-      <div className="relative w-full">
-        <img src={src} alt={title} className="m-0 w-full object-cover dark:hidden" noZoom />
-        <img src={darkSrc} alt={title} className="m-0 hidden w-full object-cover dark:block" noZoom />
+      <div className="relative w-full overflow-hidden max-h-[130px] lg:max-h-[180px] xl:max-h-[220px]">
+        <img src={src} alt={title} className="m-0 w-full object-cover dark:hidden" style={{objectPosition}} noZoom />
+        <img src={darkSrc} alt={title} className="m-0 hidden w-full object-cover dark:block" style={{objectPosition}} noZoom />
       </div>
 
       {/* Text area */}
-      <div className="p-5">
+      <div className="p-4">
         <span className="flex items-center gap-2 mb-2">
           <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100 m-0">{title}</h3>
           {badge && (
