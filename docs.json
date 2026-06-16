@@ -28,6 +28,11 @@
           "anchor": "Support",
           "icon": "headset",
           "href": "/manage-account/contact-support"
+        },
+        {
+          "anchor": "Trust Portal",
+          "icon": "shield-check",
+          "href": "https://trust.wisdom.ai/"
         }
       ]
     },
