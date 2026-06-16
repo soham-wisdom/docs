@@ -19,7 +19,7 @@ The paths below map to different parts of the WisdomAI interface. Use the one th
 ```html
 <iframe
   src="https://{ACCOUNT}.wisdom.ai/embed/search?token=<JWT>"
-  allow="microphone; camera"
+  allow="microphone; camera; clipboard-write"
   style="width: 100%; height: 100%; border: 0;"
 ></iframe>
 ```
@@ -31,7 +31,7 @@ The paths below map to different parts of the WisdomAI interface. Use the one th
 ```html
 <iframe
   src="https://{ACCOUNT}.wisdom.ai/embed/dashboards?token=<JWT>"
-  allow="microphone; camera"
+  allow="microphone; camera; clipboard-write"
   style="width: 100%; height: 100%; border: 0;"
 ></iframe>
 ```
@@ -43,7 +43,7 @@ The paths below map to different parts of the WisdomAI interface. Use the one th
 ```html
 <iframe
   src="https://{ACCOUNT}.wisdom.ai/embed/dashboards/<id>?token=<JWT>"
-  allow="microphone; camera"
+  allow="microphone; camera; clipboard-write"
   style="width: 100%; height: 100%; border: 0;"
 ></iframe>
 ```
@@ -55,14 +55,14 @@ The paths below map to different parts of the WisdomAI interface. Use the one th
 ```html
 <iframe
   src="https://{ACCOUNT}.wisdom.ai/embed/chat/<conversationId>?token=<JWT>&messageid=<messageId>"
-  allow="microphone; camera"
+  allow="microphone; camera; clipboard-write"
   style="width: 100%; height: 100%; border: 0;"
 ></iframe>
 ```
 
 ## iframe requirements
 
-All embed paths require the `allow="microphone; camera"` attribute on the iframe element. Omitting it disables voice input and camera features within the embedded interface.
+All embed paths require the `allow="microphone; camera; clipboard-write"` attribute on the iframe element. Omitting it disables voice input, camera, and clipboard features within the embedded interface.
 
 ## Related articles
 
