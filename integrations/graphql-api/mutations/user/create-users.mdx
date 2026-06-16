@@ -12,6 +12,21 @@ createUsers(input: CreateUsersInput!): CreateUsersResponse!
 
 ## Arguments
 
+| Field | Type | Required |
+|-------|------|----------|
+| `input` | `CreateUsersInput` | Required |
+
+**`CreateUsersInput` fields:**
+
+| Field | Type | Required |
+|-------|------|----------|
+| `emails` | `[String!]` | Required |
+| `workspaceID` | `ID` | Optional — required for multi-workspace deployments |
+| `roleAssignments` | `[RoleAssignmentInput!]` | Optional |
+| `sendWelcomeEmail` | `Boolean` | Optional — default: `false` |
+| `userAttributes` | `[UserAttributeInput!]` | Optional |
+| `userGroupIds` | `[ID!]` | Optional |
+
 <ParamField path="input" type="CreateUsersInput!" required>
   Input object containing the details for the users to create.
 </ParamField>
@@ -57,13 +72,26 @@ createUsers(input: CreateUsersInput!): CreateUsersResponse!
 
 ## Response
 
-<ParamField path="status" type="ResponseStatus!">
-  Indicates whether the operation succeeded. See [ResponseStatus](/integrations/graphql-api/objects/response-status).
+| Field | Type | Description |
+|-------|------|-------------|
+| `status.code` | `String` | `"OK"` on success |
+| `status.message` | `String` | Human-readable status description |
 
-  <Info>
-    The `status` field here returns a `ResponseStatus` object (with `code` and `message`). This is distinct from the `UserStatus` enum (e.g., `ACTIVE`) found on the `User` object.
-  </Info>
-</ParamField>
+<Info>
+  `status.code` / `status.message` come from the `ResponseStatus` type — distinct from the `UserStatus` enum (e.g., `ACTIVE`) on the `User` object.
+</Info>
+
+See [ResponseStatus](/integrations/graphql-api/objects/response-status) for the full schema.
+
+## Errors
+
+| Code | Status | Meaning |
+|------|--------|---------|
+| 200 | OK | Users created (or role assignments updated) successfully |
+| 400 | Bad Request | Invalid email format or missing required fields |
+| 401 | Unauthorized | Missing or expired access token |
+| 403 | Forbidden | Caller lacks permission to provision users |
+| 500 | Internal Server Error | Unexpected server error |
 
 ## Usage example
 

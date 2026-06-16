@@ -18,13 +18,26 @@ triggerSchedule(id: String!): Boolean!
 
 ## Arguments
 
-<ParamField path="id" type="String!" required>
-  The unique identifier of the agent to trigger. You can find it in the URL of the agent edit page.
-</ParamField>
+| Field | Type | Required |
+|-------|------|----------|
+| `id` | `String` | Required — find it in the URL of the agent's edit page |
 
 ## Response
 
-Returns a `Boolean` indicating whether the trigger was successful.
+| Field | Type | Description |
+|-------|------|-------------|
+| (root) | `Boolean` | `true` if the trigger was accepted; `false` otherwise |
+
+## Errors
+
+| Code | Status | Meaning |
+|------|--------|---------|
+| 200 | OK | Agent trigger accepted |
+| 400 | Bad Request | Missing or invalid agent ID |
+| 401 | Unauthorized | Missing or expired JWT |
+| 403 | Forbidden | Caller lacks view access for the agent |
+| 404 | Not Found | Agent ID does not exist |
+| 500 | Internal Server Error | Unexpected server error |
 
 ## Usage example
 

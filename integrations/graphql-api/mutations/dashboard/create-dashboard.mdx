@@ -12,17 +12,32 @@ createDashboard(dashboard: DashboardInput!, widgets: [DashboardWidgetInput!]!): 
 
 ## Arguments
 
-<ParamField path="dashboard" type="DashboardInput!" required>
-  Input object containing the dashboard configuration. See [DashboardInput](/integrations/graphql-api/objects/dashboard-input).
-</ParamField>
-
-<ParamField path="widgets" type="[DashboardWidgetInput!]!" required>
-  Array of widget configurations to include in the new dashboard. See [DashboardWidgetInput](/integrations/graphql-api/objects/dashboard-widget-input).
-</ParamField>
+| Field | Type | Required |
+|-------|------|----------|
+| `dashboard` | `DashboardInput` | Required — see [DashboardInput](/integrations/graphql-api/objects/dashboard-input) |
+| `widgets` | `[DashboardWidgetInput!]` | Required — see [DashboardWidgetInput](/integrations/graphql-api/objects/dashboard-widget-input) |
 
 ## Response
 
-Returns the newly created `Dashboard` object with all properties populated. See [Dashboard](/integrations/graphql-api/objects/dashboard) for the schema.
+| Field | Type | Description |
+|-------|------|-------------|
+| `id` | `ID` | Unique dashboard ID |
+| `name` | `String` | Dashboard name |
+| `description` | `String` | Dashboard description |
+| `widgets` | `[DashboardWidget]` | Widget list with IDs and layout positions |
+| `accessLevel` | `String` | Access level of the dashboard |
+
+See [Dashboard](/integrations/graphql-api/objects/dashboard) for the full schema.
+
+## Errors
+
+| Code | Status | Meaning |
+|------|--------|---------|
+| 200 | OK | Dashboard created successfully |
+| 400 | Bad Request | Invalid `DashboardInput` or `DashboardWidgetInput` |
+| 401 | Unauthorized | Missing or expired JWT |
+| 403 | Forbidden | User lacks permission to create dashboards |
+| 500 | Internal Server Error | Unexpected server error |
 
 ## Usage example
 

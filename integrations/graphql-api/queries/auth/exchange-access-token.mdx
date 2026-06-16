@@ -17,13 +17,24 @@ exchangeAccessToken(accessToken: String!): String!
 
 ## Parameters
 
-<ParamField path="accessToken" type="String!" required>
-  The dedicated access key provided by WisdomAI for your organization. Contact `support@askwisdom.ai` to obtain your access key.
-</ParamField>
+| Field | Type | Required |
+|-------|------|----------|
+| `accessToken` | `String` | Required — contact `support@askwisdom.ai` to obtain your key |
 
 ## Response
 
-Returns a JWT token as a string that should be used in the `Authorization` header for subsequent API requests.
+| Field | Type | Description |
+|-------|------|-------------|
+| (root) | `String` | JWT token. Pass as `Authorization: Bearer <token>` on all subsequent requests. Tokens have a limited lifetime and must be periodically refreshed by calling this query again. |
+
+## Errors
+
+| Code | Status | Meaning |
+|------|--------|---------|
+| 200 | OK | Token exchanged successfully |
+| 400 | Bad Request | Missing or malformed `accessToken` |
+| 401 | Unauthorized | `accessToken` is invalid or has been revoked |
+| 500 | Internal Server Error | Unexpected server error |
 
 ## Usage example
 
@@ -43,10 +54,6 @@ curl -X POST https://{ACCOUNT}.askwisdom.ai/graphql \
     }
   }'
 ```
-
-<Info>
-  JWT tokens have a limited lifetime. You will need to exchange your access key for a new JWT token periodically.
-</Info>
 
 ## Next steps
 

@@ -25,6 +25,21 @@ sendUserMessage(
 
 ## Arguments
 
+| Field | Type | Required |
+|-------|------|----------|
+| `conversationId` | `String` | Required |
+| `domainId` | `String` | Required |
+| `query` | `DeltaInput` | Required |
+| `createHiddenConversation` | `Boolean` | Optional — default: `false` |
+| `toolSelection` | `ToolSelection` | Optional |
+| `selectedModelName` | `String` | Optional |
+| `isUserOnboarding` | `Boolean` | Optional — default: `false` |
+| `editArtifactMode` | `Boolean` | Optional — default: `false` |
+| `chatThinkingEffort` | `ChatThinkingEffort` | Optional |
+| `disableClarifications` | `Boolean` | Optional — default: `false` |
+| `enableDeepAnalysis` | `Boolean` | Optional — default: `false` |
+| `isEvaluatingTrigger` | `Boolean` | Optional — default: `false` |
+
 <ParamField path="conversationId" type="String!" required>
   The unique identifier of the conversation to send the message to.
 </ParamField>
@@ -89,7 +104,23 @@ sendUserMessage(
 
 ## Response
 
-Returns a `ResponseStatus` object indicating the success or failure of the operation. See [ResponseStatus](/integrations/graphql-api/objects/response-status) for the schema.
+| Field | Type | Description |
+|-------|------|-------------|
+| `code` | `String` | `"OK"` on success |
+| `message` | `String` | Human-readable status description |
+
+See [ResponseStatus](/integrations/graphql-api/objects/response-status) for the full schema.
+
+## Errors
+
+| Code | Status | Meaning |
+|------|--------|---------|
+| 200 | OK | Message accepted for processing |
+| 400 | Bad Request | Missing required field or malformed `DeltaInput` |
+| 401 | Unauthorized | Missing or expired JWT |
+| 403 | Forbidden | User lacks read access to the specified domain |
+| 404 | Not Found | `conversationId` or `domainId` does not exist |
+| 500 | Internal Server Error | Unexpected server error |
 
 ## Usage example
 
