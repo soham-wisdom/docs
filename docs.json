@@ -11,6 +11,13 @@
   "favicon": "/favicon.webp",
   "navigation": {
     "global": {
+      "tabs": [
+        {
+          "tab": "MCP Server",
+          "icon": "server",
+          "href": "/integrations/mcp-server/MCP-Server"
+        }
+      ],
       "anchors": [
         {
           "anchor": "WisdomAI",
