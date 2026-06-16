@@ -1,0 +1,83 @@
+---
+title: "Domain Health"
+---
+
+Domain Health gives domain administrators a clear, scored signal of whether a domain is well-configured and ready for reliable use. It evaluates three dimensions (schema, context, and usage), combines them into a single score, and surfaces a prioritized list of specific improvements you can accept or decline with one click. This guide walks you through how the score is calculated, how to run an analysis, and how to act on recommendations.
+
+## How it works
+
+A combination of deep data evaluations with actionable workflows across four progressive stages to ensure your data models are production-ready.
+
+<Steps>
+  <Step title="Health dimensions" icon="chart-network">
+    Domain Health evaluates three dimensions:
+
+    - **Schema quality** assesses whether the domain's table and column definitions are clear and usable. It flags cryptic or ambiguous names, overlapping names that lack descriptions, and missing join relationships between tables that are commonly queried together.
+    - **Context quality** re-runs your Reviewed Queries through the system and evaluates whether the generated SQL matches expected output. The Context Quality Agent diagnoses root causes, knowledge conflicts, stale definitions, contradictions  and proposes specific fixes.
+    - **Usage signals** track conversation volume, negative feedback rate, and limited-context rate.
+  </Step>
+  <Step title="Running an analysis" icon="play">
+    Click **Run Analysis** in the Domain Health tab. Use this before a planned rollout or after a significant domain change.
+  </Step>
+  <Step title="Recommendations" icon="lightbulb">
+    After each analysis, WisdomAI surfaces a prioritized list of specific actions:
+
+    | Priority | What it covers |
+    | :-- | :-- |
+    | **HIGH** | Direct SQL or knowledge fixes with a measurable impact on eval scores |
+    | **MEDIUM** | Knowledge additions for uncovered tables or ambiguous definitions |
+    | **LOW** | Hygiene improvements such as adding descriptions or renaming columns |
+
+    Each recommendation can be accepted (applied immediately) or declined (dismissed for 90 days).
+  </Step>
+  <Step title="End-user readiness signals" icon="user-check">
+    When a domain's health score falls below the production-ready threshold, a persistent banner appears in chat and explorer interfaces. Lower-health domains also display a **Learning** chip next to the domain name in the selector dropdown, visible to all users.
+  </Step>
+</Steps>
+
+## Target users
+
+Domain Health is available to:
+
+- **Domain Admins**: Run analyses, review recommendations, and monitor scores over time.
+- **Explorers and Analysts**: See the readiness banner and Learning chip when a domain is below threshold. No action required.
+
+## FAQs
+
+<AccordionGroup>
+  <Accordion title="How often does the automated health check run?">
+    Analysis runs are currently triggered manually from the Domain Health tab. Automated weekly runs are on the near-term roadmap.
+  </Accordion>
+
+  <Accordion title="Does accepting a recommendation apply changes immediately?">
+    Yes. The change takes effect on the next query.
+  </Accordion>
+
+  <Accordion title="My domain has no Reviewed Queries. What happens to the context quality score?">
+    Without Reviewed Queries, context quality cannot be measured. Adding and reviewing queries is the primary way to improve this score.
+  </Accordion>
+
+  <Accordion title="What's the difference between schema quality and context quality?">
+    Schema quality evaluates the structural layer, whether names are clear, joins are defined, and tables are accessible. Context quality evaluates the knowledge layer, whether the domain's curated content produces correct answers on queries it has been taught.
+  </Accordion>
+
+  <Accordion title="Does Domain Health work for MCP data sources?">
+    Support for MCP sources is on the near-term roadmap. The current release covers SQL-based domains.
+  </Accordion>
+
+  <Accordion title="What is the Learning chip?">
+    A small chip displayed next to a domain name in the selector dropdown when the domain's health score is below the production-ready threshold.
+  </Accordion>
+</AccordionGroup>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Advanced data modeling" icon="sitemap" href="/setting-up-wisdom-ai/advanced-data-modeling-creating-context">
+    Learn how to add the metrics, joins, and context that improve your schema and context quality scores.
+  </Card>
+
+  <Card title="Context Builder - Connections" icon="rotate" href="/product-updates/spring-2026/context-builder-connections">
+    Keep your domain's knowledge layer synchronized automatically as your source systems change.
+  </Card>
+</CardGroup>

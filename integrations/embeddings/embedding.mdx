@@ -34,7 +34,7 @@ Every embedded session follows this five-step flow:
 
 <Steps>
   <Step title="Get your access token" titleSize="h3">
-    Contact `support@wisdom.ai` to receive your Access Key. This is a permanent credential, not a JWT or session token. It authenticates your server to the WisdomAI API and grants impersonation permissions. It does not expire and must be kept secret.
+    Contact `support@askwisdom.ai` to receive your Access Key. This is a permanent credential, not a JWT or session token. It authenticates your server to the WisdomAI API and grants impersonation permissions. It does not expire and must be kept secret.
   </Step>
   <Step title="Create the end user" titleSize="h3">
     Call `createUsers` to provision the user in WisdomAI:
@@ -112,7 +112,7 @@ Every embedded session follows this five-step flow:
     Append the JWT as a `token` query parameter to the embed URL and set it as the `src` of your embed.
 
     <Note>
-      If your embed uses voice input or camera features, add `allow="microphone; camera"` to the `<iframe>` tag.
+      If your embed uses voice input, camera, or clipboard features, add `allow="microphone; camera; clipboard-write"` to the `<iframe>` tag.
     </Note>
 
     The following examples show how to use each embed path with an `<iframe>`, but the same URL structure applies regardless of your integration method.

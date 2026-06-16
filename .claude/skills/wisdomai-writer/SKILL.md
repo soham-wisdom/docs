@@ -288,6 +288,32 @@ Do not bold words in the introduction.
 - Headings in sentence case. Imperative verbs where possible.
 - No H4 or deeper headings. Restructure if needed.
 
+### Images and alt text
+
+Every image in an MDX file — whether written as `![alt](path)`, `<img alt="..." />`, or an `<img>` inside a Mintlify `<Frame>` — must have descriptive alt text that meets all of the following:
+
+- **Describe what the user sees, not what the image is.** Write what is displayed on screen, not a label like "screenshot of the Domains page." A reader who cannot see the image should understand what is visible.
+- **Name the key UI elements shown.** If a dropdown is open, name its options. If a table is visible, name its columns or the data context. If a button is highlighted, say so.
+- **Stay under 125 characters.** Count the characters; trim if needed.
+- **Do not start with "Screenshot", "Image", "Photo", or "A screenshot of".** Start with the subject.
+
+**Correct:**
+```
+Add Tile dropdown showing Visualization, SQL Query, and Summary options on a sales dashboard
+```
+
+**Incorrect:**
+```
+Screenshot of the add widget menu
+```
+```
+Dashboard with dropdown open
+```
+
+This rule applies to every image tag you write or edit. If you encounter an existing image with missing or non-compliant alt text while working on a file, fix it in the same edit. Do not leave non-compliant alt text in a file you have touched.
+
+---
+
 ### Terminology
 - **WisdomAI** — always capitalised exactly this way.
 - Use exact names for mutations, queries, objects, and subscriptions as they appear in the source materials. Do not paraphrase or shorten them.
