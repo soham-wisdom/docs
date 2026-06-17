@@ -19,16 +19,39 @@ When an answer is incorrect, you can directly edit the underlying SQL query.
 <img
   src="/images/chat-workstream-edit.png"
   alt="Chat workstream showing the edit button"
-  className="mx-auto"
+  className="mx-auto dark:hidden"
   style={{ width:"95%" }}
+  lightAlt="Chat workstream showing the edit button"
+  darkAlt="Chat workstream showing the edit button"
+/>
+<img
+  src="/dark-img/chat-workstream-edit.png"
+  alt="Chat workstream showing the edit button"
+  className="mx-auto hidden dark:block"
+  style={{ width:"95%" }}
+  lightAlt="Chat workstream showing the edit button"
+  darkAlt="Chat workstream showing the edit button"
 />
 
 2. The **Editor** window will open. Go to the **SQL Code** tab.
-4. Modify the SQL statement to fix inaccuracies, add joins, or correct filters.
-5. Click **Update response** to run the revised query and refresh the data.
+3. Modify the SQL statement to fix inaccuracies, add joins, or correct filters.
+4. Click **Update response** to run the revised query and refresh the data.
 5. (Optional) Switch back to the **Editor** tab to configure chart types, add filters, or drag-and-drop columns for visualization.
 
-![Update response option](/images/update-response.png)
+<img
+  src="/images/update-response.png"
+  alt="Update response option"
+  lightAlt="Update response option"
+  darkAlt="Update response option"
+  className="dark:hidden"
+/>
+<img
+  src="/dark-img/update-response.png"
+  alt="Update response option"
+  lightAlt="Update response option"
+  darkAlt="Update response option"
+  className="hidden dark:block"
+/>
 
 ## 2. Test the updated answer
 
@@ -43,15 +66,28 @@ After editing the query, you must test the new response.
 If the system consistently misunderstands terms, you can add explicit context. This helps the system formulate more precise queries.
 
 1. Navigate to **Domains** \> (Select your Domain)
-1. Navigate to the **Context** tab.
+2. Navigate to the **Context** tab.
 3. Select the **Knowledge** tab inside the Context section.
 4. Click the **\+ Add Knowledge** button to begin a new entry and add natural language context. Add natural language sentences to define business terms.
    - _Example 1:_ `Regions are the same as Territories.`
    - _Example 2:_ `My sales stages are: Prospect, Negotiation, Closed.`
-4. Click **SAVE**.
+5. Click **SAVE**.
 
 <Frame>
-  ![NEW Add Knowledge Steps](/images/NEW-add-knowledge-steps.png)
+  <img
+    src="/images/NEW-add-knowledge-steps.png"
+    alt="NEW Add Knowledge Steps"
+    lightAlt="NEW Add Knowledge Steps"
+    darkAlt="NEW Add Knowledge Steps"
+    className="dark:hidden"
+  />
+  <img
+    src="/dark-img/NEW-add-knowledge-steps.png"
+    alt="NEW Add Knowledge Steps"
+    lightAlt="NEW Add Knowledge Steps"
+    darkAlt="NEW Add Knowledge Steps"
+    className="hidden dark:block"
+  />
 </Frame>
 
 <Info>
@@ -66,7 +102,20 @@ Once you have confirmed the SQL is correct and the answer is accurate, save it t
 2. In the **Review Question** window, add a clear title for the question (e.g., "Official Quarterly Revenue by Region").
 3. Click **Confirm**.
 
-![Review question option](/images/review-question-v02-em.png)
+<img
+  src="/images/review-question-v02-em.png"
+  alt="Review question option"
+  lightAlt="Review question option"
+  darkAlt="Review question option"
+  className="dark:hidden"
+/>
+<img
+  src="/dark-img/review-question.png"
+  alt="Review question option"
+  lightAlt="Review question option"
+  darkAlt="Review question option"
+  className="hidden dark:block"
+/>
 
 This action saves the question and its validated SQL as a [Validated Query](/setting-up-wisdom-ai/feedback-mechanisms/reviewed-queries), which serves as a trusted reference for similar future questions.
 
@@ -78,15 +127,29 @@ To ensure that the information provided in the answer is accurate, relevant, and
 
 These features help you iterate efficiently and build confidence in the outputs you receive.
 
-![Reviewed queries are displayed](/images/new-ui-reviewed-queries-01.png)
+<img
+  src="/images/new-ui-reviewed-queries-01.png"
+  alt="Reviewed queries are displayed"
+  lightAlt="Reviewed queries are displayed"
+  darkAlt="Reviewed queries are displayed"
+  className="dark:hidden"
+/>
+<img
+  src="/dark-img/new-ui-reviewed-queries-01.png"
+  alt="Reviewed queries are displayed"
+  lightAlt="Reviewed queries are displayed"
+  darkAlt="Reviewed queries are displayed"
+  className="hidden dark:block"
+/>
 
 ## Next steps
 
 <CardGroup cols={2}>
-  <Card icon="clipboard-list" href="/using-wisdom-ai-everyday/auditing" title="Auditing">
+  <Card title="Auditing" icon="clipboard-list" href="/using-wisdom-ai-everyday/auditing">
     Organize insights by tagging chats, navigating history, and sharing vetted answers with your team.
   </Card>
-  <Card icon="sitemap" href="/setting-up-wisdom-ai/advanced-data-modeling-creating-context" title="Advanced Data Modeling">
+
+  <Card title="Advanced Data Modeling" icon="sitemap" href="/setting-up-wisdom-ai/advanced-data-modeling-creating-context">
     Define relationships and Knowledge in your data to enable more powerful analysis.
   </Card>
 </CardGroup>
