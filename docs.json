@@ -11,6 +11,13 @@
   "favicon": "/favicon.webp",
   "navigation": {
     "global": {
+      "tabs": [
+        {
+          "tab": "MCP Server",
+          "icon": "server",
+          "href": "/integrations/mcp-server/MCP-Server"
+        }
+      ],
       "anchors": [
         {
           "anchor": "WisdomAI",
@@ -21,6 +28,11 @@
           "anchor": "Support",
           "icon": "headset",
           "href": "/manage-account/contact-support"
+        },
+        {
+          "anchor": "Trust Portal",
+          "icon": "shield-check",
+          "href": "https://trust.wisdom.ai/"
         }
       ]
     },
