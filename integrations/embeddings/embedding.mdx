@@ -34,7 +34,13 @@ Every embedded session follows this five-step flow:
 
 <Steps>
   <Step title="Get your access token" titleSize="h3">
-    Contact `support@askwisdom.ai` to receive your Access Key. This is a permanent credential, not a JWT or session token. It authenticates your server to the WisdomAI API and grants impersonation permissions. It does not expire and must be kept secret.
+    Every WisdomAI user can create and manage their own API keys. To obtain your dedicated access key, follow the steps in [this article](/settings/api-keys#api-keys).
+
+    This is a permanent credential, not a JWT or session token. It authenticates your server to the WisdomAI API and grants impersonation permissions.
+
+    <Warning>
+      Never expose your access key in client-side code. It provides long-term impersonation capabilities and must be kept secret. Store it only in secure server-side environment variables or a secret management system. If compromised, an attacker could impersonate any user in your organization.
+    </Warning>
   </Step>
   <Step title="Create the end user" titleSize="h3">
     Call `createUsers` to provision the user in WisdomAI:
@@ -84,10 +90,6 @@ Every embedded session follows this five-step flow:
   </Step>
   <Step title="Impersonate the user to get a JWT" titleSize="h3">
     Call `impersonateUser` from your server to generate a 1-hour JWT for the user. This mutation is a public API member that uses your permanent Descope Access Key as an argument (`accessToken`) rather than a standard Authorization header. This step must always be performed server-side.
-
-    <Warning>
-      Never expose your permanent access token in client-side code. It provides long-term impersonation capabilities and must be protected on your backend. If compromised, an attacker could impersonate any user in your organization. Store it only in secure server-side environment variables or a secret management system.
-    </Warning>
 
     Example Request:
 
