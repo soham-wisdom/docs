@@ -15,28 +15,15 @@ WisdomAI connects to Google BigQuery using a service account for background oper
 These steps create the connection in WisdomAI and authenticate the service account. Complete them whether you plan to use service account authentication only or enable OAuth on top.
 
 1. In WisdomAI, go to **Connections** and click **Add Connection**.
-2. Enter a **Connection name**, for example `BigQuery Prod` and select **BigQuery** as the data source type.
-3. Enter your BigQuery connection details:
-   1. Google Cloud **Project Id**.
-   2. Paste the contents of your service account JSON key into **Service Account Info JSON**.
-   3. Optionally, use **Dataset Filters** to restrict which datasets WisdomAI crawls.
-
-<img
-  alt="Add Bqc With Steps 01 1"
-  lightAlt="Add Connection screen with BigQuery connection details options and a Save and Sync metadata button enabled"
-  darkAlt="Add Connection screen with BigQuery connection details options and a Save and Sync metadata button enabled"
-  title="Add Bqc With Steps 01 1"
-  src="/images/add-bqc-with-steps-01.png"
-  className="dark:hidden"
-/>
-<img
-  alt="Add Bqc With Steps 01 1"
-  lightAlt="Add Connection screen with BigQuery connection details options and a Save and Sync metadata button enabled"
-  darkAlt="Add Connection screen with BigQuery connection details options and a Save and Sync metadata button enabled"
-  title="Add Bqc With Steps 01 1"
-  src="/images/add-bqc-with-steps-01.png"
-  className="hidden dark:block"
-/>
+2. Enter a **Connection name**, for example `BigQuery Prod`, and select **BigQuery** as the data source type.
+3. Under **Account Information**, paste the contents of your service account JSON key into **Service Account Info JSON**.
+   > This field is required for crawling and metadata discovery.
+4. (Optional) Enter **Authorization scopes** to restrict the OAuth permission scopes granted to the connection.
+5. (Optional) Enter a **Billing Project ID** to specify which project to bill for queries. Leave this field empty to use your service account's default project.
+6. Under **Projects**, configure at least one BigQuery project:
+   1. In the **Project 1** card, enter your Google Cloud **Project ID**.
+   2. (Optional) Enter **Dataset filters** to restrict which datasets WisdomAI crawls for that project.
+   3. To connect additional projects, click **\+ Add Project** and repeat these sub-steps for each one.
 
 At this point, you have two options:
 
