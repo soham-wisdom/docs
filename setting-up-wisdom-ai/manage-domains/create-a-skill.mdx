@@ -1,38 +1,40 @@
 ---
-title: "Create a skill"
+title: "Create a Skill"
 ---
 
 There are two ways to create a skill: directly through the Skills tab in domain settings, or by using the `skill-creator` system skill in chat to generate a complete draft.
 
-<Note>
-  Skills is currently in beta and available to super users in all accounts.
-</Note>
-
 ## Before you begin
 
-- You need domain write access (admin) to create, edit, or delete skills.
-- Skills work best on top of well-configured domains. If a data source is poorly described or tables are not crawled, a skill cannot compensate for that. Set up your data model first.
+- You need domain write access (admin) to create, edit, or delete skills. See [Access Management](/manage-account/access-management) for a full breakdown of roles and permissions.
+- Skills work best on top of well-configured domains. If a data source is poorly described or tables are not crawled, a skill cannot compensate for that. Set up your data model first — see [Advanced Data Modeling](/setting-up-wisdom-ai/advanced-data-modeling-creating-context).
 
-## Create a skill using the UI
+## Create a skill from a domain
 
 1. Navigate to the domain, then select the **Context** tab.
 2. Select the **Skills** sub-tab.
 3. Click **Add Skill**.
-4. Fill in the three fields in the modal:
-   - **Name** — a lowercase, hyphenated identifier (e.g. `revenue-analysis`). This is also the identifier for explicit `/skill-name` invocation in chat.
-   - **Description** — describe when WisdomAI should activate this skill. Write it to match the natural language a user would use. The field includes a "Guide to optimizing skill descriptions" helper link.
-   - **Instructions** — the full guidance: steps, data source rules, output expectations, and business logic.
+4. Fill in the three fields in the **New Skill** modal:
+   - **Name**: a lowercase, hyphenated identifier (e.g. `revenue-analysis`). This is also the identifier for explicit `/skill-name` invocation in chat.
+   - **Description**: describe when WisdomAI should activate this skill. The field includes a "Guide to optimizing skill descriptions" helper link.
+   - **Instructions**: the full guidance: steps, data source rules, output expectations, and business logic.
 5. Click **Save**.
 
-### Tips for writing effective skills
+<img
+  src="/images/create-skill-light-new.png"
+  alt="Modal showing the skills creation steps"
+  className="dark:hidden"
+/>
 
-- Create skills for the top recurring question and analysis types in the domain.
+## Tips for writing effective skills
+
+- Create skills for the top recurring question and analysis types in your domain.
 - If a Knowledge entry is longer than approximately 500 words and contains step-by-step workflows or query templates, consider converting it to a skill instead.
-- Write the description to match how users naturally phrase the request. Vague descriptions cause the skill to activate too broadly or not at all.
+- Match the phrasing your users would naturally type for the description. Vague descriptions cause the skill to activate too broadly or not at all.
 
 ## Create a skill using `skill-creator` in chat
 
-`skill-creator` is a built-in system skill that generates a complete skill draft — name, description, and instructions — from a natural-language workflow description.
+`skill-creator` is a built-in system skill that generates a complete skill draft (name, description, and instructions) from a natural-language workflow description.
 
 1. Open a chat in the domain.
 2. Describe your workflow in natural language. For example: "Can you create a skill for analyzing client performance improvement?"
@@ -42,25 +44,33 @@ There are two ways to create a skill: directly through the Skills tab in domain 
 6. Click **Save**.
 
 <Note>
-  You can also ask WisdomAI to revise an existing skill, evaluate its quality, or generate test prompts to verify activation — all by continuing the conversation with `skill-creator`.
+  Ask WisdomAI to revise an existing skill, evaluate its quality, or generate test prompts to verify activation — all by continuing the conversation with `skill-creator`.
 </Note>
 
 ## Verify the skill works
 
-1. Open a chat in the domain and send a message that matches the skill's description.
+1. Open a chat in the domain and send a message you expect to trigger the skill.
 2. Check for the "Skill loaded: `skill-name`" indicator in the conversation. Expand it to confirm the correct skill was activated.
 
-You can also type `/skill-name` directly in the chat input to invoke the skill explicitly.
+To invoke the skill directly, type `/skill-name` in the chat input.
 
 ## Edit or delete a skill
 
-- **Edit:** open the Skills tab, click the three-dot menu on the skill row, and select **Edit**. Every edit creates a new version. The domain links to the version saved at that point, so changes are explicit and do not silently affect existing conversations.
-- **Delete:** click the three-dot menu and select **Delete**. This action cannot be undone.
+- **Edit**: open the Skills tab, click the three-dot menu on the skill row, and select **Edit**. Every edit creates a new version. The domain links to the version saved at that point, so updates are explicit and do not silently change behavior.
+- **Delete**: click the three-dot menu and select **Delete**. Deleting a skill is permanent.
 
 <Note>
   System skills (Created By: Wisdom Internal) are read-only and cannot be edited or deleted.
 </Note>
 
-<Note>
-  To learn how Skills work and how they differ from Knowledge, read [Skills](/setting-up-wisdom-ai/manage-domains/skills).
-</Note>
+<CardGroup cols={3}>
+  <Card title="Skills Overview" icon="book-open" href="/setting-up-wisdom-ai/manage-domains/skills">
+    Understand how Skills work and how they differ from Knowledge.
+  </Card>
+  <Card title="Context Tab" icon="layer-group" href="/setting-up-wisdom-ai/manage-domains/context-tab">
+    Explore all context-building tools available in your domain settings.
+  </Card>
+  <Card title="Advanced Data Modeling" icon="sitemap" href="/setting-up-wisdom-ai/advanced-data-modeling-creating-context">
+    Build a well-configured domain before adding skills for best results.
+  </Card>
+</CardGroup>

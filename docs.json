@@ -101,8 +101,6 @@
                   "setting-up-wisdom-ai/manage-domains/overview-tab",
                   "setting-up-wisdom-ai/manage-domains/data-sources-tab",
                   "setting-up-wisdom-ai/manage-domains/context-tab",
-                  "setting-up-wisdom-ai/manage-domains/skills",
-                  "setting-up-wisdom-ai/manage-domains/create-a-skill",
                   "setting-up-wisdom-ai/manage-domains/changelog-tab",
                   "setting-up-wisdom-ai/manage-domains/advanced-tab",
                   "setting-up-wisdom-ai/manage-domains/evaluation-tab",
@@ -110,6 +108,14 @@
                   "product-updates/spring-2026/domain-health",
                   "product-updates/february-2026/context-builder-file-uploads",
                   "product-updates/spring-2026/context-builder-connections"
+                ]
+              },
+              {
+                "group": "Skills",
+                "tag": "New",
+                "pages": [
+                  "setting-up-wisdom-ai/manage-domains/skills",
+                  "setting-up-wisdom-ai/manage-domains/create-a-skill"
                 ]
               },
               {
