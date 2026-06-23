@@ -492,11 +492,11 @@
     },
     {
       "source": "/integrations/embedding/story/embed-a-story",
-      "destination": "/integrations/embeddings/iframe/dashboard/embed-a-dashboard"
+      "destination": "/integrations/embeddings/iframe/embed-a-dashboard"
     },
     {
       "source": "/integrations/embedding/story/embed-a-dashboard",
-      "destination": "/integrations/embeddings/iframe/dashboard/embed-a-dashboard"
+      "destination": "/integrations/embeddings/iframe/embed-a-dashboard"
     },
     {
       "source": "/using-wisdom-ai-everyday/turn-answers-into-stories",
@@ -534,8 +534,8 @@
       "permanent": true
     },
     {
-      "source": "integrations/connect-to-sharepoint",
-      "destination": "getting-started/connect-data-sources/connect-to-sharepoint"
+      "source": "/integrations/connect-to-sharepoint",
+      "destination": "/getting-started/connect-data-sources/connect-to-sharepoint"
     },
     {
       "source":"/product-updates/february-2026/search-the-web",
@@ -547,7 +547,7 @@
     },
      {
       "source": "/new-features",
-      "destination": "/product-updates/march-2026/03-26"
+      "destination": "/product-updates/march-2026/march-features"
     },
      {
       "source": "/product-updates",
