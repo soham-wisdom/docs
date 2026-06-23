@@ -2,7 +2,7 @@
 title: "Overview"
 ---
 
-Welcome to the WisdomAI documentation site. These guides provide all the essential information you need to effectively utilize the platform’s features, from querying data using natural language to setting up granular access controls. Whether you are a technical user or a business professional, you will find detailed instructions for integrating, analyzing, and visualizing your data.
+Welcome to the WisdomAI documentation site. These guides provide all the essential information you need to effectively utilize the platform’s features, from querying data using natural language to setting up granular access controls. Whether you are an Admin, an Explorer, or a Developer building on top of the platform, you will find detailed instructions for your role.
 
 ## Where to start?
 
@@ -56,11 +56,37 @@ WisdomAI caters to diverse user roles. Follow the path that aligns with your res
     - Share insights with team members and stakeholders.
     - Set up notifications to stay updated on key metrics.
   </Tab>
+  <Tab title="Developers">
+    **Objective:** Integrate WisdomAI into your product or connect it to your toolchain.
+
+    **Start Here:**
+
+    <Columns cols={2}>
+      <Card title="Developers overview" icon="square-code" horizontal href="/integrations/developers">
+      </Card>
+      <Card title="Embedding" icon="table-columns" horizontal href="/integrations/embeddings/embedding">
+      </Card>
+      <Card title="GraphQL API" icon="code" horizontal href="/integrations/graphql-api/GraphQL-API">
+      </Card>
+      <Card title="MCP Server" icon="plug" horizontal href="/integrations/mcp-server/MCP-Server">
+      </Card>
+    </Columns>
+
+    **Key Actions:**
+
+    - Embed WisdomAI dashboards and chat into your web app using the iframe or React SDK.
+    - Create and manage users programmatically via the GraphQL API.
+    - Connect your AI coding assistant to WisdomAI data using the MCP Server.
+    - Control data access at the user level with attributes and parameterized connections.
+  </Tab>
 </Tabs>
 
 ## Next steps
 
 <CardGroup cols={3}>
+  <Card title="Developers" icon="code" href="/integrations/developers">
+    Embed, query, and extend WisdomAI from your own stack.
+  </Card>
   <Card title="Supported Data Sources" icon="database" href="/getting-started/connect-data-sources/supported-data-sources">
     Explore the full list of databases and platforms you can connect to the system.
   </Card>
