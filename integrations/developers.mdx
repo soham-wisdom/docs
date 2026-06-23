@@ -1,0 +1,64 @@
+---
+title: "Developers"
+---
+
+WisdomAI gives your team several ways to build on top of the platform. Whether you're embedding analytics into a product, managing users programmatically, or connecting WisdomAI to your AI toolchain, this section covers everything you need.
+
+<CardGroup cols={3}>
+  <Card title="Embedding" icon="table-columns" href="/integrations/embeddings/embedding">
+    Embed WisdomAI dashboards and chat into your product using the iframe or SDK paths. Manage users, attributes, and sessions programmatically.
+  </Card>
+  <Card title="GraphQL API" icon="code" href="/integrations/graphql-api/GraphQL-API">
+    Reference for all mutations, queries, objects, and subscriptions.
+  </Card>
+  <Card title="MCP Server" icon="plug" href="/integrations/mcp-server/MCP-Server">
+    Connect WisdomAI to Claude Code, Cursor, and any MCP-compatible AI tool.
+  </Card>
+</CardGroup>
+
+## Choose your path
+
+If you're not sure where to start, pick the question that fits your goal.
+
+<AccordionGroup>
+  <Accordion title="I want to embed a WisdomAI dashboard or chat inside my web app.">
+    Use the [Embedding](/integrations/embeddings/embedding) path. Start with the [iframe overview](/integrations/embeddings/embedding-modes) for a quick integration, or the [SDK](/integrations/embeddings/sdk/sdk-overview) for a native React component approach.
+  </Accordion>
+  <Accordion title="I want to create and manage users from my backend.">
+    Use the [GraphQL API](/integrations/graphql-api/GraphQL-API). The [User Management](/integrations/user-management/user-lifecycle) section covers `createUsers`, `setUserAttributes`, `impersonateUser`, and related mutations with cURL examples.
+  </Accordion>
+  <Accordion title="I want my AI coding assistant to query WisdomAI data.">
+    Use the [MCP Server](/integrations/mcp-server/MCP-Server). It exposes WisdomAI search and agent capabilities as tools in Claude Code, Cursor, and other MCP-compatible hosts.
+  </Accordion>
+  <Accordion title="I want to control what data each user can access.">
+    Read [User Attributes](/integrations/user-management/user-attributes) first. Attributes are the mechanism behind parameterized connections and row-level authorization.
+  </Accordion>
+</AccordionGroup>
+
+## Before you start
+
+Here are a few things that apply across all integration paths.
+
+- All paths require a bearer token. Each section covers how to obtain one.
+- Your base URL for all API calls is `https://<your-tenant>.wisdom.ai/graphql`. Use the same domain you use to log in to WisdomAI.
+
+<Note>
+  Both `wisdom.ai` and `askwisdom.ai` are valid tenant domains depending on your deployment. If you see a `getaddrinfo ENOTFOUND` error, confirm your tenant URL with your WisdomAI account team.
+</Note>
+
+## Start building
+
+<CardGroup cols={2}>
+  <Card title="Embedding overview" icon="table-columns" href="/integrations/embeddings/embedding">
+    Start here if you're integrating WisdomAI into a product.
+  </Card>
+  <Card title="SDK Quickstart" icon="rocket" href="/integrations/embeddings/sdk/sdk-quickstart">
+    Install, wire up auth, and render your first dashboard.
+  </Card>
+  <Card title="User Management" icon="users" href="/integrations/user-management/user-lifecycle">
+    Create users, set attributes, and manage workspace access via API.
+  </Card>
+  <Card title="MCP Server" icon="plug" href="/integrations/mcp-server/MCP-Server">
+    Connect your AI coding tools to WisdomAI.
+  </Card>
+</CardGroup>
