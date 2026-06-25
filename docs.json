@@ -111,6 +111,14 @@
                 ]
               },
               {
+                "group": "Skills",
+                "tag": "New",
+                "pages": [
+                  "setting-up-wisdom-ai/manage-domains/skills",
+                  "setting-up-wisdom-ai/manage-domains/create-a-skill"
+                ]
+              },
+              {
                 "group": "Manage Tables & Columns",
                 "pages": [
                   "setting-up-wisdom-ai/manage-tables-columns/document-tables-and-columns",
