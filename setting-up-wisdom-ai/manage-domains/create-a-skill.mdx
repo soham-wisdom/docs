@@ -31,6 +31,7 @@ There are two ways to create a skill: directly through the Skills tab in domain 
 - Create skills for the top recurring question and analysis types in your domain.
 - If a Knowledge entry is longer than approximately 500 words and contains step-by-step workflows or query templates, consider converting it to a skill instead.
 - Match the phrasing your users would naturally type for the description. Vague descriptions cause the skill to activate too broadly or not at all.
+- If your instructions include conditional phrasing like "when a user asks," "if the user asks," or "use this for X analysis," that's a sign the content belongs in a skill.
 
 ## Create a skill using `skill-creator` in chat
 
@@ -39,9 +40,7 @@ There are two ways to create a skill: directly through the Skills tab in domain 
 1. Open a chat in the domain.
 2. Describe your workflow in natural language. For example: "Can you create a skill for analyzing client performance improvement?"
 3. WisdomAI loads `skill-creator` and generates a complete draft.
-4. Review the draft and copy it.
-5. Navigate to **Context > Skills > Add Skill** and paste the name, description, and instructions into the modal fields.
-6. Click **Save**.
+4. Review the draft. If you are a domain admin, WisdomAI saves the skill directly to your domain.
 
 <Note>
   Ask WisdomAI to revise an existing skill, evaluate its quality, or generate test prompts to verify activation — all by continuing the conversation with `skill-creator`.
