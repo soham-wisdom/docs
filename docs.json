@@ -205,7 +205,21 @@
             "group": "Integrations",
             "pages": [
               "integrations/connect-to-slack",
-              "integrations/google-sheets"
+              "integrations/google-sheets",
+              {
+                "group": "MCP Server",
+                "pages": [
+                  "integrations/mcp-server/MCP-Server",
+                  {
+                    "group": "Tools",
+                    "pages": [
+                      "integrations/mcp-server/tools/echo",
+                      "integrations/mcp-server/tools/list-domains",
+                      "integrations/mcp-server/tools/chat"
+                    ]
+                  }
+                ]
+              }
             ]
           },
           {
@@ -434,20 +448,6 @@
               }
             ]
           },
-          {
-            "group": "MCP Server",
-            "pages": [
-              "integrations/mcp-server/MCP-Server",
-              {
-                "group": "Tools",
-                "pages": [
-                  "integrations/mcp-server/tools/echo",
-                  "integrations/mcp-server/tools/list-domains",
-                  "integrations/mcp-server/tools/chat"
-                ]
-              }
-            ]
-          }
         ]
       },
       {

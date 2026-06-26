@@ -4,15 +4,12 @@ title: "Developers"
 
 WisdomAI gives your team several ways to build on top of the platform. Whether you're embedding analytics into a product, managing users programmatically, or connecting WisdomAI to your AI toolchain, this section covers everything you need.
 
-<CardGroup cols={3}>
+<CardGroup cols={2}>
   <Card title="Embedding" icon="table-columns" href="/integrations/embeddings/embedding">
     Embed WisdomAI dashboards and chat into your product using the iframe or SDK paths. Manage users, attributes, and sessions programmatically.
   </Card>
   <Card title="GraphQL API" icon="code" href="/integrations/graphql-api/GraphQL-API">
     Reference for all mutations, queries, objects, and subscriptions.
-  </Card>
-  <Card title="MCP Server" icon="plug" href="/integrations/mcp-server/MCP-Server">
-    Connect WisdomAI to Claude Code, Cursor, and any MCP-compatible AI tool.
   </Card>
 </CardGroup>
 
@@ -26,9 +23,6 @@ If you're not sure where to start, pick the question that fits your goal.
   </Accordion>
   <Accordion title="I want to create and manage users from my backend.">
     Use the [GraphQL API](/integrations/graphql-api/GraphQL-API). The [User Management](/integrations/user-management/user-lifecycle) section covers `createUsers`, `setUserAttributes`, `impersonateUser`, and related mutations with cURL examples.
-  </Accordion>
-  <Accordion title="I want my AI coding assistant to query WisdomAI data.">
-    Use the [MCP Server](/integrations/mcp-server/MCP-Server). It exposes WisdomAI search and agent capabilities as tools in Claude Code, Cursor, and other MCP-compatible hosts.
   </Accordion>
   <Accordion title="I want to control what data each user can access.">
     Read [User Attributes](/integrations/user-management/user-attributes) first. Attributes are the mechanism behind parameterized connections and row-level authorization.
@@ -57,8 +51,5 @@ Here are a few things that apply across all integration paths.
   </Card>
   <Card title="User Management" icon="users" href="/integrations/user-management/user-lifecycle">
     Create users, set attributes, and manage workspace access via API.
-  </Card>
-  <Card title="MCP Server" icon="plug" href="/integrations/mcp-server/MCP-Server">
-    Connect your AI coding tools to WisdomAI.
   </Card>
 </CardGroup>
