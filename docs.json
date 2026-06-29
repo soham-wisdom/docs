@@ -274,6 +274,12 @@
             ]
           },
           {
+            "group": "Deployment Options",
+            "pages": [
+              "deployment-options/deployment-options"
+            ]
+          },
+          {
             "group": "Embeddings",
             "pages": [
               "integrations/embeddings/embedding",
