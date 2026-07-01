@@ -43,6 +43,60 @@ Knowledge items live inside the Domain where you created them. **Libraries** let
 
 Working with Libraries involves two steps: moving Knowledge into a Library, and then linking that Library to the Domains that should use it.
 
+### Move Knowledge to a Library
+
+1. From the **Knowledge** tab, select the item you want to reuse and click **Move to Library Icon**.
+2. In the **Move to Library** dialog, open the **Target Library** dropdown and select an existing Library, or click **\+ Create New Library** to create one.
+3. Click **Move** to confirm.
+
+<Frame>
+  <img
+    alt="Move to Library dialog"
+    lightAlt="Move to Library dialog"
+    darkAlt="Move to Library dialog"
+    src="/images/move-to-library.png"
+    className="dark:hidden"
+  />
+  <img
+    alt="Move to Library dialog"
+    lightAlt="Move to Library dialog"
+    darkAlt="Move to Library dialog"
+    src="/dark-img/move-to-library.png"
+    className="hidden dark:block"
+  />
+</Frame>
+
+<Note>
+  Moving a Knowledge item relocates it out of its original Domain. Link the Library back to that Domain (and any others that need it) so the Knowledge remains available for AI queries there.
+</Note>
+
+### Link a Library to a Domain
+
+A Library's Knowledge is only available for AI queries in Domains it's linked to. To link one or more Libraries to a Domain:
+
+1. From the Domain's **Context** tab, open the option to **Link Libraries to Domain**.
+2. Open the **Libraries** dropdown and select the Library or Libraries you want linked.
+3. Click **Save**.
+
+<Frame>
+  <img
+    alt="Link Libraries to Domain dialog"
+    lightAlt="Link Libraries to Domain dialog"
+    darkAlt="Link Libraries to Domain dialog"
+    src="/images/link-libraries-to-domain.png"
+    className="dark:hidden"
+  />
+  <img
+    alt="Link Libraries to Domain dialog"
+    lightAlt="Link Libraries to Domain dialog"
+    darkAlt="Link Libraries to Domain dialog"
+    src="/dark-img/link-libraries-to-domain.png"
+    className="hidden dark:block"
+  />
+</Frame>
+
+Once linked, any Knowledge stored in that Library is available for query interpretation in the Domain, alongside the Domain's own Knowledge.
+
 ## Next steps
 
 <CardGroup cols={2}>
