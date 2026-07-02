@@ -87,7 +87,7 @@ GRANT USAGE ON SCHEMA <your_catalog_name>.<your_schema_name> TO `<service_princi
 GRANT SELECT ON TABLE <your_catalog_name>.<your_schema_name>.<your_table_name> TO `<service_principal_id>`;
 
 -- Grant select permission on all tables in a schema
-GRANT SELECT ON ALL TABLES IN SCHEMA <your_catalog_name>.<your_schema_name> TO `<service_principal_id>`;
+GRANT SELECT ON SCHEMA <your_catalog_name>.<your_schema_name> TO `<service_principal_id>`;
 ```
 
 Replace `<service_principal_id>` with the Application ID of your service principal, and `<your_catalog_name>`,`<your_schema_name>`, and `<your_table_name>` with your specific values.
