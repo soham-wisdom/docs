@@ -2,17 +2,17 @@
 title: "Basic Tutorial: Connect and Test"
 ---
 
-This tutorial is intended for Admin users who are responsible for configuring data sources and setting up the chatbot.
+This tutorial is intended for Admin users who are responsible for configuring data sources and setting up WisdomAI.
 
 ## Learning objectives
 
 By the end of this tutorial, you will be able to:
 
 - Connect to your Database.
-- Start experimenting with your WisdomAI chatbot to test it.
+- Start querying your data to test WisdomAI.
 - Provide feedback so the system can refine its context based on your input.
 
-Once you have completed this tutorial, you will have a working chatbot connected to your data and ready to improve through real-time interaction and feedback.
+Once you have completed this tutorial, you will have WisdomAI connected to your data and ready to improve through real-time interaction and feedback.
 
 ## Before you begin
 
@@ -36,14 +36,14 @@ To get started, you first need to connect your existing data source to WisdomAI 
     alt="Connections and Add Connection screens with the nav item, Add connection button, and data source picker highlighted"
     lightAlt="Connections and Add Connection screens with the nav item, Add connection button, and data source picker highlighted"
     darkAlt="Connections and Add Connection screens with the nav item, Add connection button, and data source picker highlighted"
-    src="/images/newui-connections-add-connection.png"
+    src="/images/basic-tutorial-add-connection-light.png"
     className="dark:hidden"
   />
   <img
-    alt="Add a Connection"
-    lightAlt="Add a Connection"
-    darkAlt="Add a Connection"
-    src="/dark-img/add-a-newconnection.png"
+    alt="Connections and Add Connection screens with the nav item, Add connection button, and data source picker highlighted"
+    lightAlt="Connections and Add Connection screens with the nav item, Add connection button, and data source picker highlighted"
+    darkAlt="Connections and Add Connection screens with the nav item, Add connection button, and data source picker highlighted"
+    src="/dark-img/basic-tutorial-add-connection-dark.png"
     className="hidden dark:block"
   />
 </Frame>
@@ -67,10 +67,10 @@ To get started, you first need to connect your existing data source to WisdomAI 
     className="dark:hidden"
   />
   <img
-    alt="Add a Connection"
-    lightAlt="Add a Connection"
-    darkAlt="Add a Connection"
-    src="/dark-img/basic-tutorial1.png"
+    alt="Redshift Connection Details form with the credentials panel and Save and Sync metadata button highlighted"
+    lightAlt="Redshift Connection Details form with the credentials panel and Save and Sync metadata button highlighted"
+    darkAlt="Redshift Connection Details form with the credentials panel and Save and Sync metadata button highlighted"
+    src="/dark-img/basic-tutorial-save-and-sync-dark.png"
     className="hidden dark:block"
   />
 </Frame>
@@ -88,48 +88,34 @@ After you add your data source, select the data you want to use in your project.
      A Domain represents a logical business area or function, such as Sales, Marketing, or Finance. Creating well-defined domains makes data more accessible and relevant to business users.
    </Note>
 2. Click on the **Add Domain** button. A new window will open.
-
-<Frame>
-  <img
-    alt="Domains list with the Add domain button highlighted in the top-right corner"
-    lightAlt="Domains list with the Add domain button highlighted in the top-right corner"
-    darkAlt="Domains list with the Add domain button highlighted in the top-right corner"
-    src="/images/newui-domains-list.png"
-    className="dark:hidden"
-  />
-  <img
-    alt="Create a Domain"
-    lightAlt="Create a Domain"
-    darkAlt="Create a Domain"
-    src="/dark-img/domains-basic-tutorial.png"
-    className="hidden dark:block"
-  />
-</Frame>
-
 3. Enter the **Domain name** and **select the data source** from the dropdown menu.
 4. Click **Create Domain** to continue.
 
 <Frame>
   <img
-    alt="Newui Create Domain 02"
-    lightAlt="Modal for creating a new domain"
-    darkAlt="Modal for creating a new domain"
-    title="Newui Create Domain 02"
-    src="/images/newui-create-domain-02.png"
+    alt="Domains list with the Add domain button highlighted, and the Create New Domain modal with domain name, data source selection, and Create Domain button highlighted"
+    lightAlt="Domains list with the Add domain button highlighted, and the Create New Domain modal with domain name, data source selection, and Create Domain button highlighted"
+    darkAlt="Domains list with the Add domain button highlighted, and the Create New Domain modal with domain name, data source selection, and Create Domain button highlighted"
+    src="/images/create-new-domain-light.png"
     className="dark:hidden"
   />
   <img
-    alt="Newui Create Domain 02"
-    lightAlt="Modal for creating a new domain"
-    darkAlt="Modal for creating a new domain"
-    title="Newui Create Domain 02"
-    src="/dark-img/new-domain-basic-tutorial2.png"
+    alt="Domains list with the Add domain button highlighted, and the Create New Domain modal with domain name, data source selection, and Create Domain button highlighted"
+    lightAlt="Domains list with the Add domain button highlighted, and the Create New Domain modal with domain name, data source selection, and Create Domain button highlighted"
+    darkAlt="Domains list with the Add domain button highlighted, and the Create New Domain modal with domain name, data source selection, and Create Domain button highlighted"
+    src="/dark-img/create-new-domain-dark.png"
     className="hidden dark:block"
   />
 </Frame>
 
-5. A new modal window will open. Select the **tables** you would like to use from the data source.
-6. Click on **Add Table** to continue. Now you are ready to start testing the WisdomAI chatbot to retrieve information and generate reports about your business.
+5. The next window will vary depending on what you selected in step 3:
+   - If you selected an existing **Data source**, choose the **tables** you would like to use, then click **Add Table**.
+   - If you selected **Add Files**, upload your CSV, TSV, PDF, Word, PowerPoint, or other files, then click **Upload**.
+   - If you selected **Connect new Data store or MCP server**, configure the connection as prompted, then follow the applicable step to finish adding it (this varies by source type).
+
+6. Click **Add Table** or the corresponding option (e.g., **Upload**), depending on your selection. 
+
+Once your data is added, you are ready to start querying it to retrieve information and generate reports about your business.
 
 <Frame>
   <img
@@ -240,7 +226,7 @@ In addition to database connections, Admins can add data directly to a Domain us
 
 ## Start testing
 
-Once your data is set up and selected, you can begin experimenting with your WisdomAI chatbot to see it in action and test its data analysis capabilities. Here are some example questions you may ask:
+Once your data is set up and selected, you can start querying your data to see WisdomAI in action and test its data analysis capabilities. Here are some example questions you may ask:
 
 - _"What was our revenue by region last quarter?"_
 - _"Show me customer retention by month."_
