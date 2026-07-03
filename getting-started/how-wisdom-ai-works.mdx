@@ -10,7 +10,7 @@ WisdomAI transforms your company's raw data into actionable insights through sev
 
 <Columns cols={2}>
   <Card title="Understands Your Questions" icon="comments">
-    You can ask questions in everyday language, like "What was our revenue last quarter?" or "Which products are selling best?" WisdomAI uses advanced Natural Language Processing (NLP) to understand what you're asking.
+    You can ask questions in everyday language, like "What was our revenue last quarter?" or "Which products are selling best?" WisdomAI uses advanced Natural-Language Query (NLQ) to understand what you're asking.
   </Card>
 
   <Card title="Connects to Your Data" icon="database">
@@ -24,13 +24,13 @@ WisdomAI transforms your company's raw data into actionable insights through sev
   </Card>
 
   <Card title="Turns Answers into Dashboards" icon="chart-simple">
-    Instead of just giving you numbers, WisdomAI can create interactive **Dashboards**  with charts and text. They are automatically updated as your data changes, making it easy to share insights across your team.
+    Instead of just giving you numbers, WisdomAI can create interactive Dashboards with charts and text. They are automatically updated as your data changes, making it easy to share insights across your team.
   </Card>
 </Columns>
 
 <Columns cols={2}>
   <Card title="Automates Workflows" icon="robot">
-    You can set up Playbooks to automate everyday analytical tasks and standardize how your team analyzes specific business questions.
+    You can set up Agents to automate everyday analytical tasks, from recurring analyses to threshold-based alerts, so your team gets answers without having to ask.
   </Card>
 
   <Card title="Learns and Improves" icon="lightbulb">
@@ -50,7 +50,7 @@ WisdomAI is designed for businesses of all sizes, from small startups to large c
   </Card>
 
   <Card title="Explorers" icon="users">
-    This group comprises business users, executives, and other stakeholders who utilize WisdomAI to pose questions, view reports, run dashboards, execute playbooks, and export insights to support their daily work.
+    This group comprises business users, executives, and other stakeholders who utilize WisdomAI to ask questions in natural language, create and view Dashboards, share insights with their team, and subscribe to scheduled updates.
   </Card>
 </Columns>
 
@@ -80,7 +80,7 @@ Unlike generic Retrieval-Augmented Generation (RAG) solutions that rely purely o
 
 ## Data flow & architecture overview
 
-WisdomAI transforms your business data into actionable insights using a multi-layered pipeline. The following components work together to deliver accurate, contextualized answers and an auto-updating data dashboard.
+WisdomAI transforms your business data into actionable insights using a multi-layered pipeline. The following components work together to deliver accurate, contextualized answers and auto-updating Dashboards.
 
 <Frame>
   <img
@@ -112,17 +112,17 @@ WisdomAI transforms your business data into actionable insights using a multi-la
   <Step title="Natural Language Query (NLQ) Engine" stepNumber={3} titleSize="h3">
     Users ask questions in plain language. The NLQ engine parses these questions and translates them into SQL queries using the underlying semantic model.
   </Step>
-  <Step title="Answer Generation and Dashboard Builder" stepNumber={4} titleSize="h3">
-    Responses are generated and formatted into interactive "Dashboards", data-driven narratives that combine visualizations, text, and insights. These can be scheduled and shared.
+  <Step title="Dashboard Creation" stepNumber={4} titleSize="h3">
+    Responses are generated and formatted into interactive Dashboards — data-driven narratives that combine visualizations, text, and insights. These can be scheduled and shared.
   </Step>
   <Step title="Delivery and Reporting Layer" stepNumber={5} titleSize="h3">
-    Dashboards and answers can be delivered via email or embedded within dashboards, helping teams stay informed with minimal effort.
+    Dashboards and answers can be delivered via email or embedded into external applications, helping teams stay informed with minimal effort.
   </Step>
   <Step title="User Feedback and Corrections" stepNumber={6} titleSize="h3">
     Users can give feedback on dashboard accuracy, suggest corrections, or add clarifying context to improve future results.
   </Step>
   <Step title="Knowledge Updates and Review Loop" stepNumber={7} titleSize="h3">
-    Admins and Editors review user feedback and update the semantic layer accordingly, closing the loop and continuously improving answer quality and domain understanding.
+    Admins and Data Admins review user feedback and update the semantic layer accordingly, closing the loop and continuously improving answer quality and domain understanding.
   </Step>
 </Steps>
 
