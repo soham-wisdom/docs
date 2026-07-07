@@ -1,6 +1,9 @@
 # Claude Code
 CLAUDE.md
 
+# Mintlify assistant instructions (not ready to ship)
+.mintlify/
+
 # Local tools
 vale.ini
 styles/
