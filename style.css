@@ -4,6 +4,11 @@
   display: none;
 }
 
+/* Hide the "Ask Assistant" CTA that appears inside the search modal once a query is typed */
+[data-component-part="search-ask-ai-button"] {
+  display: none;
+}
+
 /* Move MCP Server tab to the right side of the nav bar */
 .nav-tabs {
   width: 100%;
