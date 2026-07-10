@@ -449,9 +449,9 @@
             ]
           },
           {
-            "group": "Deployment Options",
+            "group": "Deployment",
             "pages": [
-              "deployment-options/deployment-models"
+              "deployment/deployment-models"
             ]
           }
         ]
