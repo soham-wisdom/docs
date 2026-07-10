@@ -74,13 +74,47 @@ Under this model, **no customer data leaves your controlled environment** unless
 The On-Premises version works inside a completely secure customer trust boundary through a localized, componentized layout:
 
 1. **Access & Identity Layer**: Managed via a local customer load balancer using Bring Your Own Identity Providers (BYO IdP like Okta or Entra ID) to enforce enterprise SSO and RBAC completely locally.
-2. **Kubernetes-Based Compute Layer**: Runs entirely on customer hardware to power the Core Engine (reasoning & tools execution), Context Engine (business rules & enterprise context), Metadata Extractor, Chunker/Indexer, and Agentic Tools (Text-to-SQL, local RAG, local Python environments).
-3. **Bundled On-Prem Storage Layer**: Includes a built-in OpenSearch Index & Vector DB (for keyword indices, text indices, and vector embeddings), alongside a Relational Database (Postgres) handling application metadata, audit logs, and context models.
-4. **Bring Your Own LLM (BYO-LLM)**: Integrates seamlessly via local API endpoints with on-prem LLMs, private cloud setups, or restricted Azure OpenAI configurations via private connectivity. You retain total dominion over model choices, network access, and exposure limits.
+2. **Kubernetes-Based Compute Layer**: Runs entirely on customer infrastructure to power:
+   - Core Engine (orchestrating reasoning, context application & tools execution)
+   - Context Engine (business rules & enterprise context)
+   - Metadata Extractor (Ingests schema, table, and semantic metadata)
+   - Chunker/Indexer (Processes documents and unstructured knowledge)
+   - Agentic Tools (Text-to-SQL, RAG, Python / advanced analytics)
+3. **Bundled On-Prem Storage Layer**: Includes a built-in OpenSearch Index & Vector DB (for keyword indexes, text indexes, and vector embeddings), alongside a Relational Database (Postgres) handling application metadata, audit logs, and context models.
+4. **Bring Your Own LLM (BYO-LLM)**: Supports on-prem LLMs, private cloud LLM endpoints, or restricted Azure OpenAI/OpenAI via private connectivity. There is no hard dependency on any single model provider. You retain control over model selection, network access, and data exposure policies.
+
+## Data flow (end-to-end)
+
+Each request moves through the on-prem stack in the following sequence, with every step executing inside the customer environment.
+
+1. The user request enters via the on-prem load balancer.
+2. The Core Engine invokes the Context Engine.
+3. Context is assembled from structured data, documents, and enterprise knowledge.
+4. Agentic tools execute locally.
+5. Results are returned to the user.
+6. All logs and audit trails are stored on-prem.
 
 ### Operations & Upgrades
 
-While infrastructure lifecycle monitoring and hardware patching remain under customer governance, WisdomAI supplies automatic upgrades over-the-air via the internet. The customer retains final say on precisely **when** updates are applied, along with full control over maintenance windows and rollback procedures.
+While infrastructure lifecycle monitoring and hardware patching remain under customer governance, WisdomAI supplies automatic upgrades over-the-air via the internet (cadence to be confirmed during onboarding). The customer retains the final say on precisely when updates are applied, along with full control over maintenance windows and rollback procedures.
+
+## FAQs
+
+The following questions cover common concerns about data handling in on-prem deployments.
+
+<AccordionGroup>
+  <Accordion title="Is the data encrypted in transit?">
+    Yes. WisdomAI uses AES-256 and TLS 1.2\+.
+  </Accordion>
+
+  <Accordion title="Is there any data stored outside the customer environment?">
+    No. For on-prem deployments, nothing is stored outside of the customer environment. The WisdomAI Customer Success team works jointly with the customer application admin to help set up the WisdomAI SDK and the embeddings database (for RAG) metadata.
+  </Accordion>
+
+  <Accordion title="How long is personal data stored?">
+    WisdomAI does not store any personal data. The WisdomAI Platform connects to the customer's data warehouse via native and third-party integrations, and uses functionality provided by OpenAI and Anthropic to convert natural language into database queries and generate business intelligence from the data returned. Zero Data Retention (ZDR) agreements are in place with OpenAI and Anthropic. The customer can also choose to provide their own API key and host the WisdomAI Platform as a private SaaS instance within their environment.
+  </Accordion>
+</AccordionGroup>
 
 ## Comparison Summary
 
