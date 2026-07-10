@@ -61,19 +61,19 @@ We support deployment across all major cloud providers:
 
 ## WisdomAI On-Premises
 
-<Note>
-  **Availability:** WisdomAI On-Premises deployment is exclusively available for strategic enterprise deals.
-</Note>
-
 The On-Premises deployment model allows enterprises to run the entire WisdomAI analytics and agentic reasoning stack locally inside their own data center or private infrastructure. This model is explicitly designed for organizations with strict security, regulatory, data-residency, or air-gap requirements.
 
 Under this model, **no customer data leaves your controlled environment** unless explicitly configured.
 
+<Note>
+  **Availability:** WisdomAI On-Premises deployment is exclusively available for strategic enterprise deals.
+</Note>
+
 ### Core Stack Requirements & Architecture
 
-The On-Premises version functions inside a completely secure customer trust boundary through a localized, componentized layout:
+The On-Premises version works inside a completely secure customer trust boundary through a localized, componentized layout:
 
-1. **Access & Identity Layer**: Managed via a local customer load balancer utilizing enterprise Bring Your Own Identity Providers (BYO IdP like Okta or Entra ID) to enforce SSO and RBAC completely locally.
+1. **Access & Identity Layer**: Managed via a local customer load balancer using Bring Your Own Identity Providers (BYO IdP like Okta or Entra ID) to enforce enterprise SSO and RBAC completely locally.
 2. **Kubernetes-Based Compute Layer**: Runs entirely on customer hardware to power the Core Engine (reasoning & tools execution), Context Engine (business rules & enterprise context), Metadata Extractor, Chunker/Indexer, and Agentic Tools (Text-to-SQL, local RAG, local Python environments).
 3. **Bundled On-Prem Storage Layer**: Includes a built-in OpenSearch Index & Vector DB (for keyword indices, text indices, and vector embeddings), alongside a Relational Database (Postgres) handling application metadata, audit logs, and context models.
 4. **Bring Your Own LLM (BYO-LLM)**: Integrates seamlessly via local API endpoints with on-prem LLMs, private cloud setups, or restricted Azure OpenAI configurations via private connectivity. You retain total dominion over model choices, network access, and exposure limits.
