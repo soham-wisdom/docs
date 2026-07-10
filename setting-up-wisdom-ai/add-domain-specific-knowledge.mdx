@@ -38,7 +38,7 @@ Other key features within the Domain section help you define and refine contextu
   - [**Document Tables and Columns**](/setting-up-wisdom-ai/manage-tables-columns/document-tables-and-columns): Write clear, natural language descriptions for tables and columns to help the AI interpret schema elements accurately.
   - [**Define Metrics with SQL**](/improve-wisdom-ai-responses/how-to-create-metrics): Use SQL formulas to define key metrics and calculations, ensuring consistent, precise responses.
 
-{/* Hold on publishing Libraries until advised. Remove this comment wrapper to publish.
+Hold on publishing Libraries until advised. Remove this comment wrapper to publish.
 
 ## Libraries
 
@@ -132,7 +132,40 @@ A Library's Knowledge is only available for AI queries in Domains it's linked to
 
 Once linked, any Knowledge stored in that Library is available for query interpretation in the Domain, alongside the Domain's own Knowledge.
 
-*/}
+## Domain Groups
+
+A domain group lets you combine multiple existing domains and run queries across all of them at once. When you ask a question of a group, WisdomAI queries each included domain and draws on its existing context library. You can also add shared context to explain how the domains relate to each other.
+
+### Create a domain group
+
+1. Navigate to \[CONFIRM: exact menu path\] and open **\[CONFIRM: "Cross-Domain Settings" or the correct label for this area\]**.
+2. Select **Domain Groups**.
+3. Choose the domains you want to include in the group.
+
+\[SCREENSHOT: Domain group creation screen showing domain selection\]
+
+Once the group is set up, you can run queries against it from \[CONFIRM: where users initiate queries against a group\]. WisdomAI queries all included domains simultaneously and uses each domain's existing context library when generating a response.
+
+\[SCREENSHOT: A query result from a domain group showing data drawn from multiple domains\]
+
+### Add cross-domain context
+
+Each domain in a group brings its own context library. That context explains individual domains, but not how the domains relate to each other. Use the **Manage Context** button to add context at the group level.
+
+\[SCREENSHOT: The Manage Context button on a domain group\]
+
+Within **Manage Context**, you can add two types of context:
+
+- **Knowledge**: Add guidance on how to use the combined domains together. For example, explain how datasets connect or which business rules apply across both domains.
+- **Reviewed queries**: The group starts with reviewed queries inherited from all included base domains. \[CONFIRM: Does the UI indicate which base domain each inherited query came from?\]
+
+#### Cross-domain reviewed queries
+
+When you approve a response within a domain group by selecting thumbs up, WisdomAI saves that query to a separate cross-domain reviewed query library. It does not appear in either individual domain's context library.
+
+To view the cross-domain reviewed query library, navigate to \[CONFIRM: path to the cross-domain library\].
+
+\[SCREENSHOT: The cross-domain reviewed query library showing a newly approved query\]
 
 ## Next steps
 
