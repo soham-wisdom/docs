@@ -1,14 +1,16 @@
 ---
-title: "Libraries"
+title: "Context Libraries"
 ---
 
-Knowledge items live inside the Domain where you created them. Libraries let you move Knowledge out of a single Domain and into a shared collection that can be reused across multiple Domains.
+Natively, business context live inside the specific Domain where it is created. Because data access permissions are strictly enforced at the Domain level, teams working in separate Domains cannot see or use each other's background context.
 
-Working with Libraries involves two steps: moving Knowledge into a Library, and then linking that Library to the Domains that should use it.
+Context Libraries solve this by providing a wrapper of context that lives entirely outside of an individual Domain. This allows you to take core knowledge and place it into a shared collection, making it easily linkable and reusable across multiple distinct Domains.
 
 ### Move Knowledge to a Library
 
-1. From the **Knowledge** tab, select the item you want to reuse and click **Move to Library Icon**.
+You can build a Library either by creating assets outside a domain or by taking existing context items originally built inside a Domain and moving them into a library so they become available elsewhere.
+
+1. From the **Knowledge** tab, select the item you want to reuse and click the **Move to Library** icon.
 
 <Frame>
   <img
@@ -27,7 +29,7 @@ Working with Libraries involves two steps: moving Knowledge into a Library, and 
   />
 </Frame>
 
-2. In the **Move to Library** dialog, open the **Target Library** dropdown and select an existing Library, or click **\+ Create New Library** to create one.
+2. In the **Move to Library** window, open the **Target Library** dropdown and select an existing Library, or click **\+ Create New Library** to create one.
 3. Click **Move** to confirm.
 
 <Frame>
@@ -49,9 +51,9 @@ Working with Libraries involves two steps: moving Knowledge into a Library, and 
 
 ### Link a Library to a Domain
 
-A Library's Knowledge is only available for AI queries in Domains it's linked to. To link one or more Libraries to a Domain:
+You must link a Context Library to a Domain before you can query its contents. To link one or more Libraries to a target Domain:
 
-1. From the Domain's **Context** tab, open the option to **Link Libraries to Domain**.
+1. From the Domain's **Context** tab, access **Knowledge** and click **Libraries**.
 
 <Frame>
   <img
@@ -91,3 +93,15 @@ A Library's Knowledge is only available for AI queries in Domains it's linked to
 </Frame>
 
 Once linked, any Knowledge stored in that Library is available for query interpretation in the Domain, alongside the Domain's own Knowledge.
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Domain Groups" icon="layer-group" href="#">
+    TBD.
+  </Card>
+
+  <Card title="Advanced Data Modeling" icon="sitemap" href="/setting-up-wisdom-ai/advanced-data-modeling-creating-context">
+    Define relationships and context in your data to enable more powerful analysis.
+  </Card>
+</CardGroup>
