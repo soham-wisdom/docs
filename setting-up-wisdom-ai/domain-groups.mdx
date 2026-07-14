@@ -2,17 +2,20 @@
 title: "Domain Groups"
 ---
 
-A domain group lets you combine multiple existing domains and run queries across all of them at once. When you ask a question of a group, WisdomAI queries each included domain and draws on its existing context library. You can also add shared context to explain how the domains relate to each other.
+A domain group lets you combine multiple existing domains and run queries across all of them at once. You can also add shared context to explain how the domains relate to each other.
 
 ## Create a domain group
 
 1. Navigate to **Domains** and open **Cross-Domain Settings**.
-2. Select **Domain Groups**.
-3. Choose the domains you want to include in the group.
+2. Within the **Domain Groups** section, choose the domains you want to include in the group.
+
+<Note>
+  You can also enable **auto-select domain** for your workspace. When enabled, you can start a chat without choosing a domain first, and WisdomAI automatically selects a matching domain if one becomes relevant to your question. This setting applies at the workspace level, separately from domain groups, and includes an allowlist you can configure once enabled.
+</Note>
 
 \[SCREENSHOT: Domain group creation screen showing domain selection\]
 
-Once the group is set up, you can run queries against it from a new chat. WisdomAI queries all included domains simultaneously and uses each domain's existing context library when generating a response.
+Once the group is set up, you can run queries against it from a new chat. WisdomAI queries all included domains simultaneously and uses each domain's existing [context library](/setting-up-wisdom-ai/context-libraries) when generating a response.
 
 \[SCREENSHOT/GIF: A query result from a domain group showing data drawn from multiple domains\]
 
