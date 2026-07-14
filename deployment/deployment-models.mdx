@@ -5,102 +5,148 @@ title: "Deployment Models"
 This guide details WisdomAI's three deployment models, helping you select the best path based on your organization's security, data residency, and infrastructure requirements.
 
 <Columns cols={3}>
-  <Card title="WisdomAI Hosted (SaaS)" icon="cloud" href="#wisdomai-hosted-saas" cta="View SaaS details">
-    WisdomAI hosts and manages your instance. No infrastructure setup or maintenance required.
+  <Card title="Cloud-Prem" icon="server" href="#cloud-prem" cta="View Cloud-Prem details">
+    Managed service, deployed inside your own cloud account (AWS, GCP, or Azure).
   </Card>
 
-  <Card title="Customer Hosted (Cloud-Prem)" icon="server" href="#customer-hosted-cloud-prem" cta="View Cloud-Prem details">
-    WisdomAI deploys and manages your instance within your own cloud environment (AWS, GCP, or Azure).
+  <Card title="Customer On-Prem" icon="shield-check" href="#customer-on-prem" cta="View Customer On-Prem details">
+    Full stack deployed on infrastructure you own, not a hyperscaler.
   </Card>
 
-  <Card title="WisdomAI On-Premises" icon="shield-check" href="#wisdomai-on-premises" cta="View On-Prem details">
-    Run the entire WisdomAI stack inside your own bare-metal data center or private, air-gapped infrastructure.
+  <Card title="SaaS Hosted" icon="cloud" href="#saas-hosted" cta="View SaaS Hosted details">
+    WisdomAI-managed cloud service. The fastest time-to-value, with zero infrastructure to run.
   </Card>
 </Columns>
 
-## Shared Architecture
+## Cloud-Prem
 
-Regardless of the model you choose, WisdomAI provides:
+**Model:** Managed service, deployed inside your own cloud account
 
-- **Single-tenant infrastructure**: Every customer's data is isolated within its own environment.
-- **Managed operations**: WisdomAI remains responsible for upgrades, patching, and monitoring.
-- **Feature parity**: The product and its features (Agents and Deep Analysis) are identical across all models.
+**Best for:** Teams that need data residency and cloud-account isolation while still letting WisdomAI operate the platform.
 
-## WisdomAI Hosted (SaaS)
+### Overview
 
-In this model, WisdomAI hosts your instance within our own secure tenant. Enjoy a true SaaS experience with zero infrastructure responsibility, making it perfect for teams seeking immediate value without the burden of administrative overhead.
+In the Cloud-Prem model, your WisdomAI tenant is deployed as a managed service, isolated within your own cloud account on AWS, GCP, or Azure. Your data stays inside your cloud boundary; WisdomAI retains remote access to deliver updates and patches.
 
-The advantages of choosing this model are:
+### Advantages
 
-- **Zero infrastructure management**: WisdomAI handles all upgrades, patching, and monitoring.
-- **Fastest time-to-value**: Skip cloud provisioning and start using the product immediately.
-- **Simplified billing**: A licensing model where WisdomAI covers all underlying infrastructure costs.
-- **Global reach**: Access the platform across multiple geographic regions.
+- **Strict data residency:** Data never leaves your organizational boundaries or your chosen cloud account.
+- **Cloud spend utilization:** Apply your existing AWS, GCP, or Azure spend commitments to offset hosting costs.
+- **Full operational visibility:** Retain access to all raw logs for compliance and security auditing.
 
-## Customer Hosted (Cloud-Prem)
+### Supported cloud environments
 
-In the Cloud-Prem model, your WisdomAI tenant is deployed **as a managed service** in isolation within your own cloud environment. This option is ideal for organizations with strict data residency mandates or existing cloud spend commitments.
+| Cloud | Isolation |
+| :-- | :-- |
+| AWS | Deployed inside your VPC; compatible with Service Control Policies (SCPs). |
+| GCP | Deployed within your project; compatible with VPC Service Controls. |
+| Azure | Deployed within your VNet; integrated with Azure Policy. |
 
-<Note>
-  **Important:** This is **not** a traditional self-hosted model. It operates under a hosted SaaS model, where WisdomAI retains minimal access to operate, patch, and update the service remotely, ensuring your version is always up to date.
-</Note>
+### Infrastructure layer
 
-The advantages of choosing Cloud-Prem as your deployment option are:
+Cloud-Prem runs on a cloud provider and uses that cloud's managed primitives:
 
-- **Strict data residency**: Data never leaves your organizational boundaries or your chosen cloud account.
-- **Cloud spend utilization**: Use your existing **AWS, GCP, or Azure spend commitments** to offset hosting costs.
-- **Full operational visibility**: Maintain access to all raw logs for compliance and security auditing.
+- **Object store:** the cloud's managed object storage (e.g. S3, GCS, Azure Blob).
+- **PostgreSQL:** the cloud's managed Postgres (e.g. RDS, Cloud SQL, Azure Database for PostgreSQL).
 
-### Supported Environments
+This is the defining difference from Customer On-Prem, which runs on infrastructure you own rather than a hyperscaler.
 
-We support deployment across all major cloud providers:
+### Capabilities shared with Customer On-Prem
 
-- **On AWS**: Deployed inside your VPC; compatible with **Service Control Policies (SCPs)**.
-- **On GCP**: Deployed within your project; compatible with **VPC Service Controls**.
-- **On Azure**: Deployed within your VNet; integrated with **Azure Policy** and **Network Security Groups (NSGs)**.
+The following are not Customer On-Prem-only, they apply to Cloud-Prem as well:
 
-## WisdomAI On-Premises
+- **Bring Your Own Identity Provider (BYO IdP):** enterprise SSO and RBAC via your Okta or Entra ID.
+- **Bring Your Own LLM (BYO-LLM):** on-prem or private-cloud model endpoints, with no hard dependency on any single model provider.
+- **OpenSearch:** a single system providing both the lexical index and vector search, it is the vector store, not a separate component.
+- **PostgreSQL:** metadata and audit logs.
+- **Data residency:** no customer data leaves their controlled environment.
+- **Encryption:** AES-256 at rest, TLS 1.2+ in transit.
 
-The On-Premises deployment model allows enterprises to run the entire WisdomAI analytics and agentic reasoning stack locally inside their own data center or private infrastructure. This model is explicitly designed for organizations with strict security, regulatory, data-residency, or air-gap requirements.
+### Access & identity
 
-Under this model, **no customer data leaves your controlled environment** unless explicitly configured.
+These are two separate layers, a load balancer handles network traffic; the identity provider handles authentication and authorization:
 
-<Note>
-  **Availability:** WisdomAI On-Premises deployment is exclusively available for strategic enterprise deals.
-</Note>
+- **Network ingress:** traffic enters through a customer-controlled load balancer, kept local to your cloud environment.
+- **Identity & access:** BYO IdP (Okta / Entra ID) enforces enterprise SSO and RBAC.
 
-### Core Stack Requirements & Architecture
+## Customer On-Prem
 
-The On-Premises version works inside a completely secure customer trust boundary through a localized, componentized layout:
+**Model:** Full stack deployed on infrastructure you own
 
-1. **Access & Identity Layer**: Managed via a local customer load balancer using Bring Your Own Identity Providers (BYO IdP like Okta or Entra ID) to enforce enterprise SSO and RBAC completely locally.
-2. **Kubernetes-Based Compute Layer**: Runs entirely on customer infrastructure to power:
-   - Core Engine (orchestrating reasoning, context application & tools execution)
-   - Context Engine (business rules & enterprise context)
-   - Metadata Extractor (Ingests schema, table, and semantic metadata)
-   - Chunker/Indexer (Processes documents and unstructured knowledge)
-   - Agentic Tools (Text-to-SQL, RAG, Python / advanced analytics)
-3. **Bundled On-Prem Storage Layer**: Includes a built-in OpenSearch Index & Vector DB (for keyword indexes, text indexes, and vector embeddings), alongside a Relational Database (Postgres) handling application metadata, audit logs, and context models.
-4. **Bring Your Own LLM (BYO-LLM)**: Supports on-prem LLMs, private cloud LLM endpoints, or restricted Azure OpenAI/OpenAI via private connectivity. There is no hard dependency on any single model provider. You retain control over model selection, network access, and data exposure policies.
+**Best for:** Strategic enterprise deals with a hard requirement to run entirely on customer-owned infrastructure.
 
-## Data flow (end-to-end)
+### Overview
 
-Each request moves through the on-prem stack in the following sequence, with every step executing inside the customer environment.
+In the Customer On-Prem model, the complete WisdomAI stack runs on your own infrastructure, not a hyperscaler, and not WisdomAI's own infrastructure. You control upgrade timing, and nothing is stored outside your environment. This option is reserved for strategic enterprise deals.
 
-1. The user request enters via the on-prem load balancer.
-2. The Core Engine invokes the Context Engine.
-3. Context is assembled from structured data, documents, and enterprise knowledge.
-4. Agentic tools execute locally.
-5. Results are returned to the user.
-6. All logs and audit trails are stored on-prem.
+### Infrastructure layer
 
-### Operations & Upgrades
+The defining difference from Cloud-Prem is the infrastructure layer. Customer On-Prem does not run on AWS, GCP, or Azure. Because there are no cloud-managed primitives to rely on, you provide your own:
 
-While infrastructure lifecycle monitoring and hardware patching remain under customer governance, WisdomAI supplies automatic upgrades over-the-air via the internet (cadence to be confirmed during onboarding). The customer retains the final say on precisely when updates are applied, along with full control over maintenance windows and rollback procedures.
+- **Object store:** your own object storage.
+- **PostgreSQL:** your own Postgres instance for metadata and audit logs.
+
+### Compute
+
+Kubernetes-based infrastructure running the Core Engine, Context Engine, Metadata Extractor, and Chunker/Indexer.
+
+### Upgrades
+
+Updates are delivered over-the-air, but you control when they are applied, upgrade timing is in your hands rather than WisdomAI's.
+
+### Capabilities shared with Cloud-Prem
+
+The following also apply to Cloud-Prem, they are not unique to Customer On-Prem:
+
+- **Bring Your Own Identity Provider (BYO IdP):** enterprise SSO and RBAC via your Okta or Entra ID.
+- **Bring Your Own LLM (BYO-LLM):** on-prem or private-cloud model endpoints, with no hard dependency on any single model provider.
+- **OpenSearch:** a single system providing both the lexical index and vector search, it is the vector store, not a separate component.
+- **PostgreSQL:** metadata and audit logs.
+- **Data residency:** no customer data leaves their controlled environment.
+- **Encryption:** AES-256 at rest, TLS 1.2+ in transit.
+
+### Access & identity
+
+These are two separate layers, a load balancer handles network traffic; the identity provider handles authentication and authorization:
+
+- **Network ingress:** traffic enters through a customer-controlled load balancer, kept local to your environment.
+- **Identity & access:** BYO IdP (Okta / Entra ID) enforces enterprise SSO and RBAC.
+
+### Data handling
+
+Nothing is stored outside the customer environment. WisdomAI operates under Zero Data Retention (ZDR) agreements with model providers (e.g. OpenAI, Anthropic).
+
+## SaaS Hosted
+
+**Model:** WisdomAI-managed cloud service
+
+**Best for:** Teams that want the fastest time-to-value with zero infrastructure to run.
+
+### Overview
+
+In the SaaS Hosted model, WisdomAI runs and operates the entire platform for you. There is no infrastructure for your team to provision, patch, or monitor, WisdomAI handles upgrades, scaling, and operations.
+
+This is the fastest path to production and the lowest operational burden of the three deployment options.
+
+### What WisdomAI manages
+
+- All compute, storage, and networking
+- Upgrades and patching (delivered continuously)
+- Scaling and availability
+- Monitoring and operations
+
+### Security
+
+- **Encryption:** AES-256 at rest, TLS 1.2+ in transit.
+- **Model access:** WisdomAI operates under Zero Data Retention (ZDR) agreements with model providers (e.g. OpenAI, Anthropic), so prompts and completions are not retained by those providers.
+
+### When to choose SaaS Hosted
+
+Choose SaaS Hosted when you want to evaluate or adopt WisdomAI quickly and do not have a requirement to keep the deployment inside your own cloud account or infrastructure. If data residency or infrastructure ownership is a hard requirement, see [Cloud-Prem](#cloud-prem) or [Customer On-Prem](#customer-on-prem).
 
 ## FAQs
 
-The following questions cover common concerns about data handling in on-prem deployments.
+The following questions cover common concerns about data handling in Customer On-Prem deployments.
 
 <AccordionGroup>
   <Accordion title="Is the data encrypted in transit?">
@@ -108,7 +154,7 @@ The following questions cover common concerns about data handling in on-prem dep
   </Accordion>
 
   <Accordion title="Is there any data stored outside the customer environment?">
-    No. For on-prem deployments, nothing is stored outside of the customer environment. The WisdomAI Customer Success team works jointly with the customer application admin to help set up the WisdomAI SDK and the embeddings database (for RAG) metadata.
+    No. For Customer On-Prem deployments, nothing is stored outside of the customer environment. The WisdomAI Customer Success team works jointly with the customer application admin to help set up the WisdomAI SDK and the embeddings database (for RAG) metadata.
   </Accordion>
 
   <Accordion title="How long is personal data stored?">
@@ -116,20 +162,17 @@ The following questions cover common concerns about data handling in on-prem dep
   </Accordion>
 </AccordionGroup>
 
-## Comparison Summary
+## Deployment models at a glance
 
-| Feature | WisdomAI Hosted (SaaS) | Customer-Hosted (Cloud-Prem) | WisdomAI On-Premises |
+|  | Cloud-Prem | Customer On-Prem | SaaS Hosted |
 | :-- | :-- | :-- | :-- |
-| **Infrastructure Owner** | WisdomAI | Customer (AWS, GCP, or Azure) | Customer (Bare-metal or private infra) |
-| **Maintenance & Patching** | WisdomAI (Automated) | WisdomAI (Remote Managed Service) | Customer Controls Execution / Over-the-air Upgrades |
-| **Data Residency** | WisdomAI Tenant | Customer Tenant | Customer Local Infrastructure |
-| **Setup Complexity** | Low | Medium | High |
-| **Infrastructure Cost** | Included in license | Paid via customer cloud account | Covered entirely by customer budgets |
-| **LLM Key** | Included (with ZDR) | Included or Customer Key | Bring Your Own LLM (BYO-LLM) Required |
-
-<Warning>
-  Except for the **On-Premises** variant (where updates are pushed over-the-air but deployment timings are client-controlled), WisdomAI does not support customer-manual patching or architectural alterations. If your cloud environment has significant restrictions on third-party managed services, we recommend the **WisdomAI Hosted** option.
-</Warning>
+| Where it runs | Your hyperscaler account (AWS/GCP/Azure) | Your own infrastructure (not a hyperscaler) | WisdomAI's cloud |
+| Who operates it | WisdomAI (managed, remote access) | You | WisdomAI |
+| Object store & Postgres | Cloud provider managed primitives | You provide your own | WisdomAI-provided |
+| BYO Identity Provider | ✓ | ✓ | N/A |
+| BYO LLM | ✓ | ✓ | N/A |
+| Data stays in your environment | ✓ | ✓ | N/A |
+| Setup complexity | Medium | High | Lowest |
 
 ## Related articles
 
