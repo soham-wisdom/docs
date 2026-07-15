@@ -260,7 +260,7 @@
               "using-wisdom-ai-everyday/turn-answers-into-dashboards",
               "explorers/chat-dashboard",
               "product-updates/february-2026/dual-axis-charts",
-              "product-updates/spring-2026/dashboard-versioning"
+              "product-updates/june-2026/dashboard-versioning"
             ]
           }
         ]
@@ -471,6 +471,13 @@
           {
             "group": "Product Updates",
             "pages": [
+              {
+                "group": "June 2026",
+                "pages": [
+                  "product-updates/june-2026/june-features",
+                  "product-updates/june-2026/june-changelog"
+                ]
+              },
               {
                 "group": "Spring 2026",
                 "pages": [

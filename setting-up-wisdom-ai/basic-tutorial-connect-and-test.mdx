@@ -2,17 +2,17 @@
 title: "Basic Tutorial: Connect and Test"
 ---
 
-This tutorial is intended for Admin users who are responsible for configuring data sources and setting up the chatbot.
+This tutorial is intended for Admin users who are responsible for configuring data sources and setting up WisdomAI.
 
 ## Learning objectives
 
 By the end of this tutorial, you will be able to:
 
 - Connect to your Database.
-- Start experimenting with your WisdomAI chatbot to test it.
-- Provide feedback so the system can create context on its own.
+- Start querying your data to test WisdomAI.
+- Provide feedback so the system can refine its context based on your input.
 
-Once you have completed this tutorial, you will have a working chatbot connected to your data and ready to improve through real-time interaction and feedback.
+Once you have completed this tutorial, you will have WisdomAI connected to your data and ready to improve through real-time interaction and feedback.
 
 ## Before you begin
 
@@ -21,7 +21,7 @@ To follow this tutorial, you should:
 - Have Admin access to your WisdomAI account.
 - Know the credentials to access your data source.
 
-## Connect to data sources
+## 1. Connect to data sources
 
 To get started, you first need to connect your existing data source to WisdomAI so the system can access and prepare your data for use and create reports:
 
@@ -33,71 +33,53 @@ To get started, you first need to connect your existing data source to WisdomAI 
 
 <Frame>
   <img
-    alt="Add a Connection"
-    lightAlt="Add a Connection"
-    darkAlt="Add a Connection"
-    src="/images/newui-add-connection.png"
+    alt="Connections and Add Connection screens with the nav item, Add connection button, and data source picker highlighted"
+    lightAlt="Connections and Add Connection screens with the nav item, Add connection button, and data source picker highlighted"
+    darkAlt="Connections and Add Connection screens with the nav item, Add connection button, and data source picker highlighted"
+    src="/images/basic-tutorial-add-connection-light.png"
     className="dark:hidden"
   />
   <img
-    alt="Add a Connection"
-    lightAlt="Add a Connection"
-    darkAlt="Add a Connection"
-    src="/dark-img/add-a-newconnection.png"
+    alt="Connections and Add Connection screens with the nav item, Add connection button, and data source picker highlighted"
+    lightAlt="Connections and Add Connection screens with the nav item, Add connection button, and data source picker highlighted"
+    darkAlt="Connections and Add Connection screens with the nav item, Add connection button, and data source picker highlighted"
+    src="/dark-img/basic-tutorial-add-connection-dark.png"
     className="hidden dark:block"
-  />
-
-  <img
-    src="/images/newui-add-connection.png"
-    alt="Add a Connection"
-    lightAlt="Add a Connection"
-    darkAlt="Add a Connection"
-    className="dark:hidden"
   />
 </Frame>
 
-3. Add a **Connection name**. Make it representative so it is easy to identify among other connections.
-4. Select the **Data Source** type.
+3. Select your data source type from the list (for example, Snowflake, BigQuery, PostgreSQL, or MCP Server).
    <Info>
      Access [Supported Data Sources](/getting-started/connect-data-sources/supported-data-sources) to see the complete list of supported data sources by WisdomAI.
    </Info>
-5. Once selected, add your data source credentials, including:
-   - **Account**
-   - **Warehouse**
-   - **User**
-   - **Role**
-   - **Private Key**
-   - **Database Filters**
-6. After you have added your credentials, click on the **Save and Sync metadata** button.
+4. Add a **Connection name** and fill in the connection details for your selected data source, such as account information, authentication method, and any relevant filters.
+   <Note>
+     The fields and authentication options shown depend on the data source you selected in step 3. See [Supported Data Sources](/getting-started/connect-data-sources/supported-data-sources) for source-specific setup guides.
+   </Note>
+5. Click on the **Save and Sync metadata** button.
 
 <Frame>
   <img
-    alt="Add a Connection"
-    lightAlt="Add a Connection"
-    darkAlt="Add a Connection"
-    src="/images/newui-add-connection-01-1.png"
+    alt="Redshift Connection Details form with the credentials panel and Save and Sync metadata button highlighted"
+    lightAlt="Redshift Connection Details form with the credentials panel and Save and Sync metadata button highlighted"
+    darkAlt="Redshift Connection Details form with the credentials panel and Save and Sync metadata button highlighted"
+    src="/images/newui-add-connection-details.png"
     className="dark:hidden"
   />
   <img
-    alt="Add a Connection"
-    lightAlt="Add a Connection"
-    darkAlt="Add a Connection"
-    src="/dark-img/basic-tutorial1.png"
+    alt="Redshift Connection Details form with the credentials panel and Save and Sync metadata button highlighted"
+    lightAlt="Redshift Connection Details form with the credentials panel and Save and Sync metadata button highlighted"
+    darkAlt="Redshift Connection Details form with the credentials panel and Save and Sync metadata button highlighted"
+    src="/dark-img/basic-tutorial-save-and-sync-dark.png"
     className="hidden dark:block"
   />
 </Frame>
-
-<img
-  src="/images/newui-add-connection-01-1.png"
-  alt="Add a Connection"
-  className="dark:hidden"
-/>
 
 <Warning>
   **Note on Syncing**: After successfully adding a connection, the initial sync may take a few minutes to complete. Then, data will be available for analysis.
 </Warning>
 
-## Select the data
+## 2. Select the data
 
 After you add your data source, select the data you want to use in your project. For this, you will need to create a Domain.
 
@@ -106,56 +88,34 @@ After you add your data source, select the data you want to use in your project.
      A Domain represents a logical business area or function, such as Sales, Marketing, or Finance. Creating well-defined domains makes data more accessible and relevant to business users.
    </Note>
 2. Click on the **Add Domain** button. A new window will open.
-
-<Frame>
-  <img
-    alt="Create a Domain"
-    lightAlt="Create a Domain"
-    darkAlt="Create a Domain"
-    src="/images/newui-create-domain.png"
-    className="dark:hidden"
-  />
-  <img
-    alt="Create a Domain"
-    lightAlt="Create a Domain"
-    darkAlt="Create a Domain"
-    src="/dark-img/domains-basic-tutorial.png"
-    className="hidden dark:block"
-  />
-</Frame>
-
-3. Enter the **Domain name** and **select the data source** from the dropdown menu. Once selected, the list of tables will be displayed.
+3. Enter the **Domain name** and **select the data source** from the dropdown menu.
 4. Click **Create Domain** to continue.
 
 <Frame>
   <img
-    alt="Newui Create Domain 02"
-    lightAlt="Modal for creating a new domain"
-    darkAlt="Modal for creating a new domain"
-    title="Newui Create Domain 02"
-    src="/images/newui-create-domain-02.png"
+    alt="Domains list with the Add domain button highlighted, and the Create New Domain modal with domain name, data source selection, and Create Domain button highlighted"
+    lightAlt="Domains list with the Add domain button highlighted, and the Create New Domain modal with domain name, data source selection, and Create Domain button highlighted"
+    darkAlt="Domains list with the Add domain button highlighted, and the Create New Domain modal with domain name, data source selection, and Create Domain button highlighted"
+    src="/images/create-new-domain-light.png"
     className="dark:hidden"
   />
   <img
-    alt="Newui Create Domain 02"
-    lightAlt="Modal for creating a new domain"
-    darkAlt="Modal for creating a new domain"
-    title="Newui Create Domain 02"
-    src="/dark-img/new-domain-basic-tutorial2.png"
+    alt="Domains list with the Add domain button highlighted, and the Create New Domain modal with domain name, data source selection, and Create Domain button highlighted"
+    lightAlt="Domains list with the Add domain button highlighted, and the Create New Domain modal with domain name, data source selection, and Create Domain button highlighted"
+    darkAlt="Domains list with the Add domain button highlighted, and the Create New Domain modal with domain name, data source selection, and Create Domain button highlighted"
+    src="/dark-img/create-new-domain-dark.png"
     className="hidden dark:block"
-  />
-
-  <img
-    src="/images/newui-create-domain-02.png"
-    alt="Modal for creating a new domain"
-    lightAlt="Modal for creating a new domain"
-    darkAlt="Modal for creating a new domain"
-    className="dark:hidden"
   />
 </Frame>
 
-5. A new modal window will open. Select the **tables** you would like to use from the data source.
-6. Click on **Add Table** to continue. Now you are ready to start testing the WisdomAI chatbot to retrieve information and generate reports about your business.
+5. The next window will vary depending on what you selected in step 3:
+   - If you selected an existing **Data source**, choose the **tables** you would like to use, then click **Add Table**.
+   - If you selected **Add Files**, upload your CSV, TSV, PDF, Word, PowerPoint, or other files, then click **Upload**.
+   - If you selected **Connect new Data store or MCP server**, configure the connection as prompted, then follow the applicable step to finish adding it (this varies by source type).
+
+6. Click **Add Table** or the corresponding option (e.g., **Upload**), depending on your selection. 
+
+Once your data is added, you are ready to start querying it to retrieve information and generate reports about your business.
 
 <Frame>
   <img
@@ -175,7 +135,7 @@ After you add your data source, select the data you want to use in your project.
 </Frame>
 
 <Tip>
-  If you want to connect a new source, select this option in step 3. In the next modal window, you'll be able to connect to the Data store or the MCP server, or add files (CSV or TSV).
+  If you want to connect a new source, select this option in step 3. In the same window, you can choose to connect a new Data store or MCP server, or add files (CSV, TSV, or Excel).
 
   <Frame>
     <img
@@ -195,9 +155,9 @@ After you add your data source, select the data you want to use in your project.
   </Frame>
 </Tip>
 
-## Upload CSV files
+## 3. Upload CSV files (Optional)
 
-In addition to database connections, Admins can add data directly to a Domain using CSV, TSV, or Excel files. When an Admin adds a file this way, the data becomes a permanent part of the Domain and is available to all users (Admins and Explorers) with access to that Domain.
+In addition to database connections, Admins can add data directly to a Domain using CSV, TSV, or Excel files. When an Admin adds a file this way, the data becomes a permanent part of the Domain and is available to all users with access to that Domain.
 
 1. Navigate to **Domains** in the left sidebar and select your Domain.
 2. Go to the **Data Sources** tab.
@@ -264,15 +224,15 @@ In addition to database connections, Admins can add data directly to a Domain us
   WisdomAI also allows non-admin users to create private domains or attach CSVs directly to a chat for quick analysis. For a full breakdown of these features and detailed configuration steps, see our [Work with CSV Files](/using-wisdom-ai-everyday/work-with-csv-files) guide.
 </Tip>
 
-## Start testing
+## 4. Start testing
 
-Once your data is set up and selected, you can begin experimenting with your WisdomAI chatbot to see it in action and test its data analysis capabilities. Here are some example questions you may ask:
+Once your data is set up and selected, you can start querying your data to see WisdomAI in action and test its data analysis capabilities. Here are some example questions you may ask:
 
 - _"What was our revenue by region last quarter?"_
 - _"Show me customer retention by month."_
 - _"Which products had the highest growth rate compared to last year?"_
 
-While experimenting with your chatbot, you can **train** it by providing **feedback**. There are three main ways to do so:
+While experimenting with your AI data analyst, you can **train** it by providing **feedback**. There are three main ways to do so:
 
 - Using the **thumbs up/down** icons. If your feedback was thumbs down, a new window opens so you can adjust the query accordingly. The more thumbs up/down you provide, the more you will train the tool to get high-quality, correct answers.
 - By **changing the SQL Code**.
