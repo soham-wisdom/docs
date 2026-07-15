@@ -34,7 +34,16 @@ Every embedded session follows this five-step flow:
 
 <Steps>
   <Step title="Get your access token" titleSize="h3">
-    Contact `support@askwisdom.ai` to receive your Access Key. This is a permanent credential, not a JWT or session token. It authenticates your server to the WisdomAI API and grants impersonation permissions. It does not expire and must be kept secret.
+    Contact `support@wisdom.ai` to receive your Access Key. This is a permanent credential, not a JWT or session token. It authenticates your server to the WisdomAI API and grants impersonation permissions. It does not expire and must be kept secret.
+  </Step>
+  <Step title="Get your access token" titleSize="h3">
+    Every WisdomAI user can create and manage their own API keys. To obtain your dedicated access key, follow the steps in [this article](/settings/api-keys).
+
+    This is a permanent credential, not a JWT or session token. It authenticates your server to the WisdomAI API and grants impersonation permissions.
+
+    <Warning>
+      Never expose your access key in client-side code. It provides long-term impersonation capabilities and must be kept secret. Store it only in secure server-side environment variables or a secret management system. If compromised, an attacker could impersonate any user in your organization.
+    </Warning>
   </Step>
   <Step title="Create the end user" titleSize="h3">
     Call `createUsers` to provision the user in WisdomAI:
@@ -107,6 +116,59 @@ Every embedded session follows this five-step flow:
     The API responds with a JWT that authenticates as the impersonated user. This token expires in **1 hour**. WisdomAI will notify your page via a `postMessage` event when the token is about to expire. See [Session Management](/integrations/embeddings/session-management) for the full refresh flow.
 
     See [Impersonate User](/integrations/graphql-api/mutations/auth/impersonate-user) for the full API reference, including information on passing transient attributes.
+  </Step>
+  <Step title="Impersonate the user to get a JWT" titleSize="h3">
+    Call `impersonateUser` from your server to generate a 1-hour JWT for the user. This mutation is a public API member that uses your permanent Descope Access Key as an argument (`accessToken`) rather than a standard Authorization header. This step must always be performed server-side.
+
+    Example Request:
+
+    ```bash
+    curl -s -X POST \
+      -H "Content-Type: application/json" \
+      -d '{
+        "query": "mutation ImpersonateUser($accessToken: String!, $userEmail: String!) { impersonateUser(accessToken: $accessToken, userEmail: $userEmail) }",
+        "variables": {
+          "accessToken": "<your_permanent_access_token>",
+          "userEmail": "alice@yourcompany.com"
+        }
+      }' \
+      https://{ACCOUNT}.wisdom.ai/graphql
+    ```
+
+    The API responds with a JWT that authenticates as the impersonated user. This token expires in **1 hour**. WisdomAI will notify your page via a `postMessage` event when the token is about to expire. See [Session Management](/integrations/embeddings/session-management) for the full refresh flow.
+
+    See [Impersonate User](/integrations/graphql-api/mutations/auth/impersonate-user) for the full API reference, including information on passing transient attributes.
+  </Step>
+  <Step title="Use the JWT in the embed URL" titleSize="h3">
+    Append the JWT as a `token` query parameter to the embed URL and set it as the `src` of your embed.
+
+    <Note>
+      If your embed uses voice input or camera features, add `allow="microphone; camera"` to the `<iframe>` tag.
+    </Note>
+
+    The following examples show how to use each embed path with an `<iframe>`, but the same URL structure applies regardless of your integration method.
+
+    ```html
+    <!-- Full-app embed (search + dashboards + chat) -->
+    <iframe
+      src="https://{ACCOUNT}.wisdom.ai/embed/search?token=<JWT>"
+      style="width: 100%; height: 100%; border: 0;" />
+    
+    <!-- Dashboards list view -->
+    <iframe
+      src="https://{ACCOUNT}.wisdom.ai/embed/dashboards?token=<JWT>"
+      style="width: 100%; height: 100%; border: 0;" />
+    
+    <!-- Embed a specific dashboard -->
+    <iframe
+      src="https://{ACCOUNT}.wisdom.ai/embed/dashboards/<id>?token=<JWT>"
+      style="width: 100%; height: 100%; border: 0;" />
+    
+    <!-- Embed a specific chat -->
+    <iframe
+      src="https://{ACCOUNT}.wisdom.ai/embed/chat/<conversationId>?token=<JWT>"
+      style="width: 100%; height: 100%; border: 0;" />
+    ```
   </Step>
   <Step title="Use the JWT in the embed URL" titleSize="h3">
     Append the JWT as a `token` query parameter to the embed URL and set it as the `src` of your embed.
