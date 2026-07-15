@@ -1,9 +1,3 @@
-/* Hide the AI assistant button next to the search bar (keep the rest of the assistant enabled) */
-#assistant-entry,
-#assistant-entry-mobile {
-  display: none;
-}
-
 /* Hide the "Ask Assistant" CTA that appears inside the search modal once a query is typed */
 [data-component-part="search-ask-ai-button"] {
   display: none;
