@@ -111,6 +111,14 @@
                 ]
               },
               {
+                "group": "Skills",
+                "tag": "New",
+                "pages": [
+                  "setting-up-wisdom-ai/manage-domains/skills",
+                  "setting-up-wisdom-ai/manage-domains/create-a-skill"
+                ]
+              },
+              {
                 "group": "Manage Tables & Columns",
                 "pages": [
                   "setting-up-wisdom-ai/manage-tables-columns/document-tables-and-columns",
@@ -251,8 +259,7 @@
               "product-updates/february-2026/mcp-in-dashboards",
               "using-wisdom-ai-everyday/turn-answers-into-dashboards",
               "explorers/chat-dashboard",
-              "product-updates/february-2026/dual-axis-charts",
-              "product-updates/spring-2026/dashboard-versioning"
+              "product-updates/february-2026/dual-axis-charts"
             ]
           }
         ]
@@ -447,6 +454,12 @@
                 ]
               }
             ]
+          },
+          {
+            "group": "Deployment",
+            "pages": [
+              "deployment/deployment-models"
+            ]
           }
         ]
       },
@@ -457,6 +470,12 @@
           {
             "group": "Product Updates",
             "pages": [
+              {
+                "group": "June 2026",
+                "pages": [
+                  "product-updates/june-2026/june-features"
+                ]
+              },
               {
                 "group": "Spring 2026",
                 "pages": [
