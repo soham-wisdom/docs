@@ -53,6 +53,10 @@ Cloud-Prem runs on a cloud provider and uses that cloud's managed primitives:
 
 This is the defining difference from Customer On-Prem, which runs on infrastructure you own rather than a hyperscaler.
 
+### Red Hat OpenShift
+
+WisdomAI runs natively on Red Hat OpenShift Container Platform for enterprises that standardize on OpenShift and require every application to conform to its hardened security model. OpenShift is a platform choice rather than a separate deployment model: on Cloud-Prem, it's supported via managed OpenShift (Amazon ROSA, Azure ARO) in your cloud account.
+
 ### Access & identity
 
 These are two separate layers — a load balancer handles network traffic. The identity provider handles authentication and authorization:
@@ -84,6 +88,10 @@ Kubernetes-based infrastructure running the Core Engine, Context Engine, Metadat
 ### Upgrades
 
 Updates are delivered over-the-air, but you control when they are applied, upgrade timing is in your hands rather than WisdomAI's.
+
+### Red Hat OpenShift
+
+WisdomAI runs natively on Red Hat OpenShift Container Platform for enterprises that standardize on OpenShift and require every application to conform to its hardened security model. OpenShift is a platform choice rather than a separate deployment model, set up on your on-prem datacenter.
 
 ### Access & identity
 
@@ -142,10 +150,10 @@ Choose SaaS Hosted when you want to evaluate or adopt WisdomAI quickly and do no
 | Where it runs | Your hyperscaler account (AWS/GCP/Azure) | Your own infrastructure (not a hyperscaler) | WisdomAI's cloud |
 | Who operates it | Shared (WisdomAI operates the platform; you govern provisioning of cloud resources) | You | WisdomAI |
 | Object store & Postgres | Cloud provider managed primitives | You provide your own | WisdomAI-provided |
-| BYO Identity Provider | ✓ | ✓ | N/A |
-| BYO LLM | ✓ | ✓ | N/A |
-| Data stays in your environment | ✓ | ✓ | N/A |
-| Setup complexity | Medium | High | Lowest |
+| BYO Identity Provider | ✓ | ✓ | ✓ |
+| BYO LLM | ✓ | ✓ | ✓ |
+| Data stays in your environment | ✓ | ✓ | — |
+| Setup complexity | Medium | High | Low |
 
 ## FAQs
 
