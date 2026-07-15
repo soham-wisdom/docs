@@ -28,6 +28,8 @@ This guide details WisdomAI's three deployment models, helping you select the be
 
 In the Cloud-Prem model, your WisdomAI tenant is deployed as a managed service, isolated within your own cloud account on AWS, GCP, or Azure. Your data stays inside your cloud boundary; WisdomAI retains remote access to deliver updates and patches.
 
+Operating this model is a shared responsibility: WisdomAI operates the platform itself, while provisioning of the underlying cloud resources within your account remains governed by you.
+
 ### Advantages
 
 - **Strict data residency:** Data never leaves your organizational boundaries or your chosen cloud account.
@@ -51,20 +53,9 @@ Cloud-Prem runs on a cloud provider and uses that cloud's managed primitives:
 
 This is the defining difference from Customer On-Prem, which runs on infrastructure you own rather than a hyperscaler.
 
-### Capabilities shared with Customer On-Prem
-
-The following are not Customer On-Prem-only, they apply to Cloud-Prem as well:
-
-- **Bring Your Own Identity Provider (BYO IdP):** enterprise SSO and RBAC via your Okta or Entra ID.
-- **Bring Your Own LLM (BYO-LLM):** on-prem or private-cloud model endpoints, with no hard dependency on any single model provider.
-- **OpenSearch:** a single system providing both the lexical index and vector search, it is the vector store, not a separate component.
-- **PostgreSQL:** metadata and audit logs.
-- **Data residency:** no customer data leaves their controlled environment.
-- **Encryption:** AES-256 at rest, TLS 1.2+ in transit.
-
 ### Access & identity
 
-These are two separate layers, a load balancer handles network traffic; the identity provider handles authentication and authorization:
+These are two separate layers — a load balancer handles network traffic. The identity provider handles authentication and authorization:
 
 - **Network ingress:** traffic enters through a customer-controlled load balancer, kept local to your cloud environment.
 - **Identity & access:** BYO IdP (Okta / Entra ID) enforces enterprise SSO and RBAC.
@@ -94,20 +85,9 @@ Kubernetes-based infrastructure running the Core Engine, Context Engine, Metadat
 
 Updates are delivered over-the-air, but you control when they are applied, upgrade timing is in your hands rather than WisdomAI's.
 
-### Capabilities shared with Cloud-Prem
-
-The following also apply to Cloud-Prem, they are not unique to Customer On-Prem:
-
-- **Bring Your Own Identity Provider (BYO IdP):** enterprise SSO and RBAC via your Okta or Entra ID.
-- **Bring Your Own LLM (BYO-LLM):** on-prem or private-cloud model endpoints, with no hard dependency on any single model provider.
-- **OpenSearch:** a single system providing both the lexical index and vector search, it is the vector store, not a separate component.
-- **PostgreSQL:** metadata and audit logs.
-- **Data residency:** no customer data leaves their controlled environment.
-- **Encryption:** AES-256 at rest, TLS 1.2+ in transit.
-
 ### Access & identity
 
-These are two separate layers, a load balancer handles network traffic; the identity provider handles authentication and authorization:
+These are two separate layers — a load balancer handles network traffic. The identity provider handles authentication and authorization:
 
 - **Network ingress:** traffic enters through a customer-controlled load balancer, kept local to your environment.
 - **Identity & access:** BYO IdP (Okta / Entra ID) enforces enterprise SSO and RBAC.
@@ -115,6 +95,17 @@ These are two separate layers, a load balancer handles network traffic; the iden
 ### Data handling
 
 Nothing is stored outside the customer environment. WisdomAI operates under Zero Data Retention (ZDR) agreements with model providers (e.g. OpenAI, Anthropic).
+
+## Cloud-Prem & Customer On-Prem Shared Capabilities
+
+These capabilities apply equally to Cloud-Prem and Customer On-Prem:
+
+- **Bring Your Own Identity Provider (BYO IdP):** enterprise SSO and RBAC via your Okta or Entra ID.
+- **Bring Your Own LLM (BYO-LLM):** on-prem or private-cloud model endpoints, with no hard dependency on any single model provider.
+- **OpenSearch:** a single system providing both the lexical index and vector search. It is the vector store, not a separate component.
+- **PostgreSQL:** metadata and audit logs.
+- **Data residency:** no customer data leaves their controlled environment.
+- **Encryption:** AES-256 at rest, TLS 1.2+ in transit.
 
 ## SaaS Hosted
 
@@ -124,7 +115,7 @@ Nothing is stored outside the customer environment. WisdomAI operates under Zero
 
 ### Overview
 
-In the SaaS Hosted model, WisdomAI runs and operates the entire platform for you. There is no infrastructure for your team to provision, patch, or monitor, WisdomAI handles upgrades, scaling, and operations.
+In the SaaS Hosted model, WisdomAI runs and operates the entire platform for you. There is no infrastructure for your team to provision, patch, or monitor. WisdomAI handles upgrades, scaling, and operations.
 
 This is the fastest path to production and the lowest operational burden of the three deployment options.
 
@@ -144,35 +135,35 @@ This is the fastest path to production and the lowest operational burden of the 
 
 Choose SaaS Hosted when you want to evaluate or adopt WisdomAI quickly and do not have a requirement to keep the deployment inside your own cloud account or infrastructure. If data residency or infrastructure ownership is a hard requirement, see [Cloud-Prem](#cloud-prem) or [Customer On-Prem](#customer-on-prem).
 
-## FAQs
-
-The following questions cover common concerns about data handling in Customer On-Prem deployments.
-
-<AccordionGroup>
-  <Accordion title="Is the data encrypted in transit?">
-    Yes. WisdomAI uses AES-256 and TLS 1.2\+.
-  </Accordion>
-
-  <Accordion title="Is there any data stored outside the customer environment?">
-    No. For Customer On-Prem deployments, nothing is stored outside of the customer environment. The WisdomAI Customer Success team works jointly with the customer application admin to help set up the WisdomAI SDK and the embeddings database (for RAG) metadata.
-  </Accordion>
-
-  <Accordion title="How long is personal data stored?">
-    WisdomAI does not store any personal data. The WisdomAI Platform connects to the customer's data warehouse via native and third-party integrations, and uses functionality provided by OpenAI and Anthropic to convert natural language into database queries and generate business intelligence from the data returned. Zero Data Retention (ZDR) agreements are in place with OpenAI and Anthropic. The customer can also choose to provide their own API key and host the WisdomAI Platform as a private SaaS instance within their environment.
-  </Accordion>
-</AccordionGroup>
-
 ## Deployment models at a glance
 
 |  | Cloud-Prem | Customer On-Prem | SaaS Hosted |
 | :-- | :-- | :-- | :-- |
 | Where it runs | Your hyperscaler account (AWS/GCP/Azure) | Your own infrastructure (not a hyperscaler) | WisdomAI's cloud |
-| Who operates it | WisdomAI (managed, remote access) | You | WisdomAI |
+| Who operates it | Shared (WisdomAI operates the platform; you govern provisioning of cloud resources) | You | WisdomAI |
 | Object store & Postgres | Cloud provider managed primitives | You provide your own | WisdomAI-provided |
 | BYO Identity Provider | ✓ | ✓ | N/A |
 | BYO LLM | ✓ | ✓ | N/A |
 | Data stays in your environment | ✓ | ✓ | N/A |
 | Setup complexity | Medium | High | Lowest |
+
+## FAQs
+
+The following questions cover common concerns about data handling across WisdomAI's deployment models.
+
+<AccordionGroup>
+  <Accordion title="Is the data encrypted in transit?">
+    Yes, across all three deployment models. WisdomAI uses AES-256 at rest and TLS 1.2\+ in transit.
+  </Accordion>
+
+  <Accordion title="Customer On-Prem: Is there any data stored outside the customer environment?">
+    No. For Customer On-Prem deployments, nothing is stored outside of the customer environment. The WisdomAI Customer Success team works jointly with the customer application admin to help set up the WisdomAI SDK and the embeddings database (for RAG) metadata.
+  </Accordion>
+
+  <Accordion title="How long is personal data stored?">
+    WisdomAI does not store any personal data, across any of its deployment models. The WisdomAI Platform connects to the customer's data warehouse via native and third-party integrations, and uses functionality provided by OpenAI and Anthropic to convert natural language into database queries and generate business intelligence from the data returned. Zero Data Retention (ZDR) agreements are in place with OpenAI and Anthropic. The customer can also choose to provide their own API key and host the WisdomAI Platform as a private SaaS instance within their environment.
+  </Accordion>
+</AccordionGroup>
 
 ## Related articles
 
