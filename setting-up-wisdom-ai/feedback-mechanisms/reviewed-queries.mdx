@@ -152,7 +152,11 @@ After applying the change and seeing the updated quarterly chart, you can save t
 
 For adding many validated queries at once, you can use the import CSV option in the **Context** \> **Reviewed Queries** tab. This is ideal for migrating existing reports or defining a set of canonical metrics from the start.
 
-To bulk upload, create a CSV file that contains two column headers: `Query` and `SQL`. Populate the rows with the natural language questions and their corresponding SQL code.
+Create a CSV file with the required column headers. By default, the CSV must include `Query` and `SQL`. Populate each row with a natural language question and its corresponding SQL statement.
+
+<Note>
+  If your domain contains multiple database connections, the CSV file must include the following three exact column headers: `Query`, `SQL`, and `Connection`. The `Connection` column should contain the name of the database connection exactly as it appears on the Connections page in WisdomAI (for example, `SNOWFLAKE-dev`). If the `Connection` column is missing, its header is renamed, or the specified connection name does not match an existing connection, the CSV upload will fail.
+</Note>
 
 <Frame>
   <img
