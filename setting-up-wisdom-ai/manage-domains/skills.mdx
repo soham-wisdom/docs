@@ -5,7 +5,8 @@ title: "Understand Skills"
 Skills are reusable blocks of instructions created by domain and data admins that tell WisdomAI how to handle specific types of messages. When you send a message, WisdomAI checks which skills are available for your domain and loads the most relevant one, ensuring the same instructions are followed consistently every time.
 
 <Note>
-  Skills is currently in beta and available to all users in all accounts.
+  - Skills is currently in beta and available to all accounts. Administrators and Data Administrators can create, edit, and delete skills. 
+  - Explorers can trigger skill activation in chat, including explicit `/skill-name` invocation, but can't create, edit, or delete skills. Explorers can also run `skill-creator` and get a full draft back in chat, but since Explorers do not have create or write access, the draft is not saved to the domain.
 </Note>
 
 ## What a skill contains
@@ -42,6 +43,10 @@ If no skill matches, WisdomAI answers normally without loading any skill.
 ### Explicit invocation
 
 Type `/skill-name` in the chat input to invoke a skill directly, bypassing automatic selection. This is useful for testing a skill or for power users who know exactly which workflow to run.
+
+<Note>
+  Explorers do not have access to the Skills tab and can't browse the list of configured skills. If your team relies on explicit invocation, share skill names with Explorers directly so they know what to type.
+</Note>
 
 ### Skill loaded indicator
 
@@ -94,7 +99,14 @@ Clicking a skill opens a detail modal showing the full description and instructi
 
 ## Permissions
 
-Creating, editing, and deleting skills requires domain write access (admin). If you have read-only access, you can view the skills list and open skill details but cannot make changes. User-level skills scoped to individual users are not yet available.
+| Role | View Skills tab | Create, edit, delete | Trigger activation in chat |
+|---|---|---|---|
+| Administrator | ✅ | ✅ | ✅ |
+| Data Administrator | ✅ | ✅ | ✅ |
+| Explorer | ❌ | ❌ | ✅ |
+| Observer | ❌ | ❌ | ❌ |
+
+Creating, editing, and deleting skills requires domain write access (Administrator or Data Administrator). Explorers can't see the Skills tab or the list of configured skills, but skills still activate automatically for their messages when relevant, and they can invoke a skill directly with `/skill-name` if they already know its name. Observers cannot use chat at all, so skills do not apply to them. User-level skills scoped to individual users are not yet available.
 
 <Note>
   To create, edit, or delete a skill, read [Create a Skill](/setting-up-wisdom-ai/manage-domains/create-a-skill).

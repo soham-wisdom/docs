@@ -6,8 +6,9 @@ There are two ways to create a skill: directly through the Skills tab in domain 
 
 ## Before you begin
 
-- You need domain write access (admin) to create, edit, or delete skills. See [Access Management](/manage-account/access-management) for a full breakdown of roles and permissions.
-- Skills work best on top of well-configured domains. If a data source is poorly described or tables are not crawled, a skill cannot compensate for that. Set up your data model first — see [Advanced Data Modeling](/setting-up-wisdom-ai/advanced-data-modeling-creating-context).
+- You need domain write access (Administrator or Data Administrator) to create, edit, or delete skills. See [Access Management](/manage-account/access-management) for a full breakdown of roles and permissions.
+- Explorers can trigger skill activation in chat, including explicit `/skill-name` invocation, but can't create, edit, or delete skills. They can also run `skill-creator` and get a full draft back in chat, but since Explorers do not have create or write access, the draft is not saved to the domain.
+- Skills work best on top of well-configured domains. If a data source is poorly described or tables are not crawled, a skill cannot compensate for that. Set up your data model first. See [Advanced Data Modeling](/setting-up-wisdom-ai/advanced-data-modeling-creating-context).
 
 ## Create a skill from a domain
 
@@ -40,10 +41,10 @@ There are two ways to create a skill: directly through the Skills tab in domain 
 1. Open a chat in the domain.
 2. Describe your workflow in natural language. For example: "Can you create a skill for analyzing client performance improvement?"
 3. WisdomAI loads `skill-creator` and generates a complete draft.
-4. Review the draft. If you are a domain admin, WisdomAI saves the skill directly to your domain.
+4. Review the draft. If you are an Administrator or Data Administrator, WisdomAI saves the skill directly to your domain.
 
 <Note>
-  Ask WisdomAI to revise an existing skill, evaluate its quality, or generate test prompts to verify activation — all by continuing the conversation with `skill-creator`.
+  Ask WisdomAI to revise an existing skill, evaluate its quality, or generate test prompts to verify activation, all by continuing the conversation with `skill-creator`.
 </Note>
 
 <video
@@ -68,7 +69,7 @@ To invoke the skill directly, type `/skill-name` in the chat input.
 - **Delete**: click the three-dot menu and select **Delete**. Deleting a skill is permanent.
 
 <Note>
-  System skills (Created By: Wisdom Internal) are read-only and cannot be edited or deleted.
+ System skills (Created By: Wisdom Internal) are read-only and cannot be edited or deleted. 
 </Note>
 
 <CardGroup cols={3}>
