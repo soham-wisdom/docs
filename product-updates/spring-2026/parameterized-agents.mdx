@@ -13,9 +13,9 @@ An adaptable execution workflow that maps central logic templates to individual 
     Open your agent in edit mode and define an input schema: variable name, type, description, and an optional default value. Supported types are text, number, boolean, email, and Slack. 
   </Step>
   <Step title="Collect runtime parameters" icon="input-text">
-    When a user manually triggers a parameterized agent, a generated input form collects their values. Submitted values are injected throughout the agent's prompts and node configurations using `{{variable_name}}` interpolation.
+    When a user manually triggers a parameterized agent, a generated input form collects their values. Submitted values are injected throughout the agent's prompts and node configurations injected wherever you reference the parameter.
   </Step>
-  <Step title="Iterate over lists" icon="arrows-repeat">
+  <Step title="Iterate over parameter value sets" icon="arrows-repeat">
     For list-type parameters, the agent loops over each item and produces per-item outputs. Each iteration runs in an independent execution context, meaning one iteration's failure does not affect others.
   </Step>
   <Step title="Manage subscriptions and templates" icon="users-gear">
