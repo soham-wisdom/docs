@@ -39,9 +39,9 @@ Depending on your subscription status, agents will appear in one of two distinct
 
 Parameterized Agents are available to:
 
-- **Admins**: Define input schemas, publish templates, and push-enroll subscribers.
-- **Agent Builders**: Build parameterized workflows and test with different input values.
-- **All users**: Subscribe to published templates and trigger agents with their own parameters via the input form.
+- Each subscriber receives a run scoped to their own parameters.
+- Runs execute under the agent runner's (owner's) identity. Row-level security (RLS) and column-level security (CLS) are enforced based on the runner's permissions, not the subscriber's.
+- Failures are isolated: one subscriber's error does not affect any other subscriber's run.
 
 ## FAQs
 
@@ -55,7 +55,7 @@ Parameterized Agents are available to:
   </Accordion>
 
   <Accordion title="Does each subscriber's run use their own row-level security?">
-    Yes. The subscriber's RLS and parameterized data source connection are always used. The creator's permissions are never applied to a subscriber's run.
+    No. The subscriber's RLS and parameterized data source connection are always used. The creator's permissions are never applied to a subscriber's run.
   </Accordion>
 
   <Accordion title="Can subscribers see each other's run logs or outputs?">
