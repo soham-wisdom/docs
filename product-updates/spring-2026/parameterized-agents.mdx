@@ -10,13 +10,13 @@ An adaptable execution workflow that maps central logic templates to individual 
 
 <Steps>
   <Step title="Define input parameters" icon="sliders">
-    Open your agent in edit mode and define an input schema: variable name, type, description, and an optional default value. Supported types are text, number, boolean, email, and Slack. 
+    Open your agent in edit mode and define an input schema: variable name, type, description, and an optional default value. Supported types are text, number, boolean, email, and Slack.
   </Step>
   <Step title="Collect runtime parameters" icon="input-text">
     When a user manually triggers a parameterized agent, a generated input form collects their values. Submitted values are injected throughout the agent's prompts and node configurations injected wherever you reference the parameter.
   </Step>
   <Step title="Iterate over parameter value sets" icon="arrows-repeat">
-    For list-type parameters, the agent loops over each item and produces per-item outputs. Each iteration runs in an independent execution context, meaning one iteration's failure does not affect others.
+    Provide multiple value sets and the agent runs once per set, each in an independent context. No list type exists.
   </Step>
   <Step title="Manage subscriptions and templates" icon="users-gear">
     Admins can publish an agent as a template and push-enroll users as subscribers. Each subscriber has their own parameter bindings. When the agent runs:
@@ -24,8 +24,6 @@ An adaptable execution workflow that maps central logic templates to individual 
     - Each subscriber receives a run scoped to their identity and parameters.
     - Row-level security and parameterized data source connections are enforced per subscriber. The creator's permissions are never applied to a subscriber's run.
     - Failures are isolated: one subscriber's error does not affect any other subscriber's run.
-
-    Users can also self-subscribe from the **Templates** tab in the Agents surface.
   </Step>
 </Steps>
 
@@ -36,7 +34,6 @@ Depending on your subscription status, agents will appear in one of two distinct
 | Tab | What it shows |
 | :-- | :-- |
 | **My Agents** | Agents you created and agents you are subscribed to. Subscribed agents display a Subscribed pill. |
-| **Templates** | Published agent templates available to you that you have not yet subscribed to. |
 
 ## Target users
 
