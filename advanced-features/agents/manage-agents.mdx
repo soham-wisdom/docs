@@ -48,17 +48,17 @@ You can view a detailed history of every time an agent has run. This log is usef
 **Visual Agents** log each run per node. You can replay any run on the canvas to review the status of each node.
 
 <img
-  src="/images/log-per-node.png"
   alt="Snippet showing rusn log per node"
   lightAlt="Snippet showing rusn log per node"
   darkAlt="Snippet showing rusn log per node"
+  src="/images/log-per-node.png"
   className="dark:hidden"
 />
 <img
-  src="/dark-img/log-per-node.png"
   alt="Snippet showing rusn log per node"
   lightAlt="Snippet showing rusn log per node"
   darkAlt="Snippet showing rusn log per node"
+  src="/dark-img/log-per-node.png"
   className="hidden dark:block"
 />
 
@@ -76,6 +76,14 @@ Use Role-Based Access Control (RBAC) to manage collaboration. Refer to the table
 | Edit Configuration | ✅ | ❌ |
 | Trigger/Test Runs | ✅ | ❌ |
 | Delete Agent | ✅ | ❌ |
+
+## Agent states
+
+Every agent is always in one of three states, shown next to its name on the **Agents** page:
+
+- **Active**: The agent runs normally and delivers notifications to its configured channel.
+- **Debug**: The agent still runs on its schedule and produces output, but doesn't notify subscribers. Use this state to validate changes against live data without alerting your team.
+- **Inactive**: The agent doesn't run at all, scheduled or otherwise.
 
 ## Next steps
 
