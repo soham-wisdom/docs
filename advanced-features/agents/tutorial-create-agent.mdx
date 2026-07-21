@@ -33,7 +33,7 @@ To create a new agent, follow these steps:
 3. **Select an Agent**: In the **Create Agent** modal, select **Prompt Agent**. A prompt form opens.
 
 <Note>
-  At the top right of the form you can select **Prompt** or [**Visual**](/advanced-features/agents/visual-mode) mode on the **toggle button**.
+  Use the toggle in the top-right corner of the form to switch between **Prompt** and [**Visual**](/advanced-features/agents/visual-mode) mode.
 
   <img
     src="/images/prompt-mode-v1.png"
@@ -65,9 +65,12 @@ To create a new agent, follow these steps:
 6. Define the **Work Description**. This is the task the Agent will perform if the trigger condition is met.
    - In the work description text box, describe the analysis and action you want in natural language. For example: `Send me a list of all lost deals along with their region, their owner, and their total value`.
    - Click **Test** to run the analysis and see a sample of the output. This allows you to preview the results that will be sent in the notification.
-7. Set the **Schedule** for the Agent to run.
-   - Choose a start date and time.
-   - Define the frequency, such as every day or week.
+7. Set the Schedule for the agent by selecting one of the following tabs. Every tab includes a time zone selector.
+   - **Hourly**: Choose the run interval and the minute within the hour to run at.
+   - **Daily**: Runs the agent every day at the time you specify.
+   - **Weekly**: Choose which day(s) to run on. Select individual days, or use the Weekdays, Weekends, or Every day presets, then set the time.
+   - **Monthly**: Choose a day of the month and a time. The agent runs on that day each month.
+   - **Custom**: Define a cron expression (minute, hour, day, month, weekday) for schedules the preset tabs don't cover.
 8. Configure **Notifications** to define how you will receive the analysis results.
    - **Email**: Select this option and enter one or more email addresses. The notification will contain charts and tables from the analysis.
    - **Slack**: Select this option and specify the Slack channel names.
