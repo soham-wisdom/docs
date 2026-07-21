@@ -30,9 +30,36 @@ To create a new agent, follow these steps:
 
 ![Screenshot showing the Get Started button](/images/2025-08-26_12-26-03.png)
 
-3. **Select an Agent**: Choose the data domain the Agent will run in.
-4. **Agent Name**: Provide a descriptive name for your Agent to easily identify it later.
-5. Configure the **Activation** **Trigger**. The optional trigger allows you to choose between two modes of operation: scheduled reporting or conditional monitoring.
+3. **Select an Agent**: Choose **Promp Agent** in the **Create Agent** modal. A prompt form will open.
+
+<Note>
+  At the top right of the form you can select **Prompt** or [**Visual**](/advanced-features/agents/visual-mode) mode on the **toggle button**.
+
+  <img
+    src="/images/prompt-mode-v1.png"
+    alt="Screenshot showing Prompt mode"
+    lightAlt="Screenshot showing Prompt mode"
+    darkAlt="Screenshot showing Prompt mode"
+  />
+
+  <img
+    alt="Screenshot showing Visual mode"
+    lightAlt="Screenshot showing Visual mode"
+    darkAlt="Screenshot showing Visual mode"
+    src="/images/visual-mode.png"
+    className="dark:hidden"
+  />
+  <img
+    alt="Screenshot showing Visual mode"
+    lightAlt="Screenshot showing Visual mode"
+    darkAlt="Screenshot showing Visual mode"
+    src="/images/2025-08-26_12-26-03.png"
+    className="hidden dark:block"
+  />
+</Note>
+
+3. **Agent Name**: Provide a descriptive name for your Agent to easily identify it later.
+4. Configure the **Activation** **Trigger**. The optional trigger allows you to choose between two modes of operation: scheduled reporting or conditional monitoring.
    1. **Trigger Disabled (Scheduled Reporting)**: Leave the trigger disabled to use the Agent for scheduled reporting. In this mode, the analysis will always run and send out a notification according to the schedule you set.
    2. **Trigger Enabled (Conditional Monitoring)**: Enable the trigger to use the Agent as a monitor for specific conditions. In this mode, an analysis and notification are sent only if the trigger's conditions are satisfied.
       - In the text box, describe the condition. You can write complex criteria. For example: `If total sales in the last year fall below $100,000`.
