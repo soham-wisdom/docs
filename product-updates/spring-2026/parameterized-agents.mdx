@@ -22,7 +22,7 @@ An adaptable execution workflow that maps central logic templates to individual 
     Admins can publish an agent as a template and push-enroll users as subscribers. Each subscriber has their own parameter bindings. When the agent runs:
 
     - Each subscriber receives a run scoped to their identity and parameters.
-    - Row-level security and parameterized data source connections are enforced per subscriber. The creator's permissions are never applied to a subscriber's run.
+    - Row-level security and parameterized data source execute under the agent runner's (owner's) identity, and RLS/CLS uses the runner's permissions, not each subscriber's.
     - Failures are isolated: one subscriber's error does not affect any other subscriber's run.
   </Step>
 </Steps>
@@ -56,7 +56,7 @@ Parameterized Agents are available to:
   </Accordion>
 
   <Accordion title="Does each subscriber's run use their own row-level security?">
-    No. The subscriber's RLS and parameterized data source connection are always used. The creator's permissions are never applied to a subscriber's run.
+    No. Runs execute under the runner's (owner's) identity, and RLS/CLS are enforced based on the runner's permissions, not the subscriber's..
   </Accordion>
 
   <Accordion title="Can subscribers see each other's run logs or outputs?">
