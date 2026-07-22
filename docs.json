@@ -119,6 +119,19 @@
                 ]
               },
               {
+                "group": "Agents",
+                "pages": [
+                  "advanced-features/agents/agents",
+                  "advanced-features/agents/tutorial-create-agent",
+                  "advanced-features/agents/visual-mode",
+                  "advanced-features/agents/nodes-reference",
+                  "advanced-features/agents/agent-best-practices",
+                  "advanced-features/agents/manage-agents",
+                  "advanced-features/agents/reviewed-runs-in-agents",
+                  "product-updates/spring-2026/parameterized-agents"
+                ]
+              },
+              {
                 "group": "Manage Tables & Columns",
                 "pages": [
                   "setting-up-wisdom-ai/manage-tables-columns/document-tables-and-columns",
@@ -191,19 +204,6 @@
           {
             "group": "Advanced Features",
             "pages": [
-              {
-                "group": "Agents",
-                "pages": [
-                  "advanced-features/agents/agents",
-                  "advanced-features/agents/tutorial-create-agent",
-                  "advanced-features/agents/visual-mode",
-                  "advanced-features/agents/nodes-reference",
-                  "advanced-features/agents/agent-best-practices",
-                  "advanced-features/agents/manage-agents",
-                  "advanced-features/agents/reviewed-runs-in-agents",
-                  "product-updates/spring-2026/parameterized-agents"
-                ]
-              },
               "advanced-features/deep-analysis",
               "advanced-features/python-interpreter-tool",
               "advanced-features/visualization-types-and-properties"
