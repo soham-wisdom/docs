@@ -153,6 +153,24 @@ The delivery node types are:
   </Accordion>
 </AccordionGroup>
 
+## Export nodes
+
+Export nodes send a dataframe directly to external storage. 
+
+The export node types are:
+
+<AccordionGroup>
+  <Accordion title="Export">
+    Exports one upstream dataframe to a connected S3 or Azure Blob Storage destination as a CSV file.
+
+    **Setup:**
+
+    1. Add the storage source: go to **Domains → Add source**, then select **S3** or **Azure Blob Storage**. The connection must have write access.
+    2. In the Export node, select the **Destination** connection you added.
+    3. Set a **file-path template** to define where the exported file is written and how it's named.
+  </Accordion>
+</AccordionGroup>
+
 ## Next steps
 
 <CardGroup cols={2}>
