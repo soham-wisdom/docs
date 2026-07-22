@@ -18,7 +18,7 @@ import { WisdomProvider, Dashboard } from '@wisdomai/react';
 
 ## Chat
 
-Embed a conversation surface: viewers ask questions in natural language and answers stream back as charts, tables, and narratives, each in a titled card. Chat does not require a dashboard — wrap the conversation components in `ConversationProvider`:
+Embed a conversation surface: viewers ask questions in natural language and answers stream back as charts, tables, and narratives, each in a titled card. Chat does not require a dashboard, wrap the conversation components in `ConversationProvider`:
 
 ```tsx
 import {
@@ -50,7 +50,7 @@ What viewers get:
 - Streamed answers as they are generated, with charts, tables, and narratives rendered as titled cards in the thread.
 - An inline clarification form when more detail is needed to answer, instead of a guess.
 - Suggested follow-up questions, message timestamps, and an explicit error row when a message fails.
-- A "Show data" toggle that reveals the table behind an answer chart, and an "Export as…" menu for saving a chart as an image. The conversation is created on the first submitted question. On its own, Chat has no domain preselected: set one from your own UI via `setDomainId` (returned by `useConversation()`). Inside a dashboard the domain comes from the dashboard automatically — that is DashChat, below.
+- A "Show data" toggle that reveals the table behind an answer chart, and an "Export as…" menu for saving a chart as an image. The conversation is created on the first submitted question. On its own, Chat has no domain preselected: set one from your own UI via `setDomainId` (returned by `useConversation()`). Inside a dashboard the domain comes from the dashboard automatically, that is DashChat, below.
 
 Building blocks: `ConversationProvider`, `Conversation`, `ConversationInput`, `ConversationMessages`, `ClarificationForm`, the `useConversation` / `useConversationChat` hooks, and `ConversationsAPI` for programmatic create/send.
 
