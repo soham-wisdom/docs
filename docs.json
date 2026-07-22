@@ -261,6 +261,12 @@
               "explorers/chat-dashboard",
               "product-updates/february-2026/dual-axis-charts"
             ]
+          },
+          {
+            "group": "Chat",
+            "pages": [
+              "chat/overview"
+            ]
           }
         ]
       },
