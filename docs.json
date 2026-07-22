@@ -251,10 +251,8 @@
           {
             "group": "Daily Usage",
             "pages": [
-              "using-wisdom-ai-everyday/ask-better-questions",
               "using-wisdom-ai-everyday/command-palette",
               "product-updates/february-2026/ghost-text-completion",
-              "improve-wisdom-ai-responses/attach-files-to-chat",
               "explorers-feedback/provide-feedback-to-the-system",
               "product-updates/february-2026/mcp-in-dashboards",
               "using-wisdom-ai-everyday/turn-answers-into-dashboards",
@@ -265,7 +263,9 @@
           {
             "group": "Chat",
             "pages": [
-              "chat/overview"
+              "chat/overview",
+              "using-wisdom-ai-everyday/ask-better-questions",
+              "improve-wisdom-ai-responses/attach-files-to-chat"
             ]
           }
         ]
