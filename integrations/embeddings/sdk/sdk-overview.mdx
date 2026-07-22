@@ -9,6 +9,8 @@ Embed live WisdomAI dashboards directly inside your own React application. The S
 
 - **Embed a full dashboard**: Drop an entire Wisdom dashboard into a page with a single component.
 - **Embed a single widget**: Render one chart, metric, or table on its own and place it anywhere in your UI.
+- **Chat**: Embed a conversation surface where viewers ask questions in natural language and get streamed answers — charts, tables, and narratives — with or without a dashboard.
+- **DashChat**: Attach that chat to a dashboard as a side panel scoped to the dashboard's own domains, with follow-up questions seeded from any widget.
 - **Brand-native widget cards (advanced)**: Render a widget's visualization without Wisdom's built-in card chrome and wrap it in your own container (see Components).
 - **Interactive analytics**: Charts, time series, stacked breakdowns, data tables, and KPI metrics, all fully interactive (zoom, tooltips, export-to-data).
 - **Filtering**: Show Wisdom's built-in filter bar, or drive filters from your own application state.
@@ -46,10 +48,11 @@ The SDK is published publicly on the **npm registry** under the `@wisdomai` scop
 
 ## What's coming
 
-Dashboard consumption is available today. On the near-term roadmap:
+Dashboard consumption, Chat, and DashChat are available today (see [Components](/integrations/embeddings/sdk/sdk-components#chat)). On the near-term roadmap:
 
-- **Embedded chat & dashboard chat**: Ask questions in natural language against your data, inline.
-- **Authoring & app creation**: Build and customize dashboards and analytics apps directly from the SDK.
+- **List views**: Dashboard and conversation lists, so an embed can offer browsing and chat history.
+- **Dashboard authoring**: Create and edit dashboards directly from the SDK.
+- **Agents**: Scheduled and triggered analysis in the embed.
 
 ## FAQs
 
@@ -76,6 +79,10 @@ Dashboard consumption is available today. On the near-term roadmap:
 
   <Accordion title="Can we customize which dashboard filters are shown?">
     `WisdomGlobalFilters` renders the filters configured on the dashboard. Refs and callbacks give your application programmatic control over the filter state for tighter native integration.
+  </Accordion>
+
+  <Accordion title="Which version includes Chat and DashChat?">
+    Both ship in `@wisdomai/react@0.0.12`, currently published on the `next` npm tag (`npm install @wisdomai/react@next`).
   </Accordion>
 </AccordionGroup>
 
