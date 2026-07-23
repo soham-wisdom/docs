@@ -4,6 +4,15 @@ title: "Components"
 
 The `@wisdomai/react` package gives you several ways to embed analytics, from a whole dashboard down to a single visualization you wrap in your own card. All of them live inside a `WisdomProvider` (see [Quickstart](/integrations/embeddings/sdk/sdk-quickstart)).
 
+This page covers the following components:
+
+- [Embed a full dashboard](#embed-a-full-dashboard)
+- [Chat](#chat)
+- [DashChat](#dashchat)
+- [Embed a single widget](#embed-a-single-widget)
+- [Composable widgets (advanced)](#composable-widgets-advanced)
+- [Filters](#filters)
+
 ## Embed a full dashboard
 
 The `<Dashboard>` component renders an entire Wisdom dashboard, including the header, filter bar, and widget grid:
@@ -15,6 +24,66 @@ import { WisdomProvider, Dashboard } from '@wisdomai/react';
   <Dashboard dashboardId="<your-dashboard-id>" />
 </WisdomProvider>
 ```
+
+## Chat
+
+Embed a conversation surface: viewers ask questions in natural language and answers stream back as charts, tables, and narratives, each in a titled card. Chat does not require a dashboard, wrap the conversation components in `ConversationProvider`:
+
+```tsx
+import {
+  WisdomProvider,
+  ConversationProvider,
+  Conversation,
+  ConversationMessages,
+  useConversation,
+} from '@wisdomai/react';
+
+function Chat() {
+  const { submit, messages, user } = useConversation();
+  return (
+    <Conversation onSubmit={submit}>
+      <ConversationMessages messages={messages} user={user} />
+    </Conversation>
+  );
+}
+
+<WisdomProvider theme={/* ... */}>
+  <ConversationProvider>
+    <Chat />
+  </ConversationProvider>
+</WisdomProvider>
+```
+
+What viewers get:
+
+- Streamed answers as they are generated, with charts, tables, and narratives rendered as titled cards in the thread.
+- An inline clarification form when more detail is needed to answer, instead of a guess.
+- Suggested follow-up questions, message timestamps, and an explicit error row when a message fails.
+- A "Show data" toggle that reveals the table behind an answer chart, and an "Export as…" menu for saving a chart as an image.
+
+The conversation is created on the first submitted question. On its own, Chat has no domain preselected: set one from your own UI via `setDomainId` (returned by `useConversation()`). Inside a dashboard the domain comes from the dashboard automatically, that is DashChat, below.
+
+Building blocks: `ConversationProvider`, `Conversation`, `ConversationInput`, `ConversationMessages`, `ClarificationForm`, the `useConversation` / `useConversationChat` hooks, and `ConversationsAPI` for programmatic create/send.
+
+## DashChat
+
+DashChat is Chat attached to a dashboard: a side panel scoped to the dashboard's own domains, so viewers ask follow-up questions about the same data the widgets are built on. One prop turns it on:
+
+```tsx
+import { WisdomProvider, Dashboard } from '@wisdomai/react';
+ 
+<WisdomProvider theme={/* ... */}>
+  <Dashboard dashboardId="<your-dashboard-id>" showDashboardChat height="100vh" />
+</WisdomProvider>
+```
+
+- The panel selects a domain from the dashboard's own domains, so answers come from the same governed data as the widgets. (`DashboardDomainSelector` renders the matching domain picker.)
+- The dashboard and the panel split the width proportionally, and the panel has a show/hide toggle. Pass `height` (a number is pixels, `"100vh"` fills the viewport) so the widgets grid and the panel scroll independently while the header and filters stay pinned.
+- Every widget gains an **Ask a follow-up question** action in its menu, which pre-fills the chat input with a question about that widget.
+
+<Note>
+  Chat and DashChat ship in `@wisdomai/react@0.0.12`, currently published on the `next` npm tag: `npm install @wisdomai/react@next`.
+</Note>
 
 ## Embed a single widget
 

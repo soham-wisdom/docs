@@ -30,9 +30,7 @@ To connect WisdomAl to Snowflake directly, you will need the following informati
 - **Private Key Passphrase**: This is required if your private key is encrypted.
 - **Role**: The Snowflake role to use for access privileges (e.g., ACCOUNTADMIN). See the Using a Custom Role section below for details.
 - **\[Optional\] Database Filters**: See the Database Filters section below for more details.
-- **\[Optional\] Allowlist**: You may need to allowlist WisdomAl's CIDR block in your Snowflake network policies or firewalls to allow incoming connections. Use the CIDR block that corresponds to your instance's creation date:
-  - **Before July 24, 2025**: `35.238.115.103/32`
-  - **On or after July 24, 2025**: `34.82.248.105/32`
+- **\[Optional\] Allowlist**: You may need to allowlist WisdomAI's CIDR blocks in your Snowflake network policies or firewalls to allow incoming connections: `35.238.115.103/32` and `34.82.248.105/32`.
 
 ## 2. Using a custom role:
 
