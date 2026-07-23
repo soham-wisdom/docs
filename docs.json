@@ -204,6 +204,13 @@
                   "product-updates/spring-2026/parameterized-agents"
                 ]
               },
+              {
+                "group": "Dashboards",
+                "pages": [
+                  "dashboards/instant-filters",
+                  "dashboards/tabs"
+                ]
+              },
               "advanced-features/deep-analysis",
               "advanced-features/python-interpreter-tool",
               "advanced-features/visualization-types-and-properties"
