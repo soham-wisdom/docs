@@ -1,34 +1,96 @@
 ---
-title: "Overview"
+title: "Chat"
 hidden: true
 ---
 
-WisdomAI Chat is a natural language interface for your connected business data. Ask a question in plain language, and WisdomAI Chat interprets it, translates it into SQL using the NLQ (natural language query) engine, and returns a structured response: a text explanation, a data table, a visualization, or a combination of the three. You can turn any answer into an interactive dashboard and share it with your team.
+The new WisdomAI chat experience: ask in plain language, pick a reasoning mode, follow the work, and turn answers into reports, dashboards, and agents.
 
-## How the WisdomAI chat works
+Chat is where you ask questions about your data in plain language. You pick a domain, type a question, and WisdomAI plans the analysis, runs it against your governed data, and answers with tables, charts, and explanations you can inspect step by step.
 
-WisdomAI turns a plain text question into an answer through five stages:
+<Note>
+  This page describes **Chat V2**, the new chat experience that is now the default for everyone. It replaces the Classic and Deep Analysis modes: Classic chats still open, but new conversations use the experience described here.
+</Note>
 
-1. **Ask a question.** Type a question in natural language, such as "What was revenue last quarter?"
-2. **NLQ Engine parses the question.** The engine interprets your question and translates it into SQL, using your semantic model to map business terms (like "revenue") to the underlying data.
-3. **WisdomAI generates an answer.** Depending on the question, the answer appears as text, a data table, or a visualization.
-4. **Build and share a dashboard.** Turn any answer into a dashboard, then share it with your team or schedule automated delivery.
-5. **Feedback improves future answers.** Correct an answer, and WisdomAI uses that correction to improve accuracy on similar questions going forward.
+## Ask a question
 
-## Recurring Agents in chat
+1. **Start a new chat.** Click **New chat** in the sidebar and pick the domain that owns the data you're asking about.
+2. **Type your question.** Ask the way you'd ask a colleague: "What was revenue by region last quarter?" For phrasing that gets better answers, see [Ask Better Questions](/using-wisdom-ai-everyday/ask-better-questions).
+3. **Follow the work.** The answer streams in along with what the AI is doing. For multi-step questions you'll see its plan as a to-do list that checks off as it progresses.
 
-When your question implies a recurring or scheduled need, WisdomAI displays a **Create Agent button** under the chat answer, letting you turn that one-off analysis into an automated Agent. To learn more about Agents, see [Agent Overview](/advanced-features/agents/agents).
+While an answer is running you can press the **stop** button to cancel it, or keep typing: messages you send mid-answer are queued and handled next. You can also **edit** a question you already asked, or **retry** the last one.
 
-![](/images/recurring-agent.png)
+## Choose a mode
 
-## Next steps
+The mode selector under the chat input controls how much reasoning your question gets:
 
-<CardGroup cols={2}>
-  <Card title="Advanced Data Modeling" icon="sitemap" href="/setting-up-wisdom-ai/advanced-data-modeling-creating-context">
-    Define relationships and context in your data to enable more powerful analysis.
-  </Card>
+| Mode | What it's for |
+| --- | --- |
+| **Thinking** (default) | Dynamic reasoning. Best for most questions. |
+| **Lite** | Lightweight mode for easy queries and quick answers. |
+| **Expert** | Highest reasoning, for the hardest questions and complex analysis. Expect it to take longer, go deeper, and often produce a full report. |
 
-  <Card title="Validate and Test Answers" icon="check-double" href="/improve-wisdom-ai-responses/validate-and-test-answers">
-    Understand the methods for verifying the correctness and reliability of generated answers.
-  </Card>
-</CardGroup>
+A conversation's mode is fixed after the first message, so start a new chat to switch modes.
+
+<Note>
+  The earlier **Deep Analysis** and **Classic** modes are deprecated. For the long-running, open-ended investigations you used Deep Analysis for, use **Expert** — it runs inside the normal chat flow, so you can watch the plan progress and answer clarifying questions along the way.
+</Note>
+
+## When WisdomAI asks you a question
+
+If your question is ambiguous, the AI asks instead of guessing. A clarification appears just above the chat input with the likely interpretations as clickable options. Click one and the analysis continues immediately, or type your own answer if none of the options fit.
+
+## See how an answer was produced
+
+Every answer shows its work. Click the activity indicator on a message to open the **AI Workstream** panel: a step-by-step list of what ran. Click any step to see its detail, including the exact **SQL** or **Python** that executed, the context it used, and the output table it produced. If web search is enabled for the domain, searches and fetched pages show up here too.
+
+This is the fastest way to verify a number before you rely on it.
+
+## Work with answers and artifacts
+
+Results open as tabs in a side panel next to the conversation:
+
+- **Charts** can be opened, restyled, and exported.
+- **Tables** support instant filters, so you can narrow a result in place without re-asking.
+- **Files** referenced in the analysis, including PDFs and images, preview in place.
+
+Tables and charts carry thumbs up/down buttons. Rating an answer, especially explaining a thumbs-down, helps your admins improve the domain's context.
+
+## Reports
+
+For questions that deserve more than a table, the AI writes a report. An **Open report** card appears in the conversation; click it to watch the report stream in, section by section, in its own panel. From the report's **Share** menu you can:
+
+- **Export as PDF** or **Word (DOCX)**
+- **Share via link**, so teammates can open the report directly
+
+Expert mode produces reports most often, but any mode can generate one when the question calls for it.
+
+## Bring your own context
+
+- **Attach files** from the **\+** button: spreadsheets and CSVs, PDFs, images, and most text formats. Ask questions across them together with your connected data. See [Use File Attachments in Chat](#).
+- **Reference a domain file** from the same menu to pull an existing dataset or document into the conversation without re-uploading it.
+- **Paste** images or code straight into the input.
+
+## Type less
+
+- Type **/** to insert a skill your team has defined for recurring analysis patterns.
+- Gray **ghost text** suggests a completion as you type; press **Tab** to accept it.
+- Click the microphone to **dictate** your question instead of typing it.
+
+## Long-running questions
+
+Deep questions take time. When a turn runs long, a **Notify me when complete** option appears above the input; enable it and your browser alerts you when the answer is ready, so you can work elsewhere in the meantime.
+
+## Manage a conversation
+
+- **Share** the conversation from the top bar and control who can open it.
+- **In this chat** lists every question asked, so you can jump around long conversations.
+- From a message you can **copy a direct link** to it or **fork the chat** from that point to explore a different direction.
+- Rename, pin, duplicate, or delete the chat from its options menu.
+
+## Turn answers into assets
+
+A good answer shouldn't stay buried in a conversation:
+
+- **Add to dashboard** pins the result where your team will see it refreshed. See [Turn Answers into Dashboards](#).
+- When a question implies a recurring cadence ("every Monday", "each month"), chat offers to create an **Agent** that runs it on schedule and delivers the result.
+- When the AI learns something about your business worth keeping, it can propose saving it as domain **knowledge** for users with domain edit access to approve.
