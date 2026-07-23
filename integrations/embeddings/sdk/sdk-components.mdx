@@ -28,7 +28,7 @@ import {
   ConversationMessages,
   useConversation,
 } from '@wisdomai/react';
- 
+
 function Chat() {
   const { submit, messages, user } = useConversation();
   return (
@@ -37,7 +37,7 @@ function Chat() {
     </Conversation>
   );
 }
- 
+
 <WisdomProvider theme={/* ... */}>
   <ConversationProvider>
     <Chat />
