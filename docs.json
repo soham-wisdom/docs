@@ -204,13 +204,6 @@
                   "product-updates/spring-2026/parameterized-agents"
                 ]
               },
-              {
-                "group": "Dashboards",
-                "pages": [
-                  "dashboards/instant-filters",
-                  "dashboards/tabs"
-                ]
-              },
               "advanced-features/deep-analysis",
               "advanced-features/python-interpreter-tool",
               "advanced-features/visualization-types-and-properties"
@@ -273,6 +266,13 @@
               "chat/overview",
               "using-wisdom-ai-everyday/ask-better-questions",
               "improve-wisdom-ai-responses/attach-files-to-chat"
+            ]
+          },
+          {
+            "group": "Dashboards",
+            "pages": [
+              "dashboards/instant-filters",
+              "dashboards/tabs"
             ]
           }
         ]
