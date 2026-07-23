@@ -121,14 +121,14 @@
               {
                 "group": "Agents",
                 "pages": [
-                  "advanced-features/agents/agents",
-                  "advanced-features/agents/tutorial-create-agent",
-                  "advanced-features/agents/visual-mode",
-                  "advanced-features/agents/nodes-reference",
-                  "advanced-features/agents/agent-best-practices",
-                  "advanced-features/agents/manage-agents",
-                  "advanced-features/agents/reviewed-runs-in-agents",
-                  "product-updates/spring-2026/parameterized-agents"
+                  "setting-up-wisdom-ai/agents/agents",
+                  "setting-up-wisdom-ai/agents/tutorial-create-agent",
+                  "setting-up-wisdom-ai/agents/visual-mode",
+                  "setting-up-wisdom-ai/agents/nodes-reference",
+                  "setting-up-wisdom-ai/agents/agent-best-practices",
+                  "setting-up-wisdom-ai/agents/manage-agents",
+                  "setting-up-wisdom-ai/agents/reviewed-runs-in-agents",
+                  "setting-up-wisdom-ai/spring-2026/parameterized-agents"
                 ]
               },
               {
