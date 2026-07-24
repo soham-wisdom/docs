@@ -41,7 +41,7 @@ Depending on your subscription status, agents will appear in one of two distinct
 Parameterized Agents are available to:
 
 - Each subscriber receives a run scoped to their own parameters.
-- Runs execute under the agent runner's (owner's) identity. Row-level security (RLS) and column-level security (CLS) are enforced based on the runner's permissions, not the subscriber's.
+- Row-level security (RLS) and parameterized data source connections are enforced per subscriber, the creator's permissions are never used for a subscriber's run.
 - Failures are isolated: one subscriber's error does not affect any other subscriber's run.
 
 ## FAQs
