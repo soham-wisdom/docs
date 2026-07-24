@@ -22,7 +22,7 @@ An adaptable execution workflow that maps central logic templates to individual 
     Admins can publish an agent as a template and push-enroll users as subscribers. Each subscriber has their own parameter bindings. When the agent runs:
 
     - Each subscriber receives a run scoped to their identity and parameters.
-    - Row-level security (RLS) and parameterized data source connections are enforced per subscriber, the creator's permissions are never used for a subscriber's run.
+    - Runs execute under the runner's (owner's) identity, and RLS/CLS are enforced based on the runner's permissions, not the subscriber's.
     - Failures are isolated: one subscriber's error does not affect any other subscriber's run.
   </Step>
 </Steps>
