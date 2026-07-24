@@ -57,10 +57,12 @@ Parameterized Agents are available to:
 
   <Accordion title="Does each subscriber's run use their own row-level security?">
     No. Runs execute under the runner's (owner's) identity, and RLS/CLS are enforced based on the runner's permissions, not the subscriber's.
+
+    Row-level security (RLS) and parameterized data source connections are enforced per subscriber, the creator's permissions are never used for a subscriber's run.
   </Accordion>
 
   <Accordion title="Can subscribers see each other's run logs or outputs?">
-    There is no distinct subscriber role currently. Admins set up the agent and define parameters. Users with editor access can trigger the agent based on their own parameters and can see all runs of that parameterized agent.
+    No. Each subscriber can only see their own runs. Run logs and outputs are not shared across subscribers.
   </Accordion>
 
   <Accordion title="Can an admin update a template after users have subscribed?">
