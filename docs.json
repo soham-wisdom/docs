@@ -269,7 +269,7 @@
             ]
           },
           {
-            "group": "Dashboards",
+            "group": "Dashboard",
             "pages": [
               "dashboards/instant-filters",
               "dashboards/tabs"
