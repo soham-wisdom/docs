@@ -236,7 +236,7 @@
         "icon": "magnifying-glass",
         "groups": [
           {
-            "group": "Start Here",
+            "group": "Getting Started",
             "pages": [
               "explorers/getting-started-explorers"
             ]
@@ -267,7 +267,7 @@
         "icon": "code",
         "groups": [
           {
-            "group": "Overview",
+            "group": "Getting Started",
             "pages": ["integrations/developers"]
           },
           {
