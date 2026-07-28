@@ -54,11 +54,19 @@
         "icon": "shield-check",
         "groups": [
           {
+            "group": "Popular Topics",
+            "pages": [
+              "setting-up-wisdom-ai/manage-domains/understand-domains",
+              "setting-up-wisdom-ai/manage-domains/context-tab",
+              "getting-started/connect-data-sources/supported-data-sources",
+              "manage-account/automated-provisioning"
+            ]
+          },
+          {
             "group": "Getting Started",
             "pages": [
               "getting-started/overview",
               "getting-started/how-wisdom-ai-works",
-              "getting-started/glossary",
               {
                 "group": "Connect Data Sources",
                 "pages": [
@@ -78,12 +86,23 @@
             ]
           },
           {
-            "group": "Setting Up WisdomAI",
+            "group": "Domains & Context",
             "pages": [
               "setting-up-wisdom-ai/basic-tutorial-connect-and-test",
               "setting-up-wisdom-ai/advanced-data-modeling-creating-context",
               "setting-up-wisdom-ai/context-modeling-guide-workflow",
               "setting-up-wisdom-ai/add-domain-specific-knowledge",
+              "setting-up-wisdom-ai/manage-domains/understand-domains",
+              "setting-up-wisdom-ai/manage-domains/overview-tab",
+              "setting-up-wisdom-ai/manage-domains/data-sources-tab",
+              "setting-up-wisdom-ai/manage-domains/context-tab",
+              "setting-up-wisdom-ai/manage-domains/changelog-tab",
+              "setting-up-wisdom-ai/manage-domains/advanced-tab",
+              "setting-up-wisdom-ai/manage-domains/evaluation-tab",
+              "setting-up-wisdom-ai/manage-domains/sql-playground-tab",
+              "product-updates/spring-2026/domain-health",
+              "product-updates/february-2026/context-builder-file-uploads",
+              "product-updates/spring-2026/context-builder-connections",
               {
                 "group": "Feedback Options",
                 "pages": [
@@ -92,22 +111,6 @@
                   "product-updates/february-2026/mcp-reviewed-queries",
                   "setting-up-wisdom-ai/feedback-mechanisms/limited-context",
                   "setting-up-wisdom-ai/feedback-mechanisms/monitor-negative-feedback"
-                ]
-              },
-              {
-                "group": "Manage Domains",
-                "pages": [
-                  "setting-up-wisdom-ai/manage-domains/understand-domains",
-                  "setting-up-wisdom-ai/manage-domains/overview-tab",
-                  "setting-up-wisdom-ai/manage-domains/data-sources-tab",
-                  "setting-up-wisdom-ai/manage-domains/context-tab",
-                  "setting-up-wisdom-ai/manage-domains/changelog-tab",
-                  "setting-up-wisdom-ai/manage-domains/advanced-tab",
-                  "setting-up-wisdom-ai/manage-domains/evaluation-tab",
-                  "setting-up-wisdom-ai/manage-domains/sql-playground-tab",
-                  "product-updates/spring-2026/domain-health",
-                  "product-updates/february-2026/context-builder-file-uploads",
-                  "product-updates/spring-2026/context-builder-connections"
                 ]
               },
               {
@@ -150,7 +153,7 @@
             ]
           },
           {
-            "group": "Improve WisdomAI Responses",
+            "group": "Response Quality",
             "pages": [
               "improve-wisdom-ai-responses/refine-prompts-and-query-patterns",
               "improve-wisdom-ai-responses/validate-and-test-answers",
@@ -171,6 +174,13 @@
             ]
           },
           {
+            "group": "Authentication & SSO",
+            "pages": [
+              "manage-account/automated-provisioning",
+              "manage-account/role-mapping-and-sso-groups"
+            ]
+          },
+          {
             "group": "Access Management",
             "pages": [
               {
@@ -186,14 +196,7 @@
               "manage-account/monitor-performance-and-usage",
               "manage-account/compliance-and-best-practices",
               "manage-account/privacy-policy",
-              {
-                "group": "User Management",
-                "pages": [
-                  "manage-account/users-management",
-                  "manage-account/automated-provisioning",
-                  "manage-account/role-mapping-and-sso-groups"
-                ]
-              }
+              "manage-account/users-management"
             ]
           },
           {
@@ -222,14 +225,9 @@
                 "group": "MCP Server",
                 "pages": [
                   "integrations/mcp-server/MCP-Server",
-                  {
-                    "group": "Tools",
-                    "pages": [
-                      "integrations/mcp-server/tools/echo",
-                      "integrations/mcp-server/tools/list-domains",
-                      "integrations/mcp-server/tools/chat"
-                    ]
-                  }
+                  "integrations/mcp-server/tools/echo",
+                  "integrations/mcp-server/tools/list-domains",
+                  "integrations/mcp-server/tools/chat"
                 ]
               }
             ]
@@ -237,6 +235,7 @@
           {
             "group": "Reference Library",
             "pages": [
+              "getting-started/glossary",
               "reference-library/limits-and-quotas"
             ]
           }
@@ -323,55 +322,96 @@
               {
                 "group": "Objects",
                 "pages": [
-                  "integrations/graphql-api/objects/ai-workstream",
-                  "integrations/graphql-api/objects/attributes",
-                  "integrations/graphql-api/objects/canvas-config",
-                  "integrations/graphql-api/objects/chat-message",
-                  "integrations/graphql-api/objects/chat-message-diff",
-                  "integrations/graphql-api/objects/chat-message-sender",
-                  "integrations/graphql-api/objects/chat-thinking-effort",
-                  "integrations/graphql-api/objects/codegen-config",
-                  "integrations/graphql-api/objects/connection",
-                  "integrations/graphql-api/objects/conversation-update-one-of",
-                  "integrations/graphql-api/objects/dashboard",
-                  "integrations/graphql-api/objects/dashboard-filter-definition",
-                  "integrations/graphql-api/objects/dashboard-input",
-                  "integrations/graphql-api/objects/dashboard-scope",
-                  "integrations/graphql-api/objects/dashboard-summary-diff",
-                  "integrations/graphql-api/objects/dashboard-summary-type",
-                  "integrations/graphql-api/objects/dashboard-widget",
-                  "integrations/graphql-api/objects/dashboard-widget-input",
-                  "integrations/graphql-api/objects/dashboards-response",
-                  "integrations/graphql-api/objects/data-label-mode",
-                  "integrations/graphql-api/objects/database-model",
-                  "integrations/graphql-api/objects/database-type",
-                  "integrations/graphql-api/objects/delta",
-                  "integrations/graphql-api/objects/delta-element",
-                  "integrations/graphql-api/objects/delta-input",
-                  "integrations/graphql-api/objects/domain-model",
-                  "integrations/graphql-api/objects/domain-rls-config",
-                  "integrations/graphql-api/objects/domain-web-search-config",
-                  "integrations/graphql-api/objects/filter-applied-state",
-                  "integrations/graphql-api/objects/job-status",
-                  "integrations/graphql-api/objects/join-input",
-                  "integrations/graphql-api/objects/knowledge",
-                  "integrations/graphql-api/objects/llm-tool-call-results",
-                  "integrations/graphql-api/objects/llm-tool-calls",
-                  "integrations/graphql-api/objects/operation",
-                  "integrations/graphql-api/objects/response-status",
-                  "integrations/graphql-api/objects/scope-role-assignment-input",
-                  "integrations/graphql-api/objects/section",
-                  "integrations/graphql-api/objects/subscription-auth-input",
-                  "integrations/graphql-api/objects/table-input",
-                  "integrations/graphql-api/objects/text-artifact",
-                  "integrations/graphql-api/objects/tool-selection",
-                  "integrations/graphql-api/objects/user",
-                  "integrations/graphql-api/objects/visualization",
-                  "integrations/graphql-api/objects/visualization-type",
-                  "integrations/graphql-api/objects/viz-config",
-                  "integrations/graphql-api/objects/widget-layout",
-                  "integrations/graphql-api/objects/widget-layout-input",
-                  "integrations/graphql-api/objects/widget-type"
+                  {
+                    "group": "Auth",
+                    "pages": ["integrations/graphql-api/objects/subscription-auth-input"]
+                  },
+                  {
+                    "group": "Connection",
+                    "pages": ["integrations/graphql-api/objects/connection"]
+                  },
+                  {
+                    "group": "Dashboard",
+                    "pages": [
+                      "integrations/graphql-api/objects/dashboard",
+                      "integrations/graphql-api/objects/dashboard-input",
+                      "integrations/graphql-api/objects/dashboard-scope",
+                      "integrations/graphql-api/objects/dashboard-filter-definition",
+                      "integrations/graphql-api/objects/dashboard-summary-type",
+                      "integrations/graphql-api/objects/dashboard-summary-diff",
+                      "integrations/graphql-api/objects/dashboards-response",
+                      "integrations/graphql-api/objects/filter-applied-state",
+                      "integrations/graphql-api/objects/scope-role-assignment-input"
+                    ]
+                  },
+                  {
+                    "group": "Widgets & Visualization",
+                    "pages": [
+                      "integrations/graphql-api/objects/dashboard-widget",
+                      "integrations/graphql-api/objects/dashboard-widget-input",
+                      "integrations/graphql-api/objects/widget-layout",
+                      "integrations/graphql-api/objects/widget-layout-input",
+                      "integrations/graphql-api/objects/widget-type",
+                      "integrations/graphql-api/objects/visualization",
+                      "integrations/graphql-api/objects/visualization-type",
+                      "integrations/graphql-api/objects/viz-config",
+                      "integrations/graphql-api/objects/canvas-config",
+                      "integrations/graphql-api/objects/section",
+                      "integrations/graphql-api/objects/data-label-mode"
+                    ]
+                  },
+                  {
+                    "group": "Domain",
+                    "pages": [
+                      "integrations/graphql-api/objects/domain-model",
+                      "integrations/graphql-api/objects/domain-rls-config",
+                      "integrations/graphql-api/objects/domain-web-search-config",
+                      "integrations/graphql-api/objects/database-model",
+                      "integrations/graphql-api/objects/database-type",
+                      "integrations/graphql-api/objects/knowledge",
+                      "integrations/graphql-api/objects/join-input",
+                      "integrations/graphql-api/objects/table-input"
+                    ]
+                  },
+                  {
+                    "group": "User",
+                    "pages": [
+                      "integrations/graphql-api/objects/user",
+                      "integrations/graphql-api/objects/attributes"
+                    ]
+                  },
+                  {
+                    "group": "Chat",
+                    "pages": [
+                      "integrations/graphql-api/objects/chat-message",
+                      "integrations/graphql-api/objects/chat-message-diff",
+                      "integrations/graphql-api/objects/chat-message-sender",
+                      "integrations/graphql-api/objects/chat-thinking-effort",
+                      "integrations/graphql-api/objects/conversation-update-one-of",
+                      "integrations/graphql-api/objects/text-artifact",
+                      "integrations/graphql-api/objects/tool-selection",
+                      "integrations/graphql-api/objects/llm-tool-calls",
+                      "integrations/graphql-api/objects/llm-tool-call-results",
+                      "integrations/graphql-api/objects/delta",
+                      "integrations/graphql-api/objects/delta-element",
+                      "integrations/graphql-api/objects/delta-input"
+                    ]
+                  },
+                  {
+                    "group": "Agent",
+                    "pages": [
+                      "integrations/graphql-api/objects/ai-workstream",
+                      "integrations/graphql-api/objects/job-status",
+                      "integrations/graphql-api/objects/codegen-config"
+                    ]
+                  },
+                  {
+                    "group": "Shared",
+                    "pages": [
+                      "integrations/graphql-api/objects/operation",
+                      "integrations/graphql-api/objects/response-status"
+                    ]
+                  }
                 ]
               },
               {
