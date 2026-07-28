@@ -143,7 +143,6 @@
           {
             "group": "Response Quality",
             "pages": [
-              "improve-wisdom-ai-responses/refine-prompts-and-query-patterns",
               "improve-wisdom-ai-responses/validate-and-test-answers",
               "setting-up-wisdom-ai/feedback-mechanisms/provide-feedback-to-the-system",
               "setting-up-wisdom-ai/feedback-mechanisms/monitor-negative-feedback",
