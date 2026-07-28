@@ -54,15 +54,6 @@
         "icon": "shield-check",
         "groups": [
           {
-            "group": "Popular Topics",
-            "pages": [
-              "setting-up-wisdom-ai/manage-domains/understand-domains",
-              "setting-up-wisdom-ai/manage-domains/context-tab",
-              "getting-started/connect-data-sources/supported-data-sources",
-              "manage-account/automated-provisioning"
-            ]
-          },
-          {
             "group": "Getting Started",
             "pages": [
               "getting-started/overview",
