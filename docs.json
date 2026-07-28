@@ -77,12 +77,8 @@
             ]
           },
           {
-            "group": "Domains & Context",
+            "group": "Domains",
             "pages": [
-              "setting-up-wisdom-ai/basic-tutorial-connect-and-test",
-              "setting-up-wisdom-ai/advanced-data-modeling-creating-context",
-              "setting-up-wisdom-ai/context-modeling-guide-workflow",
-              "setting-up-wisdom-ai/add-domain-specific-knowledge",
               "setting-up-wisdom-ai/manage-domains/understand-domains",
               "setting-up-wisdom-ai/manage-domains/overview-tab",
               "setting-up-wisdom-ai/manage-domains/data-sources-tab",
@@ -92,18 +88,7 @@
               "setting-up-wisdom-ai/manage-domains/evaluation-tab",
               "setting-up-wisdom-ai/manage-domains/sql-playground-tab",
               "product-updates/spring-2026/domain-health",
-              "product-updates/february-2026/context-builder-file-uploads",
-              "product-updates/spring-2026/context-builder-connections",
-              {
-                "group": "Feedback Options",
-                "pages": [
-                  "setting-up-wisdom-ai/feedback-mechanisms/provide-feedback-to-the-system",
-                  "setting-up-wisdom-ai/feedback-mechanisms/reviewed-queries",
-                  "product-updates/february-2026/mcp-reviewed-queries",
-                  "setting-up-wisdom-ai/feedback-mechanisms/limited-context",
-                  "setting-up-wisdom-ai/feedback-mechanisms/monitor-negative-feedback"
-                ]
-              },
+              "setting-up-wisdom-ai/add-domain-specific-knowledge",
               {
                 "group": "Manage Tables & Columns",
                 "pages": [
@@ -112,6 +97,18 @@
                   "setting-up-wisdom-ai/manage-tables-columns/set-up-rag"
                 ]
               }
+            ]
+          },
+          {
+            "group": "Context",
+            "pages": [
+              "setting-up-wisdom-ai/basic-tutorial-connect-and-test",
+              "setting-up-wisdom-ai/advanced-data-modeling-creating-context",
+              "setting-up-wisdom-ai/context-modeling-guide-workflow",
+              "product-updates/february-2026/context-builder-file-uploads",
+              "product-updates/spring-2026/context-builder-connections",
+              "setting-up-wisdom-ai/feedback-mechanisms/reviewed-queries",
+              "product-updates/february-2026/mcp-reviewed-queries"
             ]
           },
           {
@@ -148,6 +145,9 @@
             "pages": [
               "improve-wisdom-ai-responses/refine-prompts-and-query-patterns",
               "improve-wisdom-ai-responses/validate-and-test-answers",
+              "setting-up-wisdom-ai/feedback-mechanisms/provide-feedback-to-the-system",
+              "setting-up-wisdom-ai/feedback-mechanisms/monitor-negative-feedback",
+              "setting-up-wisdom-ai/feedback-mechanisms/limited-context",
               "improve-wisdom-ai-responses/enhancing-data-analysis-with-custom-business-context",
               "improve-wisdom-ai-responses/how-to-create-metrics",
               "improve-wisdom-ai-responses/use-evaluations-sets-and-runs",
