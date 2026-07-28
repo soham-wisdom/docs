@@ -2,7 +2,7 @@
 title: "Parameterized Agents"
 ---
 
-Parameterized Agents let you define an input schema on any agent so it accepts runtime variables, an org ID, a department name, a list of assets to analyze, or a recipient email. One agent definition can then run for multiple subscribers, with each run scoped to that person's data permissions and parameter values. This guide walks you through defining input parameters, configuring subscriptions, and managing templates.
+Parameterized Agents let you define an input schema on any agent so it accepts runtime variables, an org ID, a department name, a list of assets to analyze, or a recipient email. One agent definition can then run for multiple subscribers, each with its own parameter values. Every run executes with the agent owner's data access, not the subscriber's. This guide walks you through defining input parameters, configuring subscriptions, and managing templates.
 
 ## How it works
 
@@ -21,7 +21,7 @@ An adaptable execution workflow that maps central logic templates to individual 
   <Step title="Manage subscriptions and templates" icon="users-gear">
     Admins can publish an agent as a template and push-enroll users as subscribers. Each subscriber has their own parameter bindings. When the agent runs:
 
-    - Each subscriber receives a run scoped to their identity and parameters.
+    - Each subscriber receives a run with their own parameter values. The run executes with the agent owner's data access.
     - Runs execute under the runner's (owner's) identity, and RLS/CLS are enforced based on the runner's permissions, not the subscriber's.
     - Failures are isolated: one subscriber's error does not affect any other subscriber's run.
   </Step>
