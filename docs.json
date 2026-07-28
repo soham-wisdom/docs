@@ -7,7 +7,6 @@
     "light": "#5b52ff",
     "dark": "#5b52ff"
   },
-
   "favicon": "/favicon.webp",
   "navigation": {
     "global": {
@@ -270,7 +269,9 @@
         "groups": [
           {
             "group": "Overview",
-            "pages": ["integrations/developers"]
+            "pages": [
+              "integrations/developers"
+            ]
           },
           {
             "group": "User Management",
@@ -369,11 +370,15 @@
                 "pages": [
                   {
                     "group": "Auth",
-                    "pages": ["integrations/graphql-api/queries/auth/exchange-access-token"]
+                    "pages": [
+                      "integrations/graphql-api/queries/auth/exchange-access-token"
+                    ]
                   },
                   {
                     "group": "Connection",
-                    "pages": ["integrations/graphql-api/queries/connection/connection"]
+                    "pages": [
+                      "integrations/graphql-api/queries/connection/connection"
+                    ]
                   },
                   {
                     "group": "Dashboard",
@@ -396,7 +401,9 @@
                 "pages": [
                   {
                     "group": "Auth",
-                    "pages": ["integrations/graphql-api/mutations/auth/impersonate-user"]
+                    "pages": [
+                      "integrations/graphql-api/mutations/auth/impersonate-user"
+                    ]
                   },
                   {
                     "group": "Chat",
@@ -407,11 +414,15 @@
                   },
                   {
                     "group": "Agent",
-                    "pages": ["integrations/graphql-api/mutations/agent/trigger-agent"]
+                    "pages": [
+                      "integrations/graphql-api/mutations/agent/trigger-agent"
+                    ]
                   },
                   {
                     "group": "Connection",
-                    "pages": ["integrations/graphql-api/mutations/connection/refresh-connection"]
+                    "pages": [
+                      "integrations/graphql-api/mutations/connection/refresh-connection"
+                    ]
                   },
                   {
                     "group": "Dashboard",
@@ -539,11 +550,11 @@
       "destination": "/using-wisdom-ai-everyday/schedule-dashboards-notifications",
       "permanent": true
     },
-     {
+    {
       "source": "/setting-up-wisdom-ai/document-tables-and-columns",
       "destination": "/setting-up-wisdom-ai/manage-tables-columns/document-tables-and-columns"
     },
-     {
+    {
       "source": "/graphql-api/queries/user/current-user",
       "destination": "/integrations/graphql-api/queries/user/current-user"
     },
@@ -557,18 +568,18 @@
       "destination": "/getting-started/connect-data-sources/connect-to-sharepoint"
     },
     {
-      "source":"/product-updates/february-2026/search-the-web",
+      "source": "/product-updates/february-2026/search-the-web",
       "destination": "/getting-started/connect-data-sources/search-the-web"
     },
     {
       "source": "/integrations/graphql-api/queries/auth/impersonate-user",
       "destination": "/integrations/graphql-api/mutations/auth/impersonate-user"
     },
-     {
+    {
       "source": "/new-features",
       "destination": "/product-updates/march-2026/march-features"
     },
-     {
+    {
       "source": "/product-updates",
       "destination": "/product-updates/spring-2026/spring-features"
     },
@@ -589,34 +600,109 @@
       "destination": "/product-updates/february-2026/february-features"
     },
     {
-      "source":"/advanced-features/agents/agent-builder",
-      "destination": "/advanced-features/agents/visual-mode"
+      "source": "/setting-up-wisdom-ai/agents/agent-builder",
+      "destination": "/setting-up-wisdom-ai/agents/visual-mode"
     },
-    { "source": "/new-releases", "destination": "/product-updates/spring-2026/spring-features" },
-    { "source": "/new-releases/february-2026/search-the-web", "destination": "/getting-started/connect-data-sources/search-the-web" },
-    { "source": "/new-releases/spring-2026/spring-release-overview", "destination": "/product-updates/spring-2026/spring-features" },
-    { "source": "/new-releases/spring-2026/continuous-context-extraction", "destination": "/product-updates/spring-2026/context-builder-connections" },
-    { "source": "/new-releases/march-2026/march-release-overview", "destination": "/product-updates/march-2026/march-features" },
-    { "source": "/new-releases/february-2026/february-release-overview", "destination": "/product-updates/february-2026/february-features" },
-    { "source": "/new-releases/spring-2026/spring-features", "destination": "/product-updates/spring-2026/spring-features" },
-    { "source": "/new-releases/spring-2026/spring-changelog", "destination": "/product-updates/spring-2026/spring-changelog" },
-    { "source": "/new-releases/spring-2026/context-builder", "destination": "/product-updates/spring-2026/context-builder-connections" },
-    { "source": "/new-releases/spring-2026/parameterized-agents", "destination": "/product-updates/spring-2026/parameterized-agents" },
-    { "source": "/new-releases/spring-2026/dashboard-versioning", "destination": "/product-updates/spring-2026/dashboard-versioning" },
-    { "source": "/new-releases/spring-2026/domain-health", "destination": "/product-updates/spring-2026/domain-health" },
-    { "source": "/new-releases/march-2026/march-features", "destination": "/product-updates/march-2026/march-features" },
-    { "source": "/new-releases/march-2026/march-changelog", "destination": "/product-updates/march-2026/march-changelog" },
-    { "source": "/new-releases/february-2026/february-features", "destination": "/product-updates/february-2026/february-features" },
-    { "source": "/new-releases/february-2026/february-changelog", "destination": "/product-updates/february-2026/february-changelog" },
-    { "source": "/new-releases/february-2026/mcp-reviewed-queries", "destination": "/product-updates/february-2026/mcp-reviewed-queries" },
-    { "source": "/new-releases/february-2026/content-extraction", "destination": "/product-updates/february-2026/context-builder-file-uploads" },
-    { "source": "/new-releases/february-2026/data-query-on-slack", "destination": "/product-updates/february-2026/data-query-on-slack" },
-    { "source": "/new-releases/february-2026/knowledge-playground", "destination": "/product-updates/february-2026/knowledge-playground" },
-    { "source": "/new-releases/february-2026/ghost-text-completion", "destination": "/product-updates/february-2026/ghost-text-completion" },
-    { "source": "/new-releases/february-2026/mcp-in-dashboards", "destination": "/product-updates/february-2026/mcp-in-dashboards" },
-    { "source": "/new-releases/february-2026/dual-axis-charts", "destination": "/product-updates/february-2026/dual-axis-charts" },
-    { "source": "/product-updates/february-2026/content-extraction", "destination": "/product-updates/february-2026/context-builder-file-uploads" },
-    { "source": "/product-updates/spring-2026/context-builder", "destination": "/product-updates/spring-2026/context-builder-connections" }
+    {
+      "source": "/new-releases",
+      "destination": "/product-updates/spring-2026/spring-features"
+    },
+    {
+      "source": "/new-releases/february-2026/search-the-web",
+      "destination": "/getting-started/connect-data-sources/search-the-web"
+    },
+    {
+      "source": "/new-releases/spring-2026/spring-release-overview",
+      "destination": "/product-updates/spring-2026/spring-features"
+    },
+    {
+      "source": "/new-releases/spring-2026/continuous-context-extraction",
+      "destination": "/product-updates/spring-2026/context-builder-connections"
+    },
+    {
+      "source": "/new-releases/march-2026/march-release-overview",
+      "destination": "/product-updates/march-2026/march-features"
+    },
+    {
+      "source": "/new-releases/february-2026/february-release-overview",
+      "destination": "/product-updates/february-2026/february-features"
+    },
+    {
+      "source": "/new-releases/spring-2026/spring-features",
+      "destination": "/product-updates/spring-2026/spring-features"
+    },
+    {
+      "source": "/new-releases/spring-2026/spring-changelog",
+      "destination": "/product-updates/spring-2026/spring-changelog"
+    },
+    {
+      "source": "/new-releases/spring-2026/context-builder",
+      "destination": "/product-updates/spring-2026/context-builder-connections"
+    },
+    {
+      "source": "/new-releases/spring-2026/parameterized-agents",
+      "destination": "/product-updates/spring-2026/parameterized-agents"
+    },
+    {
+      "source": "/new-releases/spring-2026/dashboard-versioning",
+      "destination": "/product-updates/spring-2026/dashboard-versioning"
+    },
+    {
+      "source": "/new-releases/spring-2026/domain-health",
+      "destination": "/product-updates/spring-2026/domain-health"
+    },
+    {
+      "source": "/new-releases/march-2026/march-features",
+      "destination": "/product-updates/march-2026/march-features"
+    },
+    {
+      "source": "/new-releases/march-2026/march-changelog",
+      "destination": "/product-updates/march-2026/march-changelog"
+    },
+    {
+      "source": "/new-releases/february-2026/february-features",
+      "destination": "/product-updates/february-2026/february-features"
+    },
+    {
+      "source": "/new-releases/february-2026/february-changelog",
+      "destination": "/product-updates/february-2026/february-changelog"
+    },
+    {
+      "source": "/new-releases/february-2026/mcp-reviewed-queries",
+      "destination": "/product-updates/february-2026/mcp-reviewed-queries"
+    },
+    {
+      "source": "/new-releases/february-2026/content-extraction",
+      "destination": "/product-updates/february-2026/context-builder-file-uploads"
+    },
+    {
+      "source": "/new-releases/february-2026/data-query-on-slack",
+      "destination": "/product-updates/february-2026/data-query-on-slack"
+    },
+    {
+      "source": "/new-releases/february-2026/knowledge-playground",
+      "destination": "/product-updates/february-2026/knowledge-playground"
+    },
+    {
+      "source": "/new-releases/february-2026/ghost-text-completion",
+      "destination": "/product-updates/february-2026/ghost-text-completion"
+    },
+    {
+      "source": "/new-releases/february-2026/mcp-in-dashboards",
+      "destination": "/product-updates/february-2026/mcp-in-dashboards"
+    },
+    {
+      "source": "/new-releases/february-2026/dual-axis-charts",
+      "destination": "/product-updates/february-2026/dual-axis-charts"
+    },
+    {
+      "source": "/product-updates/february-2026/content-extraction",
+      "destination": "/product-updates/february-2026/context-builder-file-uploads"
+    },
+    {
+      "source": "/product-updates/spring-2026/context-builder",
+      "destination": "/product-updates/spring-2026/context-builder-connections"
+    }
   ],
   "navbar": {
     "primary": {

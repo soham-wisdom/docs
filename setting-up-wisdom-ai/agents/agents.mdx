@@ -83,14 +83,32 @@ The steps above show how agents handle one scenario in depth. Agents also fit a 
 
 WisdomAI offers two ways to build an agent. Choose the one that fits how you work.
 
-### [Prompt Mode](/advanced-features/agents/tutorial-create-agent)
+### [Prompt Mode](/setting-up-wisdom-ai/agents/tutorial-create-agent)
 
 Prompt Mode is the fastest way to get started. You write a plain-language description of what the agent should do when it runs, test it, and the agent is ready. This mode works well for **straightforward monitoring tasks**, such as tracking a metric, flagging a threshold, or sending a weekly summary.
 
-### [Visual Mode](/advanced-features/agents/visual-mode)
+### [Visual Mode](/setting-up-wisdom-ai/agents/visual-mode)
 
 Visual Mode gives your agent a high-level plan to follow. Describe what you want in plain language, and the **WisdomAI Builder** generates the plan as a visual workflow of connected nodes — fetching data, running analysis, applying conditions, and delivering the result. You review the plan, refine it on the canvas if needed, and freeze it.
 
 On every run, the agent refers back to this locked plan. Because the plan is explicit, execution stays consistent across runs, and you can model far more complex workflows than a single prompt could express. That makes Visual Mode the right choice for production workflows where both consistency and complexity matter.
 
 You can also call on the Builder again at any point to modify an existing workflow, for example, to add a step, change a condition, or swap a data source.
+
+### Create agent from chat
+
+When you ask a chat question that implies a recurring need ("every Monday," "alert me when…"), Wisdom shows this prompt beneath the answer. Click **Create Agent** to open the agent builder with your question already filled in, then set a schedule and delivery channel.
+
+![Image showing recurring agent in chat](/images/reccuring-agent.png)
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Create an Agent" icon="robot" href="/setting-up-wisdom-ai/agents/tutorial-create-agent">
+    Learn the basics of setting up a new AI agent for your data.
+  </Card>
+
+  <Card title="Build an Agent in Visual Mode" icon="diagram-project" href="/setting-up-wisdom-ai/agents/visual-mode">
+    Step-by-step guide to building your first Visual Mode agent.
+  </Card>
+</CardGroup>
