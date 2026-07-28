@@ -54,7 +54,7 @@
         "icon": "shield-check",
         "groups": [
           {
-            "group": "Getting Started",
+            "group": "Get Started",
             "pages": [
               "getting-started/overview",
               "getting-started/how-wisdom-ai-works",
@@ -141,7 +141,7 @@
             ]
           },
           {
-            "group": "Response Quality",
+            "group": "Improve Responses",
             "pages": [
               "improve-wisdom-ai-responses/validate-and-test-answers",
               "setting-up-wisdom-ai/feedback-mechanisms/provide-feedback-to-the-system",
@@ -236,7 +236,7 @@
         "icon": "magnifying-glass",
         "groups": [
           {
-            "group": "Getting Started",
+            "group": "Get Started",
             "pages": [
               "explorers/getting-started-explorers"
             ]
@@ -267,7 +267,7 @@
         "icon": "code",
         "groups": [
           {
-            "group": "Getting Started",
+            "group": "Get Started",
             "pages": ["integrations/developers"]
           },
           {
