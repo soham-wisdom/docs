@@ -702,6 +702,31 @@
     {
       "source": "/product-updates/spring-2026/context-builder",
       "destination": "/product-updates/spring-2026/context-builder-connections"
+    },
+    {
+      "source": "/advanced-features/agents/visual-mode",
+      "destination": "/setting-up-wisdom-ai/agents/visual-mode",
+      "permanent": true
+    },
+    {
+      "source": "/advanced-features/agents/tutorial-create-agent",
+      "destination": "/setting-up-wisdom-ai/agents/tutorial-create-agent",
+      "permanent": true
+    },
+    {
+      "source": "/advanced-features/agents/nodes-reference",
+      "destination": "/setting-up-wisdom-ai/agents/nodes-reference",
+      "permanent": true
+    },
+    {
+      "source": "/advanced-features/agents/manage-agents",
+      "destination": "/setting-up-wisdom-ai/agents/manage-agents",
+      "permanent": true
+    },
+    {
+      "source": "/advanced-features/agents/agent-best-practices",
+      "destination": "/setting-up-wisdom-ai/agents/agent-best-practices",
+      "permanent": true
     }
   ],
   "navbar": {
