@@ -73,20 +73,26 @@
                   "getting-started/connect-data-sources/connect-to-sharepoint",
                   "getting-started/connect-data-sources/set-up-gcp-service-account"
                 ]
-              }
+              },
+              "setting-up-wisdom-ai/basic-tutorial-connect-and-test"
             ]
           },
           {
             "group": "Domains",
             "pages": [
               "setting-up-wisdom-ai/manage-domains/understand-domains",
-              "setting-up-wisdom-ai/manage-domains/overview-tab",
-              "setting-up-wisdom-ai/manage-domains/data-sources-tab",
-              "setting-up-wisdom-ai/manage-domains/context-tab",
-              "setting-up-wisdom-ai/manage-domains/changelog-tab",
-              "setting-up-wisdom-ai/manage-domains/advanced-tab",
-              "setting-up-wisdom-ai/manage-domains/evaluation-tab",
-              "setting-up-wisdom-ai/manage-domains/sql-playground-tab",
+              {
+                "group": "Domain Tabs",
+                "pages": [
+                  "setting-up-wisdom-ai/manage-domains/overview-tab",
+                  "setting-up-wisdom-ai/manage-domains/data-sources-tab",
+                  "setting-up-wisdom-ai/manage-domains/context-tab",
+                  "setting-up-wisdom-ai/manage-domains/changelog-tab",
+                  "setting-up-wisdom-ai/manage-domains/advanced-tab",
+                  "setting-up-wisdom-ai/manage-domains/evaluation-tab",
+                  "setting-up-wisdom-ai/manage-domains/sql-playground-tab"
+                ]
+              },
               "product-updates/spring-2026/domain-health",
               "setting-up-wisdom-ai/add-domain-specific-knowledge",
               {
@@ -102,13 +108,22 @@
           {
             "group": "Context",
             "pages": [
-              "setting-up-wisdom-ai/basic-tutorial-connect-and-test",
               "setting-up-wisdom-ai/advanced-data-modeling-creating-context",
               "setting-up-wisdom-ai/context-modeling-guide-workflow",
-              "product-updates/february-2026/context-builder-file-uploads",
-              "product-updates/spring-2026/context-builder-connections",
-              "setting-up-wisdom-ai/feedback-mechanisms/reviewed-queries",
-              "product-updates/february-2026/mcp-reviewed-queries"
+              {
+                "group": "Context Builder",
+                "pages": [
+                  "product-updates/february-2026/context-builder-file-uploads",
+                  "product-updates/spring-2026/context-builder-connections"
+                ]
+              },
+              {
+                "group": "Reviewed Queries",
+                "pages": [
+                  "setting-up-wisdom-ai/feedback-mechanisms/reviewed-queries",
+                  "product-updates/february-2026/mcp-reviewed-queries"
+                ]
+              }
             ]
           },
           {
@@ -181,12 +196,17 @@
                   "manage-account/row-level-access-control/column-level-security-cls"
                 ]
               },
-              "manage-account/access-management",
-              "access-management/manage-organizations",
+              {
+                "group": "Roles & Permissions",
+                "pages": [
+                  "manage-account/access-management",
+                  "access-management/manage-organizations",
+                  "manage-account/users-management"
+                ]
+              },
               "manage-account/monitor-performance-and-usage",
               "manage-account/compliance-and-best-practices",
-              "manage-account/privacy-policy",
-              "manage-account/users-management"
+              "manage-account/privacy-policy"
             ]
           },
           {
