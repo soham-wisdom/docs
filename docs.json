@@ -170,6 +170,31 @@
             ]
           },
           {
+            "group": "Advanced Features",
+            "pages": [
+              "advanced-features/deep-analysis",
+              "advanced-features/python-interpreter-tool",
+              "advanced-features/visualization-types-and-properties"
+            ]
+          },
+          {
+            "group": "Integrations",
+            "pages": [
+              "integrations/connect-to-slack",
+              "integrations/google-sheets",
+              "product-updates/february-2026/data-query-on-slack",
+              {
+                "group": "MCP Server",
+                "pages": [
+                  "integrations/mcp-server/MCP-Server",
+                  "integrations/mcp-server/tools/echo",
+                  "integrations/mcp-server/tools/list-domains",
+                  "integrations/mcp-server/tools/chat"
+                ]
+              }
+            ]
+          },
+          {
             "group": "Authentication & SSO",
             "pages": [
               "manage-account/automated-provisioning",
@@ -209,35 +234,9 @@
             ]
           },
           {
-            "group": "Advanced Features",
-            "pages": [
-              "advanced-features/deep-analysis",
-              "advanced-features/python-interpreter-tool",
-              "advanced-features/visualization-types-and-properties"
-            ]
-          },
-          {
-            "group": "Integrations",
-            "pages": [
-              "integrations/connect-to-slack",
-              "integrations/google-sheets",
-              "product-updates/february-2026/data-query-on-slack",
-              {
-                "group": "MCP Server",
-                "pages": [
-                  "integrations/mcp-server/MCP-Server",
-                  "integrations/mcp-server/tools/echo",
-                  "integrations/mcp-server/tools/list-domains",
-                  "integrations/mcp-server/tools/chat"
-                ]
-              }
-            ]
-          },
-          {
             "group": "Reference Library",
             "pages": [
-              "getting-started/glossary",
-              "reference-library/limits-and-quotas"
+              "getting-started/glossary"
             ]
           }
         ]
