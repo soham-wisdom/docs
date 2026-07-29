@@ -148,18 +148,9 @@
             ]
           },
           {
-            "group": "Dashboards",
-            "pages": [
-              "improve-wisdom-ai-responses/build-dashboards",
-              "using-wisdom-ai-everyday/share-dashboards-and-set-access-control",
-              "using-wisdom-ai-everyday/schedule-dashboards-notifications"
-            ]
-          },
-          {
             "group": "Improve Responses",
             "pages": [
               "improve-wisdom-ai-responses/validate-and-test-answers",
-              "setting-up-wisdom-ai/feedback-mechanisms/provide-feedback-to-the-system",
               "setting-up-wisdom-ai/feedback-mechanisms/monitor-negative-feedback",
               "setting-up-wisdom-ai/feedback-mechanisms/limited-context",
               "improve-wisdom-ai-responses/enhancing-data-analysis-with-custom-business-context",
@@ -275,6 +266,9 @@
           {
             "group": "Dashboards",
             "pages": [
+              "improve-wisdom-ai-responses/build-dashboards",
+              "using-wisdom-ai-everyday/share-dashboards-and-set-access-control",
+              "using-wisdom-ai-everyday/schedule-dashboards-notifications",
               "product-updates/february-2026/mcp-in-dashboards",
               "using-wisdom-ai-everyday/turn-answers-into-dashboards",
               "product-updates/february-2026/dual-axis-charts"
@@ -566,6 +560,11 @@
   },
   "redirects": [
     {
+      "source": "/setting-up-wisdom-ai/feedback-mechanisms/provide-feedback-to-the-system",
+      "destination": "/explorers-feedback/provide-feedback-to-the-system",
+      "permanent": true
+    },
+    {
       "source": "/setting-up-wisdom-ai/advanced-data-modeling-creating-knowledge",
       "destination": "/setting-up-wisdom-ai/advanced-data-modeling-creating-context"
     },
@@ -650,7 +649,7 @@
     },
     {
       "source":"/advanced-features/agents/agent-builder",
-      "destination": "/advanced-features/agents/visual-mode"
+      "destination": "/setting-up-wisdom-ai/agents/visual-mode"
     },
     { "source": "/new-releases", "destination": "/product-updates/spring-2026/spring-features" },
     { "source": "/new-releases/february-2026/search-the-web", "destination": "/getting-started/connect-data-sources/search-the-web" },
