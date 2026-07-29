@@ -16,7 +16,7 @@ An adaptable execution workflow that maps central logic templates to individual 
     When a user manually triggers a parameterized agent, a generated input form collects their values. Submitted values are injected wherever you reference the parameter throughout the agent's prompts and node configurations.
   </Step>
   <Step title="Iterate over parameter value sets" icon="arrows-repeat">
-    Provide multiple value sets and the agent runs once per set, each in an independent context. No list type exists.
+    Provide multiple value sets and the agent runs once per set, each in an independent context. This is how you iterate over a collection, since input parameters don't support a list type.
   </Step>
   <Step title="Manage subscriptions and templates" icon="users-gear">
     Admins can publish an agent as a template and push-enroll users as subscribers. Each subscriber has their own parameter bindings. When the agent runs:
@@ -42,7 +42,7 @@ Parameterized Agents are available to:
 
 - **Admins**: Define input schemas, publish templates, and push-enroll subscribers.
 - **Agent Builders**: Build parameterized workflows and test with different input values.
-- **All users**: Subscribe to published templates and trigger agents with their own parameters via the input form.
+- **All users**: Once push-enrolled by an admin, trigger agents with their own parameters via the input form.
 
 ## FAQs
 
