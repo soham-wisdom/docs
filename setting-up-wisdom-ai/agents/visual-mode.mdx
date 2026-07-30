@@ -2,7 +2,7 @@
 title: "Visual Mode"
 ---
 
-This guide walks through building an agent using Visual Mode in WisdomAI, from selecting a trigger to publishing your workflow for delivery. If you prefer to describe what you want and let the agent figure out the steps on every run, see [Create an agent - Prompt Mode](/advanced-features/agents/tutorial-create-agent).
+This guide walks through building an agent using Visual Mode in WisdomAI, from selecting a trigger to publishing your workflow for delivery. If you prefer to describe what you want and let the agent figure out the steps on every run, see [Create an agent - Prompt Mode](/setting-up-wisdom-ai/agents/tutorial-create-agent).
 
 <Note>
   The Agents feature is currently in beta.
@@ -24,7 +24,7 @@ This differs from Prompt Mode, where the agent decides its own steps at runtime.
 
 ## Step 1: Open the Agent Builder
 
-Click **Create Agent** to open a model and pick **Prompt agent** or **Visual agent**. Choose Visual agent to open the canvas.
+Click **Create Agent** to open a modal and pick **Prompt agent** or **Visual agent**. Choose Visual agent to open the canvas.
 
 1. Navigate to the **Agents** tab in the left sidebar and click **Create Agent**.
    <Frame>
@@ -71,7 +71,7 @@ Every agent starts with a trigger node, which defines when the agent runs.
    <Tip>
      Start with a single condition. Once you confirm it fires correctly, add more. Debugging a multi-condition trigger from scratch is significantly harder than layering conditions one at a time.
    </Tip>
-   Here, also define when the agent runs: set a start date and time, and a frequency. Match the frequency to how often your data changes and how quickly you need to act on it.
+   Here, also define when the agent runs: **Hourly**, **Daily**, **Weekly**, **Monthly**, or **Custom**. Match the frequency to how often your data changes and how quickly you need to act on it.
 4. Click **Done**.
 
 <Frame>
@@ -83,7 +83,7 @@ Every agent starts with a trigger node, which defines when the agent runs.
 Nodes are the building blocks of a Visual Mode agent. Each node performs a specific task. They are connected through Edges, and these also define both the order of execution and how data flows between them.
 
 <Note>
-  For a full description of node types and how they behave, see the [Nodes Reference](/advanced-features/agents/nodes-reference).
+  For a full description of node types and how they behave, see the [Nodes Reference](/setting-up-wisdom-ai/agents/nodes-reference).
 </Note>
 
 To add a node:
@@ -191,7 +191,7 @@ The agent will run on the schedule you configured (unless you have chosen the ma
 
 ## Step 8: Manage agent versions
 
-Every edit publishes a new version of the agent. Versions give you a history of every change, so you can see what a past publish looked like or restore it if a newer change causes problems.
+Every Publish creates a new version of the agent. Versions give you a history of every change, so you can see what a past publish looked like or restore it if a newer change causes problems.
 
 <img
   src="/images/visual-versioning.png"
@@ -203,11 +203,11 @@ Every edit publishes a new version of the agent. Versions give you a history of 
 ## Next steps
 
 <CardGroup cols={2}>
-  <Card title="Manage your Agents" icon="sliders" href="/advanced-features/agents/manage-agents">
+  <Card title="Manage your Agents" icon="sliders" href="/setting-up-wisdom-ai/agents/manage-agents">
     Learn how to edit, share, and view the run history of your agents.
   </Card>
 
-  <Card title="Nodes Reference" icon="grid" href="/advanced-features/agents/nodes-reference">
+  <Card title="Nodes Reference" icon="grid" href="/setting-up-wisdom-ai/agents/nodes-reference">
     Explore the full list of node types, inputs, and outputs.
   </Card>
 </CardGroup>
