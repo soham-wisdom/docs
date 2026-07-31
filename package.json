@@ -1,0 +1,12 @@
+{
+  "name": "wisdomai-docs",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check-links": "node scripts/check-links.js",
+    "check-links:anchors": "node scripts/check-links.js --check-anchors"
+  },
+  "dependencies": {
+    "github-slugger": "2.0.0"
+  }
+}
