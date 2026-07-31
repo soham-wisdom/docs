@@ -13,3 +13,7 @@ title-to-sentence-case.js
 .claude/
 .vale.ini/
 .vale.ini
+node_modules/
+package.json
+package-lock.json
+scripts/
