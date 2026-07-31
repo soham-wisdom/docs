@@ -31,6 +31,13 @@ This also explains an earlier observation: the "sql"-related result seen alongsi
 
 The three competing results above all rank well because they have a section literally titled "Chat." Giving "Ask Better Questions" the same exact wording, combined with its higher boost value, lets it compete on equal terms. No other page links to this section directly, so nothing else needed updating.
 
+### 5. Second round verified: heading change alone wasn't enough
+
+Same three pages (RBAC, SDK Components, Auditing) still ranked above "Ask Better Questions" for a "chat" search after change #4. Since Mintlify caps the recommended boost value at 10 (already applied to "Ask Better Questions"), the more effective lever is de-prioritizing the specific competing pages directly, rather than pushing our own page's boost past what Mintlify recommends.
+
+**Files:** `using-wisdom-ai-everyday/auditing.mdx`, `integrations/user-management/rbac.mdx`, `integrations/embeddings/sdk/sdk-components.mdx`
+**Change:** Added `boost: 0.15` to each. This lowers their ranking specifically, on top of the earlier GraphQL API / MCP Server group-level change. None of these three pages were hidden or made unsearchable, they're just weighted lower for general searches. Auditing keeps its own "chat history" / "chat log" keywords for its own relevant searches, just ranks lower for the single word "chat."
+
 ## Constraints honored
 
 - No `description` frontmatter was added to any article, per client preference. All improvements use search-ranking fields (`keywords`, `boost`) instead.
