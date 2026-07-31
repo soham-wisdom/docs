@@ -215,6 +215,7 @@
               "integrations/google-sheets",
               {
                 "group": "MCP Server",
+                "boost": 0.3,
                 "pages": [
                   "integrations/mcp-server/MCP-Server",
                   {
@@ -308,6 +309,7 @@
           },
           {
             "group": "GraphQL API",
+            "boost": 0.3,
             "pages": [
               "integrations/graphql-api/GraphQL-API",
               "integrations/graphql-api/graphql-primer",
