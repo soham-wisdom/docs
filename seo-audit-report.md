@@ -1,14 +1,17 @@
 # Mintlify Search & SEO Audit
 
-Scanned 213 pages under `C:\work\docs`.
+Scanned 214 pages under `C:\work\docs`.
 
-## Errors (2)
+## Errors (3)
 - **NO_FRONTMATTER_BLOCK** `seo-audit-report.md` — File has no YAML frontmatter block. Title falls back to filename and the page has no description or keywords.
+- **NO_FRONTMATTER_BLOCK** `search-report.md` — File has no YAML frontmatter block. Title falls back to filename and the page has no description or keywords.
 - **NO_FRONTMATTER_BLOCK** `README.md` — File has no YAML frontmatter block. Title falls back to filename and the page has no description or keywords.
 
-## Warnings (17)
+## Warnings (19)
 - **MISSING_TITLE** `seo-audit-report.md` — No `title` set — Mintlify will derive one from the filename, which often reads worse in search results and sidebar.
 - **MISSING_DESCRIPTION** `seo-audit-report.md` — No `description` — hurts SEO meta tags and gives search users less context to pick the right result.
+- **MISSING_TITLE** `search-report.md` — No `title` set — Mintlify will derive one from the filename, which often reads worse in search results and sidebar.
+- **MISSING_DESCRIPTION** `search-report.md` — No `description` — hurts SEO meta tags and gives search users less context to pick the right result.
 - **MISSING_TITLE** `README.md` — No `title` set — Mintlify will derive one from the filename, which often reads worse in search results and sidebar.
 - **MISSING_DESCRIPTION** `README.md` — No `description` — hurts SEO meta tags and gives search users less context to pick the right result.
 - **MISSING_DESCRIPTION** `index.mdx` — No `description` — hurts SEO meta tags and gives search users less context to pick the right result.
@@ -25,8 +28,9 @@ Scanned 213 pages under `C:\work\docs`.
 - **DUPLICATE_TITLE** `integrations\graphql-api\queries\connection\connection.mdx, integrations\graphql-api\objects\connection.mdx` — 2 pages share the title "connection". This is very likely why ambiguous single-word searches (like "chat") return confusing, hard-to-distinguish results — consider more specific titles or distinct sidebarTitle values.
 - **DUPLICATE_TITLE** `integrations\embeddings\embedding.mdx, getting-started\overview.mdx` — 2 pages share the title "overview". This is very likely why ambiguous single-word searches (like "chat") return confusing, hard-to-distinguish results — consider more specific titles or distinct sidebarTitle values.
 
-## Info (36)
+## Info (37)
 - **ORPHAN_PAGE** `seo-audit-report.md` — Not referenced in docs.json navigation — may still be reachable by URL but won't appear in sidebar-driven discovery.
+- **ORPHAN_PAGE** `search-report.md` — Not referenced in docs.json navigation — may still be reachable by URL but won't appear in sidebar-driven discovery.
 - **ORPHAN_PAGE** `README.md` — Not referenced in docs.json navigation — may still be reachable by URL but won't appear in sidebar-driven discovery.
 - **THIN_CONTENT** `using-wisdom-ai-everyday\capture-knowledge-feedback.mdx` — Only ~34 words of body content. Very short pages produce weak search chunks — boost/keywords compensate less well here.
 - **ORPHAN_PAGE** `using-wisdom-ai-everyday\capture-knowledge-feedback.mdx` — Not referenced in docs.json navigation — may still be reachable by URL but won't appear in sidebar-driven discovery.

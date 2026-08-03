@@ -6,6 +6,11 @@
       "detail": "File has no YAML frontmatter block. Title falls back to filename and the page has no description or keywords."
     },
     {
+      "file": "search-report.md",
+      "issue": "NO_FRONTMATTER_BLOCK",
+      "detail": "File has no YAML frontmatter block. Title falls back to filename and the page has no description or keywords."
+    },
+    {
       "file": "README.md",
       "issue": "NO_FRONTMATTER_BLOCK",
       "detail": "File has no YAML frontmatter block. Title falls back to filename and the page has no description or keywords."
@@ -19,6 +24,16 @@
     },
     {
       "file": "seo-audit-report.md",
+      "issue": "MISSING_DESCRIPTION",
+      "detail": "No `description` — hurts SEO meta tags and gives search users less context to pick the right result."
+    },
+    {
+      "file": "search-report.md",
+      "issue": "MISSING_TITLE",
+      "detail": "No `title` set — Mintlify will derive one from the filename, which often reads worse in search results and sidebar."
+    },
+    {
+      "file": "search-report.md",
       "issue": "MISSING_DESCRIPTION",
       "detail": "No `description` — hurts SEO meta tags and gives search users less context to pick the right result."
     },
@@ -101,6 +116,11 @@
   "info": [
     {
       "file": "seo-audit-report.md",
+      "issue": "ORPHAN_PAGE",
+      "detail": "Not referenced in docs.json navigation — may still be reachable by URL but won't appear in sidebar-driven discovery."
+    },
+    {
+      "file": "search-report.md",
       "issue": "ORPHAN_PAGE",
       "detail": "Not referenced in docs.json navigation — may still be reachable by URL but won't appear in sidebar-driven discovery."
     },
