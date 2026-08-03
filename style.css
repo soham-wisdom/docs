@@ -1,3 +1,11 @@
+/* Frontmatter `description` powers SEO meta tags and in-product search indexing
+   only — hide the on-page subtitle Mintlify renders from it under the page
+   title. The <meta name="description">/og:description/twitter:description
+   tags are generated independently and are unaffected by this. */
+header#header > div.mt-2 {
+  display: none;
+}
+
 /* Hide the AI assistant button next to the search bar (keep the rest of the assistant enabled) */
 #assistant-entry,
 #assistant-entry-mobile {
