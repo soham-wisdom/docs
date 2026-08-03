@@ -747,6 +747,12 @@
       "linkedin": "https://www.linkedin.com/company/wisdomai-inc"
     }
   },
+  "integrations": {
+    "posthog": {
+      "apiKey": "phc_v27n2ccocgZnw6kJ2aurKgAvD39DbyTmXb9mzsYS27UT",
+      "sessionRecording": true
+    }
+  },
   "logo": {
     "light": "/images/wisdom-logo-light.png",
     "dark": "/images/wisdom-logo-dark.png"
