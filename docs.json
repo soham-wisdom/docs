@@ -251,15 +251,28 @@
           {
             "group": "Daily Usage",
             "pages": [
-              "using-wisdom-ai-everyday/ask-better-questions",
               "using-wisdom-ai-everyday/command-palette",
               "product-updates/february-2026/ghost-text-completion",
-              "improve-wisdom-ai-responses/attach-files-to-chat",
               "explorers-feedback/provide-feedback-to-the-system",
               "product-updates/february-2026/mcp-in-dashboards",
               "using-wisdom-ai-everyday/turn-answers-into-dashboards",
               "explorers/chat-dashboard",
               "product-updates/february-2026/dual-axis-charts"
+            ]
+          },
+          {
+            "group": "Chat",
+            "pages": [
+              "chat/overview",
+              "using-wisdom-ai-everyday/ask-better-questions",
+              "improve-wisdom-ai-responses/attach-files-to-chat"
+            ]
+          },
+          {
+            "group": "Dashboard",
+            "pages": [
+              "dashboards/tabs",
+              "dashboards/instant-filters"
             ]
           }
         ]
@@ -483,6 +496,12 @@
           {
             "group": "Product Updates",
             "pages": [
+              {
+                "group": "July 2026",
+                "pages": [
+                  "product-updates/july-2026/july-features"
+                ]
+              },
               {
                 "group": "June 2026",
                 "pages": [
@@ -747,6 +766,12 @@
   "footer": {
     "socials": {
       "linkedin": "https://www.linkedin.com/company/wisdomai-inc"
+    }
+  },
+  "integrations": {
+    "posthog": {
+      "apiKey": "phc_v27n2ccocgZnw6kJ2aurKgAvD39DbyTmXb9mzsYS27UT",
+      "sessionRecording": true
     }
   },
   "logo": {
