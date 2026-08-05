@@ -215,6 +215,7 @@
               "integrations/google-sheets",
               {
                 "group": "MCP Server",
+                "boost": 0.3,
                 "pages": [
                   "integrations/mcp-server/MCP-Server",
                   {
@@ -321,6 +322,7 @@
           },
           {
             "group": "GraphQL API",
+            "boost": 0.05,
             "pages": [
               "integrations/graphql-api/GraphQL-API",
               "integrations/graphql-api/graphql-primer",
@@ -664,7 +666,7 @@
     },
     {
       "source": "/new-releases/spring-2026/dashboard-versioning",
-      "destination": "/product-updates/spring-2026/dashboard-versioning"
+      "destination": "/product-updates/june-2026/dashboard-versioning"
     },
     {
       "source": "/new-releases/spring-2026/domain-health",
