@@ -1,5 +1,6 @@
 ---
 title: "Chat 2.0"
+hidden: true
 keywords: ["chat", "chat overview", "chat v2"]
 boost: 15
 ---
@@ -30,7 +31,20 @@ The mode selector under the chat input controls how much reasoning your question
 | **Lite** | Lightweight mode for easy queries and quick answers. |
 | **Expert** | Highest reasoning, for the hardest questions and complex analysis. Expect it to take longer, go deeper, and often produce a full report. |
 
-![Image showing the choose mode dropdown](/images/choose-mode.png)
+<img
+  src="/images/choose-mode.png"
+  alt="Image showing the choose mode dropdown"
+  lightAlt="Image showing the choose mode dropdown"
+  darkAlt="Image showing the choose mode dropdown"
+  className="dark:hidden"
+/>
+<img
+  src="/dark-img/choose-mode.png"
+  alt="Image showing the choose mode dropdown"
+  lightAlt="Image showing the choose mode dropdown"
+  darkAlt="Image showing the choose mode dropdown"
+  className="hidden dark:block"
+/>
 
 A conversation's mode is fixed after the first message, so start a new chat to switch modes.
 
