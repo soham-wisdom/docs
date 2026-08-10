@@ -36,6 +36,7 @@ WisdomAI works with the following data sources:
 - Azure Blob Storage
 - SharePoint
 - Direct upload
+- GitHub 
 
 Supported file types: PDFs, DOC/DOCX files, PowerPoint files, txt files, and images.
 
@@ -455,6 +456,29 @@ This section outlines common prerequisites for connecting to data sources. Speci
     Username: wisdom_read_only
     Password: ********
     Database filters: sales_v, marketing_v
+    ```
+  </Tab>
+  <Tab title="GitHub">
+    The following table lists the requirements you must provide when connecting to GitHub.
+
+    | Requirement | Description |
+    | :-- | :-- |
+    | Connection name | A name to identify this connection |
+    | Repository URL | The URL of the repository you want WisdomAI to extract context from |
+    | Personal access token | Required for private repositories |
+    | Branch | The branch WisdomAI should crawl |
+
+    <Note>
+      A personal access token is required for private repositories.
+    </Note>
+
+    Here's an example connection:
+
+    ```txt
+    Connection name: product-docs-repo
+    Repository URL: https://github.com/your-org/your-repo
+    Personal access token: ********
+    Branch: main
     ```
   </Tab>
 </Tabs>
