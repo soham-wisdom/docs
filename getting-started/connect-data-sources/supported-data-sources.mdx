@@ -24,6 +24,7 @@ WisdomAI works with the following data sources:
 - ClickHouse (Beta)
 - Trino (Beta)
 - CSV files
+- Azure DevOps
 
 <Warning>
   **Note on Syncing**: After successfully adding a connection, the initial sync may take a few minutes to complete before data is available for analysis.
@@ -503,6 +504,48 @@ This section outlines common prerequisites for connecting to data sources. Speci
     Project URL: https://gitlab.com/your-group/your-project
     Access token: ********
     Branch: main
+    ```
+  </Tab>
+  <Tab title="Azure DevOps">
+    The following table lists the requirements you must provide when connecting to Azure DevOps.
+
+    | Requirement | Description |
+    | :-- | :-- |
+    | Connection name | A name to identify this connection |
+    | Repository URL | The URL of the Azure DevOps repository you want WisdomAI to extract context from |
+    | Organization | The Azure DevOps organization that owns the repository |
+    | Project | The Azure DevOps project that contains the repository |
+    | Repository | The name of the repository |
+    | Repository ID | The unique identifier for the repository |
+    | Server base URL | The base URL for on-premises Azure DevOps Server instances |
+    | Branch | The branch WisdomAI should crawl |
+
+    You must also choose an authentication method:
+
+    | Authentication method | Description |
+    | :-- | :-- |
+    | Connect as user | Authenticate with your own Azure DevOps user account via OAuth |
+    | Wisdom managed app | Use WisdomAI's managed OAuth app credentials |
+    | Service principal | Authenticate using a Tenant ID, OAuth client ID, and OAuth client secret |
+    | Managed identity | Authenticate using an Azure managed identity |
+    | Personal access token | Authenticate using a PAT generated in Azure DevOps |
+    | SSH key | Authenticate using an SSH key pair |
+
+    <Note>
+      The **Tenant ID**, **OAuth client ID**, and **OAuth client secret** fields are only required when using the **Service principal** authentication method.
+    </Note>
+
+    Here's an example connection:
+
+    ```txt
+    Connection name: product-docs-repo
+    Repository URL: https://dev.azure.com/your-org/your-project/_git/your-repo
+    Organization: your-org
+    Project: your-project
+    Repository: your-repo
+    Branch: main
+    Authentication method: Personal access token
+    Personal access token: ********
     ```
   </Tab>
 </Tabs>
