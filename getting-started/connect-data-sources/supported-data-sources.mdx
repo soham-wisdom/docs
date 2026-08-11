@@ -37,6 +37,7 @@ WisdomAI works with the following data sources:
 - SharePoint
 - Direct upload
 - GitHub 
+- GitLab
 
 Supported file types: PDFs, DOC/DOCX files, PowerPoint files, txt files, and images.
 
@@ -478,6 +479,29 @@ This section outlines common prerequisites for connecting to data sources. Speci
     Connection name: product-docs-repo
     Repository URL: https://github.com/your-org/your-repo
     Personal access token: ********
+    Branch: main
+    ```
+  </Tab>
+  <Tab title="GitLab">
+    The following table lists the requirements you must provide when connecting to GitLab.
+
+    | Requirement | Description |
+    | :-- | :-- |
+    | Connection name | A name to identify this connection |
+    | Project URL | The URL of the GitLab project you want WisdomAI to extract context from |
+    | Access token | Required for private projects |
+    | Branch | The branch WisdomAI should crawl |
+
+    <Note>
+      An access token is required for private projects.
+    </Note>
+
+    Here's an example connection:
+
+    ```txt
+    Connection name: product-docs-project
+    Project URL: https://gitlab.com/your-group/your-project
+    Access token: ********
     Branch: main
     ```
   </Tab>
