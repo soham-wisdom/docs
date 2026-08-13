@@ -2,6 +2,8 @@
 title: "Domain Groups"
 ---
 
+A domain group combines multiple domains so you can query them together. This page explains why domain groups exist, then shows you how to create one, add cross-domain context, and work with cross-domain reviewed queries.
+
 ## Why it matters
 
 Domains keep data and context isolated from each other by design, so each one stays scoped to a single business area and its own access permissions. Plenty of real questions cut across that boundary, though, like comparing marketing spend in one domain against revenue booked in another. Querying each domain on its own and combining the results by hand is slow, and it leaves whoever runs the query responsible for knowing how the domains relate.
@@ -13,23 +15,21 @@ The second part is relationships between domains. A domain's own context explain
 ## Create a domain group
 
 1. Navigate to **Domains** and open **Cross-Domain Settings**.
-2. Within the **Domain Groups** section, choose the domains you want to include in the group.
+2. Within the Domain Groups section, select the domains you want to include, enter a group name, and click **Create**.
 
 <Note>
   You can also enable **auto-select domain** for your workspace. When enabled, you can start a chat without choosing a domain first, and WisdomAI automatically selects a matching domain if one becomes relevant to your question. This setting applies at the workspace level, separately from domain groups, and includes an allowlist you can configure once enabled.
 </Note>
 
-\[SCREENSHOT: Domain group creation screen showing domain selection\]
+![SCREENSHOT: Domain group creation screen showing domain selection](/images/domain-froups-create.png)
 
 Once the group is set up, you can run queries against it from a new chat. WisdomAI queries all included domains simultaneously and uses each domain's existing [context library](/setting-up-wisdom-ai/context-libraries) when generating a response.
-
-\[SCREENSHOT/GIF: A query result from a domain group showing data drawn from multiple domains\]
 
 ## Add cross-domain context
 
 Each domain in a group brings its own context library. That context explains individual domains, but not how the domains relate to each other. Use the **Manage Context** button to add context at the group level.
 
-\[SCREENSHOT: The Manage Context button on a domain group\]
+![SCREENSHOT: The Manage Context button on a domain group](/images/manage-context.png)
 
 Within **Manage Context**, you can add two types of context:
 

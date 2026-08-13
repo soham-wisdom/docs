@@ -2,6 +2,8 @@
 title: "Context Libraries"
 ---
 
+Context Libraries let you share Knowledge across Domains without duplicating it. This page explains why Libraries exist, then shows you how to move Knowledge into a Library, link a Library to a Domain, and manage your Libraries from one place.
+
 ## Why it matters
 
 WisdomAI enforces data access permissions at the Domain level. Business context you create, such as metric definitions or business rules, lives inside the specific Domain where you create it. Teams working in a different Domain can't see or reuse that context, even when they're asking questions about the same underlying data.
@@ -10,7 +12,23 @@ That isolation protects your access boundaries, but it also means shared definit
 
 Context Libraries remove that trade-off. A Library holds context outside any single Domain, so you define a metric or business rule once and reuse it everywhere it applies. You still control which Domains can use it: linking a Library to a Domain is a separate, explicit step, so shared context never crosses a Domain's access boundary without your say.
 
-### Move Knowledge to a Library
+## Access Context Libraries
+
+To access Context Libraries, follow these steps:
+
+1. From the **Domains** page, click the **Context Libraries** icon in the top right corner.
+2. This opens the **Context Libraries** page, listing every Library along with its Name, Description, Linked Domains, and Last Updated date. Click the **⋮** icon next to a Library to **Edit** it, **Link to Domain**, or **Delete** it.
+
+<Frame>
+  <img
+    alt="NEW Add Knowledge Steps"
+    lightAlt="NEW Add Knowledge Steps"
+    darkAlt="NEW Add Knowledge Steps"
+    src="/images/new-link-domain2.png"
+  />
+</Frame>
+
+## Move Knowledge to a Library
 
 You can build a Library either by creating assets outside a Domain or by taking existing context items originally built inside a Domain and moving them into a Library so they become available elsewhere.
 
@@ -53,7 +71,7 @@ You can build a Library either by creating assets outside a Domain or by taking 
   />
 </Frame>
 
-### Link a Library to a Domain
+## Link a Library to a Domain
 
 You must link a Context Library to a Domain before you can query its contents. To link one or more Libraries to a target Domain:
 
@@ -97,22 +115,6 @@ You must link a Context Library to a Domain before you can query its contents. T
 </Frame>
 
 Once linked, any Knowledge stored in that Library is available for query interpretation in the Domain, alongside the Domain's own Knowledge.
-
-## Access Context Libraries
-
-To access Context Libraries, follow these steps:
-
-1. From the **Domains** page, click the **Context Libraries** icon in the top right corner.
-2. This opens the **Context Libraries** page, listing every Library along with its Name, Description, Linked Domains, and Last Updated date. Click the **⋮** icon next to a Library to **Edit** it, **Link to Domain**, or **Delete** it.
-
-<Frame>
-  <img
-    alt="NEW Add Knowledge Steps"
-    lightAlt="NEW Add Knowledge Steps"
-    darkAlt="NEW Add Knowledge Steps"
-    src="/images/new-link-domain2.png"
-  />
-</Frame>
 
 ## Next steps
 
