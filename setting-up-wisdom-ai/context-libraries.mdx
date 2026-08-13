@@ -2,9 +2,13 @@
 title: "Context Libraries"
 ---
 
-Natively, business context lives inside the specific Domain where it is created. Because data access permissions are strictly enforced at the Domain level, teams working in separate Domains cannot see or use each other's background context.
+## Why it matters
 
-Context Libraries solve this by providing a wrapper of context that lives entirely outside of an individual Domain. This allows you to take core knowledge and place it into a shared collection, making it easily linkable and reusable across multiple distinct Domains.
+WisdomAI enforces data access permissions at the Domain level. Business context you create, such as metric definitions or business rules, lives inside the specific Domain where you create it. Teams working in a different Domain can't see or reuse that context, even when they're asking questions about the same underlying data.
+
+That isolation protects your access boundaries, but it also means shared definitions get rebuilt in every Domain that needs them. When a definition changes, you have to update every copy, and the copies can drift out of sync with each other.
+
+Context Libraries remove that trade-off. A Library holds context outside any single Domain, so you define a metric or business rule once and reuse it everywhere it applies. You still control which Domains can use it: linking a Library to a Domain is a separate, explicit step, so shared context never crosses a Domain's access boundary without your say.
 
 ### Move Knowledge to a Library
 
