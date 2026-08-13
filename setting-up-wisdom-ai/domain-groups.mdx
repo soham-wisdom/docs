@@ -2,7 +2,13 @@
 title: "Domain Groups"
 ---
 
-A domain group lets you combine multiple existing domains and run queries across all of them at once. You can also add shared context to explain how the domains relate to each other.
+## Why it matters
+
+Domains keep data and context isolated from each other by design, so each one stays scoped to a single business area and its own access permissions. Plenty of real questions cut across that boundary, though, like comparing marketing spend in one domain against revenue booked in another. Querying each domain on its own and combining the results by hand is slow, and it leaves whoever runs the query responsible for knowing how the domains relate.
+
+A domain group solves the first part of that problem: it lets you run one query against several domains at once, while WisdomAI still uses each domain's own context to interpret its part of the answer.
+
+The second part is relationships between domains. A domain's own context explains that domain's data, not how its metrics line up with another domain's. A domain group adds a separate context layer for that: you document shared definitions or cross-domain logic once, at the group level, instead of repeating them in every domain that needs them. Approved cross-domain queries follow the same pattern. They're saved to the group's own reviewed query library, not any individual domain's, because a query that spans domains only makes sense in that combined context.
 
 ## Create a domain group
 
