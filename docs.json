@@ -264,6 +264,7 @@
             "group": "Chat",
             "pages": [
               "chat/overview",
+              "chat/expert-mode",
               "using-wisdom-ai-everyday/ask-better-questions",
               "improve-wisdom-ai-responses/attach-files-to-chat"
             ]
