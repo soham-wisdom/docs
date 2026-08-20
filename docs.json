@@ -499,6 +499,12 @@
             "group": "Product Updates",
             "pages": [
               {
+                "group": "August 2026",
+                "pages": [
+                  "product-updates/august-2026/august-features"
+                ]
+              },
+              {
                 "group": "July 2026",
                 "pages": [
                   "product-updates/july-2026/july-features"
