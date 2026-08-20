@@ -4,7 +4,14 @@ title: "Domain Groups & Auto Domain Selection"
 
 WisdomAI organizes context into **domains**, so that a question about billing draws only on billing tables and billing definitions, and a question about product usage draws only on product tables and product definitions. That isolation is deliberate: it's what makes each domain's answers precise, scoped to the right business area, and correctly permissioned.
 
-Some questions, however, legitimately span more than one domain: *"Is churn related to a drop in product engagement?"* needs a retention domain and a product-usage domain at once. Two features let WisdomAI answer those questions without abandoning domain isolation: **Auto Domain Selection**, which routes a question to the right domain automatically at runtime, and **Domain Groups**, which let an admin pre-declare that specific domains are related.
+Some questions, however, legitimately span more than one domain: *"Is churn related to a drop in product engagement?"* needs a retention domain and a product-usage domain at once. Two features let WisdomAI answer those questions without abandoning domain isolation: 
+- **Auto Domain Selection**, which routes a question to the right domain automatically at runtime.
+- **Domain Groups**, which let an admin pre-declare that specific domains are related.
+
+| **Feature** | **What it does** | **Scope** |
+| --- | --- | --- |
+| **Auto Domain Selection** | Reads each question and routes it to the most relevant domain or group at runtime | Unbounded: Chooses from the full (or greenlisted) set of domains |
+| **Domain Groups** | Bundles two or more domains that an admin has pre-declared as related | Bounded: Restricted to only the domains in the group |
 
 This page covers:
 
@@ -15,10 +22,6 @@ This page covers:
 
 For setup and step-by-step usage instructions, see [Set Up and Use Domain Groups & Auto Domain Selection](/setting-up-wisdom-ai/domain-groups-how-to).
 
-| **Feature** | **What it does** | **Scope** |
-| --- | --- | --- |
-| **Auto Domain Selection** | Reads each question and routes it to the most relevant domain or group at runtime | Unbounded: Chooses from the full (or greenlisted) set of domains |
-| **Domain Groups** | Bundles two or more domains that an admin has pre-declared as related | Bounded: Restricted to only the domains in the group |
 
 ## Why it matters
 
