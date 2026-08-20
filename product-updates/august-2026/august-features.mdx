@@ -3,30 +3,19 @@ title: "Features"
 icon: "rocket-launch"
 tag: "new"
 ---
-<Update label="Updates">
+
 Explore the latest features in WisdomAI's **August 2026** launch, focused on sharing knowledge across domains and catching it the moment it's mentioned in chat.
-
-### 📚 Context Libraries
-
-Knowledge no longer has to live inside a single domain. **Context Libraries** let you define a metric, business rule, or term once and reuse it across every domain that needs it, instead of maintaining duplicate copies that drift out of sync with each other. Linking a Library to a domain is still a separate, explicit step, so shared context never crosses a domain's access boundary without your say.
-
+<CardGroup cols={2}>
 <Card title="Context Libraries" icon="clipboard-list" href="/setting-up-wisdom-ai/context-libraries">
   Move knowledge into a Library, link it to a domain, and manage your Libraries from one place.
 </Card>
 
-### 🧭 Domain Groups & Auto Domain Selection
-
-Two new ways to handle questions that span more than one domain, without giving up domain isolation. **Auto Domain Selection** reads each question and routes it to the most relevant domain or group at runtime, while **Domain Groups** let admins pre-declare two or more related domains, complete with their own shared context and reviewed-query library. Together they cut down on mis-routed cross-domain questions and on context getting duplicated into every domain that needs it.
 
 <Card title="Domain Groups & Auto Domain Selection" icon="layer-group" href="/setting-up-wisdom-ai/domain-groups">
   Enable Auto mode, create a domain group, and add cross-domain context.
 </Card>
 
-### 🧠 Knowledge Signals from Chat: automatic mid-chat capture
-
-Knowledge Signals from Chat now catches knowledge the moment it changes hands in conversation, no button press required. WisdomAI watches for an explicit "remember this" instruction or a correction to existing knowledge, and proposes the resulting add or update directly below the response for review. This closes the gap left by the original, on-demand brain-icon suggestions: most of that signal was being lost simply because no one remembered to go looking for it after the conversation ended.
-
 <Card title="Knowledge Signals from Chat" icon="brain" href="/setting-up-wisdom-ai/feedback-mechanisms/knowledge-signals-from-chat">
   See all three surfaces: on-demand suggestions, context-used transparency, and automatic mid-chat capture.
 </Card>
-</Update>
+</CardGroup>
