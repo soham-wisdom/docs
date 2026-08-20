@@ -265,7 +265,8 @@
             "pages": [
               "chat/overview",
               "using-wisdom-ai-everyday/ask-better-questions",
-              "improve-wisdom-ai-responses/attach-files-to-chat"
+              "improve-wisdom-ai-responses/attach-files-to-chat",
+              "setting-up-wisdom-ai/feedback-mechanisms/knowledge-signals-from-chat"
             ]
           },
           {
