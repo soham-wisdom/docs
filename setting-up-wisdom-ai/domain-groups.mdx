@@ -6,11 +6,12 @@ A domain group combines multiple domains so you can query them together. This pa
 
 ## Why it matters
 
-Domains keep data and context isolated from each other by design, so each one stays scoped to a single business area and its own access permissions. Plenty of real questions cut across that boundary, though, like comparing marketing spend in one domain against revenue booked in another. Querying each domain on its own and combining the results by hand is slow, and it leaves whoever runs the query responsible for knowing how the domains relate.
+Domain isolation is what makes a domain trustworthy, an answer is grounded in that domain's own metric definitions, synonyms, and entities, not assembled from whatever else happens to be in the workspace. But it also means a domain's own context describes *its* data, not how its metrics relate to another domain's.
 
-A domain group solves the first part of that problem: it lets you run one query against several domains at once, while WisdomAI still uses each domain's own context to interpret its part of the answer.
+Cross-domain questions surface two distinct problems:
 
-The second part is relationships between domains. A domain's own context explains that domain's data, not how its metrics line up with another domain's. A domain group adds a separate context layer for that: you document shared definitions or cross-domain logic once, at the group level, instead of repeating them in every domain that needs them. Approved cross-domain queries follow the same pattern. They're saved to the group's own reviewed query library, not any individual domain's, because a query that spans domains only makes sense in that combined context.
+1. **Routing**: Given a question, which domain(s) should answer it? This is open-ended: the right domain depends on the question, and a large workspace may have dozens of candidates. **Auto Domain Selection** addresses this.
+2. **Relationships**: Once two or more domains are known to be asked about together, how do their metrics and entities line up? **Domain Groups** address this by giving admins a place to document shared definitions and cross-domain logic once, at the group level, instead of duplicating them into every domain that needs them. Approved cross-domain queries are saved to the group's own reviewed-query library for the same reason — a query spanning domains only makes sense in that combined context.
 
 ## Create a domain group
 
@@ -40,9 +41,9 @@ Within **Manage Context**, you can add two types of context:
 
 When you approve a response within a domain group using thumbs up, WisdomAI saves that query to a separate cross-domain reviewed query library. It does not appear in any individual domain's context library.
 
-To view the cross-domain reviewed query library, navigate to **Cross-Domain Library** \> **Reviewed Queries**.
+To view the cross-domain reviewed query library, click in the **Manage Context** button, navigate to **Cross-Domain Library** \> **Reviewed Queries**.
 
-\[SCREENSHOT/GIF: The cross-domain reviewed query library showing a newly approved query\]
+![SCREENSHOT/GIF: The cross-domain reviewed query library showing a newly approved query](/images/cross-domain-reviewed-queries.png)
 
 ## Next steps
 
