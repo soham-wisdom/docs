@@ -30,9 +30,7 @@ To connect WisdomAl to Snowflake directly, you will need the following informati
 - **Private Key Passphrase**: This is required if your private key is encrypted.
 - **Role**: The Snowflake role to use for access privileges (e.g., ACCOUNTADMIN). See the Using a Custom Role section below for details.
 - **\[Optional\] Database Filters**: See the Database Filters section below for more details.
-- **\[Optional\] Allowlist**: You may need to allowlist WisdomAl's CIDR block in your Snowflake network policies or firewalls to allow incoming connections. Use the CIDR block that corresponds to your instance's creation date:
-  - **Before July 24, 2025**: `35.238.115.103/32`
-  - **On or after July 24, 2025**: `34.82.248.105/32`
+- **\[Optional\] Allowlist**: You may need to allowlist WisdomAI's CIDR blocks in your Snowflake network policies or firewalls to allow incoming connections: `35.238.115.103/32` and `34.82.248.105/32`.
 
 ## 2. Using a custom role:
 
@@ -74,18 +72,18 @@ Once you have gathered the required information, you can configure the connectio
 4. Click **Save and Sync metadata.** WisdomAl will use the provided credentials to connect to your Snowflake account and scan the metadata of the specified databases and tables.
 
 <img
-  src="/dark-img/snowflake.png"
   alt="image.png"
   lightAlt="image.png"
   darkAlt="image.png"
-  className="hidden dark:block"
+  src="/images/snowflake.png"
+  className="dark:hidden"
 />
 <img
-  src="/images/snowflake.png"
   alt="image.png"
   lightAlt="image.png"
   darkAlt="image.png"
-  className="dark:hidden"
+  src="/dark-img/snowflake.png"
+  className="hidden dark:block"
 />
 
 ## Security considerations and best practices
@@ -117,7 +115,7 @@ Having trouble? Here are solutions to some frequently encountered problems.
 
 ### Connection timeout or network errors
 
-- Verify that WisdomAl's CIDR block (`35.238.115.103/32` or `34.82.248.105/32`) is allowlisted in your Snowflake network policies or any corporate firewalls.
+- Verify that WisdomAl's CIDR block (`35.238.115.103/32` and `34.82.248.105/32`) is allowlisted in your Snowflake network policies or any corporate firewalls.
 
 ## Next steps
 
@@ -126,7 +124,7 @@ Having trouble? Here are solutions to some frequently encountered problems.
     Connect to Databricks using a Client ID and Client Secret for authentication, enabling secure and controlled access to your data.
   </Card>
 
-  <Card title="Connect to an MCP Server" icon="server" href="/getting-started/connect-data-sources/connect-mcp-server">
+  <Card title="Connect to any MCP server from WisdomAI" icon="server" href="/getting-started/connect-data-sources/connect-mcp-server">
     Connect WisdomAI to any server implementing the Model Context Protocol (MCP) to scan metadata, build a knowledge graph, and retrieve real-time data for natural language queries.
   </Card>
 

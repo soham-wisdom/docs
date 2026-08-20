@@ -1,11 +1,12 @@
 ---
-title: "MCP Server"
+title: "WisdomAI MCP Server"
 keywords: ["MCP", "MCP server", "Model Context Protocol", "Wisdom MCP server"]
+boost: 15
 ---
 
 WisdomAI provides a hosted [Model Context Protocol (MCP)](https://modelcontextprotocol.io) server that lets you connect AI tools, such as Claude, Cursor, VS Code, and ChatGPT, directly to your WisdomAI domains. Once connected, you can ask natural language questions about your data and receive structured responses including text, tables, and interactive charts.
 
-## Endpoint
+## MCP Endpoint
 
 The WisdomAI MCP Server is available at a single endpoint:
 
@@ -22,7 +23,7 @@ Replace `{ACCOUNT}` with your WisdomAI account subdomain.
   - If you log in via `{account}.askwisdom.ai`, use `https://{ACCOUNT}.askwisdom.ai/mcp`
 </Note>
 
-## Connect your client
+## Connect Wisdom's MCP server to your client
 
 Add the WisdomAI MCP Server to your preferred AI client using the configuration below.
 
@@ -150,7 +151,7 @@ Once connected, try these prompts to start using WisdomAI from your AI client:
 - `Visualize monthly active users over the last 12 months`
 - `What can I ask about the Sales domain?`
 
-## Test with MCP Inspector
+## Test with the Inspector
 
 You can test the WisdomAI MCP Server using the [MCP Inspector](https://modelcontextprotocol.io/docs/tools/inspector):
 
@@ -176,6 +177,18 @@ The Inspector provides an interactive interface to test tool calls, inspect resp
 | Tools not appearing | Verify that authentication completed successfully and that you have access to at least one WisdomAI domain. |
 | Connection timeout | Check that the server URL is correct (`https://{ACCOUNT}.wisdom.ai/mcp`) and that your network allows outbound HTTPS connections. |
 | Empty responses from chat | Make sure you are providing a valid `domainId`. Use the **list-domains** tool first to find available domain IDs. |
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Connected Apps" icon="plug" href="/settings/connected-apps">
+    Sign in to OAuth-secured MCP server connections an admin has added.
+  </Card>
+
+  <Card title="API Keys" icon="key" href="/settings/api-keys">
+    Create personal bearer tokens for programmatic access.
+  </Card>
+</CardGroup>
 
 <Info>
   For any queries or support, contact our team at [**support@askwisdom.ai**](mailto:support@askwisdom.ai).

@@ -4,9 +4,9 @@ title: "Connect to Amazon Redshift"
 
 WisdomAI allows you to connect to Amazon Redshift by choosing one of three methods:
 
-1. [Direct Connection](#option-1%3A-direct-connection)
-2. [Connect via an SSH Tunnel](#option-2%3A-connect-via-an-ssh-tunnel)
-3. [Connect via VPC Peering](#option-3%3A-connect-via-vpc-peering)
+1. [Direct Connection](#option-1-direct-connection)
+2. [Connect via an SSH Tunnel](#option-2-connect-via-an-ssh-tunnel)
+3. [Connect via VPC Peering](#option-3-connect-via-vpc-peering)
 
 This flexibility ensures you can establish a secure connection that matches your specific network architecture.
 
@@ -21,7 +21,7 @@ Before you begin, make sure you have the following:
 
 ## Option 1: Direct connection
 
-Use this method if your Redshift cluster is publicly accessible or if you have whitelisted WisdomAI's IP addresses in your security group.
+Use this method if your Redshift cluster is publicly accessible or if you have allowlisted WisdomAI's CIDR blocks (`35.238.115.103/32` and `34.82.248.105/32`) in your security group.
 
 1. In WisdomAl, navigate to the **Connections** section and click **Add Connection**.
 2. Select **Redshift** as the data source type.
@@ -97,7 +97,7 @@ Use this method to securely connect to a Redshift cluster that is not publicly a
 
 This method establishes a private and secure network connection between WisdomAI's AWS environment and your Amazon VPC, preventing exposure to the public internet.
 
-This is a standardized procedure for all supported data sources hosted on AWS. For the complete, step-by-step instructions, please refer to our comprehensive guide: [Connect via AWS VPC Peering](https://docs.askwisdom.ai/getting-started/connect-data-sources/connect-aws-vpc-peering).
+This is a standardized procedure for all supported data sources hosted on AWS. For the complete, step-by-step instructions, please refer to our comprehensive guide: [Connect via AWS VPC Peering](/getting-started/connect-data-sources/connect-aws-vpc-peering).
 
 ## Next steps
 

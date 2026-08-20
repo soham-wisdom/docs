@@ -1,0 +1,123 @@
+---
+title: "Prompt Mode"
+keywords: ["agent", "agents", "create agent", "prompt mode"]
+---
+
+Prompt Mode is the fastest way to build an agent in WisdomAI. Describe what you want the agent to do in plain language, test it, and the agent is ready. This tutorial walks through creating your first Prompt Mode agent end-to-end.
+
+<Note>
+  1. This guide uses sales-monitoring scenarios, but you can apply these steps to any metric you need to track.
+  2. The Agents feature is currently in beta.
+  3. If you need multi-step workflows with branching logic, see [Visual Mode](/setting-up-wisdom-ai/agents/visual-mode) instead.
+</Note>
+
+## Before you begin
+
+Make sure you have the following:
+
+- **Access to WisdomAI**: An active account with access to the **Agents** tab.
+- **A connected domain**: A [domain](/setting-up-wisdom-ai/basic-tutorial-connect-and-test) connected to the data you want the agent to work with.
+- **A delivery channel**: Email or Slack, ready to configure. To deliver to Slack, an administrator must first connect your Slack workspace to WisdomAI.
+  <Note>
+    See the [Slack](/integrations/connect-to-slack) guide for setup steps.
+  </Note>
+
+## Create an Agent
+
+To create a new agent, follow these steps:
+
+1. From the sidebar on the left, select the **Agents** tab.
+2. If no agents have been configured, you will see a welcome screen. Click **Get started**.
+
+![Screenshot showing the Get Started button](/images/2025-08-26_12-26-03.png)
+
+3. **Select an Agent**: In the **Create Agent** modal, select **Prompt Agent**. A prompt form opens.
+
+<Note>
+  Use the toggle in the top-right corner of the form to switch between **Prompt** and [**Visual**](/setting-up-wisdom-ai/agents/visual-mode) mode.
+
+  <img
+    src="/images/prompt-mode-v1.png"
+    alt="Screenshot showing Prompt mode"
+    lightAlt="Screenshot showing Prompt mode"
+    darkAlt="Screenshot showing Prompt mode"
+  />
+
+</Note>
+
+4. **Agent Name**: Provide a descriptive name for your Agent to easily identify it later.
+5. Configure the **Activation** **Trigger**. The optional trigger allows you to choose between two modes of operation: scheduled reporting or conditional monitoring.
+   1. **Trigger Disabled (Scheduled Reporting)**: Leave the trigger disabled to use the Agent for scheduled reporting. In this mode, the analysis will always run and send out a notification according to the schedule you set.
+   2. **Trigger Enabled (Conditional Monitoring)**: Enable the trigger to use the Agent as a monitor for specific conditions. In this mode, an analysis and notification are sent only if the trigger's conditions are satisfied.
+      - In the text box, describe the condition. You can write complex criteria. For example: `If total sales in the last year fall below $100,000`.
+      - Click **Test** to verify whether the condition is currently met based on your data.
+        <Tip>
+          Start with simple, single-condition triggers to ensure they work as expected before creating more complex ones.
+        </Tip>
+
+![Agent configuration screen with trigger enabled](/images/agent-new-ui-02.png)
+
+6. Define the **Work Description**. This is the task the Agent will perform if the trigger condition is met.
+   - In the work description text box, describe the analysis and action you want in natural language. For example: `Send me a list of all lost deals along with their region, their owner, and their total value`.
+   - Click **Test** to run the analysis and see a sample of the output. This allows you to preview the results that will be sent in the notification.
+7. Set the Schedule for the agent by selecting one of the following tabs. Every tab includes a time zone selector.
+   - **Hourly**: Choose the run interval and the minute within the hour to run at.
+   - **Daily**: Runs the agent every day at the time you specify.
+   - **Weekly**: Choose which day(s) to run on. Select individual days, or use the Weekdays, Weekends, or Every day presets, then set the time.
+   - **Monthly**: Choose a day of the month and a time. The agent runs on that day each month.
+   - **Custom**: Define a cron expression (minute, hour, day, month, weekday) for schedules the preset tabs don't cover.
+8. Configure **Notifications** to define how you will receive the analysis results.
+   - **Email**: Select this option and enter one or more email addresses. The notification will contain charts and tables from the analysis.
+   - **Slack**: Select this option and specify the Slack channel names.
+9. Click **Create Agent** to save and activate it.
+
+![Create Agent button to save and activate the agent](/images/agent-new-ui-09.png)
+
+10. You will receive a notification alerting you that you have been subscribed to that Agent. From there, you can directly access it using the **View Agent** button. This is what an email notification looks like:
+
+![2025-08-27\_08-57-07.png](/images/2025-08-27_08-57-07.png)
+
+## Test an Agent during configuration
+
+While creating or editing an Agent, you can test its two main components, the **Activation Trigger** and the **Work Description**, independently before saving. This helps you refine each part and ensure the Agent will behave as expected.
+
+- **Test the Activation Trigger**: Below the trigger text box (visible only when the trigger is enabled), click **Test** to verify if your condition is currently met based on the data. This is useful for verifying that your natural language criteria are written correctly and will activate when you expect them to. The test will show you if the trigger would fire and why.
+- **Test the Work Description**: Below the work description text box, click **Test** to run the analysis and preview the output. This allows you to see a sample of the report that the Agent will generate, so you can adjust the description to get the exact information you need in your notifications.
+
+![Gif showing the Test button in action](/images/agent-new-ui-gif.gif)
+
+## Use Deep Analysis with an Agent
+
+You can have an Agent run its analysis using the Deep Analysis feature. When you enable Deep Analysis for an Agent, it performs a more thorough analysis by exploring multiple aspects of the data and providing comprehensive insights. Deep Analysis runs more thoroughly than a standard agent run, so it takes longer but produces more complete insights.
+
+1. When creating or editing an Agent, enable the **Deep Analysis** toggle.
+2. When the Agent runs, it will automatically generate and execute a multi-step analysis plan based on your work description. You will not be prompted to approve the plan; it will run automatically.
+
+<Note>
+  To learn more about this functionality, read the [Use the Deep Analysis Functionality](/advanced-features/deep-analysis) article.
+</Note>
+
+![Snippet showing the Deep Analysis toggle enabled](/images/agent-new-ui-da.png)
+
+## Manage agent versions
+
+Every edit publishes a new version of the agent. Versions give you a history of every change, so you can see what a past publish looked like or restore it if a newer change causes problems.
+
+<img
+  src="/images/prompt-mode-versioning.png"
+  alt="Snippet showing the prompt versioning"
+  lightAlt="Snippet showing the prompt versioning"
+  darkAlt="Snippet showing the prompt versioning"
+/>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Manage Your Agents" icon="sliders" href="/setting-up-wisdom-ai/agents/manage-agents">
+    Explore how to test, edit, share, and view the run history of your existing agents.
+  </Card>
+
+  <Card title="Connect to Slack" icon="slack" href="/integrations/connect-to-slack">
+    Set up the Slack integration to receive notifications from your agents and dashboards.
+  </Card>
+</CardGroup>

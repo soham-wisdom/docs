@@ -1,0 +1,158 @@
+---
+title: "Manage your Agents"
+keywords: ["agent", "agents", "manage agents"]
+boost: 6
+---
+
+After an Agent is created, it appears in a list on the main **Agents** page. From this page, you can manage all the Agents you have access to.
+
+<img
+  alt="Snippet showing the options to manage an agent"
+  lightAlt="Snippet showing the options to manage an agent"
+  darkAlt="Snippet showing the options to manage an agent"
+  src="/images/manage-agent-v1-4.png"
+  className="dark:hidden"
+/>
+<img
+  alt="Snippet showing the options to manage an agent"
+  lightAlt="Snippet showing the options to manage an agent"
+  darkAlt="Snippet showing the options to manage an agent"
+  src="/dark-img/manage-agent-v1-3-1.png"
+  className="hidden dark:block"
+/>
+
+To manage an individual agent, locate it in the list and click the **three-dot menu (...)** under the **Actions** column. A dropdown menu will appear with the following options:
+
+- **Trigger agent**: Manually runs the Agent’s entire workflow. The Agent will evaluate its trigger (if enabled) and, if the conditions are met (or if the trigger is disabled), run the full analysis and send a notification.
+  Once you get the notification, you will be able to:
+  - **View in WisdomAI**: it takes you to the chat window.
+  - **View Agent**: it takes you to the agent configuration page.
+
+![Snippet showing the email notification when the agent performs the analysis](/images/2025-08-27_09-28-10.png)
+
+- **Enable agent / Disable agent**: Toggles the agent between the **Active** and **Inactive** states. Disabling an agent stops it from running on its schedule; enabling it resumes normal runs and notifications. See [Agent states](#agent-states) below.
+- **Edit agent**: Opens the canvas for Visual agents, allowing you to modify the Agent's name, trigger, work description, or schedule.
+- **Share**: Allows you to share the Agent with other users for collaboration.
+  - **Manage access**: grant **Editor** or **Viewer** access for that agent.
+  - **Manage general access**: share it with everyone in your organization.
+    <img
+      src="/images/2025-08-27_09-20-17.png"
+      alt="Snippet showing the share modal"
+      title="2025-08-27_09-20-17.png"
+      className="mr-auto"
+      style={{ width:"70%" }}
+    />
+- **Duplicate agent**: Creates a copy of the agent that you can edit independently, without affecting the original.
+- **Move to debug**: Switches the agent to the **Debug** state. The agent still runs on its schedule and produces output, but doesn't send notifications to subscribers. Use this to validate changes against live data without alerting your team.
+- **Delete**: Permanently removes the Agent. This action cannot be undone.
+
+## View previous Runs
+
+You can view a detailed history of every time an agent has run. This log is useful for auditing and debugging an agent's behavior over time.
+
+1. To see the log, find your agent on the **Agents** page and click the **Previous Runs** link in its corresponding row.
+2. This will take you to the **Previous Runs** page, which displays a timeline of all past executions. Each entry in the log shows the status of the agent's key stages:
+
+| **Stage** | **Description** |
+| :-- | :-- |
+| **WAKE UP** | Confirms the agent started at its scheduled time. |
+| **EVALUATION** | Shows whether the trigger criteria were met. |
+| **ANALYSIS** | Confirms if the analysis was completed successfully. |
+| **NOTIFICATION** | Shows if the notification was sent successfully or if there was an error. |
+
+**Visual Agents** log each run per node. You can replay any run on the canvas to review the status of each node.
+
+<img
+  alt="Snippet showing rusn log per node"
+  lightAlt="Snippet showing rusn log per node"
+  darkAlt="Snippet showing rusn log per node"
+  src="/images/log-per-node.png"
+  className="dark:hidden"
+/>
+<img
+  alt="Snippet showing rusn log per node"
+  lightAlt="Snippet showing rusn log per node"
+  darkAlt="Snippet showing rusn log per node"
+  src="/dark-img/log-per-node.png"
+  className="hidden dark:block"
+/>
+
+3. If an analysis was successfully generated, you can click the **View Conversation** button within the ANALYSIS step. This will take you to the specific conversation where you can inspect the detailed results and the exact query that was run for that execution.
+
+![Gif showing the Previous Runs](/images/view-previous-runs.gif)
+
+## RBAC
+
+Use Role-Based Access Control (RBAC) to manage collaboration. Refer to the table below to understand the differences between Editor and Viewer permissions and how they respect existing data access rules.
+
+| Feature | Editor | Viewer |
+| :-- | :-: | :-: |
+| View Agent & Run History | ✅ | ✅ |
+| Edit Configuration | ✅ | ❌ |
+| Trigger/Test Runs | ✅ | ❌ |
+| Delete Agent | ✅ | ❌ |
+
+## Agent states
+
+Every agent is always in one of three states, shown next to its name on the Agents page:
+
+- **Active**: The agent runs normally and delivers notifications to its configured channel.
+- **Inactive**: The agent doesn't run at all, scheduled or otherwise.
+- **Debug**: The agent still runs on its schedule and produces output, but doesn't notify subscribers. Use this state to validate changes against live data without alerting your team.
+
+### Changing an agent's state
+
+From the agent's three-dot menu, you can select **Enable agent**, **Disable agent**, or **Move to debug** to change its state:
+
+- An agent can only be moved to **Debug** from the **Inactive** state. Otherwise, **Move to debug** is greyed out.
+- **Trigger agent** is also disabled while the agent is **Inactive**.
+
+![GIF showing the agent status](/images/gifs/agent-status-gv.gif)
+
+{/* <video
+  autoPlay
+  muted
+  loop
+  playsInline
+  className="w-full aspect-video rounded-xl"
+  src="/videos/agent-status.mp4"
+></video> */}
+
+## Reports
+
+Each agent has a **Reports** list of its generated artifacts, with an **Export to PDF** action. (DOCX export is available via the API.)
+
+To view an agent's reports:
+
+1. On the **Agents** page, find the **Reports** column. Agents that have generated at least one report show an icon there, agents with no runs yet show none.
+2. Click the icon to open that agent's Reports list.
+
+<Frame>
+  <img
+    src="/images/agent-reports-column-v1.png"
+    alt="Agent Reports Column"
+    lightAlt="Agent Reports Column"
+    darkAlt="Agent Reports Column"
+  />
+</Frame>
+
+3. Each row shows the report name and the date and time it ran, along with its **Delivery** method and **Channel or Recipient**.
+4. Click the **three-dot menu** next to a report to:
+   - **Share Link**: Copy a shareable link to that report.
+   - **Export to PDF**: Download the report as a PDF.
+
+<Frame>
+  ![Agent Reports List](/images/agent-reports-list-v1.png)
+</Frame>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Connect to Slack" icon="slack" href="/integrations/connect-to-slack">
+    Set up the Slack integration to receive notifications from your agents and dashboards.
+  </Card>
+
+  <Card title="Use Expert Mode" icon="magnifying-glass-chart" href="/chat/overview#choose-a-mode">
+    Perform in-depth investigations for complex questions and receive a detailed report.
+  </Card>
+</CardGroup>

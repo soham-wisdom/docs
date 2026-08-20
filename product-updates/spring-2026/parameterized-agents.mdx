@@ -1,8 +1,9 @@
 ---
 title: "Parameterized Agents"
+boost: 0.3
 ---
 
-Parameterized Agents let you define an input schema on any agent so it accepts runtime variables, an org ID, a department name, a list of assets to analyze, or a recipient email. One agent definition can then run for multiple subscribers, with each run scoped to that person's data permissions and parameter values. This guide walks you through defining input parameters, configuring subscriptions, and managing templates.
+Parameterized Agents let you define an input schema on any agent so it accepts runtime variables, an org ID, a department name, a list of assets to analyze, or a recipient email. One agent definition can then run for multiple subscribers, each with its own parameter values. Every run executes with the agent owner's data access, not the subscriber's. This guide walks you through defining input parameters, configuring subscriptions, and managing templates.
 
 ## How it works
 
@@ -10,22 +11,20 @@ An adaptable execution workflow that maps central logic templates to individual 
 
 <Steps>
   <Step title="Define input parameters" icon="sliders">
-    Open your agent in edit mode and define an input schema: variable name, type, description, and an optional default value. Supported types are text, number, list, email, and enum. Parameters can also bind automatically to user identity attributes (name, email, and role) resolved from the subscriber's profile at runtime.
+    Open your agent in edit mode and define an input schema: variable name, type, description, and an optional default value. Supported types are text, number, boolean, email, and Slack.
   </Step>
   <Step title="Collect runtime parameters" icon="input-text">
-    When a user manually triggers a parameterized agent, a generated input form collects their values. Submitted values are injected throughout the agent's prompts and node configurations using `{{variable_name}}` interpolation.
+    When a user manually triggers a parameterized agent, a generated input form collects their values. Submitted values are injected wherever you reference the parameter throughout the agent's prompts and node configurations.
   </Step>
-  <Step title="Iterate over lists" icon="arrows-repeat">
-    For list-type parameters, the agent loops over each item and produces per-item outputs. Each iteration runs in an independent execution context, meaning one iteration's failure does not affect others.
+  <Step title="Iterate over parameter value sets" icon="arrows-repeat">
+    Provide multiple value sets and the agent runs once per set, each in an independent context. This is how you iterate over a collection, since input parameters don't support a list type.
   </Step>
   <Step title="Manage subscriptions and templates" icon="users-gear">
     Admins can publish an agent as a template and push-enroll users as subscribers. Each subscriber has their own parameter bindings. When the agent runs:
 
-    - Each subscriber receives a run scoped to their identity and parameters.
-    - Row-level security and parameterized data source connections are enforced per subscriber. The creator's permissions are never applied to a subscriber's run.
+    - Each subscriber receives a run with their own parameter values. The run executes with the agent owner's data access.
+    - Runs execute under the runner's (owner's) identity, and RLS/CLS are enforced based on the runner's permissions, not the subscriber's.
     - Failures are isolated: one subscriber's error does not affect any other subscriber's run.
-
-    Users can also self-subscribe from the **Templates** tab in the Agents surface.
   </Step>
 </Steps>
 
@@ -36,7 +35,7 @@ Depending on your subscription status, agents will appear in one of two distinct
 | Tab | What it shows |
 | :-- | :-- |
 | **My Agents** | Agents you created and agents you are subscribed to. Subscribed agents display a Subscribed pill. |
-| **Templates** | Published agent templates available to you that you have not yet subscribed to. |
+| **Agent Runs** | A history of each agent execution, with logs, node-by-node inspection, and reviewed runs. |
 
 ## Target users
 
@@ -44,13 +43,13 @@ Parameterized Agents are available to:
 
 - **Admins**: Define input schemas, publish templates, and push-enroll subscribers.
 - **Agent Builders**: Build parameterized workflows and test with different input values.
-- **All users**: Subscribe to published templates and trigger agents with their own parameters via the input form.
+- **All users**: Once push-enrolled by an admin, trigger agents with their own parameters via the input form.
 
 ## FAQs
 
 <AccordionGroup>
   <Accordion title="What parameter types are supported?">
-    Text, number, list, email, and enum. File and attachment input support is on the roadmap.
+    Text, number, boolean, email, and Slack. File and attachment input support is on the roadmap.
   </Accordion>
 
   <Accordion title="Is scheduled fan-out supported?">
@@ -58,11 +57,11 @@ Parameterized Agents are available to:
   </Accordion>
 
   <Accordion title="Does each subscriber's run use their own row-level security?">
-    Yes. The subscriber's RLS and parameterized data source connection are always used. The creator's permissions are never applied to a subscriber's run.
+    No. Runs execute under the runner's (owner's) identity, and RLS/CLS are enforced based on the runner's permissions, not the subscriber's.
   </Accordion>
 
   <Accordion title="Can subscribers see each other's run logs or outputs?">
-    There is no distinct subscriber role currently. Admins set up the agent and define parameters. Users with editor access can trigger the agent based on their own parameters and can see all runs of that parameterized agent.
+    No. Each subscriber can only see their own runs. Run logs and outputs are not shared across subscribers.
   </Accordion>
 
   <Accordion title="Can an admin update a template after users have subscribed?">
@@ -76,7 +75,19 @@ Parameterized Agents are available to:
 
 ## Next steps
 
-<CardGroup cols={2}>
+<CardGroup cols={3}>
+  <Card title="Agents" icon="robot" href="/setting-up-wisdom-ai/agents/agents">
+    Get an overview of what agents are and the two ways you can build them.
+  </Card>
+
+  <Card title="Build an Agent in Visual Mode" icon="diagram-project" href="/setting-up-wisdom-ai/agents/visual-mode">
+    Step-by-step guide to building your first Visual Mode agent.
+  </Card>
+
+  <Card title="Create an Agent" icon="wand-magic-sparkles" href="/setting-up-wisdom-ai/agents/tutorial-create-agent">
+    Learn the basics of setting up a new AI agent in Prompt Mode.
+  </Card>
+
   <Card title="Understand domains" icon="layer-group" href="/setting-up-wisdom-ai/manage-domains/understand-domains">
     Learn how domains organize the data logic and permissions your agents run against.
   </Card>

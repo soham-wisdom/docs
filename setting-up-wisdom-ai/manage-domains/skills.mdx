@@ -1,0 +1,126 @@
+---
+title: "Understand Skills"
+keywords: ["skill", "skills"]
+---
+
+Skills are reusable blocks of instructions created by domain and data admins that tell WisdomAI how to handle specific types of messages. When you send a message, WisdomAI checks which skills are available for your domain and loads the most relevant one, ensuring the same instructions are followed consistently every time.
+
+<Note>
+  - Skills is currently in beta and available to all accounts. Administrators and Data Administrators can create, edit, and delete skills. 
+  - Explorers can trigger skill activation in chat, including explicit `/skill-name` invocation, but can't create, edit, or delete skills. Explorers can also run `skill-creator` and get a full draft back in chat, but since Explorers do not have create or write access, the draft is not saved to the domain.
+</Note>
+
+## What a skill contains
+
+Each skill has three components:
+
+- **Name**: a stable, lowercase, hyphenated identifier (e.g. `revenue-analysis`). Also used for explicit `/skill-name` invocation in chat.
+- **Description**: the trigger signal. Tells WisdomAI when to activate the skill.
+- **Instructions**: the full guidance: steps, data source rules, output expectations, and business logic.
+
+Each skill is a Markdown document with YAML frontmatter:
+
+```
+---
+name: skill-name
+description: What this skill does and when to activate it.
+---
+
+Instructions go here.
+```
+
+## How WisdomAI activates a skill
+
+When you send a message in a domain with skills configured:
+
+1. WisdomAI resolves which skills are available for your domain.
+2. The agent sees a compact list of available skills — name and description only.
+3. The agent selects the most relevant skill for the request.
+4. The full skill instructions are loaded into the agent's context.
+5. The agent responds using the skill guidance.
+
+If no skill matches, WisdomAI answers normally without loading any skill.
+
+### Explicit invocation
+
+Type `/skill-name` in the chat input to invoke a skill directly, bypassing automatic selection. This is useful for testing a skill or for power users who know exactly which workflow to run.
+
+<Note>
+  Explorers do not have access to the Skills tab and can't browse the list of configured skills. If your team relies on explicit invocation, share skill names with Explorers directly so they know what to type.
+</Note>
+
+### Skill loaded indicator
+
+When a skill activates, WisdomAI displays a "Skill loaded: `skill-name`" indicator in the conversation. Expand it to see which skill was used and inspect its details.
+
+## Skills vs. Knowledge
+
+|  | Knowledge | Skills |
+|---|---|---|
+| What it stores | Facts, definitions, reference information | Task-specific guidance and workflows |
+| Think of it as | A company wiki entry | A standard operating procedure |
+| Example content | "Account managers refer to the business consultants who manage that client group" | "When asked to analyze ARR: use net revenue, exclude test accounts, follow this 4-step workflow..." |
+| When it loads | Retrieved at the start of the turn based on your message | WisdomAI sees name and description first, then loads full instructions when the request matches |
+| Versioned | No | Yes — edits create a new version |
+
+If it is a fact WisdomAI should know, it belongs in Knowledge. If it is a workflow or set of instructions WisdomAI should follow for a specific task, it belongs in Skills.
+
+Avoid these common mistakes:
+
+- Do not put query templates or step-by-step analysis workflows in Knowledge.
+- Do not put metric definitions or data dictionaries in Skills.
+
+## System skills
+
+WisdomAI includes built-in, read-only system skills that are always available and do not need to be added manually. The main system skill is `skill-creator`, which generates a complete skill draft (name, description, and instructions) from a natural-language workflow description you give it in chat.
+
+<Note>
+  To learn how to use `skill-creator` to author a skill, read [Create a Skill](/setting-up-wisdom-ai/manage-domains/create-a-skill).
+</Note>
+
+## Skills tab reference
+
+Find below references for the Skills tab fields.
+
+### Skills list
+
+The **Skills** tab displays a table with three columns:
+
+| Column | Description |
+|---|---|
+| Skill | The skill name (Format must be lowercase, hyphenated) |
+| Description | The description added for that skill |
+| Created By | The username who created the skill, or "Wisdom Internal" for system skills |
+
+The three-dot menu on each row provides **Edit** and **Delete** options. These actions require domain admin access.
+
+### Skill detail view
+
+Clicking a skill opens a detail modal showing the full description and instructions. The modal has **Close** and **Edit** buttons. If you have read-only access, you can view skill details but cannot modify them.
+
+## Permissions
+
+| Role | View Skills tab | Create, edit, delete | Trigger activation in chat |
+|---|---|---|---|
+| Administrator | ✅ | ✅ | ✅ |
+| Data Administrator | ✅ | ✅ | ✅ |
+| Explorer | ❌ | ❌ | ✅ |
+| Observer | ❌ | ❌ | ❌ |
+
+Creating, editing, and deleting skills requires domain write access (Administrator or Data Administrator). Explorers can't see the Skills tab or the list of configured skills, but skills still activate automatically for their messages when relevant, and they can invoke a skill directly with `/skill-name` if they already know its name. Observers cannot use chat at all, so skills do not apply to them. User-level skills scoped to individual users are not yet available.
+
+<Note>
+  To create, edit, or delete a skill, read [Create a Skill](/setting-up-wisdom-ai/manage-domains/create-a-skill).
+</Note>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Create a Skill" icon="wand-magic-sparkles" href="/setting-up-wisdom-ai/manage-domains/create-a-skill">
+    Use skill-creator to draft and save a new skill from a plain-language description.
+  </Card>
+
+  <Card title="Context Tab" icon="layer-group" href="/setting-up-wisdom-ai/manage-domains/context-tab">
+    See how Skills relate to the other context types WisdomAI can load.
+  </Card>
+</CardGroup>

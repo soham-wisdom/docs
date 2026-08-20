@@ -1,5 +1,6 @@
 ---
 title: "Supported Data Sources"
+boost: 0.15
 ---
 
 This page covers the data sources that can be connected to WisdomAI, including databases, data warehouses, and Files (PDFs, PPTs, Docs). It outlines the connection requirements, necessary configurations, and troubleshooting tips for seamless integration.
@@ -23,6 +24,8 @@ WisdomAI works with the following data sources:
 - ClickHouse (Beta)
 - Trino (Beta)
 - CSV files
+- Azure DevOps
+- Dremio
 
 <Warning>
   **Note on Syncing**: After successfully adding a connection, the initial sync may take a few minutes to complete before data is available for analysis.
@@ -35,10 +38,12 @@ WisdomAI works with the following data sources:
 - Azure Blob Storage
 - SharePoint
 - Direct upload
+- GitHub 
+- GitLab
 
 Supported file types: PDFs, DOC/DOCX files, PowerPoint files, txt files, and images.
 
-To learn how to connect to your Data Sources, read the [Basic Tutorial: Connect and Test](/setting-up-wisdom-ai/basic-tutorial-connect-and-test).
+To learn how to connect to your Data Sources, read the [Quickstart: Connect and Test](/setting-up-wisdom-ai/basic-tutorial-connect-and-test).
 
 ### Connection requirements
 
@@ -55,6 +60,10 @@ This section outlines common prerequisites for connecting to data sources. Speci
 <Tabs>
   <Tab title="PostgreSQL">
     The following table lists the requirements you must provide when connecting to PostgreSQL.
+
+    <Note>
+      If your database is protected by a firewall or network access policies, allowlist both of WisdomAI's CIDR blocks (35.238.115.103/32 and 34.82.248.105/32).
+    </Note>
 
     <Info>
       SSH settings are optional.
@@ -87,6 +96,10 @@ This section outlines common prerequisites for connecting to data sources. Speci
   <Tab title="Microsoft SQL Server">
     The following table lists the requirements you must provide when connecting to Microsoft SQL Server.
 
+    <Note>
+      If your database is protected by a firewall or network access policies, allowlist both of WisdomAI's CIDR blocks (35.238.115.103/32 and 34.82.248.105/32).
+    </Note>
+
     | Requirement | Description |
     | :-- | :-- |
     | Server | SQL Server address or instance name |
@@ -112,6 +125,10 @@ This section outlines common prerequisites for connecting to data sources. Speci
   <Tab title="Databricks">
     The following table lists the requirements you must provide when connecting to Databricks.
 
+    <Note>
+      If your database is protected by a firewall or network access policies, allowlist both of WisdomAI's CIDR blocks (35.238.115.103/32 and 34.82.248.105/32).
+    </Note>
+
     | Requirement | Description |
     | :-- | :-- |
     | Server Hostname | Databricks SQL endpoint hostname |
@@ -134,6 +151,10 @@ This section outlines common prerequisites for connecting to data sources. Speci
   </Tab>
   <Tab title="Snowflake">
     The following table lists the requirements you must provide when connecting to Snowflake.
+
+    <Note>
+      If your database is protected by a firewall or network access policies, allowlist both of WisdomAI's CIDR blocks (35.238.115.103/32 and 34.82.248.105/32).
+    </Note>
 
     | Requirement | Description |
     | :-- | :-- |
@@ -189,6 +210,10 @@ This section outlines common prerequisites for connecting to data sources. Speci
   <Tab title="Amazon Redshift">
     The following table lists the requirements you must provide when connecting to Amazon Redshift.
 
+    <Note>
+      If your database is protected by a firewall or network access policies, allowlist both of WisdomAI's CIDR blocks (35.238.115.103/32 and 34.82.248.105/32).
+    </Note>
+
     <Info>
       SSH settings are optional.
     </Info>
@@ -215,7 +240,7 @@ This section outlines common prerequisites for connecting to data sources. Speci
     - UTF-8 encoding recommended
     - Headers should be in the first row
 
-    To learn how to upload them, read [Upload CSV files](/setting-up-wisdom-ai/basic-tutorial-connect-and-test#upload-csv-files).
+    To learn how to upload them, read [Upload CSV files](/setting-up-wisdom-ai/basic-tutorial-connect-and-test#3-upload-csv-files-optional).
   </Tab>
   <Tab title="Amazon Athena">
     The following table lists the requirements you must provide when connecting to Amazon Athena.
@@ -241,6 +266,10 @@ This section outlines common prerequisites for connecting to data sources. Speci
   <Tab title="Azure Synapse">
     The following table lists the requirements you must provide when connecting to Azure Synapse.
 
+    <Note>
+      If your database is protected by a firewall or network access policies, allowlist both of WisdomAI's CIDR blocks (35.238.115.103/32 and 34.82.248.105/32).
+    </Note>
+
     | Requirement | Description |
     | :-- | :-- |
     | Workspace SQL endpoint | The SQL endpoint URL for your workspace |
@@ -265,6 +294,10 @@ This section outlines common prerequisites for connecting to data sources. Speci
   </Tab>
   <Tab title="Azure Synapse Serverless">
     The following table lists the requirements you must provide when connecting to Azure Synapse Serverless.
+
+    <Note>
+      If your database is protected by a firewall or network access policies, allowlist both of WisdomAI's CIDR blocks (35.238.115.103/32 and 34.82.248.105/32).
+    </Note>
 
     | Requirement | Description |
     | :-- | :-- |
@@ -302,6 +335,10 @@ This section outlines common prerequisites for connecting to data sources. Speci
   <Tab title="ClickHouse">
     The following table lists the requirements you must provide when connecting to ClickHouse.
 
+    <Note>
+      If your database is protected by a firewall or network access policies, allowlist both of WisdomAI's CIDR blocks (35.238.115.103/32 and 34.82.248.105/32).
+    </Note>
+
     | Requirement | Description |
     | :-- | :-- |
     | Host | The hostname or IP address of your ClickHouse server |
@@ -325,6 +362,10 @@ This section outlines common prerequisites for connecting to data sources. Speci
   </Tab>
   <Tab title="Trino">
     The following table lists the requirements you must provide when connecting to Trino.
+
+    <Note>
+      If your database is protected by a firewall or network access policies, allowlist both of WisdomAI's CIDR blocks (35.238.115.103/32 and 34.82.248.105/32).
+    </Note>
 
     | Requirement | Description |
     | :-- | :-- |
@@ -418,6 +459,125 @@ This section outlines common prerequisites for connecting to data sources. Speci
     Username: wisdom_read_only
     Password: ********
     Database filters: sales_v, marketing_v
+    ```
+  </Tab>
+  <Tab title="GitHub">
+    The following table lists the requirements you must provide when connecting to GitHub.
+
+    | Requirement | Description |
+    | :-- | :-- |
+    | Connection name | A name to identify this connection |
+    | Repository URL | The URL of the repository you want WisdomAI to extract context from |
+    | Personal access token | Required for private repositories |
+    | Branch | The branch WisdomAI should crawl |
+
+    <Note>
+      A personal access token is required for private repositories.
+    </Note>
+
+    Here's an example connection:
+
+    ```txt
+    Connection name: product-docs-repo
+    Repository URL: https://github.com/your-org/your-repo
+    Personal access token: ********
+    Branch: main
+    ```
+  </Tab>
+  <Tab title="GitLab">
+    The following table lists the requirements you must provide when connecting to GitLab.
+
+    | Requirement | Description |
+    | :-- | :-- |
+    | Connection name | A name to identify this connection |
+    | Project URL | The URL of the GitLab project you want WisdomAI to extract context from |
+    | Access token | Required for private projects |
+    | Branch | The branch WisdomAI should crawl |
+
+    <Note>
+      An access token is required for private projects.
+    </Note>
+
+    Here's an example connection:
+
+    ```txt
+    Connection name: product-docs-project
+    Project URL: https://gitlab.com/your-group/your-project
+    Access token: ********
+    Branch: main
+    ```
+  </Tab>
+  <Tab title="Azure DevOps">
+    The following table lists the requirements you must provide when connecting to Azure DevOps.
+
+    | Requirement | Description |
+    | :-- | :-- |
+    | Connection name | A name to identify this connection |
+    | Repository URL | The URL of the Azure DevOps repository you want WisdomAI to extract context from |
+    | Organization | The Azure DevOps organization that owns the repository |
+    | Project | The Azure DevOps project that contains the repository |
+    | Repository | The name of the repository |
+    | Repository ID | The unique identifier for the repository |
+    | Server base URL | The base URL for on-premises Azure DevOps Server instances |
+    | Branch | The branch WisdomAI should crawl |
+
+    You must also choose an authentication method:
+
+    | Authentication method | Description |
+    | :-- | :-- |
+    | Connect as user | Authenticate with your own Azure DevOps user account via OAuth |
+    | Wisdom managed app | Use WisdomAI's managed OAuth app credentials |
+    | Service principal | Authenticate using a Tenant ID, OAuth client ID, and OAuth client secret |
+    | Managed identity | Authenticate using an Azure managed identity |
+    | Personal access token | Authenticate using a PAT generated in Azure DevOps |
+    | SSH key | Authenticate using an SSH key pair |
+
+    <Note>
+      The **Tenant ID**, **OAuth client ID**, and **OAuth client secret** fields are only required when using the **Service principal** authentication method.
+    </Note>
+
+    Here's an example connection:
+
+    ```txt
+    Connection name: product-docs-repo
+    Repository URL: https://dev.azure.com/your-org/your-project/_git/your-repo
+    Organization: your-org
+    Project: your-project
+    Repository: your-repo
+    Branch: main
+    Authentication method: Personal access token
+    Personal access token: ********
+    ```
+  </Tab>
+  <Tab title="Dremio Connection">
+    The following table lists the requirements you must provide when connecting to Dremio.
+
+    | Requirement | Description |
+    | :-- | :-- |
+    | Connection name | A name to identify this connection |
+    | Host | The hostname or IP address of your Dremio server |
+    | Port | The port number used for the connection |
+    | Authentication | Basic (Software / on-prem) or Bearer (Cloud / PAT) |
+    | Username | The Dremio username (Basic authentication) |
+    | Password/PAT | The password or personal access token, depending on the authentication method |
+    | Use TLS | Whether to encrypt the connection using TLS |
+    | Skip TLS Certificate Verification | Whether to skip verification of the TLS certificate |
+    | Catalog Filters | Optionally filter Dremio catalogs (sources / spaces) and their schemas |
+
+    <Note>
+      Each catalog filter can have its own schema filters. You can also add alternate credential sets under **Advanced** to use different credentials based on user attributes (e.g. region, environment); any fields left empty for an alternate are inherited from the primary connection at runtime.
+    </Note>
+
+    Here's an example connection:
+
+    ```txt
+    Connection name: analytics-dremio
+    Host: dremio.example.com
+    Port: 9047
+    Authentication: Bearer (Cloud / PAT)
+    Password/PAT: ********
+    Use TLS: True
+    Skip TLS Certificate Verification: False
     ```
   </Tab>
 </Tabs>
