@@ -2,9 +2,18 @@
 title: "Domain Groups & Auto Domain Selection"
 ---
 
-WisdomAI organizes context into **domains**, so that a question about billing draws only on billing tables and billing definitions, and a question about product usage draws only on product tables and product definitions. That isolation is deliberate: it's what makes each domain's answers precise, scoped to the right business area, and correctly permissioned.
+WisdomAI organizes context into **domains**, so that a question about billing draws only on billing tables and billing definitions, and a question about product usage draws only on product tables and product definitions. That isolation is deliberate: it's what makes each domain's answers precise, scoped to the right business area, and correctly permissioned.
 
-Some questions, however, legitimately span more than one domain: *"Is churn related to a drop in product engagement?"* needs a retention domain and a product-usage domain at once. Two features let WisdomAI answer those questions without abandoning domain isolation:
+Some questions, however, legitimately span more than one domain: *"Is churn related to a drop in product engagement?"* needs a retention domain and a product-usage domain at once. Two features let WisdomAI answer those questions without abandoning domain isolation: **Auto Domain Selection**, which routes a question to the right domain automatically at runtime, and **Domain Groups**, which let an admin pre-declare that specific domains are related.
+
+This page covers:
+
+- [Why it matters](#why-it-matters) — the two distinct problems cross-domain questions raise
+- [Auto Domain Selection](#auto-domain-selection) — what it is, and when to use it
+- [Domain Groups](#domain-groups) — what it is, and when to use it
+- An [FAQ](#faq) comparing the two features directly
+
+For setup and step-by-step usage instructions, see [Set Up and Use Domain Groups & Auto Domain Selection](/setting-up-wisdom-ai/domain-groups-how-to).
 
 | **Feature** | **What it does** | **Scope** |
 | --- | --- | --- |
@@ -13,16 +22,16 @@ Some questions, however, legitimately span more than one domain: *"Is churn rela
 
 ## Why it matters
 
-Domain isolation is what makes a domain trustworthy, an answer is grounded in that domain's own metric definitions, synonyms, and entities, not assembled from whatever else happens to be in the workspace. But it also means a domain's own context describes *its* data, not how its metrics relate to another domain's.
+Domain isolation is what makes a domain trustworthy, an answer is grounded in that domain's own metric definitions, synonyms, and entities, not assembled from whatever else happens to be in the workspace. But it also means a domain's own context describes *its* data, not how its metrics relate to another domain's.
 
 Cross-domain questions surface two distinct problems:
 
-1. **Routing**: Given a question, which domain(s) should answer it? This is open-ended: the right domain depends on the question, and a large workspace may have dozens of candidates. [Auto Domain Selection](#auto-domain-selection)addresses this.
-2. **Relationships**: Once two or more domains are known to be asked about together, how do their metrics and entities line up? [Domain Groups](#domain-groups) address this by giving admins a place to document shared definitions and cross-domain logic once, at the group level, instead of duplicating them into every domain that needs them. Approved cross-domain queries are saved to the group's own reviewed-query library for the same reason, a query spanning domains only makes sense in that combined context.
+1. **Routing**: Given a question, which domain(s) should answer it? This is open-ended: the right domain depends on the question, and a large workspace may have dozens of candidates. [Auto Domain Selection](#auto-domain-selection) addresses this.
+2. **Relationships**: Once two or more domains are known to be asked about together, how do their metrics and entities line up? [Domain Groups](#domain-groups) address this by giving admins a place to document shared definitions and cross-domain logic once, at the group level, instead of duplicating them into every domain that needs them. Approved cross-domain queries are saved to the group's own reviewed-query library for the same reason, a query spanning domains only makes sense in that combined context.
 
 ## Auto Domain Selection
 
-**Auto** mode reads the current question and conversation, then routes it to the most relevant domain or group automatically, without you selecting one first. Nothing is declared in advance. WisdomAI considers any domain it's permitted to see and picks at runtime.
+**Auto** mode reads the current question and conversation, then routes it to the most relevant domain or group automatically, without you selecting one first. Nothing is declared in advance. WisdomAI considers any domain it's permitted to see and picks at runtime.
 
 Use it when:
 
@@ -31,26 +40,6 @@ Use it when:
 - You're exploring data without a specific domain in mind
 
 Because the candidate set isn't fixed ahead of time, routing accuracy naturally degrades as the domain catalog grows, this is the tradeoff of an unbounded approach.
-
-### Admin setup (required once)
-
-A workspace admin must enable this feature before it's available to anyone.
-
-1. Go to **Settings → Cross-Domain Settings → Auto Domain Selection**
-2. Toggle **Enable Auto Domain Selection** on
-3. *(Workspaces with more than 10 domains)* Configure the **Domain Greenlist**: select the subset of domains WisdomAI is allowed to auto-select from. Required for large workspaces. Without it, Auto mode won't be available.
-
-<Note>
-  The greenlist bounds the candidate pool coarsely. It doesn't replace declaring specific domain relationships, that's what Domain Groups are for.
-</Note>
-
-### Using Auto mode in chat
-
-1. Open the domain selector dropdown in chat
-2. Click **Auto** (sparkles icon)
-3. WisdomAI routes each question to the right domain or group automatically
-
-Switch back to a specific domain or group at any time from the same dropdown.
 
 ## Domain Groups
 
@@ -65,60 +54,6 @@ An admin who already knows that two domains are frequently asked about together,
 | Revenue 360 | CRM + Billing | Renewal, expansion, ARR questions |
 | Ops & Logistics | Warehouse + Fulfillment + Shipping | Order flow questions |
 | Churn & Retention | Retention + Product Analytics | Why accounts churn, engagement-vs-renewal questions |
-
-## Create a domain group
-To create a domain group, follow these steps:
-
-<Note>
-  Only workspace admins can create domain groups. If the option is not visible in Settings, ask your admin.
-</Note>
-
-1. Go to **Settings → Cross-Domain Settings**
-2. Under **Domain Groups**, click **Add Group**
-3. Give the group a clear, business-oriented name (e.g., *"Revenue 360"* rather than *"Salesforce + Stripe"*)
-4. Select two or more domains from the picker
-5. Click **Save**
-
-The group appears in the domain selector dropdown, marked with a Group chip.
-
-![SCREENSHOT: Domain group creation screen showing domain selection](/images/domain-froups-create.png)
-
-**Editing or removing a group**
-
-| **Action** | **Steps** |
-| --- | --- |
-| Edit | **Settings → Cross-Domain Settings** → find the group → update the domain selection → save |
-| Delete | Click the delete icon next to the group. This removes the group only; underlying domains are unaffected |
-
-### Using a group in chat
-For using a group in chant, follow these steps:
-
-1. Open the domain selector at the top of the chat interface
-2. Select a group (marked with a **Group** chip)
-3. The conversation can now draw on any table from any domain in the group
-
-<Note>
-  **Heads up:** Queries that span multiple domains may take slightly longer, since WisdomAI reasons across a larger set of tables.
-</Note> 
-
-## Add cross-domain context
-
-Each domain in a group brings its own context library. That context explains individual domains, but not how the domains relate to each other. Use the **Manage Context** button to add context at the group level.
-
-![SCREENSHOT: The Manage Context button on a domain group](/images/manage-context.png)
-
-Within **Manage Context**, you can add two types of context:
-
-- **Knowledge**: Add guidance on how to use the combined domains together. For example, explain how datasets connect or which business rules apply across all domains in the group.
-- **Reviewed Queries**: The group starts with reviewed queries inherited from all included base domains.
-
-### Cross-domain reviewed queries
-
-When you approve a response within a domain group using thumbs up, WisdomAIAI saves that query to a separate cross-domain reviewed query library. It does not appear in any individual domain's context library.
-
-To view the cross-domain reviewed query library, click in the **Manage Context** button, navigate to **Cross-Domain Library** \> **Reviewed Queries**.
-
-![SCREENSHOT/GIF: The cross-domain reviewed query library showing a newly approved query](/images/cross-domain-reviewed-queries.png)
 
 ## FAQ
 
@@ -137,39 +72,25 @@ To view the cross-domain reviewed query library, click in the **Manage Context**
   </Accordion>
 </AccordionGroup>
 
-## Quick Reference
-
-| **Task** | **Where** |
-| --- | --- |
-| Create, edit, or delete a group | Settings → Cross-Domain Settings → Domain Groups |
-| Enable Auto Domain Selection | Settings → Cross-Domain Settings → Auto Domain Selection |
-| Configure domain greenlist (10+ domains) | Settings → Cross-Domain Settings → Auto Domain Selection |
-| Select a group in chat | Domain selector → item with **Group** chip |
-| Use Auto mode in chat | Domain selector → **Auto** (sparkles icon) |
-
 ## Tips
 
-- **Name groups by business question, not by system.** *"Revenue 360"* is more useful than *"Salesforce + Stripe."*
+- **Name groups by business question, not by system.** *"Revenue 360"* is more useful than *"Salesforce + Stripe."*
 - **Auto mode routes better when domains have clear names and descriptions**, since WisdomAI uses domain metadata to route questions.
-- **If Auto mode consistently reaches across the same two domains, create a group for them.** A recurring cross-domain pattern is a relationship worth bounding explicitly rather than re-solving at runtime.
-- **Groups and Auto mode work together.** When Auto mode is on, WisdomAI can select a domain group, not just individual domains.
+- **If Auto mode consistently reaches across the same two domains, create a group for them.** A recurring cross-domain pattern is a relationship worth bounding explicitly rather than re-solving at runtime.
+- **Groups and Auto mode work together.** When Auto mode is on, WisdomAI can select a domain group, not just individual domains.
 
 ## Next steps
 
 <CardGroup cols={2}>
-  <Card title="Context Libraries" icon="clipboard-list" href="/setting-up-WisdomAI-ai/context-libraries">
+  <Card title="Set Up and Use Domain Groups & Auto Domain Selection" icon="list-check" href="/setting-up-wisdom-ai/domain-groups-how-to">
+    Step-by-step instructions for enabling Auto Domain Selection and creating and using domain groups.
+  </Card>
+
+  <Card title="Context Libraries" icon="clipboard-list" href="/setting-up-wisdom-ai/context-libraries">
     Share business context and knowledge across multiple domains securely.
   </Card>
 
-  <Card title="Provide Feedback to the System" icon="thumbs-up" href="/setting-up-WisdomAI-ai/feedback-mechanisms/provide-feedback-to-the-system">
-    Learn how to rate answers and provide corrections to improve the system's accuracy.
-  </Card>
-
-  <Card title="Validate and Test Answers" icon="check-double" href="/improve-WisdomAI-ai-responses/validate-and-test-answers">
-    Understand the methods for verifying the correctness and reliability of generated answers.
-  </Card>
-
-  <Card title="Advanced Data Modeling" icon="sitemap" href="/setting-up-WisdomAI-ai/advanced-data-modeling-creating-context">
+  <Card title="Advanced Data Modeling" icon="sitemap" href="/setting-up-wisdom-ai/advanced-data-modeling-creating-context">
     Define relationships and Knowledge in your data to enable more powerful analysis.
   </Card>
 </CardGroup>
