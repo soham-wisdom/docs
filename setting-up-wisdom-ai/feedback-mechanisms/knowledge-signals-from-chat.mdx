@@ -1,0 +1,166 @@
+---
+title: "Knowledge Signals from Chat"
+---
+
+This guide explains how Domain Admins and Admins review, capture, and accept knowledge suggestions surfaced from chat conversations.
+
+## Why this feature exists
+
+Your Domain's knowledge base (the business context, metric definitions, and terminology that make answers accurate) isn't a one-time artifact. It degrades. Users ask questions you didn't anticipate, conversations surface edge cases that expose gaps, and new business logic accumulates in chat before it ever makes it into the Domain.
+
+Until recently, that signal was disposable: capturing it required a Domain Admin to remember to go looking for it after the fact. Knowledge Signals from Chat closes that loop across three surfaces: reviewing a full conversation on demand (Surface 1), seeing what context an answer actually used (Surface 2), and, as the newest surface, catching the moment knowledge changes hands while the conversation is still happening, with no button press required (Surface 3).
+
+<Note>
+  This feature is restricted to Domain Admins today across all three surfaces. Expansion to Explorers is planned.
+</Note>
+
+## How it works today
+Learn how knowledge signals work in WisdomAI:
+### Surface 1: Suggest Knowledge from a Conversation (brain icon)
+
+While reviewing any chat conversation in your Domain, you'll see a small brain icon (AI model icon) in the chat controls bar. This is the **Knowledge Suggestions** button.
+
+- **What it does**: clicking it sends the full conversation to an AI analysis pipeline that identifies knowledge claims, business rules, and Domain context that don't yet exist in your Domain knowledge base. It returns a ranked list of suggested knowledge entries.
+- **What you see**: a popover panel, currently labeled "Alpha," appears with the suggested entries. Each suggestion is editable inline.
+
+![image showing brain icon](/images/knowledge-brain-icon-2.png)
+
+For each suggestion, you can:
+
+- **Accept**: adds the entry directly to your Domain knowledge base, effective immediately on future queries.
+- **Decline**: dismisses it from the list.
+- **Edit, then Accept**: refine the wording before saving.
+
+Once accepted, you get a confirmation with a direct link to the Domain Knowledge tab where the new entry lives.
+
+### Surface 2: "Context Used" on Query Responses
+
+Every answer your Domain produces has an information icon (ⓘ). Clicking it opens the **Query Explanation** popover, which shows two things:
+
+1. **What we did**: a natural language explanation of how the system interpreted your question and constructed the answer.
+2. **Context used**: the specific knowledge entries that were retrieved and applied to produce that answer.
+
+This isn't just transparency. It's a diagnostic signal. If the answer was wrong and you see that a stale or incorrect knowledge entry was used, that's your indication to edit or replace it.
+
+<Note>
+  This surface isn't new, but it helps with response explainability.
+</Note>
+
+### Surface 3: Capture knowledge automatically, mid-chat
+
+While chatting, WisdomAI now watches for two signals directly in the conversation, without anyone clicking the brain icon:
+
+- An explicit instruction to persist something ("remember this going forward").
+- A statement that corrects or clarifies an existing knowledge entry.
+
+- **What it does**: when either signal is detected, WisdomAI proposes a knowledge **add** or **update** directly below the conversation, using the same review mechanics as Surface 1 (Accept, Decline, or Edit then Accept), just triggered automatically instead of on demand.
+- **What you see**: a suggestion appears inline, below the chat visualization, with no need to open the Knowledge Suggestions popover first.
+- **Why it matters**: Surface 1 only captures knowledge if someone remembers to go looking for it after the fact. Surface 3 catches it in the moment, which is where most of this signal was previously being lost, per the original launch rationale: "it requires the user to explicitly press the brain icon, which they often may not do while chatting."
+
+## User stories
+
+<AccordionGroup>
+  <Accordion title="Story 1: Capturing a Definition from a Clarification Exchange">
+    **Domain Admin:** "Why is our ARR lower than what the finance team reports?"
+
+    **Agent:** "I'm using contracted monthly revenue × 12. If finance uses recognized revenue, that would explain the gap."
+
+    **Domain Admin:** "Got it, use contracted revenue only."
+
+    A Domain Admin opens Knowledge Suggestions on this conversation. The system surfaces: "ARR should be calculated as contracted monthly revenue × 12, not recognized revenue." The Domain Admin accepts it. From that point on, every ARR question is answered consistently.
+  </Accordion>
+
+  <Accordion title="Story 2: Promoting an Analyst's Tribal Knowledge">
+    A senior analyst uses chat regularly. Over six months, their conversations contain dozens of corrections, clarifications, and edge cases, but none of it is in the Domain.
+
+    A Domain Admin reviews several of the analyst's conversations and runs Knowledge Suggestions on each. In one pass, they surface and accept 15–20 entries that represent years of domain expertise. The knowledge base effectively absorbs a person's institutional memory.
+  </Accordion>
+
+  <Accordion title='Story 3: Using "Context Used" as a Quality Gate'>
+    A Domain Admin sets a weekly routine: review the last week's conversations and spot-check five answers via the ⓘ popover. When the "Context used" section is thin or empty, that's a coverage gap: the Domain is answering without sufficient grounding. When it's populated but the answer was wrong, one of those knowledge entries is stale or incorrect.
+
+    This turns "Context used" into a lightweight audit trail for domain health.
+  </Accordion>
+
+  <Accordion title="Story 4: Correcting a definition without leaving the conversation (new)">
+    **Domain Admin:** "What's our definition of an at-risk account?"
+
+    **Agent:** "Accounts with a health score below 40."
+
+    **Domain Admin:** "Actually, factor in support ticket volume too going forward, remember this."
+
+    WisdomAI proposes an updated knowledge entry inline, below the response, without the Domain Admin ever touching the brain icon. They review the wording and accept it in the same conversation, no context switch required.
+  </Accordion>
+</AccordionGroup>
+
+## FAQs
+
+<AccordionGroup>
+  <Accordion title="Who can use the Knowledge Suggestions button?">
+    Only users with write access to the Domain. Viewers and analysts can see the "Context used" explanation on any answer, but only Domain Admins can accept knowledge.
+  </Accordion>
+
+  <Accordion title="Does accepting a suggestion take effect immediately?">
+    Yes. Once you accept a suggestion from any surface, it's written to the Domain knowledge base and available for retrieval on the next query. There's no staging or pending state in the current release.
+  </Accordion>
+
+  <Accordion title="What if I accept something wrong?">
+    Navigate to the Domain Knowledge tab (the confirmation notification after acceptance includes a direct link). You can edit or delete the entry there. In the future, provenance tracking will make it easier to find and remove entries that originated from a specific conversation.
+  </Accordion>
+
+  <Accordion title="Can I edit a suggestion before accepting it?">
+    Yes. Every suggestion has an inline text editor on Surface 1 and Surface 3 alike. Click into the text, revise it, and then click Accept. The edited version is what gets saved.
+  </Accordion>
+
+  <Accordion title="How does the system decide what to suggest from a conversation (Surface 1)?">
+    An LLM analyzes the conversation for factual clarifications the user gave the agent, corrections to incorrect answers, business rules stated as part of answering a question, and Domain terminology defined mid-conversation. It doesn't suggest generic conversational content.
+  </Accordion>
+
+  <Accordion title="How does the system decide when to propose a suggestion mid-chat (Surface 3) versus waiting for the brain icon (Surface 1)?">
+    Surface 3 looks for two narrower, higher-confidence signals: an explicit "remember this" instruction, or a clear correction or clarification of existing knowledge. It proposes automatically the moment either is detected. Surface 1 remains the broader, on-demand option: it analyzes an entire conversation regardless of whether either narrow signal was present. They're complementary, not a replacement for one another.
+  </Accordion>
+
+  <Accordion title="Is Surface 3 available to Explorers?">
+    Not yet: same restriction as Surface 1. Expanding to Explorers (against a personal memory store rather than the shared Domain knowledge base) is a named next step, see [Next steps](#next-steps).
+  </Accordion>
+
+  <Accordion title="Why is the feature labeled 'Alpha'?">
+    The suggestion quality and recall are still being tuned across all three surfaces. Suggestions may occasionally be too broad, too narrow, or mis-worded for your domain. The expectation is that you review and edit before accepting. As the system matures, with duplicate detection, conflict handling, and provenance, the Alpha label will be removed.
+  </Accordion>
+
+  <Accordion title='How is this different from the "Extract from query logs" feature?'>
+    Query history mining analyzes SQL query logs from your connected warehouses in bulk. It's designed to bootstrap a Domain from scratch or fill large structural gaps (metrics, relationships, column descriptions) by studying historical usage patterns. Knowledge Signals from Chat is designed for incremental, conversational refinement, capturing the nuanced business logic and corrections that emerge from actual user interactions, which query logs don't contain.
+  </Accordion>
+
+  <Accordion title="How many suggestions will I typically see per conversation?">
+    Varies by conversation length and density. Short factual exchanges might yield 1–3 suggestions. Long analytical sessions with several corrections could yield 8–15. The system filters for high-signal content. It won't suggest every sentence.
+  </Accordion>
+
+  <Accordion title="Is there a way to run Knowledge Suggestions across multiple conversations at once?">
+    Not in the current release. Today it's per-conversation (Surface 1) or per-signal, in real time (Surface 3). Batch processing and automated refinement are on the roadmap, see [Next steps](#next-steps), "Offline capture of knowledge."
+  </Accordion>
+
+  <Accordion title="What happens if I decline all suggestions?">
+    Nothing is written to the Domain. Declining is a no-op. It just removes the entry from view for that session. The conversation itself is unchanged.
+  </Accordion>
+
+  <Accordion title="Can I reopen suggestions I previously declined?">
+    Not in the current release. Declined suggestions are removed from the session. To re-generate them on Surface 1, close and reopen the Knowledge Suggestions popover on the same conversation.
+  </Accordion>
+</AccordionGroup>
+
+## Next steps
+
+<CardGroup cols={3}>
+  <Card title="Add Domain-Specific Knowledge" icon="brain" href="/setting-up-wisdom-ai/add-domain-specific-knowledge">
+    Add and manage knowledge entries directly from the Domain Knowledge tab.
+  </Card>
+
+  <Card title="Provide Feedback to the System" icon="thumbs-up" href="/setting-up-wisdom-ai/feedback-mechanisms/provide-feedback-to-the-system">
+    Learn how to rate answers and provide corrections to improve the system's accuracy.
+  </Card>
+
+  <Card title="Monitor Negative Feedback" icon="magnifying-glass" href="/setting-up-wisdom-ai/feedback-mechanisms/monitor-negative-feedback">
+    Review flagged responses and turn recurring gaps into knowledge base updates.
+  </Card>
+</CardGroup>

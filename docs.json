@@ -83,6 +83,9 @@
               "setting-up-wisdom-ai/advanced-data-modeling-creating-context",
               "setting-up-wisdom-ai/context-modeling-guide-workflow",
               "setting-up-wisdom-ai/add-domain-specific-knowledge",
+              "setting-up-wisdom-ai/context-libraries",
+              "setting-up-wisdom-ai/domain-groups",
+              "setting-up-wisdom-ai/domain-groups-how-to",
               {
                 "group": "Feedback Options",
                 "pages": [
@@ -265,7 +268,8 @@
             "pages": [
               "chat/overview",
               "using-wisdom-ai-everyday/ask-better-questions",
-              "improve-wisdom-ai-responses/attach-files-to-chat"
+              "improve-wisdom-ai-responses/attach-files-to-chat",
+              "setting-up-wisdom-ai/feedback-mechanisms/knowledge-signals-from-chat"
             ]
           },
           {
@@ -496,6 +500,13 @@
           {
             "group": "Product Updates",
             "pages": [
+              {
+                "group": "August 2026",
+                "pages": [
+                  "product-updates/august-2026/august-features",
+                  "product-updates/august-2026/august-changelog"
+                ]
+              },
               {
                 "group": "July 2026",
                 "pages": [
