@@ -166,7 +166,8 @@
               "using-wisdom-ai-everyday/auditing",
               "using-wisdom-ai-everyday/prompt-templates",
               "using-wisdom-ai-everyday/knowledge-management-via-graph-ql-api",
-              "using-wisdom-ai-everyday/request-help-from-admins"
+              "using-wisdom-ai-everyday/request-help-from-admins",
+              "using-wisdom-ai-everyday/knowledge-signals-from-chat"
             ]
           },
           {
@@ -268,8 +269,7 @@
             "pages": [
               "chat/overview",
               "using-wisdom-ai-everyday/ask-better-questions",
-              "improve-wisdom-ai-responses/attach-files-to-chat",
-              "setting-up-wisdom-ai/feedback-mechanisms/knowledge-signals-from-chat"
+              "improve-wisdom-ai-responses/attach-files-to-chat"
             ]
           },
           {
