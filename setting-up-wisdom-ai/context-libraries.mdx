@@ -1,0 +1,129 @@
+---
+title: "Context Libraries"
+---
+
+Context Libraries let you share Knowledge across Domains without duplicating it. This page explains why Libraries exist, then shows you how to move Knowledge into a Library, link a Library to a Domain, and manage your Libraries from one place.
+
+## Why it matters
+
+WisdomAI enforces data access permissions at the Domain level. Business context you create, such as metric definitions or business rules, lives inside the specific Domain where you create it. Teams working in a different Domain can't see or reuse that context, even when they're asking questions about the same underlying data.
+
+That isolation protects your access boundaries, but it also means shared definitions get rebuilt in every Domain that needs them. When a definition changes, you have to update every copy, and the copies can drift out of sync with each other.
+
+Context Libraries remove that trade-off. A Library holds context outside any single Domain, so you define a metric or business rule once and reuse it everywhere it applies. You still control which Domains can use it: linking a Library to a Domain is a separate, explicit step, so shared context never crosses a Domain's access boundary without your say.
+
+## Access Context Libraries
+
+To access Context Libraries, follow these steps:
+
+1. From the **Domains** page, click the **Context Libraries** icon in the top right corner.
+2. This opens the **Context Libraries** page, listing every Library along with its Name, Description, Linked Domains, and Last Updated date. Click the **⋮** icon next to a Library to **Edit** it, **Link to Domain**, or **Delete** it.
+
+<Frame>
+  <img
+    alt="NEW Add Knowledge Steps"
+    lightAlt="NEW Add Knowledge Steps"
+    darkAlt="NEW Add Knowledge Steps"
+    src="/images/new-link-domain2.png"
+  />
+</Frame>
+
+## Move Knowledge to a Library
+
+You can build a Library either by creating assets outside a Domain or by taking existing context items originally built inside a Domain and moving them into a Library so they become available elsewhere.
+
+1. From the **Knowledge** tab, select the item you want to reuse and click the **Move to Library** icon.
+
+<Frame>
+  <img
+    alt="NEW Add Knowledge Steps"
+    lightAlt="NEW Add Knowledge Steps"
+    darkAlt="NEW Add Knowledge Steps"
+    src="/images/move-to-library.png"
+    className="dark:hidden"
+  />
+  <img
+    alt="NEW Add Knowledge Steps"
+    lightAlt="NEW Add Knowledge Steps"
+    darkAlt="NEW Add Knowledge Steps"
+    src="/dark-img/move-to-library.png"
+    className="hidden dark:block"
+  />
+</Frame>
+
+2. In the **Move to Library** window, open the **Target Library** dropdown and select an existing Library, or click **\+ Create New Library** to create one.
+3. Click **Move** to confirm.
+
+<Frame>
+  <img
+    alt="NEW Add Knowledge Steps"
+    lightAlt="NEW Add Knowledge Steps"
+    darkAlt="NEW Add Knowledge Steps"
+    src="/images/library-drop-down.png"
+    className="dark:hidden"
+  />
+  <img
+    alt="NEW Add Knowledge Steps"
+    lightAlt="NEW Add Knowledge Steps"
+    darkAlt="NEW Add Knowledge Steps"
+    src="/dark-img/library-drop-down-1.png"
+    className="hidden dark:block"
+  />
+</Frame>
+
+## Link a Library to a Domain
+
+You must link a Context Library to a Domain before you can query its contents. To link one or more Libraries to a target Domain:
+
+1. From the Domain's **Context** tab, access **Knowledge** and click **Libraries**.
+
+<Frame>
+  <img
+    alt="NEW Add Knowledge Steps"
+    lightAlt="NEW Add Knowledge Steps"
+    darkAlt="NEW Add Knowledge Steps"
+    src="/images/link-libraries.png"
+    className="dark:hidden"
+  />
+  <img
+    alt="NEW Add Knowledge Steps"
+    lightAlt="NEW Add Knowledge Steps"
+    darkAlt="NEW Add Knowledge Steps"
+    src="/dark-img/link-libraries.png"
+    className="hidden dark:block"
+  />
+</Frame>
+
+2. Open the **Libraries** dropdown and select the Library or Libraries you want linked.
+3. Click **Save**.
+
+<Frame>
+  <img
+    alt="NEW Add Knowledge Steps"
+    lightAlt="NEW Add Knowledge Steps"
+    darkAlt="NEW Add Knowledge Steps"
+    src="/images/link-libraries-dropdown-1.png"
+    className="dark:hidden"
+  />
+  <img
+    alt="NEW Add Knowledge Steps"
+    lightAlt="NEW Add Knowledge Steps"
+    darkAlt="NEW Add Knowledge Steps"
+    src="/dark-img/link-libraries-dropdown-1.png"
+    className="hidden dark:block"
+  />
+</Frame>
+
+Once linked, any Knowledge stored in that Library is available for query interpretation in the Domain, alongside the Domain's own Knowledge.
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Domain Groups" icon="layer-group" href="#">
+    TBD.
+  </Card>
+
+  <Card title="Advanced Data Modeling" icon="sitemap" href="/setting-up-wisdom-ai/advanced-data-modeling-creating-context">
+    Define relationships and context in your data to enable more powerful analysis.
+  </Card>
+</CardGroup>

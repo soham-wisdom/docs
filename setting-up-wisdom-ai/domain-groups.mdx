@@ -1,0 +1,102 @@
+---
+title: "Domain Groups & Auto Domain Selection"
+boost: 3
+keywords: ['Auto Domain', 'Domain Groups', 'Groups', 'Auto mode']
+---
+
+WisdomAI organizes context into **domains**, so that a question about billing draws only on billing tables and billing definitions, and a question about product usage draws only on product tables and product definitions. That isolation is deliberate: it's what makes each domain's answers precise, scoped to the right business area, and correctly permissioned.
+
+Some questions, however, legitimately span more than one domain: *"Is churn related to a drop in product engagement?"* needs a retention domain and a product-usage domain at once. Two features let WisdomAI answer those questions without abandoning domain isolation: 
+- **Auto Domain Selection**, which routes a question to the right domain automatically at runtime.
+- **Domain Groups**, which let an admin pre-declare that specific domains are related.
+
+| **Feature** | **What it does** | **Scope** |
+| --- | --- | --- |
+| **Auto Domain Selection** | Reads each question and routes it to the most relevant domain or group at runtime | Unbounded: Chooses from the full (or greenlisted) set of domains |
+| **Domain Groups** | Bundles two or more domains that an admin has pre-declared as related | Bounded: Restricted to only the domains in the group |
+
+This page covers:
+
+- [Why it matters](#why-it-matters): The two distinct problems cross-domain questions raise
+- [Auto Domain Selection](#auto-domain-selection): What it is, and when to use it
+- [Domain Groups](#domain-groups): What it is, and when to use it
+- An [FAQ](#faq) comparing the two features directly
+
+<Note>
+  This concept page explains the key features. For setup and step-by-step usage instructions, see [Set Up and Use Domain Groups & Auto Domain Selection](/setting-up-wisdom-ai/domain-groups-how-to).
+</Note>
+
+## Why it matters
+
+Domain isolation is what makes a domain trustworthy, an answer is grounded in that domain's own metric definitions, synonyms, and entities, not assembled from whatever else happens to be in the workspace. But it also means a domain's own context describes *its* data, not how its metrics relate to another domain's.
+
+Cross-domain questions surface two distinct problems:
+
+1. **Routing**: Given a question, which domain(s) should answer it? This is open-ended: the right domain depends on the question, and a large workspace may have dozens of candidates. [Auto Domain Selection](#auto-domain-selection) addresses this.
+2. **Relationships**: Once two or more domains are known to be asked about together, how do their metrics and entities line up? [Domain Groups](#domain-groups) address this by giving admins a place to document shared definitions and cross-domain logic once, at the group level, instead of duplicating them into every domain that needs them. Approved cross-domain queries are saved to the group's own reviewed-query library for the same reason, a query spanning domains only makes sense in that combined context.
+
+## Auto Domain Selection
+
+**Auto** mode reads the current question and conversation, then routes it to the most relevant domain or group automatically, without you selecting one first. Nothing is declared in advance. WisdomAI considers any domain it's permitted to see and picks at runtime.
+
+Use it when:
+
+- You work across many domains and don't always know which to pick
+- Questions shift topics mid-conversation
+- You're exploring data without a specific domain in mind
+
+Because the candidate set isn't fixed ahead of time, routing accuracy naturally degrades as the domain catalog grows, this is the tradeoff of an unbounded approach.
+
+## Domain Groups
+
+A domain group combines two or more domains into a single unit. Selecting a group in chat gives WisdomAI access to all tables from every domain in the group, reasoned over together with the group's own shared context layer.
+
+An admin who already knows that two domains are frequently asked about together, churn and retention, say, or CRM and billing, declares that relationship as a group ahead of time. Restricting the candidate set to only those domains increases the likelihood that the LLM stays inside the right context, compared to reasoning across the entire workspace.
+
+**Example groups:**
+
+| **Group name** | **Domains included** | **Good for** |
+| --- | --- | --- |
+| Revenue 360 | CRM + Billing | Renewal, expansion, ARR questions |
+| Ops & Logistics | Warehouse + Fulfillment + Shipping | Order flow questions |
+| Churn & Retention | Retention + Product Analytics | Why accounts churn, engagement-vs-renewal questions |
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="Why do we have Domain Groups if we have Auto Domain Selection?">
+    They solve different shapes of the same problem. One unbounded, one bounded.
+  </Accordion>
+  <Accordion title="Isn't Auto Domain Selection enough on its own?">
+    No. Auto Domain Selection picks from the full (or greenlisted) set of domains at runtime, for every question. That's necessary when you can't predict in advance which domain a question needs, but it means WisdomAI is choosing from a wide, undifferentiated pool each time. In a workspace with many domains, that pool is large enough that routing mistakes become more likely.
+  </Accordion>
+  <Accordion title="When should I create a Domain Group instead of relying on Auto?">
+    When an admin already knows, from experience, that specific domains are routinely asked about together. Declaring that relationship as a group removes the guesswork: WisdomAI is constrained to a small, known-relevant set of domains with its own shared context describing how they relate, rather than re-deriving that relationship at runtime for every question.
+  </Accordion>
+  <Accordion title="Do I have to choose one or the other?">
+    No, they compose. When Auto mode is on, WisdomAI can select a domain group as a routing target, not just an individual domain. If a relevant group already exists, Auto mode uses it instead of reasoning across the full domain set.
+  </Accordion>
+</AccordionGroup>
+
+## Tips
+
+- **Name groups by business question, not by system.** *"Revenue 360"* is more useful than *"Salesforce + Stripe."*
+- **Auto mode routes better when domains have clear names and descriptions**, since WisdomAI uses domain metadata to route questions.
+- **If Auto mode consistently reaches across the same two domains, create a group for them.** A recurring cross-domain pattern is a relationship worth bounding explicitly rather than re-solving at runtime.
+- **Groups and Auto mode work together.** When Auto mode is on, WisdomAI can select a domain group, not just individual domains.
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Set Up and Use Domain Groups & Auto Domain Selection" icon="list-check" href="/setting-up-wisdom-ai/domain-groups-how-to">
+    Step-by-step instructions for enabling Auto Domain Selection and creating and using domain groups.
+  </Card>
+
+  <Card title="Context Libraries" icon="clipboard-list" href="/setting-up-wisdom-ai/context-libraries">
+    Share business context and knowledge across multiple domains securely.
+  </Card>
+
+  <Card title="Advanced Data Modeling" icon="sitemap" href="/setting-up-wisdom-ai/advanced-data-modeling-creating-context">
+    Define relationships and Knowledge in your data to enable more powerful analysis.
+  </Card>
+</CardGroup>
