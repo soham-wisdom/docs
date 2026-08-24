@@ -6,6 +6,8 @@ Manage dashboard filters by describing what you want in chat. Chat picks the rig
 
 ## Requirements and limitations
 
+Before you start, be aware of the following:
+
 - Available on dashboards using the current filters experience (Filters V2)
 - Generally available and on by default for all customers
 - Filters don't yet apply to Python-based visualizations
@@ -24,17 +26,17 @@ The full filter lifecycle works from chat:
 
 **Delete a filter**: Chat deletes a filter only when no widget still uses it. If widgets still reference it, chat removes the filter from those widgets first, then deletes it.
 
+<Tip>
+  Filters created through chat are more expressive than manual ones. They can pull in new joins, target formula fields, and correctly handle a table that appears more than once in a dashboard.
+</Tip>
+
 ## How it works
 
 Open a dashboard, open the chat sidebar, and type your request. If the request is ambiguous, for example the value doesn't match your data or more than one column could be the target, chat asks a clarifying question instead of guessing.
 
 ![](/images/add-filter-ambiguous-example-2.png)
 
-Filters created through chat are more expressive than manual ones. They can pull in new joins, target formula fields, and correctly handle a table that appears more than once in a dashboard.
-
-## Edits are safe
-
-Every chat edit lands in a dashboard draft. The dashboard refreshes after each edit so you can see the effect, and each chat turn stays anchored to the dashboard version you're viewing. Published dashboards, saved filters, and anything you've shared stay unchanged until you save the draft.
+**Edits are safe**: Every chat edit lands in a dashboard draft. The dashboard refreshes after each edit so you can see the effect, and each chat turn stays anchored to the dashboard version you're viewing. Published dashboards, saved filters, and anything you've shared stay unchanged until you save the draft. 
 
 The manual filter flow remains fully available, and permissions are unchanged: chat edits respect the same dashboard edit rights as manual edits.
 
