@@ -129,7 +129,7 @@ ORDER BY
   />
 </Frame>
 
-After applying the change and seeing the updated quarterly chart, you can save this improved version. You would click **Mark as reviewed** and update the question to **“Show me the quarterly ARR trend”** to save it as a new, more specific Validated Query for future use.
+After applying the change and seeing the updated quarterly chart, you can save this improved version. You would click **Mark as reviewed** and update the question to **“Show me the quarterly ARR trend”** to save it as a new, more specific Reviewed Query for future use.
 
 <Frame>
   <img
@@ -190,7 +190,7 @@ While reviewed queries are powerful, some complex business rules are best enforc
 
 For instance, imagine you have a `statewise_population` table with a pre-aggregated `country_population` column. Summing this column across multiple states from the same country would lead to massive double-counting.
 
-While a validated query can show the correct way to get the population, adding a clear instruction in [language knowledge](/setting-up-wisdom-ai/advanced-data-modeling-creating-context#natural-language-knowledge) provides an extra layer of protection against mistakes:
+While a reviewed query can show the correct way to get the population, adding a clear instruction in [language knowledge](/setting-up-wisdom-ai/advanced-data-modeling-creating-context#natural-language-knowledge) provides an extra layer of protection against mistakes:
 
 **Instruction Example:** “Never sum up the `country_population` column across different rows for the same country.”
 
