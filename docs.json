@@ -272,7 +272,8 @@
             "group": "Dashboard",
             "pages": [
               "dashboards/tabs",
-              "dashboards/instant-filters"
+              "dashboards/instant-filters",
+              "dashboards/chat-filters"
             ]
           }
         ]
