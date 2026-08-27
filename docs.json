@@ -53,11 +53,16 @@
         "icon": "shield-check",
         "groups": [
           {
-            "group": "Getting Started",
+            "group": "Overview",
             "pages": [
               "getting-started/overview",
-              "getting-started/how-wisdom-ai-works",
-              "getting-started/glossary",
+              "getting-started/how-wisdom-ai-works"
+            ]
+          },
+          {
+            "group": "Get Started",
+            "pages": [
+              "setting-up-wisdom-ai/basic-tutorial-connect-and-test",
               {
                 "group": "Connect Data Sources",
                 "pages": [
@@ -73,92 +78,43 @@
                   "getting-started/connect-data-sources/connect-to-sharepoint",
                   "getting-started/connect-data-sources/set-up-gcp-service-account"
                 ]
-              }
-            ]
-          },
-          {
-            "group": "Setting Up WisdomAI",
-            "pages": [
-              "setting-up-wisdom-ai/basic-tutorial-connect-and-test",
+              },
               "setting-up-wisdom-ai/advanced-data-modeling-creating-context",
-              "setting-up-wisdom-ai/context-modeling-guide-workflow",
-              "setting-up-wisdom-ai/add-domain-specific-knowledge",
-              "setting-up-wisdom-ai/context-libraries",
-              "setting-up-wisdom-ai/domain-groups",
-              "setting-up-wisdom-ai/domain-groups-how-to",
-              {
-                "group": "Feedback Options",
-                "pages": [
-                  "setting-up-wisdom-ai/feedback-mechanisms/provide-feedback-to-the-system",
-                  "setting-up-wisdom-ai/feedback-mechanisms/reviewed-queries",
-                  "product-updates/february-2026/mcp-reviewed-queries",
-                  "setting-up-wisdom-ai/feedback-mechanisms/limited-context",
-                  "setting-up-wisdom-ai/feedback-mechanisms/monitor-negative-feedback"
-                ]
-              },
-              {
-                "group": "Manage Domains",
-                "pages": [
-                  "setting-up-wisdom-ai/manage-domains/understand-domains",
-                  "setting-up-wisdom-ai/manage-domains/overview-tab",
-                  "setting-up-wisdom-ai/manage-domains/data-sources-tab",
-                  "setting-up-wisdom-ai/manage-domains/context-tab",
-                  "setting-up-wisdom-ai/manage-domains/changelog-tab",
-                  "setting-up-wisdom-ai/manage-domains/advanced-tab",
-                  "setting-up-wisdom-ai/manage-domains/evaluation-tab",
-                  "setting-up-wisdom-ai/manage-domains/sql-playground-tab",
-                  "product-updates/spring-2026/domain-health",
-                  "product-updates/february-2026/context-builder-file-uploads",
-                  "product-updates/spring-2026/context-builder-connections"
-                ]
-              },
-              {
-                "group": "Skills",
-                "tag": "New",
-                "pages": [
-                  "setting-up-wisdom-ai/manage-domains/skills",
-                  "setting-up-wisdom-ai/manage-domains/create-a-skill"
-                ]
-              },
-              {
-                "group": "Agents",
-                "pages": [
-                  "setting-up-wisdom-ai/agents/agents",
-                  "setting-up-wisdom-ai/agents/tutorial-create-agent",
-                  "setting-up-wisdom-ai/agents/visual-mode",
-                  "setting-up-wisdom-ai/agents/nodes-reference",
-                  "setting-up-wisdom-ai/agents/agent-best-practices",
-                  "setting-up-wisdom-ai/agents/manage-agents",
-                  "setting-up-wisdom-ai/agents/reviewed-runs-in-agents",
-                  "product-updates/spring-2026/parameterized-agents"
-                ]
-              },
-              {
-                "group": "Manage Tables & Columns",
-                "pages": [
-                  "setting-up-wisdom-ai/manage-tables-columns/document-tables-and-columns",
-                  "setting-up-wisdom-ai/manage-tables-columns/advanced-column-options",
-                  "setting-up-wisdom-ai/manage-tables-columns/set-up-rag"
-                ]
-              }
+              "improve-wisdom-ai-responses/validate-and-test-answers"
             ]
           },
           {
-            "group": "Improve WisdomAI Responses",
+            "group": "Skills",
+            "tag": "New",
             "pages": [
-              "improve-wisdom-ai-responses/refine-prompts-and-query-patterns",
-              "improve-wisdom-ai-responses/validate-and-test-answers",
+              "setting-up-wisdom-ai/manage-domains/skills",
+              "setting-up-wisdom-ai/manage-domains/create-a-skill"
+            ]
+          },
+          {
+            "group": "Agents",
+            "pages": [
+              "setting-up-wisdom-ai/agents/agents",
+              "setting-up-wisdom-ai/agents/tutorial-create-agent",
+              "setting-up-wisdom-ai/agents/visual-mode",
+              "setting-up-wisdom-ai/agents/nodes-reference",
+              "setting-up-wisdom-ai/agents/agent-best-practices",
+              "setting-up-wisdom-ai/agents/manage-agents",
+              "setting-up-wisdom-ai/agents/reviewed-runs-in-agents",
+              "product-updates/spring-2026/parameterized-agents"
+            ]
+          },
+          {
+            "group": "Daily Usage",
+            "pages": [
               "improve-wisdom-ai-responses/enhancing-data-analysis-with-custom-business-context",
               "improve-wisdom-ai-responses/how-to-create-metrics",
               "improve-wisdom-ai-responses/use-evaluations-sets-and-runs",
               "improve-wisdom-ai-responses/build-dashboards",
               "product-updates/february-2026/data-query-on-slack",
-              "product-updates/february-2026/knowledge-playground"
-            ]
-          },
-          {
-            "group": "Admin Operations",
-            "pages": [
+              "product-updates/february-2026/knowledge-playground",
+              "setting-up-wisdom-ai/feedback-mechanisms/limited-context",
+              "setting-up-wisdom-ai/feedback-mechanisms/monitor-negative-feedback",
               "using-wisdom-ai-everyday/command-palette",
               "using-wisdom-ai-everyday/work-with-csv-files",
               "using-wisdom-ai-everyday/share-dashboards-and-set-access-control",
@@ -234,9 +190,68 @@
             ]
           },
           {
-            "group": "Reference Library",
+            "group": "Product Reference",
             "pages": [
-              "reference-library/limits-and-quotas"
+              "getting-started/glossary",
+              "reference-library/limits-and-quotas",
+              {
+                "group": "Domain Tabs",
+                "pages": [
+                  "setting-up-wisdom-ai/manage-domains/overview-tab",
+                  "setting-up-wisdom-ai/manage-domains/data-sources-tab",
+                  "setting-up-wisdom-ai/manage-domains/context-tab",
+                  "setting-up-wisdom-ai/manage-domains/changelog-tab",
+                  "setting-up-wisdom-ai/manage-domains/advanced-tab",
+                  "setting-up-wisdom-ai/manage-domains/evaluation-tab",
+                  "setting-up-wisdom-ai/manage-domains/sql-playground-tab"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Domains",
+        "icon": "database",
+        "groups": [
+          {
+            "group": "Domains",
+            "pages": [
+              "setting-up-wisdom-ai/manage-domains/understand-domains",
+              "setting-up-wisdom-ai/domain-groups",
+              "setting-up-wisdom-ai/domain-groups-how-to",
+              "setting-up-wisdom-ai/add-domain-specific-knowledge",
+              {
+                "group": "Manage Tables & Columns",
+                "pages": [
+                  "setting-up-wisdom-ai/manage-tables-columns/document-tables-and-columns",
+                  "setting-up-wisdom-ai/manage-tables-columns/advanced-column-options",
+                  "setting-up-wisdom-ai/manage-tables-columns/set-up-rag"
+                ]
+              },
+              "product-updates/spring-2026/domain-health"
+            ]
+          },
+          {
+            "group": "Context",
+            "pages": [
+              "setting-up-wisdom-ai/advanced-data-modeling-creating-context",
+              "setting-up-wisdom-ai/context-modeling-guide-workflow",
+              "setting-up-wisdom-ai/context-libraries",
+              {
+                "group": "Context Builder",
+                "pages": [
+                  "product-updates/february-2026/context-builder-file-uploads",
+                  "product-updates/spring-2026/context-builder-connections"
+                ]
+              },
+              {
+                "group": "Reviewed Queries",
+                "pages": [
+                  "setting-up-wisdom-ai/feedback-mechanisms/reviewed-queries",
+                  "product-updates/february-2026/mcp-reviewed-queries"
+                ]
+              }
             ]
           }
         ]
@@ -246,37 +261,32 @@
         "icon": "magnifying-glass",
         "groups": [
           {
-            "group": "Start Here",
+            "group": "Get Started",
             "pages": [
               "explorers/getting-started-explorers"
             ]
           },
           {
-            "group": "Daily Usage",
-            "pages": [
-              "using-wisdom-ai-everyday/command-palette",
-              "product-updates/february-2026/ghost-text-completion",
-              "explorers-feedback/provide-feedback-to-the-system",
-              "product-updates/february-2026/mcp-in-dashboards",
-              "using-wisdom-ai-everyday/turn-answers-into-dashboards",
-              "explorers/chat-dashboard",
-              "product-updates/february-2026/dual-axis-charts"
-            ]
-          },
-          {
-            "group": "Chat",
+            "group": "Chats",
             "pages": [
               "chat/overview",
               "using-wisdom-ai-everyday/ask-better-questions",
+              "using-wisdom-ai-everyday/command-palette",
+              "product-updates/february-2026/ghost-text-completion",
               "improve-wisdom-ai-responses/attach-files-to-chat",
-              "setting-up-wisdom-ai/feedback-mechanisms/knowledge-signals-from-chat"
+              "setting-up-wisdom-ai/feedback-mechanisms/knowledge-signals-from-chat",
+              "explorers-feedback/provide-feedback-to-the-system",
+              "explorers/chat-dashboard"
             ]
           },
           {
-            "group": "Dashboard",
+            "group": "Dashboards",
             "pages": [
               "dashboards/tabs",
-              "dashboards/instant-filters"
+              "dashboards/instant-filters",
+              "using-wisdom-ai-everyday/turn-answers-into-dashboards",
+              "product-updates/february-2026/mcp-in-dashboards",
+              "product-updates/february-2026/dual-axis-charts"
             ]
           }
         ]
@@ -286,7 +296,7 @@
         "icon": "code",
         "groups": [
           {
-            "group": "Overview",
+            "group": "Get Started",
             "pages": [
               "integrations/developers"
             ]
