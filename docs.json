@@ -288,6 +288,7 @@
               "using-wisdom-ai-everyday/turn-answers-into-dashboards",
               "product-updates/february-2026/mcp-in-dashboards",
               "product-updates/february-2026/dual-axis-charts",
+              "dashboards/dashboard-versioning",
               "dashboards/chat-filters"
             ]
           }
@@ -686,10 +687,6 @@
     {
       "source": "/new-releases/spring-2026/parameterized-agents",
       "destination": "/product-updates/spring-2026/parameterized-agents"
-    },
-    {
-      "source": "/new-releases/spring-2026/dashboard-versioning",
-      "destination": "/product-updates/june-2026/dashboard-versioning"
     },
     {
       "source": "/new-releases/spring-2026/domain-health",
