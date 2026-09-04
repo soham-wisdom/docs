@@ -14,7 +14,7 @@ A combination of deep data evaluations with actionable workflows across four pro
   <Step title="Health dimensions" icon="chart-network">
     Domain Health evaluates three dimensions:
 
-    - **Schema quality** assesses whether the domain's table and column definitions are clear and usable. It flags cryptic or ambiguous names, overlapping names that lack descriptions, and missing join relationships between tables that are commonly queried together.
+    - **Schema quality** assesses whether the domain's table and column definitions are clear and usable. It flags cryptic or ambiguous names and overlapping names that lack descriptions.
     - **Context quality** re-runs your Reviewed Queries through the system and evaluates whether the generated SQL matches expected output. The Context Quality Agent diagnoses root causes, knowledge conflicts, stale definitions, contradictions  and proposes specific fixes.
     - **Usage signals** track conversation volume, negative feedback rate, and limited-context rate.
   </Step>
@@ -50,7 +50,7 @@ Domain Health is available to:
 
 <AccordionGroup>
   <Accordion title="How often does the automated health check run?">
-    Analysis runs are currently triggered manually from the Domain Health tab. Automated weekly runs are on the near-term roadmap.
+    Analysis runs can be triggered manually from the Domain Health tab. Weekly automated runs can also be enabled, per account and per domain.
   </Accordion>
 
   <Accordion title="Does accepting a recommendation apply changes immediately?">

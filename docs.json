@@ -229,7 +229,7 @@
                   "setting-up-wisdom-ai/manage-tables-columns/set-up-rag"
                 ]
               },
-              "product-updates/spring-2026/domain-health"
+              "setting-up-wisdom-ai/manage-domains/domain-health"
             ]
           },
           {
@@ -689,7 +689,11 @@
     },
     {
       "source": "/new-releases/spring-2026/domain-health",
-      "destination": "/product-updates/spring-2026/domain-health"
+      "destination": "/setting-up-wisdom-ai/manage-domains/domain-health"
+    },
+    {
+      "source": "/product-updates/spring-2026/domain-health",
+      "destination": "/setting-up-wisdom-ai/manage-domains/domain-health"
     },
     {
       "source": "/new-releases/march-2026/march-features",
