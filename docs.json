@@ -290,6 +290,15 @@
               "dashboards/dashboard-versioning",
               "dashboards/chat-filters"
             ]
+          },
+          {
+            "group": "Live Apps",
+            "pages": [
+              "lives-apps/overview",
+              "lives-apps/create-live-app",
+              "lives-apps/see-data-live-app",
+              "lives-apps/share-live-app-manage-access"
+            ]
           }
         ]
       },
