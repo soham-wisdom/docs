@@ -402,7 +402,8 @@
                   {
                     "group": "Auth",
                     "pages": [
-                      "integrations/graphql-api/queries/auth/exchange-access-token"
+                      "integrations/graphql-api/queries/auth/exchange-access-token",
+                      "integrations/graphql-api/queries/auth/impersonate-user"
                     ]
                   },
                   {
@@ -430,12 +431,6 @@
               {
                 "group": "Mutations",
                 "pages": [
-                  {
-                    "group": "Auth",
-                    "pages": [
-                      "integrations/graphql-api/mutations/auth/impersonate-user"
-                    ]
-                  },
                   {
                     "group": "Chat",
                     "pages": [
@@ -616,8 +611,8 @@
       "destination": "/getting-started/connect-data-sources/search-the-web"
     },
     {
-      "source": "/integrations/graphql-api/queries/auth/impersonate-user",
-      "destination": "/integrations/graphql-api/mutations/auth/impersonate-user"
+      "source": "/integrations/graphql-api/mutations/auth/impersonate-user",
+      "destination": "/integrations/graphql-api/queries/auth/impersonate-user"
     },
     {
       "source": "/new-features",
