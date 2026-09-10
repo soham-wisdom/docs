@@ -2,7 +2,7 @@
 title: "List Users"
 ---
 
-The `listUsers` query returns users in a workspace along with their attributes and role assignments. Use it to look up user IDs before calling [impersonateUser](/integrations/graphql-api/mutations/auth/impersonate-user) or [setUserAttributes](/integrations/graphql-api/mutations/user/set-user-attributes).
+The `listUsers` query returns users in a workspace along with their attributes and role assignments. Use it to look up user IDs before calling [impersonateUser](/integrations/graphql-api/queries/auth/impersonate-user) or [setUserAttributes](/integrations/graphql-api/mutations/user/set-user-attributes).
 
 ## Signature
 
@@ -105,7 +105,7 @@ curl -X POST \
 ## Related articles
 
 <CardGroup cols={2}>
-  <Card title="Impersonate user" icon="user-secret" href="/integrations/graphql-api/mutations/auth/impersonate-user">
+  <Card title="Impersonate user" icon="user-secret" href="/integrations/graphql-api/queries/auth/impersonate-user">
     Use the user ID to start an embedded session
   </Card>
   <Card title="Set user attributes" icon="tag" href="/integrations/graphql-api/mutations/user/set-user-attributes">
