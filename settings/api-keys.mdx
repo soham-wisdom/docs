@@ -71,7 +71,7 @@ See the [GraphQL API](/integrations/graphql-api/GraphQL-API) and [WisdomAI MCP S
 
 If you embed WisdomAI inside your own application, your backend needs a way to sign each of your end users into WisdomAI. An **impersonation key** makes this possible: it can act on behalf of other users.
 
-Your server uses an impersonation key as the access token for the [`impersonateUser`](/integrations/graphql-api/mutations/auth/impersonate-user) mutation, which returns a short-lived JWT for a specific user. You then pass that JWT into the WisdomAI iframe. See [Impersonate User](/integrations/graphql-api/mutations/auth/impersonate-user) for the full embedded session flow.
+Your server uses an impersonation key as the access token for the [`impersonateUser`](/integrations/graphql-api/queries/auth/impersonate-user) query, which returns a short-lived JWT for a specific user. You then pass that JWT into the WisdomAI iframe. See [Impersonate User](/integrations/graphql-api/queries/auth/impersonate-user) for the full embedded session flow.
 
 ### Create an impersonation key
 
