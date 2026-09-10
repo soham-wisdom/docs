@@ -2,9 +2,9 @@
 title: "Impersonate User"
 ---
 
-The `impersonateUser` mutation exchanges a permanent access key for a short-lived JWT token that authenticates subsequent requests as a specific user. This is the core of the embedded session flow — the returned JWT is passed as the `token` query parameter in iframe embed URLs.
+The `impersonateUser` query exchanges a permanent access key for a short-lived JWT token that authenticates subsequent requests as a specific user. This is the core of the embedded session flow — the returned JWT is passed as the `token` query parameter in iframe embed URLs.
 
-This mutation is public and unauthenticated — no `Authorization` header is required.
+This query is public and unauthenticated — no `Authorization` header is required.
 
 ## Signature
 
@@ -37,13 +37,13 @@ impersonateUser(accessToken: String!, userEmail: String!, attributes: [UserAttri
 Returns a raw `String!` — the short-lived JWT to use as the `token` query parameter in iframe embed URLs. The token expires after **1 hour**.
 
 <Warning>
-  Never expose your permanent access key in client-side code. Always call this mutation from your server. See [Embed a Chat and Dashboards](/integrations/embeddings/embedding) for the secure server-side flow.
+  Never expose your permanent access key in client-side code. Always call this query from your server. See [Embed a Chat and Dashboards](/integrations/embeddings/embedding) for the secure server-side flow.
 </Warning>
 
 ## Usage example
 
 ```graphql
-mutation ImpersonateUser($accessToken: String!, $userEmail: String!) {
+query ImpersonateUser($accessToken: String!, $userEmail: String!) {
   impersonateUser(accessToken: $accessToken, userEmail: $userEmail)
 }
 ```
@@ -54,7 +54,7 @@ mutation ImpersonateUser($accessToken: String!, $userEmail: String!) {
 curl -X POST \
   -H "Content-Type: application/json" \
   -d '{
-    "query": "mutation ImpersonateUser($accessToken: String!, $userEmail: String!) { impersonateUser(accessToken: $accessToken, userEmail: $userEmail) }",
+    "query": "query ImpersonateUser($accessToken: String!, $userEmail: String!) { impersonateUser(accessToken: $accessToken, userEmail: $userEmail) }",
     "variables": {
       "accessToken": "<your_access_key>",
       "userEmail": "alice@yourcompany.com"
@@ -67,7 +67,7 @@ curl -X POST \
 curl -X POST \
   -H "Content-Type: application/json" \
   -d '{
-    "query": "mutation ImpersonateUser($accessToken: String!, $userEmail: String!, $attributes: [UserAttributeInput!]) { impersonateUser(accessToken: $accessToken, userEmail: $userEmail, attributes: $attributes) }",
+    "query": "query ImpersonateUser($accessToken: String!, $userEmail: String!, $attributes: [UserAttributeInput!]) { impersonateUser(accessToken: $accessToken, userEmail: $userEmail, attributes: $attributes) }",
     "variables": {
       "accessToken": "<your_access_key>",
       "userEmail": "alice@yourcompany.com",

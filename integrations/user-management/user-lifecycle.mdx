@@ -157,15 +157,15 @@ curl -X POST \
 
 ## Step 5: Impersonate a user to start an embedded session
 
-Use [`impersonateUser`](/integrations/graphql-api/mutations/auth/impersonate-user) to generate a short-lived JWT for a user. Pass this JWT as the `token` query parameter in your iframe embed URL.
+Use [`impersonateUser`](/integrations/graphql-api/queries/auth/impersonate-user) to generate a short-lived JWT for a user. Pass this JWT as the `token` query parameter in your iframe embed URL.
 
-This mutation is public and unauthenticated — no `Authorization` header is required. The access key is passed directly as an argument and must only be called from your server.
+This query is public and unauthenticated — no `Authorization` header is required. The access key is passed directly as an argument and must only be called from your server.
 
 ```bash
 curl -X POST \
   -H "Content-Type: application/json" \
   -d '{
-    "query": "mutation ImpersonateUser($accessToken: String!, $userEmail: String!) { impersonateUser(accessToken: $accessToken, userEmail: $userEmail) }",
+    "query": "query ImpersonateUser($accessToken: String!, $userEmail: String!) { impersonateUser(accessToken: $accessToken, userEmail: $userEmail) }",
     "variables": {
       "accessToken": "<your_access_key>",
       "userEmail": "alice@yourcompany.com"
@@ -180,7 +180,7 @@ To pass session-only attributes (transient overrides that are not persisted):
 curl -X POST \
   -H "Content-Type: application/json" \
   -d '{
-    "query": "mutation ImpersonateUser($accessToken: String!, $userEmail: String!, $attributes: [UserAttributeInput!]) { impersonateUser(accessToken: $accessToken, userEmail: $userEmail, attributes: $attributes) }",
+    "query": "query ImpersonateUser($accessToken: String!, $userEmail: String!, $attributes: [UserAttributeInput!]) { impersonateUser(accessToken: $accessToken, userEmail: $userEmail, attributes: $attributes) }",
     "variables": {
       "accessToken": "<your_access_key>",
       "userEmail": "alice@yourcompany.com",
@@ -210,7 +210,7 @@ The token expires after **1 hour**. Use it in your iframe `src`:
   style="width: 100%; height: 100%; border: 0;" />
 ```
 
-WisdomAI will request a new token automatically via `postMessage` before expiry. See [Impersonate user](/integrations/graphql-api/mutations/auth/impersonate-user) for the full refresh flow.
+WisdomAI will request a new token automatically via `postMessage` before expiry. See [Impersonate user](/integrations/graphql-api/queries/auth/impersonate-user) for the full refresh flow.
 
 <Tip>
   Attributes that are stable for a given user (such as `account_id`) should be set permanently via `createUsers` or `setUserAttributes`. Attributes that change per session (such as a selected view or context) can be passed transiently via `attributes` in `impersonateUser`.
