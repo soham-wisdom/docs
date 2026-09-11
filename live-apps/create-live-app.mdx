@@ -15,14 +15,14 @@ Make sure you have the following:
 
 Describe the app you need and WisdomAI builds it in the background.
 
-1. **Open Apps.** Click **Apps** in the sidebar. Apps and dashboards share this list.
-2. **Click New App.** A composer opens and asks you to describe the app.
-![create new live app](/images/new-live-app.png)
-3. **Describe the app.** Say who it is for, what job it does, and the metrics, breakdowns, and views you care about.
-4. **Let it build.** WisdomAI answers the data questions first, then generates and validates the app. You can leave the page; generation continues on the server, and the app picks up where it left off when you come back.
-![](/images/build-live-app.png)
-5. **Review the result.** Check the numbers, then refine anything you want changed.
-![](/images/live-app-finished.png)
+1. Open Apps. Click **Apps** in the sidebar. Apps and dashboards share this list.
+2. Click **New App**. A composer opens and asks you to describe the app.
+![Live Apps tab selected in the dashboards list with the New App button highlighted top right](/images/new-live-app.png)
+3. Describe the app. Say who it is for, what job it does, and the metrics, breakdowns, and views you care about.
+4. Let it build. WisdomAI answers the data questions first, then generates and validates the app. You can leave the page; generation continues on the server, and the app picks up where it left off when you come back.
+![Ask WisdomAI panel showing the build prompt and reasoning, with a Building your app progress card](/images/build-live-app.png)
+5. Review the result. Check the numbers, then refine anything you want changed.
+![Finished 2025 Sales Summary app with KPI cards, filters, a revenue heatmap, and a chat summary of included views](/images/live-app-finished.png)
 <Note>
   There is no notification when generation finishes. Return to the app to see the result.
 </Note>
@@ -40,15 +40,15 @@ A focused, specific prompt produces a more useful app than a generic one.
 
 Editors have three ways to change an app.
 
-- **Chat.** Open **Ask Wisdom** and describe the change. Use chat for anything broad, like adding a section or changing what a chart shows.
-![](/images/ask-live-app.png)
-- **Annotate.** Click **Annotate** in the toolbar (or press **C**), click an element, and leave an instruction for that element only. Use it for targeted fixes, like making one KPI the hero metric, without touching the rest of the app.
-![](/images/anotate-step-one.png)![](/images/anotate-step-two.png)
+- Chat. Open **Ask WisdomAI** and describe the change. Use chat for anything broad, like adding a section or changing what a chart shows.
+![Ask WisdomAI chat panel listing the KPI cards, heatmap, filters, and table included in the generated app](/images/ask-live-app.png)
+- Annotate. Click **Annotate** in the toolbar (or press **C**), click an element, and leave an instruction for that element only. Use it for targeted fixes, like making one KPI the hero metric, without touching the rest of the app.
+![Annotate tool selected in the app toolbar, shown as a highlighted pencil icon](/images/anotate-step-one.png)![Instruction box open on the Closed Won Revenue KPI card reading Total revenue in 2025 across different industry sectors](/images/anotate-step-two.png)
     <Note>
       Viewers can annotate and chat too. For them it opens a scoped conversation about the app; changing the app itself stays with editors.
     </Note>
-- **Edit text.** Click **Edit text** (or press **T**) to change titles and labels in place, then click **Save edits**. Text that comes from your data is marked **From app data** and is changed through chat or annotations instead.
-![](/images/edit-text-live-apps.png)
+- Edit text. Click **Edit text** (or press **T**) to change titles and labels in place, then click **Save edits**. Text that comes from your data is marked **From app data** and is changed through chat or annotations instead.
+![Sales detail table title being renamed inline to Sales detail Updated Version with a confirm checkmark](/images/edit-text-live-apps.png)
 
 <Warning>
   Changes apply to the app everyone sees. Live Apps have no separate draft version, so refine an app before you share it widely, or duplicate it to experiment.
@@ -61,11 +61,11 @@ If an app fails to render after a change, editors see **Fix with AI**, which sen
 The control at the top of an app has up to three views.
 
 - **Preview**: Shows the app itself.
-    ![](/images/preview-live-apps.png)
+    ![Preview view of the 2025 Sales Summary app with KPI cards, filters, and a revenue heatmap](/images/preview-live-apps.png)
 - **Code**: Shows the generated React source. Every app is real, inspectable code.
-    ![](/images/code-live-apps.png)
+    ![Code view listing GeneratedApp.jsx and generated files, with the React source open in the editor](/images/code-live-apps.png)
 - **Sources**: Shows the widgets that serve the app's data, laid out as plain tiles.
-    ![](/images/sources-live-apps.png)
+    ![Sources view showing three plain tiles: a revenue heatmap, a sales summary table, and a KPI tile](/images/sources-live-apps.png)
 
 ## Rename, organize, duplicate, or delete
 
@@ -81,9 +81,9 @@ Manage an app's name, location, and lifecycle from its menu.
 Turn an existing dashboard into a Live App from the dashboard itself.
 
 1. Open the dashboard's menu and choose **Migrate to Live App**.
-![Migrate Dashboard to Live App](/images/migrate-dash-live-app.png)
-2. **Review the new app.** WisdomAI copies the dashboard's widgets and generates an interface over them. The original dashboard is not changed.
-![Dashboard migrated to Live App](/images/dash-migrated-live-app.png)
+![Dashboard menu open with Migrate to Live App highlighted above Duplicate, Rename, and Delete](/images/migrate-dash-live-app.png)
+2. Review the new app. WisdomAI copies the dashboard's widgets and generates an interface over them. The original dashboard is not changed.
+![Migrated Live App with KPI cards, a quarter-range slider, and a trend chart, plus a chat list of included views](/images/dash-migrated-live-app.png)
     <Note>
       Two conditions apply. Every widget on the dashboard must belong to the same domain, and dashboards with global filters cannot be migrated yet. Remove global filters first if you want to migrate; support for migrating filtered dashboards arrives with parameterized filters, which are coming soon.
     </Note>
