@@ -14,7 +14,7 @@
         {
           "tab": "WisdomAI MCP Server",
           "icon": "server",
-          "href": "/integrations/mcp-server/MCP-Server"
+          "href": "/integrations/mcp-server"
         }
       ],
       "anchors": [
@@ -172,21 +172,7 @@
             "pages": [
               "integrations/connect-to-slack",
               "integrations/google-sheets",
-              {
-                "group": "WisdomAI MCP Server",
-                "boost": 0.3,
-                "pages": [
-                  "integrations/mcp-server/MCP-Server",
-                  {
-                    "group": "Tools",
-                    "pages": [
-                      "integrations/mcp-server/tools/echo",
-                      "integrations/mcp-server/tools/list-domains",
-                      "integrations/mcp-server/tools/chat"
-                    ]
-                  }
-                ]
-              }
+              "integrations/mcp-server"
             ]
           },
           {
@@ -564,6 +550,26 @@
     ]
   },
   "redirects": [
+    {
+      "source": "/integrations/mcp-server/tools/echo",
+      "destination": "/integrations/mcp-server",
+      "permanent": true
+    },
+    {
+      "source": "/integrations/mcp-server/tools/list-domains",
+      "destination": "/integrations/mcp-server",
+      "permanent": true
+    },
+    {
+      "source": "/integrations/mcp-server/tools/chat",
+      "destination": "/integrations/mcp-server",
+      "permanent": true
+    },
+    {
+      "source": "/integrations/mcp-server/MCP-Server",
+      "destination": "/integrations/mcp-server",
+      "permanent": true
+    },
     {
       "source": "/setting-up-wisdom-ai/advanced-data-modeling-creating-knowledge",
       "destination": "/setting-up-wisdom-ai/advanced-data-modeling-creating-context"
