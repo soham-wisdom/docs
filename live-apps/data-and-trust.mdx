@@ -8,8 +8,10 @@ Every number in a Live App traces back to a governed query. Inspect any widget, 
 
 To inspect a widget, follow these steps:
 
-1. **Open the widget's menu.** Hover over a chart, KPI, or table and click its three-dot menu.
-2. **Choose View data source.** The Data source panel opens with everything behind that widget.
+1. **Open the widget's menu.** Hover over a chart, KPI, or table and click its three-dot menu. Click **View data source.**
+![](/images/view-data-source-live-apps.png)
+2. The Data source panel opens with everything behind that widget.
+![](/images/trajectory-live-apps.png)
 
 The panel shows the following.
 
@@ -23,11 +25,12 @@ The same menu has **Download data (CSV)**, which exports what the widget is curr
 ## The Sources view
 
 Every app is served by a set of widgets, the same kind of object that powers dashboard tiles. Switch the view control at the top of the app to **Sources** to see them as plain tiles. Use it to confirm whether something odd lives in the data or in the generated interface.
+![](/images/view-sources-live-apps.png)
 
 ## The Code view
 
 Switch to **Code** to read the app's generated React source, with search and **Copy code** in the toolbar. Apps run in a sandbox with no network access of their own, so an app can only show data served through WisdomAI.
-
+![](/images/souce-code-live-apps.png)
 ## How data stays fresh
 
 A Live App serves the latest refreshed results for its widgets. Opening an app does not run new warehouse queries, so apps open fast.
@@ -35,6 +38,7 @@ A Live App serves the latest refreshed results for its widgets. Opening an app d
 - The top of the app shows when the data was last updated, for example "Updated 2 hours ago".
 - Data refreshes automatically on a daily schedule.
 - Click **Refresh data** in the top bar to re-run the app's queries on demand.
+![](/images/refresh-data-live-apps.png)
 
 ## Filter an app
 
