@@ -1,182 +1,214 @@
 ---
 title: "WisdomAI MCP Server"
-keywords: ["MCP", "MCP server", "Model Context Protocol", "Wisdom MCP server"]
-boost: 15
 ---
 
-WisdomAI provides a hosted [Model Context Protocol (MCP)](https://modelcontextprotocol.io) server that lets you connect AI tools, such as Claude, Cursor, VS Code, and ChatGPT, directly to your WisdomAI domains. Once connected, you can ask natural language questions about your data and receive structured responses including text, tables, and interactive charts.
-
-## MCP Endpoint
-
-The WisdomAI MCP Server is available at a single endpoint:
-
-```text
-https://{ACCOUNT}.wisdom.ai/mcp
-```
-
-Replace `{ACCOUNT}` with your WisdomAI account subdomain.
+WisdomAI provides a hosted [Model Context Protocol (MCP)](https://modelcontextprotocol.io) server that lets you connect AI tools, such as Claude, ChatGPT, Cursor, and VS Code, directly to your WisdomAI domains. Once connected, you can ask natural language questions about your data and receive structured responses including text, tables, and interactive charts.
 
 <Note>
-  The MCP endpoint must match the domain you use to log in.
-
-  - If you log in via `{account}.wisdom.ai`, use `https://{ACCOUNT}.wisdom.ai/mcp`
-  - If you log in via `{account}.askwisdom.ai`, use `https://{ACCOUNT}.askwisdom.ai/mcp`
+  To connect a third-party MCP server as a data source *inside* WisdomAI, see [Connect an external MCP server](/getting-started/connect-data-sources/connect-mcp-server) instead.
 </Note>
 
-## Connect Wisdom's MCP server to your client
+## Set up
 
-Add the WisdomAI MCP Server to your preferred AI client using the configuration below.
+Choose your AI client below and follow the steps to connect WisdomAI.
 
-<Tabs>
-  <Tab title="Claude Code">
-    Run this command in your terminal:
+<AccordionGroup>
+  <Accordion title="Claude app">
+    Connecting WisdomAI doesn't create new access. You sign in with your own WisdomAI account, and the role and permissions you already have apply.
 
-    ```bash
-    claude mcp add --transport http wisdomai https://{ACCOUNT}.wisdom.ai/mcp
+    1. In Claude, open **Settings** > **Connectors**.
+    2. Click **Add**, then select **Add custom connector**.
+    3. Enter the name `WisdomAI` and paste `https://mcp.wisdom.ai/mcp`.
+    4. Click **Add** to save the connector, then click **Connect**.
+    5. Enter your work email, sign in, and approve the requested access.
+
+    On Claude Enterprise, custom connectors are added by an organization admin. If you don't see the option to add one, ask your admin to add WisdomAI, then reload Claude.
+
+    <Accordion title="For admins: add WisdomAI for your organization">
+      1. Sign in to Claude as an organization admin and open **Settings** > **Connectors**.
+      2. Click **Add**, then select **Add custom connector**.
+      3. Enter the name `WisdomAI` and paste `https://mcp.wisdom.ai/mcp`.
+      4. Click **Add**. Users in your organization will then find WisdomAI in their connectors and can connect to it.
+
+      To add a staging or dev instance, follow the same steps with a custom MCP URL specific to your instance. Append `/mcp` to the domain you log in on. If you sign in at `{your-instance}.askwisdom.ai`, your MCP URL is `https://{your-instance}.askwisdom.ai/mcp`. Give it a representative name, such as `WisdomAI (staging)`.
+    </Accordion>
+
+    <Accordion title="Remove WisdomAI">
+      Open **Settings** > **Connectors**, find WisdomAI, and disconnect or remove it.
+    </Accordion>
+  </Accordion>
+
+  <Accordion title="ChatGPT">
+    1. In ChatGPT, select **Plugins** in the sidebar.
+    2. Search for `WisdomAI` and open it.
+    3. Click **Install plugin**. You'll be redirected to a sign-in page.
+    4. Enter your work email and click **Continue**. You'll be signed in to your organization's WisdomAI workspace, where you can approve the requested access.
+
+    In ChatGPT, mention the plugin to use it:
+
+    ```text
+    @WisdomAI How did Q3 net revenue track against plan in EMEA?
     ```
 
-    Then authenticate by running `/mcp` in Claude Code and following the OAuth flow.
-  </Tab>
-  <Tab title="Cursor">
-    Add the following to your `~/.cursor/mcp.json` file:
+    <Accordion title="Remove WisdomAI">
+      Go to **Plugins**, open **WisdomAI**, select the **···** menu, then click **Uninstall**.
+    </Accordion>
+  </Accordion>
+
+  <Accordion title="Other clients">
+    Any MCP-compatible client works. Use these details to add WisdomAI to your client:
+
+    | Setting | Value |
+    | :------ | :---- |
+    | URL | `https://mcp.wisdom.ai/mcp` |
+    | Transport | Streamable HTTP |
+    | Authentication | OAuth |
+
+    How you enter them depends on the client. Some provide a form, and others use a JSON configuration file. Check your client's documentation for where its MCP configuration lives.
+
+    ### Clients that support remote MCP servers
+
+    Most take a JSON configuration file in this shape:
 
     ```json
     {
       "mcpServers": {
         "wisdomai": {
-          "url": "https://{ACCOUNT}.wisdom.ai/mcp"
+          "url": "https://mcp.wisdom.ai/mcp"
         }
       }
     }
     ```
-  </Tab>
-  <Tab title="VS Code">
-    Add the following to your VS Code MCP settings (`.vscode/mcp.json`):
+
+    VS Code uses different keys for the same connection. In `.vscode/mcp.json`, add the following configuration:
 
     ```json
     {
       "servers": {
         "wisdomai": {
           "type": "http",
-          "url": "https://{ACCOUNT}.wisdom.ai/mcp"
-        }
-      }
-    }
-    ```
-  </Tab>
-  <Tab title="Other Clients">
-    For any MCP-compatible client, use the following configuration:
-
-    | Transport | URL |
-    | :-- | :-- |
-    | **Streamable HTTP** (recommended) | `https://{ACCOUNT}.wisdom.ai/mcp` |
-
-    Most clients accept a JSON configuration in this format:
-
-    ```json
-    {
-      "mcpServers": {
-        "wisdomai": {
-          "url": "https://{ACCOUNT}.wisdom.ai/mcp"
+          "url": "https://mcp.wisdom.ai/mcp"
         }
       }
     }
     ```
 
-    If your client does not support remote HTTP connections directly, use the `mcp-remote` proxy:
+    Claude Code is configured from the command line. Run:
+
+    ```bash
+    claude mcp add --transport http wisdomai https://mcp.wisdom.ai/mcp
+    ```
+
+    Then, in Claude Code, run:
+
+    ```text
+    /mcp
+    ```
+
+    Select `wisdomai` and follow the sign-in flow.
+
+    ### Clients without remote MCP support
+
+    Connect through the `mcp-remote` proxy, which bridges the remote server to a local connection:
 
     ```json
     {
       "mcpServers": {
         "wisdomai": {
           "command": "npx",
-          "args": ["-y", "mcp-remote", "https://{ACCOUNT}.wisdom.ai/mcp"]
+          "args": ["-y", "mcp-remote", "https://mcp.wisdom.ai/mcp"]
         }
       }
     }
     ```
-  </Tab>
-</Tabs>
 
-<Note>
-  Replace `{ACCOUNT}` with your WisdomAI account url above.
-</Note>
+    Once you've added the connection, restart the client and complete authentication when prompted. The exact flow varies by client.
 
-## Authentication
+    <Accordion title="Remove WisdomAI">
+      Delete the `wisdomai` entry from your client's configuration and restart it.
 
-When you first connect, your client will prompt you to:
+      In Claude Code, run `claude mcp remove wisdomai`.
+    </Accordion>
+  </Accordion>
+</AccordionGroup>
 
-1. Log in with your WisdomAI account.
-2. Accept the OAuth authorization.
-3. Grant access to the necessary permissions.
+### Authentication
 
-The server implements **OAuth 2.1** with **Dynamic Client Registration (DCR)** and **Proof Key for Code Exchange (PKCE)**, following the [MCP Authorization specification](https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization). This means:
+Each person authenticates individually. The first time you connect a client, you sign in with your own WisdomAI identity through your organization's usual SSO and approve the connection.
 
-- **No manual setup required**: clients register automatically.
-- **Secure token binding**: tokens are scoped to your MCP session.
-- **Session continuity**: each session maintains its own context and can handle multiple requests with the same token.
+<Accordion title="Authentication in detail">
+  The server implements **OAuth 2.1** with **Dynamic Client Registration (DCR)** and **Proof Key for Code Exchange (PKCE)**, following the [MCP Authorization specification](https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization).
 
-<Accordion title="OAuth Discovery Endpoints">
-  The server exposes standard OAuth discovery endpoints for clients that need them:
+  - Clients register automatically.
+  - Tokens are scoped to the MCP session that requested them.
+  - Each session keeps its own context and handles multiple requests on one token.
+
+  The server exposes standard OAuth discovery endpoints:
 
   - **Protected Resource Metadata**: `/.well-known/oauth-protected-resource`
   - **Authorization Server Metadata**: `/.well-known/oauth-authorization-server`
 
-  The authorization server metadata endpoint returns the locations of additional endpoints, including:
-
-  - **DCR**: `/register` (obtained from `registration_endpoint`)
-  - **Authorization Endpoint**: `/authorize` (obtained from `authorization_endpoint`)
-  - **Token Endpoint**: `/token` (obtained from `token_endpoint`)
-
-  MCP clients should query the `/.well-known/oauth-authorization-server` endpoint to discover the actual URLs rather than assuming fixed paths.
+  The authorization server metadata endpoint returns the locations of the remaining endpoints, including registration (`/register`), authorization (`/authorize`), and token (`/token`). MCP clients should query `/.well-known/oauth-authorization-server` to discover these URLs rather than assuming fixed paths.
 </Accordion>
 
-## Available tools
+## Security and privacy
 
-Once connected, the following tools are available:
+Access works exactly as it does in the WisdomAI app. A connected client acts as the signed-in user, so their role, domain access, row-level security, and column-level security all apply unchanged.
 
-| Tool | Description |
-| :-- | :-- |
-| [**chat**](/integrations/mcp-server/tools/chat) | Ask natural-language questions about your data domains. Returns text, tables, and chart visualizations. |
-| [**list_domains**](/integrations/mcp-server/tools/list-domains) | Discover available domains and their IDs before making queries. |
-| [**echo**](/integrations/mcp-server/tools/echo) | Test connectivity and verify the request/response flow is working. |
+Queries made through MCP appear in your audit trail alongside activity from the app.
 
 ## Example prompts
 
-Once connected, try these prompts to start using WisdomAI from your AI client:
+Start here to confirm the connection and see the data available to you:
 
 - `What domains are available in WisdomAI?`
-- `Show me total revenue by region as a table`
-- `What are the top 5 products by sales this quarter?`
-- `Visualize monthly active users over the last 12 months`
-- `What can I ask about the Sales domain?`
 
-## Test with the Inspector
+### Ask a question
 
-You can test the WisdomAI MCP Server using the [MCP Inspector](https://modelcontextprotocol.io/docs/tools/inspector):
+- `How did Q3 net revenue track against plan in EMEA?`
+- `Break that down by segment and show the last four quarters.`
+- `Show me the top 5 products by sales this quarter as a table.`
+- `Visualize monthly active users over the last 12 months.`
+- `Pull last quarter's revenue by region and draft a summary for the board deck.`
 
-1. Install and launch the MCP Inspector:
-   ```bash
-   npx @modelcontextprotocol/inspector
-   ```
-2. In the Inspector, enter your MCP server URL:
-   ```text
-   https://{ACCOUNT}.wisdom.ai/mcp
-   ```
-3. Click **Connect**. The Inspector will automatically handle the OAuth authorization flow.
-4. Once connected, click **List Tools** to see the available tools.
-5. Select a tool (for example, **list_domains**) and click **Call** to test it.
+### Check where an answer came from
 
-The Inspector provides an interactive interface to test tool calls, inspect responses, and debug authentication.
+- `Which definition of net revenue was used, and what data did it come from?`
+- `Show me the query behind that answer.`
 
-## Troubleshooting
+### Manage domain context
 
-| Issue | Resolution |
-| :-- | :-- |
-| OAuth authentication fails | Ensure your client supports OAuth. Try reauthenticating using your client's MCP management flow. |
-| Tools not appearing | Verify that authentication completed successfully and that you have access to at least one WisdomAI domain. |
-| Connection timeout | Check that the server URL is correct (`https://{ACCOUNT}.wisdom.ai/mcp`) and that your network allows outbound HTTPS connections. |
-| Empty responses from chat | Make sure you are providing a valid `domainId`. Use the **list_domains** tool first to find available domain IDs. |
+- `What metrics are defined in the Finance domain?`
+- `Add business knowledge to the Sales domain: bookings exclude intercompany transfers.`
+- `Save that question and query as a reviewed query in the Sales domain.`
+
+## Capabilities
+
+What's available to you depends on your WisdomAI role.
+
+Everyone with domain access can:
+
+- Find the [domains](/setting-up-wisdom-ai/manage-domains/understand-domains) and tables they can query.
+- Ask questions in natural language and get complete responses, including text, tables, and charts.
+- Refine an answer with follow-ups, keeping the context of the conversation.
+- See the query behind an answer and the definitions it used.
+- Give feedback on an answer, or seek help from the domain admin.
+
+With the role to edit and manage context, you can also:
+
+- Read and edit metric definitions, business knowledge, synonyms, table relationships, derived columns, and parameterized tables.
+- Read and edit reviewed queries and row-level security settings.
+- Reindex a domain after changes.
+
+Context edits go into a draft and take effect after you publish it.
+
+### Not available via MCP
+
+The MCP server doesn't currently expose everything you can do in the WisdomAI app. Use the app for these common tasks:
+
+- Creating or editing [live apps](/live-apps)
+- Building and running [agents](/setting-up-wisdom-ai/agents/agents)
+- Uploading files
 
 ## Next steps
 
@@ -191,5 +223,5 @@ The Inspector provides an interactive interface to test tool calls, inspect resp
 </CardGroup>
 
 <Info>
-  For any queries or support, contact our team at [**support@askwisdom.ai**](mailto:support@askwisdom.ai).
+  For support, feedback, or feature requests, contact our team at [**support@askwisdom.ai**](mailto:support@askwisdom.ai).
 </Info>
