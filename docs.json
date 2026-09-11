@@ -211,7 +211,7 @@
         ]
       },
       {
-        "tab": "Domains",
+        "tab": "Domains & Context",
         "icon": "database",
         "groups": [
           {
@@ -289,6 +289,15 @@
               "product-updates/february-2026/dual-axis-charts",
               "dashboards/dashboard-versioning",
               "dashboards/chat-filters"
+            ]
+          },
+          {
+            "group": "Live Apps",
+            "pages": [
+              "live-apps/overview",
+              "live-apps/create-live-app",
+              "live-apps/data-and-trust",
+              "live-apps/share-and-access"
             ]
           }
         ]

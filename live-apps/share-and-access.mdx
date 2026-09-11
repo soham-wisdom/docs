@@ -1,0 +1,76 @@
+---
+title: Share a Live App and Manage Access
+---
+
+Give teammates access to an app with the same control model you use for dashboards.
+
+## Share an app
+
+To share an app, follow these steps:
+
+1. Open the app and click **Share**.
+![App menu open with Share highlighted above Transfer ownership, Version history, and Delete](/images/share-live-app.png)
+2. Add people and pick a role. A Viewer can open and use the app. An Editor can also change it.
+![Share dialog with two people added and a role dropdown open showing Viewer and Editor options](/images/share-live-apps.png)
+3. Or open it to your organization. Under **General access**, turn on **Everyone in your organization can view**.
+![Share dialog's General access section with Everyone in your organization can view turned on](/images/general-access-live-apps.png)
+
+## What each role can do
+
+See what each role, Viewer or Editor, can do in an app.
+
+| Role | What they can do |
+| --- | --- |
+| Viewer | Open and use the app, filter their own view, annotate to dive deeper, ask questions in chat, inspect widget data sources, download widget data as CSV, and refresh data. |
+| Editor | Everything a Viewer can do, plus change the app itself through chat, annotations, and text edits, restore versions, and delete the app. |
+
+## Use an app shared with you
+
+An app is interactive for everyone who can open it, and nothing you do while consuming it changes the app for anyone else.
+
+- Filter. Use the app's filter controls to narrow what you see. Selections apply to your view only.
+- Dive deeper with Annotate. Point at a chart or number or ask about it. The conversation that opens is scoped to that element.
+- Ask in chat. The chat panel on the left carries the app as context. Ask it to explain what a view is showing, or take the analysis further with follow-up questions.
+- Scope an analysis in chat. Name the view or metric you mean, and the analysis runs on that data instead of the whole app.
+- Take the data with you. Every widget's menu has **Download data (CSV)**, and **Refresh data** re-runs the app's queries on demand.
+
+Changing the app itself, meaning its layout, text, and widgets, requires editor access. Data is scoped by each viewer's permissions, so the same app can show different numbers to different people. That is expected behavior, driven by row-level security. Everyone opens the same live version of the app. When an editor changes it, viewers see the change on their next load.
+
+## Governance notes
+
+Sharing an app never bypasses sign-in or the security rules already on your data.
+
+- Live Apps have no public links. Everyone who opens an app signs in to WisdomAI, and access comes from a share or from organization-wide viewing.
+- Row-level and column-level security apply to every viewer. Sharing an app never turns those off.
+- **Transfer ownership** in the app menu hands an app to a new owner.
+
+## Export an offline copy
+
+**Download HTML** in the app menu packages the app and its current data into a single file that opens in any browser, with no sign-in. Use it for point-in-time sharing outside the platform. The file shows the data it was exported with and does not refresh.
+![App menu open with Download HTML highlighted above Export app (JSON) and Share](/images/download-html-live-apps.png)
+<Note>
+  An exported HTML file carries data with it. Anyone with the file can see that data, so treat it like any other data export.
+</Note>
+For the data alone, open any widget's menu and choose **Download data (CSV)**. Download as PPT is coming soon.
+![Widget menu open with Download source data (CSV) highlighted below View data source](/images/download-csv-live-apps.png)
+## Move an app between environments
+
+Data admins can move an app definition from one account or environment to another.
+
+1. **Export app (JSON)** in the app menu downloads the app definition.
+![Live Apps grid with an app's menu open and Export app (JSON) highlighted](/images/export-json-live-apps.png)
+2. **Import Live App** on the Live Apps view creates a new app from an exported file. WisdomAI validates the table mappings against the destination domain before importing.
+![New App button's dropdown open with Import Live App highlighted](/images/import-live-app.png)
+
+These two options appear only for users with data admin access.
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Create a Live App" icon="pencil" href="/live-apps/create-live-app">
+    Write a prompt and refine the result.
+  </Card>
+  <Card title="See the Data Behind a Live App" icon="database" href="/live-apps/data-and-trust">
+    Inspect widgets, read the SQL, and manage freshness.
+  </Card>
+</CardGroup>
