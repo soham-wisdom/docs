@@ -1,0 +1,78 @@
+---
+title: Live Apps
+sidebarTitle: Overview
+---
+
+Turn a plain-language prompt into an interactive data app built on the same governed foundation as your dashboards.
+
+A Live App is an interactive application that WisdomAI generates from a prompt. Describe the view your team needs, such as a sales pipeline review or an executive KPI overview. WisdomAI answers the data questions behind it, generates the interface, and assembles a working app on your governed data.
+
+Everything your data team has already set up carries over. Row-level and column-level security, domain permissions, and metric definitions apply to the app with no extra setup. Queries run as the person viewing the app, so two viewers with different access see different data in the same app.
+
+## What you can do
+
+A Live App covers the full lifecycle, from building it to sharing it with your team.
+
+- Build by describing. Write a prompt, then refine with chat, annotations, and direct text edits. See [Create a Live App](/live-apps/create-live-app).
+- Check any number. Open a widget's data source to see how it was calculated, the SQL that ran, and a preview of the data. See the [Data Behind a Live App](/live-apps/data-and-trust) page for more details.
+- Keep data current. Apps refresh on a schedule and on demand. Covered on the same page.
+- Explore an app you were given. Filter, annotate a chart to dive deeper, and ask questions in the chat panel, which carries the app as context. See [Share a Live App and Manage Access](/live-apps/share-and-access).
+- Share with control. Viewer and editor roles, organization-wide sharing, and the same permission model as dashboards. Covered on the same page.
+
+
+## How a Live App works
+
+Every chart, KPI, and table in a Live App is a widget backed by a governed query in one of your domains, the same kind of object that powers a dashboard tile. The app itself is generated application code that presents those widgets. It runs in a sandbox in your browser and can only show data served through WisdomAI.
+
+You can always look underneath the generated interface. The **Sources** view shows the widgets behind the app as plain tiles, and every widget can be inspected down to its SQL.
+
+## Where to find Live Apps
+
+Click **Apps** in the sidebar. Live Apps and dashboards live together in one list, which you can search, organize into folders, and narrow to **My Dashboards**, **Shared with me**, or **Starred**. New builds here are apps; the **New App** button's menu still offers **New Dashboard** when you need one.
+
+## Live Apps and dashboards
+
+Live Apps and dashboards share one governed foundation, and they sit together in the same list under **Apps**. A dashboard is a grid of tiles you assemble and arrange by hand. A Live App is a generated application organized around the job you described. Going forward, **New App** is the primary way to build. Your existing dashboards keep working exactly as they always have, and you can migrate one into a Live App whenever you want the generated experience for it. See **Migrate a dashboard** on the Create a Live App page.
+
+## Availability
+
+Live Apps is generally available to all users. Creating apps requires a role that can create content; Explorer roles and above qualify. Users with view-only roles can open apps shared with them.
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="Do Live Apps replace my dashboards?">
+    Your dashboards keep working, and both share the same governed data, permissions, and refresh schedule. Apps and dashboards sit in one list, and new builds default to apps. When you want the generated experience for an existing dashboard, you can migrate it.
+  </Accordion>
+
+  <Accordion title="Is the data live?">
+    An app always serves the latest refreshed results for its widgets. Data refreshes automatically on a schedule, and anyone who can open the app can update it on demand with **Refresh data**. Apps do not stream updates in real time.
+  </Accordion>
+
+  <Accordion title="Can viewers change the app or the data?">
+    No. Changing the app itself requires editor access. Viewers can still filter, annotate a chart to dive deeper, and ask questions in chat, and all of that affects only their own view. The app and its data stay unchanged for everyone else.
+  </Accordion>
+
+  <Accordion title="Can I export a Live App?">
+    Yes. **Download HTML** packages the app and its current data into a single interactive file that opens in any browser. Every widget offers **Download data (CSV)**. Data admins can also use **Export app (JSON)** and **Import Live App** to move an app definition between environments. Download as PPT is coming soon.
+  </Accordion>
+
+  <Accordion title="Can I filter the data in an app?">
+    Yes. Apps come with filter controls built for the app, and they narrow the loaded data instantly. Parameterized filters, which re-run the underlying queries against your warehouse, are coming soon.
+  </Accordion>
+
+  <Accordion title="Who can create a Live App?">
+    Explorer roles and above. Viewer and observer roles can open apps shared with them and use them, without creating or editing.
+  </Accordion>
+</AccordionGroup>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Create a Live App" icon="diagram-project" href="/live-apps/create-live-app">
+    Write a prompt, refine the result, and organize your apps.
+  </Card>
+  <Card title="See the Data Behind a Live App" icon="database" href="/live-apps/data-and-trust">
+    Inspect widgets, read the SQL, and manage freshness.
+  </Card>
+</CardGroup>
