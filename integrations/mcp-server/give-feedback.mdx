@@ -1,0 +1,40 @@
+---
+title: "Give feedback via MCP"
+---
+
+Your AI client selects the right tools from what you ask it. This page describes them for anyone building directly against the MCP server.
+
+There are two ways to respond to an answer that wasn't right: rate it, or escalate it to the people who maintain the domain.
+
+## Rate an answer
+
+`submit_response_feedback` records a thumbs up or down against a specific answer.
+
+| Parameter | Required | Description |
+| :-------- | :------- | :---------- |
+| `conversationId` | Yes | The conversation the answer belongs to. |
+| `responseMessageId` | Yes | The answer being rated. Completed answers carry this ID. |
+| `rating` | Yes | `up` or `down`. |
+| `comment` | No | The reasoning behind the rating. |
+
+Submitting again for the same answer replaces the previous rating.
+
+Ratings appear alongside feedback given in the WisdomAI app. Domain admins review and act on them. See [Provide feedback to the system](/setting-up-wisdom-ai/feedback-mechanisms/provide-feedback-to-the-system) and [Monitor negative feedback](/setting-up-wisdom-ai/feedback-mechanisms/monitor-negative-feedback).
+
+## Ask a domain admin for help
+
+Use `request_admin_help` to seek help or flag a gap to the admins who maintain the domain: a missing metric, an incorrect definition, or data you expected to find but didn't.
+
+See [Request help from admin](/using-wisdom-ai-everyday/request-help-from-admins) for how these requests reach your admins.
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Ask a question" icon="message" href="/integrations/mcp-server/ask-a-question">
+    How a question travels from your client to an answer.
+  </Card>
+
+  <Card title="Manage context" icon="sliders" href="/integrations/mcp-server/manage-context">
+    Read and edit the definitions that shape answers.
+  </Card>
+</CardGroup>

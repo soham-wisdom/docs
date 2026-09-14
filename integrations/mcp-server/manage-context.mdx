@@ -1,0 +1,53 @@
+---
+title: "Manage context via MCP"
+---
+
+Your AI client selects the right tools from what you ask it. This page describes them for anyone building directly against the MCP server.
+
+Context is what makes answers consistent: metric definitions, business vocabulary, table relationships, and verified queries. These tools read and edit it.
+
+<Warning>
+  Context changes affect everyone querying the domain. They require the same role you'd need to make them in the WisdomAI app.
+</Warning>
+
+## Context types
+
+Every context type supports the same four operations: list, get, create or update, and delete.
+
+| Context type | What it defines |
+| :----------- | :-------------- |
+| [Metrics](/improve-wisdom-ai-responses/how-to-create-metrics) | Reusable measures, so the same metric means the same thing in every answer. |
+| [Business knowledge](/setting-up-wisdom-ai/add-domain-specific-knowledge) | Rules and context that aren't in the schema. |
+| Synonyms | Terms your business uses, mapped to what they mean in the data. |
+| Relationships | How tables join to each other. |
+| Derived columns | Calculated columns available to queries without changing the source data. |
+| Parameterized tables | Tables that take parameters at query time. |
+| [Reviewed queries](/setting-up-wisdom-ai/feedback-mechanisms/reviewed-queries) | Verified question-and-query pairs that WisdomAI reuses. |
+| [Row-level security](/manage-account/row-level-access-control/row-level-access-control) | Which rows each user can see, per table. |
+
+Tool names follow the same pattern for each type. Metrics, for example, use `list_domain_metrics`, `get_domain_metric`, `upsert_domain_metric`, and `delete_domain_metric`.
+
+Two exceptions to the pattern:
+
+* Relationships can be listed, created, updated, and deleted, but not fetched individually.
+* Reviewed queries are written in bulk rather than one at a time.
+
+## Drafts and publishing
+
+Context edits are made against a draft (`create_domain_draft`) and reach the domain only when it's published (`publish_domain_draft`). Until then they're reversible. The whole draft can be discarded, or individual changes dropped from it.
+
+After publishing, the domain is reindexed so the changes are reflected in answers (`trigger_domain_reindex`).
+
+Table and column descriptions are the exception: they're updated directly, without a draft.
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Ask a question" icon="message" href="/integrations/mcp-server/ask-a-question">
+    How a question travels from your client to an answer.
+  </Card>
+
+  <Card title="Give feedback" icon="thumbs-up" href="/integrations/mcp-server/give-feedback">
+    Rate an answer or ask a domain admin for help.
+  </Card>
+</CardGroup>
