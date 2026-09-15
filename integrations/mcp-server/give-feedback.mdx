@@ -1,0 +1,50 @@
+---
+title: "Give feedback via MCP"
+---
+
+Use MCP feedback tools to rate a WisdomAI answer or ask a domain admin for help. This guide explains both options and the identifiers you need to use them.
+
+<Note>
+  When using WisdomAI through an AI client, just describe the question or task. Your AI client automatically selects and calls the appropriate MCP tools, so you don't need to know or remember the tool names. The details below are mainly useful for building an AI agent or integrating directly with the MCP server.
+</Note>
+
+## Before you begin
+
+Feedback actions apply to an existing completed answer and use the `conversationId` and `responseMessageId` returned by WisdomAI to identify it.
+
+## Respond to an answer
+
+There are two ways to respond to an answer that wasn't right: rate it, or ask the people who maintain the domain for help.
+
+### Rate an answer
+
+`submit_response_feedback` records a thumbs up or down against a specific answer.
+
+| Parameter | Required | Description |
+| :-------- | :------- | :---------- |
+| `conversationId` | Yes | The conversation the answer belongs to. |
+| `responseMessageId` | Yes | The answer being rated. Completed answers carry this ID. |
+| `rating` | Yes | `up` or `down`. |
+| `comment` | No | The reasoning behind the rating. |
+
+Submitting again for the same answer replaces the previous rating.
+
+Ratings appear alongside feedback given in the WisdomAI app. Domain admins review and act on them. See [Provide feedback to the system](/setting-up-wisdom-ai/feedback-mechanisms/provide-feedback-to-the-system) and [Monitor negative feedback](/setting-up-wisdom-ai/feedback-mechanisms/monitor-negative-feedback).
+
+### Ask a domain admin for help
+
+Use `request_admin_help` to seek help or flag a gap to the admins who maintain the domain: a missing metric, an incorrect definition, or data you expected to find but didn't.
+
+See [Request help from admin](/using-wisdom-ai-everyday/request-help-from-admins) for how these requests reach your admins.
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Ask a question" icon="message" href="/integrations/mcp-server/ask-a-question">
+    How a question travels from your client to an answer.
+  </Card>
+
+  <Card title="Manage context" icon="sliders" href="/integrations/mcp-server/manage-context">
+    Read and edit the definitions that shape answers.
+  </Card>
+</CardGroup>

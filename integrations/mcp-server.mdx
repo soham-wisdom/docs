@@ -9,7 +9,32 @@ WisdomAI provides a hosted [Model Context Protocol (MCP)](https://modelcontextpr
   To connect a third-party MCP server as a data source *inside* WisdomAI, see [Connect an external MCP server](/getting-started/connect-data-sources/connect-mcp-server) instead.
 </Note>
 
-## Set up
+## Before you begin
+
+Before connecting WisdomAI, make sure you have:
+
+- Access to WisdomAI.
+- An MCP-compatible AI client.
+- An MCP URL that your client can reach.
+- A sign-in method supported by your organization.
+
+## Connect to the WisdomAI MCP Server
+
+Complete the following steps to connect your AI client to the WisdomAI MCP Server and verify the connection.
+
+### Step 1: Choose your MCP URL
+
+Use `https://mcp.wisdom.ai/mcp`. It is a common entry point for supported instances and prebuilt integrations.
+
+Use your custom MCP URL for custom connections, or when the central endpoint cannot reach your instance. This includes instances on private networks and staging or dev instances. To build the URL, append `/mcp` to the address you sign in at. For example, if you sign in at `{your-instance}.askwisdom.ai`, your MCP URL is `https://{your-instance}.askwisdom.ai/mcp`.
+
+<Note>
+  When using a custom MCP URL, use the same domain you use to sign in to WisdomAI. Both `wisdom.ai` and `askwisdom.ai` are valid depending on your deployment.
+</Note>
+
+Your MCP client must be able to reach the URL you choose. For cloud-hosted clients, connectivity is required from the client’s servers; browser access or a local VPN alone is insufficient.
+
+### Step 2: Set up your AI client
 
 Choose your AI client below and follow the steps to connect WisdomAI.
 
@@ -19,7 +44,7 @@ Choose your AI client below and follow the steps to connect WisdomAI.
 
     1. In Claude, open **Settings** > **Connectors**.
     2. Click **Add**, then select **Add custom connector**.
-    3. Enter the name `WisdomAI` and paste `https://mcp.wisdom.ai/mcp`.
+    3. Enter the name `WisdomAI` or a representative name and paste your chosen MCP URL.
     4. Click **Add** to save the connector, then click **Connect**.
     5. Enter your work email, sign in, and approve the requested access.
 
@@ -28,10 +53,8 @@ Choose your AI client below and follow the steps to connect WisdomAI.
     <Accordion title="For admins: add WisdomAI for your organization">
       1. Sign in to Claude as an organization admin and open **Settings** > **Connectors**.
       2. Click **Add**, then select **Add custom connector**.
-      3. Enter the name `WisdomAI` and paste `https://mcp.wisdom.ai/mcp`.
+      3. Enter the name `WisdomAI` or a representative name and paste your chosen MCP URL.
       4. Click **Add**. Users in your organization will then find WisdomAI in their connectors and can connect to it.
-
-      To add a staging or dev instance, follow the same steps with a custom MCP URL specific to your instance. Append `/mcp` to the domain you log in on. If you sign in at `{your-instance}.askwisdom.ai`, your MCP URL is `https://{your-instance}.askwisdom.ai/mcp`. Give it a representative name, such as `WisdomAI (staging)`.
     </Accordion>
 
     <Accordion title="Remove WisdomAI">
@@ -61,7 +84,7 @@ Choose your AI client below and follow the steps to connect WisdomAI.
 
     | Setting | Value |
     | :------ | :---- |
-    | URL | `https://mcp.wisdom.ai/mcp` |
+    | URL | Use your [chosen MCP URL](#step-1-choose-your-mcp-url) |
     | Transport | Streamable HTTP |
     | Authentication | OAuth |
 
@@ -133,24 +156,29 @@ Choose your AI client below and follow the steps to connect WisdomAI.
   </Accordion>
 </AccordionGroup>
 
-### Authentication
+### Step 3: Authenticate
 
-Each person authenticates individually. The first time you connect a client, you sign in with your own WisdomAI identity through your organization's usual SSO and approve the connection.
+Choose a sign-in method supported by your AI tool and your organization:
 
-<Accordion title="Authentication in detail">
-  The server implements **OAuth 2.1** with **Dynamic Client Registration (DCR)** and **Proof Key for Code Exchange (PKCE)**, following the [MCP Authorization specification](https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization).
+- **Sign in with WisdomAI (OAuth).** For interactive connections, follow your tool’s sign-in prompts and approve access. Use a sign-in method allowed by your organization. Most clients handle setup automatically; some require an administrator to register the connection first.
+- **API key.** For scripts or tools that accept an API key, create one in WisdomAI’s API Keys settings and add it to your tool’s connection settings. Use your own WisdomAI MCP URL.
+- **Your organization’s identity provider.** If your administrator has enabled this option, your integration can use an access token from your organization’s identity provider. Use your own WisdomAI MCP URL and ask your administrator for the setup details.
 
-  - Clients register automatically.
-  - Tokens are scoped to the MCP session that requested them.
-  - Each session keeps its own context and handles multiple requests on one token.
+For tools that require an HTTP header, send the API key or access token as:
 
-  The server exposes standard OAuth discovery endpoints:
+```text
+Authorization: Bearer <API_KEY_OR_ACCESS_TOKEN>
+```
 
-  - **Protected Resource Metadata**: `/.well-known/oauth-protected-resource`
-  - **Authorization Server Metadata**: `/.well-known/oauth-authorization-server`
+After authentication succeeds, confirm that your client can reach WisdomAI.
 
-  The authorization server metadata endpoint returns the locations of the remaining endpoints, including registration (`/register`), authorization (`/authorize`), and token (`/token`). MCP clients should query `/.well-known/oauth-authorization-server` to discover these URLs rather than assuming fixed paths.
-</Accordion>
+### Step 4: Confirm the connection
+
+Start here to confirm the connection and see the data available to you:
+
+- *What domains are available in WisdomAI?*
+
+If WisdomAI returns the domains available to your account, the connection is ready to use.
 
 ## Security and privacy
 
@@ -160,9 +188,7 @@ Queries made through MCP appear in your audit trail alongside activity from the 
 
 ## Example prompts
 
-Start here to confirm the connection and see the data available to you:
-
-- *What domains are available in WisdomAI?*
+Once the connection is working, try prompts like these:
 
 ### Ask a question
 
@@ -190,12 +216,12 @@ What's available to you depends on your WisdomAI role.
 Everyone with domain access can:
 
 - Find the [domains](/setting-up-wisdom-ai/manage-domains/understand-domains) and tables they can query.
-- Ask questions in natural language and get complete responses, including text, tables, and charts.
+- [Ask questions](/integrations/mcp-server/ask-a-question) in natural language and get complete responses, including text, tables, and charts.
 - Refine an answer with follow-ups, keeping the context of the conversation.
 - See the query behind an answer and the definitions it used.
-- Give feedback on an answer, or seek help from the domain admin.
+- [Give feedback](/integrations/mcp-server/give-feedback) on an answer, or seek help from the domain admin.
 
-With the role to edit and manage context, you can also:
+With the role to edit and [manage context](/integrations/mcp-server/manage-context), you can also:
 
 - Read and edit metric definitions, business knowledge, synonyms, table relationships, derived columns, and parameterized tables.
 - Read and edit reviewed queries and row-level security settings.
@@ -213,13 +239,17 @@ The MCP server doesn't currently expose everything you can do in the WisdomAI ap
 
 ## Next steps
 
-<CardGroup cols={2}>
-  <Card title="Connected Apps" icon="plug" href="/settings/connected-apps">
-    Sign in to OAuth-secured MCP server connections an admin has added.
+<CardGroup cols={3}>
+  <Card title="Ask a question" icon="message" href="/integrations/mcp-server/ask-a-question">
+    Learn how questions move from your AI client to a WisdomAI answer.
   </Card>
 
-  <Card title="API Keys" icon="key" href="/settings/api-keys">
-    Create personal bearer tokens for programmatic access.
+  <Card title="Give feedback" icon="thumbs-up" href="/integrations/mcp-server/give-feedback">
+    Rate an answer or ask a domain admin for help.
+  </Card>
+
+  <Card title="Manage context" icon="sliders" href="/integrations/mcp-server/manage-context">
+    Read and edit the definitions that shape WisdomAI answers.
   </Card>
 </CardGroup>
 

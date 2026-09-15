@@ -172,7 +172,15 @@
             "pages": [
               "integrations/connect-to-slack",
               "integrations/google-sheets",
-              "integrations/mcp-server"
+              {
+                "group": "WisdomAI MCP Server",
+                "pages": [
+                  "integrations/mcp-server",
+                  "integrations/mcp-server/ask-a-question",
+                  "integrations/mcp-server/give-feedback",
+                  "integrations/mcp-server/manage-context"
+                ]
+              }
             ]
           },
           {
