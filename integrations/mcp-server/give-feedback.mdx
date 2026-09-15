@@ -2,11 +2,17 @@
 title: "Give feedback via MCP"
 ---
 
-Your AI client selects the right tools from what you ask it. This page describes them for anyone building directly against the MCP server.
+When a WisdomAI answer needs a response, your AI client can use MCP tools to rate the answer or ask the people who maintain the domain for help.
 
-There are two ways to respond to an answer that wasn't right: rate it, or escalate it to the people who maintain the domain.
+## Before you begin
 
-## Rate an answer
+Feedback actions apply to an existing completed answer and use the `conversationId` and `responseMessageId` returned by WisdomAI to identify it.
+
+## Respond to an answer
+
+There are two ways to respond to an answer that wasn't right: rate it, or ask the people who maintain the domain for help.
+
+### Rate an answer
 
 `submit_response_feedback` records a thumbs up or down against a specific answer.
 
@@ -21,7 +27,7 @@ Submitting again for the same answer replaces the previous rating.
 
 Ratings appear alongside feedback given in the WisdomAI app. Domain admins review and act on them. See [Provide feedback to the system](/setting-up-wisdom-ai/feedback-mechanisms/provide-feedback-to-the-system) and [Monitor negative feedback](/setting-up-wisdom-ai/feedback-mechanisms/monitor-negative-feedback).
 
-## Ask a domain admin for help
+### Ask a domain admin for help
 
 Use `request_admin_help` to seek help or flag a gap to the admins who maintain the domain: a missing metric, an incorrect definition, or data you expected to find but didn't.
 

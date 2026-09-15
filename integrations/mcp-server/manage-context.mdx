@@ -2,17 +2,17 @@
 title: "Manage context via MCP"
 ---
 
-Your AI client selects the right tools from what you ask it. This page describes them for anyone building directly against the MCP server.
+If you have permission to edit context in WisdomAI, your AI client can use MCP tools to inspect and maintain the definitions that guide WisdomAI answers. This page explains the supported context types and how context changes move from editing to publication.
 
 Context is what makes answers consistent: metric definitions, business vocabulary, table relationships, and verified queries. These tools read and edit it.
 
 <Warning>
-  Context changes affect everyone querying the domain. They require the same role you'd need to make them in the WisdomAI app.
+  Context changes affect everyone querying the domain. They require the same permissions you'd need to make those changes in the WisdomAI app.
 </Warning>
 
 ## Context types
 
-Every context type supports the same four operations: list, get, create or update, and delete.
+Most context types follow the same four operations: list, get, create or update, and delete.
 
 | Context type | What it defines |
 | :----------- | :-------------- |
@@ -32,13 +32,27 @@ Two exceptions to the pattern:
 * Relationships can be listed, created, updated, and deleted, but not fetched individually.
 * Reviewed queries are written in bulk rather than one at a time.
 
-## Drafts and publishing
+## Manage context
 
-Context edits are made against a draft (`create_domain_draft`) and reach the domain only when it's published (`publish_domain_draft`). Until then they're reversible. The whole draft can be discarded, or individual changes dropped from it.
+For context changes that use a draft, follow these steps.
 
-After publishing, the domain is reindexed so the changes are reflected in answers (`trigger_domain_reindex`).
+<Note>
+  Table and column descriptions are updated directly and don't use this draft workflow.
+</Note>
 
-Table and column descriptions are the exception: they're updated directly, without a draft.
+### Step 1: Create and edit a draft
+
+Create a draft with `create_domain_draft`, then create, update, or delete the selected context in that draft.
+
+Until the draft is published, its changes are reversible. You can discard the entire draft or remove individual changes from it.
+
+### Step 2: Publish the draft
+
+Publish the draft with `publish_domain_draft`. The changes reach the domain only when the draft is published.
+
+### Step 3: Reindex the domain
+
+After publishing, reindex the domain with `trigger_domain_reindex` so the changes are reflected in WisdomAI answers.
 
 ## Next steps
 

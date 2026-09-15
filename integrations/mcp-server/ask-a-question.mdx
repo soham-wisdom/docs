@@ -2,7 +2,7 @@
 title: "Ask a question via MCP"
 ---
 
-Your AI client selects the right tools from what you ask it. This page describes them for anyone building directly against the MCP server.
+Asking through MCP is an asynchronous conversation flow: your client starts a chat, checks for the result, and continues when WisdomAI needs clarification or a follow-up. This guide walks through the tool sequence and response states for anyone building directly against the MCP server.
 
 ## Domain scope
 
@@ -11,6 +11,8 @@ Questions run against a [domain](/setting-up-wisdom-ai/manage-domains/understand
 Tools are available to list the domains you can access, along with a domain's tables and entities and the documented descriptions of its tables and columns.
 
 ## The flow
+
+The diagram shows how a question moves from a new conversation through polling, clarification, completion, and follow-up.
 
 <img
   src="/images/mcp-question-flow.png"
@@ -40,7 +42,9 @@ Tools are available to list the domains you can access, along with a domain's ta
   }}
 />
 
-## Start a conversation
+## Ask a question
+
+### Step 1: Start a conversation
 
 `new_chat` opens a conversation and asks the first question.
 
@@ -51,7 +55,7 @@ Tools are available to list the domains you can access, along with a domain's ta
 
 The result carries a `conversationId` and a status. Use that `conversationId` for every later call in the conversation.
 
-## Check for the result
+### Step 2: Check for the result
 
 Answers are generated asynchronously. Call `get_chat_result` until the status is terminal.
 
@@ -68,13 +72,13 @@ Answers are generated asynchronously. Call `get_chat_result` until the status is
 | `cancelled` | The response was cancelled before it finished. |
 | `failed` | The result carries an error. |
 
-## Answer a clarification request
+### Step 3: Respond if clarification is needed
 
 When WisdomAI needs more information to answer, it returns the `needs_clarification` status rather than guessing. The result carries the question and the available choices.
 
 Send the answer with `send_message` on the same conversation, then continue checking for the result.
 
-## Continue the conversation
+### Step 4: Continue the conversation
 
 `send_message` adds a follow-up to an existing conversation, which keeps the context of everything asked before it.
 
@@ -85,7 +89,7 @@ Send the answer with `send_message` on the same conversation, then continue chec
 
 A question unrelated to the conversation, or about a different domain, belongs in a new conversation.
 
-## Cancel a response
+### Cancel a response
 
 `cancel_chat` requests cancellation of the response currently being generated. It takes a `conversationId`. If nothing is running, no action is taken.
 

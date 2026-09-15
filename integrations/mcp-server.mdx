@@ -9,7 +9,20 @@ WisdomAI provides a hosted [Model Context Protocol (MCP)](https://modelcontextpr
   To connect a third-party MCP server as a data source *inside* WisdomAI, see [Connect an external MCP server](/getting-started/connect-data-sources/connect-mcp-server) instead.
 </Note>
 
-## Choose your MCP URL
+## Before you begin
+
+Before connecting WisdomAI, make sure you have:
+
+- Access to WisdomAI.
+- An MCP-compatible AI client.
+- An MCP URL that the client can reach.
+- A sign-in method allowed by your organization.
+
+Complete the following steps to connect and verify your AI client.
+
+## Connect WisdomAI
+
+### Step 1: Choose your MCP URL
 
 Use `https://mcp.wisdom.ai/mcp`. It is a common entry point for supported instances and prebuilt integrations.
 
@@ -21,7 +34,7 @@ Use your custom MCP URL for custom connections, or when the central endpoint can
 
 Your MCP client must be able to reach the URL you choose. For cloud-hosted clients, connectivity is required from the client’s servers; browser access or a local VPN alone is insufficient.
 
-## Set up
+### Step 2: Set up your AI client
 
 Choose your AI client below and follow the steps to connect WisdomAI.
 
@@ -71,7 +84,7 @@ Choose your AI client below and follow the steps to connect WisdomAI.
 
     | Setting | Value |
     | :------ | :---- |
-    | URL | Use your [chosen MCP URL](#choose-your-mcp-url) |
+    | URL | Use your [chosen MCP URL](#step-1-choose-your-mcp-url) |
     | Transport | Streamable HTTP |
     | Authentication | OAuth |
 
@@ -143,7 +156,7 @@ Choose your AI client below and follow the steps to connect WisdomAI.
   </Accordion>
 </AccordionGroup>
 
-### Authentication
+### Step 3: Authenticate
 
 Choose a sign-in method supported by your AI tool and your organization:
 
@@ -157,6 +170,16 @@ For tools that require an HTTP header, send the API key or access token as:
 Authorization: Bearer <API_KEY_OR_ACCESS_TOKEN>
 ```
 
+After authentication succeeds, confirm that your client can reach WisdomAI.
+
+### Step 4: Confirm the connection
+
+Start here to confirm the connection and see the data available to you:
+
+- *What domains are available in WisdomAI?*
+
+If WisdomAI returns the domains available to your account, the connection is ready to use.
+
 ## Security and privacy
 
 Access works exactly as it does in the WisdomAI app. A connected client acts as the signed-in user, so their role, domain access, row-level security, and column-level security all apply unchanged.
@@ -165,9 +188,7 @@ Queries made through MCP appear in your audit trail alongside activity from the 
 
 ## Example prompts
 
-Start here to confirm the connection and see the data available to you:
-
-- *What domains are available in WisdomAI?*
+Once the connection is working, try prompts like these:
 
 ### Ask a question
 
