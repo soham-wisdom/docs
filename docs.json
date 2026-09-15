@@ -279,6 +279,7 @@
           },
           {
             "group": "Live Apps",
+            "tag": "Just shipped",
             "pages": [
               "live-apps/overview",
               "live-apps/create-live-app",
