@@ -1,0 +1,71 @@
+---
+title: "Manage context via MCP"
+---
+
+With permission to edit context in WisdomAI, your AI client can use MCP tools to inspect and maintain the definitions that guide WisdomAI answers. This page explains the supported context types and how context changes move from editing to publication.
+
+Context is what makes answers consistent: metric definitions, business vocabulary, table relationships, and verified queries. These tools read and edit it.
+
+<Note>
+  When using WisdomAI through an AI client, just describe the question or task. Your AI client automatically selects and calls the appropriate MCP tools, so you don't need to know or remember the tool names. The details below are mainly useful for building an AI agent or integrating directly with the MCP server.
+</Note>
+
+<Warning>
+  Context changes affect everyone querying the domain. They require the same permissions you'd need to make those changes in the WisdomAI app.
+</Warning>
+
+## Context types
+
+Most context types follow the same four operations: list, get, create or update, and delete.
+
+| Context type | What it defines |
+| :----------- | :-------------- |
+| [Metrics](/improve-wisdom-ai-responses/how-to-create-metrics) | Reusable measures, so the same metric means the same thing in every answer. |
+| [Business knowledge](/setting-up-wisdom-ai/add-domain-specific-knowledge) | Rules and context that aren't in the schema. |
+| Synonyms | Terms your business uses, mapped to what they mean in the data. |
+| Relationships | How tables join to each other. |
+| Derived columns | Calculated columns available to queries without changing the source data. |
+| Parameterized tables | Tables that take parameters at query time. |
+| [Reviewed queries](/setting-up-wisdom-ai/feedback-mechanisms/reviewed-queries) | Verified question-and-query pairs that WisdomAI reuses. |
+| [Row-level security](/manage-account/row-level-access-control/row-level-access-control) | Which rows each user can see, per table. |
+
+Tool names follow the same pattern for each type. Metrics, for example, use `list_domain_metrics`, `get_domain_metric`, `upsert_domain_metric`, and `delete_domain_metric`.
+
+Two exceptions to the pattern:
+
+* Relationships can be listed, created, updated, and deleted, but not fetched individually.
+* Reviewed queries are written in bulk rather than one at a time.
+
+## Manage context
+
+For context changes that use a draft, follow these steps.
+
+<Note>
+  Table and column descriptions are updated directly and don't use this draft workflow.
+</Note>
+
+### Step 1: Create and edit a draft
+
+Create a draft with `create_domain_draft`, then create, update, or delete the selected context in that draft.
+
+Until the draft is published, its changes are reversible. You can discard the entire draft or remove individual changes from it.
+
+### Step 2: Publish the draft
+
+Publish the draft with `publish_domain_draft`. The changes reach the domain only when the draft is published.
+
+### Step 3: Reindex the domain
+
+After publishing, reindex the domain with `trigger_domain_reindex` so the changes are reflected in WisdomAI answers.
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Ask a question" icon="message" href="/integrations/mcp-server/ask-a-question">
+    How a question travels from your client to an answer.
+  </Card>
+
+  <Card title="Give feedback" icon="thumbs-up" href="/integrations/mcp-server/give-feedback">
+    Rate an answer or ask a domain admin for help.
+  </Card>
+</CardGroup>

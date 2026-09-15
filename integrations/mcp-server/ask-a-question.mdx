@@ -1,0 +1,130 @@
+---
+title: "Ask a question via MCP"
+---
+
+Asking through MCP is an asynchronous conversation flow: your AI client connected to WisdomAI starts a chat, checks for the result, and continues when WisdomAI needs clarification or a follow-up. This guide walks through the tool sequence and response states for anyone building directly against the MCP server.
+
+<Note>
+  When using WisdomAI through an AI client, just describe the question or task. Your AI client automatically selects and calls the appropriate MCP tools, so you don't need to know or remember the tool names. The details below are mainly useful for building an AI agent or integrating directly with the MCP server.
+</Note>
+
+## Domain scope
+
+Questions run against a [domain](/setting-up-wisdom-ai/manage-domains/understand-domains). WisdomAI determines which domain a question belongs to from the question itself, so `domainId` is optional when you start a conversation. Pass it when you want to query a specific domain.
+
+Tools are available to list the domains you can access, along with a domain's tables and entities and the documented descriptions of its tables and columns.
+
+## The flow
+
+The diagram below shows how a question moves from a new conversation through polling, clarification, completion, and follow-up.
+
+<img
+  src="/images/mcp-question-flow.png"
+  alt="A question starts with new_chat, then get_chat_result is polled until the status is terminal. running returns to polling; needs_clarification is answered with send_message and polling resumes; cancelled, completed, and failed end the turn. A completed answer can be followed up with send_message, which returns to polling."
+  lightAlt="A question starts with new_chat, then get_chat_result is polled until the status is terminal. running returns to polling; needs_clarification is answered with send_message and polling resumes; cancelled, completed, and failed end the turn. A completed answer can be followed up with send_message, which returns to polling."
+  darkAlt="A question starts with new_chat, then get_chat_result is polled until the status is terminal. running returns to polling; needs_clarification is answered with send_message and polling resumes; cancelled, completed, and failed end the turn. A completed answer can be followed up with send_message, which returns to polling."
+  noZoom
+  className="block dark:hidden"
+  style={{
+    margin: "0 auto",
+    width: "100%",
+    maxWidth: "460px",
+  }}
+/>
+
+<img
+  src="/images/mcp-question-flow-dark.png"
+  alt="A question starts with new_chat, then get_chat_result is polled until the status is terminal. running returns to polling; needs_clarification is answered with send_message and polling resumes; cancelled, completed, and failed end the turn. A completed answer can be followed up with send_message, which returns to polling."
+  lightAlt="A question starts with new_chat, then get_chat_result is polled until the status is terminal. running returns to polling; needs_clarification is answered with send_message and polling resumes; cancelled, completed, and failed end the turn. A completed answer can be followed up with send_message, which returns to polling."
+  darkAlt="A question starts with new_chat, then get_chat_result is polled until the status is terminal. running returns to polling; needs_clarification is answered with send_message and polling resumes; cancelled, completed, and failed end the turn. A completed answer can be followed up with send_message, which returns to polling."
+  noZoom
+  className="hidden dark:block"
+  style={{
+    margin: "0 auto",
+    width: "100%",
+    maxWidth: "460px",
+  }}
+/>
+
+## Ask a question
+
+### Step 1: Start a conversation
+
+`new_chat` opens a conversation and asks the first question.
+
+| Parameter | Required | Description |
+| :-------- | :------- | :---------- |
+| `message` | Yes | The question to ask. |
+| `domainId` | No | The domain to query. |
+
+The result carries a `conversationId` and a status. Use that `conversationId` for every later call in the conversation.
+
+### Step 2: Check for the result
+
+Answers are generated asynchronously. Call `get_chat_result` until the status is terminal.
+
+| Parameter | Required | Description |
+| :-------- | :------- | :---------- |
+| `conversationId` | Yes | The conversation to check. |
+| `responseMessageId` | No | A specific turn in the conversation. |
+
+| Status | What it means |
+| :----- | :------------ |
+| `running` | The answer isn't ready. Call again. |
+| `needs_clarification` | WisdomAI needs more information. The result carries the question and the available choices. |
+| `completed` | The result carries the answer and a `responseMessageId`. |
+| `cancelled` | The response was cancelled before it finished. |
+| `failed` | The result carries an error. |
+
+### Step 3: Respond if clarification is needed
+
+When WisdomAI needs more information to answer, it returns the `needs_clarification` status rather than guessing. The result carries the question and the available choices.
+
+Send the answer with `send_message` on the same conversation, then continue checking for the result.
+
+### Step 4: Continue the conversation
+
+`send_message` adds a follow-up to an existing conversation, which keeps the context of everything asked before it.
+
+| Parameter | Required | Description |
+| :-------- | :------- | :---------- |
+| `conversationId` | Yes | The conversation to continue. |
+| `message` | Yes | The follow-up question, refinement, or clarification answer. |
+
+A question unrelated to the conversation, or about a different domain, belongs in a new conversation.
+
+### Cancel a response
+
+`cancel_chat` requests cancellation of the response currently being generated. It takes a `conversationId`. If nothing is running, no action is taken.
+
+## What comes back
+
+A completed answer contains one or more content items:
+
+| Type | Contents |
+| :--- | :------- |
+| Text | Explanations, summaries, and suggested follow-up questions. |
+| Table | A title, column headers, and rows. |
+| Chart | A chart type, title, Highcharts configuration, and an image URL. |
+
+The Highcharts configuration contains the underlying data and can be passed to [Highcharts](https://www.highcharts.com/) to render the visualization yourself.
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card
+    title="Give feedback"
+    icon="thumbs-up"
+    href="/integrations/mcp-server/give-feedback"
+  >
+    Rate an answer or ask a domain admin for help.
+  </Card>
+
+  <Card
+    title="Manage context"
+    icon="sliders"
+    href="/integrations/mcp-server/manage-context"
+  >
+    Read and edit the definitions that shape answers.
+  </Card>
+</CardGroup>
