@@ -2,9 +2,13 @@
 title: "Manage context via MCP"
 ---
 
-If you have permission to edit context in WisdomAI, your AI client can use MCP tools to inspect and maintain the definitions that guide WisdomAI answers. This page explains the supported context types and how context changes move from editing to publication.
+With permission to edit context in WisdomAI, your AI client can use MCP tools to inspect and maintain the definitions that guide WisdomAI answers. This page explains the supported context types and how context changes move from editing to publication.
 
 Context is what makes answers consistent: metric definitions, business vocabulary, table relationships, and verified queries. These tools read and edit it.
+
+<Note>
+  When using WisdomAI through an AI client, just describe the question or task. Your AI client automatically selects and calls the appropriate MCP tools, so you don't need to know or remember the tool names. The details below are mainly useful for building an AI agent or integrating directly with the MCP server.
+</Note>
 
 <Warning>
   Context changes affect everyone querying the domain. They require the same permissions you'd need to make those changes in the WisdomAI app.

@@ -4,6 +4,10 @@ title: "Ask a question via MCP"
 
 Asking through MCP is an asynchronous conversation flow: your AI client connected to WisdomAI starts a chat, checks for the result, and continues when WisdomAI needs clarification or a follow-up. This guide walks through the tool sequence and response states for anyone building directly against the MCP server.
 
+<Note>
+  When using WisdomAI through an AI client, just describe the question or task. Your AI client automatically selects and calls the appropriate MCP tools, so you don't need to know or remember the tool names. The details below are mainly useful for building an AI agent or integrating directly with the MCP server.
+</Note>
+
 ## Domain scope
 
 Questions run against a [domain](/setting-up-wisdom-ai/manage-domains/understand-domains). WisdomAI determines which domain a question belongs to from the question itself, so `domainId` is optional when you start a conversation. Pass it when you want to query a specific domain.
