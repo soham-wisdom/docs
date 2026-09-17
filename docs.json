@@ -817,7 +817,7 @@
     }
   },
   "logo": {
-    "light": "/images/wisdom-logo-light.png",
-    "dark": "/images/wisdom-logo-dark.png"
+    "light": "/images/logo/wisdom-logo-light.svg",
+    "dark": "/images/logo/wisdom-logo-dark.svg"
   }
 }
