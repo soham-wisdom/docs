@@ -18,7 +18,7 @@ export const HomeBanner = () => {
 
 export const PageWrapper = ({ children }) => {
   return (
-    <div className="w-full flex justify-center px-4">
+    <div className="w-full flex justify-center px-4 pt-4">
       <div className="w-full max-w-[1376px]">{children}</div>
     </div>
   );
