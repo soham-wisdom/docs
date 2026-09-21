@@ -505,11 +505,11 @@
         ]
       },
       {
-        "tab": "Product Updates",
+        "tab": "Recently Launched",
         "icon": "circle-arrow-up-right",
         "groups": [
           {
-            "group": "Product Updates",
+            "group": "Recently Launched",
             "pages": [
               {
                 "group": "August 2026",
