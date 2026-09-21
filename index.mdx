@@ -3,33 +3,43 @@ mode: custom
 title: "WisdomAI Docs"
 ---
 
-import {HomeBanner, McpBanner, PageWrapper, HomeCard} from "/snippets/home.jsx"
-
-<HomeBanner/>
+import {PageWrapper, HomeCard} from "/snippets/home.jsx"
 
 <PageWrapper>
 
+<div className="mb-2">
+  <Columns cols={3}>
+    <HomeCard
+      href="/product-updates/august-2026/august-features"
+      src="/images/home/light/card6-01.png"
+      darkSrc="/images/home/dark/card6.png"
+      title="Recently Launched"
+      description="Discover Live Apps, Domain Groups, and more"
+      badge
+    >
+    </HomeCard>
+
+    <HomeCard
+      href="/getting-started/overview"
+      src="/images/home/light/card1.svg"
+      darkSrc="/images/home/dark/card1.png"
+      title="Getting started"
+      description="Everything you need to start using WisdomAI"
+    >
+    </HomeCard>
+
+    <HomeCard
+      href="/setting-up-wisdom-ai/basic-tutorial-connect-and-test"
+      src="/images/home/light/card2.svg"
+      darkSrc="/images/home/dark/card2.png"
+      title="Setting Up WisdomAI"
+      description="Connect data sources and start creating knowledge"
+    >
+    </HomeCard>
+  </Columns>
+</div>
+
 <Columns cols={3}>
-  <HomeCard
-    href="/getting-started/overview"
-    src="/images/home/light/card1.svg"
-    darkSrc="/images/home/dark/card1.png"
-    title="Getting started"
-    description="Start utilizing the platform’s features effectively"
-  >
-
-  </HomeCard>
-
-  <HomeCard
-    href="/setting-up-wisdom-ai/basic-tutorial-connect-and-test"
-    src="/images/home/light/card2.svg"
-    darkSrc="/images/home/dark/card2.png"
-    title="Setting Up WisdomAI"
-    description="Connect data sources and start creating knowledge"
-  >
-    
-  </HomeCard>
-
   <HomeCard
     href="/improve-wisdom-ai-responses/enhancing-data-analysis-with-custom-business-context"
     src="/images/home/light/card3.svg"
@@ -37,18 +47,15 @@ import {HomeBanner, McpBanner, PageWrapper, HomeCard} from "/snippets/home.jsx"
     title="Improve WisdomAI Responses"
     description="Explore the available tools to enhance your responses"
   >
-    
   </HomeCard>
-</Columns>
-<Columns cols={3}>
+
   <HomeCard
     href="/using-wisdom-ai-everyday/ask-better-questions"
     src="/images/home/light/card-4-01.png"
     darkSrc="/images/home/dark/card4.png"
     title="Using WisdomAI Everyday"
-    description= "Craft effective queries to get the best possible information"
+    description="Craft effective queries to get the best possible information"
   >
-    
   </HomeCard>
 
   <HomeCard
@@ -60,18 +67,6 @@ import {HomeBanner, McpBanner, PageWrapper, HomeCard} from "/snippets/home.jsx"
     description="Embed, query, and extend WisdomAI from your own stack."
   >
   </HomeCard>
-
-    <HomeCard
-    href="/product-updates/august-2026/august-features"
-    src="/images/home/light/card6-01.png"
-    darkSrc="/images/home/dark/card6.png"
-    title="Product Updates"
-    description="Stay up-to-date with the latest features and improvements"
-    badge
-  >
-  </HomeCard>
 </Columns>
+
 </PageWrapper>
-
-<McpBanner/>
-
