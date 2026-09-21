@@ -209,6 +209,12 @@
         "icon": "database",
         "groups": [
           {
+            "group": "Get Started",
+            "pages": [
+              "setting-up-wisdom-ai/getting-started-domains-context"
+            ]
+          },
+          {
             "group": "Domains",
             "pages": [
               "setting-up-wisdom-ai/manage-domains/understand-domains",
