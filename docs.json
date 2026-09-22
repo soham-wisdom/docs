@@ -187,6 +187,7 @@
             "group": "Product Reference",
             "pages": [
               "getting-started/glossary",
+              "reference-library/faq",
               "reference-library/limits-and-quotas",
               {
                 "group": "Domain Tabs",
