@@ -17,11 +17,11 @@ Answers to common questions from WisdomAI users, grouped by topic.
   </Accordion>
 
   <Accordion title="Can you bring your own model to use WisdomAI?">
-    Yes, on Cloud-Prem and Customer On-Prem — this is Bring Your Own LLM (BYO-LLM): point WisdomAI at your own on-prem or private-cloud model endpoint, with no hard dependency on any single provider. Not available on SaaS Hosted, where WisdomAI operates model access for you. See [Deployment Models](/deployment/deployment-models).
+    Yes, on Cloud-Prem and Customer On-Prem. This is Bring Your Own LLM (BYO-LLM): point WisdomAI at your own on-prem or private-cloud model endpoint, with no hard dependency on any single provider. Not available on SaaS Hosted, where WisdomAI operates model access for you. See [Deployment Models](/deployment/deployment-models).
   </Accordion>
 
   <Accordion title="What's the underlying database of WisdomAI?">
-    WisdomAI isn't a database itself — it's an analytics layer that connects to and queries your own databases and warehouses (Snowflake, BigQuery, Redshift, Databricks, PostgreSQL, SQL Server, and more). For its own platform metadata, audit logs, and — on self-hosted deployments — the vector/lexical index, WisdomAI runs on PostgreSQL and OpenSearch. See [Supported Data Sources](/getting-started/connect-data-sources/supported-data-sources).
+    WisdomAI isn't a database itself. It's an analytics layer that connects to and queries your own databases and warehouses (Snowflake, BigQuery, Redshift, Databricks, PostgreSQL, SQL Server, and more). For its own platform metadata, audit logs, and, on self-hosted deployments, the vector/lexical index, WisdomAI runs on PostgreSQL and OpenSearch. See [Supported Data Sources](/getting-started/connect-data-sources/supported-data-sources).
   </Accordion>
 </AccordionGroup>
 
@@ -33,7 +33,7 @@ Answers to common questions from WisdomAI users, grouped by topic.
   </Accordion>
 
   <Accordion title="How do I set up OAuth-based SSO?">
-    This is the same feature as Okta SSO above — OAuth/OIDC-based SSO is covered by the same BYO IdP setup (Okta or Entra ID). See [Role Mapping & SSO Groups](/manage-account/role-mapping-and-sso-groups).
+    This is the same feature as Okta SSO above. OAuth/OIDC-based SSO is covered by the same BYO IdP setup (Okta or Entra ID). See [Role Mapping & SSO Groups](/manage-account/role-mapping-and-sso-groups).
   </Accordion>
 </AccordionGroup>
 
@@ -41,7 +41,7 @@ Answers to common questions from WisdomAI users, grouped by topic.
 
 <AccordionGroup>
   <Accordion title="Can we connect WisdomAI to a Teams channel?">
-    Not today. The chat-app integration currently supports Slack only. Microsoft Teams isn't supported — if it's a priority for your organization, flag it to your account team for the roadmap. See [Connect to Slack](/integrations/connect-to-slack).
+    Not today. The chat-app integration currently supports Slack only. Microsoft Teams isn't supported. If it's a priority for your organization, flag it to your account team for the roadmap. See [Connect to Slack](/integrations/connect-to-slack).
   </Accordion>
 
   <Accordion title="How do I access MCP with AD OAuth?">
@@ -49,11 +49,11 @@ Answers to common questions from WisdomAI users, grouped by topic.
   </Accordion>
 
   <Accordion title="Are there docs or examples for connecting Glean (or other internal tools) to the WisdomAI MCP server?">
-    Any MCP-compatible client connects the same way: URL, Streamable HTTP transport, and OAuth (or an API key). There's no Glean-specific guide because none is needed — once Glean, or any internal tool, supports connecting to a remote MCP server, it uses that same generic configuration. See [WisdomAI MCP Server: Other clients](/integrations/mcp-server).
+    Any MCP-compatible client connects the same way: URL, Streamable HTTP transport, and OAuth (or an API key). There's no Glean-specific guide because none is needed. Once Glean, or any internal tool, supports connecting to a remote MCP server, it uses that same generic configuration. See [WisdomAI MCP Server: Other clients](/integrations/mcp-server).
   </Accordion>
 
   <Accordion title="Are there limitations using WisdomAI with MCP?">
-    WisdomAI has two distinct MCP capabilities, each with its own limits: (1) the hosted WisdomAI MCP Server, which lets clients like Claude, ChatGPT, Cursor, and VS Code query your domains — it doesn't yet support creating live apps, building agents, or uploading files (use the app for those); and (2) connecting an external MCP server as a data source inside WisdomAI — this scans metadata and fetches data, but isn't a general two-way integration. See [WisdomAI MCP Server: Not available via MCP](/integrations/mcp-server#not-available-via-mcp).
+    WisdomAI has two distinct MCP capabilities, each with its own limits: (1) the hosted WisdomAI MCP Server, which lets clients like Claude, ChatGPT, Cursor, and VS Code query your domains. It doesn't yet support creating live apps, building agents, or uploading files (use the app for those); and (2) connecting an external MCP server as a data source inside WisdomAI. This scans metadata and fetches data, but isn't a general two-way integration. See [WisdomAI MCP Server: Not available via MCP](/integrations/mcp-server#not-available-via-mcp).
   </Accordion>
 </AccordionGroup>
 
@@ -65,7 +65,7 @@ Answers to common questions from WisdomAI users, grouped by topic.
   </Accordion>
 
   <Accordion title="Is having a data warehouse a best practice?">
-    Not a requirement — WisdomAI connects directly to a wide range of databases, warehouses, and SaaS sources, so a dedicated warehouse isn't necessary just to use it. That said, consolidating data into a warehouse (Snowflake, BigQuery) is a common pattern at scale, since it simplifies semantic modeling and access control across many source systems. It's a data-architecture choice independent of WisdomAI, not a platform requirement.
+    Not a requirement. WisdomAI connects directly to a wide range of databases, warehouses, and SaaS sources, so a dedicated warehouse isn't necessary just to use it. That said, consolidating data into a warehouse (Snowflake, BigQuery) is a common pattern at scale, since it simplifies semantic modeling and access control across many source systems. It's a data-architecture choice independent of WisdomAI, not a platform requirement.
   </Accordion>
 </AccordionGroup>
 
@@ -73,7 +73,7 @@ Answers to common questions from WisdomAI users, grouped by topic.
 
 <AccordionGroup>
   <Accordion title="Can I query or join data across multiple domains?">
-    Yes — this is what Domain Groups and Auto Domain Selection are for. Group two or more domains so a conversation can draw on tables across all of them, or turn on Auto mode to have WisdomAI route each question to the right domain or group automatically. See [Set Up and Use Domain Groups & Auto Domain Selection](/setting-up-wisdom-ai/domain-groups-how-to).
+    Yes. This is what Domain Groups and Auto Domain Selection are for. Group two or more domains so a conversation can draw on tables across all of them, or turn on Auto mode to have WisdomAI route each question to the right domain or group automatically. See [Set Up and Use Domain Groups & Auto Domain Selection](/setting-up-wisdom-ai/domain-groups-how-to).
   </Accordion>
 </AccordionGroup>
 
@@ -81,7 +81,7 @@ Answers to common questions from WisdomAI users, grouped by topic.
 
 <AccordionGroup>
   <Accordion title="What's the max size of the JWT sent in the embed/search?token= URL?">
-    There's no WisdomAI-imposed cap on the token itself. Two things matter more in practice: embedded session JWTs already expire after 1 hour by design, and a token with many custom claims can hit URL-length limits enforced by browsers or intermediate proxies — typically in the low thousands of characters. Keep claims minimal and rely on the built-in `postMessage` refresh flow instead of a long-lived, claim-heavy token. See [Session Management](/integrations/embeddings/session-management).
+    There's no WisdomAI-imposed cap on the token itself. Two things matter more in practice: embedded session JWTs already expire after 1 hour by design, and a token with many custom claims can hit URL-length limits enforced by browsers or intermediate proxies, typically in the low thousands of characters. Keep claims minimal and rely on the built-in `postMessage` refresh flow instead of a long-lived, claim-heavy token. See [Session Management](/integrations/embeddings/session-management).
   </Accordion>
 </AccordionGroup>
 
@@ -97,10 +97,10 @@ Answers to common questions from WisdomAI users, grouped by topic.
 
 <AccordionGroup>
   <Accordion title="Does my subscription price include infrastructure?">
-    Depends on the deployment model. SaaS Hosted: yes — WisdomAI manages all compute, storage, and networking, with no separate infrastructure cost to plan for. Cloud-Prem / Customer On-Prem: the subscription covers the platform itself, while the underlying cloud spend (AWS/GCP/Azure) or on-prem hardware is provisioned and billed separately by you, or offset against existing cloud commitments. See [Deployment Models](/deployment/deployment-models).
+    Depends on the deployment model. SaaS Hosted: yes. WisdomAI manages all compute, storage, and networking, with no separate infrastructure cost to plan for. Cloud-Prem / Customer On-Prem: the subscription covers the platform itself, while the underlying cloud spend (AWS/GCP/Azure) or on-prem hardware is provisioned and billed separately by you, or offset against existing cloud commitments. See [Deployment Models](/deployment/deployment-models).
   </Accordion>
 
   <Accordion title="How many domains can a customer have?">
-    There's no hard platform-enforced cap. The one built-in behavior change: past 10 domains, Auto Domain Selection requires configuring a Domain Greenlist (the subset WisdomAI is allowed to auto-route to). Any plan-level quota is set by your subscription — check with your account team for your specific limit.
+    There's no hard platform-enforced cap. The one built-in behavior change: past 10 domains, Auto Domain Selection requires configuring a Domain Greenlist (the subset WisdomAI is allowed to auto-route to). Any plan-level quota is set by your subscription. Check with your account team for your specific limit.
   </Accordion>
 </AccordionGroup>
