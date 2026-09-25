@@ -12,7 +12,7 @@ Answers to common questions from WisdomAI users, grouped by topic.
     WisdomAI isn't tied to a single model. On SaaS Hosted, WisdomAI uses a combination of models from OpenAI and Anthropic under Zero Data Retention (ZDR) agreements, so prompts and completions aren't retained by those providers. On Cloud-Prem (VPC) and Customer On-Prem, you can bring your own LLM (BYO-LLM) and point WisdomAI at your own on-prem or private-cloud model endpoint instead. See [Deployment Models](/deployment/deployment-models).
   </Accordion>
 
-  <Accordion title="Does WisdomAI use a proprietary AI model?">
+  <Accordion title="Does WisdomAI have its own AI model?">
     No. WisdomAI doesn't train or ship a foundation model of its own. On SaaS Hosted, it calls out to OpenAI and Anthropic models under Zero Data Retention agreements.
   </Accordion>
 
@@ -92,7 +92,7 @@ Answers to common questions from WisdomAI users, grouped by topic.
     Any MCP-compatible client connects the same way: URL, Streamable HTTP transport, and OAuth (or an API key). There's no Glean-specific guide because none is needed. Once Glean, or any internal tool, supports connecting to a remote MCP server, it uses that same generic configuration. See [WisdomAI MCP Server: Other clients](/integrations/mcp-server).
   </Accordion>
 
-  <Accordion title="What are the limitations of using WisdomAI through MCP?">
+  <Accordion title="What are the limitations of using WisdomAI with MCP?">
     WisdomAI has two distinct MCP capabilities, each with its own limits: (1) the hosted WisdomAI MCP Server, which lets clients like Claude, ChatGPT, Cursor, and VS Code query your domains. It doesn't yet support creating live apps, building agents, or uploading files (use the app for those); and (2) connecting an external MCP server as a data source inside WisdomAI. This scans metadata and fetches data, but isn't a general two-way integration. See [WisdomAI MCP Server: Not available via MCP](/integrations/mcp-server#not-available-via-mcp).
   </Accordion>
 </AccordionGroup>
