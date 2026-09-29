@@ -230,7 +230,8 @@
                   "setting-up-wisdom-ai/manage-tables-columns/set-up-rag"
                 ]
               },
-              "setting-up-wisdom-ai/manage-domains/domain-health"
+              "setting-up-wisdom-ai/manage-domains/domain-health",
+              "setting-up-wisdom-ai/manage-domains/import-apache-ossie-model"
             ]
           },
           {

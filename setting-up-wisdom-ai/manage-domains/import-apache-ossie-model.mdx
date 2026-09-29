@@ -1,0 +1,122 @@
+---
+title: "Import an Apache Ossie model"
+---
+
+Apache Ossie is an open, vendor-neutral YAML format for describing datasets, relationships, metrics, and AI context. You can import an Ossie semantic model into a WisdomAI domain to reuse definitions your data team already governs in Snowflake, Databricks, dbt, or another Ossie-compatible tool. WisdomAI then answers questions using the same logic those tools use.
+
+This release supports import only. The Ossie file remains the source of truth. To pick up upstream changes, re-import the file.
+
+## Before you begin
+Make sure you have the following:
+
+- An Ossie model file (`ossie-model.yaml` or `osi_document.json`) that uses spec version 0.1.0 or 0.1.1.
+- A WisdomAI connection to the warehouse that holds the tables referenced in the model (Snowflake, Databricks, or ClickHouse).
+- Admin or Domain Editor permission in WisdomAI.
+- Tables referenced in the model's `source` fields that are visible to the WisdomAI connection.
+
+## Get an Ossie file
+
+How you get an Ossie file depends on where your semantic model lives, export it from Snowflake, Databricks, or dbt, write it by hand for ClickHouse, or author your own.
+
+- **Snowflake**
+
+    Run the following query against an existing Semantic View and save the output to a `.yaml` file:
+
+    ```sql
+    SELECT SYSTEM$READ_OSSIE_YAML_FROM_SEMANTIC_VIEW('database.schema.semantic_view_name');
+    ```
+
+- **Databricks**
+
+    Export the Unity Catalog Metric View YAML, then convert it with the Ossie UC Metric Views converter in the `converters/` directory of the `apache/ossie` repository.
+
+- **dbt**
+
+    dbt 1.12 and later writes `target/osi_document.json` every time you run `dbt parse`. Use that file directly.
+
+- **ClickHouse**
+
+    ClickHouse has no native semantic layer or Ossie export. Author the Ossie file by hand, or generate it from a dbt project that runs on the `dbt-clickhouse` adapter. Set the expression dialect to `CLICKHOUSE` to use ClickHouse-specific functions.
+
+- **Hand-authored files**
+
+    Any file that validates against the Ossie 0.1.x JSON schema imports. See the [Apache Ossie specification](https://ossie.apache.org) for details.
+
+## What WisdomAI imports
+
+The table below shows how each Ossie object maps to a WisdomAI object in your domain.
+
+| Ossie object | WisdomAI object | Notes |
+| :---- | :---- | :---- |
+| Dataset | Table | Dataset and field descriptions become table and column documentation. |
+| Relationship | Join | Cardinality (one-to-one, one-to-many, many-to-one) comes from the relationship definition. WisdomAI validates each join against the connected warehouse during import. |
+| Metric | Governed metric | WisdomAI uses the SQL expression that matches your warehouse dialect. If only an ANSI SQL expression exists, WisdomAI transpiles it to the target dialect. |
+| `ai_context` | Natural-language context | Synonyms, instructions, and business descriptions become the context WisdomAI uses when it plans an answer. |
+| `custom_extensions` | Stored, not interpreted | WisdomAI preserves vendor-specific content for future export but does not use it. |
+
+## Import a model
+
+Complete the following steps to import your Ossie file into a domain:
+
+1. Open the domain you want to import into, or create a new domain.
+2. Go to **Domain Settings** and select **Import from Apache Ossie**.
+3. Select the warehouse connection that holds the tables referenced in the model.
+4. Upload your `ossie-model.yaml` or `osi_document.json` file.
+5. Review the preview. WisdomAI lists every table, join, metric, and context item it found, and flags anything it could not resolve.
+6. If WisdomAI could not find a table, use the dropdown next to it to map it to the correct table in your connection.
+7. Click **Import**.
+8. Wait for validation to complete. WisdomAI runs each join and metric against the warehouse to confirm that it executes.
+9. Open the domain and ask a test question that uses one of the imported metrics. Check the step-by-step reasoning panel to confirm that WisdomAI used the imported definition.
+
+## After the import
+
+Keep the following in mind when you work with imported objects in your domain:
+
+- WisdomAI labels imported objects **Source: Ossie** so you can tell them apart from objects created in WisdomAI.
+- You can add tables, joins, and metrics alongside imported ones.
+- You can edit an imported object in WisdomAI, but the next re-import overwrites those edits. Make durable changes in the Ossie source and re-import.
+
+## Update the model
+
+To pick up upstream changes, repeat the import with the new file. WisdomAI shows a diff of added, changed, and removed objects before it applies anything. WisdomAI deletes removed objects from the domain unless you clear them in the diff view.
+
+## Limitations
+
+The Apache Ossie import has the following limitations in this release:
+
+- Import only. Export from WisdomAI to Ossie is not available.
+- Spec versions 0.1.0 and 0.1.1 only. WisdomAI rejects files marked 0.2.0 or later with a version error.
+- Manual upload only. Connector-native import from Snowflake Semantic Views and Databricks Metric Views, and API-based import for CI pipelines, are planned.
+- Metrics without an executable expression for your dialect (for example, some dbt MetricFlow derived or cumulative metrics) import as documented metrics. They are not queryable until you add an expression.
+- Custom extensions are preserved but not used.
+
+## Troubleshoot import errors
+
+<AccordionGroup>
+  <Accordion title="Unsupported spec version">
+    The file declares a version other than 0.1.0 or 0.1.1. Re-export the file from the source tool, or edit the `version` field if the content is compatible.
+  </Accordion>
+  <Accordion title="Table not found: schema.table">
+    The `source` field references a table that the connection cannot see. Check the connection's default database and role, or use the mapping dropdown in the preview step.
+  </Accordion>
+  <Accordion title="No expression for dialect X">
+    The metric has no expression for your warehouse and no ANSI SQL fallback. Add the expression in the Ossie source and re-import.
+  </Accordion>
+  <Accordion title="Join validation failed">
+    The relationship's key columns do not exist or have mismatched types. Check the column names in the source tables.
+  </Accordion>
+  <Accordion title="Schema validation error at line N">
+    The file does not conform to the Ossie JSON schema. Run it through the validator in the `apache/ossie` repository to see the specific error.
+  </Accordion>
+</AccordionGroup>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Data Sources Tab" icon="database" href="/setting-up-wisdom-ai/manage-domains/data-sources-tab">
+    Manage the tables, uploads, and files that a domain uses.
+  </Card>
+  <Card title="Understand domains" icon="layer-group" href="/setting-up-wisdom-ai/manage-domains/understand-domains">
+    Learn how domains scope data and context for WisdomAI.
+  </Card>
+</CardGroup>
