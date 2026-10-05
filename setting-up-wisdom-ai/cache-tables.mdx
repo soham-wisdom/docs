@@ -1,0 +1,64 @@
+---
+title: "Smart cache tables"
+sidebarTitle: "Cache tables for faster apps and dashboards"
+---
+
+Wisdom Smart Cache is in beta and is enabled per account. Contact your WisdomAI representative to turn it on.
+
+Serve apps and dashboards from Wisdom-managed snapshots of your tables instead of querying the warehouse on every load.
+
+When you register a table for caching, WisdomAI builds a compressed snapshot on a schedule and serves queries from it. Any query the cache can't serve runs against the warehouse instead. Caching changes how fast users get answers, never the answers themselves. Row-level security and column masking are applied on cached data at query time, so each user still sees only what they're allowed to see.
+
+## Register tables for caching
+
+1. Go to **Domains**, select a domain, open **Data Sources**, and choose a database.
+2. To register every cacheable table, select the cache button next to **Add table**, choose a rebuild interval, and select **Register**.
+3. To register a single table, open the table's **...** menu and select **Register Cache**.
+
+In the **Register Cache** dialog you can:
+
+- Choose a rebuild interval: hourly, 3, 6, 12, or 24 hours.
+- Add sort columns so filtered queries scan less of the snapshot.
+- Select **Build now** to build the snapshot immediately.
+
+## Cache status
+
+Registered tables show a status chip:
+
+| Status | Meaning |
+|---|---|
+| **Cached** | The snapshot is serving queries. |
+| **Stale** | The snapshot expired. Queries read from the warehouse until the next build. |
+| **Registered** | The table is registered but not built yet. |
+| **Not eligible** | The table is over the size budget. **Build now** retries it. |
+| **Not cached** | The table is not cached. |
+| **Unsupported** | The table can't be cached, for example uploaded files or connections that use per-user credentials. |
+
+## How rebuilds work
+
+A table rebuilds when its interval has elapsed and its source data changed. If the warehouse reports no change, WisdomAI keeps the existing snapshot at no warehouse cost. **Build now** forces a rebuild.
+
+Cache rebuild cadence is separate from column-value crawl cadence. Column-value crawls default to every 7 days and you configure them per domain. Changing one setting doesn't change the other.
+
+Cache builds run as jobs. Site admins and superusers can pause, resume, re-schedule, or cancel them from the **Jobs** page at `/jobs`.
+
+## Turn caching off for a domain
+
+Go to **Domains** > **Advanced settings** > **Performance** and turn off **Materialized table cache**. WisdomAI keeps your registrations, and queries stop reading from the cache.
+
+## Security and limits
+
+- Row-level security and column masking always apply at query time. Caching never widens what a user can see.
+- Data that depends on the querying user is never cached.
+- WisdomAI skips very large tables and marks them **Not eligible**.
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="The Smart Cache screen" icon="gauge" href="/setting-up-wisdom-ai/smart-cache">
+    Monitor cache usage and find the apps and dashboards that benefit most from caching.
+  </Card>
+  <Card title="Cached data on dashboards and apps" icon="clock" href="/dashboards/cached-data">
+    See how cached data appears to dashboard viewers and how Refresh Data behaves.
+  </Card>
+</CardGroup>
