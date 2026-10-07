@@ -1,25 +1,32 @@
 ---
-title: "Smart cache tables"
-sidebarTitle: "Cache tables for faster apps and dashboards"
+title: "Cache tables for faster apps and dashboards"
 ---
 
-Wisdom Smart Cache is in beta and is enabled per account. Contact your WisdomAI representative to turn it on.
+Register your tables for caching so apps and dashboards load from WisdomAI-managed snapshots instead of querying the warehouse.
 
-Serve apps and dashboards from Wisdom-managed snapshots of your tables instead of querying the warehouse on every load.
+When you register a table, WisdomAI builds a compressed snapshot on a schedule and serves queries from it. Queries the cache can't serve run against the warehouse. Caching changes how fast users get answers, never the answers themselves. Row-level security and column masking still apply at query time.
 
-When you register a table for caching, WisdomAI builds a compressed snapshot on a schedule and serves queries from it. Any query the cache can't serve runs against the warehouse instead. Caching changes how fast users get answers, never the answers themselves. Row-level security and column masking are applied on cached data at query time, so each user still sees only what they're allowed to see.
+<Note>
+  Wisdom Smart Cache is in beta and is enabled per account. Contact your WisdomAI representative to turn it on.
+</Note>
 
 ## Register tables for caching
 
-1. Go to **Domains**, select a domain, open **Data Sources**, and choose a database.
-2. To register every cacheable table, select the cache button next to **Add table**, choose a rebuild interval, and select **Register**.
-3. To register a single table, open the table's **...** menu and select **Register Cache**.
+To register tables for caching:
+
+1. Go to **Domains** and select a domain.
+2. Open **Data Sources** and choose a database.
+3. Register your tables:
+   - To register every cacheable table, select the cache button next to **Add table**. Choose a rebuild interval, then select **Register**.
+   - To register a single table, open the table's **...** menu and select **Register Cache**. Then set the options in the **Register Cache** dialog.
 
 In the **Register Cache** dialog you can:
 
 - Choose a rebuild interval: hourly, 3, 6, 12, or 24 hours.
 - Add sort columns so filtered queries scan less of the snapshot.
 - Select **Build now** to build the snapshot immediately.
+
+After you register a table, its status chip shows the state of the cache. See [Cache status](#cache-status).
 
 ## Cache status
 
@@ -44,9 +51,17 @@ Cache builds run as jobs. Site admins and superusers can pause, resume, re-sched
 
 ## Turn caching off for a domain
 
-Go to **Domains** > **Advanced settings** > **Performance** and turn off **Materialized table cache**. WisdomAI keeps your registrations, and queries stop reading from the cache.
+To stop a domain from serving queries from the cache, turn off its table cache setting.
+
+1. Go to **Domains** and select a domain.
+2. Open **Advanced settings** > **Performance**.
+3. Turn off **Materialized table cache**.
+
+WisdomAI keeps your registrations, and queries stop reading from the cache.
 
 ## Security and limits
+
+Caching never changes who can see your data, and some tables can't be cached.
 
 - Row-level security and column masking always apply at query time. Caching never widens what a user can see.
 - Data that depends on the querying user is never cached.
@@ -62,3 +77,4 @@ Go to **Domains** > **Advanced settings** > **Performance** and turn off **Mater
     See how cached data appears to dashboard viewers and how Refresh Data behaves.
   </Card>
 </CardGroup>
+
