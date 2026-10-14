@@ -1,5 +1,5 @@
 ---
-title: "Cache tables for faster apps and dashboards"
+title: "Cache tables for faster Apps and Dashboards"
 ---
 
 Register your tables for caching so apps and dashboards load from WisdomAI-managed snapshots instead of querying the warehouse.
@@ -12,21 +12,41 @@ When you register a table, WisdomAI builds a compressed snapshot on a schedule a
 
 ## Register tables for caching
 
-To register tables for caching:
+You can register every cacheable table in a database at once, or register one table at a time. Tables that can't be cached, such as uploaded files or tables over the size budget, are skipped. See [Cache status](#cache-status).
+
+First, open the database:
 
 1. Go to **Domains** and select a domain.
 2. Open **Data Sources** and choose a database.
-3. Register your tables:
-   - To register every cacheable table, select the cache button next to **Add table**. Choose a rebuild interval, then select **Register**.
-   - To register a single table, open the table's **...** menu and select **Register Cache**. Then set the options in the **Register Cache** dialog.
+![Domains and Data sources steps](/images/first-steps-cache.png)
+Then choose how to register your tables.
 
-In the **Register Cache** dialog you can:
+### Register all cacheable tables
 
-- Choose a rebuild interval: hourly, 3, 6, 12, or 24 hours.
-- Add sort columns so filtered queries scan less of the snapshot.
-- Select **Build now** to build the snapshot immediately.
+1. Select the cache button next to **Add table**.
+2. Choose a rebuild interval: hourly, 1, 3, 6, 12, 24 hours or Custom.
+3. Select **Register**.
+![Image showing how to register a cache](/images/register-cache.png)
+All tables in the database use the interval you chose.
 
-After you register a table, its status chip shows the state of the cache. See [Cache status](#cache-status).
+### Register a single table
+
+1. Open the table's **...** menu and select **Cache Settings**.
+![Image showing cache seeting for column](/images/cache-settings.png)
+2. In the **Register Cache** dialog, choose a rebuild interval.
+![Image showing cache schedule](/images/select-rebuild-schedule-cache.png)
+3. Optional: Add sort columns. Choose the columns you filter on most often, so filtered queries scan less of the snapshot.
+![Image showing Add sort column](/images/advance-settings-add-sort-column.png)
+4. Optional: Select **Build now** to build the snapshot immediately instead of waiting for the first scheduled build.
+5. Click **Register** to confirm the registration.
+
+### What happens next
+
+<Note>
+  **Build now** applies to both registration methods. Select it to build snapshots immediately instead of waiting for the first scheduled build.
+</Note>
+
+A newly registered table shows the **Registered** status until its first build finishes. It then shows **Cached** and starts serving queries.
 
 ## Cache status
 
@@ -59,13 +79,16 @@ To stop a domain from serving queries from the cache, turn off its table cache s
 
 WisdomAI keeps your registrations, and queries stop reading from the cache.
 
-## Security and limits
+## Security
 
-Caching never changes who can see your data, and some tables can't be cached.
+Caching never changes who can see your data.
 
 - Row-level security and column masking always apply at query time. Caching never widens what a user can see.
 - Data that depends on the querying user is never cached.
-- WisdomAI skips very large tables and marks them **Not eligible**.
+
+## Size limits
+
+WisdomAI skips very large tables and marks them **Not eligible**. **Build now** retries them.
 
 ## Related articles
 
