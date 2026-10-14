@@ -16,7 +16,7 @@ Four cards summarize the last 7 days:
 - Cache latency against the warehouse, with the speedup when the cache serves.
 - Total data cached.
 - Caches that need attention.
-
+![Image showing cache overview](/images/caches-overview.png)
 Below the cards, **Candidates** ranks every app and dashboard by the warehouse time its queries spent, which is the time caching could win back. Each row shows query counts, bytes scanned, and latency.
 
 ## Optimize an app
@@ -38,8 +38,11 @@ Select any item to:
 - See its read-only definition.
 - Trigger **Build now**.
 - Select **Stop caching**.
+![Image showing cache activity](/images/cache-activity.png)
 
-Cache builds run as jobs. To pause, resume, re-schedule, or cancel a build, use the **Jobs** page at `/jobs` (site admins and superusers).
+<Note>
+  Cache builds run as jobs. To pause, resume, re-schedule, or cancel a build, use the **Jobs** page at `/jobs` (site admins and superusers).
+</Note>
 
 ## Cached views
 
