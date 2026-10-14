@@ -37,14 +37,13 @@ All tables in the database use the interval you chose.
 ![Image showing cache schedule](/images/select-rebuild-schedule-cache.png)
 3. Optional: Add sort columns. Choose the columns you filter on most often, so filtered queries scan less of the snapshot.
 ![Image showing Add sort column](/images/advance-settings-add-sort-column.png)
-4. Optional: Select **Build now** to build the snapshot immediately instead of waiting for the first scheduled build.
 5. Click **Register** to confirm the registration.
-
-### What happens next
 
 <Note>
   **Build now** applies to both registration methods. Select it to build snapshots immediately instead of waiting for the first scheduled build.
 </Note>
+
+### What happens next
 
 A newly registered table shows the **Registered** status until its first build finishes. It then shows **Cached** and starts serving queries.
 
@@ -76,7 +75,7 @@ To stop a domain from serving queries from the cache, turn off its table cache s
 1. Go to **Domains** and select a domain.
 2. Open **Advanced settings** > **Performance**.
 3. Turn off **Materialized table cache**.
-
+![Image showing cache performance](/images/cache-performance.png)
 WisdomAI keeps your registrations, and queries stop reading from the cache.
 
 ## Security
