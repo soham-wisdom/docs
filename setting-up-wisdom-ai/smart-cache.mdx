@@ -33,12 +33,13 @@ The **Activity** tab lists every cached table and view in the account, with kind
 
 Select any item to:
 
-- Configure it.
-- View its builds and usage.
-- See its read-only definition.
-- Trigger **Build now**.
-- Select **Stop caching**.
-![Image showing cache activity](/images/cache-activity.png)
+- Configure it. Change its settings, such as the rebuild interval, without leaving the Smart Cache screen.
+![Image showing activity configure ](/images/cache-configure.png)
+- View its builds and usage. See the history of its builds and how many queries it has served, so you can tell whether the cache is healthy and worth keeping.
+![Image showing cache builds and usage](/images/cache-buils.png)![Image showing cache builds and usage](/images/cache-usage.png)
+- See its read-only definition. Review the SQL behind a cached table or view. You can read the definition but not edit it here.
+- Trigger a build. Select Build now to rebuild the snapshot immediately instead of waiting for the next scheduled build, for example after the source data changes.
+- Stop caching it. Select Stop caching to stop serving queries from the cache for this item. Queries read from the warehouse instead. The app's widget queries stay as written.
 
 <Note>
   Cache builds run as jobs. To pause, resume, re-schedule, or cancel a build, use the **Jobs** page at `/jobs` (site admins and superusers).
