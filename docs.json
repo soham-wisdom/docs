@@ -514,7 +514,7 @@
       },
       {
         "tab": "Early access",
-        "icon": "fa-owl",
+        "icon": "owl",
         "groups": [
           {
             "group": "Owls",

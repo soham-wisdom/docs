@@ -62,6 +62,39 @@ export const McpBanner = () => {
   );
 };
 
+export const OwlsBanner = () => {
+  return (
+    <div className="w-full mb-4">
+      <a
+        href="/early-access/owls"
+        className="group flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 rounded-2xl border border-[#5b52ff]/30 bg-[#5b52ff]/5 px-6 py-5 no-underline shadow-sm transition hover:border-[#5b52ff] hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[#5b52ff] dark:border-[#5b52ff]/50 dark:bg-[#5b52ff]/10"
+      >
+        <div className="flex items-center gap-4">
+          <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-[#5b52ff]">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M5 8c0-2 1.5-4 4-4h6c2.5 0 4 2 4 4v6c0 3.3-2.7 6-6 6h-2c-3.3 0-6-2.7-6-6V8z" stroke="white" strokeWidth="1.5" strokeLinejoin="round"/>
+              <circle cx="9.5" cy="10.5" r="1.5" fill="white"/>
+              <circle cx="14.5" cy="10.5" r="1.5" fill="white"/>
+              <path d="M12 12.5l-1 1.5h2l-1-1.5z" fill="white"/>
+            </svg>
+          </div>
+          <div>
+            <div className="flex items-center gap-2 mb-1">
+              <span className="text-base font-bold text-zinc-900 dark:text-zinc-100">Meet Owls, AI analysts that work on a goal for you</span>
+            </div>
+            <p className="m-0 text-sm text-zinc-600 dark:text-zinc-400">
+              Owls are in early access. Learn what they do and how to become a design partner.
+            </p>
+          </div>
+        </div>
+        <span className="flex-shrink-0 self-start rounded-lg bg-[#5b52ff] px-5 py-2.5 font-bold text-white whitespace-nowrap transition-opacity group-hover:opacity-90 sm:self-auto">
+          Explore Owls
+        </span>
+      </a>
+    </div>
+  );
+};
+
 export const HomeCard = ({
   title = "Getting started",
   description = "Start utilizing the platform’s features effectively.",
