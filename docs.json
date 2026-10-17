@@ -513,6 +513,18 @@
         ]
       },
       {
+        "tab": "Early access",
+        "icon": "fa-owl",
+        "groups": [
+          {
+            "group": "Owls",
+            "pages": [
+              "early-access/owls"
+            ]
+          }
+        ]
+      },
+      {
         "tab": "Recently Launched",
         "icon": "circle-arrow-up-right",
         "groups": [
