@@ -334,6 +334,7 @@
                 "pages": [
                   "integrations/embeddings/embedding-modes",
                   "integrations/embeddings/iframe/embed-chat",
+                  "integrations/embeddings/iframe/embed-a-live-app",
                   "integrations/embeddings/iframe/embed-a-dashboard"
                 ]
               },

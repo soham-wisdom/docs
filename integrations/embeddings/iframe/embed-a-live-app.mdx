@@ -1,0 +1,44 @@
+---
+title: "Embed a Live App"
+---
+
+This guide outlines the process for embedding a WisdomAI Live App into your application. Before proceeding, make sure you've reviewed the [Embeddings Overview](/integrations/embeddings/embedding) for authentication setup and security requirements.
+
+<Note>
+  The API and embed URL examples use `<customer>.wisdom.ai` as a placeholder. Replace it with the base URL of your WisdomAI tenant, the same domain you use to log in. Both `wisdom.ai` and `askwisdom.ai` are valid depending on your deployment.
+</Note>
+
+## Construct the embed URL
+
+Construct the embed URL for your Live App and append the JWT you generated in the authentication stage.
+
+1. Take your original Live App URL and insert `/embed/` before the app's name and ID.
+2. Append the JWT as a `token` query parameter. The URL should look like the following:
+   - **Original URL**: `https://<customer>.wisdom.ai/apps/name-id`
+   - **Final embed URL**: `https://<customer>.wisdom.ai/apps/embed/name-id?token=<JWT>`
+3. Use this URL as the `src` for an `<iframe>` in your application:
+   ```html
+   <iframe
+     src="https://<customer>.wisdom.ai/apps/embed/name-id?token=<JWT>"
+     allow="microphone; camera; clipboard-write"
+     style="width: 100%; height: 100%; border: 0;"
+   ></iframe>
+   ```
+
+The `allow` attribute enables voice input, camera, and clipboard features in the embedded interface. See [Embedding Modes](/integrations/embeddings/embedding-modes#iframe-requirements) for details.
+
+## Validation
+
+To validate that the process worked, open the final embed URL in your browser. The Live App should load without prompting for a login. If you encounter an error, see [Error Handling](/integrations/embeddings/error-handling).
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Embed a Dashboard" icon="chart-bar" href="/integrations/embeddings/iframe/embed-a-dashboard">
+    Learn how to embed interactive dashboards and visualizations
+  </Card>
+
+  <Card title="Impersonate User API" icon="user" href="/integrations/graphql-api/queries/auth/impersonate-user">
+    Detailed documentation for the authentication API
+  </Card>
+</CardGroup>
