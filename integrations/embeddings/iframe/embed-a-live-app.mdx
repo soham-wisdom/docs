@@ -27,6 +27,12 @@ Construct the embed URL for your Live App and append the JWT you generated in th
 
 The `allow` attribute enables voice input, camera, and clipboard features in the embedded interface. See [Embedding Modes](/integrations/embeddings/embedding-modes#iframe-requirements) for details.
 
+## Controlling edit permissions with RBAC
+
+Embedded Live Apps reflect the user's RBAC role. To hide edit controls and prevent modifications in your embedded view, assign the user the **Viewer** role when creating them. There is no separate embed-specific parameter for this.
+
+See [RBAC for Embedded Users](/integrations/user-management/rbac) for instructions on assigning roles and a full breakdown of what each role controls in the embedded interface.
+
 ## Validation
 
 To validate that the process worked, open the final embed URL in your browser. The Live App should load without prompting for a login. If you encounter an error, see [Error Handling](/integrations/embeddings/error-handling).
