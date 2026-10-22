@@ -12,13 +12,17 @@ For the concepts behind mirroring, including how access to content differs from 
 - Ask a Site Administrator to create the customer organizations, or create them yourself if you are one.
 - Make sure the administrator who sets up mirroring has permission to manage mirrors and target access, in both the source and destination organizations.
 
-If you do not see **Mirror**, ask your administrator to check your permissions and whether your account has mirroring enabled.
-
-The screenshots use `dev-002`, an example customer organization, and a fictional invitation address. Use your own organization names, URLs, and content.
+<Note>
+  If you do not see **Mirror**, ask your administrator to check your permissions and whether your account has mirroring enabled.
+</Note>
 
 ## Onboard a customer
 
-### 1. Create the customer's organization
+To onboard a customer, you create their organization, add their users, mirror the domain and dashboard, and test access as a customer user.
+
+### Create the customer's organization
+
+Follow these steps to create a separate organization for the customer and choose its administrators.
 
 1. Open **Organizations** from the navigation.
 2. Select **Add Organization**.
@@ -36,7 +40,9 @@ The screenshots use `dev-002`, an example customer organization, and a fictional
 
 This creates a private organization. Record which customer it belongs to. If WisdomAI opens the new-domain setup, close it to mirror an existing domain instead.
 
-### 2. Add users to the customer organization
+### Add users to the customer organization
+
+Follow these steps to invite the customer's users and assign their roles.
 
 1. Open the customer's organization.
 2. Select **Users**, then **Invite Users**.
@@ -53,8 +59,6 @@ This creates a private organization. Record which customer it belongs to. If Wis
   />
 </Frame>
 
-The example assigns the Explorer role. No invitation was sent to the fictional address.
-
 Give each person their own identity. Membership and roles determine what they can do in the organization. Mirror access settings control access to the shared object.
 
 Add customer users to their customer organization. They do not need membership in the authoring organization to use its mirrors.
@@ -65,7 +69,7 @@ If the person already exists in WisdomAI, add their existing identity to the cus
 
 Review your sign-in and self-provisioning settings to prevent them from adding customer users to the authoring organization.
 
-### 3. Mirror the domain
+### Mirror the domain
 
 Mirror a domain so customers can ask questions using the data context your team maintains.
 
@@ -89,7 +93,9 @@ Mirror a domain so customers can ask questions using the data context your team 
 | **Admins only** | You want administrators to review the mirror before a wider rollout. | Administrators can access a new mirror. This setting does not grant access to all users. |
 | **All users** | The content is intended for everyone in the selected customer organizations. | Users in each selected organization can read the mirror, including users added later. |
 
-**All users** applies to the selected organizations. It does not make the mirror public or give every account user access.
+<Note>
+  **All users** applies to the selected organizations. It does not make the mirror public or give every account user access.
+</Note>
 
 <Frame>
   <img
@@ -99,11 +105,13 @@ Mirror a domain so customers can ask questions using the data context your team 
   />
 </Frame>
 
-After you save, **Existing mirrors** lists Customer A with All users access to B2B Sales.
+After you save, **Existing mirrors** lists each destination organization with the target access you chose.
 
 Customers can now use the shared domain for analysis. Your team maintains the original. To provide prepared reports, mirror the dashboards too.
 
-### 4. Mirror the dashboard
+### Mirror the dashboard
+
+Follow these steps to mirror a dashboard so customers can view prepared reports.
 
 1. In the authoring organization, open **Apps** and select the source dashboard. Some interfaces label this area **Dashboards**.
 2. Finish saving any pending dashboard edits.
@@ -127,7 +135,9 @@ Customers can now use the shared domain for analysis. Your team maintains the or
   />
 </Frame>
 
-Set up domain and dashboard mirrors separately.
+<Tip>
+  Set up domain and dashboard mirrors separately.
+</Tip>
 
 Open **Apps** in the customer's organization and select the mirror. Customers can view the dashboard and use its available filters. They cannot edit the original.
 
@@ -138,9 +148,7 @@ Open **Apps** in the customer's organization and select the mirror. Customers ca
   />
 </Frame>
 
-The screenshot shows the mirrored dashboard as an administrator sees it. Check it with a customer user's identity before rollout.
-
-### 5. Test access as a customer user
+### Test access as a customer user
 
 Sign in as a representative customer user before you invite the wider audience. An administrator preview cannot confirm that user's access.
 
@@ -156,10 +164,10 @@ Keep the long-lived embedding credential on your backend. Use it to issue a shor
 
 ## Manage content and access after setup
 
-- **Update the original.** Edit the source domain or dashboard in the authoring organization. Mirrors refer to it, so you do not need to republish a copy for each customer. Mirroring does not change warehouse refresh schedules. It also does not guarantee that an open browser redraws immediately.
-- **Add each new customer.** Create their organization, add their users, and select the organization in the relevant mirror dialogs. **Select all organizations** selects the available choices. It does not include organizations created later.
-- **Review access from the source.** Open **Mirror domain** or **Mirror dashboard** to see destinations and access settings. A target-access change applies to every selected organization when you save. Check the selected destinations first. If organizations need different access settings, ask an administrator to manage each mirror's grants.
-- **Remove a mirror.** In the source object's **Mirror** dialog, clear the destination organization's checkbox and select **Save**. This removes that mirror and its access grants. It leaves the source and other mirrors unchanged.
+- **Update the original:** Edit the source domain or dashboard in the authoring organization. Mirrors refer to it, so you do not need to republish a copy for each customer. Mirroring does not change warehouse refresh schedules. It also does not guarantee that an open browser redraws immediately.
+- **Add each new customer:** Create their organization, add their users, and select the organization in the relevant mirror dialogs. **Select all organizations** selects the available choices. It does not include organizations created later.
+- **Review access from the source:** Open **Mirror domain** or **Mirror dashboard** to see destinations and access settings. A target-access change applies to every selected organization when you save. Check the selected destinations first. If organizations need different access settings, ask an administrator to manage each mirror's grants.
+- **Remove a mirror:** In the source object's **Mirror** dialog, clear the destination organization's checkbox and select **Save**. This removes that mirror and its access grants. It leaves the source and other mirrors unchanged.
 
 Switching a mirror to **Admins only** removes its all-user grant. Check any individual or group grants you added separately, because this setting does not remove them.
 
