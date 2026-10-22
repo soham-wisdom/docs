@@ -2,11 +2,13 @@
 title: "Set up tenant organizations and mirrors with the API"
 ---
 
-Use the GraphQL API to give each of your customers a private tenant organization and mirror your dashboards and domains into it. This guide covers the full flow for administrators and developers: create the organization, create users, mirror content, choose who can access it, and revoke a mirror. The examples describe the current authenticated GraphQL APIs.
+Use the GraphQL API to give each of your customers a private tenant organization and mirror your dashboards and domains into it. This guide covers the full flow for administrators and developers. Create the organization, create users, mirror content, choose who can access it, and revoke a mirror. The examples describe the current authenticated GraphQL APIs.
 
 The WisdomAI interface calls this feature Mirror. The GraphQL API still uses the names publish and publication. For the concepts, see [Object mirroring](/access-management/object-mirroring). To do the same work in the interface, see [Set up object mirroring](/access-management/set-up-object-mirroring).
 
 ## Account model
+
+The account model defines the three building blocks you work with: a source organization, tenant organizations, and mirrors.
 
 - **Source organization:** your administrators author the original dashboards and domains here.
 - **Tenant organization:** you create one private organization per customer tenant and add only that tenant's users.
@@ -15,6 +17,8 @@ The WisdomAI interface calls this feature Mirror. The GraphQL API still uses the
 For example, your authoring organization mirrors approved content to "Tenant - Customer A". Customer A users belong only to their tenant organization.
 
 ## Required access
+
+Each action in this guide requires specific access, as the table shows:
 
 | Action | Required access |
 |---|---|
@@ -31,7 +35,7 @@ Send requests to `https://{ACCOUNT}.wisdom.ai/graphql` with an authenticated adm
   Replace `{ACCOUNT}.wisdom.ai` with the base URL of your WisdomAI tenant, the same domain you use to log in. Both `wisdom.ai` and `askwisdom.ai` are valid depending on your deployment.
 </Note>
 
-## 1. Create the tenant organization
+## Create the tenant organization
 
 Use `createWorkspace(input)`. The required input fields are `name` and a unique `uri`. Set `visibility` to `PRIVATE`.
 
@@ -53,7 +57,7 @@ mutation CreateWorkspace($input: CreateWorkspaceInput!) {
 
 The response is the tenant organization ID. The remaining steps refer to it as `TENANT_WORKSPACE_ID`.
 
-## 2. Create users in the tenant organization
+## Create users in the tenant organization
 
 Use `createUsers(input)`. The input fields are:
 
@@ -90,7 +94,7 @@ mutation CreateUsers($input: CreateUsersInput!) {
 
 For all `createUsers` fields, see [createUsers](/integrations/graphql-api/mutations/user/create-users). For role IDs, see [RBAC for Embedded Users](/integrations/user-management/rbac).
 
-## Migrate existing central-organization users
+## Migrate existing organization users
 
 Users are account-level identities. Do not recreate or delete them.
 
@@ -113,7 +117,9 @@ Do not remove central access until tenant access works. Disable default-organiza
 
 {/* [Note: Need clarification on where to disable default-organization self-provisioning. The sources give no setting name or path.] */}
 
-## 3. Mirror a dashboard or domain
+## Mirror a dashboard or domain
+
+Mirroring takes two calls, one to find the tenant organizations you can mirror into, and one to create the mirror.
 
 ### Find eligible targets
 
@@ -152,7 +158,9 @@ The returned publication `id` is the mirror ID. Tenant-facing APIs and role assi
 
 {/* [Note: Need clarification on how the mirror ID is used in embed URLs and tenant-facing API calls. The sources say to use it but do not show where.] */}
 
-## 4. Choose who can access the mirror
+## Choose who can access the mirror
+
+After you create a mirror, decide whether only administrators or all tenant users can access it.
 
 - **Admins only:** make no extra API call. Organization administrators inherit access.
 - **All tenant users:** call `assignRole(input)` for principal `*`, scoped to the mirror ID.
@@ -179,13 +187,15 @@ Use these roles for `MIRROR_READ_ROLE_ID`:
 
 To verify mirrors, use `objectPublications(sourceObjectId, targetWorkspaceId, objectType, limit, offset)`. Use `STORY` for dashboards and `DOMAIN` for domains as the `objectType`.
 
-## 5. Revoke a mirror
+## Revoke a mirror
 
 Use `revokeObjectPublication(publicationId)`. The required parameter is the mirror ID.
 
 Revocation removes the target mirror and its mirror-scoped role assignments. It does not change the source object.
 
 ## Checklist
+
+Use this checklist to confirm your tenant setup is complete.
 
 - You created one private organization per tenant.
 - Tenant users have roles only in their tenant organization.
