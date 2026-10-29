@@ -30,13 +30,13 @@ Follow these steps to create a separate organization for the customer and choose
 4. Choose the **Organization Admins** who manage this customer.
 5. Select **Create Organization**.
 
-<Frame>
+
   <img
     src="/images/mirroring-create-organization.png"
     alt="Create New Organization form with Organization Name, URI, Organization Admins, and Advanced Options fields"
     style={{ width: "50%" }}
   />
-</Frame>
+
 
 This creates a private organization. Record which customer it belongs to. If WisdomAI opens the new-domain setup, close it to mirror an existing domain instead.
 
@@ -51,13 +51,13 @@ Follow these steps to invite the customer's users and assign their roles.
 5. Review domain restrictions and user groups. The form defaults to all domains. Restrict it to specific domains if needed.
 6. Select **Invite** to send the invitations.
 
-<Frame>
+
   <img
     src="/images/mirroring-invite-users.png"
     alt="Invite Users dialog with a work email, Explorer role, all domains by default, and User Groups field"
     style={{ width: "70%" }}
   />
-</Frame>
+
 
 Give each person their own identity. Membership and roles determine what they can do in the organization. Mirror access settings control access to the shared object.
 
@@ -76,17 +76,15 @@ Mirror a domain so customers can ask questions using the data context your team 
 1. Switch to the authoring organization and open **Domains**.
 2. Open the source domain.
 3. Select the **Mirror domain** icon at the top right.
+
+    ![](/images/mirror-domain-1-3.png)
+
 4. Select the destination customer organization or organizations.
 5. Choose **Target access** using the table below.
 6. Select **Save**.
 7. Reopen the dialog and confirm the destination appears under **Existing mirrors**. Then open the customer's organization and confirm the domain appears in **Domains**.
 
-<Frame>
-  <img
-    src="/images/mirroring-domain-toolbar.png"
-    alt="B2B Sales domain toolbar with the Mirror domain tooltip on the top-right icon above the domain tabs"
-  />
-</Frame>
+    ![Mirror domain dialog listing Customer A as an existing mirror with All users, plus Admins only and All users options](/images/mirroring-mirror-domain-dialog.png)
 
 | Target access | When to choose it | What it does |
 |---|---|---|
@@ -96,14 +94,6 @@ Mirror a domain so customers can ask questions using the data context your team 
 <Note>
   **All users** applies to the selected organizations. It does not make the mirror public or give every account user access.
 </Note>
-
-<Frame>
-  <img
-    src="/images/mirroring-mirror-domain-dialog.png"
-    alt="Mirror domain dialog listing Customer A as an existing mirror with All users, plus Admins only and All users options"
-    style={{ width: "70%" }}
-  />
-</Frame>
 
 After you save, **Existing mirrors** lists each destination organization with the target access you chose.
 
@@ -116,24 +106,12 @@ Follow these steps to mirror a dashboard so customers can view prepared reports.
 1. In the authoring organization, open **Apps** and select the source dashboard. Some interfaces label this area **Dashboards**.
 2. Finish saving any pending dashboard edits.
 3. Open the dashboard's **More** menu in the top right and select **Mirror dashboard**.
+    ![Dashboard More menu with Mirror dashboard highlighted among Duplicate, Rename, Subscribe, and Export options](/images/mirroring-dashboard-more-menu.png)
 4. Select the customer organization or organizations.
 5. Choose **Admins only** for administrator review or **All users** to give the selected organizations' users access.
 6. Select **Save**.
 
-<Frame>
-  <img
-    src="/images/mirroring-dashboard-more-menu.png"
-    alt="Dashboard More menu with Mirror dashboard highlighted among Duplicate, Rename, Subscribe, and Export options"
-  />
-</Frame>
-
-<Frame>
-  <img
-    src="/images/mirroring-mirror-dashboard-dialog.png"
-    alt="Mirror dashboard dialog with Customer A selected as target organization and All users target access chosen"
-    style={{ width: "70%" }}
-  />
-</Frame>
+    ![Mirror dashboard dialog with Customer A selected as target organization and All users target access chosen](/images/mirroring-mirror-dashboard-dialog.png)
 
 <Tip>
   Set up domain and dashboard mirrors separately.
@@ -141,12 +119,9 @@ Follow these steps to mirror a dashboard so customers can view prepared reports.
 
 Open **Apps** in the customer's organization and select the mirror. Customers can view the dashboard and use its available filters. They cannot edit the original.
 
-<Frame>
-  <img
-    src="/images/mirroring-mirrored-dashboard.png"
-    alt="Mirrored b2bsales dashboard in the customer organization with Close Date and Lead Source filters and two charts"
-  />
-</Frame>
+![Mirrored b2bsales dashboard in the customer organization with Close Date and Lead Source filters and two charts](/images/mirroring-mirrored-dashboard.png)
+
+
 
 ### Test access as a customer user
 
