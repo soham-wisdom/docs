@@ -138,6 +138,8 @@
               },
               "manage-account/access-management",
               "access-management/manage-organizations",
+              "access-management/object-mirroring",
+              "access-management/set-up-object-mirroring",
               "manage-account/monitor-performance-and-usage",
               "manage-account/compliance-and-best-practices",
               "manage-account/privacy-policy",
@@ -323,7 +325,8 @@
             "pages": [
               "integrations/user-management/user-lifecycle",
               "integrations/user-management/user-attributes",
-              "integrations/user-management/rbac"
+              "integrations/user-management/rbac",
+              "integrations/user-management/mirror-with-the-api"
             ]
           },
           {

@@ -1,0 +1,220 @@
+---
+title: "Set up tenant organizations and mirrors with the API"
+---
+
+Use the GraphQL API to give each of your customers a private tenant organization and mirror your dashboards and domains into it. This guide covers the full flow for administrators and developers. Create the organization, create users, mirror content, choose who can access it, and revoke a mirror. The examples describe the current authenticated GraphQL APIs.
+
+The WisdomAI interface calls this feature Mirror. The GraphQL API still uses the names publish and publication. For the concepts, see [Object mirroring](/access-management/object-mirroring). To do the same work in the interface, see [Set up object mirroring](/access-management/set-up-object-mirroring).
+
+## Account model
+
+The account model defines the three building blocks you work with: a source organization, tenant organizations, and mirrors.
+
+- **Source organization:** your administrators author the original dashboards and domains here.
+- **Tenant organization:** you create one private organization per customer tenant and add only that tenant's users.
+- **Mirror:** a read-only, live facade of a source dashboard or domain. WisdomAI does not copy the source content.
+
+For example, your authoring organization mirrors approved content to "Tenant - Customer A". Customer A users belong only to their tenant organization.
+
+## Required access
+
+Each action in this guide requires specific access, as the table shows:
+
+| Action | Required access |
+|---|---|
+| Create organization | Site administrator |
+| Create users | `iam:manage-users` on the tenant organization |
+| Mirror an object | `publication:write` on the source object and organization, and on the target organization |
+| Grant mirror access | `iam:write` on the mirror |
+
+{/* [Note: Need clarification on `iam:manage-users` and `publication:write`. Neither appears in the permission tables in rbac.mdx. `iam:write` there is granted to ADMIN only.] */}
+
+Send requests to `https://{ACCOUNT}.wisdom.ai/graphql` with an authenticated administrator credential.
+
+<Note>
+  Replace `{ACCOUNT}.wisdom.ai` with the base URL of your WisdomAI tenant, the same domain you use to log in. Both `wisdom.ai` and `askwisdom.ai` are valid depending on your deployment.
+</Note>
+
+## Create the tenant organization
+
+Use `createWorkspace(input)`. The required input fields are `name` and a unique `uri`. Set `visibility` to `PRIVATE`.
+
+```graphql
+mutation CreateWorkspace($input: CreateWorkspaceInput!) {
+  createWorkspace(input: $input)
+}
+```
+
+```json
+{
+  "input": {
+    "name": "Tenant - Customer A",
+    "uri": "tenant-customer-a",
+    "visibility": "PRIVATE"
+  }
+}
+```
+
+The response is the tenant organization ID. The remaining steps refer to it as `TENANT_WORKSPACE_ID`.
+
+## Create users in the tenant organization
+
+Use `createUsers(input)`. The input fields are:
+
+- `emails`: the users to create or add.
+- `workspaceID`: `TENANT_WORKSPACE_ID`.
+- `roleAssignments`: a role ID and `scopes: ["TENANT_WORKSPACE_ID"]`.
+- `sendWelcomeEmail`: whether newly added users receive an invitation.
+
+Use `roles(workspaceID: TENANT_WORKSPACE_ID)` to find the available role IDs.
+
+```graphql
+mutation CreateUsers($input: CreateUsersInput!) {
+  createUsers(input: $input) {
+    status { code message }
+  }
+}
+```
+
+```json
+{
+  "input": {
+    "emails": ["user@customer-a.example"],
+    "workspaceID": "TENANT_WORKSPACE_ID",
+    "roleAssignments": [{
+      "roleId": "TENANT_MEMBER_ROLE_ID",
+      "scopes": ["TENANT_WORKSPACE_ID"]
+    }],
+    "sendWelcomeEmail": true
+  }
+}
+```
+
+{/* [Note: Need clarification on which built-in role TENANT_MEMBER_ROLE_ID stands for. The interface guide assigns Explorer or Observer.] */}
+
+For all `createUsers` fields, see [createUsers](/integrations/graphql-api/mutations/user/create-users). For role IDs, see [RBAC for Embedded Users](/integrations/user-management/rbac).
+
+## Migrate existing organization users
+
+Users are account-level identities. Do not recreate or delete them.
+
+1. Call `createUsers` with the existing email, the target `workspaceID`, and a tenant-scoped role. Set `sendWelcomeEmail` to `false`.
+2. Mirror the required content and validate the user's tenant access.
+3. Remove each old central-organization role with `unassignRole(input)`.
+
+```json
+{
+  "input": {
+    "roleId": "OLD_CENTRAL_ROLE_ID",
+    "principalIds": ["EXISTING_USER_ID"],
+    "scopes": ["CENTRAL_WORKSPACE_ID"],
+    "workspaceID": "CENTRAL_WORKSPACE_ID"
+  }
+}
+```
+
+Do not remove central access until tenant access works. Disable default-organization self-provisioning for tenant users. Otherwise, signing in through the account root can add them back to the default organization.
+
+{/* [Note: Need clarification on where to disable default-organization self-provisioning. The sources give no setting name or path.] */}
+
+## Mirror a dashboard or domain
+
+Mirroring takes two calls, one to find the tenant organizations you can mirror into, and one to create the mirror.
+
+### Find eligible targets
+
+Use `publishableWorkspaces(sourceObjectId, limit, offset)`. The required parameter is the source dashboard or domain ID. Confirm that `TENANT_WORKSPACE_ID` is in the results.
+
+### Create the mirror
+
+Use `publishObjectToWorkspaces(input)`. The input fields are:
+
+- `sourceObjectId`: the source dashboard or domain ID.
+- `targetWorkspaceIds`: one or more tenant organization IDs.
+
+```graphql
+mutation MirrorObject($input: PublishObjectToWorkspacesInput!) {
+  publishObjectToWorkspaces(input: $input) {
+    status { code message }
+    publications {
+      id
+      objectType
+      targetWorkspace { id name }
+    }
+  }
+}
+```
+
+```json
+{
+  "input": {
+    "sourceObjectId": "SOURCE_OBJECT_ID",
+    "targetWorkspaceIds": ["TENANT_WORKSPACE_ID"]
+  }
+}
+```
+
+The returned publication `id` is the mirror ID. Tenant-facing APIs and role assignments must use this ID, not the source object ID.
+
+{/* [Note: Need clarification on how the mirror ID is used in embed URLs and tenant-facing API calls. The sources say to use it but do not show where.] */}
+
+## Choose who can access the mirror
+
+After you create a mirror, decide whether only administrators or all tenant users can access it.
+
+- **Admins only:** make no extra API call. Organization administrators inherit access.
+- **All tenant users:** call `assignRole(input)` for principal `*`, scoped to the mirror ID.
+
+```json
+{
+  "input": {
+    "roleId": "MIRROR_READ_ROLE_ID",
+    "principalIds": ["*"],
+    "scopes": ["MIRROR_ID"],
+    "workspaceID": "TENANT_WORKSPACE_ID"
+  }
+}
+```
+
+Use these roles for `MIRROR_READ_ROLE_ID`:
+
+| Mirrored object | Role | Role ID |
+|---|---|---|
+| Dashboard | Story Viewer | `00000000-0000-0000-0000-000000000008` |
+| Domain | Viewer | `00000000-0000-0000-0000-000000000003` |
+
+{/* [Note: Need clarification on "Story Viewer". It is not in the role table in rbac.mdx, and `Story` is described there as the API name for dashboards.] */}
+
+To verify mirrors, use `objectPublications(sourceObjectId, targetWorkspaceId, objectType, limit, offset)`. Use `STORY` for dashboards and `DOMAIN` for domains as the `objectType`.
+
+## Revoke a mirror
+
+Use `revokeObjectPublication(publicationId)`. The required parameter is the mirror ID.
+
+Revocation removes the target mirror and its mirror-scoped role assignments. It does not change the source object.
+
+## Checklist
+
+Use this checklist to confirm your tenant setup is complete.
+
+- You created one private organization per tenant.
+- Tenant users have roles only in their tenant organization.
+- Default-organization self-provisioning does not re-add tenant users.
+- Source administrators use source object IDs.
+- Tenant users use mirror IDs.
+- You assigned all-user access to `*` on the mirror ID.
+- Mirrored dashboards and domains are readable but not editable.
+
+## Related articles
+
+<CardGroup cols={3}>
+  <Card title="Object mirroring" icon="clone" href="/access-management/object-mirroring">
+    Learn how mirrors, organizations, and data access fit together.
+  </Card>
+  <Card title="Set up object mirroring" icon="list-check" href="/access-management/set-up-object-mirroring">
+    Complete the same setup in the WisdomAI interface.
+  </Card>
+  <Card title="createUsers" icon="user-plus" href="/integrations/graphql-api/mutations/user/create-users">
+    Provision users with role assignments.
+  </Card>
+</CardGroup>
