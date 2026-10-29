@@ -1,0 +1,74 @@
+---
+title: "Smart Cache Screen"
+---
+
+The Smart Cache screen shows how much of your account's query time is served from cache, and where caching could help next. Open it at `/caching`.
+
+<Note>
+  Wisdom Smart Cache is in beta and is enabled per account. The Smart Cache screen is available to superusers.
+</Note>
+
+## Overview tab
+
+Four cards summarize the last 7 days:
+
+- The share of app and dashboard queries served from cache.
+- Cache latency against the warehouse, with the speedup when the cache serves.
+- Total data cached.
+- Caches that need attention.
+
+![Image showing cache overview](/images/caches-overview.png)
+
+Below the cards, **Candidates** ranks every app and dashboard by the warehouse time its queries spent, which is the time caching could win back. Each row shows query counts, bytes scanned, and latency.
+
+## Optimize an app
+
+Select **Optimize** on a candidate to start an optimization run for it. The optimizer reads the app's widgets and registers the table caches they're missing. Where a table is too large to cache, it creates cached views shaped to those widgets.
+
+An optimization run handles one app at a time and opens as a conversation, so you can follow what it found and why.
+
+WisdomAI doesn't edit your app. Widget queries stay exactly as written, and removing a cache or cached view changes nothing about the app.
+
+## Activity tab
+
+The Activity tab lists every cached table and view in the account, with kind, connection, status, freshness, size, and queries served over the last 7 days. Filters live in the URL, so you can share a filtered view as a link.
+
+![Image showing Activity tab](/images/activity-smart-cache.png)
+
+Select any item to:
+
+- Configure it. Change its settings, such as the rebuild interval, without leaving the Smart Cache screen.
+
+  ![Image showing the cache configuration options](/images/cache-configure.png)
+
+- View its builds and usage. See the history of its builds and how many queries it has served, so you can tell whether the cache is healthy and worth keeping.
+
+  ![Image showing the build history of a cache](/images/cache-buils.png)
+
+  ![Image showing the query usage of a cache](/images/cache-usage.png)
+
+- See its read-only definition. Review the SQL behind a cached table or view. You can read the definition but not edit it here.
+
+  ![Image showing the query usage of a cache](/images/cache-definition.png)
+
+- Trigger a build. Select **Build now** to rebuild the snapshot immediately instead of waiting for the next scheduled build, for example after the source data changes.
+- Stop caching it. Select **Stop caching** to stop serving queries from the cache for this item. Queries read from the warehouse instead. The app's widget queries stay as written.
+
+<Note>
+  Cache builds run as jobs. To pause, resume, re-schedule, or cancel a build, use the **Jobs** page at `/jobs` (site admins and superusers).
+</Note>
+
+## Cached views
+
+The optimizer creates cached views and lists them on the Smart Cache screen. You can see their SQL but not edit it. To own and edit the SQL, create a derived table and cache it through the domain workflow instead.
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Cache tables for faster apps and dashboards" icon="database" href="/setting-up-wisdom-ai/cache-tables">
+    Register tables for caching and set rebuild intervals.
+  </Card>
+  <Card title="Cached data on dashboards and apps" icon="clock" href="/dashboards/cached-data">
+    See how cached data appears to dashboard viewers.
+  </Card>
+</CardGroup>

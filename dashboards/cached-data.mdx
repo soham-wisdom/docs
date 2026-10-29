@@ -1,0 +1,36 @@
+---
+title: "Cached Data on Dashboards and Apps"
+---
+
+When an admin registers tables for caching, your dashboards and apps serve tiles from the data cache. Learn how to check data freshness, refresh data, and read per-tile cache chips.
+
+<Note>
+  Wisdom Smart Cache is in beta and is enabled per account.
+</Note>
+
+## Check data freshness
+
+When any tile is served from the data cache, the dashboard header shows **Data as of &lt;time&gt; · uses data cache**. The timestamp is the oldest data shown anywhere on the artifact.
+
+![Dashboard header showing Data as of time and uses data cache](/images/data-as-cache.png)
+
+## Refresh data
+
+Refresh Data re-runs every widget query. Cached tables read the latest snapshot, and everything else queries the warehouse.
+
+Refreshing never rebuilds the cache. Admins control rebuilds from **Domains**, or with **Build now**.
+
+## Per-tile cache chips
+
+Superusers see a cache chip on each tile with the source and cache time. Other users rely on the header line.
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Cache tables for faster apps and dashboards" icon="database" href="/setting-up-wisdom-ai/cache-tables">
+    Register tables for caching and set rebuild intervals.
+  </Card>
+  <Card title="The Smart Cache screen" icon="gauge" href="/setting-up-wisdom-ai/smart-cache">
+    Monitor cache usage and find caching candidates.
+  </Card>
+</CardGroup>
