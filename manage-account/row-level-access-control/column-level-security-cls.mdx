@@ -52,6 +52,12 @@ For unauthorized users, protected data will appear as hashed values. It is impor
   **Avoid Data Leakage**: If you protect a column (e.g., `Customer Name`) but leave a correlative column unprotected (e.g., `Customer Email`), an unauthorized user will see the hashed name, but the clear-text email address. Ensure you apply masking to all columns that could potentially identify the sensitive entity.
 </Warning>
 
+## Derived columns
+
+CLS on a base column applies automatically to every derived column that references it. You do not need to configure anything extra on the derived column.
+
+You cannot configure CLS directly on a derived column. To protect a derived column, apply CLS to each base column it references.
+
 ## Next Steps
 
 <CardGroup cols={2}>
