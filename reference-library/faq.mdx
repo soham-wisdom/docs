@@ -92,6 +92,14 @@ Answers to common questions from WisdomAI users, grouped by topic.
     Any MCP-compatible client connects the same way: URL, Streamable HTTP transport, and OAuth (or an API key). There's no Glean-specific guide because none is needed. Once Glean, or any internal tool, supports connecting to a remote MCP server, it uses that same generic configuration. See [WisdomAI MCP Server: Other clients](/integrations/mcp-server).
   </Accordion>
 
+  <Accordion title="Why do I get a 401 invalid_token error when I connect to the WisdomAI MCP server with an API key?">
+    The error `invalid_token` with the description `Unrecognized token` means the MCP endpoint couldn't recognize your credential as any supported authentication type. It doesn't specifically mean the key expired or was revoked. Confirm that you send the header as `Authorization: Bearer <API_KEY>`, that the key is a valid key from your instance's API Keys settings, and that you send it to your instance's MCP URL (`https://{your-instance}.askwisdom.ai/mcp`). API key authentication is supported on all instance-specific MCP URLs. See [WisdomAI MCP Server: Authenticate](/integrations/mcp-server#step-3-authenticate).
+  </Accordion>
+
+  <Accordion title="How do I authenticate a programmatic client, such as a LangChain agent, to the WisdomAI MCP server?">
+    Use an API key. Create one in your API Keys settings and send it as `Authorization: Bearer <API_KEY>` to your instance's MCP URL. This route needs no interactive OAuth flow. See [WisdomAI MCP Server: Authenticate](/integrations/mcp-server#step-3-authenticate).
+  </Accordion>
+
   <Accordion title="What are the limitations of using WisdomAI with MCP?">
     WisdomAI has two distinct MCP capabilities, each with its own limits: (1) the hosted WisdomAI MCP Server, which lets clients like Claude, ChatGPT, Cursor, and VS Code query your domains. It doesn't yet support creating live apps, building agents, or uploading files (use the app for those); and (2) connecting an external MCP server as a data source inside WisdomAI. This scans metadata and fetches data, but isn't a general two-way integration. See [WisdomAI MCP Server: Not available via MCP](/integrations/mcp-server#not-available-via-mcp).
   </Accordion>
