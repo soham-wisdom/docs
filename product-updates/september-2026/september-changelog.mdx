@@ -4,7 +4,7 @@ title: "Changelog"
 
 <Update label="Updates">
 
-  ### ⚡ Wisdom Smart Cache 
+  ### ⚡ Wisdom Smart Cache
 
   Apps and dashboards no longer have to query your warehouse on every load. Wisdom Smart Cache serves them from Wisdom-managed snapshots of your tables, rebuilt on a schedule you control. Any query the cache can't serve runs against the warehouse, so caching changes how fast users get answers, never the answers themselves. Row-level security and column masking still apply at query time. For full details, see [Cache tables for faster apps and dashboards](/setting-up-wisdom-ai/cache-tables) and the [Smart Cache screen](/setting-up-wisdom-ai/smart-cache) pages.
 
@@ -35,4 +35,67 @@ title: "Changelog"
   <Note>
     Wisdom Smart Cache is in beta and is enabled per account. The Smart Cache screen is available to superusers.
   </Note>
+
+  ### 🪞 Object Mirroring
+
+  Share domains and dashboards across customer organizations. Your team maintains the originals, and each customer uses a live, read-only mirror in their own organization. Each customer gets their own WisdomAI organization, so one customer's users stay isolated from your other customers. For the concepts, see [Object mirroring](/access-management/object-mirroring).
+
+  **⚙️ How it works:**
+
+  1. Create the customer's organization and add its users
+  2. Mirror the domain and the dashboard the customer needs
+  3. Test access as a customer user
+  4. Manage content and access after setup
+
+  For the interface steps, see [Set up object mirroring](/access-management/set-up-object-mirroring). To do the same with the GraphQL API, see [Set up tenant organizations and mirrors with the API](/integrations/user-management/mirror-with-the-api).
+
+  ### 🧩 Live Apps guides
+
+  A new Live Apps section explains how to turn a plain-language prompt into an interactive data app built on the same governed foundation as your dashboards. Row-level and column-level security, domain permissions, and metric definitions apply to the app with no extra setup. For details, see the [Live Apps overview](/live-apps/overview).
+
+  **⚙️ How it works:**
+
+  - **Create an app:** Describe the view your team needs, refine it with chat and annotations, and migrate an existing dashboard. See [Create a Live App](/live-apps/create-live-app)
+  - **See the data behind it:** Inspect any widget, open the **Sources** and **Code** views, and control how fresh the data is. See [Data Behind a Live App](/live-apps/data-and-trust)
+  - **Share it:** Give teammates access with the same control model you use for dashboards, and export an offline copy. See [Share a Live App and Manage Access](/live-apps/share-and-access)
+
+  ### 🔌 MCP Server guides
+
+  The WisdomAI MCP Server guide is now split into step-by-step pages, so you can connect your AI client and then ask questions, give feedback, and manage context from it. Setup guidance for the MCP URL, authentication, and prerequisites is clearer, and the pages for deprecated MCP tools are removed. For setup, see [WisdomAI MCP Server](/integrations/mcp-server).
+
+  **⚙️ How it works:**
+
+  - **Ask a question:** Start a conversation, check for the result, respond if WisdomAI needs clarification, and continue the conversation. See [Ask a question via MCP](/integrations/mcp-server/ask-a-question)
+  - **Give feedback:** Rate an answer or ask a domain admin for help. See [Give feedback via MCP](/integrations/mcp-server/give-feedback)
+  - **Manage context:** Create and edit a draft, publish it, and reindex the domain. See [Manage context via MCP](/integrations/mcp-server/manage-context)
+
+  ### 🧭 Getting Started with Domains & Context
+
+  A new overview for Data Administrators on how to organize tables into domains and add the business context that drives accurate answers. The Domains tab is now named **Domains & Context**. See [Getting Started with Domains & Context](/setting-up-wisdom-ai/getting-started-domains-context).
+
+  ### 📥 Import an Apache Ossie model
+
+  Apache Ossie is an open, vendor-neutral YAML format for describing datasets, relationships, metrics, and AI context. You can import an Ossie semantic model into a WisdomAI domain to reuse definitions your data team already governs.
+
+  **⚙️ How it works:**
+
+  1. Get an Ossie file and check the prerequisites
+  2. Import the model into a domain
+  3. Review what was imported
+  4. To pick up upstream changes, re-import the file
+
+  For the full steps and limitations, see [Import an Apache Ossie model](/setting-up-wisdom-ai/manage-domains/import-apache-ossie-model).
+
+  ### 📚 FAQ and Glossary
+
+  Two new reference pages: a [FAQ](/reference-library/faq) with answers to common questions grouped by topic, and a [Glossary](/getting-started/glossary) of the key terms used across the product and documentation.
+
+  ### 🧠 Domain Health moved into Domain management
+
+  [Domain Health](/setting-up-wisdom-ai/manage-domains/domain-health) now sits with the other domain guides in Domain management.
+
+  ### 🔧 impersonateUser documented under queries
+
+  In the API reference, `impersonateUser` is now documented under queries, and the pages that reference it point to the right place.
+
 </Update>

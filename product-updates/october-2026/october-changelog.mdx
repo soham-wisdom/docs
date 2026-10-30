@@ -1,0 +1,100 @@
+---
+title: "Changelog"
+---
+
+<Update label="Updates">
+
+  ### 🧩 Embed a Live App
+
+  Embed a WisdomAI Live App in your own application with an iframe. Embedded Live Apps reflect the user's role, so you can hide edit controls by assigning the **Viewer** role when you create the user.
+
+  **⚙️ How it works:**
+
+  1. Generate the JWT for your user, as described in the [Embeddings Overview](/integrations/embeddings/embedding)
+  2. Construct the embed URL for your Live App and append the JWT
+  3. Assign the **Viewer** role to users who shouldn't edit
+  4. Validate the embedded view
+
+  See [Embed a Live App](/integrations/embeddings/iframe/embed-a-live-app).
+
+  ### 🦉 Owls
+
+  Owls are AI analysts that work on a goal in the background. WisdomAI is building them with a small group of design partners. See [Owls](/early-access/owls) to learn what an Owl does and how to become a design partner.
+
+  <Note>
+    Owls are in alpha.
+  </Note>
+
+  ### 🔒 Column-level security on derived columns
+
+  CLS on a base column now applies automatically to every derived column that references it, so you don't need to configure anything extra on the derived column. To protect a derived column, apply CLS to each base column it references. See [Column-level security](/manage-account/row-level-access-control/column-level-security-cls).
+
+  ### 🔌 Connection management and settings
+
+  New guides explain how WisdomAI checks, runs, and monitors your connections, so you can manage them with confidence. For setup, see [Supported Data Sources](/getting-started/connect-data-sources/supported-data-sources).
+
+  **⚙️ How it works:**
+
+  - **Manage connections:** WisdomAI checks a connection when you save it and tells you how to fix anything that fails. From the Connections list, you can sync a connection, review its run logs, set up alerts, or remove it
+  - **Advanced settings:** Limit how long queries run and how much data they scan, and use different credentials for different users
+  - **Access:** Let WisdomAI read query history and system metadata so it can monitor performance and plan more efficient queries
+  - **How WisdomAI queries your warehouse:** See when WisdomAI reuses an earlier result and how to recognize its queries in your warehouse's query history
+
+  ### 🗄️ New connection types
+
+  Supported Data Sources now covers **MySQL**, **Oracle**, **Amazon S3**, **MotherDuck**, and **Tableau**, with a new page for connecting **Google Calendar** and **Outlook Calendar**.
+
+  **⚙️ How it works:**
+
+  1. Access **Connections** > **Add connection** and select the source
+  2. Enter the details shown for it in [Supported Data Sources](/getting-started/connect-data-sources/supported-data-sources) and save
+  3. For calendars, each person then connects their own calendar under [Connected Apps](/settings/connected-apps), and agents can start a run from calendar events with the [Calendar trigger](/setting-up-wisdom-ai/agents/nodes-reference)
+
+  ### ❄️ Snowflake OAuth for user queries
+
+  Each person's questions can now run under their own Snowflake login through your identity provider, while WisdomAI keeps using the service user for crawls and validation. Enable it in the new **Enable OAuth for user queries (optional)** section of [Connect to Snowflake](/getting-started/connect-data-sources/connect-to-snowflake).
+
+  **⚙️ How it works:**
+
+  1. Enter your identity provider's OAuth details
+  2. Click **Connect** to authorize
+  3. Snowflake chooses each user's role under its OAuth policy
+
+  ### 🔗 MCP server connections
+
+  [Connect an MCP server](/getting-started/connect-data-sources/connect-mcp-server) now covers every sign-in and setup option.
+
+  **⚙️ How it works:**
+
+  - **Sign-in:** None, API Key, OAuth, or Azure Service Principal
+  - **STDIO servers:** Connect servers that run as a local command
+  - **Advanced settings:** Adjust how long WisdomAI waits for the server to respond
+
+  ### 🏗️ Context Builder sources
+
+  [Context Builder](/product-updates/spring-2026/context-builder-connections) now lists more sources.
+
+  **⚙️ How it works:**
+
+  - **GitLab and Azure DevOps:** Attach a repository the same way as GitHub, choose which paths to include, and optionally rebuild it daily
+  - **Tableau:** Pull metric and field definitions from Tableau workbooks
+  - **Query logs:** Build from query logs for Snowflake, BigQuery, Redshift, ClickHouse, and Databricks
+
+  ### 📚 Connection documentation improvements
+
+  The connection guides now match the current product.
+
+  - **Supported data sources**: Reorganized into Warehouse & Database, File & Repository, BI tools, and Calendars. CSV files and direct uploads are described as uploads to a domain rather than connections.
+  - **Connection setup guides**: [Snowflake](/getting-started/connect-data-sources/connect-to-snowflake), [Databricks](/getting-started/connect-data-sources/connect-to-databricks), [Google BigQuery](/getting-started/connect-data-sources/connect-to-google-bigquery), [Amazon Redshift](/getting-started/connect-data-sources/connect-to-amazon-redshift), and [SharePoint](/getting-started/connect-data-sources/connect-to-sharepoint) follow the current setup flow.
+  - **Data source management**: The [Quickstart](/setting-up-wisdom-ai/basic-tutorial-connect-and-test) and the [Data Sources tab](/setting-up-wisdom-ai/manage-domains/data-sources-tab) reflect how sources are added and organized in a domain.
+  - **Corrected information**: Updated settings and examples across the supported connections, and removed outdated details, including options that aren't offered.
+
+  ### 🔌 API reference lists current connection types
+
+  The [Connection object](/integrations/graphql-api/objects/connection) now lists the current connection and data source types.
+
+  ### 🏷️ Outdated Alpha and Beta labels removed
+
+  Outdated Alpha and Beta labels are removed from the Agents, Skills, and Knowledge Signals pages.
+
+</Update>

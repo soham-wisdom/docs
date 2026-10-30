@@ -539,9 +539,16 @@
             "group": "Recently Launched",
             "pages": [
               {
+                "group": "October 2026",
+                "pages": [
+                  "product-updates/october-2026/october-changelog"
+                ]
+              },
+              {
                 "group": "September 2026",
                 "pages": [
-                  "product-updates/september-2026/september-features"
+                  "product-updates/september-2026/september-features",
+                  "product-updates/september-2026/september-changelog"
                 ]
               },
               {
