@@ -87,7 +87,7 @@ Choose your AI client below and follow the steps to connect WisdomAI.
     | :------ | :---- |
     | URL | Use your [chosen MCP URL](#step-1-choose-your-mcp-url) |
     | Transport | Streamable HTTP |
-    | Authentication | OAuth |
+    | Authentication | OAuth, or an [API key](#step-3-authenticate) for clients that can't complete an interactive sign-in |
 
     How you enter them depends on the client. Some provide a form, and others use a JSON configuration file. Check your client's documentation for where its MCP configuration lives.
 
@@ -162,7 +162,7 @@ Choose your AI client below and follow the steps to connect WisdomAI.
 Choose a sign-in method supported by your AI tool and your organization:
 
 - **Sign in with WisdomAI (OAuth).** For interactive connections, follow your tool’s sign-in prompts and approve access. Use a sign-in method allowed by your organization. Most clients handle setup automatically; some require an administrator to register the connection first.
-- **API key.** For scripts or tools that accept an API key, create one in WisdomAI’s API Keys settings and add it to your tool’s connection settings. Use your own WisdomAI MCP URL.
+- **API key.** For scripts, programmatic clients such as a LangChain agent, or any tool that can't complete an interactive OAuth flow, create one in WisdomAI’s API Keys settings and add it to your tool’s connection settings. Use your own WisdomAI MCP URL.
 - **Your organization’s identity provider.** If your administrator has enabled this option, your integration can use an access token from your organization’s identity provider. Use your own WisdomAI MCP URL and ask your administrator for the setup details.
 
 For tools that require an HTTP header, send the API key or access token as:
@@ -170,6 +170,14 @@ For tools that require an HTTP header, send the API key or access token as:
 ```text
 Authorization: Bearer <API_KEY_OR_ACCESS_TOKEN>
 ```
+
+API key authentication is available on every instance-specific MCP URL, and you can't turn it off. It requires no OAuth flow or token exchange.
+
+<Note>
+  Send the API key to the MCP URL of the instance that issued it, for example `https://{your-instance}.askwisdom.ai/mcp`.
+</Note>
+
+If your client receives a `401 invalid_token` error, see [Why do I get a 401 invalid_token error](/reference-library/faq#mcp) in the FAQ.
 
 After authentication succeeds, confirm that your client can reach WisdomAI.
 
