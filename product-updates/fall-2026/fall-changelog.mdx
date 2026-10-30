@@ -1,0 +1,94 @@
+---
+title: "Changelog"
+---
+
+<Update label="Updates">
+
+  ### ⚡ Wisdom Smart Cache 
+
+  Apps and dashboards no longer have to query your warehouse on every load. Wisdom Smart Cache serves them from Wisdom-managed snapshots of your tables, rebuilt on a schedule you control. Any query the cache can't serve runs against the warehouse, so caching changes how fast users get answers, never the answers themselves. Row-level security and column masking still apply at query time. For full details, see [Cache tables for faster apps and dashboards](/setting-up-wisdom-ai/cache-tables) and the [Smart Cache screen](/setting-up-wisdom-ai/smart-cache) pages.
+
+  **⚙️ How it works:**
+
+  - **Register tables for caching:** In **Domains → Data Sources**, register every cacheable table in a database, or a single table from its **...** menu. Choose a rebuild interval (hourly, 3, 6, 12, or 24 hours), add sort columns, or select **Build now**
+  - **Smart Cache screen:** Open `/caching` to see the share of queries served from cache, the speedup, total data cached, and caches that need attention. **Candidates** ranks every app and dashboard by the warehouse time caching could win back
+  - **Optimize:** Select **Optimize** on a candidate and WisdomAI registers the table caches the app's widgets are missing. Where a table is too large to cache, it creates cached views shaped to those widgets. Your app is never edited
+  - **Activity tab:** See every cached table and view with its status, freshness, size, and queries served. Configure it, review its builds and usage, trigger **Build now**, or **Stop caching**
+  - **Cached data on dashboards:** When a tile is served from the cache, the header shows **Data as of** the oldest data on the artifact. See [Cached data on dashboards and apps](/dashboards/cached-data)
+
+  <Accordion title="FAQs">
+    <AccordionGroup>
+      <Accordion title="Does a table rebuild every time its interval elapses?">
+        A table rebuilds when its interval has elapsed and its source data changed. If the warehouse reports no change, the existing snapshot is kept at no warehouse cost. **Build now** always forces a rebuild.
+      </Accordion>
+
+      <Accordion title="Can I turn caching off?">
+        Yes. Go to **Domains → Advanced settings → Performance** and turn off **Materialized table cache**. Registrations are kept, and queries simply stop reading from the cache.
+      </Accordion>
+
+      <Accordion title="Does refreshing a dashboard rebuild the cache?">
+        No. **Refresh Data** re-runs every widget query. Cached tables read the latest snapshot and everything else hits the warehouse. Rebuilds are controlled from Domains or with **Build now**.
+      </Accordion>
+    </AccordionGroup>
+  </Accordion>
+
+  <Note>
+    Wisdom Smart Cache is in beta and is enabled per account. The Smart Cache screen is available to superusers.
+  </Note>
+
+  ### 🪞 Object Mirroring
+
+  Share domains and dashboards across customer organizations without maintaining a copy for each customer. Your team keeps the originals in an authoring organization, and each customer uses a live, read-only mirror in their own private organization. Changes to the original appear in every mirror. For full details, see [Object mirroring](/access-management/object-mirroring).
+
+  **⚙️ How it works:**
+
+  - **Create a customer organization:** A Site Administrator creates a separate organization per customer, and you invite that customer's users there. They don't need membership in the authoring organization
+  - **Mirror a domain or dashboard:** Select the **Mirror domain** icon on a domain, or **Mirror dashboard** from a dashboard's **More** menu, then choose the destination organizations. Domains and dashboards are mirrored separately
+  - **Choose target access:** **Admins only** lets administrators review a mirror before rollout. **All users** gives every user in the selected organizations read access, including users added later
+  - **Customer experience:** Users can view mirrored dashboards, browse mirrored domains, and chat using them. They can't edit the shared content or see another customer's organization
+  - **Data access still applies:** Row-level security, column-level security, and connection parameters follow each viewer's own identity. Source chats and authoring metadata stay hidden from customers
+  - **Automate with the API:** Provision organizations, users, and mirrors with GraphQL. See [Set up tenant organizations and mirrors with the API](/integrations/user-management/mirror-with-the-api)
+
+  <Accordion title="FAQs">
+    <AccordionGroup>
+      <Accordion title="Do customers get a copy of the domain or dashboard?">
+        No. A mirror refers to the original, so it stays synchronized with it. Edit the original in the authoring organization and you don't need to republish for each customer.
+      </Accordion>
+
+      <Accordion title="Does mirroring a dashboard also mirror its domain?">
+        No. Mirror each object separately. You also can't mirror an existing mirror into another organization. Create each mirror from the original.
+      </Accordion>
+
+      <Accordion title="Can I mirror to more than 100 organizations?">
+        The mirror dialog loads up to 100 eligible organizations. For larger rollouts, provision mirrors through the API.
+      </Accordion>
+    </AccordionGroup>
+  </Accordion>
+
+  <Note>
+    If you don't see **Mirror**, ask your administrator to check your permissions and whether mirroring is enabled for your account. In the API, this feature still uses the names publish and publication.
+  </Note>
+
+  ### 🧩 Embed Live Apps
+
+  Embed WisdomAI Live Apps directly in your own application with an iframe, with no separate login for your users. For full details, see [Embed a Live App](/integrations/embeddings/iframe/embed-a-live-app).
+
+  **⚙️ How it works:**
+
+  1. Generate a JWT for the user, as described in the [Embeddings Overview](/integrations/embeddings/embedding)
+  2. Insert `/embed/` before the app's name and ID in the app URL, and append the JWT as a `token` query parameter: `https://<customer>.wisdom.ai/apps/embed/name-id?token=<JWT>`
+  3. Use that URL as the `src` of an `<iframe>`, with `allow="microphone; camera; clipboard-write"` to enable voice input, camera, and clipboard features
+  4. Open the embed URL in your browser to validate that the app loads without a login prompt
+
+  <Accordion title="FAQs">
+    <AccordionGroup>
+      <Accordion title="How do I make an embedded Live App read-only?">
+        Assign the user the **Viewer** role when you create them. Embedded Live Apps reflect the user's RBAC role, and there is no separate embed-specific parameter. See [RBAC for Embedded Users](/integrations/user-management/rbac).
+      </Accordion>
+
+      <Accordion title="Which domain do I use in the embed URL?">
+        Use the base URL of your WisdomAI tenant, the same domain you use to log in. Both `wisdom.ai` and `askwisdom.ai` are valid depending on your deployment.
+      </Accordion>
+    </AccordionGroup>
+  </Accordion>
+</Update>

@@ -230,5 +230,15 @@
     "source": "/advanced-features/agents/agent-best-practices",
     "destination": "/setting-up-wisdom-ai/agents/agent-best-practices",
     "permanent": true
+  },
+  {
+    "source": "/product-updates/september-2026/september-features",
+    "destination": "/product-updates/fall-2026/fall-features",
+    "permanent": true
+  },
+  {
+    "source": "/product-updates/september-2026/september-changelog",
+    "destination": "/product-updates/fall-2026/fall-changelog",
+    "permanent": true
   }
 ]
