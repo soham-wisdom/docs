@@ -42,13 +42,31 @@ A Live App serves the latest refreshed results for its widgets. Opening an app d
 - Click **Refresh data** in the top bar to re-run the app's queries on demand.
 ![Refresh data tooltip over the Updated 1 minute ago label at the top of the app](/images/refresh-data-live-apps.png)
 
+### Set the refresh schedule
+
+Editors can set an app's automatic refresh schedule.
+
+1. Open the app's menu and choose **Background refresh**.
+2. Choose **Hourly**, **Daily**, **Weekly**, or **Monthly** and set the timing and time zone.
+3. Select **Save**. To stop scheduled refreshes, select **Disable automatic refresh** and save.
+4. Open **View refresh history** to inspect previous refreshes.
+
+Use **Refresh data** in the top bar for an immediate refresh.
+
+![Background refresh dialog with schedule frequency, timing, time zone, a disable option, and refresh history](/images/03-background-refresh.jpg)
+
 ## Filter an app
 
-Apps come with filter controls built for the app you described, such as date ranges, pickers, and search boxes. They narrow the loaded data instantly, and each person's selections affect only their own view.
+Use the app's date, region, product, or other filter controls to narrow the analysis. Each person's selections apply to their own view.
 
-<Note>
-  Parameterized filters are coming soon. They re-run the underlying queries against your warehouse, so filtering will no longer be bound to the loaded rows.
-</Note>
+When building or editing an app, describe what the filter should change.<br/> 
+**Example:**
+
+*Add a region filter. Recalculate deposit balances and pricing outcomes for the selected region.*
+
+Column filters narrow the data served to the app. Query parameters rerun the underlying calculation when the selection needs to change its inputs. Filtering only the rows loaded in the browser can miss matching data. The app should use the appropriate data filter.
+
+![Region, reporting month, market, product, and segment filter controls above an app's analysis](/images/04-app-filters.jpg)
 
 ## Data security
 
