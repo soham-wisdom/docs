@@ -47,6 +47,44 @@ You can use the WisdomAI Builder at any point, such as to create an agent from s
   ![Add Node To Agent](/images/add-node-to-agent.png)
 </Frame>
 
+### Create parameters with the WisdomAI Builder
+
+Ask the WisdomAI Builder to create parameters and use them in the agent's workflow.
+
+1. Open an agent in Visual Mode and open **Ask WisdomAI**.
+2. Describe the parameter and how the agent should use it.
+
+    For example, ask:
+
+    *Create a regional deposit summary. Add a required Text parameter named region, with no default. Use it to filter the analysis to the selected region.*
+
+      <Frame>
+        <img src="/images/02-ai-builder-result.jpg" alt="Ask WisdomAI chat creating a regional deposit workflow and confirming the required region parameter" />
+      </Frame>
+
+3. Review the generated parameter under **Parameters** and check its use in the instructions.
+
+    <Frame>
+      <img src="/images/03-generated-region-parameter.jpg" alt="Parameters panel showing region as Text type with Required checked and an empty default value" />
+    </Frame>
+
+    <Frame>
+      <img src="/images/04-generated-instruction.jpg" alt="Generated data instructions containing a reference to the region parameter" />
+    </Frame>
+
+Parameter values and scheduling are covered in the [Parameterized Agents guide](/product-updates/spring-2026/parameterized-agents).
+
+### Reference items in instructions
+
+Use `@` in an instruction to reference a particular artifact, including an app, data, a person, or a parameter.
+
+1. Open the node's instructions.
+2. Type `@` and select the item you want the agent to use.
+
+<Frame>
+  <img src="/images/05-reference-picker.jpg" alt="Instruction picker listing Parameters, Data, Dashboards, and People, with the region parameter as an option" />
+</Frame>
+
 If you prefer to place and configure nodes yourself, or want to refine what the Builder generated, continue to Step 3.
 
 ## Step 3: Build manually
@@ -62,6 +100,7 @@ Every agent starts with a trigger node, which defines when the agent runs.
 | --- | --- |
 | **Manual trigger** | Use this when you need this analysis to run on demand. |
 | **Schedule** | Use this when you want a recurring analysis on schedule. |
+| **Calendar** | Use this when you want the agent to run before matching calendar events. See [Calendar trigger](/setting-up-wisdom-ai/agents/nodes-reference#trigger-nodes). |
 
 3. If you select the Schedule trigger and want it to act only when a condition is met, enter it in the **Trigger Criteria** field. Leave it empty to run unconditionally every time the trigger fires.
    <Tip>
