@@ -15,55 +15,74 @@ WisdomAI allows you to connect to any server that implements the [Model Context 
 
 - [Admin access](/manage-account/access-management) to your WisdomAI Organization.
 - The Server URL (for HTTP/SSE) or Command (for STDIO) of your MCP server.
-- Authentication credentials (API Key or OAuth configuration), if required by your server.
+- Authentication credentials (API Key, OAuth configuration, or Azure service principal details), if required by your server.
 
 ## Connect an external MCP server
 
 Follow these steps to register your MCP server as a data source in WisdomAI.
 
-1. Navigate to **Connections** \> **Add Connection**.
-2. In the **Data source** dropdown, select **MCP Server**.
+1. Navigate to **Connections** \> **Add connection**.
+2. Select **MCP Server** from the list of sources.
+
+<Frame>
+  <img
+    src="/images/mcp-select.png"
+    alt="Add Connection page with Connections selected in the sidebar (1) and the MCP Server tile selected (2)"
+    lightAlt="Add Connection page with Connections selected in the sidebar (1) and the MCP Server tile selected (2)"
+    darkAlt="Add Connection page with Connections selected in the sidebar (1) and the MCP Server tile selected (2)"
+    className="dark:hidden"
+  />
+  <img
+    src="/dark-img/mcp-select-dark.png"
+    alt="Add Connection page with Connections selected in the sidebar (1) and the MCP Server tile selected (2)"
+    lightAlt="Add Connection page with Connections selected in the sidebar (1) and the MCP Server tile selected (2)"
+    darkAlt="Add Connection page with Connections selected in the sidebar (1) and the MCP Server tile selected (2)"
+    className="hidden dark:block"
+  />
+</Frame>
+
 3. Enter a unique **Connection name** (e.g., "Linear MCP Server").
 4. Select the **Transport Type** supported by your server:
    - **Streamable HTTP**: Uses standard HTTP streaming for communication.
    - **SSE**: Uses Server-Sent Events.
    - **STDIO**: Runs the server as a local process via standard input/output.
-5. Enter the **Server URL** (for HTTP/SSE) or connection details.
-6. Select the **Authentication Type**:
+5. For HTTP and SSE servers, enter the **Server URL**. For STDIO servers, enter the **Command**, **Arguments**, and **Environment Variables**. Arguments can reference connection variables as `${VAR}`.
+6. Select the **Authentication Type** (STDIO servers don't have this setting):
    - **None**: For public or internal servers without auth.
-   - **API Key**: Uses a static key for all requests.
-   - **OAuth**: Uses user-based authentication.
-7. (Optional) Click **\+ Add Header** to include custom headers required by your environment.
-   <img
-     alt="Mcp 01"
-     lightAlt="MCP Server connection settings showing Transport Type and Authentication options"
-     darkAlt="MCP Server connection settings showing Transport Type and Authentication options"
-     title="Mcp 01"
-     src="/images/mcp-01.png"
-     className="dark:hidden"
-   />
-   <img
-     alt="Mcp 01"
-     lightAlt="MCP Server connection settings showing Transport Type and Authentication options"
-     darkAlt="MCP Server connection settings showing Transport Type and Authentication options"
-     title="Mcp 01"
-     src="/dark-img/mcp-server.png"
-     className="hidden dark:block"
-   />
-8. Click **Connect**. You may be prompted to authorize the connection to validate the setup.
+   - **API Key**: Uses a static key for all requests. Add the key as a custom header in the next step.
+   - **OAuth**: Uses user-based authentication. Select **Dynamic Client Registration** or **Static Credentials** (enter a **Client ID** and **Client Secret**).
+   - **Azure Service Principal**: Authenticates with an Azure service principal. Enter its **Client ID**, **Tenant ID**, **Client Secret**, and **Scope**.
+7. (Optional) Click **\+ Add Header** to add any custom headers required by your server. If you're using API Key authentication, add the key as a custom header.
+   <Frame>
+     <img
+       src="/images/mcp-01.png"
+       alt="MCP Server Connection Details form with the connection name (3), transport type (4), server URL (5), authentication type (6) and Add Header button (7) highlighted"
+       lightAlt="MCP Server Connection Details form with the connection name (3), transport type (4), server URL (5), authentication type (6) and Add Header button (7) highlighted"
+       darkAlt="MCP Server Connection Details form with the connection name (3), transport type (4), server URL (5), authentication type (6) and Add Header button (7) highlighted"
+       className="dark:hidden"
+     />
+     <img
+       src="/dark-img/mcp-dark-01.png"
+       alt="MCP Server Connection Details form with the connection name (3), transport type (4), server URL (5), authentication type (6) and Add Header button (7) highlighted"
+       lightAlt="MCP Server Connection Details form with the connection name (3), transport type (4), server URL (5), authentication type (6) and Add Header button (7) highlighted"
+       darkAlt="MCP Server Connection Details form with the connection name (3), transport type (4), server URL (5), authentication type (6) and Add Header button (7) highlighted"
+       className="hidden dark:block"
+     />
+   </Frame>
+8. If you selected OAuth, click **Connect** and complete the authorization. Then click **Save and Sync metadata** to save the connection.
 
 <img
   src="/images/mcp-03-access-request.png"
-  alt="Chat interface prompting the user to authenticate with the MCP tool"
-  lightAlt="Chat interface prompting the user to authenticate with the MCP tool"
-  darkAlt="Chat interface prompting the user to authenticate with the MCP tool"
+  alt="Authorization popup over the MCP Server connection form, asking you to approve WisdomAI's access to the MCP server, with Cancel and Approve buttons"
+  lightAlt="Authorization popup over the MCP Server connection form, asking you to approve WisdomAI's access to the MCP server, with Cancel and Approve buttons"
+  darkAlt="Authorization popup over the MCP Server connection form, asking you to approve WisdomAI's access to the MCP server, with Cancel and Approve buttons"
   className="dark:hidden"
 />
 <img
   src="/dark-img/mcp-03-access-request.png"
-  alt="Chat interface prompting the user to authenticate with the MCP tool"
-  lightAlt="Chat interface prompting the user to authenticate with the MCP tool"
-  darkAlt="Chat interface prompting the user to authenticate with the MCP tool"
+  alt="Authorization popup over the MCP Server connection form, asking you to approve WisdomAI's access to the MCP server, with Cancel and Approve buttons"
+  lightAlt="Authorization popup over the MCP Server connection form, asking you to approve WisdomAI's access to the MCP server, with Cancel and Approve buttons"
+  darkAlt="Authorization popup over the MCP Server connection form, asking you to approve WisdomAI's access to the MCP server, with Cancel and Approve buttons"
   className="hidden dark:block"
 />
 
@@ -72,6 +91,14 @@ Follow these steps to register your MCP server as a data source in WisdomAI.
 
   If you select **OAuth**, authentication happens on a user-by-user basis. WisdomAI does not store a global credential. Instead, when a user asks a question that requires data from this server, WisdomAI will prompt them to authenticate via a secure pop-up during the chat session.
 </Info>
+
+## Additional settings
+
+- **Request timeout**: Under **Advanced settings**, you can set the request timeout from 10 to 600 seconds. The default is 120 seconds.
+- **Connection name**: MCP connection names can be up to 30 characters.
+- **OAuth token refresh**: OAuth connections to Microsoft Entra and Google servers refresh their tokens, so people are asked to reconnect less often. If a server's OAuth settings change, use **Refresh OAuth settings and reconnect**.
+
+For checks that run when you save, see [What happens when you save](/getting-started/connect-data-sources/supported-data-sources#what-happens-when-you-save).
 
 ## Validate the connection
 
@@ -83,16 +110,16 @@ Once connected, you can verify the integration by asking a natural language ques
    WisdomAI will pull the requested data and generate the appropriate visualization or text response.
 
 <img
-  alt="Mcp 02"
-  lightAlt="Mcp 02"
-  darkAlt="Mcp 02"
+  alt="Chat answer to Show me my issues saying WisdomAI can see the Linear MCP tools but needs you to connect first, with a Connect button on the server card"
+  lightAlt="Chat answer to Show me my issues saying WisdomAI can see the Linear MCP tools but needs you to connect first, with a Connect button on the server card"
+  darkAlt="Chat answer to Show me my issues saying WisdomAI can see the Linear MCP tools but needs you to connect first, with a Connect button on the server card"
   src="/images/mcp-02.png"
   className="dark:hidden"
 />
 <img
-  alt="Mcp 02"
-  lightAlt="Mcp 02"
-  darkAlt="Mcp 02"
+  alt="Chat answer to Show me my issues saying WisdomAI can see the Linear MCP tools but needs you to connect first, with a Connect button on the server card"
+  lightAlt="Chat answer to Show me my issues saying WisdomAI can see the Linear MCP tools but needs you to connect first, with a Connect button on the server card"
+  darkAlt="Chat answer to Show me my issues saying WisdomAI can see the Linear MCP tools but needs you to connect first, with a Connect button on the server card"
   src="/dark-img/mcp-02.png"
   className="hidden dark:block"
 />
