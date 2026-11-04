@@ -158,6 +158,7 @@
             "pages": [
               "settings/api-keys",
               "settings/connected-apps",
+              "settings/jobs",
               "settings/email-access-control"
             ]
           },

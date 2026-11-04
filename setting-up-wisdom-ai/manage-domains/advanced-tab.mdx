@@ -8,8 +8,7 @@ This section allows you to configure these settings:
 
 - **Starter Questions:** A list of predefined questions to guide new users.
 - **Fiscal Year Configuration:** Settings to define your fiscal year start month and end calendar year.
-- **Jobs**: Manage job schedules and view run logs for domain jobs.
-- **Column Crawl Schedule:** Configure when the domain crawl should run. You can also disable crawl from here.
+- **Crawl jobs:** Settings for the scheduled column value crawl that keeps the domain's context fresh. **Scheduled crawl** turns the crawl on or off, and the change applies right away. **Schedule** sets when the crawl starts, with an optional time range for the start. **Column freshness** sets how often, in days, column values are refreshed. If a table in the domain uses row-level security, **Include users active in the last** limits the crawl to users active within that many days. **Failure alerts** notifies people when the crawl fails. Click **View run logs** to see this domain's crawl runs, or **Clear schedule override** to go back to the default schedule. Site Administrators can manage every job schedule on the [Jobs page](/settings/jobs).
 - **Display Preferences:** Toggles for compact number display and automatic data panel opening.
 - **Row Level Security Config:** Enable or disable this configuration for Admin users.
 - **Chat Customization:** A text area for providing system instructions to the AI, for example, "_Always reply in English_".
