@@ -115,7 +115,7 @@
               "product-updates/february-2026/knowledge-playground",
               "setting-up-wisdom-ai/feedback-mechanisms/limited-context",
               "setting-up-wisdom-ai/feedback-mechanisms/monitor-negative-feedback",
-              "using-wisdom-ai-everyday/command-palette",
+              "admins/using-wisdom-ai-everyday/command-palette",
               "using-wisdom-ai-everyday/work-with-csv-files",
               "using-wisdom-ai-everyday/share-dashboards-and-set-access-control",
               "using-wisdom-ai-everyday/schedule-dashboards-notifications",
@@ -277,7 +277,7 @@
             "pages": [
               "chat/overview",
               "using-wisdom-ai-everyday/ask-better-questions",
-              "using-wisdom-ai-everyday/command-palette",
+              "explorers/using-wisdom-ai-everyday/command-palette",
               "product-updates/february-2026/ghost-text-completion",
               "improve-wisdom-ai-responses/attach-files-to-chat",
               "using-wisdom-ai-everyday/knowledge-signals-from-chat",
