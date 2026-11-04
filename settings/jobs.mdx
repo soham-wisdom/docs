@@ -1,15 +1,16 @@
 ---
 title: "Jobs"
-description: "View, schedule, pause, and resume background jobs, and review job runs, from the Jobs page."
 ---
 
 WisdomAI runs background jobs to keep your workspace up to date. They sync connection metadata, crawl column values for domains, refresh dashboards, check domain health, and generate suggestions. The Jobs page lists every scheduled job in your account. Use it to see when jobs run, change schedules for many jobs at once, pause and resume jobs, and review past runs.
 
-<Info>
+<Note>
 The Jobs page is available to Site Administrators. Other users don't see it in the menu.
-</Info>
+</Note>
 
 ## Open the Jobs page
+
+To open, you have to:
 
 1. Click your name at the bottom of the left sidebar to open the user menu.
 2. Click **Jobs**.
@@ -49,6 +50,8 @@ Click **Clear filters** to reset them. The table shows 25 jobs per page by defau
 
 ### Change several jobs at once
 
+Follow these steps to set schedules, clear overrides, pause, or resume many jobs in one action:
+
 1. Select jobs with the checkboxes. The checkbox in the header selects every job on the current page. To select every job that matches your filters, click **Select all *N* matching** in the banner above the table. One action can change up to 1,000 jobs, so narrow the filters if more match.
 2. In the action bar at the bottom of the page, choose an action:
    * **Set schedule** gives the selected jobs their own schedule. See [Set a schedule](#set-a-schedule).
@@ -61,7 +64,7 @@ Jobs that run for your whole account (their Entity shows **Account**) and a few 
 
 ### Set a schedule
 
-**Set schedule** opens a dialog. If all the selected jobs share a schedule, the dialog opens with that schedule filled in.
+**Set schedule** opens a dialog. If all the selected jobs share a schedule, the dialog opens with that schedule filled in. To set a schedule, you must:
 
 1. Choose how often the jobs run:
    * **Hourly**: every hour, or every 2, 3, 4, 6, 8, or 12 hours, at the minute you choose.
@@ -105,6 +108,8 @@ To see the runs of a single job, open the job's **⋮** menu on the **Jobs** tab
 Runs that are **Running** or **Queued** show **Cancel run**. You can't undo a cancellation. You can cancel a run you started, or any run for an item you can edit.
 
 ## Who can do what
+
+Access to the Jobs page, to changing jobs, and to canceling runs depends on your role and your edit access:
 
 * Site Administrators can open the Jobs page and see every job and run.
 * Setting a schedule, clearing an override, pausing, or resuming a job also needs edit access to the job's domain, connection, or dashboard.

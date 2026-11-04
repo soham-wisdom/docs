@@ -2,16 +2,42 @@
 title: "Advanced Tab"
 ---
 
-The Advanced tab provides granular control over various operational and presentation aspects of your domain. You can fine-tune display preferences, set fiscal year configurations, and customize the AI's behavior.
+The Advanced tab holds domain-level defaults for the fiscal calendar, WisdomAI Chat behavior, display, security, and background jobs. They apply to everyone who uses the domain.
 
-This section allows you to configure these settings:
+The tab is a set of cards, with a list of sections on the right. You can configure these settings:
 
-- **Starter Questions:** A list of predefined questions to guide new users.
-- **Fiscal Year Configuration:** Settings to define your fiscal year start month and end calendar year.
-- **Crawl jobs:** Settings for the scheduled column value crawl that keeps the domain's context fresh. **Scheduled crawl** turns the crawl on or off, and the change applies right away. **Schedule** sets when the crawl starts, with an optional time range for the start. **Column freshness** sets how often, in days, column values are refreshed. If a table in the domain uses row-level security, **Include users active in the last** limits the crawl to users active within that many days. **Failure alerts** notifies people when the crawl fails. Click **View run logs** to see this domain's crawl runs, or **Clear schedule override** to go back to the default schedule. Site Administrators can manage every job schedule on the [Jobs page](/settings/jobs).
-- **Display Preferences:** Toggles for compact number display and automatic data panel opening.
-- **Row Level Security Config:** Enable or disable this configuration for Admin users.
-- **Chat Customization:** A text area for providing system instructions to the AI, for example, "_Always reply in English_".
+- **Fiscal calendar:** Defines how fiscal years and quarters are calculated in answers, charts, and reports.
+  - **Fiscal year:** Sets the month the fiscal year starts and how the year is named, using the **Starts in** and **Year naming** dropdowns. Select None if your domain's data or context defines its own fiscal calendar. Changes take effect immediately.
+  - **Quarter map:** Shows the dates of the fiscal year and the quarter that includes today.
+- **Timezone:** Sets the timezone WisdomAI uses to read timestamp columns when it runs queries in this domain.
+  - **Query timezone:** Replaces the global timezone setting for this domain only. If you keep the global default, WisdomAI uses the timezone from the server configuration.
+- **WisdomAI Chat behavior:** Shapes how WisdomAI Chat responds to questions in this domain.
+  - **Custom instructions:** Extra instructions that WisdomAI Chat follows in every chat in this domain. You can format them with Markdown.
+  - **Restrict answers to this domain's data:** Adds a guardrail so chat declines questions that need knowledge from outside the domain.
+  - **Keep the thinking stream collapsed:** Keeps the progress chip closed while an answer streams, rather than opening it automatically. Users can still expand it.
+  - **Suggested follow-up questions:** Shows follow-up questions that users can click after a data answer. The Auto option shows them when they are useful, for example after the first question in a conversation or when a user starts a new line of inquiry.
+- **Display & formatting:** Sets the default display of result panels and domain information.
+  - **Open the Show Data panel by default:** Opens the data panel on its own when an answer finishes loading.
+  - **Domain description on the search page:** Displays the domain's description at the top of the search experience.
+- **Explorer experience:** Sets what users with the Explorer role can see and do in this domain.
+  - **Result previews:** Shows chart and table previews to explorers.
+  - **Dataset file downloads:** Allows explorers to download the dataset behind an answer.
+  - **Personalized memory:** Allows chat to personalize answers for explorers based on their personal memory for this domain. If you turn it off, personalized answers stop, but the memory explorers saved stays.
+- **Computed context:** Reuses context, such as a user's departments or properties, so WisdomAI repeats fewer lookups and spends less on latency and query cost. Click **Add view** to create a view.
+- **Performance:**
+  - **Limit partitioned tables to recent partitions:** Limits queries on partitioned tables to the latest partitions, so they scan less data. Turn it off if questions in the domain need older data.
+- **Security enforcement:** Groups the settings for row level security, column level security, aggregation constraints, and redaction of reviewed queries.
+  - **Apply RLS, CLS and aggregation constraints to admins:** If you turn it off, admins are not subject to row and column security or aggregation limits.
+  - **Auto-redact reviewed queries:** Auto redacts reviewed queries when you save them, if any table has an RLS rule. The On and Off options replace this behavior.
+  - **Default redaction instructions:** Apply when a redaction run has no instructions of its own. If you leave the field blank, the run redacts all selected literals.
+- **Crawl jobs:** Settings for the scheduled column value crawl, which keeps the domain's context up to date. Site Administrators can manage every job schedule on the [Jobs page](/settings/jobs).
+  - **Scheduled crawl:** Turns the crawl on or off. The change takes effect immediately.
+  - **Schedule:** Sets when the crawl starts, with an optional time range for the start.
+  - **Column freshness:** Sets, in days, how often column values are refreshed.
+  - **Include users active in the last:** If a table in the domain uses row-level security, limits the crawl to users active within that many days.
+  - **Failure alerts:** Notifies people when the crawl fails.
+  - **View run logs:** Shows the crawl runs for this domain.
+  - **Clear schedule override:** Returns the crawl to the default schedule.
 
 <Frame>
   ![UI snippet showing the Advanced Tab](/images/new-ui-advanced-tab.png)
