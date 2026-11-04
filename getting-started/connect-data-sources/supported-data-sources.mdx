@@ -1,9 +1,10 @@
 ---
 title: "Supported Data Sources"
 boost: 0.15
+keywords: ["query timeout", "max bytes scanned", "alternate credential sets", "query history", "system catalog metadata", "sync now", "run logs", "connection alerts", "remove connection", "save and sync metadata", "result reuse", "WisdomAI_SQLAgent"]
 ---
 
-This page covers the data sources that can be connected to WisdomAI, including databases, data warehouses, and Files (PDFs, PPTs, Docs). It outlines the connection requirements, necessary configurations, and troubleshooting tips for seamless integration.
+This page covers the data sources that can be connected to WisdomAI: databases and data warehouses, files and repositories, BI tools, and calendars. It outlines the connection requirements, necessary configurations, and troubleshooting tips for seamless integration.
 
 WisdomAI works with the following data sources:
 
@@ -23,25 +24,38 @@ WisdomAI works with the following data sources:
 - Azure Synapse & Synapse Serverless
 - ClickHouse 
 - Trino 
-- CSV files
-- Azure DevOps
 - Dremio
+- MotherDuck
 
 <Warning>
-  **Note on Syncing**: After successfully adding a connection, the initial sync may take a few minutes to complete before data is available for analysis.
+  **Note on Syncing**: After successfully adding a connection, the initial sync may take a few minutes to complete before data is available for analysis. To follow a sync, see [Manage connections](#manage-connections).
 </Warning>
 
 ## File & Repository sources
 
 - Amazon S3
-- Google Cloud Storage (GCS)
 - Azure Blob Storage
 - SharePoint
-- Direct upload
 - GitHub 
 - GitLab
+- Azure DevOps
 
 Supported file types: PDFs, DOC/DOCX files, PowerPoint files, txt files, and images.
+
+<Note>
+  CSV files and direct uploads are added to a domain rather than set up as connections. To learn how to upload them, read [Upload CSV files](/setting-up-wisdom-ai/basic-tutorial-connect-and-test#3-upload-csv-files-optional).
+</Note>
+
+## BI tools
+
+- Tableau
+
+## Calendars
+
+- Google Calendar
+- Outlook Calendar
+
+To connect a calendar, see [Connect calendars](/getting-started/connect-data-sources/connect-calendars).
 
 To learn how to connect to your Data Sources, read the [Quickstart: Connect and Test](/setting-up-wisdom-ai/basic-tutorial-connect-and-test).
 
@@ -51,10 +65,10 @@ This section outlines common prerequisites for connecting to data sources. Speci
 
 - **Network Access:** Ensure WisdomAI has network access to your database or data warehouse host. This may involve configuring firewall rules or security groups.
 - **Authentication Details:** You will need the correct credentials (username, password, keys, etc.) for your chosen data source.
-- **SSL/TLS Configuration:** For secure connections, ensure your database/data warehouse is configured to accept SSL/TLS connections, and configure WisdomAI accordingly (e.g., `SSL Mode: require` for PostgreSQL).
+- **SSL/TLS Configuration:** For secure connections, ensure your database/data warehouse is configured to accept SSL/TLS connections, and configure WisdomAI accordingly (e.g., `SSL Mode: Require SSL` for PostgreSQL).
 - **Service Accounts (Google BigQuery):** A Google Cloud service account with appropriate BigQuery permissions is required.
   <Info>
-    For PostgreSQL and Amazon Redshift, you can optionally configure an SSH Tunnel to connect through a bastion host.
+    For PostgreSQL, Amazon Redshift, MySQL, and Oracle, you can optionally connect through an SSH tunnel to a bastion host.
   </Info>
 
 <Tabs>
@@ -73,9 +87,10 @@ This section outlines common prerequisites for connecting to data sources. Speci
     | :-- | :-- |
     | Host | Server address or IP |
     | Port | Typically `5432` |
-    | Database | Name of the database |
+    | Database filters | Optionally limit which databases are crawled |
     | Username | Database user with read access |
     | Password | User's password |
+    | SSL Mode (Optional) | Default (no SSL requirement), Disable SSL, Allow SSL if available, Prefer SSL (fallback to non-SSL), or Require SSL |
     | SSH Host | Hostname or IP address of the bastion host (Optional) |
     | SSH Port | Port number on the SSH host (Optional) |
     | SSH Username | The username required to log in to the bastion host (Optional) |
@@ -87,11 +102,13 @@ This section outlines common prerequisites for connecting to data sources. Speci
     ```txt
     Host: postgres.example.com
     Port: 5432
-    Database: analytics
+    Database filters: analytics
     Username: wisdom_reader
     Password: ********
-    SSL Mode: require
+    SSL Mode: Require SSL
     ```
+
+    For query timeout and alternate credential sets, see [Advanced settings](#advanced-settings).
   </Tab>
   <Tab title="Microsoft SQL Server">
     The following table lists the requirements you must provide when connecting to Microsoft SQL Server.
@@ -102,25 +119,68 @@ This section outlines common prerequisites for connecting to data sources. Speci
 
     | Requirement | Description |
     | :-- | :-- |
-    | Server | SQL Server address or instance name |
+    | Host | SQL Server address |
     | Port | Typically `1433` |
-    | Database | Name of the database |
-    | Authentication | SQL Server or Windows Authentication |
-    | Username | SQL Server login with read access |
-    | Password | Login password |
-    | Trust Server Certificate | Whether to trust the server's SSL certificate |
+    | Authentication method | **Username/password**, or **Azure SQL service principal** (Client ID, Tenant ID, and Client Secret of a Microsoft Entra app) |
+    | Username | SQL Server login with read access (Username/password only) |
+    | Password | Login password (Username/password only) |
+    | Database filters | Optionally limit which databases are crawled |
+    | Read-only intent | Optional. Connects with read-only application intent, so an availability group listener sends WisdomAI to a readable secondary replica. |
+
+    <Note>
+      Windows Authentication is not supported.
+    </Note>
 
     Here's an example connection:
 
     ```txt
-    Server: sqlserver.example.com
+    Host: sqlserver.example.com
     Port: 1433
-    Database: business_data
-    Authentication: SQL Server
+    Authentication method: Username/password
     Username: wisdom_reader
     Password: ********
-    Trust Server Certificate: True
+    Database filters: business_data
     ```
+
+    For alternate credential sets, see [Advanced settings](#advanced-settings).
+  </Tab>
+  <Tab title="MySQL">
+    The following table lists the requirements you must provide when connecting to MySQL.
+
+    <Info>
+      SSH settings are optional.
+    </Info>
+
+    | Requirement | Description |
+    | :-- | :-- |
+    | Host | The hostname or IP address of your MySQL server |
+    | Port | The port number used for the connection |
+    | User | The database user account with read access |
+    | Password | The password for the specified user |
+    | Database filters | Optionally limit which databases are crawled |
+    | SSH tunnel | Optionally connect through an SSH tunnel to a bastion host |
+
+    For alternate credential sets, see [Advanced settings](#advanced-settings).
+  </Tab>
+  <Tab title="Oracle">
+    The following table lists the requirements you must provide when connecting to Oracle.
+
+    <Info>
+      SSH settings are optional.
+    </Info>
+
+    | Requirement | Description |
+    | :-- | :-- |
+    | Host | The hostname or IP address of your Oracle server |
+    | Port | The port number used for the connection. The default is `1521`. |
+    | Username | The database user account with read access |
+    | Password | The password for the specified user |
+    | Service Name | The Oracle service name to connect to |
+    | Schema filters | Optionally limit which schemas are crawled |
+    | Use TLS | Required for Oracle Cloud Autonomous DB |
+    | SSH tunnel | Optionally connect through an SSH tunnel to a bastion host |
+
+    Under **Advanced**, **Query timeout (s)** stops queries that run longer than this limit. When a query reaches it, Oracle cancels the query on the server. See [Advanced settings](#advanced-settings).
   </Tab>
   <Tab title="Databricks">
     The following table lists the requirements you must provide when connecting to Databricks.
@@ -131,23 +191,24 @@ This section outlines common prerequisites for connecting to data sources. Speci
 
     | Requirement | Description |
     | :-- | :-- |
-    | Server Hostname | Databricks SQL endpoint hostname |
-    | HTTP Path | HTTP path for the SQL endpoint |
-    | Username | Databricks username |
-    | Password | Databricks password |
-    | Catalog | Optional Databricks catalog name |
-    | Schema | Optional schema name |
+    | Host | Your workspace's server hostname, without `https://` |
+    | HTTP path | The HTTP path of your SQL warehouse |
+    | Client ID | The application ID of a Databricks service principal |
+    | Client secret | An OAuth secret for that service principal |
+    | Catalog filters | Optionally limit which catalogs and schemas are crawled |
+    | Staging volume path (optional) | A Unity Catalog volume, `/Volumes/<catalog>/<schema>/<volume>`, that lets uploaded CSV files join your Databricks tables |
 
-    Below is an example key pair connection:
+    Here's an example connection:
 
     ```txt
-    Server Hostname: dbc-xxxx-yyyy.cloud.databricks.com
-    HTTP Path: /sql/1.0/warehouses/abcdef123456
-    Username: wisdom_user
-    Password: ********
-    Catalog: main
-    Schema: default
+    Host: dbc-xxxx-yyyy.cloud.databricks.com
+    HTTP path: /sql/1.0/warehouses/abcdef123456
+    Client ID: 00000000-0000-0000-0000-000000000000
+    Client secret: ********
+    Catalog filters: main
     ```
+
+    For query timeout and alternate credential sets, see [Advanced settings](#advanced-settings).
   </Tab>
   <Tab title="Snowflake">
     The following table lists the requirements you must provide when connecting to Snowflake.
@@ -158,13 +219,14 @@ This section outlines common prerequisites for connecting to data sources. Speci
 
     | Requirement | Description |
     | :-- | :-- |
-    | Account | Snowflake account identifier |
+    | Account or Host | Your account identifier, for example `myorg-account123` |
     | Username | Snowflake user with access privileges |
-    | Private Key File | Private Key File |
+    | Authentication Method | **Private Key** (key-pair, the default) or **Programmatic Access Token**. Password sign-in is deprecated and can't be used for new connections. |
+    | Private Key | Paste the PEM text, including the BEGIN and END lines |
+    | Private Key Passphrase | Only for encrypted keys |
     | Warehouse | Compute warehouse to use |
-    | Database | Database name |
-    | Schema | Schema name (optional) |
-    | Role | User role (optional) |
+    | Role | Required |
+    | Database filters | Optionally limit which databases are crawled |
 
     To set up key pair authentication for Snowflake:
 
@@ -175,37 +237,43 @@ This section outlines common prerequisites for connecting to data sources. Speci
     Here's an example key pair connection:
 
     ```txt
-    Account: xy12345.us-east-1
+    Account or Host: xy12345.us-east-1
     Username: wisdom_analytics
-    Private Key File: Upload your private key file (.p8 or .pem format)
+    Authentication Method: Private Key
+    Private Key: paste the contents of your .p8 or .pem file
     Warehouse: ANALYTICS_WH
-    Database: BUSINESS_DATA
-    Schema: PUBLIC
     Role: ANALYST_ROLE
+    Database filters: BUSINESS_DATA
     ```
 
     Access the [Snowflake Docs](https://docs.snowflake.com/en/user-guide/key-pair-auth.html) to get more information about Key Pair Authentication.
+
+    For query timeout, max bytes scanned, and alternate credential sets, see [Advanced settings](#advanced-settings).
   </Tab>
   <Tab title="Google BigQuery">
     The following table lists the requirements you must provide when connecting to Google BigQuery.
 
     | Requirement | Description |
     | :-- | :-- |
-    | Project ID | Google Cloud project identifier |
-    | Authentication | Service account key (JSON format) |
-    | Dataset | Default dataset (optional) |
+    | Service Account Info JSON | Paste the contents of your service account key file |
+    | Billing Project ID (optional) | The project to bill for queries |
+    | Projects | One or more projects, each with a Project ID and optional Dataset filters |
+
+    You can also select **Enable OAuth for user queries (optional)** so each person runs queries under their own Google identity. See [Connect to Google BigQuery](/getting-started/connect-data-sources/connect-to-google-bigquery) for the full setup.
 
     Find below an example connection:
 
     ```txt
+    Service Account Info JSON: { "type": "service_account", "project_id": "my-analytics-project-123", ... }
     Project ID: my-analytics-project-123
-    Authentication: Upload service account key JSON file
-    Dataset: analytics_data
+    Dataset filters: analytics_data
     ```
 
     <Warning>
       You'll need to create a service account in Google Cloud with appropriate permissions on the BigQuery datasets you want to access.
     </Warning>
+
+    For query timeout, max bytes scanned, and alternate credential sets, see [Advanced settings](#advanced-settings).
   </Tab>
   <Tab title="Amazon Redshift">
     The following table lists the requirements you must provide when connecting to Amazon Redshift.
@@ -222,15 +290,17 @@ This section outlines common prerequisites for connecting to data sources. Speci
     | :-- | :-- |
     | Host | Redshift cluster endpoint |
     | Port | Typically `5439` |
-    | Database | Database name |
     | Username | Database user with read access |
     | Password | User password |
-    | Schema | Schema name (Optional) |
+    | Database filters | Optionally limit which databases are crawled |
+    | SSL Mode (Optional) | Default (no SSL requirement), Disable SSL, Allow SSL if available, Prefer SSL (fallback to non-SSL), or Require SSL |
     | SSH Host | Hostname or IP address of the bastion host (Optional) |
     | SSH Port | Port number on the SSH host (Optional) |
     | SSH Username | The username required to log in to the bastion host (Optional) |
     | Authentication Method | You can authenticate using either a Private Key or a Password (Optional) |
     | SSH Private Key/Password | The Private Key or Password used for the SSH authentication (Optional) |
+
+    For query timeout and alternate credential sets, see [Advanced settings](#advanced-settings).
   </Tab>
   <Tab title="CSV Files">
     You can also upload CSV files to a Domain. Here are the requirements for these files:
@@ -250,8 +320,9 @@ This section outlines common prerequisites for connecting to data sources. Speci
     | AWS Access Key ID | The access key for an IAM user with permissions to access Athena and the underlying S3 data |
     | AWS Secret Access Key | The secret access key associated with the AWS Access Key ID |
     | Region Name | The AWS region where your Athena service is hosted |
-    | S3 Staging Directory | The S3 bucket path where Athena stores query results |
-    | Work Group | The specific Athena workgroup used to run queries |
+    | S3 Staging Directory (Optional) | The S3 bucket path where Athena stores query results |
+    | Work Group (Optional) | The specific Athena workgroup used to run queries |
+    | Catalog filters | At least one catalog, each with optional schema filters |
 
     Here's an example connection:
 
@@ -261,7 +332,10 @@ This section outlines common prerequisites for connecting to data sources. Speci
     Region Name: us-west-2
     S3 Staging Directory: s3://wisdomai-athena-results-bucket/
     Work Group: primary
+    Catalog filters: analytics_catalog
     ```
+
+    For alternate credential sets, see [Advanced settings](#advanced-settings).
   </Tab>
   <Tab title="Azure Synapse">
     The following table lists the requirements you must provide when connecting to Azure Synapse.
@@ -279,11 +353,12 @@ This section outlines common prerequisites for connecting to data sources. Speci
     | Client ID | The Application ID of the Azure Service Principal used for authentication |
     | Tenant ID | The Directory ID of your Azure Active Directory |
     | Client Secret | The secret value generated for the Service Principal |
+    | Database filters | Optionally limit which databases are crawled |
 
     Here's an example connection:
 
     ```txt
-    Workspace SQL endpoint: synapse-prod-ondemand.sql.azuresynapse.net
+    Workspace SQL endpoint: synapse-prod.sql.azuresynapse.net
     Subscription ID: a1b2c3d4-e5f6-g7h8-i9j0-k1l2m3n4o5p6
     Resource Group ID: rg-analytics-prod
     Workspace ID: synapse-workspace-01
@@ -305,6 +380,7 @@ This section outlines common prerequisites for connecting to data sources. Speci
     | Client ID | The Application ID of the Azure Service Principal used for authentication |
     | Tenant ID | The Directory ID of your Azure Active Directory |
     | Client Secret | The client secret value generated for the Service Principal |
+    | Database filters | Optionally limit which databases are crawled |
 
     Here's an example connection:
 
@@ -314,6 +390,31 @@ This section outlines common prerequisites for connecting to data sources. Speci
     Tenant ID: ffffffff-ffff-ffff-ffff-ffffffffffff
     Client Secret: ********
     ```
+  </Tab>
+  <Tab title="Amazon S3">
+    The following table lists the requirements you must provide when connecting to Amazon S3.
+
+    | Requirement | Description |
+    | :-- | :-- |
+    | Bucket Name | The bucket where your files are stored |
+    | Authentication Method | **Access Key & Secret Key** or **Cross-Account Role** |
+
+    With **Access Key & Secret Key**, provide:
+
+    | Requirement | Description |
+    | :-- | :-- |
+    | Region | The AWS region |
+    | AWS Access Key ID | The access key ID |
+    | AWS Secret Access Key | The secret access key associated with the AWS Access Key ID |
+
+    With **Cross-Account Role**, provide:
+
+    | Requirement | Description |
+    | :-- | :-- |
+    | AWS Account ID | The AWS account ID that has access to the bucket |
+    | AWS Role Name | The name of the role to use |
+
+    To add an S3 dataset to a domain, follow [Connect an Amazon S3 dataset](/improve-wisdom-ai-responses/connect-unstructed-repositories-datasets#connect-an-amazon-s3-dataset).
   </Tab>
   <Tab title="Azure Blob Storage">
     The following table lists the requirements you must provide when connecting to Azure Blob Storage.
@@ -350,6 +451,10 @@ This section outlines common prerequisites for connecting to data sources. Speci
       Database filters are optional, but it is recommended to specify only the databases that you want to expose to Wisdom.
     </Note>
 
+    <Note>
+      To stop a canceled query in ClickHouse, the connection's user needs `SELECT` on `system.processes`. Without it, a canceled query runs to completion.
+    </Note>
+
     Here's an example connection:
 
     ```txt
@@ -359,6 +464,8 @@ This section outlines common prerequisites for connecting to data sources. Speci
     Password: ********
     Database filters: sales_data, inventory_records
     ```
+
+    For query timeout and alternate credential sets, see [Advanced settings](#advanced-settings).
   </Tab>
   <Tab title="Trino">
     The following table lists the requirements you must provide when connecting to Trino.
@@ -372,13 +479,17 @@ This section outlines common prerequisites for connecting to data sources. Speci
     | Host | The hostname or IP address of your Trino coordinator node |
     | Port | The port number used for the connection |
     | Username | The user account with appropriate permissions to access the catalogs |
-    | Password | The password for the specified user account |
+    | Password (optional) | The password for the specified user account |
     | Use SSL (HTTPS) | Toggle to enable secure communication via SSL |
     | Skip SSL Certificate Verification | If enabled, WisdomAI will not validate the SSL certificate (common for self-signed certs) |
     | Force HTTPS | Forces the connection to use HTTPS even if the endpoint suggests otherwise |
 
     <Note>
       Catalog filters are optional, but it is recommended to specify only the catalogs and their schemas that you want to expose to Wisdom.
+    </Note>
+
+    <Note>
+      **Impersonation attribute key** (under **Advanced**): the user attribute whose value WisdomAI sends to Trino as the user to run each person's queries as. Trino must allow the connection's user to impersonate those users.
     </Note>
 
     Here's an example connection:
@@ -393,6 +504,8 @@ This section outlines common prerequisites for connecting to data sources. Speci
     Force HTTPS: True
     Catalog Filters: snowflake_prod, glue_catalog
     ```
+
+    For alternate credential sets, see [Advanced settings](#advanced-settings).
   </Tab>
   <Tab title="SharePoint">
     The following table lists the requirements you must provide when connecting to SharePoint.
@@ -436,6 +549,8 @@ This section outlines common prerequisites for connecting to data sources. Speci
     Database ID: inventory_db
     Service Account Info JSON: { "type": "service_account", "project_id": "majestic-project-12345", ... }
     ```
+
+    For alternate credential sets, see [Advanced settings](#advanced-settings).
   </Tab>
   <Tab title="Teradata">
     The following table lists the requirements you must provide when connecting to Teradata.
@@ -451,6 +566,10 @@ This section outlines common prerequisites for connecting to data sources. Speci
       **Database filters** are optional, but it is recommended to specify only the databases that you want to expose to Wisdom.
     </Note>
 
+    <Note>
+      Databases on one Teradata connection are treated as one source, so answers can join tables across them.
+    </Note>
+
     Here's an example connection:
 
     ```txt
@@ -460,6 +579,8 @@ This section outlines common prerequisites for connecting to data sources. Speci
     Password: ********
     Database filters: sales_v, marketing_v
     ```
+
+    For alternate credential sets, see [Advanced settings](#advanced-settings).
   </Tab>
   <Tab title="GitHub">
     The following table lists the requirements you must provide when connecting to GitHub.
@@ -474,6 +595,8 @@ This section outlines common prerequisites for connecting to data sources. Speci
     <Note>
       A personal access token is required for private repositories.
     </Note>
+
+    WisdomAI checks repository access when you save. See [Manage connections](#what-happens-when-you-save). To scope paths and schedule daily builds, see [Repository paths and daily builds](/product-updates/spring-2026/context-builder-connections#repository-paths-and-daily-builds).
 
     Here's an example connection:
 
@@ -497,6 +620,8 @@ This section outlines common prerequisites for connecting to data sources. Speci
     <Note>
       An access token is required for private projects.
     </Note>
+
+    WisdomAI checks repository access when you save. See [Manage connections](#what-happens-when-you-save). To scope paths and schedule daily builds, see [Repository paths and daily builds](/product-updates/spring-2026/context-builder-connections#repository-paths-and-daily-builds).
 
     Here's an example connection:
 
@@ -525,16 +650,14 @@ This section outlines common prerequisites for connecting to data sources. Speci
 
     | Authentication method | Description |
     | :-- | :-- |
-    | Connect as user | Authenticate with your own Azure DevOps user account via OAuth |
-    | Wisdom managed app | Use WisdomAI's managed OAuth app credentials |
-    | Service principal | Authenticate using a Tenant ID, OAuth client ID, and OAuth client secret |
-    | Managed identity | Authenticate using an Azure managed identity |
+    | Connect as user | Sign in with your Azure DevOps account. Needs a **Tenant ID**; an **OAuth client ID** and **OAuth client secret** are optional, for using your own app. |
+    | WisdomAI managed app | Needs a **Tenant ID** |
+    | Service principal | Needs a **Tenant ID**, **Client ID**, and **Client secret** |
+    | Managed identity | Needs a **Tenant ID** and **Client ID** |
     | Personal access token | Authenticate using a PAT generated in Azure DevOps |
-    | SSH key | Authenticate using an SSH key pair |
+    | SSH key | Needs a **Private key**, an optional passphrase, and **Known hosts** |
 
-    <Note>
-      The **Tenant ID**, **OAuth client ID**, and **OAuth client secret** fields are only required when using the **Service principal** authentication method.
-    </Note>
+    To scope paths and schedule daily builds, see [Repository paths and daily builds](/product-updates/spring-2026/context-builder-connections#repository-paths-and-daily-builds).
 
     Here's an example connection:
 
@@ -556,16 +679,17 @@ This section outlines common prerequisites for connecting to data sources. Speci
     | :-- | :-- |
     | Connection name | A name to identify this connection |
     | Host | The hostname or IP address of your Dremio server |
-    | Port | The port number used for the connection |
-    | Authentication | Basic (Software / on-prem) or Bearer (Cloud / PAT) |
+    | Port | `32010` for Dremio Software, `443` for Dremio Cloud |
+    | Authentication | **Bearer (Cloud / PAT)** or **Basic (Software / on-prem)** |
+    | Personal Access Token | Bearer (Cloud / PAT) authentication |
     | Username | The Dremio username (Basic authentication) |
-    | Password/PAT | The password or personal access token, depending on the authentication method |
+    | Password / PAT | The password or personal access token (Basic authentication) |
     | Use TLS | Whether to encrypt the connection using TLS |
     | Skip TLS Certificate Verification | Whether to skip verification of the TLS certificate |
     | Catalog Filters | Optionally filter Dremio catalogs (sources / spaces) and their schemas |
 
     <Note>
-      Each catalog filter can have its own schema filters. You can also add alternate credential sets under **Advanced** to use different credentials based on user attributes (e.g. region, environment); any fields left empty for an alternate are inherited from the primary connection at runtime.
+      Each catalog filter can have its own schema filters. You can also add alternate credential sets under **Advanced** to use different credentials based on user attributes (e.g. region, environment). See [Advanced settings](#advanced-settings).
     </Note>
 
     Here's an example connection:
@@ -573,20 +697,178 @@ This section outlines common prerequisites for connecting to data sources. Speci
     ```txt
     Connection name: analytics-dremio
     Host: dremio.example.com
-    Port: 9047
+    Port: 443
     Authentication: Bearer (Cloud / PAT)
-    Password/PAT: ********
+    Personal Access Token: ********
     Use TLS: True
     Skip TLS Certificate Verification: False
     ```
   </Tab>
+  <Tab title="MotherDuck">
+    MotherDuck is a cloud data warehouse built on DuckDB. The following table lists the requirements you must provide when connecting to MotherDuck.
+
+    | Requirement | Description |
+    | :-- | :-- |
+    | Access token | The access token from your MotherDuck settings |
+    | Database filters | Optionally limit which databases are crawled |
+
+    WisdomAI reads the databases and shares your token can see, including tables, views, and column comments. Answers can join across databases.
+
+    Under **Advanced**, you can set a query timeout and alternate credential sets. See [Advanced settings](#advanced-settings).
+
+    <Note>
+      If WisdomAI is deployed in your own cloud, it needs outbound access to `api.motherduck.com` and `ext.motherduck.com`.
+    </Note>
+  </Tab>
+  <Tab title="Tableau">
+    [Context Builder](/product-updates/spring-2026/context-builder-connections) uses a Tableau connection to pull metric and field definitions from Tableau workbooks. A Tableau site administrator must first turn on a Direct Trust Connected App.
+
+    | Requirement | Description |
+    | :-- | :-- |
+    | Tableau Cloud server URL | The URL of your Tableau Cloud server |
+    | Site content URL | The content URL of your Tableau site |
+    | Connected App client ID | The client ID of the Direct Trust Connected App |
+    | Connected App secret ID | The secret ID of the Connected App |
+    | Connected App secret value | The secret value of the Connected App |
+    | Authorized Tableau username | The Tableau user WisdomAI acts as. This user decides which workbooks and data WisdomAI can check. |
+    | Default workbook IDs (optional) | Workbooks to use by default |
+
+    All fields except **Default workbook IDs** are required.
+
+    <Note>
+      This connection is different from uploading Tableau workbook files. To upload `.twb`, `.twbx`, and similar files, see [Context Builder - File uploads](/product-updates/february-2026/context-builder-file-uploads).
+    </Note>
+  </Tab>
 </Tabs>
+
+## Access settings
+
+BigQuery, Snowflake, Amazon Redshift, ClickHouse, Databricks, PostgreSQL, Microsoft SQL Server, Azure Synapse Serverless, Oracle, and Teradata connections have an **Access** section with two rows:
+
+| Row | What it lets WisdomAI do |
+| :-- | :-- |
+| **Query history** | Monitor query performance and diagnose query and database health |
+| **System catalog metadata** | Read table sizes, partitions, and statistics to plan more efficient queries |
+
+Click **Enable** on a row. WisdomAI then:
+
+1. Checks whether the connection already has access.
+2. Shows the grant statements to run, filled in with the connection's own user.
+3. Checks again after you run them.
+
+## Advanced settings
+
+The **Advanced** section is on the connection form. Each setting is only shown for the sources listed in the table.
+
+| Setting | What it does | Available on |
+| :-- | :-- | :-- |
+| **Query timeout (s)** | Stops queries that run longer than this many seconds | PostgreSQL, Amazon Redshift, Snowflake, Google BigQuery, ClickHouse, Databricks, Oracle, and MotherDuck |
+| **Max bytes scanned** | Caps how much data one query may scan | Google BigQuery and Snowflake |
+| **Alternate credential sets** | Use different credentials depending on a user attribute | PostgreSQL, Amazon Redshift, MySQL, Microsoft SQL Server, Teradata, Databricks, ClickHouse, Trino, Amazon Athena, Google BigQuery, Google Cloud Spanner, Dremio, Snowflake, and MotherDuck |
+
+### Max bytes scanned
+
+**Max bytes scanned** is set separately for two kinds of work:
+
+| Limit | Applies to | Default |
+| :-- | :-- | :-- |
+| **Jobs** | Crawls and other background work | 500 GB |
+| **Interactive** | Chat, dashboards, MCP, and Slack | 5 TB |
+
+### Alternate credential sets
+
+Alternate credential sets let a connection use different credentials depending on a user attribute, for example region. Any field you leave empty in an alternate set is taken from the main connection.
+
+<Info>
+  For how user attributes are matched to credentials, see [User attributes](/integrations/user-management/user-attributes).
+</Info>
+
+## Manage connections
+
+After you add a connection, you manage it from the **Connections** page in the left sidebar. This section covers what happens when you save a connection and the actions in each connection's three-dot menu.
+
+### What happens when you save
+
+WisdomAI checks a connection when you save it. If a check fails, the form says the connection was not saved and lists each failed check with how to fix it. Fix the listed items and save again. There is no separate **Test** button.
+
+For GitHub and GitLab connections, WisdomAI reads from the repository to check access. If it can't, it says what's missing.
+
+The save button depends on the source:
+
+| Button | Sources |
+| :-- | :-- |
+| **Save and Sync metadata** | Warehouses, Tableau, and MCP servers |
+| **Save** | File, repository, and calendar sources |
+
+Connection names can be up to 255 characters, or 30 characters for MCP servers.
+
+### The connection menu
+
+On the **Connections** list, click the three-dot menu on a connection to use these actions:
+
+| Action | What it does |
+| :-- | :-- |
+| **Sync now** | Re-reads the connection's metadata right away |
+| **Run Logs** | Shows sync history |
+| **Alerts** | Notifies people when a sync fails |
+| **Remove Connection** | Deletes the connection |
+
+#### Run Logs
+
+**Run Logs** lists each sync of the connection. For each sync, it shows how many databases and tables the sync found, or that it found none.
+
+## How WisdomAI queries your warehouse
+
+This section explains how WisdomAI cancels and reuses queries, and how to recognize its queries in your warehouse's own query history.
+
+### Query cancellation
+
+Stopping a chat answer or leaving a dashboard cancels the query running in your warehouse. Where cancellation is supported, canceled queries show up in the warehouse's own query history.
+
+Cancellation depends on the warehouse, so it isn't available for every connection type. On ClickHouse, the connection's user also needs `SELECT` on `system.processes`. See the ClickHouse tab above.
+
+### Result reuse
+
+On BigQuery, Snowflake, ClickHouse, and Databricks, WisdomAI reuses an earlier result instead of running the same query again when both of these are true:
+
+- The same query runs again for the same person within 24 hours.
+- The warehouse reports that none of the query's tables changed.
+
+This covers dashboard refreshes, chat, agents, and the Playground.
+
+Result reuse doesn't apply to:
+
+- Connections that use each person's own credentials.
+- SQL that uses volatile functions, such as the current date or time.
+
+<Note>
+  Table previews on a domain's **Data Sources** tab can come from a cache up to 7 days old.
+</Note>
+
+### Recognize WisdomAI's queries
+
+Every query WisdomAI runs starts with this comment:
+
+```sql
+/*{"app":"wisdom"}*/
+```
+
+Some warehouses also record an application name or user agent:
+
+| Warehouse | What it sees |
+| :-- | :-- |
+| Snowflake | Application name `WisdomAI_SQLAgent` |
+| Databricks | Application name `WisdomAI_SQLAgent` |
+| PostgreSQL | Application name `WisdomAI_SQLAgent` |
+| MotherDuck | User agent `WisdomAI_SQLAgent/1.0` |
+
+Use these when auditing your warehouse's query history or attributing warehouse cost to WisdomAI.
 
 ---
 
 ## Protocol-based source: MCP server
 
-Connect to any server that implements the [Model Knowledge Protocol](https://modelcontextprotocol.io). MCP enables WisdomAI to fetch real-time data and scan metadata from external systems through a standardized protocol.
+Connect to any server that implements the [Model Context Protocol](https://modelcontextprotocol.io). MCP enables WisdomAI to fetch real-time data and scan metadata from external systems through a standardized protocol.
 
 ### MCP server requirements
 
@@ -596,7 +878,7 @@ To connect an MCP server, you must provide:
 | :-- | :-- |
 | **Transport Type** | Streamable HTTP, Server-Sent Events (SSE), or STDIO |
 | **Server URL/Command** | The endpoint or command used to run the MCP server |
-| **Auth Type** | API Key, OAuth, or None |
+| **Authentication Type** | None, API Key, OAuth, or Azure Service Principal. STDIO servers don't have this setting. |
 
 <Info>
   For detailed setup instructions, see [Connect an MCP Server](/getting-started/connect-data-sources/connect-mcp-server).
@@ -639,7 +921,7 @@ To integrate data from SaaS applications, please contact WisdomAI support at `su
 
 This section details any known limitations or restrictions when connecting to data sources.
 
-- **File Size:** The Maximum file size for direct upload is 100MB. For larger files or datasets, consider uploading them to a data warehouse or cloud storage (e.g., Amazon S3, Google Cloud Storage) and connecting WisdomAI to the warehouse/storage.
+- **File Size:** The Maximum file size for direct upload is 100MB. For larger files or datasets, consider uploading them to a data warehouse or cloud storage (e.g., Amazon S3) and connecting WisdomAI to the warehouse/storage.
 - **Query Limits:** Be aware of any rate limits or query concurrency limits imposed by your database or data warehouse provider. WisdomAI's queries will contribute to these limits.
 - **Data Type Support:** While WisdomAI strives to support a wide range of data types, some highly specialized or proprietary data types might require specific handling or may not be fully supported. Contact us if you request any assistance.
 
@@ -651,7 +933,7 @@ Understand common problems and systematic troubleshooting techniques that can he
 
 | **Issue** | **Possible Causes** | **Resolution** |
 | --- | --- | --- |
-| Connection Timeout | - Network latency  <br /> - Firewall blocking  <br /> - Server overload | - Check network connectivity  <br /> - Verify firewall rules  <br /> - Increase connection timeout setting |
+| Connection Timeout | - Network latency  <br /> - Firewall blocking  <br /> - Server overload | - Check network connectivity  <br /> - Verify firewall rules |
 | Authentication Failed | - Incorrect credentials  <br /> - Expired API keys/tokens  <br /> - Account lockout | - Verify username/password  <br /> - Regenerate API keys  <br /> - Check account status |
 | Permission Denied | - Insufficient privileges  <br /> - IP restriction  <br /> - Resource access limits | - Update user permissions  <br /> - Whitelist IP addresses  <br /> - Check resource quotas |
 

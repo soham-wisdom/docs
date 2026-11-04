@@ -13,7 +13,16 @@ This section allows you to configure these settings:
 - **Display Preferences:** Toggles for compact number display and automatic data panel opening.
 - **Row Level Security Config:** Enable or disable this configuration for Admin users.
 - **Chat Customization:** A text area for providing system instructions to the AI, for example, "_Always reply in English_".
+- **Performance:** Settings that affect how much data queries scan, such as limiting partitioned tables to recent partitions.
 
 <Frame>
   ![UI snippet showing the Advanced Tab](/images/new-ui-advanced-tab.png)
 </Frame>
+
+### **Limit partitioned tables to recent partitions**
+
+Under **Performance**, use this setting to reduce the amount of data scanned when querying partitioned tables. When enabled, WisdomAI restricts queries on partitioned tables to recent partitions.
+
+This setting is enabled by default. Turn it off if your domain needs to query older data.
+
+Required partition filters, such as those enforced by BigQuery, are still applied.
