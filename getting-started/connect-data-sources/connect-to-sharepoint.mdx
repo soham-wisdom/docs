@@ -13,85 +13,120 @@ Before you begin, ensure you have the following:
 - **Azure AD permissions**: The connector requires the following Microsoft Graph API application permissions granted on your Azure AD tenant:
   - `Sites.Read.All`: Read items in all site collections.
   - `Files.Read.All`: Read all files that the app has access to.
-- **Authentication Methods:** You must have one of the authentication methods configured:
-  - An Azure AD app registration with a client secret (Service Principal).
-  - Your Azure AD Tenant ID for the WisdomAI-managed app (Dedicated Multitenant App).
+- **Authentication:** An Azure AD app registration with a client secret (Service Principal).
 
 ## Authentication methods
 
-Choose the authentication method that best fits your organization's security requirements.
+WisdomAI authenticates with your own Azure AD app registration (Service Principal). This gives you full control over the app and its permissions.
 
-<Tabs>
-  <Tab title="Service Principal (Client Secret)">
-    Use your own Azure AD app registration to authenticate. This gives you full control over the app and its permissions.
+1. In the [**Azure Portal**](https://portal.azure.com), navigate to **Azure Active Directory** \> **App registrations** \> **New registration**.
+2. Register a new application (e.g., "WisdomAI SharePoint Connector").
+3. Note the **Application (client) ID** and **Directory (tenant) ID** from the **Overview** page.
+4. Navigate to **Certificates & secrets** \> **New client secret**.
+5. Create a secret and copy the **Value** immediately; it will not be shown again.
+6. Navigate to **API permissions** \> **Add a permission** \> **Microsoft Graph** \> **Application permissions**.
+7. Add the following permissions:
+   - `Sites.Read.All`
+   - `Files.Read.All`
+8. Click **Grant admin consent** to approve the permissions for your tenant.
 
-    1. In the [**Azure Portal**](https://portal.azure.com), navigate to **Azure Active Directory** \> **App registrations** \> **New registration**.
-    2. Register a new application (e.g., "WisdomAI SharePoint Connector").
-    3. Note the **Application (client) ID** and **Directory (tenant) ID** from the **Overview** page.
-    4. Navigate to **Certificates & secrets** \> **New client secret**.
-    5. Create a secret and copy the **Value** immediately; it will not be shown again.
-    6. Navigate to **API permissions** \> **Add a permission** \> **Microsoft Graph** \> **Application permissions**.
-    7. Add the following permissions:
-       - `Sites.Read.All`
-       - `Files.Read.All`
-    8. Click **Grant admin consent** to approve the permissions for your tenant.
+You will need the following values when configuring the connection in WisdomAI:
 
-    You will need the following values when configuring the connection in WisdomAI:
-
-    | Field | Description |
-    | :-- | :-- |
-    | Client ID | The Application (client) ID from your app registration |
-    | Tenant ID | The Directory (tenant) ID of your Azure AD tenant |
-    | Client Secret | The client secret value you generated |
-  </Tab>
-  <Tab title="Dedicated Multitenant App (WisdomAI Managed)">
-    WisdomAI creates and manages the Azure AD app on your behalf. You only need to provide your Tenant ID and grant admin consent.
-
-    1. Locate your **Azure AD Tenant ID** in the [Azure Portal](https://portal.azure.com) under **Azure Active Directory** \> **Overview**.
-    2. During the WisdomAI connection setup, enter your **Tenant ID**.
-    3. Click **Grant Admin Consent** when prompted.
-    4. A Microsoft consent dialog will open. You must approve the permissions (`Sites.Read.All` and `Files.Read.All`) for the WisdomAI-managed app.
-    5. The status in WisdomAI will update to **Granted** once approved.
-
-    <Note>
-      Granting admin consent for these permissions requires a user with the **Global Administrator** or **Privileged Role Administrator** role in your Azure AD tenant.
-    </Note>
-  </Tab>
-</Tabs>
+| Field | Description |
+| :-- | :-- |
+| Client ID | The Application (client) ID from your app registration |
+| Tenant ID | The Directory (tenant) ID of your Azure AD tenant |
+| Client Secret | The client secret value you generated |
 
 ## Setting up the connection
 
 Follow these steps to establish the connection within WisdomAI:
 
-1. Navigate to the **Overview** tab in your WisdomAI domain and click **Add Data Source**.
-2. Select **Connect another source** from the **Add** **Data Source** selector and click **Add Data Source**.
+1. In your WisdomAI domain, open the **Overview** tab and click **Add Data Source**.
+2. Select **Connect new Data store or MCP server**, then click **Add Data Source**.
 
-<img
-  alt="sharepoint-add-data"
-  lightAlt="sharepoint-add-data"
-  darkAlt="sharepoint-add-data"
-  src="/images/add-selector-ds.png"
-/>
+<Frame>
+  <img
+    src="/images/add-selector-ds.png"
+    alt="Domain Overview tab with the Add Data Source button highlighted (1) and the Add Data Source dialog with Connect new Data store or MCP server selected and the Add Data Source button highlighted (2)"
+    lightAlt="Domain Overview tab with the Add Data Source button highlighted (1) and the Add Data Source dialog with Connect new Data store or MCP server selected and the Add Data Source button highlighted (2)"
+    darkAlt="Domain Overview tab with the Add Data Source button highlighted (1) and the Add Data Source dialog with Connect new Data store or MCP server selected and the Add Data Source button highlighted (2)"
+    className="dark:hidden"
+  />
+  <img
+    src="/dark-img/add-selector-ds-dark.png"
+    alt="Domain Overview tab with the Add Data Source button highlighted (1) and the Add Data Source dialog with Connect new Data store or MCP server selected and the Add Data Source button highlighted (2)"
+    lightAlt="Domain Overview tab with the Add Data Source button highlighted (1) and the Add Data Source dialog with Connect new Data store or MCP server selected and the Add Data Source button highlighted (2)"
+    darkAlt="Domain Overview tab with the Add Data Source button highlighted (1) and the Add Data Source dialog with Connect new Data store or MCP server selected and the Add Data Source button highlighted (2)"
+    className="hidden dark:block"
+  />
+</Frame>
 
-3. Select **Connect to Data store or MCP server**.
-4. Enter a descriptive **Connection name** (e.g., "Marketing SharePoint") and select **SharePoint** as the data source.
+3. On the **Connect Data Source** screen, select **SharePoint**.
 
-![sharepoint-connect-source](/images/sharepoint-connect-source.png)
+<Frame>
+  <img
+    src="/images/sharepoint-connect-source.png"
+    alt="Connect Data Source dialog with the SharePoint tile highlighted (3)"
+    lightAlt="Connect Data Source dialog with the SharePoint tile highlighted (3)"
+    darkAlt="Connect Data Source dialog with the SharePoint tile highlighted (3)"
+    className="dark:hidden"
+  />
+  <img
+    src="/dark-img/sharepoint-connect-source-dark.png"
+    alt="Connect Data Source dialog with the SharePoint tile highlighted (3)"
+    lightAlt="Connect Data Source dialog with the SharePoint tile highlighted (3)"
+    darkAlt="Connect Data Source dialog with the SharePoint tile highlighted (3)"
+    className="hidden dark:block"
+  />
+</Frame>
 
-5. **Configure Authentication:** Choose your preferred method (Service Principal or Dedicated Multitenant App) and enter the required credentials.
-   <Frame>
-     ![Sharepoint Cd](/images/sharepoint-cd.png)
-   </Frame>
-6. **Configure SharePoint Sites:**
-   - Click **Add Site** and enter the full **Site URL** (e.g., `https://contoso.sharepoint.com/sites/teamsite`).
+4. Enter a descriptive **Connection name** (for example, `SharePoint Connection`).
+5. Under **Authentication**, enter the **Tenant ID**, **Client ID**, and **Client Secret** from your Azure app registration.
+
+<Frame>
+  <img
+    src="/images/sharepoint-cd.png"
+    alt="SharePoint Connection Details form with the Connection name field highlighted (4) and the Authentication section with the Tenant ID, Client ID and Client Secret fields highlighted (5)"
+    lightAlt="SharePoint Connection Details form with the Connection name field highlighted (4) and the Authentication section with the Tenant ID, Client ID and Client Secret fields highlighted (5)"
+    darkAlt="SharePoint Connection Details form with the Connection name field highlighted (4) and the Authentication section with the Tenant ID, Client ID and Client Secret fields highlighted (5)"
+    className="dark:hidden"
+  />
+  <img
+    src="/dark-img/sharepoint-cd-dark.png"
+    alt="SharePoint Connection Details form with the Connection name field highlighted (4) and the Authentication section with the Tenant ID, Client ID and Client Secret fields highlighted (5)"
+    lightAlt="SharePoint Connection Details form with the Connection name field highlighted (4) and the Authentication section with the Tenant ID, Client ID and Client Secret fields highlighted (5)"
+    darkAlt="SharePoint Connection Details form with the Connection name field highlighted (4) and the Authentication section with the Tenant ID, Client ID and Client Secret fields highlighted (5)"
+    className="hidden dark:block"
+  />
+</Frame>
+
+6. Under **Sites & libraries**, configure the SharePoint content to crawl:
+   - Enter the **Site URL** for Site 1 (for example, `https://contoso.sharepoint.com/sites/teamsite`).
+   - To include additional sites, click **Add Site**.
      <Note>
        You can add multiple sites to a single connection.
      </Note>
-   - (Optional) Click **Add Library** to restrict crawling to specific document libraries. If left blank, all libraries on the site are crawled.
-   - (Optional) Click **Add Path** to restrict crawling to specific folders within a library. Enter the path prefix (e.g., `Marketing/2024`) without a leading `/`.
-7. Click **Save**. WisdomAI will validate the credentials before saving.
+   - (Optional) Click **Add Library** and enter a **Library Name**. If no libraries are specified, all libraries in the site are included.
+   - (Optional) Click **Add Path** and enter a path prefix (for example, `Marketing/2024`) without a leading `/`.
+7. Click **Select Data**.
 
-![sharepoint-sites](/images/sharepoint-sites.png)
+<Frame>
+  <img
+    src="/images/sharepoint-sites.png"
+    alt="Sites & libraries section with the Add Site, Add Library and Add Path controls highlighted (6) and the Select Data button highlighted (7)"
+    lightAlt="Sites & libraries section with the Add Site, Add Library and Add Path controls highlighted (6) and the Select Data button highlighted (7)"
+    darkAlt="Sites & libraries section with the Add Site, Add Library and Add Path controls highlighted (6) and the Select Data button highlighted (7)"
+    className="dark:hidden"
+  />
+  <img
+    src="/dark-img/sharepoint-sites-dark.png"
+    alt="Sites & libraries section with the Add Site, Add Library and Add Path controls highlighted (6) and the Select Data button highlighted (7)"
+    lightAlt="Sites & libraries section with the Add Site, Add Library and Add Path controls highlighted (6) and the Select Data button highlighted (7)"
+    darkAlt="Sites & libraries section with the Add Site, Add Library and Add Path controls highlighted (6) and the Select Data button highlighted (7)"
+    className="hidden dark:block"
+  />
+</Frame>
 
 8. After the connection is created, add it as a data source to your domain. WisdomAI will begin crawling the configured SharePoint sites.
 
@@ -142,7 +177,6 @@ Site: <https://contoso.sharepoint.com/sites/marketing>
 <AccordionGroup>
   <Accordion title="Authentication failed">
     - Verify that the **Client ID**, **Tenant ID**, and **Client Secret** are correct and have not expired.
-    - For the Dedicated Multitenant App method, confirm that admin consent has been granted (the status should show "Granted" in WisdomAI).
   </Accordion>
 
   <Accordion title="Connection validates, but no files were crawled">
