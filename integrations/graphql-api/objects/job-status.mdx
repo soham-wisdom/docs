@@ -1,10 +1,10 @@
 ---
-title: "JobStatus"
+title: "JobHistory"
 ---
 
-This page describes the schema for Job Status.
+This page describes the schema for Job History.
 
-## JobStatus
+## JobHistory
 
 <ParamField path="lastRun" type="JobRun">
   Information about the most recent job execution attempt. See [JobRun](#jobrun).
@@ -68,6 +68,7 @@ The status of a job execution. This parameter can have one of the following valu
 | `JOB_RUN_STATUS_SUCCESS`   | Job completed successfully                 |
 | `JOB_RUN_STATUS_FAILED`    | Job failed with errors                     |
 | `JOB_RUN_STATUS_SKIPPED`   | Job was skipped                            |
+| `JOB_RUN_STATUS_CANCELED`  | Job was canceled                           |
 
 ## Related operations
 
