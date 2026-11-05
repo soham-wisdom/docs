@@ -4,7 +4,32 @@ keywords: ["agent", "agents", "manage agents"]
 boost: 6
 ---
 
-After an Agent is created, it appears in a list on the main **Agents** page. From this page, you can manage all the Agents you have access to.
+Once an Agent is created, you stay in control of it. You can run it on demand, edit its trigger or schedule, share it with teammates, pause it, review its previous runs and reports, or delete it. There are two ways to do all of this:
+
+- **From the UI**: Use the main **Agents** page to manage every Agent you have access to, with a three-dot menu of actions on each one. See [Manage agents from the UI](#manage-agents-from-the-ui).
+- **From chat**: Skip the menus and do the same things directly in a conversation by asking in plain language. See [Manage agents from chat](#manage-agents-from-chat).
+
+## Manage agents from chat
+
+You can create, find, inspect, update, delete, and run agents from chat. You can also bring previous runs into the conversation and ask about their analysis, results, or failures.
+
+Here are some day-to-day examples you can try:
+
+- Create an agent from the current analysis: "Send me this summary every Monday at 8am, Asia/Kolkata."
+- Find and inspect an agent: "Show me the regional deposit agent and explain what it does."
+- Update an agent: "Change the regional deposit agent to run every Friday at 9am."
+- Run an agent: "Run the regional deposit agent for North."
+- Bring a previous run into chat: "Show me the regional deposit agent's latest run and its report."
+- Investigate runs: "Why did yesterday's run fail?" or "Compare the latest two runs."
+- Delete an agent: "Delete the regional deposit agent."
+
+Chat can use the agent's configuration, previous runs, step conversations, and reports that you have access to. You can ask follow-up questions without restating the analysis.
+
+A test run sends no report to subscribers unless you ask for delivery.
+
+## Manage agents from the UI
+
+Every Agent appears in a list on the main **Agents** page.
 
 <img
   alt="Snippet showing the options to manage an agent"
@@ -150,24 +175,6 @@ To view an agent's reports:
 Reply to an agent report in Slack, email, or Teams to ask a follow-up question. WisdomAI responds in the same channel with the full context of the report's analysis.
 
 For example, ask "What drove the decline in the North region?" or "Break this down by branch." You can continue the analysis without repeating the original question or pasting the report into a new chat.
-
-## Manage agents from chat
-
-You can create, find, inspect, update, delete, and run agents from chat. You can also bring previous runs into the conversation and ask about their analysis, results, or failures.
-
-Here are some day-to-day examples you can try:
-
-- Create an agent from the current analysis: "Send me this summary every Monday at 8am, Asia/Kolkata."
-- Find and inspect an agent: "Show me the regional deposit agent and explain what it does."
-- Update an agent: "Change the regional deposit agent to run every Friday at 9am."
-- Run an agent: "Run the regional deposit agent for North."
-- Bring a previous run into chat: "Show me the regional deposit agent's latest run and its report."
-- Investigate runs: "Why did yesterday's run fail?" or "Compare the latest two runs."
-- Delete an agent: "Delete the regional deposit agent."
-
-Chat can use the agent's configuration, previous runs, step conversations, and reports that you have access to. You can ask follow-up questions without restating the analysis.
-
-A test run sends no report to subscribers unless you ask for delivery.
 
 ## Next steps
 
