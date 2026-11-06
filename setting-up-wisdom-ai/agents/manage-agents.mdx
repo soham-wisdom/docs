@@ -4,7 +4,32 @@ keywords: ["agent", "agents", "manage agents"]
 boost: 6
 ---
 
-After an Agent is created, it appears in a list on the main **Agents** page. From this page, you can manage all the Agents you have access to.
+Once an agent is created, you stay in control of it. You can run it on demand, edit its trigger or schedule, review its previous runs and reports, or delete it. There are two ways to manage your agents:
+
+- **From chat**: Skip the menus and ask in plain language, directly in a conversation. You can create, find, inspect, update, run, and delete agents, and ask about their previous runs. See [Manage agents from chat](#manage-agents-from-chat).
+- **From the UI**: Use the main **Agents** page to manage every agent you have access to, with a three-dot menu of actions on each one. Here you can also share agents, enable or disable them, and move them to debug. See [Manage agents from the UI](#manage-agents-from-the-ui).
+
+## Manage agents from chat
+
+You can create, find, inspect, update, delete, and run agents from chat. You can also bring previous runs into the conversation and ask about their analysis, results, or failures.
+
+Here are some day-to-day examples you can try:
+
+- Create an agent from the current analysis: "Send me this summary every Monday at 8am, Asia/Kolkata."
+- Find and inspect an agent: "Show me the regional deposit agent and explain what it does."
+- Update an agent: "Change the regional deposit agent to run every Friday at 9am."
+- Run an agent: "Run the regional deposit agent for North."
+- Bring a previous run into chat: "Show me the regional deposit agent's latest run and its report."
+- Investigate runs: "Why did yesterday's run fail?" or "Compare the latest two runs."
+- Delete an agent: "Delete the regional deposit agent."
+
+Chat can use the agent's configuration, previous runs, step conversations, and reports that you have access to. You can ask follow-up questions without restating the analysis.
+
+A test run sends no report to subscribers unless you ask for delivery.
+
+## Manage agents from the UI
+
+Every agent appears in a list on the main **Agents** page. From this page, you can manage all the agents you have access to.
 
 <img
   alt="Snippet showing the options to manage an agent"
@@ -23,7 +48,7 @@ After an Agent is created, it appears in a list on the main **Agents** page. Fro
 
 To manage an individual agent, locate it in the list and click the **three-dot menu (...)** under the **Actions** column. A dropdown menu will appear with the following options:
 
-- **Trigger agent**: Manually runs the Agent’s entire workflow. The Agent will evaluate its trigger (if enabled) and, if the conditions are met (or if the trigger is disabled), run the full analysis and send a notification.
+- **Trigger agent**: Manually runs the agent’s entire workflow. The agent will evaluate its trigger (if enabled) and, if the conditions are met (or if the trigger is disabled), run the full analysis and send a notification.
   Once you get the notification, you will be able to:
   - **View in WisdomAI**: it takes you to the chat window.
   - **View Agent**: it takes you to the agent configuration page.
@@ -31,8 +56,8 @@ To manage an individual agent, locate it in the list and click the **three-dot m
 ![Snippet showing the email notification when the agent performs the analysis](/images/2025-08-27_09-28-10.png)
 
 - **Enable agent / Disable agent**: Toggles the agent between the **Active** and **Inactive** states. Disabling an agent stops it from running on its schedule; enabling it resumes normal runs and notifications. See [Agent states](#agent-states) below.
-- **Edit agent**: Opens the canvas for Visual agents, allowing you to modify the Agent's name, trigger, work description, or schedule.
-- **Share**: Allows you to share the Agent with other users for collaboration.
+- **Edit agent**: Opens the canvas for Visual agents, allowing you to modify the agent's name, trigger, work description, or schedule.
+- **Share**: Allows you to share the agent with other users for collaboration.
   - **Manage access**: grant **Editor** or **Viewer** access for that agent.
   - **Manage general access**: share it with everyone in your organization.
     <img
@@ -44,9 +69,9 @@ To manage an individual agent, locate it in the list and click the **three-dot m
     />
 - **Duplicate agent**: Creates a copy of the agent that you can edit independently, without affecting the original.
 - **Move to debug**: Switches the agent to the **Debug** state. The agent still runs on its schedule and produces output, but doesn't send notifications to subscribers. Use this to validate changes against live data without alerting your team.
-- **Delete**: Permanently removes the Agent. This action cannot be undone.
+- **Delete**: Permanently removes the agent. This action cannot be undone.
 
-## View previous Runs
+## View previous runs
 
 You can view a detailed history of every time an agent has run. This log is useful for auditing and debugging an agent's behavior over time.
 
@@ -60,19 +85,19 @@ You can view a detailed history of every time an agent has run. This log is usef
 | **ANALYSIS** | Confirms if the analysis was completed successfully. |
 | **NOTIFICATION** | Shows if the notification was sent successfully or if there was an error. |
 
-**Visual Agents** log each run per node. You can replay any run on the canvas to review the status of each node.
+**Visual agents** log each run per node. You can replay any run on the canvas to review the status of each node.
 
 <img
-  alt="Snippet showing rusn log per node"
-  lightAlt="Snippet showing rusn log per node"
-  darkAlt="Snippet showing rusn log per node"
+  alt="Snippet showing run log per node"
+  lightAlt="Snippet showing run log per node"
+  darkAlt="Snippet showing run log per node"
   src="/images/log-per-node.png"
   className="dark:hidden"
 />
 <img
-  alt="Snippet showing rusn log per node"
-  lightAlt="Snippet showing rusn log per node"
-  darkAlt="Snippet showing rusn log per node"
+  alt="Snippet showing run log per node"
+  lightAlt="Snippet showing run log per node"
+  darkAlt="Snippet showing run log per node"
   src="/dark-img/log-per-node.png"
   className="hidden dark:block"
 />
@@ -81,7 +106,7 @@ You can view a detailed history of every time an agent has run. This log is usef
 
 ![Gif showing the Previous Runs](/images/view-previous-runs.gif)
 
-## RBAC
+## Roles and permissions
 
 Use Role-Based Access Control (RBAC) to manage collaboration. Refer to the table below to understand the differences between Editor and Viewer permissions and how they respect existing data access rules.
 
@@ -124,7 +149,7 @@ Each agent has a **Reports** list of its generated artifacts, with an **Export t
 
 To view an agent's reports:
 
-1. On the **Agents** page, find the **Reports** column. Agents that have generated at least one report show an icon there, agents with no runs yet show none.
+1. On the **Agents** page, find the **Reports** column. Agents that have generated at least one report show an icon there; agents with no runs yet don't.
 2. Click the icon to open that agent's Reports list.
 
 <Frame>
@@ -144,6 +169,12 @@ To view an agent's reports:
 <Frame>
   ![Agent Reports List](/images/agent-reports-list-v1.png)
 </Frame>
+
+## Follow-up questions on reports
+
+Reply to an agent report in Slack, email, or Teams to ask a follow-up question. WisdomAI responds in the same channel with the full context of the report's analysis.
+
+For example, ask "What drove the decline in the North region?" or "Break this down by branch." You can continue the analysis without repeating the original question or pasting the report into a new chat.
 
 ## Next steps
 

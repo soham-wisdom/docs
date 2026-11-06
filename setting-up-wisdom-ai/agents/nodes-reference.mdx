@@ -30,6 +30,35 @@ The trigger node types are:
 
     **Trigger criteria (optional):** Same as Manual trigger. The agent evaluates the condition on each scheduled run and only proceeds if it is met.
   </Accordion>
+
+  <Accordion title="Calendar">
+    Runs the agent before matching calendar events.
+
+    **Admin setup**
+
+    1. Open **Connections** and add a Google Calendar or Outlook Calendar connection.
+    2. Register your organization's OAuth application with the provider. Use the exact redirect URI shown in WisdomAI.
+    3. Enter the **Client ID** and **Client secret**. For Outlook, select the tenant and enter its **Tenant ID** if you use a specific tenant.
+    4. Select **Connect**, sign in, and authorize access. Save the connection after authorization succeeds.
+
+    For Google, enable the Google Calendar API and configure the OAuth consent audience before connecting.
+
+    After the admin saves the connection, users open **Settings → Connected Apps** and select **Connect** for their calendar account.
+
+    **Agent setup**
+
+    1. Open the trigger node and choose **Switch trigger type**, then **Calendar**.
+    2. Select the calendar connection.
+    3. Enter event-title keywords in **Words to include**.
+    4. Set **Run before event**. For two hours before, choose **Custom**, enter "2", and select **Hours**.
+    5. Add the meeting-prep instructions and configure delivery.
+
+    All entered words must appear in the event title. Matching ignores case and word order. For example, "customer renewal" matches "Renewal review for customer Acme".
+
+    <Frame>
+      <img src="/images/06-calendar-prerequisite.png" alt="Trigger type selection where Calendar requires a calendar connector before it can be selected" />
+    </Frame>
+  </Accordion>
 </AccordionGroup>
 
 <Note>
