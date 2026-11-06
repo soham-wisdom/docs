@@ -42,10 +42,6 @@ To classify support tickets, define the handling teams or categories and the tex
 1. **Select Ask mode and a domain.** Start a new chat, select **Ask**, and choose a domain containing your support ticket data.
 2. **Enter a classification prompt.** Describe the text to analyze, the categories to use, and the results you want.
 
-<Frame>
-  ![Chat interface with Ask mode (1) and the classification prompt (2) highlighted](/images/ai-functions-question.jpg)
-</Frame>
-
 These prompts illustrate the workflow shown in the demo. Adapt them to your own data, categories, and analysis goals.
 
 The demo uses the following prompt to classify support tickets and visualize the results:
@@ -53,6 +49,10 @@ The demo uses the following prompt to classify support tickets and visualize the
 ```text
 Using the support tickets table in our warehouse, classify every ticket by the team that should handle it (billing, bug, how_to, account_access or feature_request) from its subject and body. Chart how many tickets land on each team, then list the tickets you were least sure about with your guess for each.
 ```
+
+<Frame>
+  ![Chat interface with Ask mode (1) and the classification prompt (2) highlighted](/images/ai-functions-question.jpg)
+</Frame>
 
 WisdomAI evaluates each ticket's subject and body, classifies it by handling team, and charts the results.
 
@@ -75,15 +75,15 @@ Some tickets may fit more than one category. WisdomAI can show the examples it w
 1. **Review the suggested classifications.** Identify tickets that may belong to a different category.
 2. **Correct the classifications.** Provide the correct labels in Chat and ask WisdomAI to rerun the analysis.
 
-<Frame>
-  ![WisdomAI Chat showing uncertain ticket assignments (1) and the correction prompt (2)](/images/ai-functions-correction-prompt.jpg)
-</Frame>
-
 The following example corrects two ticket classifications and reruns the analysis using the confirmed labels:
 
 ```text
 T-4260 is billing, not a feature request: adding a PO number to invoices is billing work. T-4259 is account_access: resending an invite is an access request. Use those two as confirmed examples, re-run the classification on every ticket and update the chart.
 ```
+
+<Frame>
+  ![WisdomAI Chat showing uncertain ticket assignments (1) and the correction prompt (2)](/images/ai-functions-correction-prompt.jpg)
+</Frame>
 
 3. **Review the updated results.** Check the revised chart to see how the classifications changed.
 
