@@ -1,74 +1,36 @@
 ---
-mode: custom
-title: "WisdomAI Docs"
+title: "What is WisdomAI?"
+sidebarTitle: "What is WisdomAI?"
+keywords: ["what is wisdomai", "overview", "home", "introduction"]
 ---
 
-import {PageWrapper, HomeCard, OwlsBanner} from "/snippets/home.jsx"
+import { PlatformDiagram } from "/snippets/platform-diagram.jsx"
 
-<PageWrapper>
+WisdomAI lets you ask questions about your business data in plain language and get back answers, charts, dashboards, and apps. Every answer is grounded in the context your data team defines: what your tables mean, how your metrics are calculated, and who is allowed to see what.
 
-<OwlsBanner />
+<PlatformDiagram />
 
-<div className="mb-2">
-  <Columns cols={3}>
-    <HomeCard
-      href="/product-updates/august-2026/august-features"
-      src="/images/home/light/card6-01.png"
-      darkSrc="/images/home/dark/card6.png"
-      title="Recently Launched"
-      description="Discover Live Apps, Domain Groups, and more"
-      badge
-    >
-    </HomeCard>
+For a closer look at each capability, see [How WisdomAI Works](/getting-started/how-wisdom-ai-works).
 
-    <HomeCard
-      href="/getting-started/overview"
-      src="/images/home/light/card1.svg"
-      darkSrc="/images/home/dark/card1.png"
-      title="Getting started"
-      description="Everything you need to start using WisdomAI"
-    >
-    </HomeCard>
+## Quickstart
 
-    <HomeCard
-      href="/setting-up-wisdom-ai/basic-tutorial-connect-and-test"
-      src="/images/home/light/card2.svg"
-      darkSrc="/images/home/dark/card2.png"
-      title="Setting Up WisdomAI"
-      description="Connect data sources and start creating knowledge"
-    >
-    </HomeCard>
-  </Columns>
-</div>
+<Card title="Get started in 3 steps" icon="rocket" href="/getting-started/quickstart" horizontal>
+  See who does what to go from your first connection to trusted answers.
+</Card>
 
-<Columns cols={3}>
-  <HomeCard
-    href="/improve-wisdom-ai-responses/enhancing-data-analysis-with-custom-business-context"
-    src="/images/home/light/card3.svg"
-    darkSrc="/images/home/dark/card3.png"
-    title="Improve WisdomAI Responses"
-    description="Explore the available tools to enhance your responses"
-  >
-  </HomeCard>
+## Popular topics
 
-  <HomeCard
-    href="/using-wisdom-ai-everyday/ask-better-questions"
-    src="/images/home/light/card-4-01.png"
-    darkSrc="/images/home/dark/card4.png"
-    title="Using WisdomAI Everyday"
-    description="Craft effective queries to get the best possible information"
-  >
-  </HomeCard>
-
-  <HomeCard
-    href="/integrations/developers"
-    src="/images/home/light/card5-1.png"
-    darkSrc="/images/home/dark/card5.png"
-    objectPosition="center"
-    title="Developers"
-    description="Embed, query, and extend WisdomAI from your own stack."
-  >
-  </HomeCard>
-</Columns>
-
-</PageWrapper>
+<CardGroup cols={2}>
+  <Card title="Advanced data modeling" icon="diagram-project" href="/setting-up-wisdom-ai/advanced-data-modeling-creating-context">
+    Define relationships and context so WisdomAI understands your data.
+  </Card>
+  <Card title="Row-level security" icon="lock" href="/manage-account/row-level-access-control/row-level-access-control">
+    Control which rows each user can see, in every chat, dashboard, and app.
+  </Card>
+  <Card title="Create a Live App" icon="window-maximize" href="/live-apps/create-live-app">
+    Turn a prompt into an interactive app on your governed data.
+  </Card>
+  <Card title="WisdomAI MCP Server" icon="server" href="/integrations/mcp-server">
+    Ask WisdomAI questions from your AI assistant or coding tool.
+  </Card>
+</CardGroup>
