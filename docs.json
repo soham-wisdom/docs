@@ -276,6 +276,7 @@
             "group": "Chats",
             "pages": [
               "chat/overview",
+              "chat/ai-functions",
               "using-wisdom-ai-everyday/ask-better-questions",
               "explorers/using-wisdom-ai-everyday/command-palette",
               "product-updates/february-2026/ghost-text-completion",
