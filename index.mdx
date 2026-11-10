@@ -10,25 +10,38 @@ WisdomAI lets you ask questions about your business data in plain language and g
 
 <PlatformDiagram />
 
-For a closer look at each capability, see [How WisdomAI Works](/getting-started/how-wisdom-ai-works).
+## What does WisdomAI do?
 
-<Card title="Get started in 3 steps" icon="rocket" href="/getting-started/quickstart" horizontal>
-  See who does what to go from your first connection to trusted answers.
+<video
+  src="/videos/what-does-wisdomai-do-light.mp4"
+  autoPlay
+  loop
+  muted
+  playsInline
+  className="w-full rounded-xl dark:hidden"
+/>
+
+<video
+  src="/videos/what-does-wisdomai-do.mp4"
+  autoPlay
+  loop
+  muted
+  playsInline
+  className="w-full rounded-xl hidden dark:block"
+/>
+
+## How WisdomAI is different
+
+Generic Retrieval-Augmented Generation (RAG) tools search over documents. WisdomAI builds a structured understanding of your data through semantic modeling, curated context, and validated logic, so it is purpose-built for enterprise analytics, not just document Q&A.
+
+| **Feature** | **WisdomAI** | **Generic RAG** |
+| --- | --- | --- |
+| Understands data relationships | ✅ | ❌ |
+| Uses a semantic model of your business | ✅ | ❌ |
+| Validated, testable logic | ✅ | ❌ |
+| Dynamic, auto-updating dashboards and apps | ✅ | ❌ |
+| Tailored for business data | ✅ | ❌ |
+
+<Card title="How WisdomAI Works" icon="diagram-project" href="/getting-started/how-wisdom-ai-works" horizontal>
+  See how a question becomes a trusted answer, step by step.
 </Card>
-
-## Popular topics
-
-<CardGroup cols={2}>
-  <Card title="Advanced data modeling" icon="diagram-project" href="/setting-up-wisdom-ai/advanced-data-modeling-creating-context">
-    Define relationships and context so WisdomAI understands your data.
-  </Card>
-  <Card title="Row-level security" icon="lock" href="/manage-account/row-level-access-control/row-level-access-control">
-    Control which rows each user can see, in every chat, dashboard, and app.
-  </Card>
-  <Card title="Create a Live App" icon="window-maximize" href="/live-apps/create-live-app">
-    Turn a prompt into an interactive app on your governed data.
-  </Card>
-  <Card title="WisdomAI MCP Server" icon="server" href="/integrations/mcp-server">
-    Ask WisdomAI questions from your AI assistant or coding tool.
-  </Card>
-</CardGroup>

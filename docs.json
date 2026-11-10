@@ -16,23 +16,6 @@
           "icon": "server",
           "href": "/integrations/mcp-server"
         }
-      ],
-      "anchors": [
-        {
-          "anchor": "WisdomAI",
-          "icon": "/favicon.png",
-          "href": "https://www.askwisdom.ai/"
-        },
-        {
-          "anchor": "Support",
-          "icon": "headset",
-          "href": "/manage-account/contact-support"
-        },
-        {
-          "anchor": "Trust Portal",
-          "icon": "shield-check",
-          "href": "https://trust.wisdom.ai/"
-        }
       ]
     },
     "tabs": [
@@ -44,15 +27,26 @@
             "group": "Welcome",
             "pages": [
               "index",
-              "getting-started/how-wisdom-ai-works"
+              "getting-started/how-wisdom-ai-works",
+              "getting-started/overview"
             ]
           },
           {
             "group": "Get Started",
             "pages": [
               "getting-started/quickstart",
-              "setting-up-wisdom-ai/basic-tutorial-connect-and-test",
-              "getting-started/overview"
+              "setting-up-wisdom-ai/basic-tutorial-connect-and-test"
+            ]
+          },
+          {
+            "group": "Popular Topics",
+            "icon": "fire",
+            "pages": [
+              "setting-up-wisdom-ai/getting-started-domains-context",
+              "setting-up-wisdom-ai/advanced-data-modeling-creating-context",
+              "manage-account/row-level-access-control/row-level-access-control",
+              "live-apps/create-live-app",
+              "integrations/mcp-server"
             ]
           },
           {
@@ -68,126 +62,39 @@
       {
         "tab": "Docs",
         "icon": "book-open",
-        "menu": [
+        "groups": [
           {
-            "item": "Admins",
-            "icon": "shield-check",
-            "description": "Connect data, manage users and access, set up agents and integrations",
-            "groups": [
+            "group": "Connect Data",
+            "icon": "plug",
+            "pages": [
+              "getting-started/connect-data-sources/supported-data-sources",
               {
-                "group": "Connect Data Sources",
+                "group": "Data Warehouses",
                 "pages": [
-                  "getting-started/connect-data-sources/supported-data-sources",
                   "getting-started/connect-data-sources/connect-aws-vpc-peering",
                   "getting-started/connect-data-sources/connect-to-amazon-redshift",
                   "getting-started/connect-data-sources/connect-to-databricks",
                   "getting-started/connect-data-sources/connect-to-google-bigquery",
                   "getting-started/connect-data-sources/connect-to-snowflake",
-                  "getting-started/connect-data-sources/connect-mcp-server",
-                  "improve-wisdom-ai-responses/connect-unstructed-repositories-datasets",
-                  "getting-started/connect-data-sources/search-the-web",
-                  "getting-started/connect-data-sources/connect-to-sharepoint",
                   "getting-started/connect-data-sources/set-up-gcp-service-account"
                 ]
               },
               {
-                "group": "Access Management",
+                "group": "Documents & Other Sources",
                 "pages": [
-                  {
-                    "group": "Data Access Control",
-                    "pages": [
-                      "manage-account/row-level-access-control/row-level-access-control",
-                      "manage-account/row-level-access-control/understanding-row-level-security",
-                      "manage-account/row-level-access-control/column-level-security-cls"
-                    ]
-                  },
-                  "manage-account/access-management",
-                  "access-management/manage-organizations",
-                  "access-management/object-mirroring",
-                  "access-management/set-up-object-mirroring",
-                  {
-                    "group": "User Management",
-                    "pages": [
-                      "manage-account/users-management",
-                      "manage-account/automated-provisioning",
-                      "manage-account/role-mapping-and-sso-groups"
-                    ]
-                  }
-                ]
-              },
-              {
-                "group": "Agents",
-                "pages": [
-                  "setting-up-wisdom-ai/agents/agents",
-                  "setting-up-wisdom-ai/agents/tutorial-create-agent",
-                  "setting-up-wisdom-ai/agents/visual-mode",
-                  "setting-up-wisdom-ai/agents/nodes-reference",
-                  "setting-up-wisdom-ai/agents/agent-best-practices",
-                  "setting-up-wisdom-ai/agents/manage-agents",
-                  "setting-up-wisdom-ai/agents/reviewed-runs-in-agents",
-                  "product-updates/spring-2026/parameterized-agents"
-                ]
-              },
-              {
-                "group": "Skills",
-                "tag": "New",
-                "pages": [
-                  "setting-up-wisdom-ai/manage-domains/skills",
-                  "setting-up-wisdom-ai/manage-domains/create-a-skill"
-                ]
-              },
-              {
-                "group": "Improve Responses",
-                "pages": [
-                  "improve-wisdom-ai-responses/validate-and-test-answers",
-                  "improve-wisdom-ai-responses/use-evaluations-sets-and-runs",
-                  "using-wisdom-ai-everyday/knowledge-signals-from-chat",
-                  "setting-up-wisdom-ai/feedback-mechanisms/monitor-negative-feedback",
-                  "setting-up-wisdom-ai/feedback-mechanisms/limited-context"
-                ]
-              },
-              {
-                "group": "Integrations",
-                "pages": [
-                  {
-                    "group": "WisdomAI MCP Server",
-                    "pages": [
-                      "integrations/mcp-server",
-                      "integrations/mcp-server/ask-a-question",
-                      "integrations/mcp-server/give-feedback",
-                      "integrations/mcp-server/manage-context"
-                    ]
-                  },
-                  "integrations/connect-to-slack",
-                  "product-updates/february-2026/data-query-on-slack",
-                  "integrations/google-sheets",
-                  "settings/connected-apps"
-                ]
-              },
-              {
-                "group": "Settings & Compliance",
-                "pages": [
-                  "settings/api-keys",
-                  "settings/email-access-control",
-                  "using-wisdom-ai-everyday/auditing",
-                  "manage-account/monitor-performance-and-usage",
-                  "manage-account/compliance-and-best-practices",
-                  "manage-account/privacy-policy"
+                  "getting-started/connect-data-sources/connect-mcp-server",
+                  "improve-wisdom-ai-responses/connect-unstructed-repositories-datasets",
+                  "getting-started/connect-data-sources/search-the-web",
+                  "getting-started/connect-data-sources/connect-to-sharepoint"
                 ]
               }
             ]
           },
           {
-            "item": "Domains & Context",
+            "group": "Domains & Context",
             "icon": "database",
-            "description": "Organize data into domains and add business context",
-            "groups": [
-              {
-                "group": "Get Started",
-                "pages": [
-                  "setting-up-wisdom-ai/getting-started-domains-context"
-                ]
-              },
+            "pages": [
+              "setting-up-wisdom-ai/getting-started-domains-context",
               {
                 "group": "Domains",
                 "pages": [
@@ -245,20 +152,24 @@
                     ]
                   }
                 ]
+              },
+              {
+                "group": "Test & Improve Answers",
+                "pages": [
+                  "improve-wisdom-ai-responses/validate-and-test-answers",
+                  "improve-wisdom-ai-responses/use-evaluations-sets-and-runs",
+                  "using-wisdom-ai-everyday/knowledge-signals-from-chat",
+                  "setting-up-wisdom-ai/feedback-mechanisms/monitor-negative-feedback",
+                  "setting-up-wisdom-ai/feedback-mechanisms/limited-context"
+                ]
               }
             ]
           },
           {
-            "item": "Explorers",
-            "icon": "magnifying-glass",
-            "description": "Ask questions, build dashboards, and create Live Apps",
-            "groups": [
-              {
-                "group": "Get Started",
-                "pages": [
-                  "explorers/getting-started-explorers"
-                ]
-              },
+            "group": "Ask & Analyze",
+            "icon": "comments",
+            "pages": [
+              "explorers/getting-started-explorers",
               {
                 "group": "Chats",
                 "pages": [
@@ -268,7 +179,6 @@
                   "product-updates/february-2026/ghost-text-completion",
                   "improve-wisdom-ai-responses/attach-files-to-chat",
                   "explorers-feedback/provide-feedback-to-the-system",
-                  "explorers/chat-dashboard",
                   "using-wisdom-ai-everyday/work-with-csv-files",
                   "using-wisdom-ai-everyday/request-help-from-admins"
                 ]
@@ -280,11 +190,18 @@
                   "advanced-features/python-interpreter-tool",
                   "advanced-features/visualization-types-and-properties"
                 ]
-              },
+              }
+            ]
+          },
+          {
+            "group": "Dashboards & Live Apps",
+            "icon": "chart-simple",
+            "pages": [
               {
                 "group": "Dashboards",
                 "pages": [
                   "using-wisdom-ai-everyday/turn-answers-into-dashboards",
+                  "explorers/chat-dashboard",
                   "improve-wisdom-ai-responses/build-dashboards",
                   "dashboards/tabs",
                   "dashboards/instant-filters",
@@ -305,6 +222,99 @@
                   "live-apps/create-live-app",
                   "live-apps/data-and-trust",
                   "live-apps/share-and-access"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Agents & Skills",
+            "icon": "robot",
+            "pages": [
+              {
+                "group": "Agents",
+                "pages": [
+                  "setting-up-wisdom-ai/agents/agents",
+                  "setting-up-wisdom-ai/agents/tutorial-create-agent",
+                  "setting-up-wisdom-ai/agents/visual-mode",
+                  "setting-up-wisdom-ai/agents/nodes-reference",
+                  "setting-up-wisdom-ai/agents/agent-best-practices",
+                  "setting-up-wisdom-ai/agents/manage-agents",
+                  "setting-up-wisdom-ai/agents/reviewed-runs-in-agents",
+                  "product-updates/spring-2026/parameterized-agents"
+                ]
+              },
+              {
+                "group": "Skills",
+                "tag": "New",
+                "pages": [
+                  "setting-up-wisdom-ai/manage-domains/skills",
+                  "setting-up-wisdom-ai/manage-domains/create-a-skill"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Integrations",
+            "icon": "puzzle-piece",
+            "pages": [
+              {
+                "group": "WisdomAI MCP Server",
+                "pages": [
+                  "integrations/mcp-server",
+                  "integrations/mcp-server/ask-a-question",
+                  "integrations/mcp-server/give-feedback",
+                  "integrations/mcp-server/manage-context"
+                ]
+              },
+              {
+                "group": "Slack",
+                "pages": [
+                  "integrations/connect-to-slack",
+                  "product-updates/february-2026/data-query-on-slack"
+                ]
+              },
+              "integrations/google-sheets",
+              "settings/connected-apps"
+            ]
+          },
+          {
+            "group": "Security & Settings",
+            "icon": "shield-check",
+            "pages": [
+              {
+                "group": "Data Access Control",
+                "pages": [
+                  "manage-account/row-level-access-control/row-level-access-control",
+                  "manage-account/row-level-access-control/understanding-row-level-security",
+                  "manage-account/row-level-access-control/column-level-security-cls"
+                ]
+              },
+              {
+                "group": "Access Management",
+                "pages": [
+                  "manage-account/access-management",
+                  "access-management/manage-organizations",
+                  "access-management/object-mirroring",
+                  "access-management/set-up-object-mirroring"
+                ]
+              },
+              {
+                "group": "User Management",
+                "pages": [
+                  "manage-account/users-management",
+                  "manage-account/automated-provisioning",
+                  "manage-account/role-mapping-and-sso-groups"
+                ]
+              },
+              {
+                "group": "Settings & Compliance",
+                "pages": [
+                  "settings/api-keys",
+                  "settings/email-access-control",
+                  "using-wisdom-ai-everyday/auditing",
+                  "manage-account/monitor-performance-and-usage",
+                  "manage-account/compliance-and-best-practices",
+                  "manage-account/privacy-policy"
                 ]
               }
             ]
@@ -613,7 +623,22 @@
   "footer": {
     "socials": {
       "linkedin": "https://www.linkedin.com/company/wisdomai-inc"
-    }
+    },
+    "links": [
+      {
+        "header": "WisdomAI",
+        "items": [
+          {
+            "label": "Website",
+            "href": "https://www.askwisdom.ai/"
+          },
+          {
+            "label": "Trust Portal",
+            "href": "https://trust.wisdom.ai/"
+          }
+        ]
+      }
+    ]
   },
   "integrations": {
     "posthog": {

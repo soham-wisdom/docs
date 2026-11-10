@@ -4,120 +4,24 @@ title: "How WisdomAI Works"
 
 import { DataFlowDiagram } from "/snippets/data-flow-diagram.jsx"
 
-WisdomAI is a platform that helps businesses analyze their data and make informed decisions. It allows users to ask questions in plain English and receive clear, data-driven answers and visualizations, without the need for coding or manual dashboard creation.
-
-## What does WisdomAI do?
-
-WisdomAI transforms your company's raw data into actionable insights through several key capabilities:
-
-<video
-  src="/videos/what-does-wisdomai-do-light.mp4"
-  autoPlay
-  loop
-  muted
-  playsInline
-  className="w-full rounded-xl dark:hidden"
-/>
-
-<video
-  src="/videos/what-does-wisdomai-do.mp4"
-  autoPlay
-  loop
-  muted
-  playsInline
-  className="w-full rounded-xl hidden dark:block"
-/>
-
-This means WisdomAI helps you quickly get the information you need from your data, making data-driven decisions simpler and faster for everyone.
-
-## Who uses WisdomAI?
-
-WisdomAI is designed for businesses of all sizes, from small startups to large corporations, across various industries. It's intended to be useful for different roles within your organization:
-
-<Columns cols={2}>
-  <Card title="Admins" icon="screwdriver-wrench">
-    These are typically IT or BI directors who set up WisdomAI, connect it to your data sources, manage user access, and define the overall data structure on the platform.
-  </Card>
-
-  <Card title="Explorers" icon="users">
-    This group comprises business users, executives, and other stakeholders who utilize WisdomAI to ask questions in natural language, create and view Dashboards, share insights with their team, and subscribe to scheduled updates.
-  </Card>
-</Columns>
-
-<Card title="Developers" icon="code" horizontal>
-  Software engineers and technical teams who build on top of WisdomAI — embedding dashboards into products, managing users via the API, or connecting WisdomAI to AI tools.
-</Card>
-
-<Tip>
-  This documentation is organized to help you focus on what matters most in your role. For more information on each role, visit the [Where to Start](/getting-started/overview#where-to-start) section.
-</Tip>
-
-## WisdomAI vs generic RAG systems
-
-Unlike generic Retrieval-Augmented Generation (RAG) solutions that rely purely on embedding search over documents, WisdomAI builds a structured understanding of your data through semantic modeling, curated context, and validated logic.
-
-| **Feature** | **WisdomAI** | **Generic RAG** |
-| --- | --- | --- |
-| Understands data relationships | ✅ | ❌ |
-| Requires semantic modeling | ✅ | ❌ |
-| Validated, testable logic | ✅ | ❌ |
-| Dynamic, auto-updating dashboards | ✅ | ❌ |
-| Tailored for business data | ✅ | ❌ |
-
-<Tip>
-  WisdomAI is purpose-built for enterprise analytics, not just document Q&A.
-</Tip>
-
-## Data flow & architecture overview
-
-WisdomAI transforms your business data into actionable insights using a multi-layered pipeline. The following components work together to deliver accurate, contextualized answers, auto-updating Dashboards, and Live Apps.
+WisdomAI turns your business data into answers, Dashboards, and Live Apps through a multi-layered pipeline. Each layer builds on the one before it, and user feedback flows back into the semantic model so answers keep improving. Select a step to see what happens there.
 
 <DataFlowDiagram />
 
-<Steps>
-  <Step title="Connected Data Sources" stepNumber={1} titleSize="h3">
-    WisdomAI integrates with your data platforms (such as Snowflake, BigQuery, or Redshift), serving as the entry point for all information flowing through the system.
-  </Step>
-  <Step title="Semantic Modeling" stepNumber={2} titleSize="h3">
-    Admins and data owners enrich the data by documenting tables, columns, and domains. They also define relationships (e.g., one-to-many, many-to-many) to create a business-friendly context for natural language understanding.
-  </Step>
-  <Step title="Natural Language Query (NLQ) Engine" stepNumber={3} titleSize="h3">
-    Users ask questions in plain language. The NLQ engine parses these questions and translates them into SQL queries using the underlying semantic model.
-  </Step>
-  <Step title="Dashboards and Live Apps" stepNumber={4} titleSize="h3">
-    Answers become interactive Dashboards that combine visualizations, text, and insights, or Live Apps: interactive applications that WisdomAI generates from a prompt on your governed data. Both refresh on a schedule and can be shared with the same permission model.
-  </Step>
-  <Step title="Delivery and Reporting Layer" stepNumber={5} titleSize="h3">
-    Dashboards can be delivered on a schedule via email. Dashboards and Live Apps can be embedded into external applications, helping teams stay informed with minimal effort.
-  </Step>
-  <Step title="User Feedback and Corrections" stepNumber={6} titleSize="h3">
-    Users can give feedback on answer accuracy, suggest corrections, or add clarifying context to improve future results.
-  </Step>
-  <Step title="Knowledge Updates and Review Loop" stepNumber={7} titleSize="h3">
-    Admins and Data Admins review user feedback and update the semantic layer accordingly, closing the loop and continuously improving answer quality and domain understanding.
-  </Step>
-</Steps>
+<Accordion title="All steps at a glance" icon="list-ol">
+  1. **Connected Data Sources:** WisdomAI integrates with your data platforms (such as Snowflake, BigQuery, or Redshift), serving as the entry point for all information flowing through the system.
+  2. **Semantic Modeling:** Admins and data owners enrich the data by documenting tables, columns, and domains, and by defining relationships to create a business-friendly context for natural language understanding.
+  3. **Natural Language Query Engine:** Users ask questions in plain language. The engine parses each question and translates it into SQL using the semantic model.
+  4. **Dashboards and Live Apps:** Answers become interactive Dashboards that combine visualizations, text, and insights, or Live Apps that WisdomAI generates from a prompt on your governed data. Both refresh on a schedule and can be shared.
+  5. **Delivery and Reporting:** Dashboards can be delivered on a schedule via email. Dashboards and Live Apps can be embedded into external applications, so teams stay informed with minimal effort.
+  6. **User Feedback and Corrections:** Users give feedback on answer accuracy, suggest corrections, or add clarifying context to improve future results.
+  7. **Knowledge Updates and Review:** Admins review user feedback and update the semantic layer, closing the loop and continuously improving answer quality.
+</Accordion>
 
-## Next steps
+## Find your way around
 
-<CardGroup cols={3}>
-  <Card title="Supported Data Sources" icon="database" href="/getting-started/connect-data-sources/supported-data-sources">
-    Explore the full list of databases and platforms you can connect to the system.
-  </Card>
+The WisdomAI documentation provides all the essential information you need to effectively use the platform’s features, from querying data using natural language to setting up granular access controls. Whether you are an Admin, an Explorer, or a Developer building on top of the platform, you will find detailed instructions for your role.
 
-  <Card title="Connect and Test Tutorial" icon="rocket" href="/setting-up-wisdom-ai/basic-tutorial-connect-and-test">
-    Walk through the initial setup to connect a data source and run your first query.
-  </Card>
-
-  <Card title="Advanced Data Modeling" icon="sitemap" href="/setting-up-wisdom-ai/advanced-data-modeling-creating-context">
-    Define relationships and context in your data to enable more powerful analysis.
-  </Card>
-
-  <Card title="Provide Feedback" icon="thumbs-up" href="/setting-up-wisdom-ai/feedback-mechanisms/provide-feedback-to-the-system">
-    Help improve model accuracy by rating answers and providing corrections.
-  </Card>
-
-  <Card title="Turn Answers into Dashboards" icon="book" href="/using-wisdom-ai-everyday/turn-answers-into-dashboards">
-    Compile key insights and visualizations into a shareable, narrative-driven report.
-  </Card>
-</CardGroup>
+<Card title="Where to Start" icon="compass" href="/getting-started/overview" horizontal>
+  Find the guides for your role: Admin, Explorer, or Developer.
+</Card>

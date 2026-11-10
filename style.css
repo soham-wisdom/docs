@@ -93,3 +93,22 @@ div[role="tabpanel"] {
   color: #818cf8 !important;
   border-bottom-color: #818cf8 !important;
 }
+
+/* Home sidebar: highlight the "Popular Topics" group with a gradient card.
+   Matched by its unique pair of pages, since group headers have no stable id. */
+div:has(> ul.sidebar-group > li[id="/integrations/mcp-server"]):has(> ul.sidebar-group > li[id="/live-apps/create-live-app"]) {
+  background: linear-gradient(135deg, rgba(91, 82, 255, 0.12) 0%, rgba(255, 122, 69, 0.12) 100%);
+  border: 1px solid rgba(91, 82, 255, 0.2);
+  border-radius: 12px;
+  padding: 12px 4px 8px 0;
+}
+
+div:has(> ul.sidebar-group > li[id="/integrations/mcp-server"]):has(> ul.sidebar-group > li[id="/live-apps/create-live-app"]) .sidebar-group-header svg {
+  background-color: #ff7a45 !important;
+  color: #ff7a45 !important;
+}
+
+.dark div:has(> ul.sidebar-group > li[id="/integrations/mcp-server"]):has(> ul.sidebar-group > li[id="/live-apps/create-live-app"]) {
+  background: linear-gradient(135deg, rgba(91, 82, 255, 0.22) 0%, rgba(255, 122, 69, 0.18) 100%);
+  border-color: rgba(129, 140, 248, 0.3);
+}
