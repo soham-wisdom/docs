@@ -23,7 +23,7 @@ export const PlatformDiagram = () => {
 
   return (
     <div className="not-prose my-6 rounded-xl border border-zinc-200 bg-zinc-50 p-4 sm:p-6 dark:border-zinc-800 dark:bg-zinc-950">
-      <p className={caption}>Where your team works</p>
+      <p className={caption}>Your workspace</p>
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
         {surfaces.map((s) => (
           <a key={s.label} href={s.href} className={box}>
