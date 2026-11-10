@@ -2,6 +2,8 @@
 title: "How WisdomAI Works"
 ---
 
+import { DataFlowDiagram } from "/snippets/data-flow-diagram.jsx"
+
 WisdomAI is a platform that helps businesses analyze their data and make informed decisions. It allows users to ask questions in plain English and receive clear, data-driven answers and visualizations, without the need for coding or manual dashboard creation.
 
 ## What does WisdomAI do?
@@ -68,27 +70,9 @@ Unlike generic Retrieval-Augmented Generation (RAG) solutions that rely purely o
 
 ## Data flow & architecture overview
 
-WisdomAI transforms your business data into actionable insights using a multi-layered pipeline. The following components work together to deliver accurate, contextualized answers and auto-updating Dashboards.
+WisdomAI transforms your business data into actionable insights using a multi-layered pipeline. The following components work together to deliver accurate, contextualized answers, auto-updating Dashboards, and Live Apps.
 
-<Frame>
-  <img
-    src="/images/diagram-dark-mode.png"
-    alt="Data Sources Flow Connect Pn"
-    height="400"
-    lightAlt="Data Sources Flow Connect"
-    darkAlt="Data Sources Flow Connect "
-    className="hidden dark:block"
-  />
-
-  <img
-    src="/images/data-sources-flow-connect.png"
-    alt="Data Sources Flow Connect Pn"
-    height="400"
-    lightAlt="Data Sources Flow Connect"
-    darkAlt="Data Sources Flow Connect "
-    className="dark:hidden"
-  />
-</Frame>
+<DataFlowDiagram />
 
 <Steps>
   <Step title="Connected Data Sources" stepNumber={1} titleSize="h3">
@@ -100,14 +84,14 @@ WisdomAI transforms your business data into actionable insights using a multi-la
   <Step title="Natural Language Query (NLQ) Engine" stepNumber={3} titleSize="h3">
     Users ask questions in plain language. The NLQ engine parses these questions and translates them into SQL queries using the underlying semantic model.
   </Step>
-  <Step title="Dashboard Creation" stepNumber={4} titleSize="h3">
-    Responses are generated and formatted into interactive Dashboards — data-driven narratives that combine visualizations, text, and insights. These can be scheduled and shared.
+  <Step title="Dashboards and Live Apps" stepNumber={4} titleSize="h3">
+    Answers become interactive Dashboards that combine visualizations, text, and insights, or Live Apps: interactive applications that WisdomAI generates from a prompt on your governed data. Both refresh on a schedule and can be shared with the same permission model.
   </Step>
   <Step title="Delivery and Reporting Layer" stepNumber={5} titleSize="h3">
-    Dashboards and answers can be delivered via email or embedded into external applications, helping teams stay informed with minimal effort.
+    Dashboards can be delivered on a schedule via email. Dashboards and Live Apps can be embedded into external applications, helping teams stay informed with minimal effort.
   </Step>
   <Step title="User Feedback and Corrections" stepNumber={6} titleSize="h3">
-    Users can give feedback on dashboard accuracy, suggest corrections, or add clarifying context to improve future results.
+    Users can give feedback on answer accuracy, suggest corrections, or add clarifying context to improve future results.
   </Step>
   <Step title="Knowledge Updates and Review Loop" stepNumber={7} titleSize="h3">
     Admins and Data Admins review user feedback and update the semantic layer accordingly, closing the loop and continuously improving answer quality and domain understanding.

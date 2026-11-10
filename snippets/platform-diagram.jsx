@@ -5,10 +5,10 @@ export const PlatformDiagram = () => {
     { label: "Agents & Skills", detail: "Automate recurring analysis", href: "/setting-up-wisdom-ai/agents/agents" },
   ];
   const context = [
-    { label: "Understands what is in your tables", href: "/setting-up-wisdom-ai/manage-tables-columns/document-tables-and-columns" },
-    { label: "Calculates metrics the way you do", href: "/setting-up-wisdom-ai/advanced-data-modeling-creating-context" },
-    { label: "Gives the same trusted answer every time", href: "/setting-up-wisdom-ai/feedback-mechanisms/reviewed-queries" },
-    { label: "Shows each person only their data", href: "/manage-account/row-level-access-control/understanding-row-level-security" },
+    { label: "Describe your tables and columns", href: "/setting-up-wisdom-ai/manage-tables-columns/document-tables-and-columns" },
+    { label: "Define how your metrics are calculated", href: "/setting-up-wisdom-ai/advanced-data-modeling-creating-context" },
+    { label: "Approve answers your team can trust", href: "/setting-up-wisdom-ai/feedback-mechanisms/reviewed-queries" },
+    { label: "Control who sees which data", href: "/manage-account/row-level-access-control/understanding-row-level-security" },
   ];
   const sources = [
     { label: "Connect your data warehouse", href: "/getting-started/connect-data-sources/supported-data-sources" },
@@ -41,7 +41,7 @@ export const PlatformDiagram = () => {
         style={{ backgroundColor: "#5b52ff" }}
       >
         <span className="text-base font-semibold text-white">Domains & Context</span>
-        <span className="block text-xs text-white/80">Teaches WisdomAI how your business works</span>
+        <span className="block text-xs text-white/80">Teach WisdomAI how your business works</span>
       </a>
       <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-4">
         {context.map((c) => (
