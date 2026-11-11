@@ -4,6 +4,34 @@ title: "Changelog"
 
 <Update label="Updates">
 
+  ### ✨ AI Functions
+
+  Analyze unstructured text in your warehouse using natural language. AI functions turn support tickets, customer feedback, and other text fields into categories, sentiment labels, and judgments you can filter, compare, and visualize alongside your business data. You can use them directly in Chat, with no Python and no extensions to install in your warehouse. For full details, see [AI functions](/chat/ai-functions).
+
+  **⚙️ How it works:**
+
+  - **Ask in plain language:** In **Ask** mode, choose a domain and describe the text to analyze, the categories or labels to use, and the result you want
+  - **Classify, filter, and score:** Group text into categories, find rows by meaning rather than exact wording, label sentiment, or score against a rubric you define
+  - **Review uncertain examples:** WisdomAI lists the items it was least sure about, with its suggested label for each
+  - **Correct and rerun:** Give the correct labels in Chat and WisdomAI reruns the analysis using them as confirmed examples
+  - **Reuse in dashboards and Live Apps:** Add the results to a dashboard or build a Live App that combines them with other analyses. On refresh, WisdomAI can reuse stored judgments for unchanged inputs
+
+  <Accordion title="FAQs">
+    <AccordionGroup>
+      <Accordion title="Do corrections retrain the model?">
+        No. Corrections guide the new analysis only. They don't retrain the model or create permanent rules for future conversations.
+      </Accordion>
+
+      <Accordion title="How much text can one classification handle?">
+        A classification call supports up to 10,000 distinct input values or combinations of selected columns. Repeated values are evaluated once and mapped back to their rows. For large datasets, narrow the analysis with a date range, region, or other filter.
+      </Accordion>
+
+      <Accordion title="Can I rely on the results for important decisions?">
+        AI-generated classifications are judgments. Very long inputs may be truncated and some values may remain unanswered if evaluation fails, so check reported failures and review ambiguous cases before using results for consequential decisions.
+      </Accordion>
+    </AccordionGroup>
+  </Accordion>
+
   ### ⚡ Wisdom Smart Cache 
 
   Apps and dashboards no longer have to query your warehouse on every load. Wisdom Smart Cache serves them from Wisdom-managed snapshots of your tables, rebuilt on a schedule you control. Any query the cache can't serve runs against the warehouse, so caching changes how fast users get answers, never the answers themselves. Row-level security and column masking still apply at query time. For full details, see [Cache tables for faster apps and dashboards](/setting-up-wisdom-ai/cache-tables) and the [Smart Cache screen](/setting-up-wisdom-ai/smart-cache) pages.
