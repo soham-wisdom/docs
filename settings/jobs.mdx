@@ -15,9 +15,18 @@ To open, you have to:
 1. Click your name at the bottom of the left sidebar to open the user menu.
 2. Click **Jobs**.
    ![](/images/jobs-img1.png)
-The page has two tabs. **Jobs** lists scheduled jobs and their schedules, and **Job runs** lists individual runs.
 
 ## The Jobs tab
+The page has two tabs:
+
+| Tab | What it shows |
+| ----- | ----- |
+| Jobs | Scheduled jobs and their schedules. |
+| Job runs | Individual runs. |
+
+    ![Jobs tab with Job Types, Status, and Entity ID filters above a table of Job ID, Entity, Status, Updated at, and Schedule](/images/jobs-tab.png)
+
+    ![Job runs tab with Job Types, status, and date filters above run cards showing time, Success status, job type, and entity](/images/job-runs-tab.png)
 
 Each row is one job. A job belongs to one item in your account, such as a domain, a connection, or a dashboard, and runs on a schedule.
 
@@ -33,10 +42,10 @@ The hover text on a schedule names its source:
 
 | Source | What it means |
 | ----- | ----- |
-| **Default schedule** | The job runs on WisdomAI's built-in schedule for its type. |
-| **Own override** | Someone set a schedule for this job. |
-| **Job-type override** | The job follows a schedule set for every job of its type in your account. |
-| **Account-wide override** | The job follows a schedule set for your whole account. |
+| Default schedule | The job runs on WisdomAI's built-in schedule for its type. |
+| Own override | Someone set a schedule for this job. |
+| Job-type override | The job follows a schedule set for every job of its type in your account. |
+| Account-wide override | The job follows a schedule set for your whole account. |
 
 Two other values can appear in the Schedule column. **Off** means a schedule override switched the job off. For example, turning off a dashboard's automatic refresh shows **Off** here while the Status stays **Active**. **Fixed interval** means the job repeats every few minutes or hours instead of running at set times.
 
@@ -46,9 +55,9 @@ Use the filters above the table:
 
 | Filter | What it does |
 | ----- | ----- |
-| **Job Types** | Shows one or more job types. |
-| **Status** | Shows Active or Paused jobs. |
-| **Entity ID** | Finds the jobs of one domain, connection, or dashboard when you type its ID. You can also type part of a job ID. Names don't match. |
+| Job Types | Shows one or more job types. |
+| Status | Shows Active or Paused jobs. |
+| Entity ID | Finds the jobs of one domain, connection, or dashboard when you type its ID. You can also type part of a job ID. Names don't match. |
 
 Click **Clear filters** to reset them. The table shows 25 jobs per page by default.
 
@@ -56,12 +65,20 @@ Click **Clear filters** to reset them. The table shows 25 jobs per page by defau
 
 Follow these steps to set schedules, clear overrides, pause, or resume many jobs in one action:
 
-1. Select jobs with the checkboxes. The checkbox in the header selects every job on the current page. To select every job that matches your filters, click **Select all *N* matching** in the banner above the table. One action can change up to 1,000 jobs, so narrow the filters if more match.
+1. Select jobs with the checkboxes. The checkbox in the header selects every job on the current page. 
+
+   <Note>
+      To select every job that matches your filters, click **Select all *N* matching** in the banner above the table. One action can change up to 1,000 jobs, so narrow the filters if more match.
+      ![](/images/jobs-select-n-matching.png)
+   </Note> 
+
 2. In the action bar at the bottom of the page, choose an action:
    * **Set schedule** gives the selected jobs their own schedule. See [Set a schedule](#set-a-schedule).
    * **Clear override** removes the selected jobs' own schedule. They go back to the schedule they inherit from their job type, the account, or the default.
    * **Pause** stops the selected jobs from running on their schedule until they're resumed.
    * **Resume** puts the selected jobs back on their schedule.
+
+   ![](/images/jobs-select.png)
 3. Confirm. A message tells you how many jobs changed. If some couldn't be changed, the message lists each one with the reason.
 
 Jobs that run for your whole account (their Entity shows **Account**) and a few system jobs can't have their own schedule or be paused. If you include them in an action, the message lists them as not supported.
@@ -78,6 +95,8 @@ Jobs that run for your whole account (their Entity shows **Account**) and a few 
 2. Choose a time zone.
 3. Optional: select **Start within a time range** and set the end of the range in **Start time until**. Each run then starts at a random moment in that range, so jobs on the same schedule don't all hit your warehouse in the same minute. The range starts at 1 hour, or 30 minutes for hourly schedules. An end time earlier than the start time runs into the next day. A line under the controls sums up the result, for example "Starts every day between 9:00 AM and 10:00 AM (1 hour, UTC)."
 4. Click **Apply**.
+
+   ![](/images/job-set-schedule.png)
 
 <Note>
 A new schedule shows on the Jobs tab right away. WisdomAI applies it to the jobs within about 10 minutes. **Pause** and **Resume** take effect immediately.
@@ -105,7 +124,10 @@ Two other places in the product set the same schedules:
 
 Filter the list by **Job Types**, by status (**Success**, **Failed**, **Running**, **Queued**, **Canceled**, or **Skipped**), and by date. The date filter starts at **Last 7 days**. You can switch to the last 30 or 90 days or all time, or pick a **From** and **To** date. The list refreshes every 10 seconds.
 
-To see the runs of a single job, open the job's **⋮** menu on the **Jobs** tab and click **View runs**.
+<Note>
+   To see the runs of a single job, open the job's **⋮** menu on the **Jobs** tab and click **View runs**.
+   ![](/images/jobs-view-runs.png)
+</Note>
 
 ### Cancel a run
 
