@@ -98,6 +98,8 @@ import { WisdomProvider, DashboardWidget } from '@wisdomai/react';
 </WisdomProvider>
 ```
 
+To get a widget ID, query the dashboard's `widgets` and read each widget's `id` with the [`dashboard` query](/integrations/graphql-api/queries/dashboard/dashboard).
+
 ## Composable widgets (advanced)
 
 When you want full control over the card _around_ a widget, including your own container, header, spacing, menus, and empty/loading states, drop down to the composable layer. Instead of Wisdom's pre-built widget card, you render just the visualization and wrap it in your own markup.

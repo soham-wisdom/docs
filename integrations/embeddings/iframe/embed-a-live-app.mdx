@@ -8,6 +8,15 @@ This guide outlines the process for embedding a WisdomAI Live App into your appl
   The API and embed URL examples use `<customer>.wisdom.ai` as a placeholder. Replace it with the base URL of your WisdomAI tenant, the same domain you use to log in. Both `wisdom.ai` and `askwisdom.ai` are valid depending on your deployment.
 </Note>
 
+## Steps at a glance
+
+Embedding a Live App takes four steps. The sections that follow cover how to construct the embed URL, control edit permissions with RBAC, and validate the result.
+
+1. Provision the embedded user and assign a role. See [Embeddings Overview](/integrations/embeddings/embedding).
+2. Generate a JWT for that user with [`impersonateUser`](/integrations/graphql-api/queries/auth/impersonate-user). The token expires after 1 hour. See [Session Management](/integrations/embeddings/session-management) for how to refresh it.
+3. Construct the embed URL and add it to an `<iframe>`, as described below.
+4. Use the **Viewer** role to hide edit controls. See [Controlling edit permissions with RBAC](#controlling-edit-permissions-with-rbac).
+
 ## Construct the embed URL
 
 Construct the embed URL for your Live App and append the JWT you generated in the authentication stage.
@@ -32,6 +41,10 @@ The `allow` attribute enables voice input, camera, and clipboard features in the
 Embedded Live Apps reflect the user's RBAC role. To hide edit controls and prevent modifications in your embedded view, assign the user the **Viewer** role when creating them. There is no separate embed-specific parameter for this.
 
 See [RBAC for Embedded Users](/integrations/user-management/rbac) for instructions on assigning roles and a full breakdown of what each role controls in the embedded interface.
+
+## Sharing and access
+
+For how access to a Live App is granted, see [Share a Live App and Manage Access](/live-apps/share-and-access).
 
 ## Validation
 
