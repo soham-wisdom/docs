@@ -394,7 +394,7 @@
                   "integrations/graphql-api/objects/domain-rls-config",
                   "integrations/graphql-api/objects/domain-web-search-config",
                   "integrations/graphql-api/objects/filter-applied-state",
-                  "integrations/graphql-api/objects/job-status",
+                  "integrations/graphql-api/objects/job-history",
                   "integrations/graphql-api/objects/join-input",
                   "integrations/graphql-api/objects/knowledge",
                   "integrations/graphql-api/objects/llm-tool-call-results",

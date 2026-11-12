@@ -240,5 +240,10 @@
     "source": "/product-updates/september-2026/september-changelog",
     "destination": "/product-updates/fall-2026/fall-changelog",
     "permanent": true
+  },
+  {
+    "source": "/integrations/graphql-api/objects/job-status",
+    "destination": "/integrations/graphql-api/objects/job-history",
+    "permanent": true
   }
 ]
