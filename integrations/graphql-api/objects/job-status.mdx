@@ -32,6 +32,10 @@ This page describes the schema for Job History.
   Identifier of the user who initiated the job execution.
 </ParamField>
 
+<ParamField path="user" type="User">
+  The user who initiated the job execution. Resolved from `userId`, and null when that user can't be found. See [User](/integrations/graphql-api/objects/user).
+</ParamField>
+
 <ParamField path="status" type="JobRunStatus!" required>
   The current status of the job execution. See [JobRunStatus](#jobrunstatus).
 </ParamField>

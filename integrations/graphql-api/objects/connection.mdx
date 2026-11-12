@@ -22,6 +22,10 @@ This page describes the schema used for data source connections, including all f
   Timestamp when the connection was created.
 </ParamField>
 
+<ParamField path="creator" type="User">
+  The user who created the connection. Null if the creator is unknown or deleted. See [User](/integrations/graphql-api/objects/user).
+</ParamField>
+
 ## ConnectionDetails
 
 <ParamField path="name" type="String!" required>
@@ -57,6 +61,11 @@ The category of data source. It accepts the following values:
 | `BI_TOOL`                      | Business intelligence tool (Tableau, etc.)           |
 | `FILE`                         | File-based data source (S3, Azure Blob Storage, etc.)|
 | `DATA_SOURCE_MCP_SERVER`       | MCP server data source                               |
+| `DATA_SOURCE_GITHUB`           | GitHub data source                                   |
+| `DATA_SOURCE_AZURE_DEVOPS`     | Azure DevOps data source                             |
+| `DATA_SOURCE_GITLAB`           | GitLab data source                                   |
+| `DATA_SOURCE_MICROSOFT_GRAPH`  | Microsoft Graph data source                          |
+| `DATA_SOURCE_GOOGLE_WORKSPACE` | Google Workspace data source                         |
 
 ### ConnectionType
 
@@ -85,6 +94,15 @@ The specific type of data source connection. It accepts the following values:
 | `SPANNER`                     | Google Cloud Spanner                       |
 | `TERADATA`                    | Teradata database                          |
 | `DUCKDB`                      | DuckDB embedded database                   |
+| `ORACLE`                      | Oracle database                            |
+| `GITHUB`                      | GitHub                                     |
+| `AZURE_DEVOPS`                | Azure DevOps                               |
+| `CLOUDERA_HIVE`               | Cloudera Hive                              |
+| `DREMIO`                      | Dremio                                     |
+| `MOTHERDUCK`                  | MotherDuck                                 |
+| `GITLAB`                      | GitLab                                     |
+| `OUTLOOK_CALENDAR`            | Outlook Calendar                           |
+| `GOOGLE_CALENDAR`             | Google Calendar                            |
 
 ## Related operations
 
