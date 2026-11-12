@@ -14,7 +14,7 @@ To open, you have to:
 
 1. Click your name at the bottom of the left sidebar to open the user menu.
 2. Click **Jobs**.
-
+   ![](/images/jobs-img1.png)
 The page has two tabs. **Jobs** lists scheduled jobs and their schedules, and **Job runs** lists individual runs.
 
 ## The Jobs tab
@@ -31,10 +31,12 @@ Each row is one job. A job belongs to one item in your account, such as a domain
 
 The hover text on a schedule names its source:
 
-* **Default schedule**: the job runs on WisdomAI's built-in schedule for its type.
-* **Own override**: someone set a schedule for this job.
-* **Job-type override**: the job follows a schedule set for every job of its type in your account.
-* **Account-wide override**: the job follows a schedule set for your whole account.
+| Source | What it means |
+| ----- | ----- |
+| **Default schedule** | The job runs on WisdomAI's built-in schedule for its type. |
+| **Own override** | Someone set a schedule for this job. |
+| **Job-type override** | The job follows a schedule set for every job of its type in your account. |
+| **Account-wide override** | The job follows a schedule set for your whole account. |
 
 Two other values can appear in the Schedule column. **Off** means a schedule override switched the job off. For example, turning off a dashboard's automatic refresh shows **Off** here while the Status stays **Active**. **Fixed interval** means the job repeats every few minutes or hours instead of running at set times.
 
@@ -42,9 +44,11 @@ Two other values can appear in the Schedule column. **Off** means a schedule ove
 
 Use the filters above the table:
 
-* **Job Types** shows one or more job types.
-* **Status** shows Active or Paused jobs.
-* **Entity ID** finds the jobs of one domain, connection, or dashboard when you type its ID. You can also type part of a job ID. Names don't match.
+| Filter | What it does |
+| ----- | ----- |
+| **Job Types** | Shows one or more job types. |
+| **Status** | Shows Active or Paused jobs. |
+| **Entity ID** | Finds the jobs of one domain, connection, or dashboard when you type its ID. You can also type part of a job ID. Names don't match. |
 
 Click **Clear filters** to reset them. The table shows 25 jobs per page by default.
 
@@ -88,7 +92,7 @@ A job follows the most specific schedule that applies to it, in this order:
 3. A schedule for the whole account (**Account-wide override**).
 4. WisdomAI's default for the job type (**Default schedule**).
 
-**Clear override** removes only a job's own schedule. WisdomAI manages job-type and account-wide schedules; contact support to change them.
+**Clear override** removes only a job's own schedule. WisdomAI manages job-type and account-wide schedules, contact support to change them.
 
 Two other places in the product set the same schedules:
 
@@ -109,11 +113,13 @@ Runs that are **Running** or **Queued** show **Cancel run**. You can't undo a ca
 
 ## Who can do what
 
-Access to the Jobs page, to changing jobs, and to canceling runs depends on your role and your edit access:
+Access to the Jobs page, to changing jobs, and to canceling runs depends on your role and your edit access.
 
-* Site Administrators can open the Jobs page and see every job and run.
-* Setting a schedule, clearing an override, pausing, or resuming a job also needs edit access to the job's domain, connection, or dashboard.
-* A run can be canceled by the person who started it or by anyone who can edit the item it belongs to.
+| Action | Who can do it |
+| ----- | ----- |
+| Open the Jobs page and see every job and run | Site Administrators |
+| Set a schedule, clear an override, pause, or resume a job | Site Administrators who also have edit access to the job's domain, connection, or dashboard |
+| Cancel a run | The person who started the run, or anyone who can edit the item it belongs to |
 
 ## Job types
 
