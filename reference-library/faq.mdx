@@ -77,6 +77,18 @@ Answers to common questions from WisdomAI users, grouped by topic.
   </Accordion>
 </AccordionGroup>
 
+## Charts in the SDK and MCP
+
+<AccordionGroup>
+  <Accordion title="How do I render a WisdomAI chart in my own application?">
+    There are three paths. For a full question-and-answer experience, embed Chat from the SDK, which renders charts, tables, and narratives as cards with a "Show data" toggle. For a chart that already lives in a dashboard, render it with `DashboardWidget`, or with `WisdomVisualization` if you want your own card around it. For full control, take the Highcharts configuration that WisdomAI returns with a chart, which contains the underlying data, and render it with Highcharts yourself. MCP chart responses and the GraphQL `Visualization` object both include it. See [Components](/integrations/embeddings/sdk/sdk-components), [Ask a question](/integrations/mcp-server/ask-a-question), and [Visualization](/integrations/graphql-api/objects/visualization).
+  </Accordion>
+
+  <Accordion title="How do I find a widget ID for the WisdomAI SDK?">
+    Query the dashboard's `widgets` with the GraphQL `dashboard` query and read each widget's `id`. Pass that value as `widgetId` to `DashboardWidget` or to `useDashboardWidget`. See [Dashboard](/integrations/graphql-api/queries/dashboard/dashboard) and [Embed a single widget](/integrations/embeddings/sdk/sdk-components#embed-a-single-widget).
+  </Accordion>
+</AccordionGroup>
+
 ## Usage Limits
 
 <AccordionGroup>
