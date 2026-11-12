@@ -245,5 +245,10 @@
     "source": "/using-wisdom-ai-everyday/command-palette",
     "destination": "/admins/using-wisdom-ai-everyday/command-palette",
     "permanent": true
+  },
+  {
+    "source": "/integrations/graphql-api/objects/job-status",
+    "destination": "/integrations/graphql-api/objects/job-history",
+    "permanent": true
   }
 ]

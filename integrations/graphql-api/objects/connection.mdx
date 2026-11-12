@@ -15,11 +15,15 @@ This page describes the schema used for data source connections, including all f
 </ParamField>
 
 <ParamField path="status" type="JobHistory!" required>
-  Job execution history for connection operations like metadata refresh. See [JobStatus](/integrations/graphql-api/objects/job-status).
+  Job execution history for connection operations like metadata refresh. See [JobHistory](/integrations/graphql-api/objects/job-history).
 </ParamField>
 
 <ParamField path="createdAt" type="DateTime!" required>
   Timestamp when the connection was created.
+</ParamField>
+
+<ParamField path="creator" type="User">
+  The user who created the connection. Null if the creator is unknown or deleted. See [User](/integrations/graphql-api/objects/user).
 </ParamField>
 
 ## ConnectionDetails
@@ -57,6 +61,11 @@ The category of data source. It accepts the following values:
 | `BI_TOOL`                      | Business intelligence tool (Tableau, etc.)           |
 | `FILE`                         | File-based data source (S3, Azure Blob Storage, etc.)|
 | `DATA_SOURCE_MCP_SERVER`       | MCP server data source                               |
+| `DATA_SOURCE_GITHUB`           | GitHub data source                                   |
+| `DATA_SOURCE_AZURE_DEVOPS`     | Azure DevOps data source                             |
+| `DATA_SOURCE_GITLAB`           | GitLab data source                                   |
+| `DATA_SOURCE_MICROSOFT_GRAPH`  | Microsoft Graph data source                          |
+| `DATA_SOURCE_GOOGLE_WORKSPACE` | Google Workspace data source                         |
 
 ### ConnectionType
 
@@ -85,6 +94,15 @@ The specific type of data source connection. It accepts the following values:
 | `SPANNER`                     | Google Cloud Spanner                       |
 | `TERADATA`                    | Teradata database                          |
 | `DUCKDB`                      | DuckDB embedded database                   |
+| `ORACLE`                      | Oracle database                            |
+| `GITHUB`                      | GitHub                                     |
+| `AZURE_DEVOPS`                | Azure DevOps                               |
+| `CLOUDERA_HIVE`               | Cloudera Hive                              |
+| `DREMIO`                      | Dremio                                     |
+| `MOTHERDUCK`                  | MotherDuck                                 |
+| `GITLAB`                      | GitLab                                     |
+| `OUTLOOK_CALENDAR`            | Outlook Calendar                           |
+| `GOOGLE_CALENDAR`             | Google Calendar                            |
 
 ## Related operations
 
@@ -92,7 +110,7 @@ The specific type of data source connection. It accepts the following values:
   <Card title="Connection Queries" icon="magnifying-glass" href="/integrations/graphql-api/queries/connection/connection">
     Query connection information and status
   </Card>
-  <Card title="JobStatus Schema" icon="clock" href="/integrations/graphql-api/objects/job-status">
+  <Card title="JobHistory Schema" icon="clock" href="/integrations/graphql-api/objects/job-history">
     Learn about job execution status tracking
   </Card>
   <Card title="Refresh Connection" icon="arrows-rotate" href="/integrations/graphql-api/mutations/connection/refresh-connection">
