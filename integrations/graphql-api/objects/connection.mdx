@@ -22,6 +22,10 @@ This page describes the schema used for data source connections, including all f
   Timestamp when the connection was created.
 </ParamField>
 
+<ParamField path="creator" type="User">
+  The user who created the connection. Can be `null`. See [User](/integrations/graphql-api/objects/user).
+</ParamField>
+
 ## ConnectionDetails
 
 <ParamField path="name" type="String!" required>
