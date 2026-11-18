@@ -363,6 +363,7 @@
             "pages": [
               "integrations/graphql-api/GraphQL-API",
               "integrations/graphql-api/graphql-primer",
+              "integrations/graphql-api/evaluation-sets",
               {
                 "group": "Objects",
                 "pages": [

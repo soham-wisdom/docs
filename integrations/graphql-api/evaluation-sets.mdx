@@ -1,0 +1,170 @@
+---
+title: "Evaluation sets"
+---
+
+Use the GraphQL API to create, view, update, run, and schedule evaluation sets for a domain. Evaluation sets use the same endpoint and API key authentication as the rest of the GraphQL API. See [GraphQL API](/integrations/graphql-api/GraphQL-API) for the endpoint and how to obtain a token.
+
+<Note>
+  The WisdomAI SDK does not support evaluation sets. To manage evaluation sets in the WisdomAI UI instead, see [Use Evaluations Sets and Runs](/improve-wisdom-ai-responses/use-evaluations-sets-and-runs).
+</Note>
+
+[Note: Need clarification on argument types and response fields. The tables below list argument names and what each operation returns, as confirmed so far. GraphQL types, response fields, and example responses are pending.]
+
+## Permissions
+
+The caller needs evaluation permissions on the domain.
+
+| Permission | Allows |
+| :-- | :-- |
+| `evaluation:read` | View evaluation sets and evaluation runs. |
+| `evaluation:write` | Create, update, and run evaluation sets. |
+| `evaluation:schedule` | Schedule evaluation sets. |
+
+These permissions typically match write access to the domain.
+
+[Note: Need clarification on which permission applies to `deleteEvalSet`, `setEvalSetLocked`, and `pauseScheduledEval`.]
+
+FLAG: Unverified term — `evaluation:read`, `evaluation:write`, and `evaluation:schedule` not confirmed in the role and permission matrix.
+
+## View evaluation sets and runs
+
+### evalSets
+
+Returns the evaluation sets of a domain, with their cases, version, lock state, and schedule.
+
+| Argument | Required | Description |
+| :-- | :-- | :-- |
+| `domainId` | Yes | The domain to return evaluation sets for. |
+| `draftId` | No | [Note: Need clarification on what a draft is and when to pass `draftId`.] |
+
+Each evaluation set includes its cases (a prompt plus ground-truth SQL), `version`, lock state, `cronExpression`, `cronTimezone`, and `scheduledRunChatMode`.
+
+### evaluationRuns
+
+Lists evaluation runs.
+
+| Argument | Required | Description |
+| :-- | :-- | :-- |
+| `filter` | [Note: Need clarification.] | Filters the runs returned. [Note: Need clarification on the filter fields.] |
+| `offset` | [Note: Need clarification.] | The number of runs to skip. |
+| `limit` | [Note: Need clarification.] | The maximum number of runs to return. |
+
+### evaluationRun
+
+Returns one evaluation run, including the score and result for each case.
+
+| Argument | Required | Description |
+| :-- | :-- | :-- |
+| `id` | Yes | The ID of the evaluation run. |
+
+## Create and manage evaluation sets
+
+### createEvalSet
+
+Creates an evaluation set in a domain. The operation takes a single `input` argument.
+
+| Input field | Required | Description |
+| :-- | :-- | :-- |
+| `name` | Yes | The name of the evaluation set. |
+| `domainId` | Yes | The domain the evaluation set belongs to. |
+| `items` | Yes | A list of sessions. Each session is a list of turns, so multi-turn cases are supported. |
+| `customGradingInstructions` | No | Custom grading instructions for the evaluation set. |
+
+Each turn in a session has the following fields:
+
+| Turn field | Required | Description |
+| :-- | :-- | :-- |
+| `prompt` | Yes | The natural language prompt for the turn. |
+| `sql` | Yes | The ground-truth SQL for the turn, as a list of strings. |
+| `assertions` | No | [Note: Need clarification on the format and purpose of `assertions`.] |
+| `noGroundTruth` | No | [Note: Need clarification on the behavior of `noGroundTruth`.] |
+| `gradingInstructions` | No | Grading instructions for the turn. |
+
+Example input variables for a set with one two-turn session:
+
+```json
+{
+  "input": {
+    "name": "Revenue questions",
+    "domainId": "<domain_id>",
+    "items": [
+      [
+        {
+          "prompt": "What is the total revenue for closed won opportunities?",
+          "sql": ["SELECT SUM(amount) FROM Opportunity WHERE stage = 'Closed Won'"]
+        },
+        {
+          "prompt": "Break that down by region.",
+          "sql": ["SELECT region, SUM(amount) FROM Opportunity WHERE stage = 'Closed Won' GROUP BY region"]
+        }
+      ]
+    ]
+  }
+}
+```
+
+### updateEvalSet
+
+Updates an evaluation set.
+
+[Note: Need clarification on the arguments of `updateEvalSet`.]
+
+### deleteEvalSet
+
+Deletes an evaluation set.
+
+[Note: Need clarification on the arguments of `deleteEvalSet`.]
+
+### setEvalSetLocked
+
+Locks or unlocks an evaluation set.
+
+[Note: Need clarification on the arguments of `setEvalSetLocked`.]
+
+## Run evaluation sets
+
+### runEvaluation
+
+Starts an evaluation run and returns the run ID. Use the ID with `evaluationRun` to retrieve the results.
+
+| Argument | Required | Description |
+| :-- | :-- | :-- |
+| `domainId` | Yes | The domain that contains the evaluation set. |
+| `existingEvalSetId` | Yes | The evaluation set to run. |
+| `runCount` | No | [Note: Need clarification on `runCount` and its default value.] |
+| `evaluationCaseIds` | No | Limits the run to specific cases in the evaluation set. |
+
+## Schedule evaluation sets
+
+### scheduleEvalSet
+
+Sets a recurring schedule for an evaluation set. To clear the schedule, pass `cronExpression: null`.
+
+| Argument | Required | Description |
+| :-- | :-- | :-- |
+| `domainId` | Yes | The domain that contains the evaluation set. |
+| `evalSetId` | Yes | The evaluation set to schedule. |
+| `cronExpression` | Yes | The cron expression for the schedule. Pass `null` to clear the schedule. |
+| `cronTimezone` | No | The time zone for the cron expression. |
+| `chatMode` | No | [Note: Need clarification on the accepted values of `chatMode`.] |
+
+### pauseScheduledEval
+
+Pauses the schedule of an evaluation set.
+
+| Argument | Required | Description |
+| :-- | :-- | :-- |
+| `domainId` | Yes | The domain that contains the evaluation set. |
+| `evalSetId` | Yes | The evaluation set whose schedule to pause. |
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Use Evaluations Sets and Runs" icon="flask" href="/improve-wisdom-ai-responses/use-evaluations-sets-and-runs">
+    Create and run evaluation sets in the WisdomAI UI.
+  </Card>
+
+  <Card title="GraphQL API" icon="code" href="/integrations/graphql-api/GraphQL-API">
+    Endpoint, authentication, and error handling for the GraphQL API.
+  </Card>
+</CardGroup>
