@@ -1,0 +1,91 @@
+---
+title: "Set Eval Set Locked"
+---
+
+The `setEvalSetLocked` mutation locks or unlocks an evaluation set. Updating, deleting, or rescheduling a locked set requires the `evaluation:lock` permission.
+
+## Signature
+
+```graphql
+setEvalSetLocked(domainId: String!, evalSetId: ID!, isLocked: Boolean!): EvalSet!
+```
+
+[Note: Need clarification on the exact GraphQL argument types. The types shown are inferred.]
+
+<Note>
+  This mutation requires both the `evaluation:read` and `evaluation:lock` permissions on the domain.
+</Note>
+
+## Arguments
+
+<ParamField path="domainId" type="String!" required>
+  The ID of the domain that the evaluation set belongs to.
+</ParamField>
+
+<ParamField path="evalSetId" type="ID!" required>
+  The ID of the evaluation set to lock or unlock.
+</ParamField>
+
+<ParamField path="isLocked" type="Boolean!" required>
+  Pass `true` to lock the evaluation set and `false` to unlock it.
+</ParamField>
+
+## Response
+
+Returns the updated `EvalSet` object. See [EvalSet](/integrations/graphql-api/objects/eval-set) for the schema.
+
+## Usage example
+
+```graphql
+mutation SetEvalSetLocked($domainId: String!, $evalSetId: ID!, $isLocked: Boolean!) {
+  setEvalSetLocked(domainId: $domainId, evalSetId: $evalSetId, isLocked: $isLocked) {
+    id
+    isLocked
+  }
+}
+```
+
+<RequestExample>
+
+```bash Request
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <jwt_token>" \
+  -d '{
+    "query": "mutation SetEvalSetLocked($domainId: String!, $evalSetId: ID!, $isLocked: Boolean!) { setEvalSetLocked(domainId: $domainId, evalSetId: $evalSetId, isLocked: $isLocked) { id isLocked } }",
+    "variables": {
+      "domainId": "domain_987654321",
+      "evalSetId": "eval_set_123",
+      "isLocked": true
+    }
+  }' \
+  https://{ACCOUNT}.askwisdom.ai/graphql
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "data": {
+    "setEvalSetLocked": {
+      "id": "eval_set_123",
+      "isLocked": true
+    }
+  }
+}
+```
+
+</ResponseExample>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Update Eval Set" icon="pen-to-square" href="/integrations/graphql-api/mutations/evaluation/update-eval-set">
+    Update an evaluation set
+  </Card>
+  <Card title="EvalSet Object" icon="folder" href="/integrations/graphql-api/objects/eval-set">
+    Complete response schema
+  </Card>
+</CardGroup>

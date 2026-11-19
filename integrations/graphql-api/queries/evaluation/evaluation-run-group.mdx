@@ -1,0 +1,95 @@
+---
+title: "Evaluation Run Group"
+---
+
+The `evaluationRunGroup` query returns the individual runs that one `runEvaluation` call started.
+
+## Signature
+
+```graphql
+evaluationRunGroup(runGroupId: ID!): EvaluationRunGroup!
+```
+
+[Note: Need clarification on the exact GraphQL argument and return types, and on the permission this query requires. The types shown are inferred, and `evaluation:read` is assumed.]
+
+<Note>
+  This query requires the `evaluation:read` permission on the domain.
+</Note>
+
+## Arguments
+
+<ParamField path="runGroupId" type="ID!" required>
+  The run group ID that `runEvaluation` returned. The ID is a run group ID, not a run ID, even when `runCount` is 1.
+</ParamField>
+
+## Response
+
+Returns an object with a `runs` list. See [EvaluationRunGroup](/integrations/graphql-api/objects/evaluation-run-group) for the schema. To get one run in full, pass its ID to [evaluationRun](/integrations/graphql-api/queries/evaluation/evaluation-run).
+
+## Usage example
+
+This example lists the runs that a `runEvaluation` call started:
+
+```graphql
+query EvaluationRunGroup($runGroupId: ID!) {
+  evaluationRunGroup(runGroupId: $runGroupId) {
+    runs {
+      id
+      evalSetName
+      createdAt
+      completedAt
+      overallCombinedScore
+    }
+  }
+}
+```
+
+<RequestExample>
+
+```bash Request
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <jwt_token>" \
+  -d '{
+    "query": "query EvaluationRunGroup($runGroupId: ID!) { evaluationRunGroup(runGroupId: $runGroupId) { runs { id evalSetName createdAt completedAt overallCombinedScore } } }",
+    "variables": {
+      "runGroupId": "run_group_789"
+    }
+  }' \
+  https://{ACCOUNT}.askwisdom.ai/graphql
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "data": {
+    "evaluationRunGroup": {
+      "runs": [
+        {
+          "id": "run_456",
+          "evalSetName": "Revenue questions",
+          "createdAt": "2026-11-19T10:30:00Z",
+          "completedAt": "2026-11-19T10:42:00Z",
+          "overallCombinedScore": 0.92
+        }
+      ]
+    }
+  }
+}
+```
+
+</ResponseExample>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Run Evaluation" icon="play" href="/integrations/graphql-api/mutations/evaluation/run-evaluation">
+    Start a run and get the run group ID
+  </Card>
+  <Card title="Evaluation Run" icon="search" href="/integrations/graphql-api/queries/evaluation/evaluation-run">
+    Retrieve one run with its turn results
+  </Card>
+</CardGroup>

@@ -1,0 +1,129 @@
+---
+title: "Evaluation Runs"
+---
+
+The `evaluationRuns` query lists evaluation runs, with optional filtering by evaluation set or domain.
+
+## Signature
+
+```graphql
+evaluationRuns(filter: EvaluationRunsFilter!, offset: Int, limit: Int): [EvaluationRunSummary!]!
+```
+
+[Note: Need clarification on the exact GraphQL argument types, including the name of the filter input type. The types shown are inferred.]
+
+<Note>
+  This query requires the `evaluation:read` permission on the domain.
+</Note>
+
+## Arguments
+
+<ParamField path="filter" type="EvaluationRunsFilter!" required>
+  The filter to apply. You must pass the argument, but every field in it is optional. See [EvaluationRunsFilter](#evaluationrunsfilter).
+</ParamField>
+
+<ParamField path="offset" type="Int">
+  The number of runs to skip.
+</ParamField>
+
+<ParamField path="limit" type="Int">
+  The maximum number of runs to return.
+</ParamField>
+
+### EvaluationRunsFilter
+
+<ParamField path="evaluationSetIds" type="[ID!]">
+  Return only runs of these evaluation sets.
+</ParamField>
+
+<ParamField path="domainIds" type="[String!]">
+  Return only runs in these domains.
+</ParamField>
+
+<ParamField path="evalSetType" type="String">
+  Return only runs of evaluation sets of this type. [Note: Need clarification on the type and allowed values of `evalSetType`.]
+</ParamField>
+
+<ParamField path="fullRunsOnly" type="Boolean">
+  Set to `true` to skip targeted runs, which are runs that used `evaluationCaseIds`.
+</ParamField>
+
+## Response
+
+Returns a list of `EvaluationRunSummary` objects. See [EvaluationRunSummary](/integrations/graphql-api/objects/evaluation-run-summary) for the schema.
+
+## Usage example
+
+This example lists the full runs of an evaluation set:
+
+```graphql
+query EvaluationRuns($filter: EvaluationRunsFilter!, $limit: Int) {
+  evaluationRuns(filter: $filter, limit: $limit) {
+    id
+    evalSetName
+    evalSetVersion
+    chatMode
+    createdAt
+    completedAt
+    completedConversationCount
+    totalConversationCount
+    overallCombinedScore
+  }
+}
+```
+
+<RequestExample>
+
+```bash Request
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <jwt_token>" \
+  -d '{
+    "query": "query EvaluationRuns($filter: EvaluationRunsFilter!, $limit: Int) { evaluationRuns(filter: $filter, limit: $limit) { id evalSetName evalSetVersion chatMode createdAt completedAt completedConversationCount totalConversationCount overallCombinedScore } }",
+    "variables": {
+      "filter": {
+        "evaluationSetIds": ["eval_set_123"],
+        "fullRunsOnly": true
+      },
+      "limit": 10
+    }
+  }' \
+  https://{ACCOUNT}.askwisdom.ai/graphql
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "data": {
+    "evaluationRuns": [
+      {
+        "id": "run_456",
+        "evalSetName": "Revenue questions",
+        "evalSetVersion": 2,
+        "chatMode": "NORMAL",
+        "createdAt": "2026-11-19T10:30:00Z",
+        "completedAt": "2026-11-19T10:42:00Z",
+        "completedConversationCount": 12,
+        "totalConversationCount": 12,
+        "overallCombinedScore": 0.92
+      }
+    ]
+  }
+}
+```
+
+</ResponseExample>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Evaluation Run" icon="search" href="/integrations/graphql-api/queries/evaluation/evaluation-run">
+    Retrieve one run with its turn results
+  </Card>
+  <Card title="EvaluationRunSummary Object" icon="folder" href="/integrations/graphql-api/objects/evaluation-run-summary">
+    Complete response schema
+  </Card>
+</CardGroup>

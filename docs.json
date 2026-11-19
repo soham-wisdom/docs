@@ -373,6 +373,7 @@
                   "integrations/graphql-api/objects/chat-message",
                   "integrations/graphql-api/objects/chat-message-diff",
                   "integrations/graphql-api/objects/chat-message-sender",
+                  "integrations/graphql-api/objects/chat-mode",
                   "integrations/graphql-api/objects/chat-thinking-effort",
                   "integrations/graphql-api/objects/codegen-config",
                   "integrations/graphql-api/objects/connection",
@@ -395,6 +396,11 @@
                   "integrations/graphql-api/objects/domain-model",
                   "integrations/graphql-api/objects/domain-rls-config",
                   "integrations/graphql-api/objects/domain-web-search-config",
+                  "integrations/graphql-api/objects/eval-assertion",
+                  "integrations/graphql-api/objects/eval-set",
+                  "integrations/graphql-api/objects/evaluation-run",
+                  "integrations/graphql-api/objects/evaluation-run-group",
+                  "integrations/graphql-api/objects/evaluation-run-summary",
                   "integrations/graphql-api/objects/filter-applied-state",
                   "integrations/graphql-api/objects/job-history",
                   "integrations/graphql-api/objects/join-input",
@@ -402,6 +408,8 @@
                   "integrations/graphql-api/objects/llm-tool-call-results",
                   "integrations/graphql-api/objects/llm-tool-calls",
                   "integrations/graphql-api/objects/operation",
+                  "integrations/graphql-api/objects/prompt-evaluation",
+                  "integrations/graphql-api/objects/prompt-sql-pair",
                   "integrations/graphql-api/objects/response-status",
                   "integrations/graphql-api/objects/scope-role-assignment-input",
                   "integrations/graphql-api/objects/section",
@@ -439,6 +447,15 @@
                     "pages": [
                       "integrations/graphql-api/queries/dashboard/dashboard",
                       "integrations/graphql-api/queries/dashboard/dashboards"
+                    ]
+                  },
+                  {
+                    "group": "Evaluation",
+                    "pages": [
+                      "integrations/graphql-api/queries/evaluation/eval-sets",
+                      "integrations/graphql-api/queries/evaluation/evaluation-runs",
+                      "integrations/graphql-api/queries/evaluation/evaluation-run",
+                      "integrations/graphql-api/queries/evaluation/evaluation-run-group"
                     ]
                   },
                   {
@@ -501,6 +518,18 @@
                       "integrations/graphql-api/mutations/domain/create-domain",
                       "integrations/graphql-api/mutations/domain/duplicate-domain",
                       "integrations/graphql-api/mutations/domain/update-data-sources"
+                    ]
+                  },
+                  {
+                    "group": "Evaluation",
+                    "pages": [
+                      "integrations/graphql-api/mutations/evaluation/create-eval-set",
+                      "integrations/graphql-api/mutations/evaluation/update-eval-set",
+                      "integrations/graphql-api/mutations/evaluation/delete-eval-set",
+                      "integrations/graphql-api/mutations/evaluation/set-eval-set-locked",
+                      "integrations/graphql-api/mutations/evaluation/run-evaluation",
+                      "integrations/graphql-api/mutations/evaluation/schedule-eval-set",
+                      "integrations/graphql-api/mutations/evaluation/pause-scheduled-eval"
                     ]
                   }
                 ]

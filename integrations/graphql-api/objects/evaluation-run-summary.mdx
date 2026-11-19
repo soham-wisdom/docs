@@ -1,0 +1,62 @@
+---
+title: "Evaluation Run Summary"
+---
+
+This page describes the `EvaluationRunSummary` object, which represents an evaluation run in a list, with its progress and overall score.
+
+## EvaluationRunSummary
+
+<ParamField path="id" type="ID!" required>
+  Unique identifier for the run.
+</ParamField>
+
+<ParamField path="evalSetId" type="ID!" required>
+  The ID of the evaluation set that the run used.
+</ParamField>
+
+<ParamField path="evalSetName" type="String!" required>
+  The name of the evaluation set that the run used.
+</ParamField>
+
+<ParamField path="evalSetVersion" type="Int!" required>
+  The version of the evaluation set when the run happened.
+</ParamField>
+
+<ParamField path="chatMode" type="ChatMode!" required>
+  The chat mode that the run used. See [ChatMode](/integrations/graphql-api/objects/chat-mode).
+</ParamField>
+
+<ParamField path="createdAt" type="DateTime!" required>
+  Timestamp when the run was created.
+</ParamField>
+
+<ParamField path="completedAt" type="DateTime">
+  Timestamp when the run completed. Null while the run is in progress.
+</ParamField>
+
+<ParamField path="completedConversationCount" type="Int!" required>
+  The number of conversations the run has completed.
+</ParamField>
+
+<ParamField path="totalConversationCount" type="Int!" required>
+  The total number of conversations in the run.
+</ParamField>
+
+<ParamField path="overallCombinedScore" type="Float">
+  The overall score of the run. Null until every session is scored.
+</ParamField>
+
+## Used by
+
+- [evaluationRuns](/integrations/graphql-api/queries/evaluation/evaluation-runs)
+
+## Related operations
+
+<CardGroup cols={2}>
+  <Card title="EvaluationRun Object" icon="folder" href="/integrations/graphql-api/objects/evaluation-run">
+    The run detail with turn results
+  </Card>
+  <Card title="Evaluation Runs Query" icon="list" href="/integrations/graphql-api/queries/evaluation/evaluation-runs">
+    List evaluation runs
+  </Card>
+</CardGroup>

@@ -1,0 +1,77 @@
+---
+title: "Pause Scheduled Eval"
+---
+
+The `pauseScheduledEval` mutation pauses the schedule of an evaluation set.
+
+## Signature
+
+```graphql
+pauseScheduledEval(domainId: String!, evalSetId: ID!): Boolean!
+```
+
+[Note: Need clarification on the exact GraphQL argument types, and on whether pausing the schedule of a locked evaluation set also requires `evaluation:lock`. The types shown are inferred.]
+
+<Note>
+  This mutation requires the `evaluation:schedule` permission on the domain.
+</Note>
+
+## Arguments
+
+<ParamField path="domainId" type="String!" required>
+  The ID of the domain that contains the evaluation set.
+</ParamField>
+
+<ParamField path="evalSetId" type="ID!" required>
+  The ID of the evaluation set whose schedule to pause.
+</ParamField>
+
+## Response
+
+Returns `true` if the schedule was paused.
+
+## Usage example
+
+```graphql
+mutation PauseScheduledEval($domainId: String!, $evalSetId: ID!) {
+  pauseScheduledEval(domainId: $domainId, evalSetId: $evalSetId)
+}
+```
+
+<RequestExample>
+
+```bash Request
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <jwt_token>" \
+  -d '{
+    "query": "mutation PauseScheduledEval($domainId: String!, $evalSetId: ID!) { pauseScheduledEval(domainId: $domainId, evalSetId: $evalSetId) }",
+    "variables": {
+      "domainId": "domain_987654321",
+      "evalSetId": "eval_set_123"
+    }
+  }' \
+  https://{ACCOUNT}.askwisdom.ai/graphql
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "data": {
+    "pauseScheduledEval": true
+  }
+}
+```
+
+</ResponseExample>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Schedule Eval Set" icon="clock" href="/integrations/graphql-api/mutations/evaluation/schedule-eval-set">
+    Set or clear the schedule
+  </Card>
+</CardGroup>

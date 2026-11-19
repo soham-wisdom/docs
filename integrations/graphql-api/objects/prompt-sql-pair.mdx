@@ -1,0 +1,64 @@
+---
+title: "Prompt SQL Pair"
+---
+
+This page describes the `PromptSQLPair` object, which represents one turn in an evaluation set session: a prompt and its expected answer.
+
+## PromptSQLPair
+
+<ParamField path="id" type="ID">
+  Unique identifier for the turn.
+</ParamField>
+
+<ParamField path="prompt" type="String!" required>
+  The natural language prompt for the turn.
+</ParamField>
+
+<ParamField path="sql" type="[String!]!" required>
+  The accepted ground-truth SQL for the turn. Any one of the listed queries can match.
+</ParamField>
+
+<ParamField path="assertions" type="[EvalAssertion!]">
+  Plain-language criteria the answer must meet. See [EvalAssertion](/integrations/graphql-api/objects/eval-assertion).
+</ParamField>
+
+<ParamField path="noGroundTruth" type="Boolean!" required>
+  Whether the turn has no expected answer. WisdomAI still answers the prompt during a run so someone can review the answer, but the turn is not scored. You cannot combine `noGroundTruth` with `sql` or `assertions`.
+</ParamField>
+
+<ParamField path="gradingInstructions" type="String">
+  Guidance for the judge that applies to this prompt only.
+</ParamField>
+
+## Input shape
+
+The `items` input of `createEvalSet` and `updateEvalSet` takes the same shape as `PromptSQLPair`. In the input, only `prompt` and `sql` are required, and `assertions` is a list of objects with a `criterion` field.
+
+```json
+{
+  "id": "turn_123",
+  "prompt": "What is the total revenue for closed won opportunities?",
+  "sql": ["SELECT SUM(amount) FROM Opportunity WHERE stage = 'Closed Won'"],
+  "assertions": [{ "criterion": "Returns a single revenue total" }],
+  "noGroundTruth": false,
+  "gradingInstructions": "Accept totals that match within rounding."
+}
+```
+
+## Used by
+
+- [EvalSet](/integrations/graphql-api/objects/eval-set)
+- [EvaluationRun](/integrations/graphql-api/objects/evaluation-run)
+- [createEvalSet](/integrations/graphql-api/mutations/evaluation/create-eval-set)
+- [updateEvalSet](/integrations/graphql-api/mutations/evaluation/update-eval-set)
+
+## Related operations
+
+<CardGroup cols={2}>
+  <Card title="EvalSet Object" icon="folder" href="/integrations/graphql-api/objects/eval-set">
+    The evaluation set that contains the turns
+  </Card>
+  <Card title="EvalAssertion Object" icon="list-check" href="/integrations/graphql-api/objects/eval-assertion">
+    Assertions and assertion results
+  </Card>
+</CardGroup>

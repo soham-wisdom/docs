@@ -1,0 +1,53 @@
+---
+title: "Eval Assertion"
+---
+
+This page describes the `EvalAssertion` and `EvalAssertionResult` objects. An assertion is a plain-language criterion that an answer must meet. An LLM judge grades each assertion during an evaluation run.
+
+## EvalAssertion
+
+<ParamField path="id" type="ID">
+  Unique identifier for the assertion.
+</ParamField>
+
+<ParamField path="criterion" type="String!" required>
+  The criterion the answer must meet, for example "breaks revenue down by region".
+</ParamField>
+
+## EvalAssertionResult
+
+<ParamField path="assertionId" type="ID!" required>
+  The ID of the assertion that was graded.
+</ParamField>
+
+<ParamField path="verdict" type="EvalAssertionVerdict!" required>
+  The result of the grading. See [EvalAssertionVerdict](#evalassertionverdict).
+</ParamField>
+
+<ParamField path="reasoning" type="String">
+  The judge's reasoning for the verdict.
+</ParamField>
+
+## EvalAssertionVerdict
+
+| Value | Description |
+| --- | --- |
+| `PASS` | The answer meets the criterion. |
+| `FAIL` | The answer does not meet the criterion. |
+| `NOT_EVALUABLE` | The judge could not evaluate the criterion. |
+
+## Used by
+
+- [PromptSQLPair](/integrations/graphql-api/objects/prompt-sql-pair) returns `EvalAssertion`.
+- [PromptEvaluation](/integrations/graphql-api/objects/prompt-evaluation) returns `EvalAssertionResult`.
+
+## Related operations
+
+<CardGroup cols={2}>
+  <Card title="PromptSQLPair Object" icon="folder" href="/integrations/graphql-api/objects/prompt-sql-pair">
+    Turns that define assertions
+  </Card>
+  <Card title="PromptEvaluation Object" icon="folder" href="/integrations/graphql-api/objects/prompt-evaluation">
+    Turn results that include assertion results
+  </Card>
+</CardGroup>

@@ -1,0 +1,42 @@
+---
+title: "Prompt Evaluation"
+---
+
+This page describes the `PromptEvaluation` object, which represents the result for one turn of an evaluation run.
+
+## PromptEvaluation
+
+<ParamField path="softEvalScore" type="Float">
+  The automated score for the turn.
+</ParamField>
+
+<ParamField path="softEvalFeedback" type="String">
+  The feedback that accompanies the automated score.
+</ParamField>
+
+<ParamField path="manualScore" type="Float">
+  The score a reviewer assigned. It overrides `softEvalScore`.
+</ParamField>
+
+<ParamField path="manualFeedback" type="String">
+  The feedback a reviewer left with the manual score.
+</ParamField>
+
+<ParamField path="assertionResults" type="[EvalAssertionResult!]">
+  The grading result for each assertion on the turn. See [EvalAssertion](/integrations/graphql-api/objects/eval-assertion).
+</ParamField>
+
+## Used by
+
+- [EvaluationRun](/integrations/graphql-api/objects/evaluation-run)
+
+## Related operations
+
+<CardGroup cols={2}>
+  <Card title="EvaluationRun Object" icon="folder" href="/integrations/graphql-api/objects/evaluation-run">
+    The run that contains the turn results
+  </Card>
+  <Card title="EvalAssertion Object" icon="list-check" href="/integrations/graphql-api/objects/eval-assertion">
+    Assertion results and verdicts
+  </Card>
+</CardGroup>

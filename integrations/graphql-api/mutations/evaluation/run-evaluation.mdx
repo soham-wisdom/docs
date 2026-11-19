@@ -1,0 +1,112 @@
+---
+title: "Run Evaluation"
+---
+
+The `runEvaluation` mutation starts an evaluation run for an evaluation set and returns a run group ID.
+
+## Signature
+
+```graphql
+runEvaluation(
+  domainId: String!
+  existingEvalSetId: ID!
+  runCount: Int
+  chatMode: ChatMode
+  draftId: ID
+  evaluationCaseIds: [ID!]
+): String!
+```
+
+[Note: Need clarification on the exact GraphQL argument types. The types shown are inferred.]
+
+<Note>
+  This mutation requires the `evaluation:write` permission on the domain.
+</Note>
+
+## Arguments
+
+<ParamField path="domainId" type="String!" required>
+  The ID of the domain that contains the evaluation set.
+</ParamField>
+
+<ParamField path="existingEvalSetId" type="ID!" required>
+  The ID of the evaluation set to run.
+</ParamField>
+
+<ParamField path="runCount" type="Int">
+  How many times to run the evaluation set. Defaults to 1. A higher count helps you spot flaky cases.
+</ParamField>
+
+<ParamField path="chatMode" type="ChatMode">
+  The chat mode to use. Defaults to `NORMAL`. See [ChatMode](/integrations/graphql-api/objects/chat-mode).
+</ParamField>
+
+<ParamField path="draftId" type="ID">
+  The ID of a draft of the domain. When you pass it, the run uses the draft version of the domain.
+</ParamField>
+
+<ParamField path="evaluationCaseIds" type="[ID!]">
+  Limits the run to these cases. Use IDs from `caseIds` on the evaluation set.
+</ParamField>
+
+## Response
+
+Returns the run group ID as a `String`. The ID is a run group ID, not a run ID, even when `runCount` is 1. Pass it to [evaluationRunGroup](/integrations/graphql-api/queries/evaluation/evaluation-run-group) to get the individual runs, then pass a run ID to [evaluationRun](/integrations/graphql-api/queries/evaluation/evaluation-run) for the results of a single run.
+
+## Usage example
+
+This example runs an evaluation set three times in `DEEP_THINK` mode:
+
+```graphql
+mutation RunEvaluation($domainId: String!, $existingEvalSetId: ID!, $runCount: Int, $chatMode: ChatMode) {
+  runEvaluation(
+    domainId: $domainId
+    existingEvalSetId: $existingEvalSetId
+    runCount: $runCount
+    chatMode: $chatMode
+  )
+}
+```
+
+<RequestExample>
+
+```bash Request
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <jwt_token>" \
+  -d '{
+    "query": "mutation RunEvaluation($domainId: String!, $existingEvalSetId: ID!, $runCount: Int, $chatMode: ChatMode) { runEvaluation(domainId: $domainId, existingEvalSetId: $existingEvalSetId, runCount: $runCount, chatMode: $chatMode) }",
+    "variables": {
+      "domainId": "domain_987654321",
+      "existingEvalSetId": "eval_set_123",
+      "runCount": 3,
+      "chatMode": "DEEP_THINK"
+    }
+  }' \
+  https://{ACCOUNT}.askwisdom.ai/graphql
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "data": {
+    "runEvaluation": "run_group_789"
+  }
+}
+```
+
+</ResponseExample>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Evaluation Run Group" icon="list" href="/integrations/graphql-api/queries/evaluation/evaluation-run-group">
+    Get the runs that this call started
+  </Card>
+  <Card title="Schedule Eval Set" icon="clock" href="/integrations/graphql-api/mutations/evaluation/schedule-eval-set">
+    Run an evaluation set on a schedule
+  </Card>
+</CardGroup>

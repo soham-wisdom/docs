@@ -1,0 +1,128 @@
+---
+title: "Create Eval Set"
+---
+
+The `createEvalSet` mutation creates an evaluation set in a domain. Each evaluation set contains sessions, and each session contains one or more turns, so you can create multi-turn cases.
+
+## Signature
+
+```graphql
+createEvalSet(input: CreateEvalSetInput!): EvalSet!
+```
+
+[Note: Need clarification on the name of the input type. `CreateEvalSetInput` is used here as a working name.]
+
+<Note>
+  This mutation requires the `evaluation:write` permission on the domain.
+</Note>
+
+## Arguments
+
+<ParamField path="input" type="CreateEvalSetInput!" required>
+  Input object containing the evaluation set. See [CreateEvalSetInput](#createevalsetinput).
+</ParamField>
+
+### CreateEvalSetInput
+
+<ParamField path="name" type="String!" required>
+  The name of the evaluation set.
+</ParamField>
+
+<ParamField path="domainId" type="String!" required>
+  The ID of the domain that the evaluation set belongs to.
+</ParamField>
+
+<ParamField path="items" type="[[PromptSQLPairInput!]!]!" required>
+  The sessions of the evaluation set. Each session is an ordered list of turns. Each turn takes the same shape as [PromptSQLPair](/integrations/graphql-api/objects/prompt-sql-pair#input-shape).
+</ParamField>
+
+<ParamField path="draftId" type="ID">
+  The ID of a draft of the domain. When you pass it, the evaluation set is staged on the draft and goes live when you publish the draft.
+</ParamField>
+
+<ParamField path="customGradingInstructions" type="String">
+  Custom grading instructions that apply to the whole evaluation set.
+</ParamField>
+
+## Response
+
+Returns the new `EvalSet` object. See [EvalSet](/integrations/graphql-api/objects/eval-set) for the schema.
+
+## Usage example
+
+This example creates an evaluation set with one two-turn session:
+
+```graphql
+mutation CreateEvalSet($input: CreateEvalSetInput!) {
+  createEvalSet(input: $input) {
+    id
+    name
+    version
+    caseIds
+  }
+}
+```
+
+<RequestExample>
+
+```bash Request
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <jwt_token>" \
+  -d '{
+    "query": "mutation CreateEvalSet($input: CreateEvalSetInput!) { createEvalSet(input: $input) { id name version caseIds } }",
+    "variables": {
+      "input": {
+        "name": "Revenue questions",
+        "domainId": "domain_987654321",
+        "items": [
+          [
+            {
+              "prompt": "What is the total revenue for closed won opportunities?",
+              "sql": ["SELECT SUM(amount) FROM Opportunity WHERE stage = '\''Closed Won'\''"]
+            },
+            {
+              "prompt": "Break that down by region.",
+              "sql": ["SELECT region, SUM(amount) FROM Opportunity WHERE stage = '\''Closed Won'\'' GROUP BY region"],
+              "assertions": [{ "criterion": "Breaks revenue down by region" }]
+            }
+          ]
+        ]
+      }
+    }
+  }' \
+  https://{ACCOUNT}.askwisdom.ai/graphql
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "data": {
+    "createEvalSet": {
+      "id": "eval_set_123",
+      "name": "Revenue questions",
+      "version": 1,
+      "caseIds": ["case_001"]
+    }
+  }
+}
+```
+
+</ResponseExample>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Run Evaluation" icon="play" href="/integrations/graphql-api/mutations/evaluation/run-evaluation">
+    Run the evaluation set
+  </Card>
+  <Card title="Update Eval Set" icon="pen-to-square" href="/integrations/graphql-api/mutations/evaluation/update-eval-set">
+    Replace the sessions of an evaluation set
+  </Card>
+  <Card title="EvalSet Object" icon="folder" href="/integrations/graphql-api/objects/eval-set">
+    Complete response schema
+  </Card>
+</CardGroup>

@@ -1,0 +1,116 @@
+---
+title: "Eval Sets"
+---
+
+The `evalSets` query returns the evaluation sets of a domain, with their sessions and turns, version, lock state, and schedule.
+
+## Signature
+
+```graphql
+evalSets(domainId: String!, draftId: ID): [EvalSet!]!
+```
+
+[Note: Need clarification on the exact GraphQL argument types. The types shown are inferred from the `EvalSet` schema.]
+
+<Note>
+  This query requires the `evaluation:read` permission on the domain.
+</Note>
+
+## Arguments
+
+<ParamField path="domainId" type="String!" required>
+  The ID of the domain to return evaluation sets for.
+</ParamField>
+
+<ParamField path="draftId" type="ID">
+  The ID of a draft of the domain. When you pass it, the response also includes the evaluation sets staged on that draft.
+</ParamField>
+
+## Response
+
+Returns a list of `EvalSet` objects. See [EvalSet](/integrations/graphql-api/objects/eval-set) for the schema.
+
+## Usage example
+
+This example lists the evaluation sets of a domain, with their schedule:
+
+```graphql
+query EvalSets($domainId: String!) {
+  evalSets(domainId: $domainId) {
+    id
+    name
+    version
+    isLocked
+    caseIds
+    cronExpression
+    cronTimezone
+    scheduledRunChatMode
+    items {
+      prompt
+      sql
+    }
+  }
+}
+```
+
+<RequestExample>
+
+```bash Request
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <jwt_token>" \
+  -d '{
+    "query": "query EvalSets($domainId: String!) { evalSets(domainId: $domainId) { id name version isLocked caseIds cronExpression cronTimezone scheduledRunChatMode items { prompt sql } } }",
+    "variables": {
+      "domainId": "domain_987654321"
+    }
+  }' \
+  https://{ACCOUNT}.askwisdom.ai/graphql
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "data": {
+    "evalSets": [
+      {
+        "id": "eval_set_123",
+        "name": "Revenue questions",
+        "version": 2,
+        "isLocked": false,
+        "caseIds": ["case_001"],
+        "cronExpression": "0 6 * * 1",
+        "cronTimezone": "America/New_York",
+        "scheduledRunChatMode": "FAST",
+        "items": [
+          [
+            {
+              "prompt": "What is the total revenue for closed won opportunities?",
+              "sql": ["SELECT SUM(amount) FROM Opportunity WHERE stage = 'Closed Won'"]
+            }
+          ]
+        ]
+      }
+    ]
+  }
+}
+```
+
+</ResponseExample>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Create Eval Set" icon="plus" href="/integrations/graphql-api/mutations/evaluation/create-eval-set">
+    Create an evaluation set
+  </Card>
+  <Card title="Run Evaluation" icon="play" href="/integrations/graphql-api/mutations/evaluation/run-evaluation">
+    Run an evaluation set
+  </Card>
+  <Card title="EvalSet Object" icon="folder" href="/integrations/graphql-api/objects/eval-set">
+    Complete response schema
+  </Card>
+</CardGroup>

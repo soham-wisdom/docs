@@ -1,0 +1,122 @@
+---
+title: "Schedule Eval Set"
+---
+
+The `scheduleEvalSet` mutation sets a recurring cron schedule for an evaluation set. To clear the schedule, pass `cronExpression: null`.
+
+## Signature
+
+```graphql
+scheduleEvalSet(
+  domainId: String!
+  evalSetId: ID!
+  cronExpression: String
+  cronTimezone: String
+  chatMode: ChatMode
+): EvalSet!
+```
+
+[Note: Need clarification on the exact GraphQL argument types. The types shown are inferred.]
+
+<Note>
+  This mutation requires the `evaluation:schedule` permission on the domain. Rescheduling a locked evaluation set also requires the `evaluation:lock` permission.
+</Note>
+
+## Arguments
+
+<ParamField path="domainId" type="String!" required>
+  The ID of the domain that contains the evaluation set.
+</ParamField>
+
+<ParamField path="evalSetId" type="ID!" required>
+  The ID of the evaluation set to schedule.
+</ParamField>
+
+<ParamField path="cronExpression" type="String" required>
+  The cron expression of the schedule. You must pass the argument. Pass `null` to clear the schedule.
+</ParamField>
+
+<ParamField path="cronTimezone" type="String">
+  The time zone of the cron expression.
+</ParamField>
+
+<ParamField path="chatMode" type="ChatMode">
+  The chat mode that scheduled runs use. Defaults to `FAST`. See [ChatMode](/integrations/graphql-api/objects/chat-mode).
+</ParamField>
+
+## Response
+
+Returns the updated `EvalSet` object, including `cronExpression`, `cronTimezone`, and `scheduledRunChatMode`. See [EvalSet](/integrations/graphql-api/objects/eval-set) for the schema.
+
+## Usage example
+
+This example runs an evaluation set every Monday at 06:00:
+
+```graphql
+mutation ScheduleEvalSet(
+  $domainId: String!
+  $evalSetId: ID!
+  $cronExpression: String
+  $cronTimezone: String
+) {
+  scheduleEvalSet(
+    domainId: $domainId
+    evalSetId: $evalSetId
+    cronExpression: $cronExpression
+    cronTimezone: $cronTimezone
+  ) {
+    id
+    cronExpression
+    cronTimezone
+    scheduledRunChatMode
+  }
+}
+```
+
+<RequestExample>
+
+```bash Request
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <jwt_token>" \
+  -d '{
+    "query": "mutation ScheduleEvalSet($domainId: String!, $evalSetId: ID!, $cronExpression: String, $cronTimezone: String) { scheduleEvalSet(domainId: $domainId, evalSetId: $evalSetId, cronExpression: $cronExpression, cronTimezone: $cronTimezone) { id cronExpression cronTimezone scheduledRunChatMode } }",
+    "variables": {
+      "domainId": "domain_987654321",
+      "evalSetId": "eval_set_123",
+      "cronExpression": "0 6 * * 1",
+      "cronTimezone": "America/New_York"
+    }
+  }' \
+  https://{ACCOUNT}.askwisdom.ai/graphql
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "data": {
+    "scheduleEvalSet": {
+      "id": "eval_set_123",
+      "cronExpression": "0 6 * * 1",
+      "cronTimezone": "America/New_York",
+      "scheduledRunChatMode": "FAST"
+    }
+  }
+}
+```
+
+</ResponseExample>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Pause Scheduled Eval" icon="pause" href="/integrations/graphql-api/mutations/evaluation/pause-scheduled-eval">
+    Pause the schedule
+  </Card>
+  <Card title="ChatMode" icon="folder" href="/integrations/graphql-api/objects/chat-mode">
+    Chat modes for scheduled runs
+  </Card>
+</CardGroup>
