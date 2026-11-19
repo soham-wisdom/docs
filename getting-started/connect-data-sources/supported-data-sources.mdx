@@ -366,6 +366,8 @@ This section outlines common prerequisites for connecting to data sources. Speci
     Tenant ID: ffffffff-ffff-ffff-ffff-ffffffffffff
     Client Secret: ********
     ```
+
+    Azure Synapse connections do not show the **Access** section. Only Azure Synapse Serverless connections offer these checks. See [Access settings](#access-settings).
   </Tab>
   <Tab title="Azure Synapse Serverless">
     The following table lists the requirements you must provide when connecting to Azure Synapse Serverless.
@@ -390,6 +392,8 @@ This section outlines common prerequisites for connecting to data sources. Speci
     Tenant ID: ffffffff-ffff-ffff-ffff-ffffffffffff
     Client Secret: ********
     ```
+
+    Azure Synapse Serverless connections show the **Access** section. The system catalog check covers table and column metadata only, not sizes or statistics. See [Access settings](#access-settings).
   </Tab>
   <Tab title="Amazon S3">
     The following table lists the requirements you must provide when connecting to Amazon S3.
@@ -766,6 +770,8 @@ Supported warehouse sources show an **Access** section on the connection form. I
 | Teradata | Yes | Yes |
 
 Other sources, including Azure Synapse dedicated SQL pools, do not show the **Access** section. These checks do not apply to file, repository, BI, calendar, or MCP server connections.
+
+This list shows which sources offer the checks. It does not show which sources support Query History Enrichment (the job that mines query history). A passing **Query history** check means the connection can read the warehouse's history. It does not mean the job supports the source or has run. See [Jobs](/settings/jobs).
 
 ### Check optional warehouse access
 
