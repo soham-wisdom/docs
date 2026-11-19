@@ -152,7 +152,7 @@ The main job types you'll see:
 | Runs for | Job type | What it does | Default schedule |
 | ----- | ----- | ----- | ----- |
 | Connection | Crawl Metadata | Syncs the connection's databases, tables, and columns, or finds new files for file sources. **Sync now** on the Connections page runs it on demand. | Daily |
-| Connection | Query History Enrichment | Reads recent query history from warehouses that support it. | Every 2 hours |
+| Connection | Query History Enrichment | Reads recent query history from warehouses that support it. The **Access** check on the connection form tests whether the connection can read that history, but it does not run this job. See [Access settings](/getting-started/connect-data-sources/supported-data-sources#access-settings). | Every 2 hours |
 | Domain | Crawl Column Values | Collects the values in the domain's columns. Filters, autocomplete, and value matching in questions use them. | Daily |
 | Domain | Domain Health Check | Checks that the domain's tables are still accessible. | Daily |
 | Domain | Reviewed Query Staleness Check | Checks reviewed queries, metrics, and evaluation answers for staleness. | Daily |
