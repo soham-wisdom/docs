@@ -23,8 +23,26 @@ Before you begin, make sure you have the following:
 
 Use this method if your Redshift cluster is publicly accessible or if you have allowlisted WisdomAI's CIDR blocks (`35.238.115.103/32` and `34.82.248.105/32`) in your security group.
 
-1. In WisdomAl, navigate to the **Connections** section and click **Add Connection**.
+1. In WisdomAI, navigate to the **Connections** section and click **Add connection**.
 2. Select **Redshift** as the data source type.
+
+<Frame>
+  <img
+    src="/images/redshift-select.png"
+    alt="Add Connection page with Connections selected in the sidebar (1) and the Redshift tile selected (2)"
+    lightAlt="Add Connection page with Connections selected in the sidebar (1) and the Redshift tile selected (2)"
+    darkAlt="Add Connection page with Connections selected in the sidebar (1) and the Redshift tile selected (2)"
+    className="dark:hidden"
+  />
+  <img
+    src="/dark-img/redshift-select-dark.png"
+    alt="Add Connection page with Connections selected in the sidebar (1) and the Redshift tile selected (2)"
+    lightAlt="Add Connection page with Connections selected in the sidebar (1) and the Redshift tile selected (2)"
+    darkAlt="Add Connection page with Connections selected in the sidebar (1) and the Redshift tile selected (2)"
+    className="hidden dark:block"
+  />
+</Frame>
+
 3. Fill in the connection details in the **Redshift connection details** section:
 
 | Requirement | Description |
@@ -34,32 +52,28 @@ Use this method if your Redshift cluster is publicly accessible or if you have a
 | Username | Database user with read access |
 | Password | User password |
 | Database Filters | Optionally restrict which databases are crawled. |
+| SSL Mode (Optional) | Default (no SSL requirement), Disable SSL, Allow SSL if available, Prefer SSL (fallback to non-SSL), or Require SSL |
 
-4. Click **Save and Sync metadata.** WisdomAl will use the provided credentials to connect to your Redshift account and scan the metadata of the specified databases and tables.
+4. Click **Save and Sync metadata.** WisdomAI will use the provided credentials to connect to your Redshift account and scan the metadata of the specified databases and tables.
 
-<img
-  src="/dark-img/redshift-direct-conection.png"
-  alt="Snippet displaying the Add Connection page"
-  lightAlt="Snippet displaying the Add Connection page"
-  darkAlt="Snippet displaying the Add Connection page"
-  className="hidden dark:block hidden dark:block"
-/>
+<Frame>
+  <img
+    src="/images/redshift-01.png"
+    alt="Redshift Connection Details form with the connection details highlighted (3) and the Save and Sync metadata button highlighted (4)"
+    lightAlt="Redshift Connection Details form with the connection details highlighted (3) and the Save and Sync metadata button highlighted (4)"
+    darkAlt="Redshift Connection Details form with the connection details highlighted (3) and the Save and Sync metadata button highlighted (4)"
+    className="dark:hidden"
+  />
+  <img
+    src="/dark-img/redshift-dark-01.png"
+    alt="Redshift Connection Details form with the connection details highlighted (3) and the Save and Sync metadata button highlighted (4)"
+    lightAlt="Redshift Connection Details form with the connection details highlighted (3) and the Save and Sync metadata button highlighted (4)"
+    darkAlt="Redshift Connection Details form with the connection details highlighted (3) and the Save and Sync metadata button highlighted (4)"
+    className="hidden dark:block"
+  />
+</Frame>
 
-<img
-  src="/images/redshift-01.png"
-  alt="Snippet displaying the Add Connection page"
-  lightAlt="Snippet displaying the Add Connection page"
-  darkAlt="Snippet displaying the Add Connection page"
-  className="hidden dark:block dark:hidden"
-/>
-
-<img
-  src="/images/redshift-01.png"
-  alt="Snippet displaying the Add Connection page"
-  lightAlt="Snippet displaying the Add Connection page"
-  darkAlt="Snippet displaying the Add Connection page"
-  className="dark:hidden"
-/>
+To set a query timeout or use alternate credential sets, see [Advanced settings](/getting-started/connect-data-sources/supported-data-sources#advanced-settings).
 
 ## Option 2: Connect via an SSH tunnel
 
@@ -78,20 +92,22 @@ Use this method to securely connect to a Redshift cluster that is not publicly a
 
 3. Click **Save and Sync metadata.**
 
-<img
-  src="/dark-img/connect-sshTunel.png"
-  alt="Snippet displaying the Add Connection page with the SSH Tunnel Configuration section displayed"
-  lightAlt="Snippet displaying the Add Connection page with the SSH Tunnel Configuration section displayed"
-  darkAlt="Snippet displaying the Add Connection page with the SSH Tunnel Configuration section displayed"
-  className="hidden dark:block"
-/>
-<img
-  src="/images/redshift-02.png"
-  alt="Snippet displaying the Add Connection page with the SSH Tunnel Configuration section displayed"
-  lightAlt="Snippet displaying the Add Connection page with the SSH Tunnel Configuration section displayed"
-  darkAlt="Snippet displaying the Add Connection page with the SSH Tunnel Configuration section displayed"
-  className="dark:hidden"
-/>
+<Frame>
+  <img
+    src="/images/redshift-02.png"
+    alt="Redshift Connection Details form with the SSH Tunnel Configuration section expanded (1), the SSH fields highlighted (2) and the Save and Sync metadata button highlighted (3)"
+    lightAlt="Redshift Connection Details form with the SSH Tunnel Configuration section expanded (1), the SSH fields highlighted (2) and the Save and Sync metadata button highlighted (3)"
+    darkAlt="Redshift Connection Details form with the SSH Tunnel Configuration section expanded (1), the SSH fields highlighted (2) and the Save and Sync metadata button highlighted (3)"
+    className="dark:hidden"
+  />
+  <img
+    src="/dark-img/redshift-dark-02.png"
+    alt="Redshift Connection Details form with the SSH Tunnel Configuration section expanded (1), the SSH fields highlighted (2) and the Save and Sync metadata button highlighted (3)"
+    lightAlt="Redshift Connection Details form with the SSH Tunnel Configuration section expanded (1), the SSH fields highlighted (2) and the Save and Sync metadata button highlighted (3)"
+    darkAlt="Redshift Connection Details form with the SSH Tunnel Configuration section expanded (1), the SSH fields highlighted (2) and the Save and Sync metadata button highlighted (3)"
+    className="hidden dark:block"
+  />
+</Frame>
 
 ## Option 3: Connect via VPC peering
 

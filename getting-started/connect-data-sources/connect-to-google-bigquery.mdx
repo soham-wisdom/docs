@@ -15,15 +15,15 @@ WisdomAI connects to Google BigQuery using a service account for background oper
 
 These steps create the connection in WisdomAI and authenticate the service account. Complete them whether you plan to use service account authentication only or enable OAuth on top.
 
-1. In WisdomAI, go to **Connections** and click **Add Connection**.
+1. In WisdomAI, go to **Connections** and click **Add connection**.
 2. Select **BigQuery** as the data source type.
 
 <Frame>
   <img
-    src="/images/add-connect.png"
-    alt="Add Connection screen showing BigQuery selected as the data source type"
-    lightAlt="Add Connection screen showing BigQuery selected as the data source type"
-    darkAlt="Add Connection screen showing BigQuery selected as the data source type"
+    src="/images/big-query-add-connect.png"
+    alt="Add Connection page with Connections selected in the sidebar (1) and the BigQuery tile selected (2)"
+    lightAlt="Add Connection page with Connections selected in the sidebar (1) and the BigQuery tile selected (2)"
+    darkAlt="Add Connection page with Connections selected in the sidebar (1) and the BigQuery tile selected (2)"
     title="Add Connection BigQuery"
   />
 </Frame>
@@ -91,7 +91,7 @@ The OAuth client lets WisdomAI request access tokens on behalf of your users.
 5. Leave **Authorized JavaScript origins** empty.
 6. Under **Authorized redirect URIs**, add:
    ```text
-   https://api.descope.com/v1/outbound/oauth/callback
+   https://auth.wisdom.ai/v1/outbound/oauth/callback
    ```
 7. Click **Create**.
 
@@ -102,7 +102,7 @@ The OAuth client lets WisdomAI request access tokens on behalf of your users.
 8. Google Cloud displays a confirmation dialog with the new credentials. Copy the **Client ID** and **Client Secret**, and optionally click **Download JSON** to save them locally for reference.
 
 <Frame>
-  ![Oauth Step8](/images/Oauth-step8.png)
+  ![Google Cloud OAuth client created dialog showing the Client ID and Client secret, with the dialog highlighted (8) and a Download JSON link](/images/Oauth-step8.png)
 </Frame>
 
 ### Authenticate in WisdomAI
@@ -124,7 +124,13 @@ Return to the WisdomAI connection form to finish the OAuth setup.
 </Frame>
 
 4. After successful authentication, you are redirected back to WisdomAI. Verify that the OAuth connection status shows as connected.
-5. Click **Save** to complete the connection setup.
+5. Click **Save and Sync metadata** to complete the connection setup.
+
+To set a query timeout or max bytes scanned, or to use alternate credential sets, see [Advanced settings](/getting-started/connect-data-sources/supported-data-sources#advanced-settings).
+
+<Note>
+  To reduce data scanned by queries on partitioned tables, use [**Limit partitioned tables to recent partitions**](/setting-up-wisdom-ai/manage-domains/advanced-tab#limit-partitioned-tables-to-recent-partitions) under **Domain → Advanced → Performance**. The setting is enabled by default.
+</Note>
 
 ## Security considerations
 

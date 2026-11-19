@@ -16,7 +16,7 @@ Before you begin, make sure you have the following:
 
 You will need the following four pieces of information from your Databricks environment:
 
-1. **Host**: The URL of your Databricks workspace, which typically looks like `https://<region>.cloud.databricks.com/`. You can find this in your SQL Warehouse connection details.
+1. **Host**: Your workspace's server hostname, without `https://`, for example `dbc-a1b2c3d4-e5f6.cloud.databricks.com`. You can find this in your SQL Warehouse connection details.
 2. **HTTP Path**: The specific path to your SQL Warehouse, usually starting with `/sql/1.0/warehouses/`. You can find this in the "Connection Details" tab of your SQL Warehouse.
 3. **Client ID**: The Application ID of your Databricks Service Principal.
 4. **Client Secret**: The secret key generated for your Databricks Service Principal.
@@ -96,8 +96,26 @@ Replace `<service_principal_id>` with the Application ID of your service princip
 
 Once you have gathered the required information, you can configure the connection in WisdomAI:
 
-1. In WisdomAI, navigate to the **Connections** section and click **Add Connection**.
+1. In WisdomAI, navigate to the **Connections** section and click **Add connection**.
 2. Select **Databricks** as the data source type.
+
+<Frame>
+  <img
+    src="/images/databricks-select.png"
+    alt="Add Connection page with Connections selected in the sidebar (1) and the Databricks tile selected (2)"
+    lightAlt="Add Connection page with Connections selected in the sidebar (1) and the Databricks tile selected (2)"
+    darkAlt="Add Connection page with Connections selected in the sidebar (1) and the Databricks tile selected (2)"
+    className="dark:hidden"
+  />
+  <img
+    src="/dark-img/databricks-select-dark.png"
+    alt="Add Connection page with Connections selected in the sidebar (1) and the Databricks tile selected (2)"
+    lightAlt="Add Connection page with Connections selected in the sidebar (1) and the Databricks tile selected (2)"
+    darkAlt="Add Connection page with Connections selected in the sidebar (1) and the Databricks tile selected (2)"
+    className="hidden dark:block"
+  />
+</Frame>
+
 3. Fill in the connection details in the "Databricks connection details" section.
    - **Connection Name**: Choose a descriptive name for your connection (e.g., "Databricks Prod").
    - **Host**: Paste the Server Hostname you obtained from Databricks.
@@ -105,22 +123,27 @@ Once you have gathered the required information, you can configure the connectio
    - **Client ID**: Enter your Client ID (Application ID). This field is mandatory.
    - **Client Secret**: Enter your Client Secret (the value copied immediately after creation). This field is mandatory.
    - **Catalog Filters (Optional)**: Specify any Catalog Filters if you want to further restrict the catalogs/schemas WisdomAI crawls.
+   - **Staging volume path (optional)**: A Unity Catalog volume (`/Volumes/<catalog>/<schema>/<volume>`) where WisdomAI can stage uploaded CSV files so they can be joined with your Databricks tables. Click **Setup instructions** for the SQL that grants the service principal access. WisdomAI checks write access when you save.
 4. Click **Save and Sync metadata**. WisdomAI will use the provided credentials to connect to Databricks and scan the metadata of the specified catalogs and tables.
 
-<img
-  alt="image.png"
-  lightAlt="image.png"
-  darkAlt="image.png"
-  src="/images/databricks.png"
-  className="dark:hidden"
-/>
-<img
-  alt="image.png"
-  lightAlt="image.png"
-  darkAlt="image.png"
-  src="/dark-img/databricks-dark.png"
-  className="hidden dark:block"
-/>
+<Frame>
+  <img
+    src="/images/databricks.png"
+    alt="Databricks Connection Details form with the connection details highlighted (3) and the Save and Sync metadata button highlighted (4)"
+    lightAlt="Databricks Connection Details form with the connection details highlighted (3) and the Save and Sync metadata button highlighted (4)"
+    darkAlt="Databricks Connection Details form with the connection details highlighted (3) and the Save and Sync metadata button highlighted (4)"
+    className="dark:hidden"
+  />
+  <img
+    src="/dark-img/databricks-dark.png"
+    alt="Databricks Connection Details form with the connection details highlighted (3) and the Save and Sync metadata button highlighted (4)"
+    lightAlt="Databricks Connection Details form with the connection details highlighted (3) and the Save and Sync metadata button highlighted (4)"
+    darkAlt="Databricks Connection Details form with the connection details highlighted (3) and the Save and Sync metadata button highlighted (4)"
+    className="hidden dark:block"
+  />
+</Frame>
+
+To set a query timeout or use alternate credential sets, see [Advanced settings](/getting-started/connect-data-sources/supported-data-sources#advanced-settings).
 
 ## Security considerations and best practices
 
@@ -147,7 +170,7 @@ Having trouble? Here are solutions to some frequently encountered problems.
 ### Catalog not found or table not found
 
 - Verify the spelling of the catalog or table names.
-- If using catalog filters in WisdomAl, ensure the catalog is included in the filter.
+- If using catalog filters in WisdomAI, ensure the catalog is included in the filter.
 - Confirm that the Service Principal has permissions on the specific catalog you are trying to access.
 
 ### Connection timeout or network errors

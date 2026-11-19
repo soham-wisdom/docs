@@ -26,7 +26,7 @@ To follow this tutorial, you should:
 To get started, you first need to connect your existing data source to WisdomAI so the system can access and prepare your data for use and create reports:
 
 1. Go to the left sidebar and select **Connections**.
-2. Click on the **Add Connection** button to start.
+2. Click **Add connection**.
    <Note>
      This action lets you link your existing data sources to WisdomAI. Doing so enables the system to scan metadata. For data warehouse connections, it also enables WisdomAI to fetch data when users ask natural-language questions.
    </Note>
@@ -56,7 +56,10 @@ To get started, you first need to connect your existing data source to WisdomAI 
    <Note>
      The fields and authentication options shown depend on the data source you selected in step 3. See [Supported Data Sources](/getting-started/connect-data-sources/supported-data-sources) for source-specific setup guides.
    </Note>
-5. Click on the **Save and Sync metadata** button.
+5. Click **Save and Sync metadata** (warehouses, Tableau, and MCP servers) or **Save** (file, repository, and calendar sources).
+   <Info>
+     WisdomAI checks the connection when you save it. If a check fails, the form lists what to fix. See [What happens when you save](/getting-started/connect-data-sources/supported-data-sources#what-happens-when-you-save).
+   </Info>
 
 <Frame>
   <img
@@ -134,20 +137,20 @@ Once your data is added, you are ready to start querying it to retrieve informat
 </Frame>
 
 <Tip>
-  If you want to connect a new source, select this option in step 3. In the same window, you can choose to connect a new Data store or MCP server, or add files (CSV, TSV, or Excel).
+  If you want to connect a new source, select this option in step 3. In the same window, you can choose to connect a new Data store or MCP server, or add files (CSV or TSV).
 
   <Frame>
     <img
-      alt="Connect Data Surce step"
-      lightAlt="Connect Data Surce step"
-      darkAlt="Connect Data Surce step"
+      alt="Connect Data Source dialog with Connect to Data store or MCP server selected, a Connection name field, a Data source dropdown and the Select Data button"
+      lightAlt="Connect Data Source dialog with Connect to Data store or MCP server selected, a Connection name field, a Data source dropdown and the Select Data button"
+      darkAlt="Connect Data Source dialog with Connect to Data store or MCP server selected, a Connection name field, a Data source dropdown and the Select Data button"
       src="/images/newui-create-domain-04-callout.png"
       className="dark:hidden"
     />
     <img
-      alt="Connect Data Surce step"
-      lightAlt="Connect Data Surce step"
-      darkAlt="Connect Data Surce step"
+      alt="Connect Data Source dialog with Connect to Data store or MCP server selected, a Connection name field, a Data source dropdown and the Select Data button"
+      lightAlt="Connect Data Source dialog with Connect to Data store or MCP server selected, a Connection name field, a Data source dropdown and the Select Data button"
+      darkAlt="Connect Data Source dialog with Connect to Data store or MCP server selected, a Connection name field, a Data source dropdown and the Select Data button"
       src="/dark-img/connect-new-source.png"
       className="hidden dark:block"
     />
@@ -156,7 +159,7 @@ Once your data is added, you are ready to start querying it to retrieve informat
 
 ## 3. Upload CSV files (Optional)
 
-In addition to database connections, Admins can add data directly to a Domain using CSV, TSV, or Excel files. When an Admin adds a file this way, the data becomes a permanent part of the Domain and is available to all users with access to that Domain.
+In addition to database connections, Admins can add data directly to a Domain using CSV or TSV files. When an Admin adds a file this way, the data becomes a permanent part of the Domain and is available to all users with access to that Domain.
 
 1. Navigate to **Domains** in the left sidebar and select your Domain.
 2. Go to the **Data Sources** tab.

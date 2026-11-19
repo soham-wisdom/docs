@@ -42,3 +42,11 @@ The tab is a set of cards, with a list of sections on the right. You can configu
 <Frame>
   ![UI snippet showing the Advanced Tab](/images/new-ui-advanced-tab.png)
 </Frame>
+
+### **Limit partitioned tables to recent partitions**
+
+Under **Performance**, use this setting to reduce the amount of data scanned when querying partitioned tables. When enabled, WisdomAI restricts queries on partitioned tables to recent partitions.
+
+This setting is enabled by default. Turn it off if your domain needs to query older data.
+
+Required partition filters, such as those enforced by BigQuery, are still applied.

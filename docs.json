@@ -67,6 +67,7 @@
                 "group": "Connect Data Sources",
                 "pages": [
                   "getting-started/connect-data-sources/supported-data-sources",
+                  "getting-started/connect-data-sources/connect-calendars",
                   "getting-started/connect-data-sources/connect-aws-vpc-peering",
                   "getting-started/connect-data-sources/connect-to-amazon-redshift",
                   "getting-started/connect-data-sources/connect-to-databricks",
