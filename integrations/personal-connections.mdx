@@ -2,8 +2,6 @@
 title: "Personal connections"
 ---
 
-# Personal connections
-
 Personal connections let you link your own apps, such as Gmail, Google Calendar, Linear, Atlassian, and Notion, so WisdomAI can use them when you chat. WisdomAI signs in with your account, sees only what your account can see, and no one else can use your connection. You can also block individual tools, so chat never gets access to actions you don't want it to take.
 
 ## Individual and organization connectors
@@ -15,7 +13,9 @@ The **Connections** page lists the apps you have connected and the apps availabl
 | Individual | You sign in with your own account. WisdomAI sees only what that account can access, and only you can use it. |
 | Organization | An admin set up the connector for your organization. You still sign in with your own account to use it. |
 
-Admins choose which connected apps (MCP and OAuth connectors) appear for your organization.
+<Note>
+  Admins choose which connected apps (MCP and OAuth connectors) appear for your organization.
+</Note>
 
 ## Privacy
 
@@ -27,14 +27,24 @@ To read this summary in the product, click **How connections work** on the **Con
 
 This example connects Notion. The steps are the same for other apps.
 
-1. Go to **Settings** > **Connections**.
-2. Search for the app in the **Search connectors** box.
+1. Open the **Organization** menu and click **Organization settings**.
 
 <Frame>
-  ![Connections page filtered by Notion, listing four Notion connectors with Individual or Organization authorization](/images/personal-connections-search.png)
+  ![Organization menu open in the sidebar with Organization settings highlighted above Users and Add organization](/images/per-conncet-org-settings.png)
+</Frame>
+
+2. Click **Connections** to open the connections page.
+
+<Frame>
+  ![Settings page with the Connections card highlighted under Personal, leading to the Connections page](/images/pre-connect-connections.png)
 </Frame>
 
 3. Click **Connect** on the connector you want. To use your own account, choose the connector with Individual authorization.
+
+<Frame>
+  ![Connections page listing Atlassian, Linear, Notion, and Sentry as Individual, with Connect highlighted for Notion](/images/per-connect-connect.png)
+</Frame>
+
 4. Read the dialog. It states what WisdomAI will be able to see. Click **Continue to Notion**.
 
 <Frame>
@@ -69,7 +79,9 @@ To stop chat from deleting your Notion pages, expand **Changes data** and set `n
   ![Notion tool permissions page with the Changes data group open and notion-delete-pages set to Blocked](/images/personal-connections-tool-permissions.png)
 </Frame>
 
-Permissions apply to your connection only. Other people are not affected.
+<Note>
+  Permissions apply to your connection only. Other people are not affected.
+</Note>
 
 ## Ask chat about your connected app
 
