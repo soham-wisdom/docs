@@ -175,6 +175,7 @@
             "group": "Integrations",
             "pages": [
               "integrations/connect-to-slack",
+              "integrations/personal-connections",
               "integrations/google-sheets",
               {
                 "group": "WisdomAI MCP Server",
