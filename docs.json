@@ -60,97 +60,51 @@
         ]
       },
       {
-        "tab": "Docs",
-        "icon": "book-open",
-        "groups": [
+        "tab": "Admin",
+        "icon": "user-gear",
+        "anchors": [
           {
-            "group": "Connect Data",
-            "icon": "plug",
-            "pages": [
-              "getting-started/connect-data-sources/supported-data-sources",
+            "anchor": "Skills",
+            "icon": "wand-magic-sparkles",
+            "groups": [
               {
-                "group": "Data Warehouses",
+                "group": "Skills",
+                "tag": "New",
                 "pages": [
-                  "getting-started/connect-data-sources/connect-aws-vpc-peering",
-                  "getting-started/connect-data-sources/connect-to-amazon-redshift",
-                  "getting-started/connect-data-sources/connect-to-databricks",
-                  "getting-started/connect-data-sources/connect-to-google-bigquery",
-                  "getting-started/connect-data-sources/connect-to-snowflake",
-                  "getting-started/connect-data-sources/set-up-gcp-service-account"
-                ]
-              },
-              {
-                "group": "Documents & Other Sources",
-                "pages": [
-                  "getting-started/connect-data-sources/connect-mcp-server",
-                  "improve-wisdom-ai-responses/connect-unstructed-repositories-datasets",
-                  "getting-started/connect-data-sources/search-the-web",
-                  "getting-started/connect-data-sources/connect-to-sharepoint"
+                  "setting-up-wisdom-ai/manage-domains/skills",
+                  "setting-up-wisdom-ai/manage-domains/create-a-skill"
                 ]
               }
             ]
           },
           {
-            "group": "Domains & Context",
-            "icon": "database",
-            "pages": [
-              "setting-up-wisdom-ai/getting-started-domains-context",
+            "anchor": "Agents",
+            "icon": "robot",
+            "groups": [
               {
-                "group": "Domains",
+                "group": "Agents",
                 "pages": [
-                  "setting-up-wisdom-ai/manage-domains/understand-domains",
-                  "setting-up-wisdom-ai/domain-groups",
-                  "setting-up-wisdom-ai/domain-groups-how-to",
-                  "setting-up-wisdom-ai/add-domain-specific-knowledge",
-                  {
-                    "group": "Manage Tables & Columns",
-                    "pages": [
-                      "setting-up-wisdom-ai/manage-tables-columns/document-tables-and-columns",
-                      "setting-up-wisdom-ai/manage-tables-columns/advanced-column-options",
-                      "setting-up-wisdom-ai/manage-tables-columns/set-up-rag"
-                    ]
-                  },
-                  "setting-up-wisdom-ai/cache-tables",
-                  "setting-up-wisdom-ai/smart-cache",
-                  "setting-up-wisdom-ai/manage-domains/domain-health",
-                  "setting-up-wisdom-ai/manage-domains/import-apache-ossie-model",
-                  {
-                    "group": "Domain Tabs",
-                    "pages": [
-                      "setting-up-wisdom-ai/manage-domains/overview-tab",
-                      "setting-up-wisdom-ai/manage-domains/data-sources-tab",
-                      "setting-up-wisdom-ai/manage-domains/context-tab",
-                      "setting-up-wisdom-ai/manage-domains/changelog-tab",
-                      "setting-up-wisdom-ai/manage-domains/advanced-tab",
-                      "setting-up-wisdom-ai/manage-domains/evaluation-tab",
-                      "setting-up-wisdom-ai/manage-domains/sql-playground-tab"
-                    ]
-                  }
+                  "setting-up-wisdom-ai/agents/agents",
+                  "setting-up-wisdom-ai/agents/tutorial-create-agent",
+                  "setting-up-wisdom-ai/agents/visual-mode",
+                  "setting-up-wisdom-ai/agents/nodes-reference",
+                  "setting-up-wisdom-ai/agents/agent-best-practices",
+                  "setting-up-wisdom-ai/agents/manage-agents",
+                  "setting-up-wisdom-ai/agents/reviewed-runs-in-agents",
+                  "product-updates/spring-2026/parameterized-agents"
                 ]
-              },
+              }
+            ]
+          },
+          {
+            "anchor": "Chats",
+            "icon": "comments",
+            "groups": [
               {
-                "group": "Context",
+                "group": "Chats",
                 "pages": [
-                  "setting-up-wisdom-ai/advanced-data-modeling-creating-context",
-                  "setting-up-wisdom-ai/context-modeling-guide-workflow",
-                  "setting-up-wisdom-ai/context-libraries",
-                  "improve-wisdom-ai-responses/enhancing-data-analysis-with-custom-business-context",
-                  "improve-wisdom-ai-responses/how-to-create-metrics",
-                  "product-updates/february-2026/knowledge-playground",
-                  {
-                    "group": "Context Builder",
-                    "pages": [
-                      "product-updates/february-2026/context-builder-file-uploads",
-                      "product-updates/spring-2026/context-builder-connections"
-                    ]
-                  },
-                  {
-                    "group": "Reviewed Queries",
-                    "pages": [
-                      "setting-up-wisdom-ai/feedback-mechanisms/reviewed-queries",
-                      "product-updates/february-2026/mcp-reviewed-queries"
-                    ]
-                  }
+                  "chat/overview",
+                  "admins/using-wisdom-ai-everyday/command-palette"
                 ]
               },
               {
@@ -166,13 +120,249 @@
             ]
           },
           {
-            "group": "Ask & Analyze",
+            "anchor": "Dashboards",
+            "icon": "chart-simple",
+            "groups": [
+              {
+                "group": "Dashboards",
+                "pages": [
+                  "improve-wisdom-ai-responses/build-dashboards",
+                  "dashboards/dashboard-versioning",
+                  "dashboards/cached-data",
+                  "using-wisdom-ai-everyday/share-dashboards-and-set-access-control",
+                  "using-wisdom-ai-everyday/schedule-dashboards-notifications"
+                ]
+              }
+            ]
+          },
+          {
+            "anchor": "Live Apps",
+            "icon": "grid-2",
+            "groups": [
+              {
+                "group": "Live Apps",
+                "tag": "Just shipped",
+                "pages": [
+                  "live-apps/overview",
+                  "live-apps/create-live-app",
+                  "live-apps/data-and-trust",
+                  "live-apps/share-and-access"
+                ]
+              }
+            ]
+          },
+          {
+            "anchor": "Setup & Security",
+            "icon": "shield-check",
+            "groups": [
+              {
+                "group": "Connect Data",
+                "icon": "plug",
+                "pages": [
+                  "getting-started/connect-data-sources/supported-data-sources",
+                  {
+                    "group": "Data Warehouses",
+                    "pages": [
+                      "getting-started/connect-data-sources/connect-aws-vpc-peering",
+                      "getting-started/connect-data-sources/connect-to-amazon-redshift",
+                      "getting-started/connect-data-sources/connect-to-databricks",
+                      "getting-started/connect-data-sources/connect-to-google-bigquery",
+                      "getting-started/connect-data-sources/connect-to-snowflake",
+                      "getting-started/connect-data-sources/set-up-gcp-service-account"
+                    ]
+                  },
+                  {
+                    "group": "Documents & Other Sources",
+                    "pages": [
+                      "getting-started/connect-data-sources/connect-mcp-server",
+                      "improve-wisdom-ai-responses/connect-unstructed-repositories-datasets",
+                      "getting-started/connect-data-sources/search-the-web",
+                      "getting-started/connect-data-sources/connect-to-sharepoint"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "Domains & Context",
+                "icon": "database",
+                "pages": [
+                  "setting-up-wisdom-ai/getting-started-domains-context",
+                  {
+                    "group": "Domains",
+                    "pages": [
+                      "setting-up-wisdom-ai/manage-domains/understand-domains",
+                      "setting-up-wisdom-ai/domain-groups",
+                      "setting-up-wisdom-ai/domain-groups-how-to",
+                      "setting-up-wisdom-ai/add-domain-specific-knowledge",
+                      {
+                        "group": "Manage Tables & Columns",
+                        "pages": [
+                          "setting-up-wisdom-ai/manage-tables-columns/document-tables-and-columns",
+                          "setting-up-wisdom-ai/manage-tables-columns/advanced-column-options",
+                          "setting-up-wisdom-ai/manage-tables-columns/set-up-rag"
+                        ]
+                      },
+                      "setting-up-wisdom-ai/cache-tables",
+                      "setting-up-wisdom-ai/smart-cache",
+                      "setting-up-wisdom-ai/manage-domains/domain-health",
+                      "setting-up-wisdom-ai/manage-domains/import-apache-ossie-model",
+                      {
+                        "group": "Domain Tabs",
+                        "pages": [
+                          "setting-up-wisdom-ai/manage-domains/overview-tab",
+                          "setting-up-wisdom-ai/manage-domains/data-sources-tab",
+                          "setting-up-wisdom-ai/manage-domains/context-tab",
+                          "setting-up-wisdom-ai/manage-domains/changelog-tab",
+                          "setting-up-wisdom-ai/manage-domains/advanced-tab",
+                          "setting-up-wisdom-ai/manage-domains/evaluation-tab",
+                          "setting-up-wisdom-ai/manage-domains/sql-playground-tab"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "Context",
+                    "pages": [
+                      "setting-up-wisdom-ai/advanced-data-modeling-creating-context",
+                      "setting-up-wisdom-ai/context-modeling-guide-workflow",
+                      "setting-up-wisdom-ai/context-libraries",
+                      "improve-wisdom-ai-responses/enhancing-data-analysis-with-custom-business-context",
+                      "improve-wisdom-ai-responses/how-to-create-metrics",
+                      "product-updates/february-2026/knowledge-playground",
+                      {
+                        "group": "Context Builder",
+                        "pages": [
+                          "product-updates/february-2026/context-builder-file-uploads",
+                          "product-updates/spring-2026/context-builder-connections"
+                        ]
+                      },
+                      {
+                        "group": "Reviewed Queries",
+                        "pages": [
+                          "setting-up-wisdom-ai/feedback-mechanisms/reviewed-queries",
+                          "product-updates/february-2026/mcp-reviewed-queries"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "Test & Improve Answers",
+                    "pages": [
+                      "improve-wisdom-ai-responses/validate-and-test-answers",
+                      "improve-wisdom-ai-responses/use-evaluations-sets-and-runs",
+                      "using-wisdom-ai-everyday/knowledge-signals-from-chat",
+                      "setting-up-wisdom-ai/feedback-mechanisms/monitor-negative-feedback",
+                      "setting-up-wisdom-ai/feedback-mechanisms/limited-context"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "Integrations",
+                "icon": "puzzle-piece",
+                "pages": [
+                  {
+                    "group": "WisdomAI MCP Server",
+                    "pages": [
+                      "integrations/mcp-server",
+                      "integrations/mcp-server/ask-a-question",
+                      "integrations/mcp-server/give-feedback",
+                      "integrations/mcp-server/manage-context"
+                    ]
+                  },
+                  {
+                    "group": "Slack",
+                    "pages": [
+                      "integrations/connect-to-slack",
+                      "product-updates/february-2026/data-query-on-slack"
+                    ]
+                  },
+                  "integrations/google-sheets",
+                  "settings/connected-apps"
+                ]
+              },
+              {
+                "group": "Security & Settings",
+                "icon": "shield-check",
+                "pages": [
+                  {
+                    "group": "Data Access Control",
+                    "pages": [
+                      "manage-account/row-level-access-control/row-level-access-control",
+                      "manage-account/row-level-access-control/understanding-row-level-security",
+                      "manage-account/row-level-access-control/column-level-security-cls"
+                    ]
+                  },
+                  {
+                    "group": "Access Management",
+                    "pages": [
+                      "manage-account/access-management",
+                      "access-management/manage-organizations",
+                      "access-management/object-mirroring",
+                      "access-management/set-up-object-mirroring"
+                    ]
+                  },
+                  {
+                    "group": "User Management",
+                    "pages": [
+                      "manage-account/users-management",
+                      "manage-account/automated-provisioning",
+                      "manage-account/role-mapping-and-sso-groups"
+                    ]
+                  },
+                  {
+                    "group": "Settings & Compliance",
+                    "pages": [
+                      "settings/api-keys",
+                      "settings/email-access-control",
+                      "using-wisdom-ai-everyday/auditing",
+                      "manage-account/monitor-performance-and-usage",
+                      "manage-account/compliance-and-best-practices",
+                      "manage-account/privacy-policy"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Explorer",
+        "icon": "magnifying-glass-chart",
+        "anchors": [
+          {
+            "anchor": "Skills",
+            "icon": "wand-magic-sparkles",
+            "groups": [
+              {
+                "group": "Skills",
+                "pages": [
+                  "setting-up-wisdom-ai/manage-domains/skills"
+                ]
+              }
+            ]
+          },
+          {
+            "anchor": "Agents",
+            "icon": "robot",
+            "groups": [
+              {
+                "group": "Agents",
+                "pages": [
+                  "explorers/agents"
+                ]
+              }
+            ]
+          },
+          {
+            "anchor": "Chats",
             "icon": "comments",
-            "pages": [
-              "explorers/getting-started-explorers",
+            "groups": [
               {
                 "group": "Chats",
                 "pages": [
+                  "explorers/getting-started-explorers",
                   "chat/overview",
                   "using-wisdom-ai-everyday/ask-better-questions",
                   "explorers/using-wisdom-ai-everyday/command-palette",
@@ -194,9 +384,9 @@
             ]
           },
           {
-            "group": "Dashboards & Live Apps",
+            "anchor": "Dashboards",
             "icon": "chart-simple",
-            "pages": [
+            "groups": [
               {
                 "group": "Dashboards",
                 "pages": [
@@ -213,7 +403,13 @@
                   "using-wisdom-ai-everyday/share-dashboards-and-set-access-control",
                   "using-wisdom-ai-everyday/schedule-dashboards-notifications"
                 ]
-              },
+              }
+            ]
+          },
+          {
+            "anchor": "Live Apps",
+            "icon": "grid-2",
+            "groups": [
               {
                 "group": "Live Apps",
                 "tag": "Just shipped",
@@ -225,308 +421,297 @@
                 ]
               }
             ]
-          },
-          {
-            "group": "Agents & Skills",
-            "icon": "robot",
-            "pages": [
-              {
-                "group": "Agents",
-                "pages": [
-                  "setting-up-wisdom-ai/agents/agents",
-                  "setting-up-wisdom-ai/agents/tutorial-create-agent",
-                  "setting-up-wisdom-ai/agents/visual-mode",
-                  "setting-up-wisdom-ai/agents/nodes-reference",
-                  "setting-up-wisdom-ai/agents/agent-best-practices",
-                  "setting-up-wisdom-ai/agents/manage-agents",
-                  "setting-up-wisdom-ai/agents/reviewed-runs-in-agents",
-                  "product-updates/spring-2026/parameterized-agents"
-                ]
-              },
-              {
-                "group": "Skills",
-                "tag": "New",
-                "pages": [
-                  "setting-up-wisdom-ai/manage-domains/skills",
-                  "setting-up-wisdom-ai/manage-domains/create-a-skill"
-                ]
-              }
-            ]
-          },
-          {
-            "group": "Integrations",
-            "icon": "puzzle-piece",
-            "pages": [
-              {
-                "group": "WisdomAI MCP Server",
-                "pages": [
-                  "integrations/mcp-server",
-                  "integrations/mcp-server/ask-a-question",
-                  "integrations/mcp-server/give-feedback",
-                  "integrations/mcp-server/manage-context"
-                ]
-              },
-              {
-                "group": "Slack",
-                "pages": [
-                  "integrations/connect-to-slack",
-                  "product-updates/february-2026/data-query-on-slack"
-                ]
-              },
-              "integrations/google-sheets",
-              "settings/connected-apps"
-            ]
-          },
-          {
-            "group": "Security & Settings",
-            "icon": "shield-check",
-            "pages": [
-              {
-                "group": "Data Access Control",
-                "pages": [
-                  "manage-account/row-level-access-control/row-level-access-control",
-                  "manage-account/row-level-access-control/understanding-row-level-security",
-                  "manage-account/row-level-access-control/column-level-security-cls"
-                ]
-              },
-              {
-                "group": "Access Management",
-                "pages": [
-                  "manage-account/access-management",
-                  "access-management/manage-organizations",
-                  "access-management/object-mirroring",
-                  "access-management/set-up-object-mirroring"
-                ]
-              },
-              {
-                "group": "User Management",
-                "pages": [
-                  "manage-account/users-management",
-                  "manage-account/automated-provisioning",
-                  "manage-account/role-mapping-and-sso-groups"
-                ]
-              },
-              {
-                "group": "Settings & Compliance",
-                "pages": [
-                  "settings/api-keys",
-                  "settings/email-access-control",
-                  "using-wisdom-ai-everyday/auditing",
-                  "manage-account/monitor-performance-and-usage",
-                  "manage-account/compliance-and-best-practices",
-                  "manage-account/privacy-policy"
-                ]
-              }
-            ]
           }
         ]
       },
       {
-        "tab": "Developers",
+        "tab": "Developer",
         "icon": "code",
-        "groups": [
+        "anchors": [
           {
-            "group": "Get Started",
-            "pages": [
-              "integrations/developers"
-            ]
-          },
-          {
-            "group": "User Management",
-            "pages": [
-              "integrations/user-management/user-lifecycle",
-              "integrations/user-management/user-attributes",
-              "integrations/user-management/rbac",
-              "integrations/user-management/mirror-with-the-api"
-            ]
-          },
-          {
-            "group": "Embeddings",
-            "pages": [
-              "integrations/embeddings/embedding",
-              "integrations/embeddings/session-management",
-              "integrations/embeddings/error-handling",
+            "anchor": "Skills",
+            "icon": "wand-magic-sparkles",
+            "groups": [
               {
-                "group": "iframe",
+                "group": "Skills",
                 "pages": [
-                  "integrations/embeddings/embedding-modes",
-                  "integrations/embeddings/iframe/embed-chat",
-                  "integrations/embeddings/iframe/embed-a-live-app",
-                  "integrations/embeddings/iframe/embed-a-dashboard"
-                ]
-              },
-              {
-                "group": "SDK",
-                "pages": [
-                  "integrations/embeddings/sdk/sdk-overview",
-                  "integrations/embeddings/sdk/sdk-quickstart",
-                  "integrations/embeddings/sdk/sdk-components",
-                  "integrations/embeddings/sdk/sdk-auth"
+                  "integrations/skills-api"
                 ]
               }
             ]
           },
           {
-            "group": "GraphQL API",
-            "boost": 0.05,
-            "pages": [
-              "integrations/graphql-api/GraphQL-API",
-              "integrations/graphql-api/graphql-primer",
-              "using-wisdom-ai-everyday/knowledge-management-via-graph-ql-api",
+            "anchor": "Agents",
+            "icon": "robot",
+            "groups": [
               {
-                "group": "Objects",
+                "group": "Agents",
                 "pages": [
-                  "integrations/graphql-api/objects/ai-workstream",
-                  "integrations/graphql-api/objects/attributes",
-                  "integrations/graphql-api/objects/canvas-config",
-                  "integrations/graphql-api/objects/chat-message",
-                  "integrations/graphql-api/objects/chat-message-diff",
-                  "integrations/graphql-api/objects/chat-message-sender",
-                  "integrations/graphql-api/objects/chat-thinking-effort",
-                  "integrations/graphql-api/objects/codegen-config",
-                  "integrations/graphql-api/objects/connection",
-                  "integrations/graphql-api/objects/conversation-update-one-of",
-                  "integrations/graphql-api/objects/dashboard",
-                  "integrations/graphql-api/objects/dashboard-filter-definition",
-                  "integrations/graphql-api/objects/dashboard-input",
-                  "integrations/graphql-api/objects/dashboard-scope",
-                  "integrations/graphql-api/objects/dashboard-summary-diff",
-                  "integrations/graphql-api/objects/dashboard-summary-type",
-                  "integrations/graphql-api/objects/dashboard-widget",
-                  "integrations/graphql-api/objects/dashboard-widget-input",
-                  "integrations/graphql-api/objects/dashboards-response",
-                  "integrations/graphql-api/objects/data-label-mode",
-                  "integrations/graphql-api/objects/database-model",
-                  "integrations/graphql-api/objects/database-type",
-                  "integrations/graphql-api/objects/delta",
-                  "integrations/graphql-api/objects/delta-element",
-                  "integrations/graphql-api/objects/delta-input",
-                  "integrations/graphql-api/objects/domain-model",
-                  "integrations/graphql-api/objects/domain-rls-config",
-                  "integrations/graphql-api/objects/domain-web-search-config",
-                  "integrations/graphql-api/objects/filter-applied-state",
-                  "integrations/graphql-api/objects/job-status",
-                  "integrations/graphql-api/objects/join-input",
-                  "integrations/graphql-api/objects/knowledge",
-                  "integrations/graphql-api/objects/llm-tool-call-results",
-                  "integrations/graphql-api/objects/llm-tool-calls",
-                  "integrations/graphql-api/objects/operation",
-                  "integrations/graphql-api/objects/response-status",
-                  "integrations/graphql-api/objects/scope-role-assignment-input",
-                  "integrations/graphql-api/objects/section",
-                  "integrations/graphql-api/objects/subscription-auth-input",
-                  "integrations/graphql-api/objects/table-input",
-                  "integrations/graphql-api/objects/text-artifact",
-                  "integrations/graphql-api/objects/tool-selection",
-                  "integrations/graphql-api/objects/user",
-                  "integrations/graphql-api/objects/visualization",
-                  "integrations/graphql-api/objects/visualization-type",
-                  "integrations/graphql-api/objects/viz-config",
-                  "integrations/graphql-api/objects/widget-layout",
-                  "integrations/graphql-api/objects/widget-layout-input",
-                  "integrations/graphql-api/objects/widget-type"
+                  "integrations/graphql-api/mutations/agent/trigger-agent"
                 ]
-              },
+              }
+            ]
+          },
+          {
+            "anchor": "Chats",
+            "icon": "comments",
+            "groups": [
               {
-                "group": "Queries",
+                "group": "Chats",
                 "pages": [
-                  {
-                    "group": "Auth",
-                    "pages": [
-                      "integrations/graphql-api/queries/auth/exchange-access-token",
-                      "integrations/graphql-api/queries/auth/impersonate-user"
-                    ]
-                  },
-                  {
-                    "group": "Connection",
-                    "pages": [
-                      "integrations/graphql-api/queries/connection/connection"
-                    ]
-                  },
-                  {
-                    "group": "Dashboard",
-                    "pages": [
-                      "integrations/graphql-api/queries/dashboard/dashboard",
-                      "integrations/graphql-api/queries/dashboard/dashboards"
-                    ]
-                  },
-                  {
-                    "group": "User",
-                    "pages": [
-                      "integrations/graphql-api/queries/user/current-user",
-                      "integrations/graphql-api/queries/user/list-users"
-                    ]
-                  }
-                ]
-              },
-              {
-                "group": "Mutations",
-                "pages": [
-                  {
-                    "group": "Chat",
-                    "pages": [
-                      "integrations/graphql-api/mutations/chat/create-conversation",
-                      "integrations/graphql-api/mutations/chat/send-user-message"
-                    ]
-                  },
-                  {
-                    "group": "Agent",
-                    "pages": [
-                      "integrations/graphql-api/mutations/agent/trigger-agent"
-                    ]
-                  },
-                  {
-                    "group": "Connection",
-                    "pages": [
-                      "integrations/graphql-api/mutations/connection/refresh-connection"
-                    ]
-                  },
-                  {
-                    "group": "Dashboard",
-                    "pages": [
-                      "integrations/graphql-api/mutations/dashboard/create-dashboard",
-                      "integrations/graphql-api/mutations/dashboard/update-dashboard",
-                      "integrations/graphql-api/mutations/dashboard/update-dashboard-filters",
-                      "integrations/graphql-api/mutations/dashboard/update-dashboard-widgets",
-                      "integrations/graphql-api/mutations/dashboard/add-widget-to-dashboard",
-                      "integrations/graphql-api/mutations/dashboard/delete-dashboard",
-                      "integrations/graphql-api/mutations/dashboard/delete-widget-from-dashboard",
-                      "integrations/graphql-api/mutations/dashboard/refresh-dashboard",
-                      "integrations/graphql-api/mutations/dashboard/add-scope-role-assignments-for-sharing",
-                      "integrations/graphql-api/mutations/dashboard/remove-scope-role-assignments-for-sharing"
-                    ]
-                  },
-                  {
-                    "group": "User",
-                    "pages": [
-                      "integrations/graphql-api/mutations/user/create-users",
-                      "integrations/graphql-api/mutations/user/set-user-attributes",
-                      "integrations/graphql-api/mutations/user/delete-users-from-workspace"
-                    ]
-                  },
-                  {
-                    "group": "Domain",
-                    "pages": [
-                      "integrations/graphql-api/mutations/domain/create-domain",
-                      "integrations/graphql-api/mutations/domain/duplicate-domain",
-                      "integrations/graphql-api/mutations/domain/update-data-sources"
-                    ]
-                  }
-                ]
-              },
-              {
-                "group": "Subscriptions",
-                "pages": [
-                  "integrations/graphql-api/subscriptions/dashboard-summary",
+                  "integrations/embeddings/iframe/embed-chat",
+                  "integrations/graphql-api/mutations/chat/create-conversation",
+                  "integrations/graphql-api/mutations/chat/send-user-message",
                   "integrations/graphql-api/subscriptions/subscribe-conversation"
                 ]
               }
             ]
           },
           {
-            "group": "Deployment",
-            "pages": [
-              "deployment/deployment-models"
+            "anchor": "Dashboards",
+            "icon": "chart-simple",
+            "groups": [
+              {
+                "group": "Dashboards",
+                "pages": [
+                  "integrations/embeddings/iframe/embed-a-dashboard",
+                  "integrations/graphql-api/queries/dashboard/dashboard",
+                  "integrations/graphql-api/queries/dashboard/dashboards",
+                  "integrations/graphql-api/mutations/dashboard/create-dashboard",
+                  "integrations/graphql-api/mutations/dashboard/update-dashboard",
+                  "integrations/graphql-api/mutations/dashboard/update-dashboard-filters",
+                  "integrations/graphql-api/mutations/dashboard/update-dashboard-widgets",
+                  "integrations/graphql-api/mutations/dashboard/add-widget-to-dashboard",
+                  "integrations/graphql-api/mutations/dashboard/delete-dashboard",
+                  "integrations/graphql-api/mutations/dashboard/delete-widget-from-dashboard",
+                  "integrations/graphql-api/mutations/dashboard/refresh-dashboard",
+                  "integrations/graphql-api/mutations/dashboard/add-scope-role-assignments-for-sharing",
+                  "integrations/graphql-api/mutations/dashboard/remove-scope-role-assignments-for-sharing",
+                  "integrations/graphql-api/subscriptions/dashboard-summary"
+                ]
+              }
+            ]
+          },
+          {
+            "anchor": "Live Apps",
+            "icon": "grid-2",
+            "groups": [
+              {
+                "group": "Live Apps",
+                "pages": [
+                  "integrations/embeddings/iframe/embed-a-live-app"
+                ]
+              }
+            ]
+          },
+          {
+            "anchor": "Platform & API Reference",
+            "icon": "book-open-cover",
+            "groups": [
+              {
+                "group": "Get Started",
+                "pages": [
+                  "integrations/developers"
+                ]
+              },
+              {
+                "group": "User Management",
+                "pages": [
+                  "integrations/user-management/user-lifecycle",
+                  "integrations/user-management/user-attributes",
+                  "integrations/user-management/rbac",
+                  "integrations/user-management/mirror-with-the-api"
+                ]
+              },
+              {
+                "group": "Embeddings",
+                "pages": [
+                  "integrations/embeddings/embedding",
+                  "integrations/embeddings/session-management",
+                  "integrations/embeddings/error-handling",
+                  {
+                    "group": "iframe",
+                    "pages": [
+                      "integrations/embeddings/embedding-modes",
+                      "integrations/embeddings/iframe/embed-chat",
+                      "integrations/embeddings/iframe/embed-a-live-app",
+                      "integrations/embeddings/iframe/embed-a-dashboard"
+                    ]
+                  },
+                  {
+                    "group": "SDK",
+                    "pages": [
+                      "integrations/embeddings/sdk/sdk-overview",
+                      "integrations/embeddings/sdk/sdk-quickstart",
+                      "integrations/embeddings/sdk/sdk-components",
+                      "integrations/embeddings/sdk/sdk-auth"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "GraphQL API",
+                "boost": 0.05,
+                "pages": [
+                  "integrations/graphql-api/GraphQL-API",
+                  "integrations/graphql-api/graphql-primer",
+                  "using-wisdom-ai-everyday/knowledge-management-via-graph-ql-api",
+                  {
+                    "group": "Objects",
+                    "pages": [
+                      "integrations/graphql-api/objects/ai-workstream",
+                      "integrations/graphql-api/objects/attributes",
+                      "integrations/graphql-api/objects/canvas-config",
+                      "integrations/graphql-api/objects/chat-message",
+                      "integrations/graphql-api/objects/chat-message-diff",
+                      "integrations/graphql-api/objects/chat-message-sender",
+                      "integrations/graphql-api/objects/chat-thinking-effort",
+                      "integrations/graphql-api/objects/codegen-config",
+                      "integrations/graphql-api/objects/connection",
+                      "integrations/graphql-api/objects/conversation-update-one-of",
+                      "integrations/graphql-api/objects/dashboard",
+                      "integrations/graphql-api/objects/dashboard-filter-definition",
+                      "integrations/graphql-api/objects/dashboard-input",
+                      "integrations/graphql-api/objects/dashboard-scope",
+                      "integrations/graphql-api/objects/dashboard-summary-diff",
+                      "integrations/graphql-api/objects/dashboard-summary-type",
+                      "integrations/graphql-api/objects/dashboard-widget",
+                      "integrations/graphql-api/objects/dashboard-widget-input",
+                      "integrations/graphql-api/objects/dashboards-response",
+                      "integrations/graphql-api/objects/data-label-mode",
+                      "integrations/graphql-api/objects/database-model",
+                      "integrations/graphql-api/objects/database-type",
+                      "integrations/graphql-api/objects/delta",
+                      "integrations/graphql-api/objects/delta-element",
+                      "integrations/graphql-api/objects/delta-input",
+                      "integrations/graphql-api/objects/domain-model",
+                      "integrations/graphql-api/objects/domain-rls-config",
+                      "integrations/graphql-api/objects/domain-web-search-config",
+                      "integrations/graphql-api/objects/filter-applied-state",
+                      "integrations/graphql-api/objects/job-status",
+                      "integrations/graphql-api/objects/join-input",
+                      "integrations/graphql-api/objects/knowledge",
+                      "integrations/graphql-api/objects/llm-tool-call-results",
+                      "integrations/graphql-api/objects/llm-tool-calls",
+                      "integrations/graphql-api/objects/operation",
+                      "integrations/graphql-api/objects/response-status",
+                      "integrations/graphql-api/objects/scope-role-assignment-input",
+                      "integrations/graphql-api/objects/section",
+                      "integrations/graphql-api/objects/subscription-auth-input",
+                      "integrations/graphql-api/objects/table-input",
+                      "integrations/graphql-api/objects/text-artifact",
+                      "integrations/graphql-api/objects/tool-selection",
+                      "integrations/graphql-api/objects/user",
+                      "integrations/graphql-api/objects/visualization",
+                      "integrations/graphql-api/objects/visualization-type",
+                      "integrations/graphql-api/objects/viz-config",
+                      "integrations/graphql-api/objects/widget-layout",
+                      "integrations/graphql-api/objects/widget-layout-input",
+                      "integrations/graphql-api/objects/widget-type"
+                    ]
+                  },
+                  {
+                    "group": "Queries",
+                    "pages": [
+                      {
+                        "group": "Auth",
+                        "pages": [
+                          "integrations/graphql-api/queries/auth/exchange-access-token",
+                          "integrations/graphql-api/queries/auth/impersonate-user"
+                        ]
+                      },
+                      {
+                        "group": "Connection",
+                        "pages": [
+                          "integrations/graphql-api/queries/connection/connection"
+                        ]
+                      },
+                      {
+                        "group": "Dashboard",
+                        "pages": [
+                          "integrations/graphql-api/queries/dashboard/dashboard",
+                          "integrations/graphql-api/queries/dashboard/dashboards"
+                        ]
+                      },
+                      {
+                        "group": "User",
+                        "pages": [
+                          "integrations/graphql-api/queries/user/current-user",
+                          "integrations/graphql-api/queries/user/list-users"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "Mutations",
+                    "pages": [
+                      {
+                        "group": "Chat",
+                        "pages": [
+                          "integrations/graphql-api/mutations/chat/create-conversation",
+                          "integrations/graphql-api/mutations/chat/send-user-message"
+                        ]
+                      },
+                      {
+                        "group": "Agent",
+                        "pages": [
+                          "integrations/graphql-api/mutations/agent/trigger-agent"
+                        ]
+                      },
+                      {
+                        "group": "Connection",
+                        "pages": [
+                          "integrations/graphql-api/mutations/connection/refresh-connection"
+                        ]
+                      },
+                      {
+                        "group": "Dashboard",
+                        "pages": [
+                          "integrations/graphql-api/mutations/dashboard/create-dashboard",
+                          "integrations/graphql-api/mutations/dashboard/update-dashboard",
+                          "integrations/graphql-api/mutations/dashboard/update-dashboard-filters",
+                          "integrations/graphql-api/mutations/dashboard/update-dashboard-widgets",
+                          "integrations/graphql-api/mutations/dashboard/add-widget-to-dashboard",
+                          "integrations/graphql-api/mutations/dashboard/delete-dashboard",
+                          "integrations/graphql-api/mutations/dashboard/delete-widget-from-dashboard",
+                          "integrations/graphql-api/mutations/dashboard/refresh-dashboard",
+                          "integrations/graphql-api/mutations/dashboard/add-scope-role-assignments-for-sharing",
+                          "integrations/graphql-api/mutations/dashboard/remove-scope-role-assignments-for-sharing"
+                        ]
+                      },
+                      {
+                        "group": "User",
+                        "pages": [
+                          "integrations/graphql-api/mutations/user/create-users",
+                          "integrations/graphql-api/mutations/user/set-user-attributes",
+                          "integrations/graphql-api/mutations/user/delete-users-from-workspace"
+                        ]
+                      },
+                      {
+                        "group": "Domain",
+                        "pages": [
+                          "integrations/graphql-api/mutations/domain/create-domain",
+                          "integrations/graphql-api/mutations/domain/duplicate-domain",
+                          "integrations/graphql-api/mutations/domain/update-data-sources"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "Subscriptions",
+                    "pages": [
+                      "integrations/graphql-api/subscriptions/dashboard-summary",
+                      "integrations/graphql-api/subscriptions/subscribe-conversation"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "Deployment",
+                "pages": [
+                  "deployment/deployment-models"
+                ]
+              }
             ]
           }
         ]
