@@ -64,6 +64,18 @@
         "icon": "user-gear",
         "anchors": [
           {
+            "anchor": "Get Started",
+            "icon": "rocket",
+            "groups": [
+              {
+                "group": "Get Started",
+                "pages": [
+                  "admins/getting-started-admins"
+                ]
+              }
+            ]
+          },
+          {
             "anchor": "Skills",
             "icon": "wand-magic-sparkles",
             "groups": [
@@ -332,25 +344,13 @@
         "icon": "magnifying-glass-chart",
         "anchors": [
           {
-            "anchor": "Skills",
-            "icon": "wand-magic-sparkles",
+            "anchor": "Get Started",
+            "icon": "rocket",
             "groups": [
               {
-                "group": "Skills",
+                "group": "Get Started",
                 "pages": [
-                  "setting-up-wisdom-ai/manage-domains/skills"
-                ]
-              }
-            ]
-          },
-          {
-            "anchor": "Agents",
-            "icon": "robot",
-            "groups": [
-              {
-                "group": "Agents",
-                "pages": [
-                  "explorers/agents"
+                  "explorers/getting-started-explorers"
                 ]
               }
             ]
@@ -362,7 +362,6 @@
               {
                 "group": "Chats",
                 "pages": [
-                  "explorers/getting-started-explorers",
                   "chat/overview",
                   "using-wisdom-ai-everyday/ask-better-questions",
                   "explorers/using-wisdom-ai-everyday/command-palette",
@@ -421,6 +420,19 @@
                 ]
               }
             ]
+          },
+          {
+            "anchor": "Agents & Skills",
+            "icon": "robot",
+            "groups": [
+              {
+                "group": "Agents & Skills",
+                "pages": [
+                  "setting-up-wisdom-ai/manage-domains/skills",
+                  "product-updates/spring-2026/parameterized-agents"
+                ]
+              }
+            ]
           }
         ]
       },
@@ -429,13 +441,13 @@
         "icon": "code",
         "anchors": [
           {
-            "anchor": "Skills",
-            "icon": "wand-magic-sparkles",
+            "anchor": "Get Started",
+            "icon": "rocket",
             "groups": [
               {
-                "group": "Skills",
+                "group": "Get Started",
                 "pages": [
-                  "integrations/skills-api"
+                  "integrations/developers"
                 ]
               }
             ]
@@ -508,12 +520,6 @@
             "anchor": "Platform & API Reference",
             "icon": "book-open-cover",
             "groups": [
-              {
-                "group": "Get Started",
-                "pages": [
-                  "integrations/developers"
-                ]
-              },
               {
                 "group": "User Management",
                 "pages": [
