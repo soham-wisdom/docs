@@ -754,6 +754,15 @@ Supported warehouse sources show an **Access** section on the connection form. I
 | **Query history** | Whether the connection can read the warehouse's query history, used for performance and health analysis. This is the warehouse's history, not your WisdomAI chat history. |
 | **System catalog metadata** | Whether the connection can read metadata such as table sizes, partitions, and column statistics, where the source provides them. Results vary by source and by the objects visible to the connection. |
 
+<Frame>
+  <img
+    alt="Access section with Query history and System catalog metadata rows, each with an Enable button"
+    lightAlt="Access section with Query history and System catalog metadata rows, each with an Enable button"
+    darkAlt="Access section with Query history and System catalog metadata rows, each with an Enable button"
+    src="/images/connection-access-rows.png"
+  />
+</Frame>
+
 ### Supported sources
 
 | Source | Query history | System catalog metadata |
@@ -779,6 +788,23 @@ You need permission to create the connection, or to edit it if it already exists
 
 1. Complete the connection details, then click **Enable** beside the capability you want to check.
 2. Read the result and any messages about scope. If setup is needed, open **Setup instructions** and ask a warehouse or cloud administrator to review and run them at the location shown.
+
+   <Frame>
+     <img
+       alt="Query history row showing an access result and a Setup instructions link with Done and Retry actions"
+       lightAlt="Query history row showing an access result and a Setup instructions link with Done and Retry actions"
+       darkAlt="Query history row showing an access result and a Setup instructions link with Done and Retry actions"
+       src="/images/connection-access-result.png"
+       className="dark:hidden"
+     />
+     <img
+       alt="Query history row showing an access result and a Setup instructions link with Done and Retry actions"
+       lightAlt="Query history row showing an access result and a Setup instructions link with Done and Retry actions"
+       darkAlt="Query history row showing an access result and a Setup instructions link with Done and Retry actions"
+       src="/dark-img/connection-access-result-dark.png"
+       className="hidden dark:block"
+     />
+   </Frame>
 3. Return to WisdomAI and click **Done** to check again. You can also click **Retry** or **Check again** on the row.
 4. Save the connection if you changed any settings.
 
@@ -825,6 +851,15 @@ The **Advanced** section is on the connection form. Each setting is only shown f
 | **Query timeout (s)** | Sets the query execution timeout for this connection, in whole seconds. Leave it blank to inherit the applicable default. | PostgreSQL, Amazon Redshift, Snowflake, Google BigQuery, ClickHouse, Databricks, Oracle, and MotherDuck |
 | **Max bytes scanned** | Blocks a query before execution when its estimated scan size exceeds the applicable limit | Google BigQuery and Snowflake |
 | **Alternate credential sets** | Use different credentials depending on a user attribute | PostgreSQL, Amazon Redshift, MySQL, Microsoft SQL Server, Teradata, Databricks, ClickHouse, Trino, Amazon Athena, Google BigQuery, Google Cloud Spanner, Dremio, Snowflake, and MotherDuck |
+
+<Frame>
+  <img
+    alt="Advanced section with Query timeout (s) field and separate Jobs and Interactive limits with Limit and Unit fields"
+    lightAlt="Advanced section with Query timeout (s) field and separate Jobs and Interactive limits with Limit and Unit fields"
+    darkAlt="Advanced section with Query timeout (s) field and separate Jobs and Interactive limits with Limit and Unit fields"
+    src="/images/connection-advanced-limits.png"
+  />
+</Frame>
 
 ### Query timeout
 
