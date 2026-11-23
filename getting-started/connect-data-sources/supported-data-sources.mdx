@@ -791,21 +791,22 @@ You need permission to create the connection, or to edit it if it already exists
 
    <Frame>
      <img
-       alt="Query history row showing an access result and a Setup instructions link with Done and Retry actions"
-       lightAlt="Query history row showing an access result and a Setup instructions link with Done and Retry actions"
-       darkAlt="Query history row showing an access result and a Setup instructions link with Done and Retry actions"
-       src="/images/connection-access-result.png"
-       className="dark:hidden"
-     />
-     <img
-       alt="Query history row showing an access result and a Setup instructions link with Done and Retry actions"
-       lightAlt="Query history row showing an access result and a Setup instructions link with Done and Retry actions"
-       darkAlt="Query history row showing an access result and a Setup instructions link with Done and Retry actions"
-       src="/dark-img/connection-access-result-dark.png"
-       className="hidden dark:block"
+       alt="Query history row showing Access not granted with Setup instructions and Retry buttons, above System catalog metadata"
+       lightAlt="Query history row showing Access not granted with Setup instructions and Retry buttons, above System catalog metadata"
+       darkAlt="Query history row showing Access not granted with Setup instructions and Retry buttons, above System catalog metadata"
+       src="/images/connection-access-setup.png"
      />
    </Frame>
 3. Return to WisdomAI and click **Done** to check again. You can also click **Retry** or **Check again** on the row.
+
+   <Frame>
+     <img
+       alt="Enable query history access dialog with Google Cloud CLI setup commands, Copy setup commands buttons, and a Done button"
+       lightAlt="Enable query history access dialog with Google Cloud CLI setup commands, Copy setup commands buttons, and a Done button"
+       darkAlt="Enable query history access dialog with Google Cloud CLI setup commands, Copy setup commands buttons, and a Done button"
+       src="/images/connection-access-setup-dialog.png"
+     />
+   </Frame>
 4. Save the connection if you changed any settings.
 
 Clicking **Enable** does not grant access. WisdomAI runs a check, and you or your administrator run any setup instructions yourselves. Running a check does not save the form.
@@ -817,6 +818,15 @@ Clicking **Enable** does not grant access. WisdomAI runs a check, and you or you
 | Access not granted | A check failed. Follow the explanation and setup instructions shown. |
 | Setup required | A prerequisite, such as query logging or Query Store, needs attention first. |
 | Could not verify | The check was inconclusive or could not finish. Complete the settings or retry. |
+
+<Frame>
+  <img
+    alt="Query history row showing Access confirmed with the check time and a Check again button, above System catalog metadata"
+    lightAlt="Query history row showing Access confirmed with the check time and a Check again button, above System catalog metadata"
+    darkAlt="Query history row showing Access confirmed with the check time and a Check again button, above System catalog metadata"
+    src="/images/connection-access-confirmed.png"
+  />
+</Frame>
 
 Keep these points in mind:
 
