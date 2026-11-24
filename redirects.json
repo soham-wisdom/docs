@@ -245,5 +245,10 @@
     "source": "/using-wisdom-ai-everyday/command-palette",
     "destination": "/explorers/using-wisdom-ai-everyday/command-palette",
     "permanent": true
+  },
+  {
+    "source": "/getting-started/overview",
+    "destination": "/",
+    "permanent": true
   }
 ]

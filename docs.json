@@ -27,8 +27,7 @@
             "group": "Welcome",
             "pages": [
               "index",
-              "getting-started/how-wisdom-ai-works",
-              "getting-started/overview"
+              "getting-started/how-wisdom-ai-works"
             ]
           },
           {
@@ -36,13 +35,6 @@
             "pages": [
               "getting-started/quickstart",
               "setting-up-wisdom-ai/basic-tutorial-connect-and-test"
-            ]
-          },
-          {
-            "group": "Start by role",
-            "pages": [
-              "explorers/getting-started-explorers",
-              "setting-up-wisdom-ai/getting-started-domains-context"
             ]
           },
           {
