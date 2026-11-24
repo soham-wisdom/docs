@@ -123,7 +123,8 @@ div.card {
 }
 
 .dark div.card {
-  border-color: rgba(255, 255, 255, 0.1);
+  background-color: #18181b; /* zinc-900, same as the old homepage cards */
+  border-color: #27272a; /* zinc-800 */
   box-shadow: none;
 }
 
