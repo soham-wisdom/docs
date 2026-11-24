@@ -39,6 +39,15 @@
             ]
           },
           {
+            "group": "Start by role",
+            "pages": [
+              "admins/getting-started-admins",
+              "explorers/getting-started-explorers",
+              "setting-up-wisdom-ai/getting-started-domains-context",
+              "integrations/developers"
+            ]
+          },
+          {
             "group": "Reference",
             "pages": [
               "getting-started/glossary",
@@ -49,23 +58,12 @@
         ]
       },
       {
-        "tab": "Admin",
-        "icon": "shield-check",
+        "tab": "Docs by product",
+        "icon": "book-open",
         "anchors": [
           {
-            "anchor": "Get Started",
-            "icon": "rocket",
-            "groups": [
-              {
-                "group": "Get Started",
-                "pages": [
-                  "admins/getting-started-admins"
-                ]
-              }
-            ]
-          },
-          {
-            "anchor": "Setup & Security",
+            "anchor": "Connections",
+            "icon": "plug",
             "groups": [
               {
                 "group": "Connect Data",
@@ -92,7 +90,13 @@
                     ]
                   }
                 ]
-              },
+              }
+            ]
+          },
+          {
+            "anchor": "Integrations",
+            "icon": "puzzle-piece",
+            "groups": [
               {
                 "group": "Integrations",
                 "pages": [
@@ -114,205 +118,6 @@
                   },
                   "integrations/google-sheets",
                   "settings/connected-apps"
-                ]
-              },
-              {
-                "group": "Security & Settings",
-                "pages": [
-                  {
-                    "group": "Data Access Control",
-                    "pages": [
-                      "manage-account/row-level-access-control/row-level-access-control",
-                      "manage-account/row-level-access-control/understanding-row-level-security",
-                      "manage-account/row-level-access-control/column-level-security-cls"
-                    ]
-                  },
-                  {
-                    "group": "Access Management",
-                    "pages": [
-                      "manage-account/access-management",
-                      "access-management/manage-organizations",
-                      "access-management/object-mirroring",
-                      "access-management/set-up-object-mirroring"
-                    ]
-                  },
-                  {
-                    "group": "User Management",
-                    "pages": [
-                      "manage-account/users-management",
-                      "manage-account/automated-provisioning",
-                      "manage-account/role-mapping-and-sso-groups"
-                    ]
-                  },
-                  {
-                    "group": "Settings & Compliance",
-                    "pages": [
-                      "settings/api-keys",
-                      "settings/email-access-control",
-                      "using-wisdom-ai-everyday/auditing",
-                      "manage-account/monitor-performance-and-usage",
-                      "manage-account/compliance-and-best-practices",
-                      "manage-account/privacy-policy"
-                    ]
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "anchor": "Skills",
-            "icon": "wand-magic-sparkles",
-            "groups": [
-              {
-                "group": "Skills",
-                "tag": "New",
-                "pages": [
-                  "setting-up-wisdom-ai/manage-domains/skills",
-                  "setting-up-wisdom-ai/manage-domains/create-a-skill"
-                ]
-              }
-            ]
-          },
-          {
-            "anchor": "Agents",
-            "icon": "robot",
-            "groups": [
-              {
-                "group": "Agents",
-                "pages": [
-                  "setting-up-wisdom-ai/agents/agents",
-                  "setting-up-wisdom-ai/agents/tutorial-create-agent",
-                  "setting-up-wisdom-ai/agents/visual-mode",
-                  "setting-up-wisdom-ai/agents/nodes-reference",
-                  "setting-up-wisdom-ai/agents/agent-best-practices",
-                  "setting-up-wisdom-ai/agents/manage-agents",
-                  "setting-up-wisdom-ai/agents/reviewed-runs-in-agents",
-                  "product-updates/spring-2026/parameterized-agents"
-                ]
-              }
-            ]
-          },
-          {
-            "anchor": "Chats",
-            "icon": "comments",
-            "groups": [
-              {
-                "group": "Chats",
-                "pages": [
-                  "admins/using-wisdom-ai-everyday/command-palette",
-                  "using-wisdom-ai-everyday/work-with-csv-files",
-                  "using-wisdom-ai-everyday/request-help-from-admins"
-                ]
-              }
-            ]
-          },
-          {
-            "anchor": "Dashboards",
-            "icon": "chart-simple",
-            "groups": [
-              {
-                "group": "Dashboards",
-                "pages": [
-                  "improve-wisdom-ai-responses/build-dashboards",
-                  "using-wisdom-ai-everyday/share-dashboards-and-set-access-control",
-                  "using-wisdom-ai-everyday/schedule-dashboards-notifications"
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Explorer",
-        "icon": "magnifying-glass",
-        "anchors": [
-          {
-            "anchor": "Get Started",
-            "icon": "rocket",
-            "groups": [
-              {
-                "group": "Get Started",
-                "pages": [
-                  "explorers/getting-started-explorers"
-                ]
-              }
-            ]
-          },
-          {
-            "anchor": "Chats",
-            "icon": "comments",
-            "groups": [
-              {
-                "group": "Chats",
-                "pages": [
-                  "chat/overview",
-                  "using-wisdom-ai-everyday/ask-better-questions",
-                  "explorers/using-wisdom-ai-everyday/command-palette",
-                  "product-updates/february-2026/ghost-text-completion",
-                  "improve-wisdom-ai-responses/attach-files-to-chat",
-                  "explorers-feedback/provide-feedback-to-the-system"
-                ]
-              },
-              {
-                "group": "Advanced Analysis",
-                "pages": [
-                  "advanced-features/deep-analysis",
-                  "advanced-features/python-interpreter-tool",
-                  "advanced-features/visualization-types-and-properties"
-                ]
-              }
-            ]
-          },
-          {
-            "anchor": "Dashboards",
-            "icon": "chart-simple",
-            "groups": [
-              {
-                "group": "Dashboards",
-                "pages": [
-                  "using-wisdom-ai-everyday/turn-answers-into-dashboards",
-                  "explorers/chat-dashboard",
-                  "dashboards/tabs",
-                  "dashboards/instant-filters",
-                  "product-updates/february-2026/mcp-in-dashboards",
-                  "product-updates/february-2026/dual-axis-charts",
-                  "dashboards/dashboard-versioning",
-                  "dashboards/chat-filters",
-                  "dashboards/cached-data"
-                ]
-              }
-            ]
-          },
-          {
-            "anchor": "Live Apps",
-            "icon": "grid-2",
-            "groups": [
-              {
-                "group": "Live Apps",
-                "tag": "Just shipped",
-                "pages": [
-                  "live-apps/overview",
-                  "live-apps/create-live-app",
-                  "live-apps/data-and-trust",
-                  "live-apps/share-and-access"
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Context Manager",
-        "icon": "database",
-        "anchors": [
-          {
-            "anchor": "Get Started",
-            "icon": "rocket",
-            "groups": [
-              {
-                "group": "Get Started",
-                "pages": [
-                  "setting-up-wisdom-ai/getting-started-domains-context"
                 ]
               }
             ]
@@ -402,25 +207,170 @@
                 ]
               }
             ]
-          }
-        ]
-      },
-      {
-        "tab": "Developer",
-        "icon": "code",
-        "anchors": [
+          },
           {
-            "anchor": "Get Started",
-            "icon": "rocket",
+            "anchor": "Skills",
+            "icon": "wand-magic-sparkles",
             "groups": [
               {
-                "group": "Get Started",
+                "group": "Skills",
+                "tag": "New",
                 "pages": [
-                  "integrations/developers"
+                  "setting-up-wisdom-ai/manage-domains/skills",
+                  "setting-up-wisdom-ai/manage-domains/create-a-skill"
                 ]
               }
             ]
           },
+          {
+            "anchor": "Agents",
+            "icon": "robot",
+            "groups": [
+              {
+                "group": "Agents",
+                "pages": [
+                  "setting-up-wisdom-ai/agents/agents",
+                  "setting-up-wisdom-ai/agents/tutorial-create-agent",
+                  "setting-up-wisdom-ai/agents/visual-mode",
+                  "setting-up-wisdom-ai/agents/nodes-reference",
+                  "setting-up-wisdom-ai/agents/agent-best-practices",
+                  "setting-up-wisdom-ai/agents/manage-agents",
+                  "setting-up-wisdom-ai/agents/reviewed-runs-in-agents",
+                  "product-updates/spring-2026/parameterized-agents"
+                ]
+              }
+            ]
+          },
+          {
+            "anchor": "Chats",
+            "icon": "comments",
+            "groups": [
+              {
+                "group": "Chats",
+                "pages": [
+                  "chat/overview",
+                  "using-wisdom-ai-everyday/ask-better-questions",
+                  "explorers/using-wisdom-ai-everyday/command-palette",
+                  "product-updates/february-2026/ghost-text-completion",
+                  "improve-wisdom-ai-responses/attach-files-to-chat",
+                  "explorers-feedback/provide-feedback-to-the-system"
+                ]
+              },
+              {
+                "group": "Advanced Analysis",
+                "pages": [
+                  "advanced-features/deep-analysis",
+                  "advanced-features/python-interpreter-tool",
+                  "advanced-features/visualization-types-and-properties"
+                ]
+              },
+              {
+                "group": "Chat administration",
+                "pages": [
+                  "admins/using-wisdom-ai-everyday/command-palette",
+                  "using-wisdom-ai-everyday/work-with-csv-files",
+                  "using-wisdom-ai-everyday/request-help-from-admins"
+                ]
+              }
+            ]
+          },
+          {
+            "anchor": "Dashboards",
+            "icon": "chart-simple",
+            "groups": [
+              {
+                "group": "Dashboards",
+                "pages": [
+                  "using-wisdom-ai-everyday/turn-answers-into-dashboards",
+                  "explorers/chat-dashboard",
+                  "dashboards/tabs",
+                  "dashboards/instant-filters",
+                  "product-updates/february-2026/mcp-in-dashboards",
+                  "product-updates/february-2026/dual-axis-charts",
+                  "dashboards/dashboard-versioning",
+                  "dashboards/chat-filters",
+                  "dashboards/cached-data"
+                ]
+              },
+              {
+                "group": "Build, share, and schedule",
+                "pages": [
+                  "improve-wisdom-ai-responses/build-dashboards",
+                  "using-wisdom-ai-everyday/share-dashboards-and-set-access-control",
+                  "using-wisdom-ai-everyday/schedule-dashboards-notifications"
+                ]
+              }
+            ]
+          },
+          {
+            "anchor": "Live Apps",
+            "icon": "grid-2",
+            "groups": [
+              {
+                "group": "Live Apps",
+                "tag": "Just shipped",
+                "pages": [
+                  "live-apps/overview",
+                  "live-apps/create-live-app",
+                  "live-apps/data-and-trust",
+                  "live-apps/share-and-access"
+                ]
+              }
+            ]
+          },
+          {
+            "anchor": "Security & Settings",
+            "icon": "shield-check",
+            "groups": [
+              {
+                "group": "Security & Settings",
+                "pages": [
+                  {
+                    "group": "Data Access Control",
+                    "pages": [
+                      "manage-account/row-level-access-control/row-level-access-control",
+                      "manage-account/row-level-access-control/understanding-row-level-security",
+                      "manage-account/row-level-access-control/column-level-security-cls"
+                    ]
+                  },
+                  {
+                    "group": "Access Management",
+                    "pages": [
+                      "manage-account/access-management",
+                      "access-management/manage-organizations",
+                      "access-management/object-mirroring",
+                      "access-management/set-up-object-mirroring"
+                    ]
+                  },
+                  {
+                    "group": "User Management",
+                    "pages": [
+                      "manage-account/users-management",
+                      "manage-account/automated-provisioning",
+                      "manage-account/role-mapping-and-sso-groups"
+                    ]
+                  },
+                  {
+                    "group": "Settings & Compliance",
+                    "pages": [
+                      "settings/api-keys",
+                      "settings/email-access-control",
+                      "using-wisdom-ai-everyday/auditing",
+                      "manage-account/monitor-performance-and-usage",
+                      "manage-account/compliance-and-best-practices",
+                      "manage-account/privacy-policy"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Developers",
+        "icon": "code",
+        "anchors": [
           {
             "anchor": "User Management",
             "icon": "users",
@@ -646,18 +596,6 @@
         ]
       },
       {
-        "tab": "Early access",
-        "icon": "owl",
-        "groups": [
-          {
-            "group": "Owls",
-            "pages": [
-              "early-access/owls"
-            ]
-          }
-        ]
-      },
-      {
         "tab": "Recently Launched",
         "icon": "circle-arrow-up-right",
         "groups": [
@@ -712,6 +650,18 @@
                   "product-updates/february-2026/february-changelog"
                 ]
               }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Early Access",
+        "icon": "owl",
+        "groups": [
+          {
+            "group": "Owls",
+            "pages": [
+              "early-access/owls"
             ]
           }
         ]
