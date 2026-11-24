@@ -112,3 +112,85 @@ div:has(> ul.sidebar-group > li[id="/integrations/mcp-server"]):has(> ul.sidebar
   background: linear-gradient(135deg, rgba(91, 82, 255, 0.22) 0%, rgba(255, 122, 69, 0.18) 100%);
   border-color: rgba(129, 140, 248, 0.3);
 }
+
+/* Cards: match the homepage card style (flat, small radius, subtle shadow, brand hover, no icon).
+   Cards under a "Next steps" heading keep the default Mintlify style (reset below). */
+div.card {
+  border-radius: 0.5rem;
+  border-color: #e4e4e7;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+div.card:hover {
+  border-color: #5b52ff;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+
+.dark div.card:hover {
+  border-color: #8f88ff;
+}
+
+div.card [data-component-part="card-icon"] {
+  display: none;
+}
+
+div.card [data-component-part="card-content-container"] {
+  padding: 1.25rem;
+}
+
+div.card [data-component-part="card-title"] {
+  margin-top: 0;
+}
+
+div.card:hover [data-component-part="card-title"] {
+  color: #5b52ff;
+}
+
+.dark div.card:hover [data-component-part="card-title"] {
+  color: #8f88ff;
+}
+
+/* Reset: "Next steps" cards keep the default Mintlify look */
+[id^="next-steps"] ~ .columns div.card,
+[id^="next-steps"] ~ div.card {
+  border-radius: 1rem;
+  border-color: rgba(3, 7, 18, 0.1);
+  box-shadow: none;
+}
+
+.dark [id^="next-steps"] ~ .columns div.card,
+.dark [id^="next-steps"] ~ div.card {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+[id^="next-steps"] ~ .columns div.card:hover,
+[id^="next-steps"] ~ div.card:hover {
+  border-color: rgba(3, 7, 18, 0.1);
+  box-shadow: none;
+}
+
+.dark [id^="next-steps"] ~ .columns div.card:hover,
+.dark [id^="next-steps"] ~ div.card:hover {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+[id^="next-steps"] ~ .columns div.card [data-component-part="card-icon"],
+[id^="next-steps"] ~ div.card [data-component-part="card-icon"] {
+  display: block;
+}
+
+[id^="next-steps"] ~ .columns div.card [data-component-part="card-content-container"],
+[id^="next-steps"] ~ div.card [data-component-part="card-content-container"] {
+  padding: 1.25rem 1.5rem;
+}
+
+[id^="next-steps"] ~ .columns div.card [data-component-part="card-title"],
+[id^="next-steps"] ~ div.card [data-component-part="card-title"] {
+  margin-top: 1rem;
+}
+
+[id^="next-steps"] ~ .columns div.card:hover [data-component-part="card-title"],
+[id^="next-steps"] ~ div.card:hover [data-component-part="card-title"] {
+  color: inherit;
+}

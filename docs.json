@@ -50,7 +50,7 @@
       },
       {
         "tab": "Admin",
-        "icon": "user-gear",
+        "icon": "shield-check",
         "anchors": [
           {
             "anchor": "Get Started",
@@ -144,11 +144,9 @@
           },
           {
             "anchor": "Setup & Security",
-            "icon": "shield-check",
             "groups": [
               {
                 "group": "Connect Data",
-                "icon": "plug",
                 "pages": [
                   "getting-started/connect-data-sources/supported-data-sources",
                   {
@@ -175,7 +173,6 @@
               },
               {
                 "group": "Integrations",
-                "icon": "puzzle-piece",
                 "pages": [
                   {
                     "group": "WisdomAI MCP Server",
@@ -199,7 +196,6 @@
               },
               {
                 "group": "Security & Settings",
-                "icon": "shield-check",
                 "pages": [
                   {
                     "group": "Data Access Control",
@@ -245,7 +241,7 @@
       },
       {
         "tab": "Explorer",
-        "icon": "magnifying-glass-chart",
+        "icon": "magnifying-glass",
         "anchors": [
           {
             "anchor": "Get Started",
