@@ -6,18 +6,19 @@ boost: 6
 
 Once an agent is created, you stay in control of it. You can run it on demand, edit its trigger or schedule, review its previous runs and reports, or delete it. There are two ways to manage your agents:
 
-- **From chat**: Skip the menus and ask in plain language, directly in a conversation. You can create, find, inspect, update, run, and delete agents, and ask about their previous runs. See [Manage agents from chat](#manage-agents-from-chat).
-- **From the UI**: Use the main **Agents** page to manage every agent you have access to, with a three-dot menu of actions on each one. Here you can also share agents, enable or disable them, and move them to debug. See [Manage agents from the UI](#manage-agents-from-the-ui).
+- **From chat**: Skip the menus and ask in plain language, directly in a conversation. You can create, find, inspect, update, rename, pause or resume, run, and delete agents, convert them between Prompt and Visual, and ask about their previous runs. See [Manage agents from chat](#manage-agents-from-chat).
+- **From the UI**: Use the main **Agents** page to manage every agent you have access to, with a three-dot menu of actions on each one. Sharing an agent and moving it to debug are only available here. See [Manage agents from the UI](#manage-agents-from-the-ui).
 
 ## Manage agents from chat
 
-You can create, find, inspect, update, delete, and run agents from chat. You can also bring previous runs into the conversation and ask about their analysis, results, or failures.
+You can create, find, inspect, update, rename, pause or resume, run, and delete agents from chat. You can also convert an agent between Prompt and Visual. You can bring previous runs into the conversation and ask about their analysis, results, or failures.
 
 Here are some day-to-day examples you can try:
 
 - Create an agent from the current analysis: "Send me this summary every Monday at 8am, Asia/Kolkata."
 - Find and inspect an agent: "Show me the regional deposit agent and explain what it does."
 - Update an agent: "Change the regional deposit agent to run every Friday at 9am."
+- Pause an agent: "Pause the regional deposit agent."
 - Run an agent: "Run the regional deposit agent for North."
 - Bring a previous run into chat: "Show me the regional deposit agent's latest run and its report."
 - Investigate runs: "Why did yesterday's run fail?" or "Compare the latest two runs."
@@ -25,7 +26,46 @@ Here are some day-to-day examples you can try:
 
 Chat can use the agent's configuration, previous runs, step conversations, and reports that you have access to. You can ask follow-up questions without restating the analysis.
 
-A test run sends no report to subscribers unless you ask for delivery.
+### Create an agent
+
+An agent needs three things: what it does, a schedule, and somewhere to deliver results. Chat asks only for the ones you left out.
+
+- Chat never asks about the schedule. If you don't give one, it picks one from the task: an alert or monitor checks at least daily, a period summary runs at the end of its period, and anything else runs every weekday at 9:00 AM. Times use your account's time zone unless you name another.
+- Delivery can be email, a Slack channel, or Teams recipients if Teams is connected. Your own email is the suggested default.
+- Chat chooses Prompt or Visual for you unless you say which you want.
+- The agent is published and starts running on its schedule straight away. Ask for a draft if you want to review it first.
+- Some Visual agents need setup that chat can't finish, such as an export step, an event-based trigger, or an incomplete schedule or delivery. Chat saves those as a draft for you to complete in the editor.
+
+### Test an agent
+
+After you create or edit a published agent, chat asks "Run the `<agent name>` agent now to test it?" with **Run it** and **Not now**. You watch the run in the conversation. A test run sends no report to subscribers unless you ask for delivery.
+
+### Update an agent
+
+- Describe only what should change. Everything else stays as it is, including the schedule and delivery.
+- Edits you make from the main chat to a published agent go live immediately and create a new version.
+- You can ask chat to build the change on an earlier version of the agent.
+- Converting between Prompt and Visual asks for confirmation first. Converting Visual to Prompt drops the step layout and folds the steps into one instruction.
+- You can't edit a Prompt agent that is still a draft from chat. Finish it in the editor.
+- If someone else changes the agent while chat is working, chat saves nothing and asks you to try again.
+
+### Pause and resume an agent
+
+Ask chat to pause, resume, activate, or deactivate an agent. Chat confirms with you first, because every status change emails and Slacks the agent's subscribers. If you give a reason, subscribers see it in that notification.
+
+Chat can set an agent to **Active** or **Inactive** only. You move an agent to **Debug** from the **Agents** page. A draft has no status until you publish it.
+
+### Delete an agent
+
+Deleting an agent stops its schedules, notifies the people it delivers to, and can't be undone. Chat deletes as soon as you explicitly name the agent, so check the name first.
+
+### Find agents
+
+Chat searches the same agents you see on the **Agents** page, across every domain unless you name one. You can narrow the search by text in the agent's name, description, instructions, trigger, or steps. You can also narrow it by owner, by **Active** or **Inactive** status, by Prompt or Visual type, or by domain.
+
+### Agent cards and mentions
+
+When chat creates or changes an agent, it shows the agent as a card with its name, description, delivery, and recent runs. Click the card to open the agent beside the chat, or click the arrow to open its page. Type `@` in the chat box to point chat at a specific agent.
 
 ## Manage agents from the UI
 
