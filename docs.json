@@ -65,67 +65,6 @@
             ]
           },
           {
-            "anchor": "Skills",
-            "icon": "wand-magic-sparkles",
-            "groups": [
-              {
-                "group": "Skills",
-                "tag": "New",
-                "pages": [
-                  "setting-up-wisdom-ai/manage-domains/skills",
-                  "setting-up-wisdom-ai/manage-domains/create-a-skill"
-                ]
-              }
-            ]
-          },
-          {
-            "anchor": "Agents",
-            "icon": "robot",
-            "groups": [
-              {
-                "group": "Agents",
-                "pages": [
-                  "setting-up-wisdom-ai/agents/agents",
-                  "setting-up-wisdom-ai/agents/tutorial-create-agent",
-                  "setting-up-wisdom-ai/agents/visual-mode",
-                  "setting-up-wisdom-ai/agents/nodes-reference",
-                  "setting-up-wisdom-ai/agents/agent-best-practices",
-                  "setting-up-wisdom-ai/agents/manage-agents",
-                  "setting-up-wisdom-ai/agents/reviewed-runs-in-agents",
-                  "product-updates/spring-2026/parameterized-agents"
-                ]
-              }
-            ]
-          },
-          {
-            "anchor": "Chats",
-            "icon": "comments",
-            "groups": [
-              {
-                "group": "Chats",
-                "pages": [
-                  "admins/using-wisdom-ai-everyday/command-palette",
-                  "using-wisdom-ai-everyday/work-with-csv-files",
-                  "using-wisdom-ai-everyday/request-help-from-admins"
-                ]
-              }
-            ]
-          },
-          {
-            "anchor": "Dashboards",
-            "icon": "chart-simple",
-            "groups": [
-              {
-                "group": "Dashboards",
-                "pages": [
-                  "improve-wisdom-ai-responses/build-dashboards",
-                  "using-wisdom-ai-everyday/share-dashboards-and-set-access-control",
-                  "using-wisdom-ai-everyday/schedule-dashboards-notifications"
-                ]
-              }
-            ]
-          },
-          {
             "anchor": "Setup & Security",
             "groups": [
               {
@@ -216,6 +155,67 @@
                       "manage-account/privacy-policy"
                     ]
                   }
+                ]
+              }
+            ]
+          },
+          {
+            "anchor": "Skills",
+            "icon": "wand-magic-sparkles",
+            "groups": [
+              {
+                "group": "Skills",
+                "tag": "New",
+                "pages": [
+                  "setting-up-wisdom-ai/manage-domains/skills",
+                  "setting-up-wisdom-ai/manage-domains/create-a-skill"
+                ]
+              }
+            ]
+          },
+          {
+            "anchor": "Agents",
+            "icon": "robot",
+            "groups": [
+              {
+                "group": "Agents",
+                "pages": [
+                  "setting-up-wisdom-ai/agents/agents",
+                  "setting-up-wisdom-ai/agents/tutorial-create-agent",
+                  "setting-up-wisdom-ai/agents/visual-mode",
+                  "setting-up-wisdom-ai/agents/nodes-reference",
+                  "setting-up-wisdom-ai/agents/agent-best-practices",
+                  "setting-up-wisdom-ai/agents/manage-agents",
+                  "setting-up-wisdom-ai/agents/reviewed-runs-in-agents",
+                  "product-updates/spring-2026/parameterized-agents"
+                ]
+              }
+            ]
+          },
+          {
+            "anchor": "Chats",
+            "icon": "comments",
+            "groups": [
+              {
+                "group": "Chats",
+                "pages": [
+                  "admins/using-wisdom-ai-everyday/command-palette",
+                  "using-wisdom-ai-everyday/work-with-csv-files",
+                  "using-wisdom-ai-everyday/request-help-from-admins"
+                ]
+              }
+            ]
+          },
+          {
+            "anchor": "Dashboards",
+            "icon": "chart-simple",
+            "groups": [
+              {
+                "group": "Dashboards",
+                "pages": [
+                  "improve-wisdom-ai-responses/build-dashboards",
+                  "using-wisdom-ai-everyday/share-dashboards-and-set-access-control",
+                  "using-wisdom-ai-everyday/schedule-dashboards-notifications"
                 ]
               }
             ]
