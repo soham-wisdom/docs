@@ -41,7 +41,6 @@
           {
             "group": "Start by role",
             "pages": [
-              "admins/getting-started-admins",
               "explorers/getting-started-explorers",
               "setting-up-wisdom-ai/getting-started-domains-context"
             ]
@@ -67,6 +66,7 @@
               {
                 "group": "Get Started",
                 "pages": [
+                  "admins/getting-started-admins",
                   "products"
                 ]
               }

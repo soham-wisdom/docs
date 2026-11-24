@@ -4,31 +4,68 @@ sidebarTitle: "What is WisdomAI?"
 keywords: ["what is wisdomai", "overview", "home", "introduction"]
 ---
 
-import { PathCards } from "/snippets/platform-diagram.jsx"
+import ProductCards from "/snippets/product-cards.mdx"
 
 WisdomAI lets you ask questions about your business data in plain language and get back answers, charts, dashboards, and apps. Every answer is grounded in the context your data team defines: what your tables mean, how your metrics are calculated, and who is allowed to see what.
 
-## Connect your data
+<CardGroup cols={2}>
+  <Card title="Connect your first data source" icon="rocket" href="/getting-started/quickstart" horizontal>
+    Follow the Quickstart to connect data and ask your first question.
+  </Card>
+  <Card title="Browse by product" icon="grid-2" href="/products" horizontal>
+    See every part of WisdomAI and where its documentation lives.
+  </Card>
+</CardGroup>
 
-Link the sources WisdomAI will answer from.
+## Explore by product
 
-<PathCards step="connect" />
+<ProductCards />
 
-## Set up your context
+## Start by role
 
-Teach WisdomAI how your business works and who can see what.
+<CardGroup cols={4}>
+  <Card title="Admins" icon="shield-check" href="/admins/getting-started-admins">
+    Connect data, manage access, and set up agents and skills.
+  </Card>
+  <Card title="Explorers" icon="magnifying-glass" href="/explorers/getting-started-explorers">
+    Ask questions, build dashboards, and create Live Apps.
+  </Card>
+  <Card title="Context Manager" icon="database" href="/setting-up-wisdom-ai/getting-started-domains-context">
+    Define the domains and context that ground answers.
+  </Card>
+  <Card title="Developers" icon="code" href="/integrations/developers">
+    Embed WisdomAI and build with the GraphQL API.
+  </Card>
+</CardGroup>
 
-<PathCards step="setup" />
+## Start here
 
-## Ask, analyze, and share
+<CardGroup cols={3}>
+  <Card title="1. Connect your data" icon="plug" href="/getting-started/connect-data-sources/supported-data-sources">
+    Link the sources WisdomAI will answer from.
+  </Card>
+  <Card title="2. Set up your context" icon="book-open" href="/setting-up-wisdom-ai/getting-started-domains-context">
+    Teach WisdomAI how your business works and who can see what.
+  </Card>
+  <Card title="3. Ask, analyze, and share" icon="comments" href="/explorers/getting-started-explorers">
+    Get answers, dashboards, and apps from plain language.
+  </Card>
+</CardGroup>
 
-Get answers, dashboards, and apps from plain language.
+## What's new and Early Access
 
-<PathCards step="use" />
+<CardGroup cols={2}>
+  <Card title="Recently launched" icon="circle-arrow-up-right" href="/product-updates/fall-2026/fall-features">
+    See the latest features and changes.
+  </Card>
+  <Card title="Early Access: Owls" icon="owl" href="/early-access/owls">
+    Owls are AI analysts that work on a goal for you. Learn what they do and how to become a design partner.
+  </Card>
+</CardGroup>
 
+{/* TODO: restore this section once the video is fixed or replaced.
 ## What does WisdomAI do?
 
-{/* TODO: remove this Note once the video is fixed or replaced. */}
 <Note>
   **Video placeholder:** a short video showing what WisdomAI does goes here. It isn't displaying yet and is being updated.
 </Note>
@@ -50,6 +87,7 @@ Get answers, dashboards, and apps from plain language.
   playsInline
   className="w-full rounded-xl hidden dark:block"
 />
+*/}
 
 ## How WisdomAI is different
 
