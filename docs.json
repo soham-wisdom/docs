@@ -43,8 +43,7 @@
             "pages": [
               "admins/getting-started-admins",
               "explorers/getting-started-explorers",
-              "setting-up-wisdom-ai/getting-started-domains-context",
-              "integrations/developers"
+              "setting-up-wisdom-ai/getting-started-domains-context"
             ]
           },
           {
@@ -61,6 +60,18 @@
         "tab": "Docs by product",
         "icon": "book-open",
         "anchors": [
+          {
+            "anchor": "Get Started",
+            "icon": "rocket",
+            "groups": [
+              {
+                "group": "Get Started",
+                "pages": [
+                  "products"
+                ]
+              }
+            ]
+          },
           {
             "anchor": "Connections",
             "icon": "plug",
@@ -246,26 +257,26 @@
             "icon": "comments",
             "groups": [
               {
-                "group": "Chats",
+                "group": "Explorers",
                 "pages": [
                   "chat/overview",
                   "using-wisdom-ai-everyday/ask-better-questions",
                   "explorers/using-wisdom-ai-everyday/command-palette",
                   "product-updates/february-2026/ghost-text-completion",
                   "improve-wisdom-ai-responses/attach-files-to-chat",
-                  "explorers-feedback/provide-feedback-to-the-system"
+                  "explorers-feedback/provide-feedback-to-the-system",
+                  {
+                    "group": "Advanced Analysis",
+                    "pages": [
+                      "advanced-features/deep-analysis",
+                      "advanced-features/python-interpreter-tool",
+                      "advanced-features/visualization-types-and-properties"
+                    ]
+                  }
                 ]
               },
               {
-                "group": "Advanced Analysis",
-                "pages": [
-                  "advanced-features/deep-analysis",
-                  "advanced-features/python-interpreter-tool",
-                  "advanced-features/visualization-types-and-properties"
-                ]
-              },
-              {
-                "group": "Chat administration",
+                "group": "Admins",
                 "pages": [
                   "admins/using-wisdom-ai-everyday/command-palette",
                   "using-wisdom-ai-everyday/work-with-csv-files",
@@ -279,7 +290,7 @@
             "icon": "chart-simple",
             "groups": [
               {
-                "group": "Dashboards",
+                "group": "Explorers",
                 "pages": [
                   "using-wisdom-ai-everyday/turn-answers-into-dashboards",
                   "explorers/chat-dashboard",
@@ -293,7 +304,7 @@
                 ]
               },
               {
-                "group": "Build, share, and schedule",
+                "group": "Admins",
                 "pages": [
                   "improve-wisdom-ai-responses/build-dashboards",
                   "using-wisdom-ai-everyday/share-dashboards-and-set-access-control",
@@ -371,6 +382,18 @@
         "tab": "Developers",
         "icon": "code",
         "anchors": [
+          {
+            "anchor": "Get Started",
+            "icon": "rocket",
+            "groups": [
+              {
+                "group": "Get Started",
+                "pages": [
+                  "integrations/developers"
+                ]
+              }
+            ]
+          },
           {
             "anchor": "User Management",
             "icon": "users",
