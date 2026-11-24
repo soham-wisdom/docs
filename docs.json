@@ -104,8 +104,9 @@
               {
                 "group": "Chats",
                 "pages": [
-                  "chat/overview",
-                  "admins/using-wisdom-ai-everyday/command-palette"
+                  "admins/using-wisdom-ai-everyday/command-palette",
+                  "using-wisdom-ai-everyday/work-with-csv-files",
+                  "using-wisdom-ai-everyday/request-help-from-admins"
                 ]
               }
             ]
@@ -118,26 +119,8 @@
                 "group": "Dashboards",
                 "pages": [
                   "improve-wisdom-ai-responses/build-dashboards",
-                  "dashboards/dashboard-versioning",
-                  "dashboards/cached-data",
                   "using-wisdom-ai-everyday/share-dashboards-and-set-access-control",
                   "using-wisdom-ai-everyday/schedule-dashboards-notifications"
-                ]
-              }
-            ]
-          },
-          {
-            "anchor": "Live Apps",
-            "icon": "grid-2",
-            "groups": [
-              {
-                "group": "Live Apps",
-                "tag": "Just shipped",
-                "pages": [
-                  "live-apps/overview",
-                  "live-apps/create-live-app",
-                  "live-apps/data-and-trust",
-                  "live-apps/share-and-access"
                 ]
               }
             ]
@@ -267,9 +250,7 @@
                   "explorers/using-wisdom-ai-everyday/command-palette",
                   "product-updates/february-2026/ghost-text-completion",
                   "improve-wisdom-ai-responses/attach-files-to-chat",
-                  "explorers-feedback/provide-feedback-to-the-system",
-                  "using-wisdom-ai-everyday/work-with-csv-files",
-                  "using-wisdom-ai-everyday/request-help-from-admins"
+                  "explorers-feedback/provide-feedback-to-the-system"
                 ]
               },
               {
@@ -291,16 +272,13 @@
                 "pages": [
                   "using-wisdom-ai-everyday/turn-answers-into-dashboards",
                   "explorers/chat-dashboard",
-                  "improve-wisdom-ai-responses/build-dashboards",
                   "dashboards/tabs",
                   "dashboards/instant-filters",
                   "product-updates/february-2026/mcp-in-dashboards",
                   "product-updates/february-2026/dual-axis-charts",
                   "dashboards/dashboard-versioning",
                   "dashboards/chat-filters",
-                  "dashboards/cached-data",
-                  "using-wisdom-ai-everyday/share-dashboards-and-set-access-control",
-                  "using-wisdom-ai-everyday/schedule-dashboards-notifications"
+                  "dashboards/cached-data"
                 ]
               }
             ]
@@ -317,19 +295,6 @@
                   "live-apps/create-live-app",
                   "live-apps/data-and-trust",
                   "live-apps/share-and-access"
-                ]
-              }
-            ]
-          },
-          {
-            "anchor": "Agents & Skills",
-            "icon": "robot",
-            "groups": [
-              {
-                "group": "Agents & Skills",
-                "pages": [
-                  "setting-up-wisdom-ai/manage-domains/skills",
-                  "product-updates/spring-2026/parameterized-agents"
                 ]
               }
             ]
