@@ -39,17 +39,6 @@
             ]
           },
           {
-            "group": "Popular Topics",
-            "icon": "fire",
-            "pages": [
-              "setting-up-wisdom-ai/getting-started-domains-context",
-              "setting-up-wisdom-ai/advanced-data-modeling-creating-context",
-              "manage-account/row-level-access-control/row-level-access-control",
-              "live-apps/create-live-app",
-              "integrations/mcp-server"
-            ]
-          },
-          {
             "group": "Reference",
             "pages": [
               "getting-started/glossary",
@@ -118,16 +107,6 @@
                   "chat/overview",
                   "admins/using-wisdom-ai-everyday/command-palette"
                 ]
-              },
-              {
-                "group": "Test & Improve Answers",
-                "pages": [
-                  "improve-wisdom-ai-responses/validate-and-test-answers",
-                  "improve-wisdom-ai-responses/use-evaluations-sets-and-runs",
-                  "using-wisdom-ai-everyday/knowledge-signals-from-chat",
-                  "setting-up-wisdom-ai/feedback-mechanisms/monitor-negative-feedback",
-                  "setting-up-wisdom-ai/feedback-mechanisms/limited-context"
-                ]
               }
             ]
           },
@@ -190,81 +169,6 @@
                       "improve-wisdom-ai-responses/connect-unstructed-repositories-datasets",
                       "getting-started/connect-data-sources/search-the-web",
                       "getting-started/connect-data-sources/connect-to-sharepoint"
-                    ]
-                  }
-                ]
-              },
-              {
-                "group": "Domains & Context",
-                "icon": "database",
-                "pages": [
-                  "setting-up-wisdom-ai/getting-started-domains-context",
-                  {
-                    "group": "Domains",
-                    "pages": [
-                      "setting-up-wisdom-ai/manage-domains/understand-domains",
-                      "setting-up-wisdom-ai/domain-groups",
-                      "setting-up-wisdom-ai/domain-groups-how-to",
-                      "setting-up-wisdom-ai/add-domain-specific-knowledge",
-                      {
-                        "group": "Manage Tables & Columns",
-                        "pages": [
-                          "setting-up-wisdom-ai/manage-tables-columns/document-tables-and-columns",
-                          "setting-up-wisdom-ai/manage-tables-columns/advanced-column-options",
-                          "setting-up-wisdom-ai/manage-tables-columns/set-up-rag"
-                        ]
-                      },
-                      "setting-up-wisdom-ai/cache-tables",
-                      "setting-up-wisdom-ai/smart-cache",
-                      "setting-up-wisdom-ai/manage-domains/domain-health",
-                      "setting-up-wisdom-ai/manage-domains/import-apache-ossie-model",
-                      {
-                        "group": "Domain Tabs",
-                        "pages": [
-                          "setting-up-wisdom-ai/manage-domains/overview-tab",
-                          "setting-up-wisdom-ai/manage-domains/data-sources-tab",
-                          "setting-up-wisdom-ai/manage-domains/context-tab",
-                          "setting-up-wisdom-ai/manage-domains/changelog-tab",
-                          "setting-up-wisdom-ai/manage-domains/advanced-tab",
-                          "setting-up-wisdom-ai/manage-domains/evaluation-tab",
-                          "setting-up-wisdom-ai/manage-domains/sql-playground-tab"
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "group": "Context",
-                    "pages": [
-                      "setting-up-wisdom-ai/advanced-data-modeling-creating-context",
-                      "setting-up-wisdom-ai/context-modeling-guide-workflow",
-                      "setting-up-wisdom-ai/context-libraries",
-                      "improve-wisdom-ai-responses/enhancing-data-analysis-with-custom-business-context",
-                      "improve-wisdom-ai-responses/how-to-create-metrics",
-                      "product-updates/february-2026/knowledge-playground",
-                      {
-                        "group": "Context Builder",
-                        "pages": [
-                          "product-updates/february-2026/context-builder-file-uploads",
-                          "product-updates/spring-2026/context-builder-connections"
-                        ]
-                      },
-                      {
-                        "group": "Reviewed Queries",
-                        "pages": [
-                          "setting-up-wisdom-ai/feedback-mechanisms/reviewed-queries",
-                          "product-updates/february-2026/mcp-reviewed-queries"
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "group": "Test & Improve Answers",
-                    "pages": [
-                      "improve-wisdom-ai-responses/validate-and-test-answers",
-                      "improve-wisdom-ai-responses/use-evaluations-sets-and-runs",
-                      "using-wisdom-ai-everyday/knowledge-signals-from-chat",
-                      "setting-up-wisdom-ai/feedback-mechanisms/monitor-negative-feedback",
-                      "setting-up-wisdom-ai/feedback-mechanisms/limited-context"
                     ]
                   }
                 ]
@@ -437,6 +341,110 @@
         ]
       },
       {
+        "tab": "Context Manager",
+        "icon": "database",
+        "anchors": [
+          {
+            "anchor": "Get Started",
+            "icon": "rocket",
+            "groups": [
+              {
+                "group": "Get Started",
+                "pages": [
+                  "setting-up-wisdom-ai/getting-started-domains-context"
+                ]
+              }
+            ]
+          },
+          {
+            "anchor": "Domains",
+            "icon": "database",
+            "groups": [
+              {
+                "group": "Domains",
+                "pages": [
+                  "setting-up-wisdom-ai/manage-domains/understand-domains",
+                  "setting-up-wisdom-ai/domain-groups",
+                  "setting-up-wisdom-ai/domain-groups-how-to",
+                  "setting-up-wisdom-ai/add-domain-specific-knowledge",
+                  {
+                    "group": "Manage Tables & Columns",
+                    "pages": [
+                      "setting-up-wisdom-ai/manage-tables-columns/document-tables-and-columns",
+                      "setting-up-wisdom-ai/manage-tables-columns/advanced-column-options",
+                      "setting-up-wisdom-ai/manage-tables-columns/set-up-rag"
+                    ]
+                  },
+                  "setting-up-wisdom-ai/cache-tables",
+                  "setting-up-wisdom-ai/smart-cache",
+                  "setting-up-wisdom-ai/manage-domains/domain-health",
+                  "setting-up-wisdom-ai/manage-domains/import-apache-ossie-model",
+                  {
+                    "group": "Domain Tabs",
+                    "pages": [
+                      "setting-up-wisdom-ai/manage-domains/overview-tab",
+                      "setting-up-wisdom-ai/manage-domains/data-sources-tab",
+                      "setting-up-wisdom-ai/manage-domains/context-tab",
+                      "setting-up-wisdom-ai/manage-domains/changelog-tab",
+                      "setting-up-wisdom-ai/manage-domains/advanced-tab",
+                      "setting-up-wisdom-ai/manage-domains/evaluation-tab",
+                      "setting-up-wisdom-ai/manage-domains/sql-playground-tab"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "anchor": "Context",
+            "icon": "book-open",
+            "groups": [
+              {
+                "group": "Context",
+                "pages": [
+                  "setting-up-wisdom-ai/advanced-data-modeling-creating-context",
+                  "setting-up-wisdom-ai/context-modeling-guide-workflow",
+                  "setting-up-wisdom-ai/context-libraries",
+                  "improve-wisdom-ai-responses/enhancing-data-analysis-with-custom-business-context",
+                  "improve-wisdom-ai-responses/how-to-create-metrics",
+                  "product-updates/february-2026/knowledge-playground",
+                  {
+                    "group": "Context Builder",
+                    "pages": [
+                      "product-updates/february-2026/context-builder-file-uploads",
+                      "product-updates/spring-2026/context-builder-connections"
+                    ]
+                  },
+                  {
+                    "group": "Reviewed Queries",
+                    "pages": [
+                      "setting-up-wisdom-ai/feedback-mechanisms/reviewed-queries",
+                      "product-updates/february-2026/mcp-reviewed-queries"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "anchor": "Test & Improve Answers",
+            "icon": "vial",
+            "groups": [
+              {
+                "group": "Test & Improve Answers",
+                "pages": [
+                  "improve-wisdom-ai-responses/validate-and-test-answers",
+                  "improve-wisdom-ai-responses/use-evaluations-sets-and-runs",
+                  "using-wisdom-ai-everyday/knowledge-signals-from-chat",
+                  "setting-up-wisdom-ai/feedback-mechanisms/monitor-negative-feedback",
+                  "setting-up-wisdom-ai/feedback-mechanisms/limited-context"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
         "tab": "Developer",
         "icon": "code",
         "anchors": [
@@ -453,72 +461,8 @@
             ]
           },
           {
-            "anchor": "Agents",
-            "icon": "robot",
-            "groups": [
-              {
-                "group": "Agents",
-                "pages": [
-                  "integrations/graphql-api/mutations/agent/trigger-agent"
-                ]
-              }
-            ]
-          },
-          {
-            "anchor": "Chats",
-            "icon": "comments",
-            "groups": [
-              {
-                "group": "Chats",
-                "pages": [
-                  "integrations/embeddings/iframe/embed-chat",
-                  "integrations/graphql-api/mutations/chat/create-conversation",
-                  "integrations/graphql-api/mutations/chat/send-user-message",
-                  "integrations/graphql-api/subscriptions/subscribe-conversation"
-                ]
-              }
-            ]
-          },
-          {
-            "anchor": "Dashboards",
-            "icon": "chart-simple",
-            "groups": [
-              {
-                "group": "Dashboards",
-                "pages": [
-                  "integrations/embeddings/iframe/embed-a-dashboard",
-                  "integrations/graphql-api/queries/dashboard/dashboard",
-                  "integrations/graphql-api/queries/dashboard/dashboards",
-                  "integrations/graphql-api/mutations/dashboard/create-dashboard",
-                  "integrations/graphql-api/mutations/dashboard/update-dashboard",
-                  "integrations/graphql-api/mutations/dashboard/update-dashboard-filters",
-                  "integrations/graphql-api/mutations/dashboard/update-dashboard-widgets",
-                  "integrations/graphql-api/mutations/dashboard/add-widget-to-dashboard",
-                  "integrations/graphql-api/mutations/dashboard/delete-dashboard",
-                  "integrations/graphql-api/mutations/dashboard/delete-widget-from-dashboard",
-                  "integrations/graphql-api/mutations/dashboard/refresh-dashboard",
-                  "integrations/graphql-api/mutations/dashboard/add-scope-role-assignments-for-sharing",
-                  "integrations/graphql-api/mutations/dashboard/remove-scope-role-assignments-for-sharing",
-                  "integrations/graphql-api/subscriptions/dashboard-summary"
-                ]
-              }
-            ]
-          },
-          {
-            "anchor": "Live Apps",
-            "icon": "grid-2",
-            "groups": [
-              {
-                "group": "Live Apps",
-                "pages": [
-                  "integrations/embeddings/iframe/embed-a-live-app"
-                ]
-              }
-            ]
-          },
-          {
-            "anchor": "Platform & API Reference",
-            "icon": "book-open-cover",
+            "anchor": "User Management",
+            "icon": "users",
             "groups": [
               {
                 "group": "User Management",
@@ -528,7 +472,13 @@
                   "integrations/user-management/rbac",
                   "integrations/user-management/mirror-with-the-api"
                 ]
-              },
+              }
+            ]
+          },
+          {
+            "anchor": "Embeddings",
+            "icon": "table-columns",
+            "groups": [
               {
                 "group": "Embeddings",
                 "pages": [
@@ -554,7 +504,13 @@
                     ]
                   }
                 ]
-              },
+              }
+            ]
+          },
+          {
+            "anchor": "GraphQL API",
+            "icon": "code",
+            "groups": [
               {
                 "group": "GraphQL API",
                 "boost": 0.05,
@@ -711,7 +667,13 @@
                     ]
                   }
                 ]
-              },
+              }
+            ]
+          },
+          {
+            "anchor": "Deployment",
+            "icon": "cloud",
+            "groups": [
               {
                 "group": "Deployment",
                 "pages": [
