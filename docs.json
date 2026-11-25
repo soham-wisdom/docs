@@ -98,35 +98,6 @@
             ]
           },
           {
-            "anchor": "Integrations",
-            "icon": "puzzle-piece",
-            "groups": [
-              {
-                "group": "Integrations",
-                "pages": [
-                  {
-                    "group": "WisdomAI MCP Server",
-                    "pages": [
-                      "integrations/mcp-server",
-                      "integrations/mcp-server/ask-a-question",
-                      "integrations/mcp-server/give-feedback",
-                      "integrations/mcp-server/manage-context"
-                    ]
-                  },
-                  {
-                    "group": "Slack",
-                    "pages": [
-                      "integrations/connect-to-slack",
-                      "product-updates/february-2026/data-query-on-slack"
-                    ]
-                  },
-                  "integrations/google-sheets",
-                  "settings/connected-apps"
-                ]
-              }
-            ]
-          },
-          {
             "anchor": "Domains",
             "icon": "database",
             "groups": [
@@ -607,6 +578,35 @@
                   "deployment/deployment-models"
                 ]
               }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Integrations",
+        "icon": "puzzle-piece",
+        "groups": [
+          {
+            "group": "Integrations",
+            "pages": [
+              {
+                "group": "WisdomAI MCP Server",
+                "pages": [
+                  "integrations/mcp-server",
+                  "integrations/mcp-server/ask-a-question",
+                  "integrations/mcp-server/give-feedback",
+                  "integrations/mcp-server/manage-context"
+                ]
+              },
+              {
+                "group": "Slack",
+                "pages": [
+                  "integrations/connect-to-slack",
+                  "product-updates/february-2026/data-query-on-slack"
+                ]
+              },
+              "integrations/google-sheets",
+              "settings/connected-apps"
             ]
           }
         ]
