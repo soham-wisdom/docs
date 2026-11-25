@@ -2,7 +2,7 @@
 title: "Update Eval Set"
 ---
 
-The `updateEvalSet` mutation updates an evaluation set. The `items` argument replaces the whole list of sessions, so pass every session you want to keep.
+The `updateEvalSet` mutation updates an evaluation set. It requires the `evaluation:write` permission, and the `evaluation:lock` permission if the set is locked.
 
 ## Signature
 
@@ -10,47 +10,19 @@ The `updateEvalSet` mutation updates an evaluation set. The `items` argument rep
 updateEvalSet(input: UpdateEvalSetInput!): EvalSet!
 ```
 
-[Note: Need clarification on the name of the input type. `UpdateEvalSetInput` is used here as a working name.]
+`UpdateEvalSetInput` fields:
 
-<Note>
-  This mutation requires the `evaluation:write` permission on the domain. Updating a locked evaluation set also requires the `evaluation:lock` permission.
-</Note>
+| Field | Type | Description |
+| :-- | :-- | :-- |
+| `id` | `ID!` | The evaluation set to update. |
+| `domainId` | `ID!` | The domain the evaluation set belongs to. |
+| `items` | `[[PromptSQLPairInput!]!]!` | The sessions. This list replaces the whole existing list, so pass every session you want to keep. |
+| `name` | `String` | The new name. |
+| `customGradingInstructions` | `String` | The new grading instructions. |
 
-## Arguments
+Returns the updated [EvalSet](/integrations/graphql-api/objects/evaluation-data-types#evalset).
 
-<ParamField path="input" type="UpdateEvalSetInput!" required>
-  Input object containing the update. See [UpdateEvalSetInput](#updateevalsetinput).
-</ParamField>
-
-### UpdateEvalSetInput
-
-<ParamField path="id" type="ID!" required>
-  The ID of the evaluation set to update.
-</ParamField>
-
-<ParamField path="domainId" type="String!" required>
-  The ID of the domain that the evaluation set belongs to.
-</ParamField>
-
-<ParamField path="items" type="[[PromptSQLPairInput!]!]!" required>
-  The sessions of the evaluation set. This list replaces the existing sessions. Each turn takes the same shape as [PromptSQLPair](/integrations/graphql-api/objects/prompt-sql-pair#input-shape).
-</ParamField>
-
-<ParamField path="name" type="String">
-  The new name of the evaluation set.
-</ParamField>
-
-<ParamField path="customGradingInstructions" type="String">
-  The new custom grading instructions for the evaluation set.
-</ParamField>
-
-## Response
-
-Returns the updated `EvalSet` object. See [EvalSet](/integrations/graphql-api/objects/eval-set) for the schema.
-
-## Usage example
-
-This example renames an evaluation set and replaces its sessions:
+## Example
 
 ```graphql
 mutation UpdateEvalSet($input: UpdateEvalSetInput!) {
@@ -58,41 +30,27 @@ mutation UpdateEvalSet($input: UpdateEvalSetInput!) {
     id
     name
     version
-    caseIds
   }
 }
 ```
 
-<RequestExample>
-
-```bash Request
-curl -X POST \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer <jwt_token>" \
-  -d '{
-    "query": "mutation UpdateEvalSet($input: UpdateEvalSetInput!) { updateEvalSet(input: $input) { id name version caseIds } }",
-    "variables": {
-      "input": {
-        "id": "eval_set_123",
-        "domainId": "domain_987654321",
-        "name": "Revenue questions v2",
-        "items": [
-          [
-            {
-              "prompt": "What is the total revenue for closed won opportunities?",
-              "sql": ["SELECT SUM(amount) FROM Opportunity WHERE stage = '\''Closed Won'\''"]
-            }
-          ]
-        ]
-      }
-    }
-  }' \
-  https://{ACCOUNT}.askwisdom.ai/graphql
+```json Variables
+{
+  "input": {
+    "id": "eval_set_123",
+    "domainId": "domain_987654321",
+    "name": "Revenue questions v2",
+    "items": [
+      [
+        {
+          "prompt": "What is the total revenue for closed won opportunities?",
+          "sql": ["SELECT SUM(amount) FROM Opportunity WHERE stage = 'Closed Won'"]
+        }
+      ]
+    ]
+  }
+}
 ```
-
-</RequestExample>
-
-<ResponseExample>
 
 ```json Response
 {
@@ -100,22 +58,8 @@ curl -X POST \
     "updateEvalSet": {
       "id": "eval_set_123",
       "name": "Revenue questions v2",
-      "version": 2,
-      "caseIds": ["case_001"]
+      "version": 2
     }
   }
 }
 ```
-
-</ResponseExample>
-
-## Next steps
-
-<CardGroup cols={2}>
-  <Card title="Eval Sets" icon="list" href="/integrations/graphql-api/queries/evaluation/eval-sets">
-    List the evaluation sets of a domain
-  </Card>
-  <Card title="Set Eval Set Locked" icon="lock" href="/integrations/graphql-api/mutations/evaluation/set-eval-set-locked">
-    Lock an evaluation set
-  </Card>
-</CardGroup>

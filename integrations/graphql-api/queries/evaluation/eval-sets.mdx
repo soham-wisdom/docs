@@ -2,49 +2,31 @@
 title: "Eval Sets"
 ---
 
-The `evalSets` query returns the evaluation sets of a domain, with their sessions and turns, version, lock state, and schedule.
+The `evalSets` query returns the evaluation sets of a domain. It requires the `evaluation:read` permission.
 
 ## Signature
 
 ```graphql
-evalSets(domainId: String!, draftId: ID): [EvalSet!]!
+evalSets(domainId: ID!, draftId: ID): [EvalSet!]!
 ```
 
-[Note: Need clarification on the exact GraphQL argument types. The types shown are inferred from the `EvalSet` schema.]
+| Argument | Type | Description |
+| :-- | :-- | :-- |
+| `domainId` | `ID!` | The domain to return evaluation sets for. |
+| `draftId` | `ID` | A draft of the domain. The response also includes the sets staged on that draft. |
 
-<Note>
-  This query requires the `evaluation:read` permission on the domain.
-</Note>
+Returns a list of [EvalSet](/integrations/graphql-api/objects/evaluation-data-types#evalset) objects.
 
-## Arguments
-
-<ParamField path="domainId" type="String!" required>
-  The ID of the domain to return evaluation sets for.
-</ParamField>
-
-<ParamField path="draftId" type="ID">
-  The ID of a draft of the domain. When you pass it, the response also includes the evaluation sets staged on that draft.
-</ParamField>
-
-## Response
-
-Returns a list of `EvalSet` objects. See [EvalSet](/integrations/graphql-api/objects/eval-set) for the schema.
-
-## Usage example
-
-This example lists the evaluation sets of a domain, with their schedule:
+## Example
 
 ```graphql
-query EvalSets($domainId: String!) {
+query EvalSets($domainId: ID!) {
   evalSets(domainId: $domainId) {
     id
     name
     version
     isLocked
     caseIds
-    cronExpression
-    cronTimezone
-    scheduledRunChatMode
     items {
       prompt
       sql
@@ -53,24 +35,9 @@ query EvalSets($domainId: String!) {
 }
 ```
 
-<RequestExample>
-
-```bash Request
-curl -X POST \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer <jwt_token>" \
-  -d '{
-    "query": "query EvalSets($domainId: String!) { evalSets(domainId: $domainId) { id name version isLocked caseIds cronExpression cronTimezone scheduledRunChatMode items { prompt sql } } }",
-    "variables": {
-      "domainId": "domain_987654321"
-    }
-  }' \
-  https://{ACCOUNT}.askwisdom.ai/graphql
+```json Variables
+{ "domainId": "domain_987654321" }
 ```
-
-</RequestExample>
-
-<ResponseExample>
 
 ```json Response
 {
@@ -82,9 +49,6 @@ curl -X POST \
         "version": 2,
         "isLocked": false,
         "caseIds": ["case_001"],
-        "cronExpression": "0 6 * * 1",
-        "cronTimezone": "America/New_York",
-        "scheduledRunChatMode": "FAST",
         "items": [
           [
             {
@@ -98,19 +62,3 @@ curl -X POST \
   }
 }
 ```
-
-</ResponseExample>
-
-## Next steps
-
-<CardGroup cols={2}>
-  <Card title="Create Eval Set" icon="plus" href="/integrations/graphql-api/mutations/evaluation/create-eval-set">
-    Create an evaluation set
-  </Card>
-  <Card title="Run Evaluation" icon="play" href="/integrations/graphql-api/mutations/evaluation/run-evaluation">
-    Run an evaluation set
-  </Card>
-  <Card title="EvalSet Object" icon="folder" href="/integrations/graphql-api/objects/eval-set">
-    Complete response schema
-  </Card>
-</CardGroup>

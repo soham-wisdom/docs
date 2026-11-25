@@ -2,58 +2,109 @@
 title: "Evaluation sets"
 ---
 
-Use the GraphQL API to create, view, update, run, lock, and schedule evaluation sets for a domain. Evaluation sets use the same endpoint and API key authentication as the rest of the GraphQL API. See [GraphQL API](/integrations/graphql-api/GraphQL-API) for the endpoint and how to obtain a token.
+Use the GraphQL API to create evaluation sets, run them, and read the results. Evaluation sets use the same endpoint and API key authentication as the rest of the GraphQL API.
 
 <Note>
   The WisdomAI SDK does not support evaluation sets. To manage evaluation sets in the WisdomAI UI instead, see [Use Evaluations Sets and Runs](/improve-wisdom-ai-responses/use-evaluations-sets-and-runs).
 </Note>
 
-## Workflow
+## Create, run, and read results
+
+The caller needs evaluation permissions on the domain. See [Permissions](#permissions).
 
 <Steps>
-  <Step title="Create an evaluation set">
-    Call [createEvalSet](/integrations/graphql-api/mutations/evaluation/create-eval-set) with the sessions and turns to test. Each turn has a prompt and ground-truth SQL, assertions, or both.
+  <Step title="Get a token">
+    Exchange your access key for a JWT token. See [Exchange Access Token](/integrations/graphql-api/queries/auth/exchange-access-token) for details.
+
+    ```bash
+    curl -X POST https://{ACCOUNT}.askwisdom.ai/graphql \
+      -H "Content-Type: application/json" \
+      -d '{
+        "query": "query ExchangeAccessToken($accessToken: String!) { exchangeAccessToken(accessToken: $accessToken) }",
+        "variables": { "accessToken": "<access_key>" }
+      }'
+    ```
   </Step>
-  <Step title="Run the evaluation set">
-    Call [runEvaluation](/integrations/graphql-api/mutations/evaluation/run-evaluation). It returns a run group ID.
+  <Step title="Create an evaluation set">
+    Send the token in the `Authorization` header. Every other request on this page uses the same endpoint and headers, so the steps below show only the GraphQL operation and its variables.
+
+    ```bash
+    curl -X POST https://{ACCOUNT}.askwisdom.ai/graphql \
+      -H "Content-Type: application/json" \
+      -H "Authorization: Bearer <jwt_token>" \
+      -d '{
+        "query": "mutation CreateEvalSet($input: CreateEvalSetInput!) { createEvalSet(input: $input) { id caseIds } }",
+        "variables": {
+          "input": {
+            "name": "Revenue questions",
+            "domainId": "domain_987654321",
+            "items": [[{
+              "prompt": "What is the total revenue for closed won opportunities?",
+              "sql": ["SELECT SUM(amount) FROM Opportunity WHERE stage = '\''Closed Won'\''"]
+            }]]
+          }
+        }
+      }'
+    ```
+
+    See [createEvalSet](/integrations/graphql-api/mutations/evaluation/create-eval-set).
+  </Step>
+  <Step title="Run it">
+    ```graphql
+    mutation RunEvaluation($domainId: String!, $existingEvalSetId: String!) {
+      runEvaluation(domainId: $domainId, existingEvalSetId: $existingEvalSetId)
+    }
+    ```
+
+    The mutation returns a run group ID. See [runEvaluation](/integrations/graphql-api/mutations/evaluation/run-evaluation).
   </Step>
   <Step title="Get the runs">
-    Pass the run group ID to [evaluationRunGroup](/integrations/graphql-api/queries/evaluation/evaluation-run-group) to list the individual runs.
+    ```graphql
+    query EvaluationRunGroup($runGroupId: ID!) {
+      evaluationRunGroup(runGroupId: $runGroupId) {
+        runs {
+          id
+          completedAt
+          overallCombinedScore
+        }
+      }
+    }
+    ```
+
+    See [evaluationRunGroup](/integrations/graphql-api/queries/evaluation/evaluation-run-group).
   </Step>
   <Step title="Read the results">
-    Pass a run ID to [evaluationRun](/integrations/graphql-api/queries/evaluation/evaluation-run) for the score and result of each turn. To list runs across evaluation sets, use [evaluationRuns](/integrations/graphql-api/queries/evaluation/evaluation-runs).
-  </Step>
-  <Step title="Schedule the evaluation set">
-    Optionally, call [scheduleEvalSet](/integrations/graphql-api/mutations/evaluation/schedule-eval-set) to run the set on a recurring schedule.
+    Pass a run ID to [evaluationRun](/integrations/graphql-api/queries/evaluation/evaluation-run) to get the score and result for each turn.
   </Step>
 </Steps>
 
+## Optional features
+
+- **Drafts:** Pass `draftId` to `createEvalSet` to stage the set on a domain draft, or to `runEvaluation` to run against the draft version of the domain.
+- **Selected cases:** Pass `evaluationCaseIds` to `runEvaluation` to run only some cases. Use the IDs from `caseIds` on the evaluation set.
+- **Custom grading:** Set `customGradingInstructions` on the set, or `gradingInstructions` on a turn. Add `assertions` to a turn to grade plain-language criteria.
+- **Scheduling:** Use [scheduleEvalSet](/integrations/graphql-api/mutations/evaluation/schedule-eval-set) to run a set on a cron schedule, and [pauseScheduledEval](/integrations/graphql-api/mutations/evaluation/pause-scheduled-eval) to pause it.
+- **Locking:** Use [setEvalSetLocked](/integrations/graphql-api/mutations/evaluation/set-eval-set-locked) to lock a set against changes.
+
 ## Permissions
 
-The caller needs evaluation permissions on the domain. These permissions typically match write access to the domain.
+These permissions typically match write access to the domain.
 
 | Permission | Allows |
 | :-- | :-- |
 | `evaluation:read` | View evaluation sets and evaluation runs. |
 | `evaluation:write` | Create, update, delete, and run evaluation sets. |
 | `evaluation:schedule` | Schedule evaluation sets and pause their schedules. |
-| `evaluation:lock` | Lock and unlock evaluation sets. Also required to update, delete, or reschedule a locked evaluation set. |
+| `evaluation:lock` | Lock and unlock evaluation sets. Also required to update, delete, reschedule, or pause the schedule of a locked evaluation set. |
 
 ## Operations
 
-### Queries
-
-| Query | Description | Permission |
+| Operation | Description | Permission |
 | :-- | :-- | :-- |
 | [evalSets](/integrations/graphql-api/queries/evaluation/eval-sets) | Returns the evaluation sets of a domain. | `evaluation:read` |
 | [evaluationRuns](/integrations/graphql-api/queries/evaluation/evaluation-runs) | Lists evaluation runs. | `evaluation:read` |
 | [evaluationRun](/integrations/graphql-api/queries/evaluation/evaluation-run) | Returns one run with the result for each turn. | `evaluation:read` |
 | [evaluationRunGroup](/integrations/graphql-api/queries/evaluation/evaluation-run-group) | Returns the runs that one `runEvaluation` call started. | `evaluation:read` |
-
-### Mutations
-
-| Mutation | Description | Permission |
-| :-- | :-- | :-- |
 | [createEvalSet](/integrations/graphql-api/mutations/evaluation/create-eval-set) | Creates an evaluation set. | `evaluation:write` |
 | [updateEvalSet](/integrations/graphql-api/mutations/evaluation/update-eval-set) | Updates an evaluation set and replaces its sessions. | `evaluation:write` |
 | [deleteEvalSet](/integrations/graphql-api/mutations/evaluation/delete-eval-set) | Deletes an evaluation set. | `evaluation:write` |
@@ -62,18 +113,4 @@ The caller needs evaluation permissions on the domain. These permissions typical
 | [scheduleEvalSet](/integrations/graphql-api/mutations/evaluation/schedule-eval-set) | Sets or clears a recurring schedule. | `evaluation:schedule` |
 | [pauseScheduledEval](/integrations/graphql-api/mutations/evaluation/pause-scheduled-eval) | Pauses the schedule of an evaluation set. | `evaluation:schedule` |
 
-## Related articles
-
-<CardGroup cols={2}>
-  <Card title="Use Evaluations Sets and Runs" icon="flask" href="/improve-wisdom-ai-responses/use-evaluations-sets-and-runs">
-    Create and run evaluation sets in the WisdomAI UI.
-  </Card>
-
-  <Card title="GraphQL API" icon="code" href="/integrations/graphql-api/GraphQL-API">
-    Endpoint, authentication, and error handling for the GraphQL API.
-  </Card>
-
-  <Card title="EvalSet Object" icon="folder" href="/integrations/graphql-api/objects/eval-set">
-    Schema of an evaluation set.
-  </Card>
-</CardGroup>
+For the objects, input types, and enums, see [Evaluation data types](/integrations/graphql-api/objects/evaluation-data-types).

@@ -2,7 +2,7 @@
 title: "Evaluation Run"
 ---
 
-The `evaluationRun` query returns one evaluation run, including the turns as they were when the run happened and the score and result for each turn.
+The `evaluationRun` query returns one evaluation run, with the score and result for each turn. It requires the `evaluation:read` permission.
 
 ## Signature
 
@@ -10,31 +10,18 @@ The `evaluationRun` query returns one evaluation run, including the turns as the
 evaluationRun(id: ID!): EvaluationRun!
 ```
 
-[Note: Need clarification on the exact GraphQL argument and return types. The types shown are inferred.]
+| Argument | Type | Description |
+| :-- | :-- | :-- |
+| `id` | `ID!` | The ID of the run. To get the run IDs of one `runEvaluation` call, use [evaluationRunGroup](/integrations/graphql-api/queries/evaluation/evaluation-run-group). |
 
-<Note>
-  This query requires the `evaluation:read` permission on the domain.
-</Note>
+Returns an [EvaluationRun](/integrations/graphql-api/objects/evaluation-data-types#evaluationrun) object.
 
-## Arguments
-
-<ParamField path="id" type="ID!" required>
-  The ID of the evaluation run. To get the IDs of the runs that one `runEvaluation` call started, use [evaluationRunGroup](/integrations/graphql-api/queries/evaluation/evaluation-run-group).
-</ParamField>
-
-## Response
-
-Returns an `EvaluationRun` object. See [EvaluationRun](/integrations/graphql-api/objects/evaluation-run) for the schema.
-
-## Usage example
-
-This example retrieves the scores and feedback of each turn in a run:
+## Example
 
 ```graphql
 query EvaluationRun($id: ID!) {
   evaluationRun(id: $id) {
     id
-    evalSetName
     overallCombinedScore
     promptPairs {
       prompt
@@ -53,38 +40,18 @@ query EvaluationRun($id: ID!) {
 }
 ```
 
-<RequestExample>
-
-```bash Request
-curl -X POST \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer <jwt_token>" \
-  -d '{
-    "query": "query EvaluationRun($id: ID!) { evaluationRun(id: $id) { id evalSetName overallCombinedScore promptPairs { prompt } evaluations { softEvalScore softEvalFeedback manualScore assertionResults { assertionId verdict reasoning } } } }",
-    "variables": {
-      "id": "run_456"
-    }
-  }' \
-  https://{ACCOUNT}.askwisdom.ai/graphql
+```json Variables
+{ "id": "run_456" }
 ```
-
-</RequestExample>
-
-<ResponseExample>
 
 ```json Response
 {
   "data": {
     "evaluationRun": {
       "id": "run_456",
-      "evalSetName": "Revenue questions",
       "overallCombinedScore": 0.92,
       "promptPairs": [
-        [
-          {
-            "prompt": "What is the total revenue for closed won opportunities?"
-          }
-        ]
+        [{ "prompt": "What is the total revenue for closed won opportunities?" }]
       ],
       "evaluations": [
         [
@@ -106,16 +73,3 @@ curl -X POST \
   }
 }
 ```
-
-</ResponseExample>
-
-## Next steps
-
-<CardGroup cols={2}>
-  <Card title="Evaluation Runs" icon="list" href="/integrations/graphql-api/queries/evaluation/evaluation-runs">
-    List evaluation runs
-  </Card>
-  <Card title="EvaluationRun Object" icon="folder" href="/integrations/graphql-api/objects/evaluation-run">
-    Complete response schema
-  </Card>
-</CardGroup>

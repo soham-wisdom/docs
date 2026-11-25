@@ -1,0 +1,114 @@
+---
+title: "Evaluation data types"
+---
+
+This page lists the objects, input types, and enums that the evaluation set operations use. For the operations, see [Evaluation sets](/integrations/graphql-api/evaluation-sets).
+
+## EvalSet
+
+An evaluation set in a domain.
+
+| Field | Type | Description |
+| :-- | :-- | :-- |
+| `id` | `ID!` | Unique identifier of the evaluation set. |
+| `name` | `String!` | The name of the evaluation set. |
+| `domainId` | `String!` | The domain the evaluation set belongs to. |
+| `version` | `Int!` | The version of the evaluation set. |
+| `isLocked` | `Boolean!` | Whether the set is locked. Updating, deleting, rescheduling, or pausing the schedule of a locked set requires `evaluation:lock`. |
+| `items` | `[[PromptSQLPair!]!]!` | The sessions. Each session is an ordered list of turns. |
+| `caseIds` | `[ID!]!` | One ID per session, in the same order as `items`. |
+| `customGradingInstructions` | `String` | Grading instructions for the whole set. |
+| `cronExpression` | `String` | The cron expression of the schedule. Null when the set is not scheduled. |
+| `cronTimezone` | `String` | The time zone of the cron expression. |
+| `scheduledRunChatMode` | `ChatMode` | The chat mode that scheduled runs use. |
+| `draftId` | `ID` | The domain draft the set is staged on. |
+| `createdAt` | `DateTime!` | When the set was created. |
+| `updatedAt` | `DateTime!` | When the set was last updated. |
+
+## PromptSQLPair
+
+One turn in a session. The input type `PromptSQLPairInput` takes the same fields, and only `prompt` and `sql` are required.
+
+| Field | Type | Description |
+| :-- | :-- | :-- |
+| `id` | `ID` | Unique identifier of the turn. |
+| `prompt` | `String!` | The natural language prompt. |
+| `sql` | `[String!]!` | The accepted ground-truth SQL. Any one of the queries can match. |
+| `assertions` | `[EvalAssertion!]` | Plain-language criteria the answer must meet. In the input type, a list of `EvalAssertionInput`. |
+| `noGroundTruth` | `Boolean!` | The turn has no expected answer. WisdomAI answers the prompt but does not score it. You cannot combine it with `sql` or `assertions`. |
+| `gradingInstructions` | `String` | Guidance for the judge that applies to this prompt only. |
+
+## EvalAssertion
+
+A criterion that an LLM judge grades for a turn, for example "breaks revenue down by region".
+
+| Field | Type | Description |
+| :-- | :-- | :-- |
+| `id` | `ID` | Unique identifier of the assertion. |
+| `criterion` | `String!` | The criterion the answer must meet. |
+
+`EvalAssertionInput` takes the same two fields. Only `criterion` is required.
+
+## EvalAssertionResult
+
+The grading result for one assertion.
+
+| Field | Type | Description |
+| :-- | :-- | :-- |
+| `assertionId` | `ID!` | The assertion that was graded. |
+| `verdict` | `EvalAssertionVerdict!` | The result. `PASS`, `FAIL`, or `NOT_EVALUABLE`. |
+| `reasoning` | `String` | The judge's reasoning. |
+
+## PromptEvaluation
+
+The result for one turn of a run.
+
+| Field | Type | Description |
+| :-- | :-- | :-- |
+| `softEvalScore` | `Float` | The automated score. |
+| `softEvalFeedback` | `String` | Feedback for the automated score. |
+| `manualScore` | `Float` | The score a reviewer assigned. It overrides `softEvalScore`. |
+| `manualFeedback` | `String` | Feedback from the reviewer. |
+| `assertionResults` | `[EvalAssertionResult!]` | The result for each assertion on the turn. |
+
+## EvaluationRunSummary
+
+A run in a list.
+
+| Field | Type | Description |
+| :-- | :-- | :-- |
+| `id` | `ID!` | Unique identifier of the run. |
+| `evalSetId` | `ID!` | The evaluation set the run used. |
+| `evalSetName` | `String!` | The name of that evaluation set. |
+| `evalSetVersion` | `Int!` | The version of the set when the run happened. |
+| `chatMode` | `ChatMode!` | The chat mode the run used. |
+| `createdAt` | `DateTime!` | When the run was created. |
+| `completedAt` | `DateTime` | When the run completed. Null while the run is in progress. |
+| `completedConversationCount` | `Int!` | The number of conversations completed. |
+| `totalConversationCount` | `Int!` | The total number of conversations. |
+| `overallCombinedScore` | `Float` | The overall score. Null until every session is scored. |
+
+## EvaluationRun
+
+One run in detail. It has the same fields as `EvaluationRunSummary`, except `completedConversationCount` and `totalConversationCount`, plus the following fields.
+
+| Field | Type | Description |
+| :-- | :-- | :-- |
+| `promptPairs` | `[[PromptSQLPair!]!]!` | The turns as they were when the run happened. |
+| `evaluations` | `[[PromptEvaluation!]!]` | One result per turn, in the same shape as `promptPairs`. |
+
+## EvaluationRunGroup
+
+The runs that one `runEvaluation` call started.
+
+| Field | Type | Description |
+| :-- | :-- | :-- |
+| `runs` | `[EvaluationRun!]!` | The individual runs in the group. |
+
+## ChatMode
+
+| Value | Description |
+| :-- | :-- |
+| `FAST` | Answers quickly. Scheduled runs use this mode by default. |
+| `NORMAL` | Balances speed and depth. Runs that you start with `runEvaluation` use this mode by default. |
+| `DEEP_THINK` | Applies more effort to each answer. |
