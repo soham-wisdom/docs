@@ -74,6 +74,27 @@ Each claim string must follow this schema:
 - `wisdom.explorer.DOMAIN.ET_DOMAIN_foo`: Assigns the Explorer role to a specific domain in the default workspace.
 - `wisdom.foo.explorer.DOMAIN.ET_DOMAIN_bar`: Assigns the Explorer role on a specific domain in the foo workspace.
 
+## How permissions combine
+
+Permissions in WisdomAI are additive, so they do not conflict. A user receives every role and domain permission granted through any of these sources:
+
+- Direct settings on the user
+- SSO groups
+- Manual groups on the **Users > Groups** tab
+
+A direct user setting does not override an SSO group setting, and an SSO group does not override a direct user setting. If a user belongs to several groups, the user receives the permissions from all of them.
+
+SSO groups and manual groups work together at the same time. The only difference is how you manage membership:
+
+| Group type | Membership managed |
+|---|---|
+| Manual group | In WisdomAI, on the **Users > Groups** tab |
+| SSO group | By your IdP |
+
+<Note>
+  To remove a permission that comes from an SSO group, remove the user from that group in your IdP. Changing the user's direct settings in WisdomAI does not revoke it.
+</Note>
+
 ## Next steps
 
 <CardGroup cols={3}>

@@ -50,6 +50,8 @@ Roles may be managed on a per-user basis. Whether you need to add or change a us
 
 You can also create groups with roles to streamline management. Users will inherit any roles from the groups they belong to.
 
+Permissions are additive. A user receives all permissions from their direct settings, manual groups, and [SSO groups](/manage-account/role-mapping-and-sso-groups#how-permissions-combine). Manual groups are managed in WisdomAI, while SSO group membership is managed by your IdP.
+
 1. Navigate to **Users \> Groups** and click **Add Group**.
 2. In the **Add User Group** modal that opens, provide a name for the group (e.g., `example_group`).
 3. Assign the **Role(s)** and **Domain(s)** that all group members should have.
