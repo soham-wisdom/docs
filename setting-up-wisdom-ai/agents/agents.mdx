@@ -99,11 +99,28 @@ You can also call on Ask WisdomAI again at any point to modify an existing workf
 
 ### Create agent from chat
 
-When you ask a chat question that implies a recurring need ("every Monday," "alert me when…"), chat offers to set up an agent for it. Accept the offer, or ask, for example, "Send me this every Monday at 8am." Chat creates the agent right there in the conversation. It asks where results should go if you haven't said, chooses a schedule from your request, and shows the new agent as a card you can open.
+You can create an agent without leaving chat. Describe what you want, and chat builds the agent in the conversation.
 
-<Warning>
-  FLAG: Image needed. The old `reccuring-agent.png` was removed because it showed the retired **Create Agent** card. Add a screenshot of chat creating an agent and the agent card that follows, then remove this flag.
-</Warning>
+1. On the new chat screen, click **Build** and select **Agents**.
+2. Describe the agent: the data to fetch, any parameters, when it should run, and where to send the results. If you leave out the schedule or the delivery, chat chooses a schedule and asks where to send the results.
+3. Send your request.
+
+<Tip>
+  Not sure where to start? Pick one of the **Suggested agents to build** below the chat box.
+</Tip>
+
+<Frame>
+  <img src="/images/create-agent-from-chat-home.png" alt="Chat home screen with Build and Agents selected, an agent description in the chat box, and a suggested agent below" />
+</Frame>
+
+Chat then does the following:
+
+1. It shows the new agent as a card (1). Click the card to open the agent beside the chat.
+2. It asks whether to run the agent now to test it. Select **Run it** to watch the run in the conversation. The report appears as a card (2), and no email is sent during the test.
+
+<Frame>
+  <img src="/images/reccuring-agent-v2.png" alt="Chat showing a new agent card and a report card from a test run, with the agent's workflow open on the canvas" />
+</Frame>
 
 For everything chat can do with agents, see [Manage agents from chat](/setting-up-wisdom-ai/agents/manage-agents#manage-agents-from-chat).
 
