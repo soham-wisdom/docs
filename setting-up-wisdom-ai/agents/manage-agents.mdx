@@ -33,6 +33,7 @@ An agent needs three things: what it does, a schedule, and somewhere to deliver 
 - Chat never asks about the schedule. If you don't give one, it picks one from the task: an alert or monitor checks at least daily, a period summary runs at the end of its period, and anything else runs every weekday at 9:00 AM. Times use your account's time zone unless you name another.
 - Delivery can be email, a Slack channel, or Teams recipients if Teams is connected. Your own email is the suggested default.
 - Chat chooses Prompt or Visual for you unless you say which you want.
+- Chat doesn't add parameters when you create an agent from the main chat. It fills in fixed values instead. To add a parameter, open the agent from the **Agents** page and use the **Ask WisdomAI** panel in the editor. See [Create parameters with Ask WisdomAI](/setting-up-wisdom-ai/agents/visual-mode#create-parameters-with-ask-wisdomai).
 - The agent is published and starts running on its schedule straight away. Ask for a draft if you want to review it first.
 - Some Visual agents need setup that chat can't finish, such as an export step, an event-based trigger, or an incomplete schedule or delivery. Chat saves those as a draft for you to complete in the editor.
 
