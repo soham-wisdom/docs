@@ -59,8 +59,7 @@
                 "group": "Get Started",
                 "pages": [
                   "admins/getting-started-admins",
-                  "explorers/getting-started-explorers",
-                  "products"
+                  "explorers/getting-started-explorers"
                 ]
               }
             ]

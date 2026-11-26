@@ -250,5 +250,10 @@
     "source": "/getting-started/overview",
     "destination": "/",
     "permanent": true
+  },
+  {
+    "source": "/products",
+    "destination": "/",
+    "permanent": true
   }
 ]
