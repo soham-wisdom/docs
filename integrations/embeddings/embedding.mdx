@@ -203,6 +203,15 @@ Every embedded session follows this five-step flow:
   </Step>
 </Steps>
 
+## Authentication options
+
+Embedded sessions do not support SSO. You cannot embed WisdomAI using your identity provider (IdP) login or a direct SSO link. Every embed authenticates with a WisdomAI JWT passed as the `token` query parameter. You generate the JWT in one of two ways:
+
+| Query | JWT is issued for | Requirement |
+| --- | --- | --- |
+| `impersonateUser` | Any user you specify by email | The API key must have impersonation permissions |
+| `exchangeAccessToken` | The owner of the API key | None beyond a valid API key |
+
 ## Manage the session
 
 Once the initial iframe is rendered, you must manage the session lifecycle to prevent user timeouts or "sticky" sessions when switching users. Read [Session Management](/integrations/embeddings/session-management) for best practices on handling token expiry, refreshing tokens without reloading the page, and switching between users.
