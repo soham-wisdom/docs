@@ -35,21 +35,29 @@ Click **Create Agent** to open a modal and pick **Prompt agent** or **Visual age
      ![Setup Agent Name](/images/setup-agent-name.png)
    </Frame>
 
-## Step 2: Generate your workflow with the WisdomAI Builder (recommended)
+## Step 2: Generate your workflow with Ask WisdomAI (recommended)
 
-Rather than placing nodes manually, you can describe your agent in plain language and let the **WisdomAI Builder** generate the structure for you. The WisdomAI Builder is an AI-powered chat panel built into the canvas. Type what you want your agent to do in the **Describe your agent** bar at the bottom of the screen. WisdomAI Builder reads your connected domain and data sources, constructs the complete node structure, and renders it on the canvas for you to review, adjust, and publish.
+Rather than placing nodes manually, you can describe your agent in plain language and let **Ask WisdomAI** generate the structure for you. Ask WisdomAI is the chat panel docked beside the canvas. It opens by default, and the **Ask WisdomAI** button in the top bar hides or shows it. Type what you want your agent to do in the chat box at the bottom of the panel. Ask WisdomAI reads your connected domain and data sources, constructs the complete node structure, and renders it on the canvas for you to review, adjust, and publish.
 
-<video src="/videos/builder-ia.mp4" controls />
+{/* <video src="/videos/builder-ia.mp4" controls /> UPDATE THE VIDEO*/}
 
-You can use the WisdomAI Builder at any point, such as to create an agent from scratch or to modify an existing workflow. For example: _add a conditional branch that skips delivery if revenue is above target._
+You can use Ask WisdomAI at any point, such as to create an agent from scratch or to modify an existing workflow. 
 
 <Frame>
-  ![Add Node To Agent](/images/add-node-to-agent.png)
+  ![Add Node To Agent](/images/add-node-to-agent-v2.png)
 </Frame>
 
-### Create parameters with the WisdomAI Builder
+### Use the Ask WisdomAI panel
 
-Ask the WisdomAI Builder to create parameters and use them in the agent's workflow.
+- On the canvas, the panel has two tabs, **Ask WisdomAI** and **Nodes**.
+- On a new agent, describe what you want. Chat creates the agent and the editor opens it. From then on, that chat only changes that agent. To change a different one, open its editor.
+- If you have unsaved edits, WisdomAI saves them as a draft before it sends your message. A banner tells you and offers **Save as draft**.
+- Changes chat makes to a Visual agent are saved as a draft until you click **Publish**.
+- The panel header has a copy link button, **Chat history** (your previous chats for this agent), and **New chat**.
+
+### Create parameters with Ask WisdomAI
+
+Use Ask WisdomAI to create parameters and use them in the agent's workflow.
 
 1. Open an agent in Visual Mode and open **Ask WisdomAI**.
 2. Describe the parameter and how the agent should use it.
@@ -59,7 +67,7 @@ Ask the WisdomAI Builder to create parameters and use them in the agent's workfl
     *Create a regional deposit summary. Add a required Text parameter named region, with no default. Use it to filter the analysis to the selected region.*
 
       <Frame>
-        <img src="/images/02-ai-builder-result.png" alt="Ask WisdomAI chat creating a regional deposit workflow and confirming the required region parameter" />
+        <img src="/images/02-ai-builder-result-v2.png" alt="Ask WisdomAI chat creating a regional deposit workflow and confirming the required region parameter" />
       </Frame>
 
 3. Review the generated parameter under **Parameters**.
@@ -85,11 +93,11 @@ Use `@` in an instruction to reference a particular artifact, including an app, 
   <img src="/images/05-reference-picker.png" alt="Instruction picker listing Parameters, Data, Dashboards, and People, with the region parameter as an option" />
 </Frame>
 
-If you prefer to place and configure nodes yourself, or want to refine what the Builder generated, continue to Step 3.
+If you prefer to place and configure nodes yourself, or want to refine what Ask WisdomAI generated, continue to Step 3.
 
 ## Step 3: Build manually
 
-Use manual building when you want to refine the workflow the Builder generated — swap a data source, add a condition, change an instruction — or when you prefer to place and configure each node yourself. You can build manually from the start or at any time after the Builder generates your workflow.
+Use manual building when you want to refine the workflow Ask WisdomAI generated — swap a data source, add a condition, change an instruction — or when you prefer to place and configure each node yourself. You can build manually from the start or at any time after Ask WisdomAI generates your workflow.
 
 Every agent starts with a trigger node, which defines when the agent runs.
 
