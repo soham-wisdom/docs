@@ -32,18 +32,6 @@ To create a new agent, follow these steps:
 
 3. **Select an Agent**: In the **Create Agent** modal, select **Prompt Agent**. A prompt form opens.
 
-<Note>
-  Use the toggle in the top-right corner of the form to switch between **Prompt** and [**Visual**](/setting-up-wisdom-ai/agents/visual-mode) mode.
-
-  <img
-    src="/images/prompt-mode-v1.png"
-    alt="Screenshot showing Prompt mode"
-    lightAlt="Screenshot showing Prompt mode"
-    darkAlt="Screenshot showing Prompt mode"
-  />
-
-</Note>
-
 4. **Agent Name**: Provide a descriptive name for your Agent to easily identify it later.
 5. Configure the **Activation** **Trigger**. The optional trigger allows you to choose between two modes of operation: scheduled reporting or conditional monitoring.
    1. **Trigger Disabled (Scheduled Reporting)**: Leave the trigger disabled to use the Agent for scheduled reporting. In this mode, the analysis will always run and send out a notification according to the schedule you set.
@@ -76,6 +64,17 @@ To create a new agent, follow these steps:
 
 ![2025-08-27\_08-57-07.png](/images/2025-08-27_08-57-07.png)
 
+## Use the Ask WisdomAI panel
+
+The **Ask WisdomAI** chat panel is docked in the editor and opens by default. Use it to create or change a Prompt agent by describing what you want.
+
+- On a new agent, describe what you want. Chat creates the agent and the editor opens it. From then on, that chat only changes that agent. To change a different one, open its editor.
+- If you have unsaved edits, WisdomAI saves them as a draft before it sends your message. A banner tells you and offers **Save as draft**.
+- Changes chat makes to a Prompt agent are live once saved.
+- The panel header has a copy link button, **Chat history** (your previous chats for this agent), and **New chat**.
+
+To manage agents from the main chat instead, see [Manage agents from chat](/setting-up-wisdom-ai/agents/manage-agents#manage-agents-from-chat).
+
 ## Test an Agent during configuration
 
 While creating or editing an Agent, you can test its two main components, the **Activation Trigger** and the **Work Description**, independently before saving. This helps you refine each part and ensure the Agent will behave as expected.
@@ -85,18 +84,14 @@ While creating or editing an Agent, you can test its two main components, the **
 
 ![Gif showing the Test button in action](/images/agent-new-ui-gif.gif)
 
-## Use Deep Analysis with an Agent
+{/* ## Use Deep Analysis with an Agent
 
 You can have an Agent run its analysis using the Deep Analysis feature. When you enable Deep Analysis for an Agent, it performs a more thorough analysis by exploring multiple aspects of the data and providing comprehensive insights. Deep Analysis runs more thoroughly than a standard agent run, so it takes longer but produces more complete insights.
 
 1. When creating or editing an Agent, enable the **Deep Analysis** toggle.
 2. When the Agent runs, it will automatically generate and execute a multi-step analysis plan based on your work description. You will not be prompted to approve the plan; it will run automatically.
 
-<Note>
-  To learn more about this functionality, read the [Use the Deep Analysis Functionality](/advanced-features/deep-analysis) article.
-</Note>
-
-![Snippet showing the Deep Analysis toggle enabled](/images/agent-new-ui-da.png)
+![Snippet showing the Deep Analysis toggle enabled](/images/agent-new-ui-da.png) */}
 
 ## Manage agent versions
 
