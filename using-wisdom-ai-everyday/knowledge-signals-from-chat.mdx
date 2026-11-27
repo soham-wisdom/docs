@@ -126,6 +126,8 @@ While chatting, WisdomAI now watches for two signals directly in the conversatio
 
   <Accordion title='How is this different from the "Extract from query logs" feature?'>
     Query history mining analyzes SQL query logs from your connected warehouses in bulk. It's designed to bootstrap a Domain from scratch or fill large structural gaps (metrics, relationships, column descriptions) by studying historical usage patterns. Knowledge Signals from Chat is designed for incremental, conversational refinement, capturing the nuanced business logic and corrections that emerge from actual user interactions, which query logs don't contain.
+
+    To check whether a warehouse connection can read query history, use the **Query history** check in [Access settings](/getting-started/connect-data-sources/supported-data-sources#access-settings). A passing check means the connection can read the history. It does not run query history mining.
   </Accordion>
 
   <Accordion title="How many suggestions will I typically see per conversation?">

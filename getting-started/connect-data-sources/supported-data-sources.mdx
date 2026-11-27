@@ -180,7 +180,7 @@ This section outlines common prerequisites for connecting to data sources. Speci
     | Use TLS | Required for Oracle Cloud Autonomous DB |
     | SSH tunnel | Optionally connect through an SSH tunnel to a bastion host |
 
-    Under **Advanced**, **Query timeout (s)** stops queries that run longer than this limit. When a query reaches it, Oracle cancels the query on the server. See [Advanced settings](#advanced-settings).
+    Under **Advanced**, **Query timeout (s)** sets the query execution timeout. Oracle applies it to each execution and each fetch, so a result fetched in several batches can take longer overall. See [Advanced settings](#advanced-settings).
   </Tab>
   <Tab title="Databricks">
     The following table lists the requirements you must provide when connecting to Databricks.
@@ -366,6 +366,8 @@ This section outlines common prerequisites for connecting to data sources. Speci
     Tenant ID: ffffffff-ffff-ffff-ffff-ffffffffffff
     Client Secret: ********
     ```
+
+    Azure Synapse connections do not show the **Access** section. Only Azure Synapse Serverless connections offer these checks. See [Access settings](#access-settings).
   </Tab>
   <Tab title="Azure Synapse Serverless">
     The following table lists the requirements you must provide when connecting to Azure Synapse Serverless.
@@ -390,6 +392,8 @@ This section outlines common prerequisites for connecting to data sources. Speci
     Tenant ID: ffffffff-ffff-ffff-ffff-ffffffffffff
     Client Secret: ********
     ```
+
+    Azure Synapse Serverless connections show the **Access** section. The system catalog check covers table and column metadata only, not sizes or statistics. See [Access settings](#access-settings).
   </Tab>
   <Tab title="Amazon S3">
     The following table lists the requirements you must provide when connecting to Amazon S3.
@@ -743,18 +747,110 @@ This section outlines common prerequisites for connecting to data sources. Speci
 
 ## Access settings
 
-BigQuery, Snowflake, Amazon Redshift, ClickHouse, Databricks, PostgreSQL, Microsoft SQL Server, Azure Synapse Serverless, Oracle, and Teradata connections have an **Access** section with two rows:
+Supported warehouse sources show an **Access** section on the connection form. It checks optional access that WisdomAI uses to analyze warehouse performance and plan queries. It has two rows:
 
-| Row | What it lets WisdomAI do |
+| Row | What it checks |
 | :-- | :-- |
-| **Query history** | Monitor query performance and diagnose query and database health |
-| **System catalog metadata** | Read table sizes, partitions, and statistics to plan more efficient queries |
+| **Query history** | Whether the connection can read the warehouse's query history, used for performance and health analysis. This is the warehouse's history, not your WisdomAI chat history. |
+| **System catalog metadata** | Whether the connection can read metadata such as table sizes, partitions, and column statistics, where the source provides them. Results vary by source and by the objects visible to the connection. |
 
-Click **Enable** on a row. WisdomAI then:
+<Frame>
+  <img
+    alt="Access section with Query history and System catalog metadata rows, each with an Enable button"
+    lightAlt="Access section with Query history and System catalog metadata rows, each with an Enable button"
+    darkAlt="Access section with Query history and System catalog metadata rows, each with an Enable button"
+    src="/images/connection-access-rows.png"
+  />
+</Frame>
 
-1. Checks whether the connection already has access.
-2. Shows the grant statements to run, filled in with the connection's own user.
-3. Checks again after you run them.
+### Supported sources
+
+| Source | Query history | System catalog metadata |
+| :-- | :-- | :-- |
+| Google BigQuery | Yes | Yes |
+| Snowflake | Yes | Yes |
+| Databricks | Yes | Yes |
+| Amazon Redshift | Yes | Yes |
+| PostgreSQL | Yes | Yes |
+| ClickHouse | Yes | Yes |
+| Oracle | Yes | Yes |
+| Microsoft SQL Server | Yes | Yes |
+| Azure Synapse Serverless | Yes | Table and column metadata only (no size or statistics check) |
+| Teradata | Yes | Yes |
+
+Other sources, including Azure Synapse dedicated SQL pools, do not show the **Access** section. These checks do not apply to file, repository, BI, calendar, or MCP server connections.
+
+This list shows which sources offer the checks. It does not show which sources support Query History Enrichment (the job that mines query history). A passing **Query history** check means the connection can read the warehouse's history. It does not mean the job supports the source or has run. See [Jobs](/settings/jobs).
+
+### Check optional warehouse access
+
+You need permission to create the connection, or to edit it if it already exists. The check uses the connection's primary credentials. It does not verify alternate credential sets or the OAuth identity of individual users.
+
+1. Complete the connection details, then click **Enable** beside the capability you want to check.
+2. Read the result and any messages about scope. If setup is needed, open **Setup instructions** and ask a warehouse or cloud administrator to review and run them at the location shown.
+
+   <Frame>
+     <img
+       alt="Query history row showing Access not granted with Setup instructions and Retry buttons, above System catalog metadata"
+       lightAlt="Query history row showing Access not granted with Setup instructions and Retry buttons, above System catalog metadata"
+       darkAlt="Query history row showing Access not granted with Setup instructions and Retry buttons, above System catalog metadata"
+       src="/images/connection-access-setup.png"
+     />
+   </Frame>
+3. Return to WisdomAI and click **Done** to check again. You can also click **Retry** or **Check again** on the row.
+
+   <Frame>
+     <img
+       alt="Enable query history access dialog with Google Cloud CLI setup commands, Copy setup commands buttons, and a Done button"
+       lightAlt="Enable query history access dialog with Google Cloud CLI setup commands, Copy setup commands buttons, and a Done button"
+       darkAlt="Enable query history access dialog with Google Cloud CLI setup commands, Copy setup commands buttons, and a Done button"
+       src="/images/connection-access-setup-dialog.png"
+     />
+   </Frame>
+4. Save the connection if you changed any settings.
+
+Clicking **Enable** does not grant access. WisdomAI runs a check, and you or your administrator run any setup instructions yourselves. Running a check does not save the form.
+
+| Result | What it means |
+| :-- | :-- |
+| Access confirmed | The checks passed for the tested scope. It does not mean a crawl or history enrichment job has completed. |
+| Partially available | Some access works, but visibility or coverage is incomplete. For example, only the connection's own queries are visible. |
+| Access not granted | A check failed. Follow the explanation and setup instructions shown. |
+| Setup required | A prerequisite, such as query logging or Query Store, needs attention first. |
+| Could not verify | The check was inconclusive or could not finish. Complete the settings or retry. |
+
+<Frame>
+  <img
+    alt="Query history row showing Access confirmed with the check time and a Check again button, above System catalog metadata"
+    lightAlt="Query history row showing Access confirmed with the check time and a Check again button, above System catalog metadata"
+    darkAlt="Query history row showing Access confirmed with the check time and a Check again button, above System catalog metadata"
+    src="/images/connection-access-confirmed.png"
+  />
+</Frame>
+
+Keep these points in mind:
+
+- The result applies to the settings and scope checked at that time. Editing the form clears it.
+- The control is a check, not a saved on/off switch. A reopened form can show **Enable** again even when access exists.
+- A readable query history can still contain no recent queries.
+- Metadata checks sample objects, so a confirmed result does not cover every database, dataset, table, or server.
+
+### Source prerequisites
+
+The setup instructions in the product give the exact user, role, and scope to use. These are the prerequisites each source checks:
+
+| Source | Query history | System catalog metadata |
+| :-- | :-- | :-- |
+| BigQuery | Reads project and region history. Seeing it can require a role on the project. | Reads visible dataset and table metadata. Hidden base tables behind views can leave metadata incomplete. |
+| Snowflake | Reads warehouse history and checks whether the active role sees other users' queries. | Reads objects visible to the role. |
+| Redshift | Reads `SYS_QUERY_HISTORY`. Seeing other users' queries can require extra privileges. | Reads table metadata and statistics. |
+| ClickHouse | Requires query logging and access to `system.query_log`. The check covers the server that answers. | Reads `system.tables` and `system.columns`. |
+| Databricks | Checks both the Query History API and `system.query.history`. One can work while the other fails. | Reads catalog and schema metadata. Foreign catalogs and hidden view dependencies can limit results. |
+| PostgreSQL | Requires the `pg_stat_statements` extension. Seeing other users' statements requires extra statistics privileges. | Reads visible table and index metadata and available statistics. |
+| SQL Server | Checks Query Store per database. Query Store must be on. | Reads visible table and column metadata and available size information. |
+| Azure Synapse Serverless | Checks request history in `master`. | Reads table and column metadata only. |
+| Oracle | Reads `V$SQLSTATS`. | Reads objects visible through the catalog views and available statistics. |
+| Teradata | Reads `DBC.QryLogV`. A readable but empty result can also mean query logging is off. | Reads `DBC.TablesV` and `DBC.ColumnsV`. |
 
 ## Advanced settings
 
@@ -762,18 +858,46 @@ The **Advanced** section is on the connection form. Each setting is only shown f
 
 | Setting | What it does | Available on |
 | :-- | :-- | :-- |
-| **Query timeout (s)** | Stops queries that run longer than this many seconds | PostgreSQL, Amazon Redshift, Snowflake, Google BigQuery, ClickHouse, Databricks, Oracle, and MotherDuck |
-| **Max bytes scanned** | Caps how much data one query may scan | Google BigQuery and Snowflake |
+| **Query timeout (s)** | Sets the query execution timeout for this connection, in whole seconds. Leave it blank to inherit the applicable default. | PostgreSQL, Amazon Redshift, Snowflake, Google BigQuery, ClickHouse, Databricks, Oracle, and MotherDuck |
+| **Max bytes scanned** | Blocks a query before execution when its estimated scan size exceeds the applicable limit | Google BigQuery and Snowflake |
 | **Alternate credential sets** | Use different credentials depending on a user attribute | PostgreSQL, Amazon Redshift, MySQL, Microsoft SQL Server, Teradata, Databricks, ClickHouse, Trino, Amazon Athena, Google BigQuery, Google Cloud Spanner, Dremio, Snowflake, and MotherDuck |
+
+<Frame>
+  <img
+    alt="Advanced section with Query timeout (s) field and separate Jobs and Interactive limits with Limit and Unit fields"
+    lightAlt="Advanced section with Query timeout (s) field and separate Jobs and Interactive limits with Limit and Unit fields"
+    darkAlt="Advanced section with Query timeout (s) field and separate Jobs and Interactive limits with Limit and Unit fields"
+    src="/images/connection-advanced-limits.png"
+  />
+</Frame>
+
+### Query timeout
+
+Under **Advanced**, enter a positive whole number in **Query timeout (s)**, then save. For example, enter `120` to set a two-minute query execution timeout for the connection.
+
+- Leave the field blank to use the account or connector default. A shorter workflow or warehouse limit can still apply.
+- Zero does not mean unlimited.
+- The setting governs query execution. It does not fix a blocked network connection, and it does not guarantee the total time for an answer, which also includes warehouse startup, connection acquisition, and result processing.
+- Oracle applies the timeout to each execution and each fetch, so a result fetched in several batches can take longer overall.
 
 ### Max bytes scanned
 
-**Max bytes scanned** is set separately for two kinds of work:
+Use **Max bytes scanned** to reject queries whose estimated scan size is too large for the intended workflow. Enter a positive **Limit**, select a **Unit** (KB, MB, GB, or TB), and save. The limit is set separately for two kinds of work:
 
-| Limit | Applies to | Default |
+| Limit | Applies to | Default when no saved limit applies |
 | :-- | :-- | :-- |
-| **Jobs** | Crawls and other background work | 500 GB |
-| **Interactive** | Chat, dashboards, MCP, and Slack | 5 TB |
+| **Jobs** | Metadata and value crawling, and background work such as cache builds, scheduled conversation runs, and domain maintenance | 500 GB |
+| **Interactive** (chat, dashboards, MCP, Slack) | Chat and dashboard queries, MCP, Slack, Teams, API, and agent requests, the Live App builder, SQL Playground, and evaluations. Scheduled dashboard refreshes also use this limit. | 5 TB |
+
+The limit applies to each warehouse query, not to the total across a conversation, job, dashboard, day, or month. The **Jobs** label does not mean every entry on the [Jobs](/settings/jobs) page uses that limit.
+
+Setting the two limits separately lets you give background crawls a smaller scan allowance than interactive analysis. A query blocked in a crawl can still run when someone asks it in chat.
+
+- Clearing a limit restores the default behavior. It does not turn the check off.
+- Connections created earlier can keep a previously saved shared limit until you replace or clear it in the form. Your administrators can also configure different account defaults.
+- The check relies on an estimate made before execution. A query can proceed when no usable estimate is available. The limit is not a billing cap, and a result served from cache might not run a warehouse query at all.
+
+If a query is blocked, review its filters, date range, and joins, and narrow it where possible. Change the limit only after you review the expected workload. Raising the **Jobs** limit does not raise the **Interactive** limit.
 
 ### Alternate credential sets
 
@@ -933,7 +1057,7 @@ Understand common problems and systematic troubleshooting techniques that can he
 
 | **Issue** | **Possible Causes** | **Resolution** |
 | --- | --- | --- |
-| Connection Timeout | - Network latency  <br /> - Firewall blocking  <br /> - Server overload | - Check network connectivity  <br /> - Verify firewall rules |
+| Connection Timeout | - Network latency  <br /> - Firewall blocking  <br /> - Server overload | - Check warehouse availability and network connectivity  <br /> - Verify firewall rules  <br /> - If the failure is a query execution timeout, review **Query timeout (s)** under **Advanced** on supported sources |
 | Authentication Failed | - Incorrect credentials  <br /> - Expired API keys/tokens  <br /> - Account lockout | - Verify username/password  <br /> - Regenerate API keys  <br /> - Check account status |
 | Permission Denied | - Insufficient privileges  <br /> - IP restriction  <br /> - Resource access limits | - Update user permissions  <br /> - Whitelist IP addresses  <br /> - Check resource quotas |
 
