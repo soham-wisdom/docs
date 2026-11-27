@@ -86,7 +86,6 @@
           },
           {
             "group": "Skills",
-            "tag": "New",
             "pages": [
               "setting-up-wisdom-ai/manage-domains/skills",
               "setting-up-wisdom-ai/manage-domains/create-a-skill"
@@ -291,6 +290,7 @@
           },
           {
             "group": "Dashboards",
+            "tag": "Deprecated",
             "pages": [
               "dashboards/tabs",
               "dashboards/instant-filters",
